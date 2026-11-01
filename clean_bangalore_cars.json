@@ -1,5 +1,41 @@
 [
   {
+    "id": 33052877,
+    "make": "Hyundai",
+    "model": "i10",
+    "variant": "Era 1.1 iRDE2",
+    "make_year": 2012,
+    "mileage": 102022,
+    "price": 219000.0,
+    "fuel_type": "petrol",
+    "transmission": "manual",
+    "category": "auction",
+    "hub": "Spinny Car Hub, Bangalore Vega Mall",
+    "img": null,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/i10/era-11-irde2-btm-layout-2012/33052877/",
+    "deal_score": 40,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Feather-light clutch & steering for traffic",
+    "analysis": {
+      "pros": [
+        "Feather-light clutch & steering for traffic",
+        "Spares available at every neighborhood garage",
+        "Upright seating with clear visibility"
+      ],
+      "cons": [
+        "1.1L engine strains on highway inclines",
+        "City fuel economy ~11-12 kmpl with AC",
+        "Dated dashboard styling"
+      ],
+      "maintenance_yr": "\u20b94,000 - \u20b95,000",
+      "retention_pct": 0.64,
+      "est_buyback_2yr": 140160,
+      "total_loss_2yr": 78840.0,
+      "monthly_loss": 3285
+    }
+  },
+  {
     "id": 31590103,
     "make": "Hyundai",
     "model": "i10",
@@ -177,42 +213,6 @@
       "est_buyback_2yr": 149120,
       "total_loss_2yr": 83880.0,
       "monthly_loss": 3495
-    }
-  },
-  {
-    "id": 30968090,
-    "make": "Maruti Suzuki",
-    "model": "A-Star",
-    "variant": "Vxi (ABS) AT",
-    "make_year": 2013,
-    "mileage": 73378,
-    "price": 233000.0,
-    "fuel_type": "petrol",
-    "transmission": "automatic",
-    "category": "auction",
-    "hub": "Spinny Car Hub, VR Mall, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/maruti-suzuki/a-star/vxi-abs-at-2013/30968090/",
-    "deal_score": 44,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Super compact - slots into tightest parking spots",
-    "analysis": {
-      "pros": [
-        "Super compact - slots into tightest parking spots",
-        "Torque converter AT is smoother than modern AMTs",
-        "Maruti parts cost peanuts"
-      ],
-      "cons": [
-        "Tight rear legroom",
-        "Small 180L boot",
-        "Outdated interior trim"
-      ],
-      "maintenance_yr": "\u20b93,500 - \u20b94,500",
-      "retention_pct": 0.63,
-      "est_buyback_2yr": 146790,
-      "total_loss_2yr": 86210.0,
-      "monthly_loss": 3592
     }
   },
   {
@@ -648,42 +648,6 @@
     }
   },
   {
-    "id": 32990319,
-    "make": "Hyundai",
-    "model": "i10",
-    "variant": "Sportz 1.2 Kappa2",
-    "make_year": 2012,
-    "mileage": 60131,
-    "price": 273000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Car Hub, Mantri Mall, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/i10/sportz-12-kappa2-2012/32990319/",
-    "deal_score": 44,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Feather-light clutch & steering for traffic",
-    "analysis": {
-      "pros": [
-        "Feather-light clutch & steering for traffic",
-        "Spares available at every neighborhood garage",
-        "Upright seating with clear visibility"
-      ],
-      "cons": [
-        "1.1L engine strains on highway inclines",
-        "City fuel economy ~11-12 kmpl with AC",
-        "Dated dashboard styling"
-      ],
-      "maintenance_yr": "\u20b94,000 - \u20b95,000",
-      "retention_pct": 0.64,
-      "est_buyback_2yr": 174720,
-      "total_loss_2yr": 98280.0,
-      "monthly_loss": 4095
-    }
-  },
-  {
     "id": 33093653,
     "make": "Hyundai",
     "model": "i10",
@@ -753,42 +717,6 @@
       "est_buyback_2yr": 179840,
       "total_loss_2yr": 101160.0,
       "monthly_loss": 4215
-    }
-  },
-  {
-    "id": 32413795,
-    "make": "Honda",
-    "model": "Brio",
-    "variant": "S MT",
-    "make_year": 2013,
-    "mileage": 65415,
-    "price": 284000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Car Hub, VR Mall, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/honda/brio/s-mt-whitefield-2013/32413795/",
-    "deal_score": 44,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Bulletproof Honda 1.2L i-VTEC engine",
-    "analysis": {
-      "pros": [
-        "Bulletproof Honda 1.2L i-VTEC engine",
-        "Easiest car to park in tight Bangalore spots",
-        "Zippy 88 bhp with tight turning radius"
-      ],
-      "cons": [
-        "Stiff rear ride on bad roads/potholes",
-        "Small 175L glass boot",
-        "Basic interior features"
-      ],
-      "maintenance_yr": "\u20b94,500 - \u20b96,000",
-      "retention_pct": 0.65,
-      "est_buyback_2yr": 184600,
-      "total_loss_2yr": 99400.0,
-      "monthly_loss": 4142
     }
   },
   {
@@ -864,39 +792,39 @@
     }
   },
   {
-    "id": 31438072,
-    "make": "Volkswagen",
-    "model": "Polo",
-    "variant": "Comfortline 1.2L (P)",
-    "make_year": 2013,
-    "mileage": 81126,
-    "price": 296000.0,
+    "id": 33701692,
+    "make": "Toyota",
+    "model": "Etios",
+    "variant": "G",
+    "make_year": 2012,
+    "mileage": 122259,
+    "price": 295000.0,
     "fuel_type": "petrol",
     "transmission": "manual",
     "category": "auction",
     "hub": "Spinny Car Hub, Bangalore Vega Mall",
     "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/volkswagen/polo/comfortline-12l-p-btm-layout-2013/31438072/",
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/toyota/etios/g-2012/33701692/",
     "deal_score": 40,
     "deal_grade": "FAIR",
     "is_top_deal": false,
-    "verdict": "Unmatched German chassis stability & paint quality",
+    "verdict": "Indestructible Toyota engine & chassis",
     "analysis": {
       "pros": [
-        "Unmatched German chassis stability & paint quality",
-        "Heavy doors with thud sound (5-star feel)",
-        "Timeless styling and prestige"
+        "Indestructible Toyota engine & chassis",
+        "Massive 595L boot space",
+        "Plush ride quality over potholes"
       ],
       "cons": [
-        "Higher parts cost if sensors fail",
-        "Tighter rear legroom",
-        "3-cylinder petrol is vocal at high RPM"
+        "Basic cab-like dashboard ergonomics",
+        "Plain exterior styling",
+        "Larger turning radius"
       ],
-      "maintenance_yr": "\u20b97,500 - \u20b910,000",
-      "retention_pct": 0.68,
-      "est_buyback_2yr": 201280,
-      "total_loss_2yr": 94720.0,
-      "monthly_loss": 3947
+      "maintenance_yr": "\u20b94,500 - \u20b96,000",
+      "retention_pct": 0.65,
+      "est_buyback_2yr": 191750,
+      "total_loss_2yr": 103250.0,
+      "monthly_loss": 4302
     }
   },
   {
@@ -933,42 +861,6 @@
       "est_buyback_2yr": 204000,
       "total_loss_2yr": 96000.0,
       "monthly_loss": 4000
-    }
-  },
-  {
-    "id": 33217167,
-    "make": "Hyundai",
-    "model": "i10",
-    "variant": "Magna 1.2 Kappa2",
-    "make_year": 2013,
-    "mileage": 44574,
-    "price": 300000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Car Hub, Bangalore Vega Mall",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/i10/magna-12-kappa2-btm-layout-2013/33217167/",
-    "deal_score": 51,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Feather-light clutch & steering for traffic",
-    "analysis": {
-      "pros": [
-        "Feather-light clutch & steering for traffic",
-        "Spares available at every neighborhood garage",
-        "Upright seating with clear visibility"
-      ],
-      "cons": [
-        "1.1L engine strains on highway inclines",
-        "City fuel economy ~11-12 kmpl with AC",
-        "Dated dashboard styling"
-      ],
-      "maintenance_yr": "\u20b94,000 - \u20b95,000",
-      "retention_pct": 0.64,
-      "est_buyback_2yr": 192000,
-      "total_loss_2yr": 108000.0,
-      "monthly_loss": 4500
     }
   },
   {
@@ -1392,6 +1284,40 @@
     }
   },
   {
+    "id": 33432780,
+    "make": "Maruti Suzuki",
+    "model": "Ritz",
+    "variant": "Vxi BS-IV",
+    "make_year": 2014,
+    "mileage": 70852,
+    "price": 333000.0,
+    "fuel_type": "petrol",
+    "transmission": "manual",
+    "category": "auction",
+    "hub": "Spinny Car Hub, Nexus Shanti Niketan Mall - Whitefield Rd, Bangalore",
+    "img": null,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/maruti-suzuki/ritz/vxi-bsiv-2014/33432780/",
+    "deal_score": 50,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Reliable brand backing with steady resale demand",
+    "analysis": {
+      "pros": [
+        "Reliable brand backing with steady resale demand",
+        "Smooth city drivability",
+        "Predictable routine service upkeep"
+      ],
+      "cons": [
+        "Regular periodic maintenance required"
+      ],
+      "maintenance_yr": "\u20b95,500 - \u20b97,500",
+      "retention_pct": 0.65,
+      "est_buyback_2yr": 216450,
+      "total_loss_2yr": 116550.0,
+      "monthly_loss": 4856
+    }
+  },
+  {
     "id": 32943441,
     "make": "Tata",
     "model": "Zest",
@@ -1601,6 +1527,42 @@
       "est_buyback_2yr": 217750,
       "total_loss_2yr": 117250.0,
       "monthly_loss": 4885
+    }
+  },
+  {
+    "id": 32868625,
+    "make": "Honda",
+    "model": "Amaze",
+    "variant": "1.2 S i-VTEC",
+    "make_year": 2013,
+    "mileage": 69300,
+    "price": 337000.0,
+    "fuel_type": "petrol",
+    "transmission": "manual",
+    "category": "auction",
+    "hub": "Spinny Car Hub, Electronic City, Bangalore",
+    "img": null,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/honda/amaze/12-s-ivtec-2013/32868625/",
+    "deal_score": 44,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Massive 400L boot for outstation & airport runs",
+    "analysis": {
+      "pros": [
+        "Massive 400L boot for outstation & airport runs",
+        "Spacious rear legroom with great resale demand",
+        "Engine easily lasts 200,000+ km"
+      ],
+      "cons": [
+        "Soft rear suspension can scrape tall speedbumps",
+        "Lightweight door build compared to Polo",
+        "Basic cabin sound insulation"
+      ],
+      "maintenance_yr": "\u20b95,000 - \u20b96,500",
+      "retention_pct": 0.66,
+      "est_buyback_2yr": 222420,
+      "total_loss_2yr": 114580.0,
+      "monthly_loss": 4774
     }
   },
   {
@@ -1816,42 +1778,6 @@
     }
   },
   {
-    "id": 32111128,
-    "make": "Hyundai",
-    "model": "Grand i10",
-    "variant": "Sportz 1.2 Kappa VTVT",
-    "make_year": 2015,
-    "mileage": 101040,
-    "price": 348000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Car Hub, Nexus Shanti Niketan Mall - Whitefield Rd, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/grand-i10/sportz-12-kappa-vtvt-whitefield-road-2015/32111128/",
-    "deal_score": 41,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Feather-light clutch & steering for traffic",
-    "analysis": {
-      "pros": [
-        "Feather-light clutch & steering for traffic",
-        "Spares available at every neighborhood garage",
-        "Upright seating with clear visibility"
-      ],
-      "cons": [
-        "1.1L engine strains on highway inclines",
-        "City fuel economy ~11-12 kmpl with AC",
-        "Dated dashboard styling"
-      ],
-      "maintenance_yr": "\u20b94,000 - \u20b95,000",
-      "retention_pct": 0.64,
-      "est_buyback_2yr": 222720,
-      "total_loss_2yr": 125280.0,
-      "monthly_loss": 5220
-    }
-  },
-  {
     "id": 32778904,
     "make": "Hyundai",
     "model": "i10",
@@ -1885,6 +1811,42 @@
       "est_buyback_2yr": 247080,
       "total_loss_2yr": 100920.0,
       "monthly_loss": 4205
+    }
+  },
+  {
+    "id": 32111128,
+    "make": "Hyundai",
+    "model": "Grand i10",
+    "variant": "Sportz 1.2 Kappa VTVT",
+    "make_year": 2015,
+    "mileage": 101040,
+    "price": 348000.0,
+    "fuel_type": "petrol",
+    "transmission": "manual",
+    "category": "auction",
+    "hub": "Spinny Car Hub, Nexus Shanti Niketan Mall - Whitefield Rd, Bangalore",
+    "img": null,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/grand-i10/sportz-12-kappa-vtvt-whitefield-road-2015/32111128/",
+    "deal_score": 41,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Feather-light clutch & steering for traffic",
+    "analysis": {
+      "pros": [
+        "Feather-light clutch & steering for traffic",
+        "Spares available at every neighborhood garage",
+        "Upright seating with clear visibility"
+      ],
+      "cons": [
+        "1.1L engine strains on highway inclines",
+        "City fuel economy ~11-12 kmpl with AC",
+        "Dated dashboard styling"
+      ],
+      "maintenance_yr": "\u20b94,000 - \u20b95,000",
+      "retention_pct": 0.64,
+      "est_buyback_2yr": 222720,
+      "total_loss_2yr": 125280.0,
+      "monthly_loss": 5220
     }
   },
   {
@@ -2136,6 +2098,40 @@
     }
   },
   {
+    "id": 33424832,
+    "make": "Maruti Suzuki",
+    "model": "Ritz",
+    "variant": "Vxi BS-IV",
+    "make_year": 2015,
+    "mileage": 85214,
+    "price": 353000.0,
+    "fuel_type": "petrol",
+    "transmission": "manual",
+    "category": "auction",
+    "hub": "Spinny Car Hub, Nexus Shanti Niketan Mall - Whitefield Rd, Bangalore",
+    "img": null,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/maruti-suzuki/ritz/vxi-bsiv-2015/33424832/",
+    "deal_score": 51,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Reliable brand backing with steady resale demand",
+    "analysis": {
+      "pros": [
+        "Reliable brand backing with steady resale demand",
+        "Smooth city drivability",
+        "Predictable routine service upkeep"
+      ],
+      "cons": [
+        "Regular periodic maintenance required"
+      ],
+      "maintenance_yr": "\u20b95,500 - \u20b97,500",
+      "retention_pct": 0.65,
+      "est_buyback_2yr": 229450,
+      "total_loss_2yr": 123550.0,
+      "monthly_loss": 5148
+    }
+  },
+  {
     "id": 33538531,
     "make": "Honda",
     "model": "Amaze",
@@ -2280,40 +2276,6 @@
     }
   },
   {
-    "id": 33366963,
-    "make": "Hyundai",
-    "model": "Xcent",
-    "variant": "S 1.2",
-    "make_year": 2015,
-    "mileage": 55467,
-    "price": 359000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "assured",
-    "hub": "Spinny Park, Mysore Road, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/xcent/s-12-2016/33366963/",
-    "deal_score": 78,
-    "deal_grade": "VALUE PICK",
-    "is_top_deal": true,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 258480,
-      "total_loss_2yr": 100520.0,
-      "monthly_loss": 4188
-    }
-  },
-  {
     "id": 32100579,
     "make": "Tata",
     "model": "Zest",
@@ -2345,42 +2307,6 @@
       "est_buyback_2yr": 234000,
       "total_loss_2yr": 126000.0,
       "monthly_loss": 5250
-    }
-  },
-  {
-    "id": 33430678,
-    "make": "Maruti Suzuki",
-    "model": "Swift",
-    "variant": "VXi",
-    "make_year": 2013,
-    "mileage": 28562,
-    "price": 360000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Park, Yelahanka, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/maruti-suzuki/swift/vxi-2013/33430678/",
-    "deal_score": 57,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Highest resale value in Indian market",
-    "analysis": {
-      "pros": [
-        "Highest resale value in Indian market",
-        "Instant parts availability everywhere",
-        "Fun to drive peppy dynamics"
-      ],
-      "cons": [
-        "Thinner sheet metal",
-        "Common on roads (less exclusivity)",
-        "Ride is firm over broken tarmac"
-      ],
-      "maintenance_yr": "\u20b94,000 - \u20b95,500",
-      "retention_pct": 0.7,
-      "est_buyback_2yr": 252000,
-      "total_loss_2yr": 108000.0,
-      "monthly_loss": 4500
     }
   },
   {
@@ -2528,42 +2454,6 @@
     }
   },
   {
-    "id": 32222879,
-    "make": "Maruti Suzuki",
-    "model": "Swift",
-    "variant": "VXi",
-    "make_year": 2013,
-    "mileage": 86149,
-    "price": 368000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Park, Mysore Road, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/maruti-suzuki/swift/vxi-2013/32222879/",
-    "deal_score": 40,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Highest resale value in Indian market",
-    "analysis": {
-      "pros": [
-        "Highest resale value in Indian market",
-        "Instant parts availability everywhere",
-        "Fun to drive peppy dynamics"
-      ],
-      "cons": [
-        "Thinner sheet metal",
-        "Common on roads (less exclusivity)",
-        "Ride is firm over broken tarmac"
-      ],
-      "maintenance_yr": "\u20b94,000 - \u20b95,500",
-      "retention_pct": 0.7,
-      "est_buyback_2yr": 257600,
-      "total_loss_2yr": 110400.0,
-      "monthly_loss": 4600
-    }
-  },
-  {
     "id": 33220519,
     "make": "Tata",
     "model": "Tiago",
@@ -2597,42 +2487,6 @@
       "est_buyback_2yr": 239850,
       "total_loss_2yr": 129150.0,
       "monthly_loss": 5381
-    }
-  },
-  {
-    "id": 31627812,
-    "make": "Hyundai",
-    "model": "Grand i10",
-    "variant": "Asta AT 1.2 Kappa VTVT",
-    "make_year": 2014,
-    "mileage": 54324,
-    "price": 369000.0,
-    "fuel_type": "petrol",
-    "transmission": "automatic",
-    "category": "auction",
-    "hub": "Spinny Car Hub, Bangalore Vega Mall",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/grand-i10/asta-at-12-kappa-vtvt-btm-layout-2014/31627812/",
-    "deal_score": 57,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Feather-light clutch & steering for traffic",
-    "analysis": {
-      "pros": [
-        "Feather-light clutch & steering for traffic",
-        "Spares available at every neighborhood garage",
-        "Upright seating with clear visibility"
-      ],
-      "cons": [
-        "1.1L engine strains on highway inclines",
-        "City fuel economy ~11-12 kmpl with AC",
-        "Dated dashboard styling"
-      ],
-      "maintenance_yr": "\u20b94,000 - \u20b95,000",
-      "retention_pct": 0.64,
-      "est_buyback_2yr": 236160,
-      "total_loss_2yr": 132840.0,
-      "monthly_loss": 5535
     }
   },
   {
@@ -2744,6 +2598,42 @@
     }
   },
   {
+    "id": 33560746,
+    "make": "Hyundai",
+    "model": "Grand i10",
+    "variant": "Sportz 1.2 Kappa VTVT",
+    "make_year": 2015,
+    "mileage": 80480,
+    "price": 374000.0,
+    "fuel_type": "petrol",
+    "transmission": "manual",
+    "category": "auction",
+    "hub": "Spinny Car Hub, Bangalore Vega Mall",
+    "img": null,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/grand-i10/sportz-12-kappa-vtvt-btm-layout-2015/33560746/",
+    "deal_score": 51,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Feather-light clutch & steering for traffic",
+    "analysis": {
+      "pros": [
+        "Feather-light clutch & steering for traffic",
+        "Spares available at every neighborhood garage",
+        "Upright seating with clear visibility"
+      ],
+      "cons": [
+        "1.1L engine strains on highway inclines",
+        "City fuel economy ~11-12 kmpl with AC",
+        "Dated dashboard styling"
+      ],
+      "maintenance_yr": "\u20b94,000 - \u20b95,000",
+      "retention_pct": 0.64,
+      "est_buyback_2yr": 239360,
+      "total_loss_2yr": 134640.0,
+      "monthly_loss": 5610
+    }
+  },
+  {
     "id": 32955396,
     "make": "Hyundai",
     "model": "Xcent",
@@ -2848,78 +2738,6 @@
     }
   },
   {
-    "id": 32904630,
-    "make": "Hyundai",
-    "model": "Grand i10",
-    "variant": "Asta AT 1.2 Kappa VTVT",
-    "make_year": 2014,
-    "mileage": 59428,
-    "price": 382000.0,
-    "fuel_type": "petrol",
-    "transmission": "automatic",
-    "category": "auction",
-    "hub": "Spinny Park, Mysore Road, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/grand-i10/asta-at-12-kappa-vtvt-kengeri-2014/32904630/",
-    "deal_score": 57,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Feather-light clutch & steering for traffic",
-    "analysis": {
-      "pros": [
-        "Feather-light clutch & steering for traffic",
-        "Spares available at every neighborhood garage",
-        "Upright seating with clear visibility"
-      ],
-      "cons": [
-        "1.1L engine strains on highway inclines",
-        "City fuel economy ~11-12 kmpl with AC",
-        "Dated dashboard styling"
-      ],
-      "maintenance_yr": "\u20b94,000 - \u20b95,000",
-      "retention_pct": 0.64,
-      "est_buyback_2yr": 244480,
-      "total_loss_2yr": 137520.0,
-      "monthly_loss": 5730
-    }
-  },
-  {
-    "id": 33408050,
-    "make": "Hyundai",
-    "model": "Grand i10",
-    "variant": "Sportz 1.2 Kappa VTVT",
-    "make_year": 2014,
-    "mileage": 68329,
-    "price": 382000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Car Hub, Mantri Mall, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/grand-i10/sportz-12-kappa-vtvt-2015/33408050/",
-    "deal_score": 50,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Feather-light clutch & steering for traffic",
-    "analysis": {
-      "pros": [
-        "Feather-light clutch & steering for traffic",
-        "Spares available at every neighborhood garage",
-        "Upright seating with clear visibility"
-      ],
-      "cons": [
-        "1.1L engine strains on highway inclines",
-        "City fuel economy ~11-12 kmpl with AC",
-        "Dated dashboard styling"
-      ],
-      "maintenance_yr": "\u20b94,000 - \u20b95,000",
-      "retention_pct": 0.64,
-      "est_buyback_2yr": 244480,
-      "total_loss_2yr": 137520.0,
-      "monthly_loss": 5730
-    }
-  },
-  {
     "id": 29710179,
     "make": "Honda",
     "model": "Amaze",
@@ -2956,22 +2774,22 @@
     }
   },
   {
-    "id": 32884914,
+    "id": 32904630,
     "make": "Hyundai",
     "model": "Grand i10",
-    "variant": "Sportz 1.2 Kappa VTVT",
-    "make_year": 2016,
-    "mileage": 52612,
-    "price": 385000.0,
+    "variant": "Asta AT 1.2 Kappa VTVT",
+    "make_year": 2014,
+    "mileage": 59428,
+    "price": 382000.0,
     "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "assured",
-    "hub": "Spinny Car Hub, VR Mall, Bangalore",
+    "transmission": "automatic",
+    "category": "auction",
+    "hub": "Spinny Park, Mysore Road, Bangalore",
     "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/grand-i10/sportz-12-kappa-vtvt-2016/32884914/",
-    "deal_score": 78,
-    "deal_grade": "VALUE PICK",
-    "is_top_deal": true,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/grand-i10/asta-at-12-kappa-vtvt-kengeri-2014/32904630/",
+    "deal_score": 57,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
     "verdict": "Feather-light clutch & steering for traffic",
     "analysis": {
       "pros": [
@@ -2985,10 +2803,10 @@
         "Dated dashboard styling"
       ],
       "maintenance_yr": "\u20b94,000 - \u20b95,000",
-      "retention_pct": 0.71,
-      "est_buyback_2yr": 273350,
-      "total_loss_2yr": 111650.0,
-      "monthly_loss": 4652
+      "retention_pct": 0.64,
+      "est_buyback_2yr": 244480,
+      "total_loss_2yr": 137520.0,
+      "monthly_loss": 5730
     }
   },
   {
@@ -3172,76 +2990,6 @@
     }
   },
   {
-    "id": 31902818,
-    "make": "Hyundai",
-    "model": "Grand i10",
-    "variant": "Sportz 1.2 Kappa VTVT",
-    "make_year": 2017,
-    "mileage": 103234,
-    "price": 391000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Car Hub, Bangalore Vega Mall",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/grand-i10/sportz-12-kappa-vtvt-2018/31902818/",
-    "deal_score": 47,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Feather-light clutch & steering for traffic",
-    "analysis": {
-      "pros": [
-        "Feather-light clutch & steering for traffic",
-        "Spares available at every neighborhood garage",
-        "Upright seating with clear visibility"
-      ],
-      "cons": [
-        "1.1L engine strains on highway inclines",
-        "City fuel economy ~11-12 kmpl with AC",
-        "Dated dashboard styling"
-      ],
-      "maintenance_yr": "\u20b94,000 - \u20b95,000",
-      "retention_pct": 0.64,
-      "est_buyback_2yr": 250240,
-      "total_loss_2yr": 140760.0,
-      "monthly_loss": 5865
-    }
-  },
-  {
-    "id": 32953595,
-    "make": "Tata",
-    "model": "Zest",
-    "variant": "XE Petrol",
-    "make_year": 2017,
-    "mileage": 36871,
-    "price": 391000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Car Hub, Nexus Shanti Niketan Mall - Whitefield Rd, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/tata/zest/xe-petrol-whitefield-road-2017/32953595/",
-    "deal_score": 75,
-    "deal_grade": "VALUE PICK",
-    "is_top_deal": true,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.65,
-      "est_buyback_2yr": 254150,
-      "total_loss_2yr": 136850.0,
-      "monthly_loss": 5702
-    }
-  },
-  {
     "id": 30180163,
     "make": "Honda",
     "model": "Amaze",
@@ -3317,7 +3065,7 @@
     "model": "Grand i10",
     "variant": "Asta 1.2 Kappa VTVT (O)",
     "make_year": 2015,
-    "mileage": 99805,
+    "mileage": 99808,
     "price": 392000.0,
     "fuel_type": "petrol",
     "transmission": "manual",
@@ -3345,40 +3093,6 @@
       "est_buyback_2yr": 250880,
       "total_loss_2yr": 141120.0,
       "monthly_loss": 5880
-    }
-  },
-  {
-    "id": 32925385,
-    "make": "Hyundai",
-    "model": "Verna",
-    "variant": "Fluidic 1.6 VTVT EX",
-    "make_year": 2014,
-    "mileage": 57282,
-    "price": 394000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Car Hub, Mantri Mall, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/verna/fluidic-16-vtvt-ex-2014/32925385/",
-    "deal_score": 57,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.65,
-      "est_buyback_2yr": 256100,
-      "total_loss_2yr": 137900.0,
-      "monthly_loss": 5746
     }
   },
   {
@@ -3418,6 +3132,40 @@
     }
   },
   {
+    "id": 32925385,
+    "make": "Hyundai",
+    "model": "Verna",
+    "variant": "Fluidic 1.6 VTVT EX",
+    "make_year": 2014,
+    "mileage": 57282,
+    "price": 394000.0,
+    "fuel_type": "petrol",
+    "transmission": "manual",
+    "category": "auction",
+    "hub": "Spinny Car Hub, Mantri Mall, Bangalore",
+    "img": null,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/verna/fluidic-16-vtvt-ex-2014/32925385/",
+    "deal_score": 57,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Reliable brand backing with steady resale demand",
+    "analysis": {
+      "pros": [
+        "Reliable brand backing with steady resale demand",
+        "Smooth city drivability",
+        "Predictable routine service upkeep"
+      ],
+      "cons": [
+        "Regular periodic maintenance required"
+      ],
+      "maintenance_yr": "\u20b95,500 - \u20b97,500",
+      "retention_pct": 0.65,
+      "est_buyback_2yr": 256100,
+      "total_loss_2yr": 137900.0,
+      "monthly_loss": 5746
+    }
+  },
+  {
     "id": 32838327,
     "make": "Hyundai",
     "model": "Verna",
@@ -3449,42 +3197,6 @@
       "est_buyback_2yr": 256750,
       "total_loss_2yr": 138250.0,
       "monthly_loss": 5760
-    }
-  },
-  {
-    "id": 33347042,
-    "make": "Hyundai",
-    "model": "Grand i10",
-    "variant": "Magna 1.2 Kappa VTVT",
-    "make_year": 2017,
-    "mileage": 58338,
-    "price": 397000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Car Hub, Nexus Shanti Niketan Mall - Whitefield Rd, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/grand-i10/magna-12-kappa-vtvt-2017/33347042/",
-    "deal_score": 69,
-    "deal_grade": "VALUE PICK",
-    "is_top_deal": true,
-    "verdict": "Feather-light clutch & steering for traffic",
-    "analysis": {
-      "pros": [
-        "Feather-light clutch & steering for traffic",
-        "Spares available at every neighborhood garage",
-        "Upright seating with clear visibility"
-      ],
-      "cons": [
-        "1.1L engine strains on highway inclines",
-        "City fuel economy ~11-12 kmpl with AC",
-        "Dated dashboard styling"
-      ],
-      "maintenance_yr": "\u20b94,000 - \u20b95,000",
-      "retention_pct": 0.64,
-      "est_buyback_2yr": 254080,
-      "total_loss_2yr": 142920.0,
-      "monthly_loss": 5955
     }
   },
   {
@@ -3558,37 +3270,39 @@
     }
   },
   {
-    "id": 32799530,
+    "id": 33347042,
     "make": "Hyundai",
-    "model": "Elite i20",
-    "variant": "Sportz 1.2",
-    "make_year": 2015,
-    "mileage": 80221,
-    "price": 398000.0,
+    "model": "Grand i10",
+    "variant": "Magna 1.2 Kappa VTVT",
+    "make_year": 2017,
+    "mileage": 58338,
+    "price": 397000.0,
     "fuel_type": "petrol",
     "transmission": "manual",
     "category": "auction",
-    "hub": "Spinny Car Hub, Bangalore Vega Mall",
+    "hub": "Spinny Car Hub, Nexus Shanti Niketan Mall - Whitefield Rd, Bangalore",
     "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/elite-i20/sportz-12-btm-layout-2015/32799530/",
-    "deal_score": 51,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Reliable brand backing with steady resale demand",
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/grand-i10/magna-12-kappa-vtvt-2017/33347042/",
+    "deal_score": 69,
+    "deal_grade": "VALUE PICK",
+    "is_top_deal": true,
+    "verdict": "Feather-light clutch & steering for traffic",
     "analysis": {
       "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
+        "Feather-light clutch & steering for traffic",
+        "Spares available at every neighborhood garage",
+        "Upright seating with clear visibility"
       ],
       "cons": [
-        "Regular periodic maintenance required"
+        "1.1L engine strains on highway inclines",
+        "City fuel economy ~11-12 kmpl with AC",
+        "Dated dashboard styling"
       ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.65,
-      "est_buyback_2yr": 258700,
-      "total_loss_2yr": 139300.0,
-      "monthly_loss": 5804
+      "maintenance_yr": "\u20b94,000 - \u20b95,000",
+      "retention_pct": 0.64,
+      "est_buyback_2yr": 254080,
+      "total_loss_2yr": 142920.0,
+      "monthly_loss": 5955
     }
   },
   {
@@ -3626,12 +3340,46 @@
     }
   },
   {
+    "id": 32799530,
+    "make": "Hyundai",
+    "model": "Elite i20",
+    "variant": "Sportz 1.2",
+    "make_year": 2015,
+    "mileage": 80221,
+    "price": 398000.0,
+    "fuel_type": "petrol",
+    "transmission": "manual",
+    "category": "auction",
+    "hub": "Spinny Car Hub, Bangalore Vega Mall",
+    "img": null,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/elite-i20/sportz-12-btm-layout-2015/32799530/",
+    "deal_score": 51,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Reliable brand backing with steady resale demand",
+    "analysis": {
+      "pros": [
+        "Reliable brand backing with steady resale demand",
+        "Smooth city drivability",
+        "Predictable routine service upkeep"
+      ],
+      "cons": [
+        "Regular periodic maintenance required"
+      ],
+      "maintenance_yr": "\u20b95,500 - \u20b97,500",
+      "retention_pct": 0.65,
+      "est_buyback_2yr": 258700,
+      "total_loss_2yr": 139300.0,
+      "monthly_loss": 5804
+    }
+  },
+  {
     "id": 33308442,
     "make": "Hyundai",
     "model": "Grand i10",
     "variant": "Sportz 1.2 Kappa VTVT",
     "make_year": 2016,
-    "mileage": 80510,
+    "mileage": 80514,
     "price": 398000.0,
     "fuel_type": "petrol",
     "transmission": "manual",
@@ -3659,6 +3407,42 @@
       "est_buyback_2yr": 282580,
       "total_loss_2yr": 115420.0,
       "monthly_loss": 4809
+    }
+  },
+  {
+    "id": 33428339,
+    "make": "Skoda",
+    "model": "Rapid",
+    "variant": "1.5 TDI CR Ambition Plus",
+    "make_year": 2015,
+    "mileage": 63483,
+    "price": 398000.0,
+    "fuel_type": "diesel",
+    "transmission": "manual",
+    "category": "auction",
+    "hub": "Spinny Car Hub, Mantri Mall, Bangalore",
+    "img": null,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/skoda/rapid/15-tdi-cr-ambition-plus-2015/33428339/",
+    "deal_score": 56,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Executive sedan road presence",
+    "analysis": {
+      "pros": [
+        "Executive sedan road presence",
+        "Solid German build & planted highway cruise",
+        "Large 460L boot space"
+      ],
+      "cons": [
+        "Skoda maintenance & spares cost higher",
+        "Heavy steering at parking speeds",
+        "Requires proactive upkeep"
+      ],
+      "maintenance_yr": "\u20b98,500 - \u20b912,000",
+      "retention_pct": 0.61,
+      "est_buyback_2yr": 242780,
+      "total_loss_2yr": 155220.0,
+      "monthly_loss": 6468
     }
   },
   {
@@ -4020,6 +3804,42 @@
     }
   },
   {
+    "id": 31168070,
+    "make": "Honda",
+    "model": "Brio",
+    "variant": "S (O)MT",
+    "make_year": 2018,
+    "mileage": 104872,
+    "price": 405000.0,
+    "fuel_type": "petrol",
+    "transmission": "manual",
+    "category": "auction",
+    "hub": "Spinny Car Hub, Nexus Shanti Niketan Mall - Whitefield Rd, Bangalore",
+    "img": null,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/honda/brio/s-omt-2019/31168070/",
+    "deal_score": 47,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Bulletproof Honda 1.2L i-VTEC engine",
+    "analysis": {
+      "pros": [
+        "Bulletproof Honda 1.2L i-VTEC engine",
+        "Easiest car to park in tight Bangalore spots",
+        "Zippy 88 bhp with tight turning radius"
+      ],
+      "cons": [
+        "Stiff rear ride on bad roads/potholes",
+        "Small 175L glass boot",
+        "Basic interior features"
+      ],
+      "maintenance_yr": "\u20b94,500 - \u20b96,000",
+      "retention_pct": 0.65,
+      "est_buyback_2yr": 263250,
+      "total_loss_2yr": 141750.0,
+      "monthly_loss": 5906
+    }
+  },
+  {
     "id": 33233407,
     "make": "Hyundai",
     "model": "Grand i10",
@@ -4056,39 +3876,37 @@
     }
   },
   {
-    "id": 31168070,
-    "make": "Honda",
-    "model": "Brio",
-    "variant": "S (O)MT",
-    "make_year": 2018,
-    "mileage": 104872,
-    "price": 405000.0,
+    "id": 33177937,
+    "make": "Hyundai",
+    "model": "i20",
+    "variant": "Asta 1.2",
+    "make_year": 2013,
+    "mileage": 57541,
+    "price": 406000.0,
     "fuel_type": "petrol",
     "transmission": "manual",
     "category": "auction",
-    "hub": "Spinny Car Hub, Nexus Shanti Niketan Mall - Whitefield Rd, Bangalore",
+    "hub": "Spinny Car Hub, VR Mall, Bangalore",
     "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/honda/brio/s-omt-2019/31168070/",
-    "deal_score": 47,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/i20/asta-12-whitefield-2013/33177937/",
+    "deal_score": 51,
     "deal_grade": "FAIR",
     "is_top_deal": false,
-    "verdict": "Bulletproof Honda 1.2L i-VTEC engine",
+    "verdict": "Reliable brand backing with steady resale demand",
     "analysis": {
       "pros": [
-        "Bulletproof Honda 1.2L i-VTEC engine",
-        "Easiest car to park in tight Bangalore spots",
-        "Zippy 88 bhp with tight turning radius"
+        "Reliable brand backing with steady resale demand",
+        "Smooth city drivability",
+        "Predictable routine service upkeep"
       ],
       "cons": [
-        "Stiff rear ride on bad roads/potholes",
-        "Small 175L glass boot",
-        "Basic interior features"
+        "Regular periodic maintenance required"
       ],
-      "maintenance_yr": "\u20b94,500 - \u20b96,000",
+      "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.65,
-      "est_buyback_2yr": 263250,
-      "total_loss_2yr": 141750.0,
-      "monthly_loss": 5906
+      "est_buyback_2yr": 263900,
+      "total_loss_2yr": 142100.0,
+      "monthly_loss": 5921
     }
   },
   {
@@ -4378,42 +4196,6 @@
     }
   },
   {
-    "id": 33366416,
-    "make": "Honda",
-    "model": "Jazz",
-    "variant": "VX Petrol",
-    "make_year": 2016,
-    "mileage": 107576,
-    "price": 416000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Car Hub, Mantri Mall, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/honda/jazz/vx-petrol-2016/33366416/",
-    "deal_score": 41,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Incredible interior space & Magic Seats practicality",
-    "analysis": {
-      "pros": [
-        "Incredible interior space & Magic Seats practicality",
-        "Large glasshouse with zero blind spots",
-        "Honda reliability"
-      ],
-      "cons": [
-        "Wide body takes care in narrow alleys",
-        "Rubberband CVT (if AT) or tall gearing",
-        "Priced higher than Brio"
-      ],
-      "maintenance_yr": "\u20b95,000 - \u20b96,500",
-      "retention_pct": 0.67,
-      "est_buyback_2yr": 278720,
-      "total_loss_2yr": 137280.0,
-      "monthly_loss": 5720
-    }
-  },
-  {
     "id": 28284084,
     "make": "Maruti Suzuki",
     "model": "Swift",
@@ -4483,74 +4265,6 @@
       "est_buyback_2yr": 251400,
       "total_loss_2yr": 167600.0,
       "monthly_loss": 6983
-    }
-  },
-  {
-    "id": 33421091,
-    "make": "Volkswagen",
-    "model": "Vento",
-    "variant": "Comfortline Petrol",
-    "make_year": 2014,
-    "mileage": 38285,
-    "price": 419000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Car Hub, Mantri Mall, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/volkswagen/vento/comfortline-petrol-2014/33421091/",
-    "deal_score": 63,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.65,
-      "est_buyback_2yr": 272350,
-      "total_loss_2yr": 146650.0,
-      "monthly_loss": 6110
-    }
-  },
-  {
-    "id": 31969659,
-    "make": "Tata",
-    "model": "Tigor",
-    "variant": "Revotron XZ (O)",
-    "make_year": 2017,
-    "mileage": 43897,
-    "price": 419000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Car Hub, Nexus Shanti Niketan Mall - Whitefield Rd, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/tata/tigor/revotron-xz-o-whitefield-road-2017/31969659/",
-    "deal_score": 69,
-    "deal_grade": "VALUE PICK",
-    "is_top_deal": true,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.65,
-      "est_buyback_2yr": 272350,
-      "total_loss_2yr": 146650.0,
-      "monthly_loss": 6110
     }
   },
   {
@@ -4732,37 +4446,39 @@
     }
   },
   {
-    "id": 33160308,
-    "make": "Tata",
-    "model": "Tigor",
-    "variant": "Revotron XT",
-    "make_year": 2018,
-    "mileage": 51647,
-    "price": 426000.0,
+    "id": 33696859,
+    "make": "Ford",
+    "model": "EcoSport",
+    "variant": "Titanium 1.5L Ti-VCT",
+    "make_year": 2016,
+    "mileage": 91608,
+    "price": 427000.0,
     "fuel_type": "petrol",
     "transmission": "manual",
-    "category": "assured",
-    "hub": "Spinny Car Hub, Mantri Mall, Bangalore",
+    "category": "auction",
+    "hub": "Spinny Car Hub, Nexus Shanti Niketan Mall - Whitefield Rd, Bangalore",
     "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/tata/tigor/revotron-xt-malleshwaram-2018/33160308/",
-    "deal_score": 84,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Reliable brand backing with steady resale demand",
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/ford/ecosport/titanium-15l-tivct-2016/33696859/",
+    "deal_score": 51,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Heavy tank-like body integrity and solid doors",
     "analysis": {
       "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
+        "Heavy tank-like body integrity and solid doors",
+        "Punchy performance with direct steering feel",
+        "High 200mm ground clearance"
       ],
       "cons": [
-        "Regular periodic maintenance required"
+        "Stiff low-speed suspension",
+        "Tight rear legroom",
+        "Ford service is independent garage reliant"
       ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 306720,
-      "total_loss_2yr": 119280.0,
-      "monthly_loss": 4970
+      "maintenance_yr": "\u20b96,500 - \u20b98,500",
+      "retention_pct": 0.63,
+      "est_buyback_2yr": 269010,
+      "total_loss_2yr": 157990.0,
+      "monthly_loss": 6583
     }
   },
   {
@@ -4836,6 +4552,42 @@
     }
   },
   {
+    "id": 33528652,
+    "make": "Hyundai",
+    "model": "Grand i10",
+    "variant": "Sportz (O) AT 1.2 Kappa VTVT",
+    "make_year": 2017,
+    "mileage": 106379,
+    "price": 430000.0,
+    "fuel_type": "petrol",
+    "transmission": "automatic",
+    "category": "auction",
+    "hub": "Spinny Park, Yelahanka, Bangalore",
+    "img": null,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/grand-i10/sportz-o-at-12-kappa-vtvt-yelahanka-2017/33528652/",
+    "deal_score": 47,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Feather-light clutch & steering for traffic",
+    "analysis": {
+      "pros": [
+        "Feather-light clutch & steering for traffic",
+        "Spares available at every neighborhood garage",
+        "Upright seating with clear visibility"
+      ],
+      "cons": [
+        "1.1L engine strains on highway inclines",
+        "City fuel economy ~11-12 kmpl with AC",
+        "Dated dashboard styling"
+      ],
+      "maintenance_yr": "\u20b94,000 - \u20b95,000",
+      "retention_pct": 0.64,
+      "est_buyback_2yr": 275200,
+      "total_loss_2yr": 154800.0,
+      "monthly_loss": 6450
+    }
+  },
+  {
     "id": 30173759,
     "make": "Hyundai",
     "model": "Xcent",
@@ -4906,42 +4658,6 @@
     }
   },
   {
-    "id": 29810941,
-    "make": "Ford",
-    "model": "EcoSport",
-    "variant": "Titanium 1.0 Ecoboost",
-    "make_year": 2014,
-    "mileage": 26642,
-    "price": 432000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Car Hub, Mantri Mall, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/ford/ecosport/titanium-10-ecoboost-malleshwaram-2014/29810941/",
-    "deal_score": 63,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Heavy tank-like body integrity and solid doors",
-    "analysis": {
-      "pros": [
-        "Heavy tank-like body integrity and solid doors",
-        "Punchy performance with direct steering feel",
-        "High 200mm ground clearance"
-      ],
-      "cons": [
-        "Stiff low-speed suspension",
-        "Tight rear legroom",
-        "Ford service is independent garage reliant"
-      ],
-      "maintenance_yr": "\u20b96,500 - \u20b98,500",
-      "retention_pct": 0.63,
-      "est_buyback_2yr": 272160,
-      "total_loss_2yr": 159840.0,
-      "monthly_loss": 6660
-    }
-  },
-  {
     "id": 32277280,
     "make": "Hyundai",
     "model": "Grand i10",
@@ -4975,6 +4691,42 @@
       "est_buyback_2yr": 306720,
       "total_loss_2yr": 125280.0,
       "monthly_loss": 5220
+    }
+  },
+  {
+    "id": 29810941,
+    "make": "Ford",
+    "model": "EcoSport",
+    "variant": "Titanium 1.0 Ecoboost",
+    "make_year": 2014,
+    "mileage": 26642,
+    "price": 432000.0,
+    "fuel_type": "petrol",
+    "transmission": "manual",
+    "category": "auction",
+    "hub": "Spinny Car Hub, Mantri Mall, Bangalore",
+    "img": null,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/ford/ecosport/titanium-10-ecoboost-malleshwaram-2014/29810941/",
+    "deal_score": 63,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Heavy tank-like body integrity and solid doors",
+    "analysis": {
+      "pros": [
+        "Heavy tank-like body integrity and solid doors",
+        "Punchy performance with direct steering feel",
+        "High 200mm ground clearance"
+      ],
+      "cons": [
+        "Stiff low-speed suspension",
+        "Tight rear legroom",
+        "Ford service is independent garage reliant"
+      ],
+      "maintenance_yr": "\u20b96,500 - \u20b98,500",
+      "retention_pct": 0.63,
+      "est_buyback_2yr": 272160,
+      "total_loss_2yr": 159840.0,
+      "monthly_loss": 6660
     }
   },
   {
@@ -5014,42 +4766,6 @@
     }
   },
   {
-    "id": 33287233,
-    "make": "Tata",
-    "model": "Tiago",
-    "variant": "Revotron XZA",
-    "make_year": 2017,
-    "mileage": 26752,
-    "price": 432000.0,
-    "fuel_type": "petrol",
-    "transmission": "automatic",
-    "category": "assured",
-    "hub": "Spinny Park, Yelahanka, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/tata/tiago/revotron-xza-yelahanka-2018/33287233/",
-    "deal_score": 90,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Solid 4-star Global NCAP crash safety",
-    "analysis": {
-      "pros": [
-        "Solid 4-star Global NCAP crash safety",
-        "Best-in-class 8-speaker Harman sound system",
-        "Thick European sheet metal feel"
-      ],
-      "cons": [
-        "3-cylinder Revotron engine vibrates at idle",
-        "Tata service center experience varies",
-        "Clutch has slightly long travel"
-      ],
-      "maintenance_yr": "\u20b95,000 - \u20b96,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 311040,
-      "total_loss_2yr": 120960.0,
-      "monthly_loss": 5040
-    }
-  },
-  {
     "id": 32412680,
     "make": "Hyundai",
     "model": "Grand i10",
@@ -5083,74 +4799,6 @@
       "est_buyback_2yr": 277120,
       "total_loss_2yr": 155880.0,
       "monthly_loss": 6495
-    }
-  },
-  {
-    "id": 33622402,
-    "make": "Hyundai",
-    "model": "Xcent",
-    "variant": "SX 1.2",
-    "make_year": 2016,
-    "mileage": 81821,
-    "price": 435000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "assured",
-    "hub": "Spinny Car Hub, VR Mall, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/xcent/sx-12-whitefield-2016/33622402/",
-    "deal_score": 66,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 313200,
-      "total_loss_2yr": 121800.0,
-      "monthly_loss": 5075
-    }
-  },
-  {
-    "id": 33314302,
-    "make": "Hyundai",
-    "model": "Xcent",
-    "variant": "SX 1.2 (O)",
-    "make_year": 2015,
-    "mileage": 30646,
-    "price": 435000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "assured",
-    "hub": "Spinny Car Hub, Mantri Mall, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/xcent/sx-12-o-malleshwaram-2015/33314302/",
-    "deal_score": 84,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 313200,
-      "total_loss_2yr": 121800.0,
-      "monthly_loss": 5075
     }
   },
   {
@@ -5328,48 +4976,12 @@
     }
   },
   {
-    "id": 33370140,
-    "make": "Hyundai",
-    "model": "Grand i10",
-    "variant": "Sportz 1.2 Kappa VTVT",
-    "make_year": 2019,
-    "mileage": 94003,
-    "price": 438000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Car Hub, Bangalore Vega Mall",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/grand-i10/sportz-12-kappa-vtvt-btm-layout-2019/33370140/",
-    "deal_score": 63,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Feather-light clutch & steering for traffic",
-    "analysis": {
-      "pros": [
-        "Feather-light clutch & steering for traffic",
-        "Spares available at every neighborhood garage",
-        "Upright seating with clear visibility"
-      ],
-      "cons": [
-        "1.1L engine strains on highway inclines",
-        "City fuel economy ~11-12 kmpl with AC",
-        "Dated dashboard styling"
-      ],
-      "maintenance_yr": "\u20b94,000 - \u20b95,000",
-      "retention_pct": 0.64,
-      "est_buyback_2yr": 280320,
-      "total_loss_2yr": 157680.0,
-      "monthly_loss": 6570
-    }
-  },
-  {
     "id": 33623544,
     "make": "Maruti Suzuki",
     "model": "Swift Dzire",
     "variant": "ZXI",
     "make_year": 2014,
-    "mileage": 71720,
+    "mileage": 71770,
     "price": 438000.0,
     "fuel_type": "petrol",
     "transmission": "manual",
@@ -5397,6 +5009,40 @@
       "est_buyback_2yr": 306600,
       "total_loss_2yr": 131400.0,
       "monthly_loss": 5475
+    }
+  },
+  {
+    "id": 33420486,
+    "make": "Hyundai",
+    "model": "Elite i20",
+    "variant": "Sportz 1.2 (O)",
+    "make_year": 2015,
+    "mileage": 61377,
+    "price": 439000.0,
+    "fuel_type": "petrol",
+    "transmission": "manual",
+    "category": "auction",
+    "hub": "Spinny Car Hub, Mantri Mall, Bangalore",
+    "img": null,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/elite-i20/sportz-12-o-2015/33420486/",
+    "deal_score": 56,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Reliable brand backing with steady resale demand",
+    "analysis": {
+      "pros": [
+        "Reliable brand backing with steady resale demand",
+        "Smooth city drivability",
+        "Predictable routine service upkeep"
+      ],
+      "cons": [
+        "Regular periodic maintenance required"
+      ],
+      "maintenance_yr": "\u20b95,500 - \u20b97,500",
+      "retention_pct": 0.65,
+      "est_buyback_2yr": 285350,
+      "total_loss_2yr": 153650.0,
+      "monthly_loss": 6402
     }
   },
   {
@@ -5436,12 +5082,48 @@
     }
   },
   {
+    "id": 33731793,
+    "make": "Hyundai",
+    "model": "Grand i10",
+    "variant": "Asta AT 1.2 Kappa VTVT",
+    "make_year": 2016,
+    "mileage": 46265,
+    "price": 441000.0,
+    "fuel_type": "petrol",
+    "transmission": "automatic",
+    "category": "auction",
+    "hub": "Spinny Park, Yelahanka, Bangalore",
+    "img": null,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/grand-i10/asta-at-12-kappa-vtvt-2016/33731793/",
+    "deal_score": 63,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Feather-light clutch & steering for traffic",
+    "analysis": {
+      "pros": [
+        "Feather-light clutch & steering for traffic",
+        "Spares available at every neighborhood garage",
+        "Upright seating with clear visibility"
+      ],
+      "cons": [
+        "1.1L engine strains on highway inclines",
+        "City fuel economy ~11-12 kmpl with AC",
+        "Dated dashboard styling"
+      ],
+      "maintenance_yr": "\u20b94,000 - \u20b95,000",
+      "retention_pct": 0.64,
+      "est_buyback_2yr": 282240,
+      "total_loss_2yr": 158760.0,
+      "monthly_loss": 6615
+    }
+  },
+  {
     "id": 33338604,
     "make": "Hyundai",
     "model": "Grand i10",
     "variant": "Asta 1.2 Kappa VTVT",
     "make_year": 2017,
-    "mileage": 47096,
+    "mileage": 47098,
     "price": 443000.0,
     "fuel_type": "petrol",
     "transmission": "manual",
@@ -5788,6 +5470,42 @@
     }
   },
   {
+    "id": 32822006,
+    "make": "Honda",
+    "model": "City",
+    "variant": "SV Diesel",
+    "make_year": 2014,
+    "mileage": 85915,
+    "price": 453000.0,
+    "fuel_type": "diesel",
+    "transmission": "manual",
+    "category": "auction",
+    "hub": "Spinny Car Hub, Mantri Mall, Bangalore",
+    "img": null,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/honda/city/sv-diesel-2014/32822006/",
+    "deal_score": 45,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Legendary 1.5L i-VTEC benchmark performance",
+    "analysis": {
+      "pros": [
+        "Legendary 1.5L i-VTEC benchmark performance",
+        "Spacious executive rear legroom",
+        "Superb highway high-speed cruising"
+      ],
+      "cons": [
+        "Low ground clearance requires caution on tall Bangalore speed bumps",
+        "Thin sheet metal on doors",
+        "Basic sound insulation"
+      ],
+      "maintenance_yr": "\u20b96,000 - \u20b98,000",
+      "retention_pct": 0.68,
+      "est_buyback_2yr": 308040,
+      "total_loss_2yr": 144960.0,
+      "monthly_loss": 6040
+    }
+  },
+  {
     "id": 33567503,
     "make": "Volkswagen",
     "model": "Ameo",
@@ -5819,40 +5537,6 @@
       "est_buyback_2yr": 326160,
       "total_loss_2yr": 126840.0,
       "monthly_loss": 5285
-    }
-  },
-  {
-    "id": 33528684,
-    "make": "Hyundai",
-    "model": "Elite i20",
-    "variant": "Sportz 1.2",
-    "make_year": 2015,
-    "mileage": 88871,
-    "price": 454000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Park, Yelahanka, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/elite-i20/sportz-12-yelahanka-2015/33528684/",
-    "deal_score": 51,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.65,
-      "est_buyback_2yr": 295100,
-      "total_loss_2yr": 158900.0,
-      "monthly_loss": 6621
     }
   },
   {
@@ -6559,40 +6243,6 @@
       "est_buyback_2yr": 354750,
       "total_loss_2yr": 118250.0,
       "monthly_loss": 4927
-    }
-  },
-  {
-    "id": 32187712,
-    "make": "Honda",
-    "model": "WR-V",
-    "variant": "VX MT Petrol",
-    "make_year": 2017,
-    "mileage": 80857,
-    "price": 473000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Car Hub, Nexus Shanti Niketan Mall - Whitefield Rd, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/honda/wr-v/vx-mt-petrol-whitefield-road-2017/32187712/",
-    "deal_score": 57,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.65,
-      "est_buyback_2yr": 307450,
-      "total_loss_2yr": 165550.0,
-      "monthly_loss": 6898
     }
   },
   {
@@ -7398,6 +7048,40 @@
     }
   },
   {
+    "id": 33177140,
+    "make": "Hyundai",
+    "model": "Xcent",
+    "variant": "SX 1.1 CRDi",
+    "make_year": 2017,
+    "mileage": 87712,
+    "price": 494000.0,
+    "fuel_type": "diesel",
+    "transmission": "manual",
+    "category": "assured",
+    "hub": "Spinny Car Hub, Nexus Shanti Niketan Mall - Whitefield Rd, Bangalore",
+    "img": null,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/xcent/sx-11-crdi-whitefield-road-2017/33177140/",
+    "deal_score": 72,
+    "deal_grade": "VALUE PICK",
+    "is_top_deal": true,
+    "verdict": "Reliable brand backing with steady resale demand",
+    "analysis": {
+      "pros": [
+        "Reliable brand backing with steady resale demand",
+        "Smooth city drivability",
+        "Predictable routine service upkeep"
+      ],
+      "cons": [
+        "Regular periodic maintenance required"
+      ],
+      "maintenance_yr": "\u20b95,500 - \u20b97,500",
+      "retention_pct": 0.72,
+      "est_buyback_2yr": 355680,
+      "total_loss_2yr": 138320.0,
+      "monthly_loss": 5763
+    }
+  },
+  {
     "id": 33243799,
     "make": "Hyundai",
     "model": "Grand i10",
@@ -7431,40 +7115,6 @@
       "est_buyback_2yr": 350740,
       "total_loss_2yr": 143260.0,
       "monthly_loss": 5969
-    }
-  },
-  {
-    "id": 33177140,
-    "make": "Hyundai",
-    "model": "Xcent",
-    "variant": "SX 1.1 CRDi",
-    "make_year": 2017,
-    "mileage": 87712,
-    "price": 494000.0,
-    "fuel_type": "diesel",
-    "transmission": "manual",
-    "category": "assured",
-    "hub": "Spinny Car Hub, Nexus Shanti Niketan Mall - Whitefield Rd, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/xcent/sx-11-crdi-whitefield-road-2017/33177140/",
-    "deal_score": 72,
-    "deal_grade": "VALUE PICK",
-    "is_top_deal": true,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 355680,
-      "total_loss_2yr": 138320.0,
-      "monthly_loss": 5763
     }
   },
   {
@@ -7535,42 +7185,6 @@
       "est_buyback_2yr": 357840,
       "total_loss_2yr": 139160.0,
       "monthly_loss": 5798
-    }
-  },
-  {
-    "id": 33086073,
-    "make": "Hyundai",
-    "model": "Grand i10",
-    "variant": "Sportz 1.2 Kappa VTVT",
-    "make_year": 2019,
-    "mileage": 3906,
-    "price": 497000.0,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "assured",
-    "hub": "Spinny Car Hub, Bangalore Vega Mall",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/grand-i10/sportz-12-kappa-vtvt-btm-layout-2020/33086073/",
-    "deal_score": 99,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Feather-light clutch & steering for traffic",
-    "analysis": {
-      "pros": [
-        "Feather-light clutch & steering for traffic",
-        "Spares available at every neighborhood garage",
-        "Upright seating with clear visibility"
-      ],
-      "cons": [
-        "1.1L engine strains on highway inclines",
-        "City fuel economy ~11-12 kmpl with AC",
-        "Dated dashboard styling"
-      ],
-      "maintenance_yr": "\u20b94,000 - \u20b95,000",
-      "retention_pct": 0.71,
-      "est_buyback_2yr": 352870,
-      "total_loss_2yr": 144130.0,
-      "monthly_loss": 6005
     }
   },
   {
@@ -7682,58 +7296,22 @@
     }
   },
   {
-    "id": 32648014,
-    "make": "Ford",
-    "model": "EcoSport",
-    "variant": "Titanium 1.5L TDCi",
+    "id": 31513642,
+    "make": "Hyundai",
+    "model": "i20 Active",
+    "variant": "1.2 SX",
     "make_year": 2016,
-    "mileage": 117345,
-    "price": 497000.0,
-    "fuel_type": "diesel",
-    "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Car Hub, Nexus Shanti Niketan Mall - Whitefield Rd, Bangalore",
-    "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/ford/ecosport/titanium-15l-tdci-2017/32648014/",
-    "deal_score": 41,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Heavy tank-like body integrity and solid doors",
-    "analysis": {
-      "pros": [
-        "Heavy tank-like body integrity and solid doors",
-        "Punchy performance with direct steering feel",
-        "High 200mm ground clearance"
-      ],
-      "cons": [
-        "Stiff low-speed suspension",
-        "Tight rear legroom",
-        "Ford service is independent garage reliant"
-      ],
-      "maintenance_yr": "\u20b96,500 - \u20b98,500",
-      "retention_pct": 0.63,
-      "est_buyback_2yr": 313110,
-      "total_loss_2yr": 183890.0,
-      "monthly_loss": 7662
-    }
-  },
-  {
-    "id": 33224535,
-    "make": "Renault",
-    "model": "Triber",
-    "variant": "RXT",
-    "make_year": 2021,
-    "mileage": 75591,
+    "mileage": 56487,
     "price": 498000.0,
     "fuel_type": "petrol",
     "transmission": "manual",
-    "category": "assured",
-    "hub": "Spinny Park, Yelahanka, Bangalore",
+    "category": "auction",
+    "hub": "Spinny Car Hub, Mantri Mall, Bangalore",
     "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/renault/triber/rxt-yelahanka-2021/33224535/",
-    "deal_score": 87,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/i20-active/12-sx-2016/31513642/",
+    "deal_score": 63,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
     "verdict": "Reliable brand backing with steady resale demand",
     "analysis": {
       "pros": [
@@ -7745,10 +7323,10 @@
         "Regular periodic maintenance required"
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 358560,
-      "total_loss_2yr": 139440.0,
-      "monthly_loss": 5810
+      "retention_pct": 0.65,
+      "est_buyback_2yr": 323700,
+      "total_loss_2yr": 174300.0,
+      "monthly_loss": 7262
     }
   },
   {
@@ -7786,22 +7364,22 @@
     }
   },
   {
-    "id": 31513642,
-    "make": "Hyundai",
-    "model": "i20 Active",
-    "variant": "1.2 SX",
-    "make_year": 2016,
-    "mileage": 56487,
+    "id": 33224535,
+    "make": "Renault",
+    "model": "Triber",
+    "variant": "RXT",
+    "make_year": 2021,
+    "mileage": 75591,
     "price": 498000.0,
     "fuel_type": "petrol",
     "transmission": "manual",
-    "category": "auction",
-    "hub": "Spinny Car Hub, Mantri Mall, Bangalore",
+    "category": "assured",
+    "hub": "Spinny Park, Yelahanka, Bangalore",
     "img": null,
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/i20-active/12-sx-2016/31513642/",
-    "deal_score": 63,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/renault/triber/rxt-yelahanka-2021/33224535/",
+    "deal_score": 87,
+    "deal_grade": "TOP DEAL",
+    "is_top_deal": true,
     "verdict": "Reliable brand backing with steady resale demand",
     "analysis": {
       "pros": [
@@ -7813,10 +7391,46 @@
         "Regular periodic maintenance required"
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.65,
-      "est_buyback_2yr": 323700,
-      "total_loss_2yr": 174300.0,
-      "monthly_loss": 7262
+      "retention_pct": 0.72,
+      "est_buyback_2yr": 358560,
+      "total_loss_2yr": 139440.0,
+      "monthly_loss": 5810
+    }
+  },
+  {
+    "id": 33780771,
+    "make": "Honda",
+    "model": "Jazz",
+    "variant": "VX Petrol",
+    "make_year": 2016,
+    "mileage": 36050,
+    "price": 499000.0,
+    "fuel_type": "petrol",
+    "transmission": "manual",
+    "category": "auction",
+    "hub": "Spinny Car Hub, Bangalore Vega Mall",
+    "img": null,
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/honda/jazz/vx-petrol-2016/33780771/",
+    "deal_score": 69,
+    "deal_grade": "VALUE PICK",
+    "is_top_deal": true,
+    "verdict": "Incredible interior space & Magic Seats practicality",
+    "analysis": {
+      "pros": [
+        "Incredible interior space & Magic Seats practicality",
+        "Large glasshouse with zero blind spots",
+        "Honda reliability"
+      ],
+      "cons": [
+        "Wide body takes care in narrow alleys",
+        "Rubberband CVT (if AT) or tall gearing",
+        "Priced higher than Brio"
+      ],
+      "maintenance_yr": "\u20b95,000 - \u20b96,500",
+      "retention_pct": 0.67,
+      "est_buyback_2yr": 334330,
+      "total_loss_2yr": 164670.0,
+      "monthly_loss": 6861
     }
   },
   {
