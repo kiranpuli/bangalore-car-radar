@@ -187,6 +187,65 @@ def notify_mac(title, message):
     subprocess.run(["osascript", "-e", script], capture_output=True)
 
 
+MODEL_NEW_RETAIL_BASE = {
+    # Maruti
+    "alto": 380000, "alto k10": 420000, "a-star": 440000, "wagon r": 540000, "celerio": 560000,
+    "ignis": 680000, "swift": 720000, "dzire": 760000, "swift dzire": 740000, "baleno": 780000,
+    "fronx": 950000, "brezza": 1050000, "vitara brezza": 980000, "grand vitara": 1380000,
+    "scross": 1080000, "s-cross": 1080000, "ciaz": 1150000, "ertiga": 1080000, "xl6": 1280000, "ritz": 580000,
+    # Hyundai
+    "eon": 390000, "santro": 520000, "i10": 540000, "grand i10": 690000, "aura": 780000,
+    "xcent": 740000, "i20": 850000, "elite i20": 860000, "i20 active": 920000, "venue": 1050000,
+    "verna": 1320000, "creta": 1480000, "alcazar": 1950000, "tucson": 2800000,
+    # Honda
+    "brio": 590000, "amaze": 820000, "jazz": 880000, "wr-v": 1050000, "city": 1350000,
+    "civic": 2100000, "cr-v": 2900000, "elevate": 1380000,
+    # Volkswagen & Skoda
+    "polo": 840000, "ameo": 780000, "vento": 1220000, "virtus": 1450000, "taigun": 1550000,
+    "rapid": 1180000, "slavia": 1420000, "kushaq": 1520000, "octavia": 2400000, "superb": 3200000,
+    # Tata
+    "nano": 240000, "tiago": 640000, "tigor": 740000, "zest": 760000, "bolt": 680000,
+    "altroz": 850000, "punch": 820000, "nexon": 1120000, "harrier": 1980000, "safari": 2200000,
+    # Ford
+    "figo": 660000, "aspire": 780000, "freestyle": 820000, "ecosport": 1080000, "endeavour": 3400000,
+    # Toyota
+    "etios liva": 680000, "etios": 790000, "glanza": 820000, "yaris": 1150000,
+    "urban cruiser": 1120000, "hyryder": 1550000, "corolla": 1750000, "corolla altis": 1850000,
+    "innova": 2100000, "innova crysta": 2450000, "fortuner": 3800000,
+    # Renault & Nissan
+    "kwid": 480000, "triber": 760000, "kiger": 820000, "magnite": 820000, "duster": 1150000, "terrano": 1180000,
+    # Kia
+    "sonet": 1100000, "seltos": 1520000, "carens": 1380000,
+    # Mahindra
+    "kuv100": 720000, "xuv300": 1150000, "thar": 1450000, "scorpio": 1550000, "xuv500": 1720000, "xuv700": 2150000,
+    # Jeep
+    "compass": 2350000,
+}
+
+
+def estimate_original_retail(make, model, variant, year, transmission):
+    full = f"{make} {model}".lower()
+    base = 720000
+    for k, v in MODEL_NEW_RETAIL_BASE.items():
+        if k in full:
+            base = v
+            break
+
+    # Year inflation multiplier relative to 2016 baseline
+    year_diff = (year or 2016) - 2016
+    multiplier = 1.0 + (year_diff * 0.035)
+
+    v_lower = (variant or "").lower()
+    if any(top in v_lower for top in ["zxi", "asta", "alpha", "titanium", "highline", "zx", "vx", "xz", "plus", "o"]):
+        multiplier += 0.10
+
+    t_lower = (transmission or "").lower()
+    if any(a in t_lower for a in ["auto", "amt", "cvt", "dsg", "at", "dct"]):
+        multiplier += 0.08
+
+    return round(base * multiplier / 10000) * 10000
+
+
 def is_prestige_car(car):
     make = (car.get("make") or "").lower()
     model = (car.get("model") or "").lower()
@@ -234,6 +293,24 @@ def enrich_cars(cars):
         total_loss_2yr = price - retention_val
         monthly_loss = round(total_loss_2yr / 24)
 
+        # Negotiable target price calculation
+        cpd = c.get("current_price_data") or {}
+        pb2 = c.get("price_breakdown_v2") or {}
+        base_p = cpd.get("base_listing_price") or pb2.get("base_listing_price") or pb2.get("discounted_price_without_add_on_and_tax")
+        if base_p and 0 < base_p < price:
+            negotiable_price = round(base_p)
+        else:
+            discount_factor = 0.94 if is_assured else 0.91
+            negotiable_price = round((price * discount_factor) / 1000) * 1000
+
+        negotiable_savings = max(0, round(price - negotiable_price))
+
+        # Original retail price calculation
+        orig_retail = estimate_original_retail(c.get("make"), c.get("model"), c.get("variant"), year, c.get("transmission"))
+        if orig_retail <= price:
+            orig_retail = round((price * 1.40) / 10000) * 10000
+        retail_discount_pct = max(5, min(85, round((1.0 - (price / orig_retail)) * 100)))
+
         # Objective Deal Quality Scoring (0 - 100)
         score = 45
         if km <= 25000: score += 24
@@ -272,6 +349,10 @@ def enrich_cars(cars):
             "make_year": year,
             "mileage": km,
             "price": price,
+            "negotiable_price": negotiable_price,
+            "negotiable_savings": negotiable_savings,
+            "orig_retail_price": orig_retail,
+            "retail_discount_pct": retail_discount_pct,
             "fuel_type": c.get("fuel_type"),
             "transmission": c.get("transmission"),
             "category": tier,

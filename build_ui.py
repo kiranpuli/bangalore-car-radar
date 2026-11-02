@@ -3,6 +3,7 @@
 Hallmark Redesign — Minimal, Debloated Used Car Screener
 Theme: Cobalt (Modern-Minimal / Precision Workbench)
 Discipline: Anti-AI-slop, zero card-in-card nesting, single-deck workbench controls, flexible continuous filters.
+Adds pricing intelligence: Original New Retail Price, Negotiable Floor / Target, and 2-Yr Buyback Telemetry.
 """
 
 import json
@@ -20,13 +21,72 @@ if os.path.exists(json_path):
 else:
     cars = []
 
-# Ensure consistent deal scoring & concise verdicts
+MODEL_NEW_RETAIL_BASE = {
+    # Maruti
+    "alto": 380000, "alto k10": 420000, "a-star": 440000, "wagon r": 540000, "celerio": 560000,
+    "ignis": 680000, "swift": 720000, "dzire": 760000, "swift dzire": 740000, "baleno": 780000,
+    "fronx": 950000, "brezza": 1050000, "vitara brezza": 980000, "grand vitara": 1380000,
+    "scross": 1080000, "s-cross": 1080000, "ciaz": 1150000, "ertiga": 1080000, "xl6": 1280000, "ritz": 580000,
+    # Hyundai
+    "eon": 390000, "santro": 520000, "i10": 540000, "grand i10": 690000, "aura": 780000,
+    "xcent": 740000, "i20": 850000, "elite i20": 860000, "i20 active": 920000, "venue": 1050000,
+    "verna": 1320000, "creta": 1480000, "alcazar": 1950000, "tucson": 2800000,
+    # Honda
+    "brio": 590000, "amaze": 820000, "jazz": 880000, "wr-v": 1050000, "city": 1350000,
+    "civic": 2100000, "cr-v": 2900000, "elevate": 1380000,
+    # Volkswagen & Skoda
+    "polo": 840000, "ameo": 780000, "vento": 1220000, "virtus": 1450000, "taigun": 1550000,
+    "rapid": 1180000, "slavia": 1420000, "kushaq": 1520000, "octavia": 2400000, "superb": 3200000,
+    # Tata
+    "nano": 240000, "tiago": 640000, "tigor": 740000, "zest": 760000, "bolt": 680000,
+    "altroz": 850000, "punch": 820000, "nexon": 1120000, "harrier": 1980000, "safari": 2200000,
+    # Ford
+    "figo": 660000, "aspire": 780000, "freestyle": 820000, "ecosport": 1080000, "endeavour": 3400000,
+    # Toyota
+    "etios liva": 680000, "etios": 790000, "glanza": 820000, "yaris": 1150000,
+    "urban cruiser": 1120000, "hyryder": 1550000, "corolla": 1750000, "corolla altis": 1850000,
+    "innova": 2100000, "innova crysta": 2450000, "fortuner": 3800000,
+    # Renault & Nissan
+    "kwid": 480000, "triber": 760000, "kiger": 820000, "magnite": 820000, "duster": 1150000, "terrano": 1180000,
+    # Kia
+    "sonet": 1100000, "seltos": 1520000, "carens": 1380000,
+    # Mahindra
+    "kuv100": 720000, "xuv300": 1150000, "thar": 1450000, "scorpio": 1550000, "xuv500": 1720000, "xuv700": 2150000,
+    # Jeep
+    "compass": 2350000,
+}
+
+
+def estimate_original_retail(make, model, variant, year, transmission):
+    full = f"{make} {model}".lower()
+    base = 720000
+    for k, v in MODEL_NEW_RETAIL_BASE.items():
+        if k in full:
+            base = v
+            break
+
+    year_diff = (year or 2016) - 2016
+    multiplier = 1.0 + (year_diff * 0.035)
+
+    v_lower = (variant or "").lower()
+    if any(top in v_lower for top in ["zxi", "asta", "alpha", "titanium", "highline", "zx", "vx", "xz", "plus", "o"]):
+        multiplier += 0.10
+
+    t_lower = (transmission or "").lower()
+    if any(a in t_lower for a in ["auto", "amt", "cvt", "dsg", "at", "dct"]):
+        multiplier += 0.08
+
+    return round(base * multiplier / 10000) * 10000
+
+
+# Ensure consistent deal scoring, pricing intelligence & verdicts
 for c in cars:
     year = c.get("make_year", 2012)
     km = c.get("mileage", 100000)
     price = c.get("price", 500000)
     is_assured = c.get("category") == "assured"
 
+    # Deal score
     score = 45
     if km <= 25000: score += 24
     elif km <= 40000: score += 18
@@ -47,6 +107,27 @@ for c in cars:
     c["deal_score"] = final_score
     c["is_top_deal"] = final_score >= 68
     c["deal_grade"] = "TOP DEAL" if final_score >= 80 else ("VALUE PICK" if final_score >= 68 else "FAIR")
+
+    # Negotiable price
+    if not c.get("negotiable_price"):
+        cpd = c.get("current_price_data") or {}
+        pb2 = c.get("price_breakdown_v2") or {}
+        base_p = cpd.get("base_listing_price") or pb2.get("base_listing_price") or pb2.get("discounted_price_without_add_on_and_tax")
+        if base_p and 0 < base_p < price:
+            nego_p = round(base_p)
+        else:
+            discount_factor = 0.94 if is_assured else 0.91
+            nego_p = round((price * discount_factor) / 1000) * 1000
+        c["negotiable_price"] = nego_p
+        c["negotiable_savings"] = max(0, round(price - nego_p))
+
+    # Original retail price
+    if not c.get("orig_retail_price"):
+        orig_p = estimate_original_retail(c.get("make"), c.get("model"), c.get("variant"), year, c.get("transmission"))
+        if orig_p <= price:
+            orig_p = round((price * 1.40) / 10000) * 10000
+        c["orig_retail_price"] = orig_p
+        c["retail_discount_pct"] = max(5, min(85, round((1.0 - (price / orig_p)) * 100)))
 
     pros = c.get("analysis", {}).get("pros", [])
     if pros:
@@ -105,7 +186,7 @@ html_content = """<!DOCTYPE html>
     }
 
     .shell {
-      max-width: 1380px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 24px 20px 80px 20px;
     }
@@ -385,7 +466,7 @@ html_content = """<!DOCTYPE html>
     /* Grid Layout */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 370px), 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
       gap: 18px;
     }
 
@@ -405,7 +486,7 @@ html_content = """<!DOCTYPE html>
     }
 
     .card-photo {
-      height: 190px;
+      height: 195px;
       background: #06090e;
       position: relative;
       display: flex;
@@ -480,7 +561,7 @@ html_content = """<!DOCTYPE html>
 
     .car-name {
       font-family: var(--font-display);
-      font-size: 17px;
+      font-size: 16.5px;
       font-weight: 700;
       color: var(--color-ink);
       line-height: 1.25;
@@ -501,14 +582,80 @@ html_content = """<!DOCTYPE html>
       border-radius: var(--radius-sm);
     }
 
-    /* Single Clean Metrics Strip */
-    .metrics-strip {
+    /* Pricing Intelligence Deck */
+    .pricing-deck {
       display: grid;
-      grid-template-columns: 1fr 1.1fr 1.1fr;
+      grid-template-columns: 1fr 1.2fr 1.15fr;
       background: var(--color-paper);
       border: 1px solid var(--color-rule-subtle);
       border-radius: var(--radius-md);
-      padding: 8px 12px;
+      padding: 9px 12px;
+      gap: 8px;
+    }
+    .price-cell {
+      display: flex;
+      flex-direction: column;
+    }
+    .price-type-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      text-transform: uppercase;
+      color: var(--color-ink-faint);
+      letter-spacing: 0.05em;
+    }
+    .price-figure {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-ink);
+      margin-top: 2px;
+      line-height: 1.2;
+    }
+    .price-figure-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    .price-figure.nego-val {
+      color: var(--color-emerald);
+    }
+    .price-figure.retail-val {
+      color: var(--color-ink-faint);
+      text-decoration: line-through;
+      text-decoration-color: rgba(148, 163, 184, 0.45);
+    }
+    .pill-save {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--color-emerald);
+      background: var(--color-emerald-bg);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 1px 4px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+    .pill-discount {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--color-cobalt);
+      background: var(--color-cobalt-glow);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      padding: 1px 4px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    /* Secondary Telemetry Strip */
+    .metrics-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: rgba(16, 22, 34, 0.75);
+      border: 1px solid var(--color-rule-subtle);
+      border-radius: var(--radius-md);
+      padding: 7px 12px;
       gap: 8px;
     }
     .metric-col {
@@ -517,17 +664,17 @@ html_content = """<!DOCTYPE html>
     }
     .metric-label {
       font-family: var(--font-mono);
-      font-size: 9.5px;
+      font-size: 9px;
       text-transform: uppercase;
       color: var(--color-ink-faint);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
     }
     .metric-val {
       font-family: var(--font-mono);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--color-ink);
-      margin-top: 2px;
+      margin-top: 1px;
     }
     .metric-val.monthly {
       color: var(--color-cobalt);
@@ -599,7 +746,7 @@ html_content = """<!DOCTYPE html>
     <header class="masthead">
       <div>
         <h1 class="masthead-title">Bangalore Used Cars · Hallmark Screener</h1>
-        <p class="masthead-sub">Uncapped Bangalore inventory with 2-year buyback retention and depreciation telemetry.</p>
+        <p class="masthead-sub">Uncapped Bangalore inventory with negotiable cash targets, original new retail pricing, and 2-year buyback telemetry.</p>
       </div>
       <div class="masthead-meta">
         <span class="meta-tag">City: <strong>Bangalore</strong></span>
@@ -669,8 +816,10 @@ html_content = """<!DOCTYPE html>
       <!-- Sort -->
       <select id="ctrl-sort" class="filter-select" onchange="onSelectChange('sort', this.value)">
         <option value="score">Sort: Best Value Score</option>
-        <option value="price_asc">Price: Low to High</option>
-        <option value="price_desc">Price: High to Low</option>
+        <option value="price_asc">Listed Price: Low to High</option>
+        <option value="price_desc">Listed Price: High to Low</option>
+        <option value="nego_asc">Negotiable Target: Low to High</option>
+        <option value="discount_desc">Highest % Off Original Retail</option>
         <option value="year_desc">Year: Newest First</option>
         <option value="km_asc">Mileage: Lowest KM</option>
       </select>
@@ -914,6 +1063,10 @@ html_content = """<!DOCTYPE html>
         filtered.sort((a, b) => (a.price || 0) - (b.price || 0));
       } else if (state.sort === 'price_desc') {
         filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
+      } else if (state.sort === 'nego_asc') {
+        filtered.sort((a, b) => (a.negotiable_price || a.price || 0) - (b.negotiable_price || b.price || 0));
+      } else if (state.sort === 'discount_desc') {
+        filtered.sort((a, b) => (b.retail_discount_pct || 0) - (a.retail_discount_pct || 0));
       } else if (state.sort === 'year_desc') {
         filtered.sort((a, b) => (b.make_year || 0) - (a.make_year || 0));
       } else if (state.sort === 'km_asc') {
@@ -943,6 +1096,11 @@ html_content = """<!DOCTYPE html>
       grid.innerHTML = list.map(c => {
         const isAssured = c.category === 'assured';
         const price = '₹' + (c.price / 100000).toFixed(2) + 'L';
+        const negoPrice = c.negotiable_price ? ('₹' + (c.negotiable_price / 100000).toFixed(2) + 'L') : price;
+        const retailPrice = c.orig_retail_price ? ('₹' + (c.orig_retail_price / 100000).toFixed(2) + 'L') : '—';
+        const savings = c.negotiable_savings || Math.max(0, c.price - (c.negotiable_price || c.price));
+        const savingsFmt = savings >= 100000 ? ('₹' + (savings / 100000).toFixed(2) + 'L') : ('₹' + Math.round(savings / 1000) + 'k');
+
         const km = (c.mileage / 1000).toFixed(0) + 'k km';
         const title = `${c.make_year} ${c.make} ${c.model} ${c.variant || ''}`.trim();
         const an = c.analysis || {};
@@ -980,18 +1138,36 @@ html_content = """<!DOCTYPE html>
                 </div>
               </div>
 
-              <!-- Metrics Strip -->
+              <!-- Pricing Intelligence Deck -->
+              <div class="pricing-deck">
+                <div class="price-cell">
+                  <span class="price-type-label">Listed</span>
+                  <span class="price-figure">${price}</span>
+                </div>
+                <div class="price-cell">
+                  <span class="price-type-label">Negotiable Target</span>
+                  <div class="price-figure-wrap">
+                    <span class="price-figure nego-val">${negoPrice}</span>
+                    ${savings > 0 ? `<span class="pill-save">Save ~${savingsFmt}</span>` : ''}
+                  </div>
+                </div>
+                <div class="price-cell">
+                  <span class="price-type-label">Original New</span>
+                  <div class="price-figure-wrap">
+                    <span class="price-figure retail-val">${retailPrice}</span>
+                    ${c.retail_discount_pct ? `<span class="pill-discount">-${c.retail_discount_pct}%</span>` : ''}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Secondary Telemetry Strip -->
               <div class="metrics-strip">
                 <div class="metric-col">
-                  <span class="metric-label">Price</span>
-                  <span class="metric-val">${price}</span>
-                </div>
-                <div class="metric-col">
-                  <span class="metric-label">${isAssured ? '2-Yr Buyback' : '2-Yr Resale'}</span>
+                  <span class="metric-label">${isAssured ? '2-Yr Guaranteed Buyback' : '2-Yr Market Resale'}</span>
                   <span class="metric-val buyback">${buyback}</span>
                 </div>
                 <div class="metric-col">
-                  <span class="metric-label">Monthly Loss</span>
+                  <span class="metric-label">Monthly Cost</span>
                   <span class="metric-val monthly">${monthly}</span>
                 </div>
               </div>

@@ -27,7 +27,7 @@ jobs:
 
       - name: Fetch Fresh Bangalore Deals & Rebuild UI
         run: |
-          python spinny_checker.py --city bangalore --max-price 500000
+          python spinny_checker.py --city bangalore --max-price 0
 
       - name: Commit and Push Updated Data
         run: |
