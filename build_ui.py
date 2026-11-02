@@ -142,6 +142,9 @@ html_content = """<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>Bangalore Used Cars · Hallmark Screener</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1126,7 +1129,7 @@ html_content = """<!DOCTYPE html>
               <span class="tag-tier ${isAssured ? 'assured' : ''}">
                 ${isAssured ? '✓ Spinny Assured' : '⚡ Wholesale Stock'}
               </span>
-              ${c.img ? `<img src="${c.img}" alt="${title}" loading="lazy" />` : '<span style="color:var(--color-ink-faint); font-family:var(--font-mono); font-size:12px;">No Image</span>'}
+              ${c.img ? `<img src="${c.img}" alt="${title}" loading="lazy" referrerpolicy="no-referrer" />` : '<span style="color:var(--color-ink-faint); font-family:var(--font-mono); font-size:12px;">No Image</span>'}
             </div>
             
             <div class="card-body">
