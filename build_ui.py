@@ -487,22 +487,24 @@ html_content = """<!DOCTYPE html>
 
     .card-photo {
       height: 195px;
-      background: #06090e;
+      background: radial-gradient(circle at center, #111827 0%, #06090e 100%);
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       border-bottom: 1px solid var(--color-rule-subtle);
       overflow: hidden;
+      padding: 16px 14px 10px 14px;
     }
     .card-photo img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.6));
       transition: transform 0.2s ease;
     }
     .card:hover .card-photo img {
-      transform: scale(1.02);
+      transform: scale(1.04);
     }
 
     .tag-grade {

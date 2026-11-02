@@ -246,6 +246,19 @@ def estimate_original_retail(make, model, variant, year, transmission):
     return round(base * multiplier / 10000) * 10000
 
 
+def extract_car_image(c):
+    wb = c.get("without_bg_image") or {}
+    f = wb.get("file") or {}
+    raw = f.get("taburl") or f.get("absurl") or f.get("moburl") or f.get("thumburl") or c.get("showcase_image") or c.get("image")
+    if raw:
+        if raw.startswith("//"):
+            return "https:" + raw
+        elif raw.startswith("/"):
+            return "https://www.spinny.com" + raw
+        return raw
+    return None
+
+
 def is_prestige_car(car):
     make = (car.get("make") or "").lower()
     model = (car.get("model") or "").lower()
@@ -357,7 +370,7 @@ def enrich_cars(cars):
             "transmission": c.get("transmission"),
             "category": tier,
             "hub": c.get("hub") or "Bangalore Hub",
-            "img": c.get("showcase_image") or c.get("image"),
+            "img": extract_car_image(c),
             "url": f"https://www.spinny.com{c.get('permanent_url', '')}",
             "deal_score": final_score,
             "deal_grade": deal_grade,
