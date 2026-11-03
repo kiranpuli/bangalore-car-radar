@@ -614,10 +614,13 @@
       color: var(--text-muted);
       font-size: 12px;
       font-weight: 500;
-      padding: 6px 10px;
+      padding: 6px 11px;
       border-radius: var(--radius-md);
       cursor: pointer;
       user-select: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
       transition: all var(--dur-fast) var(--ease-base);
     }
     .facet-pill:hover {
@@ -629,6 +632,27 @@
       border-color: var(--text-primary);
       color: #000000;
       font-weight: 600;
+    }
+    .facet-pill.pill-item.active::before {
+      content: "✓";
+      font-weight: 800;
+      font-size: 11px;
+      color: #000000;
+    }
+    .btn-facet-reset {
+      background: transparent;
+      border: none;
+      color: var(--text-subtle);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      cursor: pointer;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      transition: color var(--dur-fast) var(--ease-base);
+    }
+    .btn-facet-reset:hover {
+      color: var(--text-primary);
     }
 
     /* Continuous Price Controls */
@@ -1190,25 +1214,26 @@
         </div>
       </div>
 
-      <!-- Faceted Filters Grid -->
+      <!-- Unified Multi-Select Facets Grid -->
       <div class="filter-facets">
-        <!-- Platform Source Facet -->
+        <!-- Platform Facet (Multi-Select) -->
         <div class="facet-col">
           <div class="facet-title">
-            <span>Platform</span>
+            <span>Listing Platform</span>
+            <button type="button" class="btn-facet-reset" onclick="clearMultiFilter('platforms')">Reset</button>
           </div>
-          <div class="facet-pills" id="platform-pills">
-            <button class="facet-pill active" onclick="setPlatform('all', this)">All Platforms (<span id="count-all">0</span>)</button>
-            <button class="facet-pill" onclick="setPlatform('Spinny', this)">Spinny (<span id="count-spinny">0</span>)</button>
-            <button class="facet-pill" onclick="setPlatform('Cars24', this)">Cars24 (<span id="count-cars24">0</span>)</button>
+          <div class="facet-pills" id="platforms-pills">
+            <button type="button" class="facet-pill pill-all active" onclick="clearMultiFilter('platforms')">Both Platforms</button>
+            <button type="button" class="facet-pill pill-item" data-val="Spinny" onclick="toggleMultiFilter('platforms', 'Spinny')">Spinny (<span id="count-spinny">0</span>)</button>
+            <button type="button" class="facet-pill pill-item" data-val="Cars24" onclick="toggleMultiFilter('platforms', 'Cars24')">Cars24 (<span id="count-cars24">0</span>)</button>
           </div>
         </div>
 
         <!-- Budget Scrubber Facet -->
         <div class="facet-col">
           <div class="facet-title">
-            <span>Budget Range (₹ Lakhs)</span>
-            <button type="button" class="btn-reset-all" onclick="clearPrice()">Reset</button>
+            <span>Budget (₹ Lakhs)</span>
+            <button type="button" class="btn-facet-reset" onclick="clearPrice()">Reset</button>
           </div>
           <div class="price-scrubber">
             <div class="price-inputs-row">
@@ -1216,87 +1241,97 @@
               <input type="number" id="ctrl-min-price" class="price-num-box" min="0" max="30" step="0.1" placeholder="Min" oninput="onPriceChange()" />
               <span style="color:var(--text-subtle);">–</span>
               <input type="number" id="ctrl-max-price" class="price-num-box" min="0" max="30" step="0.1" placeholder="Max" oninput="onPriceChange()" />
-              <input type="range" id="ctrl-price-range" class="price-slider-input" min="2" max="20" step="0.25" value="20" oninput="onSliderChange(this.value)" title="Scrub Max Budget" />
+              <input type="range" id="ctrl-price-range" class="price-slider-input" min="2" max="20" step="0.25" value="5" oninput="onSliderChange(this.value)" title="Scrub Max Budget" />
             </div>
             <div class="facet-pills">
-              <button class="facet-pill" onclick="setPriceBracket(0, 4)">Under ₹4L</button>
-              <button class="facet-pill" onclick="setPriceBracket(4, 6)">₹4L to ₹6L</button>
-              <button class="facet-pill" onclick="setPriceBracket(6, 9)">₹6L to ₹9L</button>
-              <button class="facet-pill" onclick="setPriceBracket(9, 15)">₹9L to ₹15L</button>
-              <button class="facet-pill" onclick="clearPrice()">Any</button>
+              <button type="button" class="facet-pill" onclick="setMaxBudget(4.0)">≤ ₹4L</button>
+              <button type="button" class="facet-pill" onclick="setMaxBudget(5.0)">≤ ₹5L</button>
+              <button type="button" class="facet-pill" onclick="setMaxBudget(7.0)">≤ ₹7L</button>
+              <button type="button" class="facet-pill" onclick="setMaxBudget(10.0)">≤ ₹10L</button>
+              <button type="button" class="facet-pill" onclick="clearPrice()">Any</button>
             </div>
           </div>
         </div>
 
-        <!-- Brand / Make Facet -->
+        <!-- Quality & Verification Facet (Multi-Select) -->
         <div class="facet-col">
           <div class="facet-title">
-            <span>Manufacturer</span>
+            <span>Quality & Assurance</span>
+            <button type="button" class="btn-facet-reset" onclick="clearMultiFilter('qualities')">Reset</button>
           </div>
-          <div class="facet-pills" id="brand-pills">
-            <button class="facet-pill active" onclick="setBrand('all', this)">All</button>
-            <button class="facet-pill" onclick="setBrand('maruti', this)">Maruti</button>
-            <button class="facet-pill" onclick="setBrand('hyundai', this)">Hyundai</button>
-            <button class="facet-pill" onclick="setBrand('honda', this)">Honda</button>
-            <button class="facet-pill" onclick="setBrand('volkswagen', this)">Volkswagen</button>
-            <button class="facet-pill" onclick="setBrand('tata', this)">Tata</button>
-            <button class="facet-pill" onclick="setBrand('toyota', this)">Toyota</button>
-            <button class="facet-pill" onclick="setBrand('skoda', this)">Skoda</button>
-            <button class="facet-pill" onclick="setBrand('kia', this)">Kia</button>
+          <div class="facet-pills" id="qualities-pills">
+            <button type="button" class="facet-pill pill-all" onclick="clearMultiFilter('qualities')">All Cars</button>
+            <button type="button" class="facet-pill pill-item active" data-val="top_deal" onclick="toggleMultiFilter('qualities', 'top_deal')">💎 Top Deals (80+)</button>
+            <button type="button" class="facet-pill pill-item" data-val="assured" onclick="toggleMultiFilter('qualities', 'assured')">🛡️ Certified Assured</button>
+            <button type="button" class="facet-pill pill-item" data-val="high_discount" onclick="toggleMultiFilter('qualities', 'high_discount')">💰 50%+ Off New</button>
           </div>
         </div>
 
-        <!-- Transmission & Fuel Facet -->
+        <!-- Gearbox & Fuel Facet (Multi-Select) -->
         <div class="facet-col">
           <div class="facet-title">
-            <span>Transmission & Fuel</span>
+            <span>Gearbox & Fuel</span>
+            <button type="button" class="btn-facet-reset" onclick="clearMultiFilter('transmissions'); clearMultiFilter('fuels');">Reset</button>
           </div>
-          <div class="facet-pills" id="trans-pills" style="margin-bottom:6px;">
-            <button class="facet-pill active" onclick="setTrans('all', this)">All Transmissions</button>
-            <button class="facet-pill" onclick="setTrans('automatic', this)">Automatic</button>
-            <button class="facet-pill" onclick="setTrans('manual', this)">Manual</button>
+          <div class="facet-pills" id="transmissions-pills" style="margin-bottom:6px;">
+            <button type="button" class="facet-pill pill-all active" onclick="clearMultiFilter('transmissions')">All Trans</button>
+            <button type="button" class="facet-pill pill-item" data-val="automatic" onclick="toggleMultiFilter('transmissions', 'automatic')">Automatic</button>
+            <button type="button" class="facet-pill pill-item" data-val="manual" onclick="toggleMultiFilter('transmissions', 'manual')">Manual</button>
           </div>
-          <div class="facet-pills" id="fuel-pills">
-            <button class="facet-pill active" onclick="setFuel('all', this)">All Fuels</button>
-            <button class="facet-pill" onclick="setFuel('petrol', this)">Petrol</button>
-            <button class="facet-pill" onclick="setFuel('diesel', this)">Diesel</button>
-            <button class="facet-pill" onclick="setFuel('cng', this)">CNG</button>
+          <div class="facet-pills" id="fuels-pills">
+            <button type="button" class="facet-pill pill-all active" onclick="clearMultiFilter('fuels')">All Fuels</button>
+            <button type="button" class="facet-pill pill-item" data-val="petrol" onclick="toggleMultiFilter('fuels', 'petrol')">Petrol</button>
+            <button type="button" class="facet-pill pill-item" data-val="diesel" onclick="toggleMultiFilter('fuels', 'diesel')">Diesel</button>
+            <button type="button" class="facet-pill pill-item" data-val="cng" onclick="toggleMultiFilter('fuels', 'cng')">CNG</button>
           </div>
         </div>
 
-        <!-- Year & Mileage Facet -->
-        <div class="facet-col">
+        <!-- Manufacturer Facet (Multi-Select) -->
+        <div class="facet-col" style="grid-column: 1 / -1;">
           <div class="facet-title">
-            <span>Age & Mileage</span>
+            <span>Manufacturers (Select multiple brands simultaneously)</span>
+            <button type="button" class="btn-facet-reset" onclick="clearMultiFilter('brands')">All Brands</button>
           </div>
-          <div class="facet-pills" id="year-pills" style="margin-bottom:6px;">
-            <button class="facet-pill active" onclick="setYear(0, this)">Any Year</button>
-            <button class="facet-pill" onclick="setYear(2022, this)">2022+</button>
-            <button class="facet-pill" onclick="setYear(2020, this)">2020+</button>
-            <button class="facet-pill" onclick="setYear(2018, this)">2018+</button>
-            <button class="facet-pill" onclick="setYear(2016, this)">2016+</button>
-          </div>
-          <div class="facet-pills" id="km-pills">
-            <button class="facet-pill active" onclick="setMaxKm(0, this)">Any KM</button>
-            <button class="facet-pill" onclick="setMaxKm(30000, this)">&lt; 30k km</button>
-            <button class="facet-pill" onclick="setMaxKm(50000, this)">&lt; 50k km</button>
-            <button class="facet-pill" onclick="setMaxKm(80000, this)">&lt; 80k km</button>
+          <div class="facet-pills" id="brands-pills">
+            <button type="button" class="facet-pill pill-all active" onclick="clearMultiFilter('brands')">All Brands</button>
+            <button type="button" class="facet-pill pill-item" data-val="maruti" onclick="toggleMultiFilter('brands', 'maruti')">Maruti (<span id="count-maruti">0</span>)</button>
+            <button type="button" class="facet-pill pill-item" data-val="hyundai" onclick="toggleMultiFilter('brands', 'hyundai')">Hyundai (<span id="count-hyundai">0</span>)</button>
+            <button type="button" class="facet-pill pill-item" data-val="tata" onclick="toggleMultiFilter('brands', 'tata')">Tata (<span id="count-tata">0</span>)</button>
+            <button type="button" class="facet-pill pill-item" data-val="renault" onclick="toggleMultiFilter('brands', 'renault')">Renault (<span id="count-renault">0</span>)</button>
+            <button type="button" class="facet-pill pill-item" data-val="honda" onclick="toggleMultiFilter('brands', 'honda')">Honda (<span id="count-honda">0</span>)</button>
+            <button type="button" class="facet-pill pill-item" data-val="volkswagen" onclick="toggleMultiFilter('brands', 'volkswagen')">Volkswagen (<span id="count-volkswagen">0</span>)</button>
+            <button type="button" class="facet-pill pill-item" data-val="toyota" onclick="toggleMultiFilter('brands', 'toyota')">Toyota (<span id="count-toyota">0</span>)</button>
+            <button type="button" class="facet-pill pill-item" data-val="mahindra" onclick="toggleMultiFilter('brands', 'mahindra')">Mahindra (<span id="count-mahindra">0</span>)</button>
+            <button type="button" class="facet-pill pill-item" data-val="ford" onclick="toggleMultiFilter('brands', 'ford')">Ford (<span id="count-ford">0</span>)</button>
+            <button type="button" class="facet-pill pill-item" data-val="kia" onclick="toggleMultiFilter('brands', 'kia')">Kia (<span id="count-kia">0</span>)</button>
+            <button type="button" class="facet-pill pill-item" data-val="skoda" onclick="toggleMultiFilter('brands', 'skoda')">Skoda (<span id="count-skoda">0</span>)</button>
           </div>
         </div>
-      </div>
 
-      <!-- Quick Archetype Presets Bar -->
-      <div class="presets-container">
-        <span class="control-label">Quick Presets:</span>
-        <button class="preset-chip-btn" onclick="applyPreset('top_steals', this)">💎 Top Deals (80+)</button>
-        <button class="preset-chip-btn" onclick="applyPreset('sub_45l', this)">⚡ Under ₹4.5L</button>
-        <button class="preset-chip-btn" onclick="applyPreset('auto_sub6', this)">🚗 Automatic Under ₹6L</button>
-        <button class="preset-chip-btn" onclick="applyPreset('enthusiast', this)">🏎️ Enthusiast (Polo or City)</button>
-        <button class="preset-chip-btn" onclick="applyPreset('assured_only', this)">🛡️ Assured Only</button>
-        <button class="preset-chip-btn" onclick="applyPreset('cars24_only', this)">🚙 Cars24 Only</button>
-        <button class="preset-chip-btn" onclick="applyPreset('spinny_only', this)">🏎️ Spinny Only</button>
-        <button class="preset-chip-btn" onclick="applyPreset('low_km', this)">⏱️ Low Mileage (&lt; 40k)</button>
-        <button class="preset-chip-btn" onclick="applyPreset('high_discount', this)">💰 50%+ Off Original Retail</button>
+        <!-- Age & Mileage Facet -->
+        <div class="facet-col" style="grid-column: 1 / -1;">
+          <div class="facet-title">
+            <span>Age & Mileage Ceilings</span>
+            <button type="button" class="btn-facet-reset" onclick="setYear(0, document.querySelector('#year-pills .facet-pill')); setMaxKm(0, document.querySelector('#km-pills .facet-pill'));">Reset</button>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:var(--sp-200); align-items:center;">
+            <div class="facet-pills" id="year-pills">
+              <span class="control-label" style="align-self:center; margin-right:4px;">Min Year:</span>
+              <button type="button" class="facet-pill active" onclick="setYear(0, this)">Any Year</button>
+              <button type="button" class="facet-pill" onclick="setYear(2022, this)">2022+</button>
+              <button type="button" class="facet-pill" onclick="setYear(2020, this)">2020+</button>
+              <button type="button" class="facet-pill" onclick="setYear(2018, this)">2018+</button>
+              <button type="button" class="facet-pill" onclick="setYear(2016, this)">2016+</button>
+            </div>
+            <div class="facet-pills" id="km-pills">
+              <span class="control-label" style="align-self:center; margin-right:4px;">Max Mileage:</span>
+              <button type="button" class="facet-pill active" onclick="setMaxKm(0, this)">Any KM</button>
+              <button type="button" class="facet-pill" onclick="setMaxKm(30000, this)">&le; 30k km</button>
+              <button type="button" class="facet-pill" onclick="setMaxKm(50000, this)">&le; 50k km</button>
+              <button type="button" class="facet-pill" onclick="setMaxKm(80000, this)">&le; 80k km</button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1344,14 +1379,12 @@
       min_price: 0,
       max_price: 500000,
       max_km: 80000,
-      platform: 'all',
-      brand: 'all',
-      trans: 'all',
-      fuel: 'all',
-      tier: 'all',
-      dealGrade: 'top',
       sort: 'score',
-      activePreset: 'top_steals'
+      platforms: new Set(),
+      brands: new Set(),
+      transmissions: new Set(),
+      fuels: new Set(),
+      qualities: new Set(['top_deal'])
     };
 
     // Initialize counts
@@ -1378,13 +1411,26 @@
     const countCars24 = document.getElementById('count-cars24');
     if (countCars24) countCars24.textContent = cars24Count.toLocaleString('en-IN');
 
-    // Initialize input values to curated defaults
+    // Dynamic brand counts
+    ['maruti', 'hyundai', 'tata', 'renault', 'honda', 'volkswagen', 'toyota', 'mahindra', 'ford', 'kia', 'skoda'].forEach(b => {
+      const el = document.getElementById(`count-${b}`);
+      if (el) {
+        const cnt = CARS.filter(c => (c.make || '').toLowerCase().includes(b)).length;
+        el.textContent = cnt.toLocaleString('en-IN');
+      }
+    });
+
+    // Initialize inputs to curated defaults
     const ctrlMaxPrice = document.getElementById('ctrl-max-price');
     if (ctrlMaxPrice) ctrlMaxPrice.value = '5.0';
     const ctrlSlider = document.getElementById('ctrl-price-range');
     if (ctrlSlider) ctrlSlider.value = 5.0;
-    const topPresetBtn = document.querySelector('.presets-container .preset-chip-btn');
-    if (topPresetBtn) topPresetBtn.classList.add('active');
+
+    // Set curated default km pill active (<= 80k km)
+    document.querySelectorAll('#km-pills .facet-pill').forEach(b => {
+      if (b.textContent.includes('80k')) b.classList.add('active');
+      else b.classList.remove('active');
+    });
 
     // Word-by-word reveal for B11 tagline
     const taglineContent = "Transparent pricing and verified mechanical telemetry. Every Bangalore car evaluated before you negotiate.";
@@ -1427,38 +1473,42 @@
       if (mode === 'curated') {
         if (btnCurated) btnCurated.classList.add('active', 'curated');
         if (btnAll) btnAll.classList.remove('active');
-        if (statusText) statusText.innerHTML = '<span class="pulse-dot"></span><span>Curated view: Under ₹5.0L · Deal Score 80+ · Low Mileage (< 80k km) · Certified Assured</span>';
+        if (statusText) statusText.innerHTML = '<span class="pulse-dot"></span><span>Curated view: Under ₹5.0L · Deal Score 80+ · Low Mileage (&lt; 80k km)</span>';
 
         state.max_price = 500000;
-        state.dealGrade = 'top';
         state.max_km = 80000;
-        state.activePreset = 'top_steals';
+        state.qualities.clear();
+        state.qualities.add('top_deal');
 
         const maxInput = document.getElementById('ctrl-max-price');
         if (maxInput) maxInput.value = '5.0';
         const slider = document.getElementById('ctrl-price-range');
         if (slider) slider.value = 5.0;
 
-        clearPresetHighlight();
-        const topPresetBtn = document.querySelector('.presets-container .preset-chip-btn');
-        if (topPresetBtn) topPresetBtn.classList.add('active');
+        document.querySelectorAll('#km-pills .facet-pill').forEach(b => {
+          if (b.textContent.includes('80k')) b.classList.add('active');
+          else b.classList.remove('active');
+        });
       } else {
         if (btnCurated) btnCurated.classList.remove('active', 'curated');
         if (btnAll) btnAll.classList.add('active');
         if (statusText) statusText.innerHTML = '<span class="pulse-dot" style="background:var(--accent-blue);"></span><span>Showing all verified vehicles across Bangalore (Spinny + Cars24).</span>';
 
         state.max_price = 0;
-        state.dealGrade = 'all';
         state.max_km = 0;
-        state.activePreset = null;
+        state.qualities.delete('top_deal');
 
         const maxInput = document.getElementById('ctrl-max-price');
         if (maxInput) maxInput.value = '';
         const slider = document.getElementById('ctrl-price-range');
         if (slider) slider.value = 20;
 
-        clearPresetHighlight();
+        document.querySelectorAll('#km-pills .facet-pill').forEach((b, idx) => {
+          if (idx === 0) b.classList.add('active');
+          else b.classList.remove('active');
+        });
       }
+      updateMultiFilterUI('qualities');
       applyFilters();
     }
 
@@ -1539,8 +1589,6 @@
       state.search = (val || '').toLowerCase().trim();
       const clearBtn = document.getElementById('btn-clear-search');
       if (clearBtn) clearBtn.style.display = state.search ? 'block' : 'none';
-      state.activePreset = null;
-      clearPresetHighlight();
       applyFilters();
     }
 
@@ -1556,44 +1604,50 @@
       applyFilters();
     }
 
-    // Platform handler
-    function setPlatform(platform, btn) {
-      state.platform = platform;
-      document.querySelectorAll('#platform-pills .facet-pill').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-      state.activePreset = null;
-      clearPresetHighlight();
+    // Unified Multi-Filter Handlers
+    function toggleMultiFilter(groupKey, val) {
+      if (!state[groupKey]) return;
+      if (state[groupKey].has(val)) {
+        state[groupKey].delete(val);
+      } else {
+        state[groupKey].add(val);
+      }
+      updateMultiFilterUI(groupKey);
       applyFilters();
     }
 
-    // Brand handler
-    function setBrand(brand, btn) {
-      state.brand = brand;
-      document.querySelectorAll('#brand-pills .facet-pill').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-      state.activePreset = null;
-      clearPresetHighlight();
+    function clearMultiFilter(groupKey) {
+      if (!state[groupKey]) return;
+      state[groupKey].clear();
+      updateMultiFilterUI(groupKey);
       applyFilters();
     }
 
-    // Transmission handler
-    function setTrans(trans, btn) {
-      state.trans = trans;
-      document.querySelectorAll('#trans-pills .facet-pill').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-      state.activePreset = null;
-      clearPresetHighlight();
-      applyFilters();
+    function updateMultiFilterUI(groupKey) {
+      const container = document.getElementById(`${groupKey}-pills`);
+      if (!container) return;
+      const set = state[groupKey];
+      const allBtn = container.querySelector('.pill-all');
+      const items = container.querySelectorAll('.pill-item');
+
+      if (set.size === 0) {
+        if (allBtn) allBtn.classList.add('active');
+        items.forEach(btn => btn.classList.remove('active'));
+      } else {
+        if (allBtn) allBtn.classList.remove('active');
+        items.forEach(btn => {
+          const val = btn.getAttribute('data-val');
+          if (set.has(val)) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
     }
 
-    // Fuel handler
-    function setFuel(fuel, btn) {
-      state.fuel = fuel;
-      document.querySelectorAll('#fuel-pills .facet-pill').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-      state.activePreset = null;
-      clearPresetHighlight();
-      applyFilters();
+    function updateAllMultiFilterUIs() {
+      ['platforms', 'brands', 'transmissions', 'fuels', 'qualities'].forEach(updateMultiFilterUI);
     }
 
     // Year handler
@@ -1601,8 +1655,6 @@
       state.min_year = Number(year);
       document.querySelectorAll('#year-pills .facet-pill').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
-      state.activePreset = null;
-      clearPresetHighlight();
       applyFilters();
     }
 
@@ -1611,12 +1663,25 @@
       state.max_km = Number(km);
       document.querySelectorAll('#km-pills .facet-pill').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
-      state.activePreset = null;
-      clearPresetHighlight();
       applyFilters();
     }
 
-    // Price input handler
+    // Continuous Price Controls & Quick Budget Caps
+    function setMaxBudget(val) {
+      const maxInput = document.getElementById('ctrl-max-price');
+      const slider = document.getElementById('ctrl-price-range');
+      if (val > 0) {
+        if (maxInput) maxInput.value = val.toFixed(1);
+        state.max_price = val * 100000;
+        if (slider) slider.value = Math.min(20, val);
+      } else {
+        if (maxInput) maxInput.value = '';
+        state.max_price = 0;
+        if (slider) slider.value = 20;
+      }
+      applyFilters();
+    }
+
     function onPriceChange() {
       const minVal = parseFloat(document.getElementById('ctrl-min-price').value);
       const maxVal = parseFloat(document.getElementById('ctrl-max-price').value);
@@ -1632,9 +1697,6 @@
           slider.value = 20;
         }
       }
-
-      state.activePreset = null;
-      clearPresetHighlight();
       applyFilters();
     }
 
@@ -1642,168 +1704,42 @@
       const num = parseFloat(val);
       const maxInput = document.getElementById('ctrl-max-price');
       if (num >= 20) {
-        maxInput.value = '';
+        if (maxInput) maxInput.value = '';
         state.max_price = 0;
       } else {
         maxInput.value = num.toFixed(1);
         state.max_price = num * 100000;
       }
-      state.activePreset = null;
-      clearPresetHighlight();
-      applyFilters();
-    }
-
-    function setPriceBracket(minL, maxL) {
-      const minInput = document.getElementById('ctrl-min-price');
-      const maxInput = document.getElementById('ctrl-max-price');
-      const slider = document.getElementById('ctrl-price-range');
-
-      if (minL > 0) {
-        minInput.value = minL.toFixed(1);
-        state.min_price = minL * 100000;
-      } else {
-        minInput.value = '';
-        state.min_price = 0;
-      }
-
-      if (maxL > 0) {
-        maxInput.value = maxL.toFixed(1);
-        state.max_price = maxL * 100000;
-        if (slider) slider.value = Math.min(20, maxL);
-      } else {
-        maxInput.value = '';
-        state.max_price = 0;
-        if (slider) slider.value = 20;
-      }
-
-      state.activePreset = null;
-      clearPresetHighlight();
       applyFilters();
     }
 
     function clearPrice() {
-      document.getElementById('ctrl-min-price').value = '';
-      document.getElementById('ctrl-max-price').value = '';
+      const minInput = document.getElementById('ctrl-min-price');
+      if (minInput) minInput.value = '';
+      const maxInput = document.getElementById('ctrl-max-price');
+      if (maxInput) maxInput.value = '';
       const slider = document.getElementById('ctrl-price-range');
       if (slider) slider.value = 20;
       state.min_price = 0;
       state.max_price = 0;
-      applyFilters();
-    }
-
-    function clearPresetHighlight() {
-      document.querySelectorAll('.preset-chip-btn').forEach(b => b.classList.remove('active'));
-    }
-
-    // Quick Archetype Presets
-    function applyPreset(preset, el) {
-      state.activePreset = preset;
-      clearPresetHighlight();
-      if (el) el.classList.add('active');
-
-      // Reset base filters
-      state.search = '';
-      state.min_year = 0;
-      state.min_price = 0;
-      state.max_price = 0;
-      state.max_km = 0;
-      state.platform = 'all';
-      state.brand = 'all';
-      state.trans = 'all';
-      state.fuel = 'all';
-      state.tier = 'all';
-      state.dealGrade = 'all';
-
-      // Reset UI elements
-      document.getElementById('ctrl-search').value = '';
-      document.getElementById('btn-clear-search').style.display = 'none';
-      document.getElementById('ctrl-min-price').value = '';
-      document.getElementById('ctrl-max-price').value = '';
-      const slider = document.getElementById('ctrl-price-range');
-      if (slider) slider.value = 20;
-
-      document.querySelectorAll('#platform-pills .facet-pill').forEach(b => b.classList.remove('active'));
-      const defaultPlat = document.querySelector('#platform-pills .facet-pill');
-      if (defaultPlat) defaultPlat.classList.add('active');
-      document.querySelectorAll('#brand-pills .facet-pill').forEach(b => b.classList.remove('active'));
-      document.querySelector('#brand-pills .facet-pill').classList.add('active');
-      document.querySelectorAll('#trans-pills .facet-pill').forEach(b => b.classList.remove('active'));
-      document.querySelector('#trans-pills .facet-pill').classList.add('active');
-      document.querySelectorAll('#fuel-pills .facet-pill').forEach(b => b.classList.remove('active'));
-      document.querySelector('#fuel-pills .facet-pill').classList.add('active');
-      document.querySelectorAll('#year-pills .facet-pill').forEach(b => b.classList.remove('active'));
-      document.querySelector('#year-pills .facet-pill').classList.add('active');
-      document.querySelectorAll('#km-pills .facet-pill').forEach(b => b.classList.remove('active'));
-      document.querySelector('#km-pills .facet-pill').classList.add('active');
-
-      if (preset === 'top_steals') {
-        state.dealGrade = 'top';
-        state.viewMode = 'curated';
-        const btnCurated = document.getElementById('btn-mode-curated');
-        if (btnCurated) btnCurated.classList.add('active', 'curated');
-      } else {
-        state.viewMode = 'custom';
-        const btnCurated = document.getElementById('btn-mode-curated');
-        if (btnCurated) btnCurated.classList.remove('active', 'curated');
-      }
-
-      if (preset === 'top_steals') {
-        state.dealGrade = 'top';
-      } else if (preset === 'sub_45l') {
-        state.max_price = 450000;
-        document.getElementById('ctrl-max-price').value = '4.5';
-        if (slider) slider.value = 4.5;
-      } else if (preset === 'auto_sub6') {
-        state.trans = 'automatic';
-        state.max_price = 600000;
-        document.getElementById('ctrl-max-price').value = '6.0';
-        if (slider) slider.value = 6.0;
-        document.querySelectorAll('#trans-pills .facet-pill').forEach(b => {
-          if (b.textContent.trim() === 'Automatic') b.classList.add('active');
-          else b.classList.remove('active');
-        });
-      } else if (preset === 'enthusiast') {
-        state.search = 'polo';
-        document.getElementById('ctrl-search').value = 'polo';
-        document.getElementById('btn-clear-search').style.display = 'block';
-      } else if (preset === 'assured_only') {
-        state.tier = 'assured';
-      } else if (preset === 'cars24_only') {
-        state.platform = 'Cars24';
-        document.querySelectorAll('#platform-pills .facet-pill').forEach(b => {
-          if (b.textContent.includes('Cars24')) b.classList.add('active');
-          else b.classList.remove('active');
-        });
-      } else if (preset === 'spinny_only') {
-        state.platform = 'Spinny';
-        document.querySelectorAll('#platform-pills .facet-pill').forEach(b => {
-          if (b.textContent.includes('Spinny')) b.classList.add('active');
-          else b.classList.remove('active');
-        });
-      } else if (preset === 'low_km') {
-        state.max_km = 40000;
-      } else if (preset === 'high_discount') {
-        // Handled in applyFilters
-      }
-
       applyFilters();
     }
 
     function resetAll() {
+      state.viewMode = 'curated';
       state.search = '';
       state.min_year = 0;
       state.min_price = 0;
       state.max_price = 500000;
       state.max_km = 80000;
-      state.platform = 'all';
-      state.brand = 'all';
-      state.trans = 'all';
-      state.fuel = 'all';
-      state.tier = 'all';
-      state.dealGrade = 'top';
       state.sort = 'score';
-      state.activePreset = 'top_steals';
-      state.viewMode = 'curated';
+
+      state.platforms.clear();
+      state.brands.clear();
+      state.transmissions.clear();
+      state.fuels.clear();
+      state.qualities.clear();
+      state.qualities.add('top_deal');
 
       document.getElementById('ctrl-search').value = '';
       document.getElementById('btn-clear-search').style.display = 'none';
@@ -1818,67 +1754,90 @@
       if (btnCurated) btnCurated.classList.add('active', 'curated');
       if (btnAll) btnAll.classList.remove('active');
 
-      document.querySelectorAll('.facet-pills').forEach(group => {
-        const pills = group.querySelectorAll('.facet-pill');
-        pills.forEach((p, idx) => {
-          if (idx === 0) p.classList.add('active');
-          else p.classList.remove('active');
-        });
+      const statusText = document.getElementById('mode-status-text');
+      if (statusText) statusText.innerHTML = '<span class="pulse-dot"></span><span>Curated view: Under ₹5.0L · Deal Score 80+ · Low Mileage (&lt; 80k km)</span>';
+
+      document.querySelectorAll('#year-pills .facet-pill').forEach((p, idx) => {
+        if (idx === 0) p.classList.add('active');
+        else p.classList.remove('active');
       });
 
-      clearPresetHighlight();
-      const topPresetBtn = document.querySelector('.presets-container .preset-chip-btn');
-      if (topPresetBtn) topPresetBtn.classList.add('active');
+      document.querySelectorAll('#km-pills .facet-pill').forEach(b => {
+        if (b.textContent.includes('80k')) b.classList.add('active');
+        else b.classList.remove('active');
+      });
+
+      updateAllMultiFilterUIs();
       applyFilters();
     }
 
     function renderActiveTags() {
       const container = document.getElementById('active-tags-container');
+      if (!container) return;
       const tags = [];
 
-      if (state.viewMode === 'curated') {
-        tags.push({ label: '🔥 Curated View (Under ₹5L, Score 80+)', clear: () => setViewMode('all') });
+      if (state.viewMode === 'curated' && state.max_price === 500000 && state.max_km === 80000 && state.qualities.has('top_deal')) {
+        tags.push({ label: '🔥 Curated: Under ₹5L & Score 80+', clear: () => setViewMode('all') });
       }
+
       if (state.search) {
         tags.push({ label: `Search: "${state.search}"`, clear: () => clearSearch() });
       }
-      if (state.platform !== 'all') {
-        tags.push({ label: `Platform: ${state.platform}`, clear: () => setPlatform('all', document.querySelector('#platform-pills .facet-pill')) });
+
+      if (state.platforms.size > 0) {
+        state.platforms.forEach(plat => {
+          tags.push({ label: `Platform: ${plat}`, clear: () => toggleMultiFilter('platforms', plat) });
+        });
       }
-      if (state.min_price > 0 || state.max_price > 0) {
+
+      if (state.min_price > 0 || (state.max_price > 0 && state.viewMode !== 'curated')) {
         const minL = state.min_price ? (state.min_price / 100000).toFixed(1) : '0';
         const maxL = state.max_price ? (state.max_price / 100000).toFixed(1) : 'Any';
-        tags.push({ label: `Budget: ₹${minL}L - ₹${maxL}L`, clear: () => clearPrice() });
+        tags.push({ label: `Budget: ₹${minL}L – ₹${maxL}L`, clear: () => clearPrice() });
       }
-      if (state.brand !== 'all') {
-        tags.push({ label: `Brand: ${state.brand.toUpperCase()}`, clear: () => setBrand('all', document.querySelector('#brand-pills .facet-pill')) });
+
+      if (state.brands.size > 0) {
+        state.brands.forEach(b => {
+          tags.push({ label: `Brand: ${b.toUpperCase()}`, clear: () => toggleMultiFilter('brands', b) });
+        });
       }
-      if (state.trans !== 'all') {
-        tags.push({ label: `Gearbox: ${state.trans}`, clear: () => setTrans('all', document.querySelector('#trans-pills .facet-pill')) });
+
+      if (state.transmissions.size > 0) {
+        state.transmissions.forEach(t => {
+          tags.push({ label: `Gearbox: ${t.charAt(0).toUpperCase() + t.slice(1)}`, clear: () => toggleMultiFilter('transmissions', t) });
+        });
       }
-      if (state.fuel !== 'all') {
-        tags.push({ label: `Fuel: ${state.fuel}`, clear: () => setFuel('all', document.querySelector('#fuel-pills .facet-pill')) });
+
+      if (state.fuels.size > 0) {
+        state.fuels.forEach(f => {
+          tags.push({ label: `Fuel: ${f.toUpperCase()}`, clear: () => toggleMultiFilter('fuels', f) });
+        });
       }
+
+      if (state.qualities.size > 0) {
+        const qualityLabels = {
+          top_deal: '💎 Top Deals (80+)',
+          assured: '🛡️ Certified Assured',
+          high_discount: '💰 50%+ Off New'
+        };
+        state.qualities.forEach(q => {
+          if (state.viewMode === 'curated' && q === 'top_deal') return;
+          tags.push({ label: qualityLabels[q] || q, clear: () => toggleMultiFilter('qualities', q) });
+        });
+      }
+
       if (state.min_year > 0) {
         tags.push({ label: `Year: ${state.min_year}+`, clear: () => setYear(0, document.querySelector('#year-pills .facet-pill')) });
       }
-      if (state.max_km > 0) {
+
+      if (state.max_km > 0 && !(state.viewMode === 'curated' && state.max_km === 80000)) {
         tags.push({ label: `Mileage: ≤ ${Math.round(state.max_km / 1000)}k km`, clear: () => setMaxKm(0, document.querySelector('#km-pills .facet-pill')) });
-      }
-      if (state.tier === 'assured') {
-        tags.push({ label: 'Assured only', clear: () => { state.tier = 'all'; applyFilters(); } });
-      }
-      if (state.dealGrade === 'top') {
-        tags.push({ label: 'Top Deals only', clear: () => { state.dealGrade = 'all'; applyFilters(); } });
-      }
-      if (state.activePreset === 'high_discount') {
-        tags.push({ label: '50%+ Off Original New', clear: () => { state.activePreset = null; clearPresetHighlight(); applyFilters(); } });
       }
 
       window._activeTags = tags;
 
       if (!tags.length) {
-        container.innerHTML = '<span class="caption-5" style="color:var(--text-subtle);">None (Showing full Bangalore inventory)</span>';
+        container.innerHTML = '<span class="caption-5" style="color:var(--text-subtle);">None (Showing all Bangalore inventory)</span>';
       } else {
         container.innerHTML = tags.map((t, idx) => `
           <span class="active-tag">
@@ -1891,38 +1850,62 @@
 
     function applyFilters() {
       let filtered = CARS.filter(c => {
-        if (state.platform !== 'all' && (c.platform || '').toLowerCase() !== state.platform.toLowerCase()) return false;
-        if (state.dealGrade === 'top' && (c.deal_score || 0) < 80) return false;
-        if (state.tier === 'assured' && c.category !== 'assured') return false;
-        if (state.activePreset === 'high_discount' && (c.retail_discount_pct || 0) < 50) return false;
-
+        // Search
         if (state.search) {
-          const text = `${c.make_year} ${c.make} ${c.model} ${c.variant} ${c.hub} ${c.transmission} ${c.fuel_type}`.toLowerCase();
+          const text = `${c.make_year} ${c.make} ${c.model} ${c.variant || ''} ${c.hub || ''} ${c.transmission || ''} ${c.fuel_type || ''}`.toLowerCase();
           if (!text.includes(state.search)) return false;
         }
 
-        if (state.min_year > 0 && (c.make_year || 0) < state.min_year) return false;
-        if (state.max_km > 0 && (c.mileage || 0) > state.max_km) return false;
+        // Platform (Multi-Select)
+        if (state.platforms.size > 0) {
+          const p = (c.platform || '').toLowerCase();
+          const match = [...state.platforms].some(plat => plat.toLowerCase() === p);
+          if (!match) return false;
+        }
 
+        // Brand (Multi-Select, matching includes for Maruti / Maruti Suzuki)
+        if (state.brands.size > 0) {
+          const make = (c.make || '').toLowerCase();
+          const match = [...state.brands].some(b => make.includes(b.toLowerCase()));
+          if (!match) return false;
+        }
+
+        // Transmission (Multi-Select)
+        if (state.transmissions.size > 0) {
+          const t = (c.transmission || '').toLowerCase();
+          const isAuto = t.includes('auto') || t.includes('amt') || t.includes('at') || t.includes('cvt') || t.includes('dsg') || t.includes('dct');
+          const wantAuto = state.transmissions.has('automatic');
+          const wantManual = state.transmissions.has('manual');
+          if (wantAuto && wantManual) {
+            // Both selected -> pass
+          } else if (wantAuto && !isAuto) {
+            return false;
+          } else if (wantManual && isAuto) {
+            return false;
+          }
+        }
+
+        // Fuel (Multi-Select)
+        if (state.fuels.size > 0) {
+          const f = (c.fuel_type || '').toLowerCase();
+          const match = [...state.fuels].some(fuel => f.includes(fuel.toLowerCase()));
+          if (!match) return false;
+        }
+
+        // Quality (Multi-Select: satisfies all selected criteria)
+        if (state.qualities.size > 0) {
+          if (state.qualities.has('top_deal') && (c.deal_score || 0) < 80) return false;
+          if (state.qualities.has('assured') && (c.category !== 'assured')) return false;
+          if (state.qualities.has('high_discount') && (c.retail_discount_pct || 0) < 50) return false;
+        }
+
+        // Budget range
         if (state.min_price > 0 && (c.price || 0) < state.min_price) return false;
         if (state.max_price > 0 && (c.price || 0) > state.max_price) return false;
 
-        if (state.brand !== 'all') {
-          const make = (c.make || '').toLowerCase();
-          if (!make.includes(state.brand)) return false;
-        }
-
-        if (state.trans !== 'all') {
-          const t = (c.transmission || '').toLowerCase();
-          const isAuto = t.includes('auto') || t.includes('amt') || t.includes('at') || t.includes('cvt') || t.includes('dsg') || t.includes('dct');
-          if (state.trans === 'automatic' && !isAuto) return false;
-          if (state.trans === 'manual' && isAuto) return false;
-        }
-
-        if (state.fuel !== 'all') {
-          const f = (c.fuel_type || '').toLowerCase();
-          if (!f.includes(state.fuel)) return false;
-        }
+        // Year & Mileage ceilings
+        if (state.min_year > 0 && (c.make_year || 0) < state.min_year) return false;
+        if (state.max_km > 0 && (c.mileage || 0) > state.max_km) return false;
 
         return true;
       });
@@ -1941,11 +1924,11 @@
       } else if (state.sort === 'km_asc') {
         filtered.sort((a, b) => (a.mileage || 0) - (b.mileage || 0));
       } else {
-        // Default: deal score descending
         filtered.sort((a, b) => (b.deal_score || 0) - (a.deal_score || 0));
       }
 
-      document.getElementById('res-count').textContent = filtered.length;
+      const resCount = document.getElementById('res-count');
+      if (resCount) resCount.textContent = filtered.length.toLocaleString('en-IN');
       renderActiveTags();
       renderCards(filtered);
     }
@@ -2063,6 +2046,7 @@
 
     // Initial render
     renderAlertsList();
+    updateAllMultiFilterUIs();
     applyFilters();
   </script>
 </body>
