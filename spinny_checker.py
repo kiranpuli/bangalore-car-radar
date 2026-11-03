@@ -402,16 +402,23 @@ def fetch_cheapest_cars(city="bangalore", max_price=None, max_pages=48):
         }
         if max_price is not None and max_price > 0:
             params["max_price"] = str(max_price)
-        try:
-            res = session.get(API_URL, params=params, timeout=12)
-            res.raise_for_status()
-            page_results = res.json().get("results", [])
-            if not page_results:
+
+        page_results = None
+        for attempt in range(3):
+            try:
+                res = session.get(API_URL, params=params, timeout=18)
+                res.raise_for_status()
+                page_results = res.json().get("results", [])
                 break
-            cars.extend(page_results)
-        except Exception as e:
-            print(f"[{datetime.now()}] Error on page {page}: {e}", file=sys.stderr)
+            except Exception as e:
+                if attempt < 2:
+                    import time; time.sleep(2)
+                else:
+                    print(f"[{datetime.now()}] Error on page {page} after 3 attempts: {e}", file=sys.stderr)
+        
+        if page_results is None or not page_results:
             break
+        cars.extend(page_results)
 
     filtered = []
     for c in cars:
@@ -428,6 +435,18 @@ def fetch_cheapest_cars(city="bangalore", max_price=None, max_pages=48):
 def update_deals_html(cleaned_cars):
     cur_dir = os.path.dirname(os.path.abspath(__file__))
     json_path = os.path.join(cur_dir, "clean_bangalore_cars.json")
+
+    # Safety check: avoid clobbering large inventory on partial network aborts
+    if os.path.exists(json_path) and len(cleaned_cars) < 150:
+        try:
+            with open(json_path) as fp:
+                old = json.load(fp)
+            if len(old) > len(cleaned_cars) * 2:
+                print(f"[{datetime.now()}] Warning: Fetched {len(cleaned_cars)} cars but existing file has {len(old)}. Skipping overwrite to prevent truncation.", file=sys.stderr)
+                return
+        except Exception:
+            pass
+
     with open(json_path, "w") as f:
         json.dump(cleaned_cars, f, indent=2)
 

@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 """
-Hallmark Redesign — Minimal, Debloated Used Car Screener
-Theme: Cobalt (Modern-Minimal / Precision Workbench)
-Discipline: Anti-AI-slop, zero card-in-card nesting, single-deck workbench controls, flexible continuous filters.
-Adds pricing intelligence: Original New Retail Price, Negotiable Floor / Target, and 2-Yr Buyback Telemetry.
+Spinny Bangalore Deals Screener
+Redesigned with rules from https://github.com/elayadesign/ai-design-skills
+Visual System:
+- Typography: Geist & Geist Mono, Tailwind type scale, named text styles, zero italics, text-wrap balance/pretty
+- Palette: Strict dark tokens (#000000, #181818, #1F1F1F, #272727, #313131, #131209)
+- Surface: Flat surfaces, zero background gradients, complete 4-sided borders
+- Motion: cubic-bezier(0.22, 1, 0.36, 1), scroll reveals, tagline word-reveal (B11)
+- Ergonomic Filters: Multi-faceted workbench, continuous price scrubbing, quick archetypes, active filter tags
 """
 
 import json
@@ -145,752 +149,1198 @@ html_content = """<!DOCTYPE html>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>Bangalore Used Cars · Hallmark Screener</title>
+  <title>Bangalore Used Cars · Market Screener</title>
+  <meta name="description" content="Verified Bangalore used cars with negotiable cash targets, original new retail pricing, and 24 month buyback retention." />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    /* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 */
+    /*
+      Visual System based on https://github.com/elayadesign/ai-design-skills
+      - Primary Type: Geist
+      - Monospace: Geist Mono
+      - Dark Mode Surfaces: #131209 (Canvas), #1F1F1F (Cards/Panels), #272727 (Inputs/Controls), #313131 (Borders), #181818 (Photo Wells)
+      - Text: #FFFFFF (Headings), #EDEDED (Body), #9B9B9B (Muted), #737373 (Subtle)
+      - Accents: #10B981 (Emerald/Savings), #F59E0B (Amber/Top Deals), #3B82F6 (Cobalt/Actions)
+      - Motion Curve: cubic-bezier(0.22, 1, 0.36, 1)
+      - Zero background gradients, 4-sided borders, strict Tailwind type scale
+    */
     :root {
-      --font-display: "Space Grotesk", -apple-system, sans-serif;
-      --font-body: "Inter", -apple-system, sans-serif;
-      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+      --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, monospace;
 
-      --color-paper: #090d16;
-      --color-surface: #101622;
-      --color-surface-hover: #141c2c;
-      --color-rule: #1e283d;
-      --color-rule-subtle: #151d2c;
+      /* Dark tokens */
+      --bg-canvas: #131209;
+      --bg-surface: #1F1F1F;
+      --bg-subsurface: #272727;
+      --bg-photo: #181818;
+      --border-color: #313131;
+      --border-focus: #3B82F6;
 
-      --color-ink: #f8fafc;
-      --color-ink-muted: #94a3b8;
-      --color-ink-faint: #64748b;
+      --text-primary: #FFFFFF;
+      --text-body: #EDEDED;
+      --text-muted: #9B9B9B;
+      --text-subtle: #737373;
 
-      --color-cobalt: #3b82f6;
-      --color-cobalt-glow: rgba(59, 130, 246, 0.16);
-      --color-emerald: #10b981;
-      --color-emerald-bg: rgba(16, 185, 129, 0.14);
-      --color-amber: #f59e0b;
-      --color-amber-bg: rgba(245, 158, 11, 0.14);
+      --accent-emerald: #10B981;
+      --accent-emerald-bg: rgba(16, 185, 129, 0.14);
+      --accent-amber: #F59E0B;
+      --accent-amber-bg: rgba(245, 158, 11, 0.14);
+      --accent-blue: #3B82F6;
+      --accent-blue-bg: rgba(59, 130, 246, 0.14);
 
+      /* Spacing scale */
+      --sp-25: 2px;
+      --sp-50: 4px;
+      --sp-75: 8px;
+      --sp-100: 12px;
+      --sp-200: 16px;
+      --sp-300: 24px;
+      --sp-400: 32px;
+      --sp-500: 40px;
+      --sp-600: 48px;
+
+      /* Radius scale & nested formula */
       --radius-sm: 4px;
-      --radius-md: 6px;
-      --radius-lg: 10px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-pill: 9999px;
+
+      /* Motion */
+      --ease-base: cubic-bezier(0.22, 1, 0.36, 1);
+      --dur-fast: 200ms;
+      --dur-normal: 300ms;
+      --dur-slow: 500ms;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     html, body {
-      background-color: var(--color-paper);
-      color: var(--color-ink);
-      font-family: var(--font-body);
+      background-color: var(--bg-canvas);
+      color: var(--text-body);
+      font-family: var(--font-sans);
+      font-size: 16px;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       overflow-x: clip;
     }
 
+    /* Named Text Styles */
+    .heading-1 {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.1;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+    .heading-3 {
+      font-size: 30px;
+      line-height: 36px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      text-wrap: balance;
+    }
+    .title-1 {
+      font-size: 20px;
+      line-height: 28px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .title-2 {
+      font-size: 18px;
+      line-height: 28px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .title-3 {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    .title-4 {
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    .title-5 {
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .body-3 {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-wrap: pretty;
+    }
+    .body-5 {
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .body-6 {
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-wrap: pretty;
+    }
+    .caption-3 {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 600;
+    }
+    .caption-4 {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 500;
+    }
+    .caption-5 {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 400;
+    }
+
+    /* Container Shell */
     .shell {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 24px 20px 80px 20px;
+      padding: var(--sp-300) var(--sp-200) var(--sp-800, 80px) var(--sp-200);
     }
 
-    /* Masthead */
-    .masthead {
+    /* Floating Navigation Bar (B7) */
+    .floating-nav {
+      position: sticky;
+      top: 12px;
+      z-index: 50;
+      margin-bottom: var(--sp-400);
+      display: flex;
+      justify-content: center;
+    }
+    .nav-inner {
+      background: rgba(31, 31, 31, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-pill);
+      padding: var(--sp-75) var(--sp-200);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-200);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-75);
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 8px var(--accent-emerald);
+    }
+    .nav-stats {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      border-left: 1px solid var(--border-color);
+      padding-left: var(--sp-200);
+    }
+    .nav-stats strong {
+      color: var(--text-primary);
+    }
+    .nav-btn {
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      color: var(--text-body);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all var(--dur-normal) var(--ease-base);
+    }
+    .nav-btn:hover {
+      background: var(--border-color);
+      color: var(--text-primary);
+    }
+
+    /* Hero Section (B5) */
+    .hero-section {
+      text-align: center;
+      margin: 0 auto var(--sp-400) auto;
+      max-width: 680px;
+    }
+    .hero-heading {
+      background: linear-gradient(90deg, #FFFFFF 0%, #9B9B9B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: var(--sp-100);
+    }
+    .hero-subhead {
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 24px;
+      text-wrap: balance;
+    }
+
+    /* Mandatory Tagline Word-by-Word Reveal Section (B11) */
+    .tagline-section {
+      margin: 0 auto var(--sp-500) auto;
+      max-width: 780px;
+      text-align: center;
+      padding: var(--sp-300) var(--sp-200);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+    }
+    .tagline-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-blue);
+      background: var(--accent-blue-bg);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      margin-bottom: var(--sp-100);
+    }
+    .tagline-text {
+      font-size: clamp(20px, 3.2vw, 28px);
+      line-height: 1.35;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text-muted);
+      text-wrap: balance;
+    }
+    .tagline-word {
+      display: inline-block;
+      color: rgba(255, 255, 255, 0.28);
+      transition: color 500ms var(--ease-base);
+      margin-right: 0.28em;
+    }
+    .tagline-word.revealed {
+      color: #FFFFFF;
+    }
+
+    /* Revamped Filter Console (Comprehensive Workbench) */
+    .filter-console {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-300);
+      margin-bottom: var(--sp-300);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-200);
+    }
+
+    /* Primary Search Row */
+    .search-row {
+      display: flex;
+      gap: var(--sp-100);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .search-input-wrap {
+      flex: 1 1 320px;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .search-icon-svg {
+      position: absolute;
+      left: 14px;
+      width: 18px;
+      height: 18px;
+      color: var(--text-subtle);
+      pointer-events: none;
+    }
+    .search-field {
+      width: 100%;
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      padding: 10px 38px 10px 42px;
+      outline: none;
+      transition: border-color var(--dur-normal) var(--ease-base);
+    }
+    .search-field:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 2px var(--accent-blue-bg);
+    }
+    .search-clear-btn {
+      position: absolute;
+      right: 12px;
+      background: transparent;
+      border: none;
+      color: var(--text-subtle);
+      font-size: 14px;
+      cursor: pointer;
+      display: none;
+      padding: 4px;
+    }
+    .search-clear-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .sort-wrap {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-75);
+    }
+    .control-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-subtle);
+    }
+    .select-dropdown {
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: var(--text-body);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      padding: 9px 12px;
+      outline: none;
+      cursor: pointer;
+      transition: border-color var(--dur-normal) var(--ease-base);
+    }
+    .select-dropdown:focus {
+      border-color: var(--border-focus);
+    }
+
+    /* Filter Workbench Facets Grid */
+    .filter-facets {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--sp-200);
+      padding-top: var(--sp-200);
+      border-top: 1px solid var(--border-color);
+    }
+    .facet-col {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-75);
+    }
+    .facet-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: center;
+    }
+    .facet-pills {
+      display: flex;
       flex-wrap: wrap;
-      gap: 16px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--color-rule);
-      margin-bottom: 20px;
+      gap: 6px;
     }
-    .masthead-title {
-      font-family: var(--font-display);
-      font-size: clamp(22px, 3vw, 28px);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--color-ink);
+    .facet-pill {
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 10px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      user-select: none;
+      transition: all var(--dur-fast) var(--ease-base);
     }
-    .masthead-sub {
-      font-size: 13.5px;
-      color: var(--color-ink-muted);
-      margin-top: 3px;
+    .facet-pill:hover {
+      border-color: var(--text-muted);
+      color: var(--text-primary);
     }
-    .masthead-meta {
+    .facet-pill.active {
+      background: var(--text-primary);
+      border-color: var(--text-primary);
+      color: #000000;
+      font-weight: 600;
+    }
+
+    /* Continuous Price Controls */
+    .price-scrubber {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .price-inputs-row {
       display: flex;
       align-items: center;
       gap: 8px;
-      flex-wrap: wrap;
     }
-    .meta-tag {
+    .price-num-box {
+      width: 78px;
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
       font-family: var(--font-mono);
-      font-size: 11.5px;
-      color: var(--color-ink-muted);
-      background: var(--color-surface);
-      border: 1px solid var(--color-rule);
-      padding: 4px 10px;
-      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 8px;
+      text-align: center;
+      outline: none;
+      transition: border-color var(--dur-normal) var(--ease-base);
     }
-    .meta-tag strong {
-      color: var(--color-ink);
+    .price-num-box:focus {
+      border-color: var(--border-focus);
+    }
+    .price-slider-input {
+      flex: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--border-color);
+      outline: none;
+      cursor: pointer;
+      accent-color: var(--accent-blue);
+    }
+    .price-slider-input::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent-blue);
+      cursor: pointer;
+      box-shadow: 0 0 6px rgba(59, 130, 246, 0.6);
     }
 
-    /* Workbench Control Deck */
-    .control-deck {
-      background: var(--color-surface);
-      border: 1px solid var(--color-rule);
-      border-radius: var(--radius-lg);
-      padding: 14px 16px;
-      margin-bottom: 16px;
+    /* Presets Bar */
+    .presets-container {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 10px;
+      gap: var(--sp-75);
+      padding: var(--sp-100) 0 0 0;
+      border-top: 1px solid var(--border-color);
     }
-
-    .search-box {
-      position: relative;
-      flex: 1 1 200px;
-      min-width: 180px;
-    }
-    .search-box input {
-      width: 100%;
-      background: var(--color-paper);
-      border: 1px solid var(--color-rule);
-      border-radius: var(--radius-md);
-      color: var(--color-ink);
-      font-family: var(--font-body);
-      font-size: 13px;
-      padding: 7px 12px 7px 32px;
-      outline: none;
-      transition: border-color 0.15s;
-    }
-    .search-box input:focus {
-      border-color: var(--color-cobalt);
-    }
-    .search-icon {
-      position: absolute;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 14px;
-      height: 14px;
-      color: var(--color-ink-faint);
-      pointer-events: none;
-    }
-
-    .filter-select {
-      background: var(--color-paper);
-      border: 1px solid var(--color-rule);
-      border-radius: var(--radius-md);
-      color: var(--color-ink);
-      font-family: var(--font-mono);
-      font-size: 12px;
-      padding: 7px 10px;
-      outline: none;
-      cursor: pointer;
-      transition: border-color 0.15s;
-    }
-    .filter-select:focus {
-      border-color: var(--color-cobalt);
-    }
-
-    /* Flexible Continuous Price Controls */
-    .price-input-group {
-      display: inline-flex;
-      align-items: center;
-      background: var(--color-paper);
-      border: 1px solid var(--color-rule);
-      border-radius: var(--radius-md);
-      padding: 3px 8px;
-      gap: 5px;
-      transition: border-color 0.15s;
-    }
-    .price-input-group:focus-within {
-      border-color: var(--color-cobalt);
-    }
-    .price-input-label {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--color-ink-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      user-select: none;
-    }
-    .price-box {
-      width: 62px;
+    .preset-chip-btn {
       background: transparent;
-      border: none;
-      color: var(--color-ink);
-      font-family: var(--font-mono);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
       font-size: 12px;
+      font-weight: 500;
+      padding: 5px 11px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: all var(--dur-fast) var(--ease-base);
+    }
+    .preset-chip-btn:hover {
+      border-color: var(--text-primary);
+      color: var(--text-primary);
+    }
+    .preset-chip-btn.active {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+      color: #FFFFFF;
       font-weight: 600;
-      padding: 4px 2px;
-      outline: none;
-      text-align: center;
-    }
-    .price-box::placeholder {
-      color: var(--color-ink-faint);
-      font-weight: 400;
-      font-size: 11px;
-    }
-    .price-box::-webkit-inner-spin-button,
-    .price-box::-webkit-outer-spin-button {
-      opacity: 0.35;
-    }
-    .range-dash {
-      color: var(--color-ink-faint);
-      font-family: var(--font-mono);
-      font-size: 11px;
-    }
-    .price-slider {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 72px;
-      height: 4px;
-      border-radius: 2px;
-      background: var(--color-rule);
-      outline: none;
-      cursor: pointer;
-      margin: 0 4px;
-      accent-color: var(--color-cobalt);
-    }
-    .price-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      background: var(--color-cobalt);
-      cursor: pointer;
-    }
-    .btn-clear-inline {
-      background: transparent;
-      border: none;
-      color: var(--color-ink-faint);
-      font-size: 11px;
-      cursor: pointer;
-      padding: 2px 4px;
-      line-height: 1;
-    }
-    .btn-clear-inline:hover {
-      color: var(--color-ink);
     }
 
-    .btn-top-toggle {
+    /* Active Filter Summary Strip */
+    .active-filters-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--sp-75);
+      margin-bottom: var(--sp-300);
+      font-size: 13px;
+    }
+    .active-tag {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 4px 10px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-body);
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: var(--color-paper);
-      border: 1px solid var(--color-rule);
-      padding: 7px 12px;
-      border-radius: var(--radius-md);
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--color-ink-muted);
+    }
+    .active-tag-remove {
+      background: none;
+      border: none;
+      color: var(--text-subtle);
       cursor: pointer;
-      user-select: none;
-      transition: all 0.15s;
+      font-size: 13px;
+      padding: 0 2px;
+      line-height: 1;
     }
-    .btn-top-toggle:hover {
-      border-color: var(--color-ink-faint);
-      color: var(--color-ink);
+    .active-tag-remove:hover {
+      color: var(--text-primary);
     }
-    .btn-top-toggle.active {
-      background: var(--color-cobalt-glow);
-      border-color: var(--color-cobalt);
-      color: var(--color-cobalt);
-    }
-
-    .btn-reset {
+    .btn-reset-all {
       background: transparent;
       border: none;
-      color: var(--color-ink-faint);
+      color: var(--accent-blue);
       font-family: var(--font-mono);
-      font-size: 11.5px;
-      cursor: pointer;
-      text-decoration: underline;
-      padding: 6px 8px;
-    }
-    .btn-reset:hover {
-      color: var(--color-ink);
-    }
-
-    /* Sub-deck Presets Bar */
-    .presets-bar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 20px;
       font-size: 12px;
-      color: var(--color-ink-faint);
-    }
-    .preset-label {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--color-ink-faint);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .preset-chip {
-      background: transparent;
-      border: 1px solid var(--color-rule);
-      border-radius: var(--radius-sm);
-      color: var(--color-ink-muted);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      padding: 3px 9px;
       cursor: pointer;
-      transition: all 0.12s;
+      padding: 4px 8px;
+      text-decoration: underline;
     }
-    .preset-chip:hover {
-      border-color: var(--color-cobalt);
-      color: var(--color-ink);
+    .btn-reset-all:hover {
+      color: #FFFFFF;
     }
-    .preset-chip.active {
-      background: var(--color-cobalt);
-      border-color: var(--color-cobalt);
-      color: #fff;
-    }
-
-    .counter-line {
+    .results-count-wrap {
       margin-left: auto;
       font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--color-ink-muted);
+      font-size: 13px;
+      color: var(--text-muted);
     }
-    .counter-line strong {
-      color: var(--color-ink);
+    .results-count-wrap strong {
+      color: var(--text-primary);
     }
 
-    /* Grid Layout */
+    /* Cars Grid (Debloated Cards) */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
-      gap: 18px;
+      gap: var(--sp-300);
     }
 
-    /* Debloated Card */
+    /* Strict Card Component per elayadesign/ai-design-skills */
     .card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-rule);
-      border-radius: var(--radius-lg);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      transition: border-color 0.15s, transform 0.15s;
+      transition: border-color var(--dur-normal) var(--ease-base), transform var(--dur-normal) var(--ease-base);
     }
     .card:hover {
-      border-color: var(--color-ink-faint);
+      border-color: var(--text-subtle);
       transform: translateY(-2px);
     }
 
+    /* Flat Photo slot with no gradient */
     .card-photo {
-      height: 195px;
-      background: radial-gradient(circle at center, #111827 0%, #06090e 100%);
+      height: 200px;
+      background: var(--bg-photo);
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-bottom: 1px solid var(--color-rule-subtle);
+      border-bottom: 1px solid var(--border-color);
+      padding: var(--sp-200);
       overflow: hidden;
-      padding: 16px 14px 10px 14px;
     }
     .card-photo img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.6));
-      transition: transform 0.2s ease;
+      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.65));
+      transition: transform var(--dur-normal) var(--ease-base);
     }
     .card:hover .card-photo img {
       transform: scale(1.04);
     }
 
-    .tag-grade {
+    /* Badges */
+    .badge-grade {
       position: absolute;
-      top: 10px;
-      left: 10px;
+      top: 12px;
+      left: 12px;
       font-family: var(--font-mono);
-      font-size: 10.5px;
-      font-weight: 700;
-      padding: 2px 7px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
       border-radius: var(--radius-sm);
       letter-spacing: 0.04em;
       z-index: 2;
     }
-    .tag-grade.top {
-      background: rgba(245, 158, 11, 0.9);
-      color: #000;
-      border: 1px solid rgba(245, 158, 11, 1);
+    .badge-grade.top {
+      background: var(--accent-amber);
+      color: #000000;
+      border: 1px solid var(--accent-amber);
     }
-    .tag-grade.value {
-      background: rgba(16, 185, 129, 0.9);
-      color: #000;
-      border: 1px solid rgba(16, 185, 129, 1);
+    .badge-grade.value {
+      background: var(--accent-emerald);
+      color: #000000;
+      border: 1px solid var(--accent-emerald);
     }
-    .tag-grade.fair {
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(148, 163, 184, 0.3);
-      color: var(--color-ink-muted);
+    .badge-grade.fair {
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
     }
 
-    .tag-tier {
+    .badge-tier {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 12px;
+      right: 12px;
       font-family: var(--font-mono);
-      font-size: 10.5px;
-      padding: 2px 7px;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 8px;
       border-radius: var(--radius-sm);
-      background: rgba(9, 13, 22, 0.88);
-      border: 1px solid var(--color-rule);
-      color: var(--color-ink-muted);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
       z-index: 2;
     }
-    .tag-tier.assured {
-      color: var(--color-emerald);
+    .badge-tier.assured {
+      color: var(--accent-emerald);
       border-color: rgba(16, 185, 129, 0.4);
     }
 
-    .card-body {
-      padding: 16px;
+    .card-content {
+      padding: var(--sp-200);
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: var(--sp-100);
       flex: 1;
     }
 
-    .car-name {
-      font-family: var(--font-display);
-      font-size: 16.5px;
-      font-weight: 700;
-      color: var(--color-ink);
-      line-height: 1.25;
+    .car-title {
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-wrap: balance;
     }
 
-    .car-telemetry {
+    .car-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
     }
-    .spec-item {
+    .spec-tag {
       font-family: var(--font-mono);
       font-size: 11px;
-      color: var(--color-ink-muted);
-      background: var(--color-paper);
-      border: 1px solid var(--color-rule);
+      color: var(--text-muted);
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
       padding: 2px 7px;
       border-radius: var(--radius-sm);
     }
 
-    /* Pricing Intelligence Deck */
-    .pricing-deck {
+    /* Nested Pricing Intelligence Box (Formula: radius 16px - gap 8px = 8px) */
+    .pricing-box {
       display: grid;
-      grid-template-columns: 1fr 1.2fr 1.15fr;
-      background: var(--color-paper);
-      border: 1px solid var(--color-rule-subtle);
+      grid-template-columns: 1fr 1.25fr 1.1fr;
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 9px 12px;
+      padding: 10px 12px;
       gap: 8px;
     }
-    .price-cell {
+    .price-col {
       display: flex;
       flex-direction: column;
     }
-    .price-type-label {
+    .price-label {
       font-family: var(--font-mono);
-      font-size: 9px;
+      font-size: 10px;
       text-transform: uppercase;
-      color: var(--color-ink-faint);
       letter-spacing: 0.05em;
+      color: var(--text-subtle);
     }
-    .price-figure {
+    .price-val {
       font-family: var(--font-mono);
       font-size: 14px;
-      font-weight: 700;
-      color: var(--color-ink);
+      font-weight: 600;
+      color: var(--text-primary);
       margin-top: 2px;
       line-height: 1.2;
     }
-    .price-figure-wrap {
-      display: flex;
-      align-items: baseline;
-      gap: 4px;
-      flex-wrap: wrap;
+    .price-val.negotiable {
+      color: var(--accent-emerald);
     }
-    .price-figure.nego-val {
-      color: var(--color-emerald);
-    }
-    .price-figure.retail-val {
-      color: var(--color-ink-faint);
+    .price-val.original {
+      color: var(--text-subtle);
       text-decoration: line-through;
-      text-decoration-color: rgba(148, 163, 184, 0.45);
     }
-    .pill-save {
+    .savings-pill {
       font-family: var(--font-mono);
       font-size: 9px;
       font-weight: 600;
-      color: var(--color-emerald);
-      background: var(--color-emerald-bg);
+      color: var(--accent-emerald);
+      background: var(--accent-emerald-bg);
       border: 1px solid rgba(16, 185, 129, 0.3);
       padding: 1px 4px;
       border-radius: 3px;
-      white-space: nowrap;
+      display: inline-block;
+      margin-top: 2px;
     }
-    .pill-discount {
+    .discount-pill {
       font-family: var(--font-mono);
       font-size: 9px;
       font-weight: 600;
-      color: var(--color-cobalt);
-      background: var(--color-cobalt-glow);
+      color: var(--accent-blue);
+      background: var(--accent-blue-bg);
       border: 1px solid rgba(59, 130, 246, 0.3);
       padding: 1px 4px;
       border-radius: 3px;
-      white-space: nowrap;
+      display: inline-block;
+      margin-top: 2px;
     }
 
-    /* Secondary Telemetry Strip */
-    .metrics-strip {
+    /* Value Telemetry Strip */
+    .telemetry-strip {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      background: rgba(16, 22, 34, 0.75);
-      border: 1px solid var(--color-rule-subtle);
+      grid-template-columns: 1.2fr 1fr;
+      background: var(--bg-photo);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 7px 12px;
+      padding: 8px 12px;
       gap: 8px;
     }
-    .metric-col {
+    .telemetry-col {
       display: flex;
       flex-direction: column;
     }
-    .metric-label {
+    .telemetry-label {
       font-family: var(--font-mono);
-      font-size: 9px;
+      font-size: 10px;
       text-transform: uppercase;
-      color: var(--color-ink-faint);
       letter-spacing: 0.04em;
+      color: var(--text-subtle);
     }
-    .metric-val {
+    .telemetry-val {
       font-family: var(--font-mono);
       font-size: 13px;
-      font-weight: 700;
-      color: var(--color-ink);
+      font-weight: 600;
+      color: var(--text-body);
       margin-top: 1px;
     }
-    .metric-val.monthly {
-      color: var(--color-cobalt);
+    .telemetry-val.buyback {
+      color: var(--accent-emerald);
     }
-    .metric-val.buyback {
-      color: var(--color-emerald);
+    .telemetry-val.cost {
+      color: var(--accent-blue);
     }
 
-    /* Crisp One-Line Verdict */
-    .car-verdict {
-      font-size: 12px;
-      color: #cbd5e1;
+    /* Verdict */
+    .verdict-line {
+      font-size: 13px;
+      color: var(--text-body);
       line-height: 1.4;
       padding-left: 10px;
-      border-left: 2px solid var(--color-cobalt);
+      border-left: 2px solid var(--accent-blue);
+      margin-top: 2px;
+      text-wrap: pretty;
     }
 
-    .card-action {
+    /* Action Button (B2 Button-md padding 8px 12px) */
+    .card-footer {
       margin-top: auto;
-      padding-top: 8px;
-      border-top: 1px solid var(--color-rule-subtle);
+      padding-top: var(--sp-100);
+      border-top: 1px solid var(--border-color);
     }
-    .btn-spinny {
+    .cta-btn {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
       background: transparent;
-      border: 1px solid var(--color-rule);
-      color: var(--color-ink-muted);
+      border: 1px solid var(--border-color);
+      color: var(--text-body);
       font-family: var(--font-mono);
-      font-size: 11.5px;
+      font-size: 13px;
       font-weight: 600;
       padding: 8px 12px;
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-md);
       text-decoration: none;
-      transition: all 0.15s ease;
+      transition: all var(--dur-normal) var(--ease-base);
     }
-    .btn-spinny:hover {
-      background: var(--color-cobalt);
-      border-color: var(--color-cobalt);
-      color: #fff;
+    .cta-btn:hover {
+      background: var(--text-primary);
+      border-color: var(--text-primary);
+      color: #000000;
+    }
+    .cta-btn:active {
+      transform: scale(0.98);
     }
 
+    /* Empty State */
     .empty-state {
       grid-column: 1 / -1;
-      padding: 60px 20px;
+      padding: var(--sp-600) var(--sp-300);
       text-align: center;
-      background: var(--color-surface);
-      border: 1px dashed var(--color-rule);
-      border-radius: var(--radius-lg);
+      background: var(--bg-surface);
+      border: 1px dashed var(--border-color);
+      border-radius: var(--radius-xl);
     }
     .empty-state h3 {
-      font-family: var(--font-display);
-      font-size: 18px;
-      margin-bottom: 6px;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
     }
     .empty-state p {
-      font-size: 13px;
-      color: var(--color-ink-muted);
-      margin-bottom: 16px;
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* Focus visible rings */
+    button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible {
+      outline: 2px solid var(--accent-blue);
+      outline-offset: 2px;
+    }
+
+    /* Responsive Mobile @ 390px */
+    @media (max-width: 640px) {
+      .shell {
+        padding: 16px 12px 60px 12px;
+      }
+      .filter-console {
+        padding: 14px;
+      }
+      .filter-facets {
+        grid-template-columns: 1fr;
+      }
+      .pricing-box {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+      .telemetry-strip {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Sticky Floating Nav (B7) -->
+  <nav class="floating-nav" aria-label="Main Navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <span class="pulse-dot"></span>
+        <span>Spinny Bangalore Radar</span>
+      </a>
+      <div class="nav-stats">
+        Bangalore Inventory: <strong id="tele-total">0</strong>
+      </div>
+      <button class="nav-btn" onclick="scrollToFilters()">Filters</button>
+    </div>
+  </nav>
+
   <div class="shell">
-    <!-- Masthead -->
-    <header class="masthead">
-      <div>
-        <h1 class="masthead-title">Bangalore Used Cars · Hallmark Screener</h1>
-        <p class="masthead-sub">Uncapped Bangalore inventory with negotiable cash targets, original new retail pricing, and 2-year buyback telemetry.</p>
-      </div>
-      <div class="masthead-meta">
-        <span class="meta-tag">City: <strong>Bangalore</strong></span>
-        <span class="meta-tag">Inventory: <strong id="tele-total">0</strong></span>
-      </div>
+    <!-- Hero Section (B5) -->
+    <header class="hero-section">
+      <h1 class="heading-1 hero-heading">Find your next Bangalore car with zero pricing surprises</h1>
+      <p class="body-3 hero-subhead">
+        Uncapped Bangalore inventory audited daily with negotiable cash targets, original showroom prices, and 24 month buyback retention.
+      </p>
     </header>
 
-    <!-- Debloated Single-Deck Workbench Controls -->
-    <div class="control-deck">
-      <!-- Search Input -->
-      <div class="search-box">
-        <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-        </svg>
-        <input type="text" id="ctrl-search" placeholder="Search model, hub, variant..." oninput="onSearch(this.value)" />
+    <!-- Mandatory Tagline Word-by-Word Reveal Section (B11) -->
+    <section class="tagline-section" id="tagline-reveal" aria-label="Core Commitment">
+      <span class="tagline-badge">Verified Deal Intelligence</span>
+      <p class="tagline-text" id="tagline-words">
+        <!-- Injected via JavaScript for scroll word-by-word reveal -->
+      </p>
+    </section>
+
+    <!-- Revamped Filter Console -->
+    <section class="filter-console" id="filter-workbench" aria-label="Filter Controls">
+      <!-- Search & Sort Row -->
+      <div class="search-row">
+        <div class="search-input-wrap">
+          <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="text" 
+            id="ctrl-search" 
+            class="search-field" 
+            placeholder="Search by model, hub location, variant, or fuel..." 
+            oninput="onSearchInput(this.value)"
+          />
+          <button type="button" id="btn-clear-search" class="search-clear-btn" onclick="clearSearch()" title="Clear search">✕</button>
+        </div>
+
+        <div class="sort-wrap">
+          <label for="ctrl-sort" class="control-label">Sort By:</label>
+          <select id="ctrl-sort" class="select-dropdown" onchange="onSortChange(this.value)">
+            <option value="score">Best Value Score</option>
+            <option value="price_asc">Listed Price: Low to High</option>
+            <option value="price_desc">Listed Price: High to Low</option>
+            <option value="nego_asc">Negotiable Floor: Low to High</option>
+            <option value="discount_desc">Highest % Off Original Retail</option>
+            <option value="year_desc">Year: Newest First</option>
+            <option value="km_asc">Mileage: Lowest KM</option>
+          </select>
+        </div>
       </div>
 
-      <!-- Make Year Filter -->
-      <select id="ctrl-year" class="filter-select" onchange="onSelectChange('min_year', this.value)">
-        <option value="0">Year: All Years</option>
-        <option value="2022">2022+ (≤ 4 Yrs)</option>
-        <option value="2020">2020+ (≤ 6 Yrs)</option>
-        <option value="2018">2018+ (≤ 8 Yrs)</option>
-        <option value="2016">2016+ (≤ 10 Yrs)</option>
-        <option value="2014">2014+ (≤ 12 Yrs)</option>
-      </select>
+      <!-- Faceted Filters Grid -->
+      <div class="filter-facets">
+        <!-- Budget Scrubber Facet -->
+        <div class="facet-col">
+          <div class="facet-title">
+            <span>Budget Range (₹ Lakhs)</span>
+            <button type="button" class="btn-reset-all" onclick="clearPrice()">Reset</button>
+          </div>
+          <div class="price-scrubber">
+            <div class="price-inputs-row">
+              <span class="caption-4" style="color:var(--text-subtle);">₹</span>
+              <input type="number" id="ctrl-min-price" class="price-num-box" min="0" max="30" step="0.1" placeholder="Min" oninput="onPriceChange()" />
+              <span style="color:var(--text-subtle);">–</span>
+              <input type="number" id="ctrl-max-price" class="price-num-box" min="0" max="30" step="0.1" placeholder="Max" oninput="onPriceChange()" />
+              <input type="range" id="ctrl-price-range" class="price-slider-input" min="2" max="20" step="0.25" value="20" oninput="onSliderChange(this.value)" title="Scrub Max Budget" />
+            </div>
+            <div class="facet-pills">
+              <button class="facet-pill" onclick="setPriceBracket(0, 4)">Under ₹4L</button>
+              <button class="facet-pill" onclick="setPriceBracket(4, 6)">₹4L to ₹6L</button>
+              <button class="facet-pill" onclick="setPriceBracket(6, 9)">₹6L to ₹9L</button>
+              <button class="facet-pill" onclick="setPriceBracket(9, 15)">₹9L to ₹15L</button>
+              <button class="facet-pill" onclick="clearPrice()">Any</button>
+            </div>
+          </div>
+        </div>
 
-      <!-- Flexible Continuous Price Filter (Min / Max in ₹ Lakhs + Live Slider) -->
-      <div class="price-input-group" title="Set flexible budget in ₹ Lakhs (e.g. 4.5)">
-        <span class="price-input-label">₹L</span>
-        <input type="number" id="ctrl-min-price" class="price-box" min="0" max="30" step="0.1" placeholder="Min" oninput="onPriceChange()" />
-        <span class="range-dash">–</span>
-        <input type="number" id="ctrl-max-price" class="price-box" min="0" max="30" step="0.1" placeholder="Max (4.5)" oninput="onPriceChange()" />
-        <input type="range" id="ctrl-price-range" class="price-slider" min="2" max="20" step="0.25" value="20" oninput="onSliderChange(this.value)" title="Drag to adjust Max Budget" />
-        <button type="button" class="btn-clear-inline" onclick="clearPrice()" title="Clear price limit">✕</button>
+        <!-- Brand / Make Facet -->
+        <div class="facet-col">
+          <div class="facet-title">
+            <span>Manufacturer</span>
+          </div>
+          <div class="facet-pills" id="brand-pills">
+            <button class="facet-pill active" onclick="setBrand('all', this)">All</button>
+            <button class="facet-pill" onclick="setBrand('maruti', this)">Maruti</button>
+            <button class="facet-pill" onclick="setBrand('hyundai', this)">Hyundai</button>
+            <button class="facet-pill" onclick="setBrand('honda', this)">Honda</button>
+            <button class="facet-pill" onclick="setBrand('volkswagen', this)">Volkswagen</button>
+            <button class="facet-pill" onclick="setBrand('tata', this)">Tata</button>
+            <button class="facet-pill" onclick="setBrand('toyota', this)">Toyota</button>
+            <button class="facet-pill" onclick="setBrand('skoda', this)">Skoda</button>
+            <button class="facet-pill" onclick="setBrand('kia', this)">Kia</button>
+          </div>
+        </div>
+
+        <!-- Transmission & Fuel Facet -->
+        <div class="facet-col">
+          <div class="facet-title">
+            <span>Transmission & Fuel</span>
+          </div>
+          <div class="facet-pills" id="trans-pills" style="margin-bottom:6px;">
+            <button class="facet-pill active" onclick="setTrans('all', this)">All Transmissions</button>
+            <button class="facet-pill" onclick="setTrans('automatic', this)">Automatic</button>
+            <button class="facet-pill" onclick="setTrans('manual', this)">Manual</button>
+          </div>
+          <div class="facet-pills" id="fuel-pills">
+            <button class="facet-pill active" onclick="setFuel('all', this)">All Fuels</button>
+            <button class="facet-pill" onclick="setFuel('petrol', this)">Petrol</button>
+            <button class="facet-pill" onclick="setFuel('diesel', this)">Diesel</button>
+            <button class="facet-pill" onclick="setFuel('cng', this)">CNG</button>
+          </div>
+        </div>
+
+        <!-- Year & Mileage Facet -->
+        <div class="facet-col">
+          <div class="facet-title">
+            <span>Age & Mileage</span>
+          </div>
+          <div class="facet-pills" id="year-pills" style="margin-bottom:6px;">
+            <button class="facet-pill active" onclick="setYear(0, this)">Any Year</button>
+            <button class="facet-pill" onclick="setYear(2022, this)">2022+</button>
+            <button class="facet-pill" onclick="setYear(2020, this)">2020+</button>
+            <button class="facet-pill" onclick="setYear(2018, this)">2018+</button>
+            <button class="facet-pill" onclick="setYear(2016, this)">2016+</button>
+          </div>
+          <div class="facet-pills" id="km-pills">
+            <button class="facet-pill active" onclick="setMaxKm(0, this)">Any KM</button>
+            <button class="facet-pill" onclick="setMaxKm(30000, this)">&lt; 30k km</button>
+            <button class="facet-pill" onclick="setMaxKm(50000, this)">&lt; 50k km</button>
+            <button class="facet-pill" onclick="setMaxKm(80000, this)">&lt; 80k km</button>
+          </div>
+        </div>
       </div>
 
-      <!-- Brand -->
-      <select id="ctrl-brand" class="filter-select" onchange="onSelectChange('brand', this.value)">
-        <option value="all">Brand: All Brands</option>
-        <option value="volkswagen">Volkswagen</option>
-        <option value="honda">Honda</option>
-        <option value="hyundai">Hyundai</option>
-        <option value="maruti">Maruti Suzuki</option>
-        <option value="tata">Tata</option>
-        <option value="ford">Ford</option>
-        <option value="toyota">Toyota</option>
-        <option value="skoda">Skoda</option>
-        <option value="kia">Kia</option>
-        <option value="mahindra">Mahindra</option>
-      </select>
+      <!-- Quick Archetype Presets Bar -->
+      <div class="presets-container">
+        <span class="control-label">Quick Presets:</span>
+        <button class="preset-chip-btn" onclick="applyPreset('top_steals', this)">💎 Top Deals (80+)</button>
+        <button class="preset-chip-btn" onclick="applyPreset('sub_45l', this)">⚡ Under ₹4.5L</button>
+        <button class="preset-chip-btn" onclick="applyPreset('auto_sub6', this)">🚗 Automatic Under ₹6L</button>
+        <button class="preset-chip-btn" onclick="applyPreset('enthusiast', this)">🏎️ Enthusiast (Polo or City)</button>
+        <button class="preset-chip-btn" onclick="applyPreset('assured_only', this)">🛡️ Spinny Assured Only</button>
+        <button class="preset-chip-btn" onclick="applyPreset('low_km', this)">⏱️ Low Mileage (&lt; 40k)</button>
+        <button class="preset-chip-btn" onclick="applyPreset('high_discount', this)">💰 50%+ Off Original Retail</button>
+      </div>
+    </section>
 
-      <!-- Gearbox -->
-      <select id="ctrl-trans" class="filter-select" onchange="onSelectChange('trans', this.value)">
-        <option value="all">Gearbox: All</option>
-        <option value="automatic">Automatic Only</option>
-        <option value="manual">Manual Only</option>
-      </select>
+    <!-- Active Filters Summary Strip -->
+    <div class="active-filters-bar" id="active-tags-strip">
+      <span class="caption-4" style="color:var(--text-subtle);">Active Filters:</span>
+      <div id="active-tags-container" style="display:inline-flex; flex-wrap:wrap; gap:6px;"></div>
+      <button class="btn-reset-all" onclick="resetAll()">Reset All</button>
 
-      <!-- Tier -->
-      <select id="ctrl-tier" class="filter-select" onchange="onSelectChange('tier', this.value)">
-        <option value="all">Tier: All Stock</option>
-        <option value="assured">Spinny Assured (Buyback)</option>
-        <option value="auction">Wholesale / Budget Stock</option>
-      </select>
-
-      <!-- Sort -->
-      <select id="ctrl-sort" class="filter-select" onchange="onSelectChange('sort', this.value)">
-        <option value="score">Sort: Best Value Score</option>
-        <option value="price_asc">Listed Price: Low to High</option>
-        <option value="price_desc">Listed Price: High to Low</option>
-        <option value="nego_asc">Negotiable Target: Low to High</option>
-        <option value="discount_desc">Highest % Off Original Retail</option>
-        <option value="year_desc">Year: Newest First</option>
-        <option value="km_asc">Mileage: Lowest KM</option>
-      </select>
-
-      <!-- Top Deals Toggle -->
-      <button id="btn-top-deals" class="btn-top-toggle" onclick="toggleTopDeals(this)">
-        <span>⭐ Top Deals Only</span>
-      </button>
-
-      <!-- Clear Filters -->
-      <button class="btn-reset" onclick="resetAll()">Reset</button>
-    </div>
-
-    <!-- Quick Presets Row -->
-    <div class="presets-bar">
-      <span class="preset-label">Quick Filters:</span>
-      <button class="preset-chip" onclick="applyPreset('polo', this)">Volkswagen Polo</button>
-      <button class="preset-chip" onclick="applyPreset('city', this)">Honda City</button>
-      <button class="preset-chip" onclick="applyPreset('sub_45l', this)">Under ₹4.5L</button>
-      <button class="preset-chip" onclick="applyPreset('auto_sub5', this)">Automatic &lt; ₹5L</button>
-      <button class="preset-chip" onclick="applyPreset('low_km', this)">Low KM (&lt; 40k)</button>
-      <button class="preset-chip" onclick="applyPreset('assured_only', this)">Spinny Assured</button>
-
-      <div class="counter-line">
-        Showing <strong id="res-count">0</strong> vehicles
+      <div class="results-count-wrap">
+        Showing <strong id="res-count">0</strong> verified vehicles
       </div>
     </div>
 
     <!-- Cards Grid -->
-    <main class="grid" id="cars-grid"></main>
+    <main class="grid" id="cars-grid" aria-live="polite"></main>
   </div>
 
   <script>
     const CARS = """ + cars_json + """;
 
+    // Application state
     const state = {
       search: '',
       min_year: 0,
       min_price: 0,
-      max_price: 0, // 0 = no cap
+      max_price: 0,
+      max_km: 0,
       brand: 'all',
       trans: 'all',
+      fuel: 'all',
       tier: 'all',
+      dealGrade: 'all',
       sort: 'score',
-      topDealsOnly: false,
       activePreset: null
     };
 
+    // Initialize counts
     document.getElementById('tele-total').textContent = CARS.length;
 
-    function onSearch(val) {
-      state.search = (val || '').toLowerCase().trim();
-      applyFilters();
-    }
-
-    function onSelectChange(key, val) {
-      if (key === 'min_year') {
-        state[key] = Number(val);
+    // Word-by-word reveal for B11 tagline
+    const taglineContent = "Transparent pricing and verified mechanical telemetry. Every Bangalore car evaluated before you negotiate.";
+    const taglineEl = document.getElementById('tagline-words');
+    if (taglineEl) {
+      taglineEl.innerHTML = taglineContent.split(' ').map((word, i) => `<span class="tagline-word" data-w="${i}">${word}</span>`).join(' ');
+      
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('.tagline-word').forEach(w => w.classList.add('revealed'));
       } else {
-        state[key] = val;
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const words = entry.target.querySelectorAll('.tagline-word');
+              words.forEach((w, idx) => {
+                setTimeout(() => {
+                  w.classList.add('revealed');
+                }, idx * 60);
+              });
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        observer.observe(document.getElementById('tagline-reveal'));
       }
+    }
+
+    function scrollToFilters() {
+      const el = document.getElementById('filter-workbench');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Search input handler
+    function onSearchInput(val) {
+      state.search = (val || '').toLowerCase().trim();
+      const clearBtn = document.getElementById('btn-clear-search');
+      if (clearBtn) clearBtn.style.display = state.search ? 'block' : 'none';
       state.activePreset = null;
-      document.querySelectorAll('.preset-chip').forEach(b => b.classList.remove('active'));
+      clearPresetHighlight();
       applyFilters();
     }
 
+    function clearSearch() {
+      const input = document.getElementById('ctrl-search');
+      if (input) input.value = '';
+      onSearchInput('');
+    }
+
+    // Sort handler
+    function onSortChange(val) {
+      state.sort = val;
+      applyFilters();
+    }
+
+    // Brand handler
+    function setBrand(brand, btn) {
+      state.brand = brand;
+      document.querySelectorAll('#brand-pills .facet-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      state.activePreset = null;
+      clearPresetHighlight();
+      applyFilters();
+    }
+
+    // Transmission handler
+    function setTrans(trans, btn) {
+      state.trans = trans;
+      document.querySelectorAll('#trans-pills .facet-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      state.activePreset = null;
+      clearPresetHighlight();
+      applyFilters();
+    }
+
+    // Fuel handler
+    function setFuel(fuel, btn) {
+      state.fuel = fuel;
+      document.querySelectorAll('#fuel-pills .facet-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      state.activePreset = null;
+      clearPresetHighlight();
+      applyFilters();
+    }
+
+    // Year handler
+    function setYear(year, btn) {
+      state.min_year = Number(year);
+      document.querySelectorAll('#year-pills .facet-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      state.activePreset = null;
+      clearPresetHighlight();
+      applyFilters();
+    }
+
+    // Mileage handler
+    function setMaxKm(km, btn) {
+      state.max_km = Number(km);
+      document.querySelectorAll('#km-pills .facet-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      state.activePreset = null;
+      clearPresetHighlight();
+      applyFilters();
+    }
+
+    // Price input handler
     function onPriceChange() {
       const minVal = parseFloat(document.getElementById('ctrl-min-price').value);
       const maxVal = parseFloat(document.getElementById('ctrl-max-price').value);
@@ -908,7 +1358,7 @@ html_content = """<!DOCTYPE html>
       }
 
       state.activePreset = null;
-      document.querySelectorAll('.preset-chip').forEach(b => b.classList.remove('active'));
+      clearPresetHighlight();
       applyFilters();
     }
 
@@ -923,7 +1373,35 @@ html_content = """<!DOCTYPE html>
         state.max_price = num * 100000;
       }
       state.activePreset = null;
-      document.querySelectorAll('.preset-chip').forEach(b => b.classList.remove('active'));
+      clearPresetHighlight();
+      applyFilters();
+    }
+
+    function setPriceBracket(minL, maxL) {
+      const minInput = document.getElementById('ctrl-min-price');
+      const maxInput = document.getElementById('ctrl-max-price');
+      const slider = document.getElementById('ctrl-price-range');
+
+      if (minL > 0) {
+        minInput.value = minL.toFixed(1);
+        state.min_price = minL * 100000;
+      } else {
+        minInput.value = '';
+        state.min_price = 0;
+      }
+
+      if (maxL > 0) {
+        maxInput.value = maxL.toFixed(1);
+        state.max_price = maxL * 100000;
+        if (slider) slider.value = Math.min(20, maxL);
+      } else {
+        maxInput.value = '';
+        state.max_price = 0;
+        if (slider) slider.value = 20;
+      }
+
+      state.activePreset = null;
+      clearPresetHighlight();
       applyFilters();
     }
 
@@ -937,15 +1415,14 @@ html_content = """<!DOCTYPE html>
       applyFilters();
     }
 
-    function toggleTopDeals(btn) {
-      state.topDealsOnly = !state.topDealsOnly;
-      if (btn) btn.classList.toggle('active', state.topDealsOnly);
-      applyFilters();
+    function clearPresetHighlight() {
+      document.querySelectorAll('.preset-chip-btn').forEach(b => b.classList.remove('active'));
     }
 
+    // Quick Archetype Presets
     function applyPreset(preset, el) {
       state.activePreset = preset;
-      document.querySelectorAll('.preset-chip').forEach(b => b.classList.remove('active'));
+      clearPresetHighlight();
       if (el) el.classList.add('active');
 
       // Reset base filters
@@ -953,47 +1430,57 @@ html_content = """<!DOCTYPE html>
       state.min_year = 0;
       state.min_price = 0;
       state.max_price = 0;
+      state.max_km = 0;
       state.brand = 'all';
       state.trans = 'all';
+      state.fuel = 'all';
       state.tier = 'all';
-      state.topDealsOnly = false;
-      document.getElementById('btn-top-deals').classList.remove('active');
+      state.dealGrade = 'all';
 
+      // Reset UI elements
       document.getElementById('ctrl-search').value = '';
-      document.getElementById('ctrl-year').value = '0';
+      document.getElementById('btn-clear-search').style.display = 'none';
       document.getElementById('ctrl-min-price').value = '';
       document.getElementById('ctrl-max-price').value = '';
       const slider = document.getElementById('ctrl-price-range');
       if (slider) slider.value = 20;
-      document.getElementById('ctrl-brand').value = 'all';
-      document.getElementById('ctrl-trans').value = 'all';
-      document.getElementById('ctrl-tier').value = 'all';
 
-      if (preset === 'polo') {
-        state.brand = 'volkswagen';
-        state.search = 'polo';
-        document.getElementById('ctrl-brand').value = 'volkswagen';
-        document.getElementById('ctrl-search').value = 'polo';
-      } else if (preset === 'city') {
-        state.brand = 'honda';
-        state.search = 'city';
-        document.getElementById('ctrl-brand').value = 'honda';
-        document.getElementById('ctrl-search').value = 'city';
+      document.querySelectorAll('#brand-pills .facet-pill').forEach(b => b.classList.remove('active'));
+      document.querySelector('#brand-pills .facet-pill').classList.add('active');
+      document.querySelectorAll('#trans-pills .facet-pill').forEach(b => b.classList.remove('active'));
+      document.querySelector('#trans-pills .facet-pill').classList.add('active');
+      document.querySelectorAll('#fuel-pills .facet-pill').forEach(b => b.classList.remove('active'));
+      document.querySelector('#fuel-pills .facet-pill').classList.add('active');
+      document.querySelectorAll('#year-pills .facet-pill').forEach(b => b.classList.remove('active'));
+      document.querySelector('#year-pills .facet-pill').classList.add('active');
+      document.querySelectorAll('#km-pills .facet-pill').forEach(b => b.classList.remove('active'));
+      document.querySelector('#km-pills .facet-pill').classList.add('active');
+
+      if (preset === 'top_steals') {
+        state.dealGrade = 'top';
       } else if (preset === 'sub_45l') {
         state.max_price = 450000;
         document.getElementById('ctrl-max-price').value = '4.5';
         if (slider) slider.value = 4.5;
-      } else if (preset === 'auto_sub5') {
+      } else if (preset === 'auto_sub6') {
         state.trans = 'automatic';
-        state.max_price = 500000;
-        document.getElementById('ctrl-trans').value = 'automatic';
-        document.getElementById('ctrl-max-price').value = '5.0';
-        if (slider) slider.value = 5.0;
-      } else if (preset === 'low_km') {
-        // Filtered dynamically
+        state.max_price = 600000;
+        document.getElementById('ctrl-max-price').value = '6.0';
+        if (slider) slider.value = 6.0;
+        document.querySelectorAll('#trans-pills .facet-pill').forEach(b => {
+          if (b.textContent.trim() === 'Automatic') b.classList.add('active');
+          else b.classList.remove('active');
+        });
+      } else if (preset === 'enthusiast') {
+        state.search = 'polo';
+        document.getElementById('ctrl-search').value = 'polo';
+        document.getElementById('btn-clear-search').style.display = 'block';
       } else if (preset === 'assured_only') {
         state.tier = 'assured';
-        document.getElementById('ctrl-tier').value = 'assured';
+      } else if (preset === 'low_km') {
+        state.max_km = 40000;
+      } else if (preset === 'high_discount') {
+        // Handled in applyFilters
       }
 
       applyFilters();
@@ -1004,34 +1491,91 @@ html_content = """<!DOCTYPE html>
       state.min_year = 0;
       state.min_price = 0;
       state.max_price = 0;
+      state.max_km = 0;
       state.brand = 'all';
       state.trans = 'all';
+      state.fuel = 'all';
       state.tier = 'all';
+      state.dealGrade = 'all';
       state.sort = 'score';
-      state.topDealsOnly = false;
       state.activePreset = null;
 
       document.getElementById('ctrl-search').value = '';
-      document.getElementById('ctrl-year').value = '0';
+      document.getElementById('btn-clear-search').style.display = 'none';
       document.getElementById('ctrl-min-price').value = '';
       document.getElementById('ctrl-max-price').value = '';
       const slider = document.getElementById('ctrl-price-range');
       if (slider) slider.value = 20;
-      document.getElementById('ctrl-brand').value = 'all';
-      document.getElementById('ctrl-trans').value = 'all';
-      document.getElementById('ctrl-tier').value = 'all';
       document.getElementById('ctrl-sort').value = 'score';
-      document.getElementById('btn-top-deals').classList.remove('active');
-      document.querySelectorAll('.preset-chip').forEach(b => b.classList.remove('active'));
 
+      document.querySelectorAll('.facet-pills').forEach(group => {
+        const pills = group.querySelectorAll('.facet-pill');
+        pills.forEach((p, idx) => {
+          if (idx === 0) p.classList.add('active');
+          else p.classList.remove('active');
+        });
+      });
+
+      clearPresetHighlight();
       applyFilters();
+    }
+
+    function renderActiveTags() {
+      const container = document.getElementById('active-tags-container');
+      const tags = [];
+
+      if (state.search) {
+        tags.push({ label: `Search: "${state.search}"`, clear: () => clearSearch() });
+      }
+      if (state.min_price > 0 || state.max_price > 0) {
+        const minL = state.min_price ? (state.min_price / 100000).toFixed(1) : '0';
+        const maxL = state.max_price ? (state.max_price / 100000).toFixed(1) : 'Any';
+        tags.push({ label: `Budget: ₹${minL}L - ₹${maxL}L`, clear: () => clearPrice() });
+      }
+      if (state.brand !== 'all') {
+        tags.push({ label: `Brand: ${state.brand.toUpperCase()}`, clear: () => setBrand('all', document.querySelector('#brand-pills .facet-pill')) });
+      }
+      if (state.trans !== 'all') {
+        tags.push({ label: `Gearbox: ${state.trans}`, clear: () => setTrans('all', document.querySelector('#trans-pills .facet-pill')) });
+      }
+      if (state.fuel !== 'all') {
+        tags.push({ label: `Fuel: ${state.fuel}`, clear: () => setFuel('all', document.querySelector('#fuel-pills .facet-pill')) });
+      }
+      if (state.min_year > 0) {
+        tags.push({ label: `Year: ${state.min_year}+`, clear: () => setYear(0, document.querySelector('#year-pills .facet-pill')) });
+      }
+      if (state.max_km > 0) {
+        tags.push({ label: `Mileage: ≤ ${Math.round(state.max_km / 1000)}k km`, clear: () => setMaxKm(0, document.querySelector('#km-pills .facet-pill')) });
+      }
+      if (state.tier === 'assured') {
+        tags.push({ label: 'Spinny Assured only', clear: () => { state.tier = 'all'; applyFilters(); } });
+      }
+      if (state.dealGrade === 'top') {
+        tags.push({ label: 'Top Deals only', clear: () => { state.dealGrade = 'all'; applyFilters(); } });
+      }
+      if (state.activePreset === 'high_discount') {
+        tags.push({ label: '50%+ Off Original New', clear: () => { state.activePreset = null; clearPresetHighlight(); applyFilters(); } });
+      }
+
+      window._activeTags = tags;
+
+      if (!tags.length) {
+        container.innerHTML = '<span class="caption-5" style="color:var(--text-subtle);">None (Showing full Bangalore inventory)</span>';
+      } else {
+        container.innerHTML = tags.map((t, idx) => `
+          <span class="active-tag">
+            <span>${t.label}</span>
+            <button type="button" class="active-tag-remove" onclick="window._activeTags[${idx}].clear()" title="Remove filter">✕</button>
+          </span>
+        `).join('');
+      }
     }
 
     function applyFilters() {
       let filtered = CARS.filter(c => {
-        if (state.topDealsOnly && !c.is_top_deal) return false;
-
-        if (state.activePreset === 'low_km' && (c.mileage || 0) > 40000) return false;
+        if (state.dealGrade === 'top' && (c.deal_score || 0) < 80) return false;
+        if (state.tier === 'assured' && c.category !== 'assured') return false;
+        if (state.activePreset === 'high_discount' && (c.retail_discount_pct || 0) < 50) return false;
 
         if (state.search) {
           const text = `${c.make_year} ${c.make} ${c.model} ${c.variant} ${c.hub} ${c.transmission} ${c.fuel_type}`.toLowerCase();
@@ -1039,6 +1583,7 @@ html_content = """<!DOCTYPE html>
         }
 
         if (state.min_year > 0 && (c.make_year || 0) < state.min_year) return false;
+        if (state.max_km > 0 && (c.mileage || 0) > state.max_km) return false;
 
         if (state.min_price > 0 && (c.price || 0) < state.min_price) return false;
         if (state.max_price > 0 && (c.price || 0) > state.max_price) return false;
@@ -1055,9 +1600,9 @@ html_content = """<!DOCTYPE html>
           if (state.trans === 'manual' && isAuto) return false;
         }
 
-        if (state.tier !== 'all') {
-          const tier = (c.category || 'auction').toLowerCase();
-          if (tier !== state.tier) return false;
+        if (state.fuel !== 'all') {
+          const f = (c.fuel_type || '').toLowerCase();
+          if (!f.includes(state.fuel)) return false;
         }
 
         return true;
@@ -1077,22 +1622,23 @@ html_content = """<!DOCTYPE html>
       } else if (state.sort === 'km_asc') {
         filtered.sort((a, b) => (a.mileage || 0) - (b.mileage || 0));
       } else {
-        // Default: deal_score descending
+        // Default: deal score descending
         filtered.sort((a, b) => (b.deal_score || 0) - (a.deal_score || 0));
       }
 
       document.getElementById('res-count').textContent = filtered.length;
-      render(filtered);
+      renderActiveTags();
+      renderCards(filtered);
     }
 
-    function render(list) {
+    function renderCards(list) {
       const grid = document.getElementById('cars-grid');
       if (!list.length) {
         grid.innerHTML = `
           <div class="empty-state">
             <h3>No matching vehicles found</h3>
-            <p>Try loosening your price window or clearing active filters to view all Bangalore inventory.</p>
-            <button class="filter-select" onclick="resetAll()">Reset All Filters</button>
+            <p>Try loosening your price window or clearing active filters to browse all Bangalore inventory.</p>
+            <button class="facet-pill active" onclick="resetAll()">Reset All Filters</button>
           </div>
         `;
         return;
@@ -1110,7 +1656,7 @@ html_content = """<!DOCTYPE html>
         const title = `${c.make_year} ${c.make} ${c.model} ${c.variant || ''}`.trim();
         const an = c.analysis || {};
         const buyback = '₹' + ((an.est_buyback_2yr || 0) / 100000).toFixed(2) + 'L';
-        const monthly = '₹' + Math.round(an.monthly_loss || 0).toLocaleString('en-IN') + '/mo';
+        const monthly = '₹' + Math.round(an.monthly_loss || 0).toLocaleString('en-IN') + ' per mo';
 
         let gradeClass = 'fair';
         let gradeLabel = `Score ${c.deal_score}`;
@@ -1125,64 +1671,60 @@ html_content = """<!DOCTYPE html>
         return `
           <article class="card">
             <div class="card-photo">
-              <span class="tag-grade ${gradeClass}">${gradeLabel}</span>
-              <span class="tag-tier ${isAssured ? 'assured' : ''}">
+              <span class="badge-grade ${gradeClass}">${gradeLabel}</span>
+              <span class="badge-tier ${isAssured ? 'assured' : ''}">
                 ${isAssured ? '✓ Spinny Assured' : '⚡ Wholesale Stock'}
               </span>
-              ${c.img ? `<img src="${c.img}" alt="${title}" loading="lazy" referrerpolicy="no-referrer" />` : '<span style="color:var(--color-ink-faint); font-family:var(--font-mono); font-size:12px;">No Image</span>'}
+              ${c.img ? `<img src="${c.img}" alt="${title}" loading="lazy" referrerpolicy="no-referrer" />` : '<span class="caption-5" style="color:var(--text-subtle);">No image preview</span>'}
             </div>
-            
-            <div class="card-body">
+
+            <div class="card-content">
               <div>
-                <h2 class="car-name">${title}</h2>
-                <div class="car-telemetry" style="margin-top:6px;">
-                  <span class="spec-item">${km}</span>
-                  <span class="spec-item">${(c.fuel_type || 'Petrol').toUpperCase()}</span>
-                  <span class="spec-item">${(c.transmission || 'MT').toUpperCase()}</span>
-                  <span class="spec-item" style="color:var(--color-ink-faint);">${c.hub}</span>
+                <h2 class="car-title">${title}</h2>
+                <div class="car-tags" style="margin-top:6px;">
+                  <span class="spec-tag">${km}</span>
+                  <span class="spec-tag">${(c.fuel_type || 'Petrol').toUpperCase()}</span>
+                  <span class="spec-tag">${(c.transmission || 'MT').toUpperCase()}</span>
+                  <span class="spec-tag" style="color:var(--text-subtle);">${c.hub}</span>
                 </div>
               </div>
 
-              <!-- Pricing Intelligence Deck -->
-              <div class="pricing-deck">
-                <div class="price-cell">
-                  <span class="price-type-label">Listed</span>
-                  <span class="price-figure">${price}</span>
+              <!-- Pricing Intelligence Box -->
+              <div class="pricing-box">
+                <div class="price-col">
+                  <span class="price-label">Listed</span>
+                  <span class="price-val">${price}</span>
                 </div>
-                <div class="price-cell">
-                  <span class="price-type-label">Negotiable Target</span>
-                  <div class="price-figure-wrap">
-                    <span class="price-figure nego-val">${negoPrice}</span>
-                    ${savings > 0 ? `<span class="pill-save">Save ~${savingsFmt}</span>` : ''}
-                  </div>
+                <div class="price-col">
+                  <span class="price-label">Negotiable Target</span>
+                  <span class="price-val negotiable">${negoPrice}</span>
+                  ${savings > 0 ? `<span class="savings-pill">Save ~${savingsFmt}</span>` : ''}
                 </div>
-                <div class="price-cell">
-                  <span class="price-type-label">Original New</span>
-                  <div class="price-figure-wrap">
-                    <span class="price-figure retail-val">${retailPrice}</span>
-                    ${c.retail_discount_pct ? `<span class="pill-discount">-${c.retail_discount_pct}%</span>` : ''}
-                  </div>
+                <div class="price-col">
+                  <span class="price-label">Original New</span>
+                  <span class="price-val original">${retailPrice}</span>
+                  ${c.retail_discount_pct ? `<span class="discount-pill">-${c.retail_discount_pct}%</span>` : ''}
                 </div>
               </div>
 
-              <!-- Secondary Telemetry Strip -->
-              <div class="metrics-strip">
-                <div class="metric-col">
-                  <span class="metric-label">${isAssured ? '2-Yr Guaranteed Buyback' : '2-Yr Market Resale'}</span>
-                  <span class="metric-val buyback">${buyback}</span>
+              <!-- Telemetry Strip -->
+              <div class="telemetry-strip">
+                <div class="telemetry-col">
+                  <span class="telemetry-label">${isAssured ? '24 Month Guaranteed Buyback' : '24 Month Market Resale'}</span>
+                  <span class="telemetry-val buyback">${buyback}</span>
                 </div>
-                <div class="metric-col">
-                  <span class="metric-label">Monthly Cost</span>
-                  <span class="metric-val monthly">${monthly}</span>
+                <div class="telemetry-col">
+                  <span class="telemetry-label">Depreciation Cost</span>
+                  <span class="telemetry-val cost">${monthly}</span>
                 </div>
               </div>
 
-              <!-- 1-Line Verdict -->
-              <p class="car-verdict">${c.verdict || 'Reliable urban commuter with strong parts availability.'}</p>
+              <!-- Verdict -->
+              <p class="verdict-line">${c.verdict || 'Reliable urban commuter with steady parts availability.'}</p>
 
-              <div class="card-action">
-                <a href="${c.url || '#'}" target="_blank" rel="noopener noreferrer" class="btn-spinny">
-                  <span>Inspect on Spinny</span>
+              <div class="card-footer">
+                <a href="${c.url || '#'}" target="_blank" rel="noopener noreferrer" class="cta-btn">
+                  <span>Inspect vehicle on Spinny</span>
                   <span>&rarr;</span>
                 </a>
               </div>
@@ -1192,6 +1734,7 @@ html_content = """<!DOCTYPE html>
       }).join('');
     }
 
+    // Initial render
     applyFilters();
   </script>
 </body>
@@ -1202,8 +1745,7 @@ deals_path = os.path.join(DIR, "deals.html")
 with open(deals_path, "w") as f:
     f.write(html_content)
 
-# Also sync index.html
 index_path = os.path.join(DIR, "index.html")
 shutil.copyfile(deals_path, index_path)
 
-print(f"Hallmark debloated UI written to {deals_path} and synced to {index_path}")
+print(f"Redesigned UI successfully generated at {deals_path} and synced to {index_path}")
