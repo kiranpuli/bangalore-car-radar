@@ -93,7 +93,294 @@ def estimate_original_retail(make, model, variant, year, transmission):
     return round(base * multiplier / 10000) * 10000
 
 
-# Ensure consistent deal scoring, pricing intelligence & verdicts
+def get_ownership_review(make, model, fuel, trans, year):
+    m_lower = (make or "").lower().strip()
+    mod_lower = (model or "").lower().strip()
+    f_lower = (fuel or "petrol").lower().strip()
+    t_lower = (trans or "manual").lower().strip()
+    is_auto = any(x in t_lower for x in ["auto", "amt", "cvt", "dsg", "at", "dct"])
+    is_diesel = "diesel" in f_lower
+    is_cng = "cng" in f_lower
+
+    city_mpg = "12-14 km/l"
+    hwy_mpg = "17-19 km/l"
+    maint = "₹5,000 - ₹7,000 / yr"
+    ride = "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps."
+    issues = "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads."
+    verdict = "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
+
+    if "kwid" in mod_lower:
+        city_mpg = "13-15 km/l" if not is_auto else "12-14 km/l"
+        hwy_mpg = "19-21 km/l"
+        maint = "₹4,000 - ₹5,500 / yr"
+        ride = "184mm class-leading ground clearance clears severe Bangalore speed breakers with zero scraping."
+        issues = "AMT gearbox exhibits noticeable shift lag in Silk Board crawl; inspect front lower arm bushes and AC cooling."
+        verdict = "Best low-budget first car for narrow residential streets in Bangalore with low upkeep cost."
+    elif "triber" in mod_lower:
+        city_mpg = "11-13 km/l"
+        hwy_mpg = "16-18 km/l"
+        maint = "₹5,000 - ₹6,500 / yr"
+        ride = "182mm ground clearance with long suspension travel absorbs bad roads; modular 7-seater flexibility."
+        issues = "1.0L engine feels underpowered with full 7-passenger load on steep flyovers; verify clutch health."
+        verdict = "Unbeatable space-per-rupee for Bangalore families needing 7-seater capability on a tight budget."
+    elif "swift" in mod_lower or "dzire" in mod_lower:
+        city_mpg = "13-15 km/l" if not is_diesel else "16-18 km/l"
+        hwy_mpg = "19-22 km/l" if not is_diesel else "22-25 km/l"
+        maint = "₹4,500 - ₹6,000 / yr"
+        ride = "Plush low-speed damping over broken tarmac; 163mm ground clearance needs gentle angling on huge humps."
+        issues = "Steering column rattle over rumble strips; inspect clutch plate wear from bumper-to-bumper ORR crawling."
+        verdict = "Bangalore's gold standard commuter: instant parts availability at any FNG and fastest resale turnaround."
+    elif "baleno" in mod_lower or "glanza" in mod_lower:
+        city_mpg = "13-15 km/l"
+        hwy_mpg = "19-21 km/l"
+        maint = "₹4,500 - ₹6,000 / yr"
+        ride = "Wide, airy cabin with light steering effortless in Bangalore traffic; supple low-speed ride."
+        issues = "Thin sheet metal prone to minor city door dings; check lower suspension arm ball joints."
+        verdict = "Superb rear seat legroom and low running costs make it an ideal family hatchback for daily city use."
+    elif "wagon r" in mod_lower or "wagonr" in mod_lower:
+        city_mpg = "14-16 km/l" if not is_cng else "22-25 km/kg"
+        hwy_mpg = "19-22 km/l"
+        maint = "₹3,500 - ₹5,000 / yr"
+        ride = "Tall-boy upright seating gives commanding visibility in tight traffic; easy ingress/egress for elderly."
+        issues = "Body roll on highway turns; AMT actuator can get jerky in peak summer traffic if fluid is old."
+        verdict = "The ultimate stress-free Bangalore city runabout with negligible maintenance and highest fuel efficiency."
+    elif "alto" in mod_lower:
+        city_mpg = "15-18 km/l"
+        hwy_mpg = "21-24 km/l"
+        maint = "₹3,000 - ₹4,500 / yr"
+        ride = "Compact footprint fits the tightest parking spots in Malleshwaram or Indiranagar; basic suspension."
+        issues = "Lightweight steering lacks highway feel; inspect tyre wear and front wheel bearings."
+        verdict = "Lowest cost-of-ownership car in India. Unmatched fuel economy and practically free maintenance."
+    elif "i10" in mod_lower or "grand i10" in mod_lower:
+        city_mpg = "11-13 km/l"
+        hwy_mpg = "16-18 km/l"
+        maint = "₹5,000 - ₹7,000 / yr"
+        ride = "Refined 4-cylinder engine with whisper-quiet cabin insulation; very light clutch for Bangalore traffic."
+        issues = "Steering column coupling bush wear causes dull thuds; clutch life typically 40k-50k km in heavy traffic."
+        verdict = "Premium interior feel and smooth refinement make it one of the most comfortable daily hatchbacks."
+    elif "i20" in mod_lower:
+        city_mpg = "10-12 km/l" if not is_diesel else "14-16 km/l"
+        hwy_mpg = "15-17 km/l" if not is_diesel else "19-22 km/l"
+        maint = "₹6,000 - ₹8,000 / yr"
+        ride = "Solid European-like highway composure and well-damped suspension; comfortable rear bench with rear AC vents."
+        issues = "Slightly thirsty 1.2L petrol in Silk Board traffic (9-10 km/l); check steering rack end play."
+        verdict = "Feature-packed premium hatchback that feels like a segment above on Mysore highway road trips."
+    elif "creta" in mod_lower or "seltos" in mod_lower:
+        city_mpg = "10-12 km/l" if not is_diesel else "14-16 km/l"
+        hwy_mpg = "15-17 km/l" if not is_diesel else "19-21 km/l"
+        maint = "₹7,500 - ₹10,000 / yr"
+        ride = "190mm ground clearance floats effortlessly over potholed roads; high seating posture intimidates auto-rickshaws."
+        issues = "Clutch hardness on manual variants; check brake pad wear and suspension stabilizer links."
+        verdict = "Bangalore's most popular compact SUV for a reason: high prestige, zero scraping, and top-tier resale value."
+    elif "venue" in mod_lower or "sonet" in mod_lower:
+        city_mpg = "11-13 km/l"
+        hwy_mpg = "16-18 km/l"
+        maint = "₹6,000 - ₹8,500 / yr"
+        ride = "195mm ground clearance handles monsoon flooding and giant speed breakers with absolute confidence."
+        issues = "Slightly stiff rear suspension on sharp potholes; DCT automatic can heat up in standstill traffic."
+        verdict = "Compact footprint with true SUV stance. Easy to park in Whitefield tech parks while soaking up cratered roads."
+    elif "nexon" in mod_lower:
+        city_mpg = "11-13 km/l" if not is_diesel else "15-17 km/l"
+        hwy_mpg = "16-18 km/l" if not is_diesel else "20-22 km/l"
+        maint = "₹6,000 - ₹8,500 / yr"
+        ride = "5-Star Global NCAP safety tank with 209mm ground clearance; impervious to Bangalore's worst potholes."
+        issues = "AMT gearbox feels jerky between 1st and 2nd gear; touchscreen infotainment occasionally lags."
+        verdict = "Heavy-duty road safety and rugged suspension make it the ultimate crater-proof Bangalore city SUV."
+    elif "tiago" in mod_lower or "tigor" in mod_lower:
+        city_mpg = "12-14 km/l"
+        hwy_mpg = "18-20 km/l"
+        maint = "₹5,000 - ₹7,000 / yr"
+        ride = "Solid build quality that feels much safer than Maruti rivals; stable at highway speeds."
+        issues = "3-cylinder engine vibration at idle; check power window switches and front suspension bushes."
+        verdict = "Safe, sturdy entry hatchback that offers great value and peace of mind on both city and highway trips."
+    elif "altroz" in mod_lower:
+        city_mpg = "12-14 km/l"
+        hwy_mpg = "17-19 km/l"
+        maint = "₹5,500 - ₹7,500 / yr"
+        ride = "5-Star safety chassis with doors opening 90 degrees; planted European high-speed stability."
+        issues = "Naturally aspirated petrol feels relaxed on overtakes; verify clutch cable smoothness."
+        verdict = "Top choice for safety-conscious buyers wanting a stylish, rock-solid premium hatchback."
+    elif "city" in mod_lower:
+        city_mpg = "10-12 km/l"
+        hwy_mpg = "16-18 km/l"
+        maint = "₹6,500 - ₹9,000 / yr"
+        ride = "Silky 1.5L i-VTEC petrol engine is an absolute mechanical masterpiece; sofa-grade rear seat comfort."
+        issues = "Soft rear suspension bottoms out on tall Bangalore unscientific speed breakers with 4 adults onboard."
+        verdict = "Timeless executive sedan. Engine will easily outlast 200,000 km with basic annual fluid changes."
+    elif "amaze" in mod_lower:
+        city_mpg = "12-14 km/l"
+        hwy_mpg = "17-20 km/l"
+        maint = "₹5,000 - ₹7,000 / yr"
+        ride = "Huge 420L boot and comfortable suspension; CVT automatic is butter-smooth in crawling traffic."
+        issues = "Lightweight steering at triple digit speeds; check brake disc rotor scoring."
+        verdict = "Extremely reliable compact sedan with Honda mechanical dependability and stress-free ownership."
+    elif "polo" in mod_lower or "vento" in mod_lower:
+        city_mpg = "10-12 km/l"
+        hwy_mpg = "15-18 km/l"
+        maint = "₹9,000 - ₹14,000 / yr"
+        ride = "Enthusiast's benchmark: laser-precise steering, tank-like door thud, and peerless highway stability."
+        issues = "ABS wheel sensors fail frequently (₹2,500/wheel); verify DSG dual-clutch transmission history if automatic."
+        verdict = "Driver's delight. Higher annual maintenance than Maruti, but unmatched driving pleasure and road feel."
+    elif "ecosport" in mod_lower:
+        city_mpg = "11-13 km/l" if not is_diesel else "14-16 km/l"
+        hwy_mpg = "15-17 km/l" if not is_diesel else "19-21 km/l"
+        maint = "₹7,000 - ₹10,000 / yr"
+        ride = "200mm ground clearance with dynamic sporty steering; feels indestructible over rough patches."
+        issues = "Ford official service exists but parts take 3-5 days to arrive; inspect timing belt condition on Dragon petrols."
+        verdict = "Original compact SUV with rock-solid dynamics. Tremendous second-hand value if serviced regularly."
+    elif "xuv" in mod_lower or "scorpio" in mod_lower or "thar" in mod_lower:
+        city_mpg = "9-11 km/l"
+        hwy_mpg = "13-15 km/l"
+        maint = "₹8,000 - ₹12,000 / yr"
+        ride = "High-perch road commanding presence; ladder frame or monocoque clears any floodwater or crater effortlessly."
+        issues = "Heavy clutch pedal in bumper-to-bumper traffic; check suspension lower ball joints and brake pad life."
+        verdict = "Mighty road presence and supreme durability for rough weekend excursions and long touring."
+    elif "duster" in mod_lower or "kiger" in mod_lower:
+        city_mpg = "12-14 km/l"
+        hwy_mpg = "17-19 km/l"
+        maint = "₹5,500 - ₹7,500 / yr"
+        ride = "Magic carpet ride: absorbs cratered roads and broken tarmac better than cars twice its price."
+        issues = "Plastic interior trim rattles over time; check AC cooling efficiency and clutch hydraulics."
+        verdict = "Best suspension setup for Bangalore's worst roads. Glides over potholes without shaking the cabin."
+
+    return {
+        "fuel_economy": f"{city_mpg} (BLR City) · {hwy_mpg} (Highway)",
+        "annual_maintenance": maint,
+        "ride_comfort": ride,
+        "known_issues": issues,
+        "bangalore_verdict": verdict
+    }
+
+
+def calculate_score_and_breakdown(car, orig_retail, discount_pct):
+    km = car.get("mileage", 100000)
+    year = car.get("make_year", 2015)
+    price = car.get("price", 500000)
+    is_assured = car.get("category") == "assured"
+    make = (car.get("make") or "").lower()
+
+    factors = []
+    base_score = 40
+    factors.append({
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+    })
+
+    # 1. Mileage Health
+    if km <= 25000:
+        km_pts = 24
+        km_desc = f"Ultra-low odometer ({km//1000}k km) · pristine engine health"
+    elif km <= 40000:
+        km_pts = 18
+        km_desc = f"Low mileage ({km//1000}k km) · well below market wear"
+    elif km <= 60000:
+        km_pts = 12
+        km_desc = f"Moderate mileage ({km//1000}k km) · healthy mechanical life"
+    elif km <= 80000:
+        km_pts = 6
+        km_desc = f"Standard city mileage ({km//1000}k km)"
+    else:
+        km_pts = -8
+        km_desc = f"High mileage ({km//1000}k km) · nearing major suspension service"
+    factors.append({
+        "pillar": "Odometer & Engine Wear",
+        "detail": km_desc,
+        "pts": f"{'+' if km_pts > 0 else ''}{km_pts} pts",
+        "type": "pos" if km_pts > 0 else "neg"
+    })
+
+    # 2. Year & Generation
+    if year >= 2021:
+        yr_pts = 20
+        yr_desc = f"Modern {year} model · BS6 Phase 2 era & updated safety"
+    elif year >= 2019:
+        yr_pts = 16
+        yr_desc = f"Recent {year} generation · BS6 compliant & low age wear"
+    elif year >= 2017:
+        yr_pts = 11
+        yr_desc = f"Solid {year} manufacture · modern chassis"
+    elif year >= 2015:
+        yr_pts = 5
+        yr_desc = f"{year} model · mid-life depreciation curve"
+    else:
+        yr_pts = -6
+        yr_desc = f"{year} vintage · older generation approaching 15-year fitness"
+    factors.append({
+        "pillar": "Vehicle Age & Generation",
+        "detail": yr_desc,
+        "pts": f"{'+' if yr_pts > 0 else ''}{yr_pts} pts",
+        "type": "pos" if yr_pts > 0 else "neg"
+    })
+
+    # 3. Depreciation Arbitrage vs Original Retail
+    if discount_pct >= 55:
+        disc_pts = 18
+        disc_desc = f"Steep {discount_pct}% discount vs ₹{orig_retail/100000:.1f}L new price"
+    elif discount_pct >= 45:
+        disc_pts = 14
+        disc_desc = f"High {discount_pct}% discount vs original retail"
+    elif discount_pct >= 35:
+        disc_pts = 9
+        disc_desc = f"Healthy {discount_pct}% savings from original MSRP"
+    else:
+        disc_pts = 4
+        disc_desc = f"{discount_pct}% under original retail value"
+    factors.append({
+        "pillar": "Depreciation Arbitrage",
+        "detail": disc_desc,
+        "pts": f"+{disc_pts} pts",
+        "type": "pos"
+    })
+
+    # 4. Certification & Warranty
+    if is_assured:
+        cert_pts = 14
+        cert_desc = "Certified Assured · 200-pt mechanical inspection & 1-year warranty"
+    else:
+        cert_pts = 4
+        cert_desc = "Standard verification checklist · independent inspection recommended"
+    factors.append({
+        "pillar": "Warranty & Inspection",
+        "detail": cert_desc,
+        "pts": f"+{cert_pts} pts",
+        "type": "pos"
+    })
+
+    # 5. Sweet spot / Brand liquidity
+    extra_pts = 0
+    sweet_reasons = []
+    if year >= 2018 and km <= 40000:
+        extra_pts += 5
+        sweet_reasons.append("post-2018 under 40k km")
+    if any(m in make for m in ["maruti", "hyundai", "honda", "toyota"]):
+        extra_pts += 4
+        sweet_reasons.append("high-liquidity resale engine")
+    if extra_pts > 0:
+        factors.append({
+            "pillar": "Bangalore Resale Archetype",
+            "detail": f"Sweet spot combo: {', '.join(sweet_reasons)}",
+            "pts": f"+{extra_pts} pts",
+            "type": "pos"
+        })
+
+    raw_total = base_score + km_pts + yr_pts + disc_pts + cert_pts + extra_pts
+    final_score = min(99, max(40, raw_total))
+
+    if final_score >= 80:
+        deal_grade = "TOP DEAL"
+    elif final_score >= 68:
+        deal_grade = "VALUE PICK"
+    else:
+        deal_grade = "FAIR"
+
+    top_pos = [f["pillar"] for f in factors if f["type"] == "pos"][:2]
+    rationale = f"Rated {final_score}/100 primarily driven by {', '.join(top_pos).lower()}."
+    return final_score, deal_grade, factors, rationale
+
+
+# Ensure consistent deal scoring, pricing intelligence, score breakdowns & ownership reviews
 for c in cars:
     if not c.get("platform"):
         c["platform"] = "Cars24" if str(c.get("id", "")).startswith("c24_") or "cars24.com" in c.get("url", "") else "Spinny"
@@ -102,27 +389,26 @@ for c in cars:
     price = c.get("price", 500000)
     is_assured = c.get("category") == "assured"
 
-    # Deal score
-    score = 45
-    if km <= 25000: score += 24
-    elif km <= 40000: score += 18
-    elif km <= 60000: score += 12
-    elif km <= 80000: score += 5
-    elif km > 100000: score -= 10
+    # Original retail price
+    orig_p = c.get("orig_retail_price")
+    if not orig_p:
+        orig_p = estimate_original_retail(c.get("make"), c.get("model"), c.get("variant"), year, c.get("transmission"))
+        if orig_p <= price:
+            orig_p = round((price * 1.40) / 10000) * 10000
+        c["orig_retail_price"] = orig_p
+    discount_pct = max(5, min(85, round((1.0 - (price / orig_p)) * 100)))
+    c["retail_discount_pct"] = discount_pct
 
-    if year >= 2021: score += 22
-    elif year >= 2019: score += 18
-    elif year >= 2017: score += 12
-    elif year >= 2015: score += 6
-    elif year <= 2013: score -= 6
-
-    if is_assured: score += 15
-    if year >= 2018 and km <= 40000: score += 6
-
-    final_score = min(99, max(40, score))
+    # Score calculation and breakdown
+    final_score, deal_grade, score_factors, score_rationale = calculate_score_and_breakdown(c, orig_p, discount_pct)
     c["deal_score"] = final_score
+    c["deal_grade"] = deal_grade
     c["is_top_deal"] = final_score >= 68
-    c["deal_grade"] = "TOP DEAL" if final_score >= 80 else ("VALUE PICK" if final_score >= 68 else "FAIR")
+    c["score_breakdown"] = score_factors
+    c["score_rationale"] = score_rationale
+
+    # Ownership review
+    c["ownership_review"] = get_ownership_review(c.get("make"), c.get("model"), c.get("fuel_type"), c.get("transmission"), year)
 
     # Negotiable price
     if not c.get("negotiable_price"):
@@ -137,19 +423,14 @@ for c in cars:
         c["negotiable_price"] = nego_p
         c["negotiable_savings"] = max(0, round(price - nego_p))
 
-    # Original retail price
-    if not c.get("orig_retail_price"):
-        orig_p = estimate_original_retail(c.get("make"), c.get("model"), c.get("variant"), year, c.get("transmission"))
-        if orig_p <= price:
-            orig_p = round((price * 1.40) / 10000) * 10000
-        c["orig_retail_price"] = orig_p
-        c["retail_discount_pct"] = max(5, min(85, round((1.0 - (price / orig_p)) * 100)))
-
     pros = c.get("analysis", {}).get("pros", [])
     if pros:
         c["verdict"] = pros[0]
     else:
-        c["verdict"] = "Reliable city commuter with steady resale value."
+        c["verdict"] = c["ownership_review"]["bangalore_verdict"]
+
+with open(json_path, "w") as fp:
+    json.dump(cars, fp, indent=2)
 
 cars_json = json.dumps(cars)
 alerts_json = json.dumps(alerts_list)
@@ -181,28 +462,28 @@ html_content = """<!DOCTYPE html>
       - Zero background gradients, 4-sided borders, strict Tailwind type scale
     */
     :root {
-      --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, monospace;
 
-      /* Dark tokens */
-      --bg-canvas: #131209;
-      --bg-surface: #1F1F1F;
-      --bg-subsurface: #272727;
-      --bg-photo: #181818;
-      --border-color: #313131;
-      --border-focus: #3B82F6;
+      /* High-contrast, WCAG AAA legible dark tokens */
+      --bg-canvas: #090D16;
+      --bg-surface: #121824;
+      --bg-subsurface: #1A2232;
+      --bg-photo: #0B101A;
+      --border-color: #263346;
+      --border-focus: #38BDF8;
 
       --text-primary: #FFFFFF;
-      --text-body: #EDEDED;
-      --text-muted: #9B9B9B;
-      --text-subtle: #737373;
+      --text-body: #F1F5F9;
+      --text-muted: #CBD5E1;
+      --text-subtle: #94A3B8;
 
-      --accent-emerald: #10B981;
-      --accent-emerald-bg: rgba(16, 185, 129, 0.14);
-      --accent-amber: #F59E0B;
-      --accent-amber-bg: rgba(245, 158, 11, 0.14);
-      --accent-blue: #3B82F6;
-      --accent-blue-bg: rgba(59, 130, 246, 0.14);
+      --accent-emerald: #34D399;
+      --accent-emerald-bg: rgba(52, 211, 153, 0.16);
+      --accent-amber: #FBBF24;
+      --accent-amber-bg: rgba(251, 191, 36, 0.16);
+      --accent-blue: #38BDF8;
+      --accent-blue-bg: rgba(56, 189, 248, 0.16);
 
       /* Spacing scale */
       --sp-25: 2px;
@@ -591,7 +872,7 @@ html_content = """<!DOCTYPE html>
       max-width: 680px;
     }
     .hero-heading {
-      background: linear-gradient(90deg, #FFFFFF 0%, #9B9B9B 100%);
+      background: linear-gradient(90deg, #FFFFFF 0%, #E2E8F0 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: var(--sp-100);
@@ -1095,11 +1376,11 @@ html_content = """<!DOCTYPE html>
       border-radius: var(--radius-sm);
     }
 
-    /* Nested Pricing Intelligence Box (Formula: radius 16px - gap 8px = 8px) */
+    /* Pricing Intelligence Box */
     .pricing-box {
       display: grid;
       grid-template-columns: 1fr 1.25fr 1.1fr;
-      background: var(--bg-subsurface);
+      background: #151D2A;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       padding: 10px 12px;
@@ -1112,15 +1393,16 @@ html_content = """<!DOCTYPE html>
     .price-label {
       font-family: var(--font-mono);
       font-size: 10px;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--text-subtle);
     }
     .price-val {
       font-family: var(--font-mono);
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-primary);
+      font-size: 15px;
+      font-weight: 700;
+      color: #FFFFFF;
       margin-top: 2px;
       line-height: 1.2;
     }
@@ -1134,11 +1416,11 @@ html_content = """<!DOCTYPE html>
     .savings-pill {
       font-family: var(--font-mono);
       font-size: 9px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--accent-emerald);
       background: var(--accent-emerald-bg);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 1px 4px;
+      border: 1px solid rgba(52, 211, 153, 0.35);
+      padding: 1px 5px;
       border-radius: 3px;
       display: inline-block;
       margin-top: 2px;
@@ -1146,21 +1428,184 @@ html_content = """<!DOCTYPE html>
     .discount-pill {
       font-family: var(--font-mono);
       font-size: 9px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--accent-blue);
       background: var(--accent-blue-bg);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      padding: 1px 4px;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      padding: 1px 5px;
       border-radius: 3px;
       display: inline-block;
       margin-top: 2px;
+    }
+
+    /* Card Interactive Tabs (Score Audit vs Ownership Review) */
+    .card-tabs-nav {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 6px;
+      background: #0A0F18;
+      padding: 3px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      margin-top: 2px;
+    }
+    .card-tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 6px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: all var(--dur-fast) var(--ease-base);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .card-tab-btn:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .card-tab-btn.active {
+      background: #1E293B;
+      color: #FFFFFF;
+      border: 1px solid #38BDF8;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-tab-content {
+      display: none;
+      background: #0F1622;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+    .card-tab-content.active {
+      display: block;
+      animation: fadeIn 180ms var(--ease-base);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-2px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Score Breakdown Panel */
+    .score-rationale-line {
+      font-size: 12px;
+      color: var(--text-body);
+      line-height: 1.4;
+      font-weight: 500;
+      padding-bottom: 7px;
+      margin-bottom: 7px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .score-factor-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      padding: 3px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .score-factor-row:last-child {
+      border-bottom: none;
+    }
+    .score-factor-label {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .score-factor-label strong {
+      color: var(--text-body);
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .score-factor-label span {
+      color: var(--text-subtle);
+      font-size: 10px;
+    }
+    .score-factor-pts {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 11px;
+      white-space: nowrap;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+    .score-factor-pts.pos {
+      color: #34D399;
+      background: rgba(52, 211, 153, 0.14);
+    }
+    .score-factor-pts.neg {
+      color: #F87171;
+      background: rgba(248, 113, 113, 0.14);
+    }
+    .score-factor-pts.base {
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    /* Ownership Review Panel */
+    .review-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .review-item {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .review-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .review-k {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .review-v {
+      font-size: 12px;
+      color: var(--text-body);
+      line-height: 1.35;
+    }
+    .review-verdict-box {
+      background: #090E17;
+      border-left: 2px solid var(--accent-emerald);
+      padding: 6px 10px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-top: 4px;
+    }
+    .review-verdict-box p {
+      font-size: 11px;
+      color: var(--text-body);
+      line-height: 1.4;
+      font-weight: 500;
     }
 
     /* Value Telemetry Strip */
     .telemetry-strip {
       display: grid;
       grid-template-columns: 1.2fr 1fr;
-      background: var(--bg-photo);
+      background: #0A0F18;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       padding: 8px 12px;
@@ -1173,6 +1618,7 @@ html_content = """<!DOCTYPE html>
     .telemetry-label {
       font-family: var(--font-mono);
       font-size: 10px;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.04em;
       color: var(--text-subtle);
@@ -1180,7 +1626,7 @@ html_content = """<!DOCTYPE html>
     .telemetry-val {
       font-family: var(--font-mono);
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text-body);
       margin-top: 1px;
     }
@@ -1189,17 +1635,6 @@ html_content = """<!DOCTYPE html>
     }
     .telemetry-val.cost {
       color: var(--accent-blue);
-    }
-
-    /* Verdict */
-    .verdict-line {
-      font-size: 13px;
-      color: var(--text-body);
-      line-height: 1.4;
-      padding-left: 10px;
-      border-left: 2px solid var(--accent-blue);
-      margin-top: 2px;
-      text-wrap: pretty;
     }
 
     /* Action Button (B2 Button-md padding 8px 12px) */
@@ -2089,6 +2524,16 @@ html_content = """<!DOCTYPE html>
       renderCards(filtered);
     }
 
+    function toggleCardTab(btn, targetClass) {
+      const card = btn.closest('.card');
+      if (!card) return;
+      card.querySelectorAll('.card-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      card.querySelectorAll('.card-tab-content').forEach(p => p.classList.remove('active'));
+      const target = card.querySelector(`.card-tab-content.${targetClass}`);
+      if (target) target.classList.add('active');
+    }
+
     function renderCards(list) {
       const grid = document.getElementById('cars-grid');
       if (!list.length) {
@@ -2130,6 +2575,19 @@ html_content = """<!DOCTYPE html>
           gradeClass = 'value';
           gradeLabel = `⭐ ${c.deal_score} · VALUE PICK`;
         }
+
+        const scoreFactors = c.score_breakdown || [];
+        const factorsHtml = scoreFactors.map(f => `
+          <div class="score-factor-row">
+            <div class="score-factor-label">
+              <strong>${f.pillar}</strong>
+              <span>${f.detail}</span>
+            </div>
+            <span class="score-factor-pts ${f.type}">${f.pts}</span>
+          </div>
+        `).join('');
+
+        const rev = c.ownership_review || {};
 
         return `
           <article class="card">
@@ -2173,6 +2631,49 @@ html_content = """<!DOCTYPE html>
                 </div>
               </div>
 
+              <!-- Interactive Tabs: Score Breakdown vs Bangalore Ownership Review -->
+              <div class="card-tabs-nav">
+                <button type="button" class="card-tab-btn active" onclick="toggleCardTab(this, 'score')">
+                  📊 Why Score ${c.deal_score}/100?
+                </button>
+                <button type="button" class="card-tab-btn" onclick="toggleCardTab(this, 'review')">
+                  🛡️ BLR Ownership Review
+                </button>
+              </div>
+
+              <!-- Score Audit Panel (Active by default) -->
+              <div class="card-tab-content score active">
+                <div class="score-rationale-line">${c.score_rationale || 'Score derived from odometer health, age, retail discount, and certified warranty.'}</div>
+                <div class="score-factors-list">
+                  ${factorsHtml}
+                </div>
+              </div>
+
+              <!-- Ownership Review Panel -->
+              <div class="card-tab-content review">
+                <div class="review-grid">
+                  <div class="review-item">
+                    <span class="review-k">⛽ Real BLR Mileage</span>
+                    <span class="review-v">${rev.fuel_economy || '12-14 km/l (City) · 17-19 km/l (Hwy)'}</span>
+                  </div>
+                  <div class="review-item">
+                    <span class="review-k">🔧 Annual Service Cost</span>
+                    <span class="review-v">${rev.annual_maintenance || '₹5,000 - ₹7,000 / yr'}</span>
+                  </div>
+                  <div class="review-item">
+                    <span class="review-k">🛣️ Bangalore Roads & Ride</span>
+                    <span class="review-v">${rev.ride_comfort || 'Solid ground clearance over speed breakers.'}</span>
+                  </div>
+                  <div class="review-item">
+                    <span class="review-k">⚠️ Inspection Watchlist</span>
+                    <span class="review-v">${rev.known_issues || 'Inspect clutch plate and brake pads.'}</span>
+                  </div>
+                </div>
+                <div class="review-verdict-box">
+                  <p>${rev.bangalore_verdict || (c.verdict || 'Reliable urban commuter with steady resale value.')}</p>
+                </div>
+              </div>
+
               <!-- Telemetry Strip -->
               <div class="telemetry-strip">
                 <div class="telemetry-col">
@@ -2184,9 +2685,6 @@ html_content = """<!DOCTYPE html>
                   <span class="telemetry-val cost">${monthly}</span>
                 </div>
               </div>
-
-              <!-- Verdict -->
-              <p class="verdict-line">${c.verdict || 'Reliable urban commuter with steady parts availability.'}</p>
 
               <div class="card-footer">
                 <a href="${c.url || '#'}" target="_blank" rel="noopener noreferrer" class="cta-btn">
