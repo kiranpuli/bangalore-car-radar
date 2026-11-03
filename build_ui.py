@@ -85,6 +85,8 @@ def estimate_original_retail(make, model, variant, year, transmission):
 
 # Ensure consistent deal scoring, pricing intelligence & verdicts
 for c in cars:
+    if not c.get("platform"):
+        c["platform"] = "Cars24" if str(c.get("id", "")).startswith("c24_") or "cars24.com" in c.get("url", "") else "Spinny"
     year = c.get("make_year", 2012)
     km = c.get("mileage", 100000)
     price = c.get("price", 500000)
@@ -149,8 +151,8 @@ html_content = """<!DOCTYPE html>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>Bangalore Used Cars · Market Screener</title>
-  <meta name="description" content="Verified Bangalore used cars with negotiable cash targets, original new retail pricing, and 24 month buyback retention." />
+  <title>Bangalore Used Cars · Spinny + Cars24 Market Screener</title>
+  <meta name="description" content="1,497 verified Bangalore used cars across Spinny and Cars24 with negotiable cash targets, original showroom benchmarks, and 24-month retention telemetry." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -820,6 +822,29 @@ html_content = """<!DOCTYPE html>
       border-color: rgba(16, 185, 129, 0.4);
     }
 
+    .badge-platform {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.04em;
+      z-index: 2;
+    }
+    .badge-platform.spinny {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #FBBF24;
+    }
+    .badge-platform.cars24 {
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      color: #60A5FA;
+    }
+
     .card-content {
       padding: var(--sp-200);
       display: flex;
@@ -1045,10 +1070,10 @@ html_content = """<!DOCTYPE html>
     <div class="nav-inner">
       <a href="#" class="nav-brand">
         <span class="pulse-dot"></span>
-        <span>Spinny Bangalore Radar</span>
+        <span>Bangalore Used Cars Radar</span>
       </a>
       <div class="nav-stats">
-        Bangalore Inventory: <strong id="tele-total">0</strong>
+        Bangalore Inventory: <strong id="tele-total">0</strong> verified vehicles (<span id="spinny-stat">755</span> Spinny + <span id="c24-stat">742</span> Cars24)
       </div>
       <button class="nav-btn" onclick="scrollToFilters()">Filters</button>
     </div>
@@ -1059,7 +1084,7 @@ html_content = """<!DOCTYPE html>
     <header class="hero-section">
       <h1 class="heading-1 hero-heading">Find your next Bangalore car with zero pricing surprises</h1>
       <p class="body-3 hero-subhead">
-        Uncapped Bangalore inventory audited daily with negotiable cash targets, original showroom prices, and 24 month buyback retention.
+        1,497 verified Bangalore cars across Spinny &amp; Cars24 audited daily with negotiable cash targets, showroom benchmark pricing, and 24-month retention telemetry.
       </p>
     </header>
 
@@ -1106,6 +1131,18 @@ html_content = """<!DOCTYPE html>
 
       <!-- Faceted Filters Grid -->
       <div class="filter-facets">
+        <!-- Platform Source Facet -->
+        <div class="facet-col">
+          <div class="facet-title">
+            <span>Platform</span>
+          </div>
+          <div class="facet-pills" id="platform-pills">
+            <button class="facet-pill active" onclick="setPlatform('all', this)">All Platforms (<span id="count-all">0</span>)</button>
+            <button class="facet-pill" onclick="setPlatform('Spinny', this)">Spinny (<span id="count-spinny">0</span>)</button>
+            <button class="facet-pill" onclick="setPlatform('Cars24', this)">Cars24 (<span id="count-cars24">0</span>)</button>
+          </div>
+        </div>
+
         <!-- Budget Scrubber Facet -->
         <div class="facet-col">
           <div class="facet-title">
@@ -1194,7 +1231,9 @@ html_content = """<!DOCTYPE html>
         <button class="preset-chip-btn" onclick="applyPreset('sub_45l', this)">⚡ Under ₹4.5L</button>
         <button class="preset-chip-btn" onclick="applyPreset('auto_sub6', this)">🚗 Automatic Under ₹6L</button>
         <button class="preset-chip-btn" onclick="applyPreset('enthusiast', this)">🏎️ Enthusiast (Polo or City)</button>
-        <button class="preset-chip-btn" onclick="applyPreset('assured_only', this)">🛡️ Spinny Assured Only</button>
+        <button class="preset-chip-btn" onclick="applyPreset('assured_only', this)">🛡️ Assured Only</button>
+        <button class="preset-chip-btn" onclick="applyPreset('cars24_only', this)">🚙 Cars24 Only</button>
+        <button class="preset-chip-btn" onclick="applyPreset('spinny_only', this)">🏎️ Spinny Only</button>
         <button class="preset-chip-btn" onclick="applyPreset('low_km', this)">⏱️ Low Mileage (&lt; 40k)</button>
         <button class="preset-chip-btn" onclick="applyPreset('high_discount', this)">💰 50%+ Off Original Retail</button>
       </div>
@@ -1225,6 +1264,7 @@ html_content = """<!DOCTYPE html>
       min_price: 0,
       max_price: 0,
       max_km: 0,
+      platform: 'all',
       brand: 'all',
       trans: 'all',
       fuel: 'all',
@@ -1235,7 +1275,20 @@ html_content = """<!DOCTYPE html>
     };
 
     // Initialize counts
-    document.getElementById('tele-total').textContent = CARS.length;
+    const spinnyCount = CARS.filter(c => (c.platform || '').toLowerCase() === 'spinny').length;
+    const cars24Count = CARS.filter(c => (c.platform || '').toLowerCase() === 'cars24').length;
+    document.getElementById('tele-total').textContent = CARS.length.toLocaleString('en-IN');
+    const spinnyStat = document.getElementById('spinny-stat');
+    if (spinnyStat) spinnyStat.textContent = spinnyCount.toLocaleString('en-IN');
+    const c24Stat = document.getElementById('c24-stat');
+    if (c24Stat) c24Stat.textContent = cars24Count.toLocaleString('en-IN');
+
+    const countAll = document.getElementById('count-all');
+    if (countAll) countAll.textContent = CARS.length.toLocaleString('en-IN');
+    const countSpinny = document.getElementById('count-spinny');
+    if (countSpinny) countSpinny.textContent = spinnyCount.toLocaleString('en-IN');
+    const countCars24 = document.getElementById('count-cars24');
+    if (countCars24) countCars24.textContent = cars24Count.toLocaleString('en-IN');
 
     // Word-by-word reveal for B11 tagline
     const taglineContent = "Transparent pricing and verified mechanical telemetry. Every Bangalore car evaluated before you negotiate.";
@@ -1287,6 +1340,16 @@ html_content = """<!DOCTYPE html>
     // Sort handler
     function onSortChange(val) {
       state.sort = val;
+      applyFilters();
+    }
+
+    // Platform handler
+    function setPlatform(platform, btn) {
+      state.platform = platform;
+      document.querySelectorAll('#platform-pills .facet-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      state.activePreset = null;
+      clearPresetHighlight();
       applyFilters();
     }
 
@@ -1431,6 +1494,7 @@ html_content = """<!DOCTYPE html>
       state.min_price = 0;
       state.max_price = 0;
       state.max_km = 0;
+      state.platform = 'all';
       state.brand = 'all';
       state.trans = 'all';
       state.fuel = 'all';
@@ -1445,6 +1509,9 @@ html_content = """<!DOCTYPE html>
       const slider = document.getElementById('ctrl-price-range');
       if (slider) slider.value = 20;
 
+      document.querySelectorAll('#platform-pills .facet-pill').forEach(b => b.classList.remove('active'));
+      const defaultPlat = document.querySelector('#platform-pills .facet-pill');
+      if (defaultPlat) defaultPlat.classList.add('active');
       document.querySelectorAll('#brand-pills .facet-pill').forEach(b => b.classList.remove('active'));
       document.querySelector('#brand-pills .facet-pill').classList.add('active');
       document.querySelectorAll('#trans-pills .facet-pill').forEach(b => b.classList.remove('active'));
@@ -1477,6 +1544,18 @@ html_content = """<!DOCTYPE html>
         document.getElementById('btn-clear-search').style.display = 'block';
       } else if (preset === 'assured_only') {
         state.tier = 'assured';
+      } else if (preset === 'cars24_only') {
+        state.platform = 'Cars24';
+        document.querySelectorAll('#platform-pills .facet-pill').forEach(b => {
+          if (b.textContent.includes('Cars24')) b.classList.add('active');
+          else b.classList.remove('active');
+        });
+      } else if (preset === 'spinny_only') {
+        state.platform = 'Spinny';
+        document.querySelectorAll('#platform-pills .facet-pill').forEach(b => {
+          if (b.textContent.includes('Spinny')) b.classList.add('active');
+          else b.classList.remove('active');
+        });
       } else if (preset === 'low_km') {
         state.max_km = 40000;
       } else if (preset === 'high_discount') {
@@ -1492,6 +1571,7 @@ html_content = """<!DOCTYPE html>
       state.min_price = 0;
       state.max_price = 0;
       state.max_km = 0;
+      state.platform = 'all';
       state.brand = 'all';
       state.trans = 'all';
       state.fuel = 'all';
@@ -1527,6 +1607,9 @@ html_content = """<!DOCTYPE html>
       if (state.search) {
         tags.push({ label: `Search: "${state.search}"`, clear: () => clearSearch() });
       }
+      if (state.platform !== 'all') {
+        tags.push({ label: `Platform: ${state.platform}`, clear: () => setPlatform('all', document.querySelector('#platform-pills .facet-pill')) });
+      }
       if (state.min_price > 0 || state.max_price > 0) {
         const minL = state.min_price ? (state.min_price / 100000).toFixed(1) : '0';
         const maxL = state.max_price ? (state.max_price / 100000).toFixed(1) : 'Any';
@@ -1548,7 +1631,7 @@ html_content = """<!DOCTYPE html>
         tags.push({ label: `Mileage: ≤ ${Math.round(state.max_km / 1000)}k km`, clear: () => setMaxKm(0, document.querySelector('#km-pills .facet-pill')) });
       }
       if (state.tier === 'assured') {
-        tags.push({ label: 'Spinny Assured only', clear: () => { state.tier = 'all'; applyFilters(); } });
+        tags.push({ label: 'Assured only', clear: () => { state.tier = 'all'; applyFilters(); } });
       }
       if (state.dealGrade === 'top') {
         tags.push({ label: 'Top Deals only', clear: () => { state.dealGrade = 'all'; applyFilters(); } });
@@ -1573,6 +1656,7 @@ html_content = """<!DOCTYPE html>
 
     function applyFilters() {
       let filtered = CARS.filter(c => {
+        if (state.platform !== 'all' && (c.platform || '').toLowerCase() !== state.platform.toLowerCase()) return false;
         if (state.dealGrade === 'top' && (c.deal_score || 0) < 80) return false;
         if (state.tier === 'assured' && c.category !== 'assured') return false;
         if (state.activePreset === 'high_discount' && (c.retail_discount_pct || 0) < 50) return false;
@@ -1646,6 +1730,11 @@ html_content = """<!DOCTYPE html>
 
       grid.innerHTML = list.map(c => {
         const isAssured = c.category === 'assured';
+        const isCars24 = (c.platform || '').toLowerCase() === 'cars24';
+        const tierLabel = isCars24 ? (isAssured ? '✓ Cars24 Assured' : '⚡ Verified Stock') : (isAssured ? '✓ Spinny Assured' : '⚡ Wholesale Stock');
+        const platformClass = isCars24 ? 'cars24' : 'spinny';
+        const platformName = c.platform || (isCars24 ? 'Cars24' : 'Spinny');
+
         const price = '₹' + (c.price / 100000).toFixed(2) + 'L';
         const negoPrice = c.negotiable_price ? ('₹' + (c.negotiable_price / 100000).toFixed(2) + 'L') : price;
         const retailPrice = c.orig_retail_price ? ('₹' + (c.orig_retail_price / 100000).toFixed(2) + 'L') : '—';
@@ -1673,7 +1762,10 @@ html_content = """<!DOCTYPE html>
             <div class="card-photo">
               <span class="badge-grade ${gradeClass}">${gradeLabel}</span>
               <span class="badge-tier ${isAssured ? 'assured' : ''}">
-                ${isAssured ? '✓ Spinny Assured' : '⚡ Wholesale Stock'}
+                ${tierLabel}
+              </span>
+              <span class="badge-platform ${platformClass}">
+                ${platformName}
               </span>
               ${c.img ? `<img src="${c.img}" alt="${title}" loading="lazy" referrerpolicy="no-referrer" />` : '<span class="caption-5" style="color:var(--text-subtle);">No image preview</span>'}
             </div>
@@ -1724,7 +1816,7 @@ html_content = """<!DOCTYPE html>
 
               <div class="card-footer">
                 <a href="${c.url || '#'}" target="_blank" rel="noopener noreferrer" class="cta-btn">
-                  <span>Inspect vehicle on Spinny</span>
+                  <span>Inspect vehicle on ${platformName}</span>
                   <span>&rarr;</span>
                 </a>
               </div>

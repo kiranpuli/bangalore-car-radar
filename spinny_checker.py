@@ -356,6 +356,7 @@ def enrich_cars(cars):
 
         cleaned.append({
             "id": c.get("id"),
+            "platform": "Spinny",
             "make": c.get("make"),
             "model": c.get("model"),
             "variant": c.get("variant"),
@@ -432,6 +433,172 @@ def fetch_cheapest_cars(city="bangalore", max_price=None, max_pages=48):
     return filtered
 
 
+def fetch_cars24_cars(city_id="4709", max_pages=25, max_price=None):
+    url = "https://car-catalog-gateway-in.c24.tech/listing/v1/buy-used-car"
+    headers = {
+        "Content-Type": "application/json",
+        "X_TENANT_ID": "INDIA_CAR_LISTING",
+        "SOURCE": "WebApp",
+        "x_experiment_id": "f09f1cc0-deca-4583-95cc-e1f55130ad69",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+        "Origin": "https://www.cars24.com",
+        "Referer": "https://www.cars24.com/buy-used-cars-bangalore/",
+    }
+    cars = []
+    seen = set()
+    search_after = None
+
+    for page in range(1, max_pages + 1):
+        payload = {
+            "cityId": str(city_id),
+            "size": 30,
+            "sort": "P",
+            "searchFilter": [],
+            "filterVersion": 4,
+        }
+        if search_after:
+            payload["searchAfter"] = search_after
+
+        res = None
+        for attempt in range(3):
+            try:
+                r = requests.post(url, headers=headers, json=payload, timeout=12)
+                if r.status_code == 200:
+                    res = r.json()
+                    break
+            except Exception:
+                import time; time.sleep(1.5)
+
+        if not res:
+            break
+
+        items = res.get("content", [])
+        if not items:
+            break
+
+        for it in items:
+            aid = it.get("appointmentId")
+            if aid and aid not in seen:
+                price = it.get("listingPrice", 0)
+                km = (it.get("odometer") or {}).get("value", 0)
+                price_ok = True if (max_price is None or max_price <= 0) else (price <= max_price)
+                if price_ok and km <= 140000:
+                    seen.add(aid)
+                    cars.append(it)
+
+        page_meta = res.get("page") or {}
+        search_after = page_meta.get("searchAfter")
+        if not search_after:
+            break
+
+    return cars
+
+
+def enrich_cars24(cars):
+    cleaned = []
+    for c in cars:
+        make = c.get("make") or ""
+        model = c.get("model") or ""
+        variant = c.get("variant") or ""
+        model_name = f"{make} {model} {variant}".lower()
+
+        matched = None
+        for k in KNOWLEDGE_BASE:
+            if k in model_name:
+                matched = KNOWLEDGE_BASE[k]
+                break
+        if not matched:
+            matched = {
+                "pros": ["Reliable brand backing with steady resale demand", "Smooth city drivability", "Predictable routine service upkeep"],
+                "cons": ["Regular periodic maintenance required"],
+                "maintenance_yr": "₹5,500 - ₹7,500",
+                "retention_pct": 0.72,
+            }
+
+        price = c.get("listingPrice", 0)
+        km = (c.get("odometer") or {}).get("value", 0)
+        year = c.get("year", 2018)
+
+        bt = str(c.get("businessTag", {})).lower()
+        bt2 = str(c.get("businessTagV2", {})).lower()
+        is_assured = "assured" in bt or "owned" in bt2 or "gs" in bt2
+        tier = "assured" if is_assured else "market"
+
+        retention_pct = matched["retention_pct"] if is_assured else round(matched["retention_pct"] * 0.90, 2)
+        retention_val = round(price * retention_pct)
+        total_loss_2yr = price - retention_val
+        monthly_loss = round(total_loss_2yr / 24)
+
+        discount_factor = 0.94 if is_assured else 0.91
+        negotiable_price = round((price * discount_factor) / 1000) * 1000
+        negotiable_savings = max(0, round(price - negotiable_price))
+
+        orig_retail = c.get("originalPrice") or estimate_original_retail(make, model, variant, year, (c.get("transmissionType") or {}).get("value"))
+        if orig_retail <= price:
+            orig_retail = round((price * 1.40) / 10000) * 10000
+        retail_discount_pct = max(5, min(85, round((1.0 - (price / orig_retail)) * 100)))
+
+        score = 45
+        if km <= 25000: score += 24
+        elif km <= 40000: score += 18
+        elif km <= 60000: score += 12
+        elif km <= 80000: score += 5
+        elif km > 100000: score -= 10
+
+        if year >= 2021: score += 22
+        elif year >= 2019: score += 18
+        elif year >= 2017: score += 12
+        elif year >= 2015: score += 6
+        elif year <= 2013: score -= 6
+
+        if is_assured: score += 15
+        if year >= 2018 and km <= 40000: score += 6
+
+        final_score = min(99, max(40, score))
+        deal_grade = "TOP DEAL" if final_score >= 80 else ("VALUE PICK" if final_score >= 68 else "FAIR")
+
+        pros = matched.get("pros", [])
+        verdict = pros[0] if pros else "Dependable commuter with accessible service network."
+
+        d_img = c.get("detailImage") or {}
+        img_url = d_img.get("bgRemovedUri") or d_img.get("uri")
+
+        cleaned.append({
+            "id": f"c24_{c.get('appointmentId')}",
+            "platform": "Cars24",
+            "make": make,
+            "model": model,
+            "variant": variant,
+            "make_year": year,
+            "mileage": km,
+            "price": price,
+            "negotiable_price": negotiable_price,
+            "negotiable_savings": negotiable_savings,
+            "orig_retail_price": orig_retail,
+            "retail_discount_pct": retail_discount_pct,
+            "fuel_type": c.get("fuelType") or "Petrol",
+            "transmission": (c.get("transmissionType") or {}).get("value") or "Manual",
+            "category": tier,
+            "hub": (c.get("address") or {}).get("locality") or "Cars24 Bangalore Hub",
+            "img": img_url,
+            "url": f"https://www.cars24.com/{c.get('cdpRelativeUrl', '')}",
+            "deal_score": final_score,
+            "deal_grade": deal_grade,
+            "is_top_deal": final_score >= 68,
+            "verdict": verdict,
+            "analysis": {
+                "pros": matched["pros"],
+                "cons": matched["cons"],
+                "maintenance_yr": matched["maintenance_yr"],
+                "retention_pct": retention_pct,
+                "est_buyback_2yr": retention_val,
+                "total_loss_2yr": total_loss_2yr,
+                "monthly_loss": monthly_loss,
+            },
+        })
+    return cleaned
+
+
 def update_deals_html(cleaned_cars):
     cur_dir = os.path.dirname(os.path.abspath(__file__))
     json_path = os.path.join(cur_dir, "clean_bangalore_cars.json")
@@ -466,11 +633,21 @@ def run_monitor(city="bangalore", max_price=None):
     seen_ids = load_seen_ids(cache_file)
     is_initial_run = len(seen_ids) == 0
 
-    matching_cars = fetch_cheapest_cars(city=city, max_price=max_price)
-    cleaned_cars = enrich_cars(matching_cars)
-    new_cars = []
+    print(f"[{datetime.now()}] Fetching Bangalore cars from Spinny API...")
+    spinny_matching = fetch_cheapest_cars(city=city, max_price=max_price)
+    cleaned_spinny = enrich_cars(spinny_matching)
+    print(f"[{datetime.now()}] Fetched {len(cleaned_spinny)} Spinny cars.")
 
-    for car in matching_cars:
+    print(f"[{datetime.now()}] Fetching Bangalore cars from Cars24 API (REA reverse-engineered)...")
+    cars24_raw = fetch_cars24_cars(city_id="4709", max_pages=25, max_price=max_price)
+    cleaned_cars24 = enrich_cars24(cars24_raw)
+    print(f"[{datetime.now()}] Fetched {len(cleaned_cars24)} Cars24 cars.")
+
+    combined_cars = cleaned_spinny + cleaned_cars24
+    combined_cars.sort(key=lambda x: x.get("deal_score", 0), reverse=True)
+
+    new_cars = []
+    for car in combined_cars:
         car_id = car.get("id")
         if car_id not in seen_ids:
             new_cars.append(car)
@@ -478,12 +655,12 @@ def run_monitor(city="bangalore", max_price=None):
 
     save_seen_ids(cache_file, seen_ids)
 
-    # Rebuild deals.html with live data
-    update_deals_html(cleaned_cars)
+    # Rebuild deals.html with live combined data
+    update_deals_html(combined_cars)
 
     price_label = f"<= ₹{max_price//100000}L" if (max_price and max_price > 0) else "All Budgets"
-    print(f"[{datetime.now()}] === Bangalore Deals Screener ({price_label}) — Found {len(cleaned_cars)} Cars ===")
-    for idx, car in enumerate(cleaned_cars[:5], 1):
+    print(f"[{datetime.now()}] === Bangalore Combined Deals Screener ({price_label}) — Found {len(combined_cars)} Cars ({len(cleaned_spinny)} Spinny + {len(cleaned_cars24)} Cars24) ===")
+    for idx, car in enumerate(combined_cars[:5], 1):
         title = f"{car.get('make_year')} {car.get('make')} {car.get('model')} {car.get('variant')}"
         price = f"₹{int(car.get('price', 0)):,}"
         km = f"{car.get('mileage', 0):,} km"
