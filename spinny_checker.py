@@ -187,6 +187,64 @@ def notify_mac(title, message):
     subprocess.run(["osascript", "-e", script], capture_output=True)
 
 
+def is_good_deal(car):
+    price = car.get("price", 9999999)
+    score = car.get("deal_score", 0)
+    km = car.get("mileage", 999999)
+    # High conviction: under 5.0L, deal score 80+, km <= 80k
+    if price <= 500000 and score >= 80 and km <= 80000:
+        return True
+    # Great value: under 4.5L, deal score 75+, km <= 90k
+    if price <= 450000 and score >= 75 and km <= 90000:
+        return True
+    # Rare steal: under 5.5L, score 90+, km <= 50k
+    if price <= 550000 and score >= 90 and km <= 50000:
+        return True
+    return False
+
+
+def record_alerts(new_good_deals):
+    cur_dir = os.path.dirname(os.path.abspath(__file__))
+    alerts_file = os.path.join(cur_dir, "latest_alerts.json")
+    existing_alerts = []
+    if os.path.exists(alerts_file):
+        try:
+            with open(alerts_file, "r") as f:
+                existing_alerts = json.load(f)
+        except Exception:
+            existing_alerts = []
+
+    now_str = datetime.now().strftime("%Y-%m-%d %H:%M")
+    new_entries = []
+    for d in new_good_deals:
+        new_entries.append({
+            "id": d.get("id"),
+            "timestamp": now_str,
+            "platform": d.get("platform", "Spinny"),
+            "make": d.get("make"),
+            "model": d.get("model"),
+            "variant": d.get("variant"),
+            "make_year": d.get("make_year"),
+            "price": d.get("price"),
+            "negotiable_price": d.get("negotiable_price"),
+            "deal_score": d.get("deal_score"),
+            "mileage": d.get("mileage"),
+            "hub": d.get("hub"),
+            "url": d.get("url"),
+            "img": d.get("img"),
+        })
+
+    seen_ids = set()
+    combined = []
+    for a in (new_entries + existing_alerts):
+        if a.get("id") not in seen_ids:
+            seen_ids.add(a.get("id"))
+            combined.append(a)
+
+    with open(alerts_file, "w") as f:
+        json.dump(combined[:30], f, indent=2)
+
+
 MODEL_NEW_RETAIL_BASE = {
     # Maruti
     "alto": 380000, "alto k10": 420000, "a-star": 440000, "wagon r": 540000, "celerio": 560000,
@@ -667,21 +725,31 @@ def run_monitor(city="bangalore", max_price=None):
         url = car.get('url', '')
         print(f"{idx}. {title} | {price} | {km}\n   {url}")
 
-    if not is_initial_run and new_cars:
-        top_new = new_cars[0]
-        title = f"{top_new.get('make_year')} {top_new.get('make')} {top_new.get('model')}"
-        price = f"₹{int(top_new.get('price', 0)):,}"
-        notify_mac("New Spinny Deal in Bangalore!", f"{title} for {price}")
-        print(f"[{datetime.now()}] Alert dispatched for {len(new_cars)} new car(s).")
-    else:
-        print(f"[{datetime.now()}] Inventory refreshed. No new cars since last run.")
+    good_deals = [c for c in new_cars if is_good_deal(c)]
+    if good_deals:
+        record_alerts(good_deals)
+        for d in good_deals[:3]:
+            title = f"{d.get('make_year')} {d.get('make')} {d.get('model')} {d.get('variant') or ''}".strip()
+            price_l = f"₹{d.get('price')/100000:.2f}L"
+            km_k = f"{d.get('mileage')//1000}k km"
+            plat = d.get('platform', 'Spinny')
+            notify_mac(f"🔥 Top {plat} Deal Alert!", f"{title} for {price_l} ({km_k}, Score {d.get('deal_score')})")
+        print(f"[{datetime.now()}] Alert dispatched for {len(good_deals)} high-conviction deal(s).")
+    elif not is_initial_run:
+        print(f"[{datetime.now()}] Inventory refreshed. No new qualifying top deals (< ₹5L, Score 80+).")
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Spinny Bangalore Deals Screener & Monitor")
+    parser = argparse.ArgumentParser(description="Bangalore Used Car Deals Screener & Monitor")
     parser.add_argument("--city", default="bangalore", help="Target city")
     parser.add_argument("--max-price", type=int, default=0, help="Max budget threshold (0 for unlimited)")
+    parser.add_argument("--test-notify", action="store_true", help="Dispatch a test macOS notification")
     args = parser.parse_args()
+
+    if args.test_notify:
+        notify_mac("🔥 Top Deal Alert (Test)!", "2022 Renault Kwid RXT 1.0 AMT for ₹4.26L (Score 99, 14k km)")
+        print(f"[{datetime.now()}] Test macOS desktop notification dispatched successfully.")
+        sys.exit(0)
 
     max_p = None if args.max_price <= 0 else args.max_price
     run_monitor(city=args.city, max_price=max_p)

@@ -25,6 +25,16 @@ if os.path.exists(json_path):
 else:
     cars = []
 
+alerts_path = os.path.join(DIR, "latest_alerts.json")
+if not os.path.exists(alerts_path):
+    alerts_path = "/tmp/latest_alerts.json"
+
+if os.path.exists(alerts_path):
+    with open(alerts_path) as f:
+        alerts_list = json.load(f)
+else:
+    alerts_list = []
+
 MODEL_NEW_RETAIL_BASE = {
     # Maruti
     "alto": 380000, "alto k10": 420000, "a-star": 440000, "wagon r": 540000, "celerio": 560000,
@@ -142,6 +152,7 @@ for c in cars:
         c["verdict"] = "Reliable city commuter with steady resale value."
 
 cars_json = json.dumps(cars)
+alerts_json = json.dumps(alerts_list)
 
 html_content = """<!DOCTYPE html>
 <html lang="en">
@@ -151,8 +162,8 @@ html_content = """<!DOCTYPE html>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>Bangalore Used Cars · Spinny + Cars24 Market Screener</title>
-  <meta name="description" content="1,497 verified Bangalore used cars across Spinny and Cars24 with negotiable cash targets, original showroom benchmarks, and 24-month retention telemetry." />
+  <title>Bangalore Used Cars · Top Deals Under ₹5L Screener</title>
+  <meta name="description" content="Curated shortlist of verified Bangalore cars under ₹5 Lakhs with high resale retention and certified inspection across Spinny and Cars24." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -387,6 +398,190 @@ html_content = """<!DOCTYPE html>
     .nav-btn:hover {
       background: var(--border-color);
       color: var(--text-primary);
+    }
+
+    /* View Mode Bar (Curated Top Deals vs Full Market) */
+    .view-mode-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-100);
+      margin: 0 auto var(--sp-300) auto;
+      max-width: 780px;
+    }
+    .view-mode-pills {
+      display: inline-flex;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-pill);
+      padding: 4px;
+      gap: 4px;
+    }
+    .view-mode-pill {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all var(--dur-normal) var(--ease-base);
+    }
+    .view-mode-pill:hover {
+      color: var(--text-primary);
+    }
+    .view-mode-pill.active {
+      background: var(--bg-subsurface);
+      color: var(--text-primary);
+      border-color: var(--border-color);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+    .view-mode-pill.active.curated {
+      border-color: rgba(245, 158, 11, 0.4);
+      color: #FBBF24;
+    }
+    .count-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 1px 7px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.08);
+      color: inherit;
+    }
+    .view-mode-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      text-align: center;
+    }
+
+    /* Alerts Drawer / Modal */
+    .alerts-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: var(--sp-200);
+    }
+    .alerts-modal-backdrop.open {
+      display: flex;
+    }
+    .alerts-modal {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      max-width: 620px;
+      width: 100%;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+    .alerts-modal-header {
+      padding: var(--sp-200);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .alerts-modal-header h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .alerts-modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 16px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .alerts-modal-body {
+      padding: var(--sp-200);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-100);
+    }
+    .alert-card {
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: var(--sp-100);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-100);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color var(--dur-fast) var(--ease-base);
+    }
+    .alert-card:hover {
+      border-color: var(--accent-blue);
+    }
+    .alert-card-thumb {
+      width: 75px;
+      height: 52px;
+      object-fit: contain;
+      background: var(--bg-photo);
+      border-radius: var(--radius-sm);
+      padding: 4px;
+      flex-shrink: 0;
+    }
+    .alert-card-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .alert-card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .alert-card-meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      gap: 8px;
+      margin-top: 2px;
+      align-items: center;
+    }
+    .alert-card-price {
+      font-weight: 700;
+      color: var(--accent-emerald);
+      font-size: 13px;
+    }
+    .alert-bell-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+    }
+    .alert-count-pill {
+      background: var(--accent-amber);
+      color: #000000;
+      font-weight: 700;
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: var(--radius-pill);
     }
 
     /* Hero Section (B5) */
@@ -1070,11 +1265,15 @@ html_content = """<!DOCTYPE html>
     <div class="nav-inner">
       <a href="#" class="nav-brand">
         <span class="pulse-dot"></span>
-        <span>Bangalore Used Cars Radar</span>
+        <span>Bangalore Car Radar</span>
       </a>
       <div class="nav-stats">
-        Bangalore Inventory: <strong id="tele-total">0</strong> verified vehicles (<span id="spinny-stat">755</span> Spinny + <span id="c24-stat">742</span> Cars24)
+        Top Deals: <strong id="tele-curated">0</strong> (<span id="tele-total">0</span> market)
       </div>
+      <button class="nav-btn alert-bell-btn" onclick="toggleAlertsModal()" title="View Recent Deal Alerts">
+        <span>🔔 Alerts</span>
+        <span id="badge-alerts-count" class="alert-count-pill">0</span>
+      </button>
       <button class="nav-btn" onclick="scrollToFilters()">Filters</button>
     </div>
   </nav>
@@ -1082,11 +1281,29 @@ html_content = """<!DOCTYPE html>
   <div class="shell">
     <!-- Hero Section (B5) -->
     <header class="hero-section">
-      <h1 class="heading-1 hero-heading">Find your next Bangalore car with zero pricing surprises</h1>
+      <h1 class="heading-1 hero-heading">Bangalore Top Used Car Deals</h1>
       <p class="body-3 hero-subhead">
-        1,497 verified Bangalore cars across Spinny &amp; Cars24 audited daily with negotiable cash targets, showroom benchmark pricing, and 24-month retention telemetry.
+        Curated shortlist of verified Bangalore cars under ₹5 Lakhs with high resale retention and certified inspection across Spinny and Cars24.
       </p>
     </header>
+
+    <!-- Curation Mode Switcher -->
+    <div class="view-mode-bar">
+      <div class="view-mode-pills">
+        <button type="button" class="view-mode-pill active curated" id="btn-mode-curated" onclick="setViewMode('curated')">
+          <span>🔥 Top Deals to Consider</span>
+          <span class="count-pill" id="badge-curated-count">0</span>
+        </button>
+        <button type="button" class="view-mode-pill" id="btn-mode-all" onclick="setViewMode('all')">
+          <span>📦 Full Inventory</span>
+          <span class="count-pill" id="badge-all-count">0</span>
+        </button>
+      </div>
+      <div class="view-mode-status" id="mode-status-text">
+        <span class="pulse-dot"></span>
+        <span>Curated view: Under ₹5.0L · Deal Score 80+ · Low Mileage (&lt; 80k km) · Certified Assured</span>
+      </div>
+    </div>
 
     <!-- Mandatory Tagline Word-by-Word Reveal Section (B11) -->
     <section class="tagline-section" id="tagline-reveal" aria-label="Core Commitment">
@@ -1254,34 +1471,61 @@ html_content = """<!DOCTYPE html>
     <main class="grid" id="cars-grid" aria-live="polite"></main>
   </div>
 
+  <!-- Deal Alerts Modal -->
+  <div class="alerts-modal-backdrop" id="alerts-modal-backdrop" onclick="closeAlertsModalOnBackdrop(event)">
+    <div class="alerts-modal" role="dialog" aria-modal="true" aria-labelledby="alerts-modal-title">
+      <div class="alerts-modal-header">
+        <h3 id="alerts-modal-title">🔔 Recent Top Deal Alerts (&lt; ₹5L)</h3>
+        <button class="alerts-modal-close" onclick="toggleAlertsModal()" title="Close">✕</button>
+      </div>
+      <div style="padding:12px 16px; background:var(--bg-subsurface); border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
+        <span class="caption-5" style="color:var(--text-muted);">Dispatches automatically when deals under ₹5L are discovered.</span>
+        <button class="nav-btn" id="btn-req-notify" onclick="requestBrowserNotifications()">Enable Desktop Alerts</button>
+      </div>
+      <div class="alerts-modal-body" id="alerts-modal-body">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
   <script>
     const CARS = """ + cars_json + """;
+    const ALERTS = """ + alerts_json + """;
 
-    // Application state
+    // Application state - Defaults strictly to Curated Top Deals to Consider (< ₹5L, Score 80+)
     const state = {
+      viewMode: 'curated',
       search: '',
       min_year: 0,
       min_price: 0,
-      max_price: 0,
-      max_km: 0,
+      max_price: 500000,
+      max_km: 80000,
       platform: 'all',
       brand: 'all',
       trans: 'all',
       fuel: 'all',
       tier: 'all',
-      dealGrade: 'all',
+      dealGrade: 'top',
       sort: 'score',
-      activePreset: null
+      activePreset: 'top_steals'
     };
 
     // Initialize counts
     const spinnyCount = CARS.filter(c => (c.platform || '').toLowerCase() === 'spinny').length;
     const cars24Count = CARS.filter(c => (c.platform || '').toLowerCase() === 'cars24').length;
-    document.getElementById('tele-total').textContent = CARS.length.toLocaleString('en-IN');
-    const spinnyStat = document.getElementById('spinny-stat');
-    if (spinnyStat) spinnyStat.textContent = spinnyCount.toLocaleString('en-IN');
-    const c24Stat = document.getElementById('c24-stat');
-    if (c24Stat) c24Stat.textContent = cars24Count.toLocaleString('en-IN');
+    const curatedCars = CARS.filter(c => (c.price || 0) <= 500000 && (c.deal_score || 0) >= 80 && (c.mileage || 0) <= 80000);
+    const curatedCount = curatedCars.length;
+
+    const teleTotal = document.getElementById('tele-total');
+    if (teleTotal) teleTotal.textContent = CARS.length.toLocaleString('en-IN');
+    const teleCurated = document.getElementById('tele-curated');
+    if (teleCurated) teleCurated.textContent = curatedCount.toLocaleString('en-IN');
+    const badgeCurated = document.getElementById('badge-curated-count');
+    if (badgeCurated) badgeCurated.textContent = curatedCount.toLocaleString('en-IN');
+    const badgeAll = document.getElementById('badge-all-count');
+    if (badgeAll) badgeAll.textContent = CARS.length.toLocaleString('en-IN');
+    const badgeAlerts = document.getElementById('badge-alerts-count');
+    if (badgeAlerts) badgeAlerts.textContent = ALERTS.length.toLocaleString('en-IN');
 
     const countAll = document.getElementById('count-all');
     if (countAll) countAll.textContent = CARS.length.toLocaleString('en-IN');
@@ -1289,6 +1533,14 @@ html_content = """<!DOCTYPE html>
     if (countSpinny) countSpinny.textContent = spinnyCount.toLocaleString('en-IN');
     const countCars24 = document.getElementById('count-cars24');
     if (countCars24) countCars24.textContent = cars24Count.toLocaleString('en-IN');
+
+    // Initialize input values to curated defaults
+    const ctrlMaxPrice = document.getElementById('ctrl-max-price');
+    if (ctrlMaxPrice) ctrlMaxPrice.value = '5.0';
+    const ctrlSlider = document.getElementById('ctrl-price-range');
+    if (ctrlSlider) ctrlSlider.value = 5.0;
+    const topPresetBtn = document.querySelector('.presets-container .preset-chip-btn');
+    if (topPresetBtn) topPresetBtn.classList.add('active');
 
     // Word-by-word reveal for B11 tagline
     const taglineContent = "Transparent pricing and verified mechanical telemetry. Every Bangalore car evaluated before you negotiate.";
@@ -1319,6 +1571,123 @@ html_content = """<!DOCTYPE html>
     function scrollToFilters() {
       const el = document.getElementById('filter-workbench');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // View Mode Switcher (Curated Top Deals vs All Market)
+    function setViewMode(mode) {
+      state.viewMode = mode;
+      const btnCurated = document.getElementById('btn-mode-curated');
+      const btnAll = document.getElementById('btn-mode-all');
+      const statusText = document.getElementById('mode-status-text');
+
+      if (mode === 'curated') {
+        if (btnCurated) btnCurated.classList.add('active', 'curated');
+        if (btnAll) btnAll.classList.remove('active');
+        if (statusText) statusText.innerHTML = '<span class="pulse-dot"></span><span>Curated view: Under ₹5.0L · Deal Score 80+ · Low Mileage (< 80k km) · Certified Assured</span>';
+
+        state.max_price = 500000;
+        state.dealGrade = 'top';
+        state.max_km = 80000;
+        state.activePreset = 'top_steals';
+
+        const maxInput = document.getElementById('ctrl-max-price');
+        if (maxInput) maxInput.value = '5.0';
+        const slider = document.getElementById('ctrl-price-range');
+        if (slider) slider.value = 5.0;
+
+        clearPresetHighlight();
+        const topPresetBtn = document.querySelector('.presets-container .preset-chip-btn');
+        if (topPresetBtn) topPresetBtn.classList.add('active');
+      } else {
+        if (btnCurated) btnCurated.classList.remove('active', 'curated');
+        if (btnAll) btnAll.classList.add('active');
+        if (statusText) statusText.innerHTML = '<span class="pulse-dot" style="background:var(--accent-blue);"></span><span>Showing all verified vehicles across Bangalore (Spinny + Cars24).</span>';
+
+        state.max_price = 0;
+        state.dealGrade = 'all';
+        state.max_km = 0;
+        state.activePreset = null;
+
+        const maxInput = document.getElementById('ctrl-max-price');
+        if (maxInput) maxInput.value = '';
+        const slider = document.getElementById('ctrl-price-range');
+        if (slider) slider.value = 20;
+
+        clearPresetHighlight();
+      }
+      applyFilters();
+    }
+
+    // Deal Alerts Drawer / Modal
+    function toggleAlertsModal() {
+      const modal = document.getElementById('alerts-modal-backdrop');
+      if (modal) {
+        modal.classList.toggle('open');
+      }
+    }
+
+    function closeAlertsModalOnBackdrop(e) {
+      if (e.target.id === 'alerts-modal-backdrop') {
+        toggleAlertsModal();
+      }
+    }
+
+    function renderAlertsList() {
+      const body = document.getElementById('alerts-modal-body');
+      if (!body) return;
+      if (!ALERTS.length) {
+        body.innerHTML = '<p style="color:var(--text-muted); padding:20px; text-align:center;">No recent alerts recorded yet. Daily monitor checks morning & evening.</p>';
+        return;
+      }
+      body.innerHTML = ALERTS.map(a => {
+        const title = `${a.make_year} ${a.make} ${a.model} ${a.variant || ''}`.trim();
+        const price = '₹' + (a.price / 100000).toFixed(2) + 'L';
+        const negoPrice = a.negotiable_price ? ('₹' + (a.negotiable_price / 100000).toFixed(2) + 'L') : price;
+        const km = (a.mileage / 1000).toFixed(0) + 'k km';
+        const isCars24 = (a.platform || '').toLowerCase() === 'cars24';
+        const platBadge = isCars24 ? 'badge-platform cars24' : 'badge-platform spinny';
+
+        return `
+          <a href="${a.url || '#'}" target="_blank" rel="noopener noreferrer" class="alert-card">
+            ${a.img ? `<img src="${a.img}" class="alert-card-thumb" alt="${title}" />` : '<div class="alert-card-thumb"></div>'}
+            <div class="alert-card-info">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span class="alert-card-title">${title}</span>
+                <span class="${platBadge}" style="position:static; padding:1px 6px; font-size:10px;">${a.platform}</span>
+              </div>
+              <div class="alert-card-meta">
+                <span class="alert-card-price">${price}</span>
+                <span>(Nego: ${negoPrice})</span>
+                <span>·</span>
+                <span>${km}</span>
+                <span>·</span>
+                <span style="color:var(--accent-amber); font-weight:600;">Score ${a.deal_score}</span>
+              </div>
+              <div class="caption-5" style="color:var(--text-subtle); margin-top:2px;">Discovered: ${a.timestamp} · ${a.hub || 'Bangalore'}</div>
+            </div>
+            <span style="font-size:14px; color:var(--accent-blue); padding-right:4px;">&rarr;</span>
+          </a>
+        `;
+      }).join('');
+    }
+
+    function requestBrowserNotifications() {
+      if (!('Notification' in window)) {
+        alert('Desktop notifications are not supported by this browser.');
+        return;
+      }
+      Notification.requestPermission().then(permission => {
+        const btn = document.getElementById('btn-req-notify');
+        if (permission === 'granted') {
+          if (btn) btn.textContent = '✓ Desktop Alerts Active';
+          new Notification('🔥 Bangalore Deal Alerts Active', {
+            body: 'You will receive desktop alerts when high-conviction car deals (< ₹5L) are found!',
+            icon: 'https://www.spinny.com/favicon.ico'
+          });
+        } else {
+          if (btn) btn.textContent = 'Permission Denied';
+        }
+      });
     }
 
     // Search input handler
@@ -1525,6 +1894,17 @@ html_content = """<!DOCTYPE html>
 
       if (preset === 'top_steals') {
         state.dealGrade = 'top';
+        state.viewMode = 'curated';
+        const btnCurated = document.getElementById('btn-mode-curated');
+        if (btnCurated) btnCurated.classList.add('active', 'curated');
+      } else {
+        state.viewMode = 'custom';
+        const btnCurated = document.getElementById('btn-mode-curated');
+        if (btnCurated) btnCurated.classList.remove('active', 'curated');
+      }
+
+      if (preset === 'top_steals') {
+        state.dealGrade = 'top';
       } else if (preset === 'sub_45l') {
         state.max_price = 450000;
         document.getElementById('ctrl-max-price').value = '4.5';
@@ -1569,24 +1949,30 @@ html_content = """<!DOCTYPE html>
       state.search = '';
       state.min_year = 0;
       state.min_price = 0;
-      state.max_price = 0;
-      state.max_km = 0;
+      state.max_price = 500000;
+      state.max_km = 80000;
       state.platform = 'all';
       state.brand = 'all';
       state.trans = 'all';
       state.fuel = 'all';
       state.tier = 'all';
-      state.dealGrade = 'all';
+      state.dealGrade = 'top';
       state.sort = 'score';
-      state.activePreset = null;
+      state.activePreset = 'top_steals';
+      state.viewMode = 'curated';
 
       document.getElementById('ctrl-search').value = '';
       document.getElementById('btn-clear-search').style.display = 'none';
       document.getElementById('ctrl-min-price').value = '';
-      document.getElementById('ctrl-max-price').value = '';
+      document.getElementById('ctrl-max-price').value = '5.0';
       const slider = document.getElementById('ctrl-price-range');
-      if (slider) slider.value = 20;
+      if (slider) slider.value = 5.0;
       document.getElementById('ctrl-sort').value = 'score';
+
+      const btnCurated = document.getElementById('btn-mode-curated');
+      const btnAll = document.getElementById('btn-mode-all');
+      if (btnCurated) btnCurated.classList.add('active', 'curated');
+      if (btnAll) btnAll.classList.remove('active');
 
       document.querySelectorAll('.facet-pills').forEach(group => {
         const pills = group.querySelectorAll('.facet-pill');
@@ -1597,6 +1983,8 @@ html_content = """<!DOCTYPE html>
       });
 
       clearPresetHighlight();
+      const topPresetBtn = document.querySelector('.presets-container .preset-chip-btn');
+      if (topPresetBtn) topPresetBtn.classList.add('active');
       applyFilters();
     }
 
@@ -1604,6 +1992,9 @@ html_content = """<!DOCTYPE html>
       const container = document.getElementById('active-tags-container');
       const tags = [];
 
+      if (state.viewMode === 'curated') {
+        tags.push({ label: '🔥 Curated View (Under ₹5L, Score 80+)', clear: () => setViewMode('all') });
+      }
       if (state.search) {
         tags.push({ label: `Search: "${state.search}"`, clear: () => clearSearch() });
       }
@@ -1827,6 +2218,7 @@ html_content = """<!DOCTYPE html>
     }
 
     // Initial render
+    renderAlertsList();
     applyFilters();
   </script>
 </body>
