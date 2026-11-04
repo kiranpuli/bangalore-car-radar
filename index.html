@@ -428,96 +428,94 @@
       border-radius: var(--radius-pill);
     }
 
-    /* Hero Section (B5) */
+    /* Hero Section (Compact & Minimal) */
     .hero-section {
       text-align: center;
-      margin: 0 auto var(--sp-400) auto;
+      margin: 0 auto var(--sp-200) auto;
       max-width: 680px;
     }
-    .hero-heading {
-      background: linear-gradient(90deg, #FFFFFF 0%, #E2E8F0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: var(--sp-100);
-    }
-    .hero-subhead {
-      color: var(--text-muted);
-      font-size: 16px;
-      line-height: 24px;
-      text-wrap: balance;
-    }
-
-    /* Mandatory Tagline Word-by-Word Reveal Section (B11) */
-    .tagline-section {
-      margin: 0 auto var(--sp-500) auto;
-      max-width: 780px;
-      text-align: center;
-      padding: var(--sp-300) var(--sp-200);
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-xl);
+    .hero-tagline-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
     .tagline-badge {
       display: inline-block;
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--accent-blue);
       background: var(--accent-blue-bg);
       border: 1px solid rgba(59, 130, 246, 0.3);
-      padding: 3px 10px;
+      padding: 2px 8px;
       border-radius: var(--radius-pill);
-      margin-bottom: var(--sp-100);
     }
-    .tagline-text {
-      font-size: clamp(20px, 3.2vw, 28px);
-      line-height: 1.35;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      color: var(--text-muted);
-      text-wrap: balance;
+    .tagline-compact-text {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-subtle);
     }
     .tagline-word {
       display: inline-block;
-      color: rgba(255, 255, 255, 0.28);
+      color: rgba(255, 255, 255, 0.35);
       transition: color 500ms var(--ease-base);
-      margin-right: 0.28em;
+      margin-right: 0.22em;
     }
     .tagline-word.revealed {
-      color: #FFFFFF;
+      color: #CBD5E1;
+    }
+    .hero-heading {
+      font-size: clamp(26px, 4.5vw, 38px);
+      line-height: 1.15;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+      background: linear-gradient(90deg, #FFFFFF 0%, #E2E8F0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+    .hero-subhead {
+      color: var(--text-muted);
+      font-size: 14.5px;
+      line-height: 21px;
+      text-wrap: balance;
+      margin-bottom: 8px;
     }
 
-    /* Revamped Filter Console (Comprehensive Workbench) */
+    /* Filter Console (Minimalist Quick Bar + Collapsible Deep Drawer) */
     .filter-console {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-xl);
-      padding: var(--sp-300);
-      margin-bottom: var(--sp-300);
+      padding: 12px 14px;
+      margin-bottom: var(--sp-200);
       display: flex;
       flex-direction: column;
-      gap: var(--sp-200);
+      gap: 12px;
     }
-
-    /* Primary Search Row */
-    .search-row {
+    .filter-quick-bar {
       display: flex;
-      gap: var(--sp-100);
-      align-items: center;
       flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
     }
     .search-input-wrap {
-      flex: 1 1 320px;
+      flex: 1 1 220px;
+      min-width: 180px;
       position: relative;
       display: flex;
       align-items: center;
     }
     .search-icon-svg {
       position: absolute;
-      left: 14px;
-      width: 18px;
-      height: 18px;
+      left: 12px;
+      width: 16px;
+      height: 16px;
       color: var(--text-subtle);
       pointer-events: none;
     }
@@ -528,8 +526,8 @@
       border-radius: var(--radius-md);
       color: var(--text-primary);
       font-family: var(--font-sans);
-      font-size: 14px;
-      padding: 10px 38px 10px 42px;
+      font-size: 13.5px;
+      padding: 8px 32px 8px 34px;
       outline: none;
       transition: border-color var(--dur-normal) var(--ease-base);
     }
@@ -539,23 +537,42 @@
     }
     .search-clear-btn {
       position: absolute;
-      right: 12px;
+      right: 10px;
       background: transparent;
       border: none;
       color: var(--text-subtle);
-      font-size: 14px;
+      font-size: 13px;
       cursor: pointer;
       display: none;
-      padding: 4px;
+      padding: 3px;
     }
     .search-clear-btn:hover {
       color: var(--text-primary);
     }
 
+    .quick-budget-strip {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+    .quick-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-subtle);
+    }
+    .quick-tools-strip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: auto;
+    }
     .sort-wrap {
       display: flex;
       align-items: center;
-      gap: var(--sp-75);
+      gap: 6px;
     }
     .control-label {
       font-family: var(--font-mono);
@@ -570,8 +587,8 @@
       border-radius: var(--radius-md);
       color: var(--text-body);
       font-family: var(--font-mono);
-      font-size: 13px;
-      padding: 9px 12px;
+      font-size: 12.5px;
+      padding: 7px 10px;
       outline: none;
       cursor: pointer;
       transition: border-color var(--dur-normal) var(--ease-base);
@@ -580,26 +597,59 @@
       border-color: var(--border-focus);
     }
 
-    /* Filter Workbench Container */
-    .filter-console {
-      background: var(--bg-surface);
+    .btn-toggle-filters {
+      background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-xl);
-      padding: var(--sp-300);
-      margin-bottom: var(--sp-300);
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-200);
+      color: var(--text-body);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 7px 11px;
+      border-radius: var(--radius-md);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all var(--dur-fast) var(--ease-base);
+      user-select: none;
+    }
+    .btn-toggle-filters:hover, .btn-toggle-filters.open {
+      background: var(--border-color);
+      border-color: var(--accent-blue);
+      color: #FFFFFF;
+    }
+    .filter-count-badge {
+      background: var(--accent-blue);
+      color: #000000;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: var(--radius-pill);
+    }
+    .drawer-arrow {
+      font-size: 11px;
+      transition: transform var(--dur-fast) var(--ease-base);
+    }
+    .btn-toggle-filters.open .drawer-arrow {
+      transform: rotate(180deg);
     }
 
-    /* Primary Search & Sort Bar */
-    .filter-global-bar {
+    /* Collapsible Deep Filter Drawer */
+    .filter-categories-drawer {
       display: flex;
-      gap: var(--sp-100);
+      flex-direction: column;
+      gap: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-color);
+      animation: fadeInDrawer 200ms var(--ease-base);
+    }
+    .filter-drawer-footer {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
+      padding-top: 4px;
       flex-wrap: wrap;
-      padding-bottom: var(--sp-200);
-      border-bottom: 1px solid var(--border-color);
+      gap: 8px;
     }
 
     /* Segregated Category Card */
@@ -831,14 +881,66 @@
       font-weight: 600;
     }
 
-    /* Active Filter Summary Strip */
+    /* Active Filter Summary Strip & Density Switcher */
     .active-filters-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: var(--sp-300);
+      font-size: 13px;
+    }
+    .active-tags-left {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: var(--sp-75);
-      margin-bottom: var(--sp-300);
-      font-size: 13px;
+      gap: 8px;
+    }
+    .active-tags-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-left: auto;
+    }
+    .density-switch-wrap {
+      display: inline-flex;
+      align-items: center;
+      background: #181818;
+      border: 1px solid #272727;
+      border-radius: var(--radius-pill);
+      padding: 2px 4px;
+      gap: 3px;
+    }
+    .density-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-subtle);
+      padding: 0 4px;
+    }
+    .density-pill {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: all var(--dur-fast) var(--ease-base);
+    }
+    .density-pill:hover {
+      color: var(--text-primary);
+    }
+    .density-pill.active {
+      background: #272727;
+      color: #FFFFFF;
+      border-color: #383838;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
     }
     .active-tag {
       background: var(--bg-surface);
@@ -878,10 +980,10 @@
       color: #FFFFFF;
     }
     .results-count-wrap {
-      margin-left: auto;
       font-family: var(--font-mono);
       font-size: 13px;
       color: var(--text-muted);
+      white-space: nowrap;
     }
     .results-count-wrap strong {
       color: var(--text-primary);
@@ -1232,6 +1334,57 @@
     }
     .tele-v.loss {
       color: var(--accent-blue);
+    }
+
+    /* Collapsible Ownership Intel & Verdict Drawer */
+    .btn-intel-toggle {
+      background: #1C1C1C;
+      border: 1px dashed #313131;
+      color: #94A3B8;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 7px 10px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      cursor: pointer;
+      transition: all var(--dur-fast) var(--ease-base);
+      user-select: none;
+      margin-top: 2px;
+    }
+    .btn-intel-toggle:hover {
+      background: #242424;
+      border-color: #38BDF8;
+      color: #FFFFFF;
+    }
+    .btn-intel-toggle.active {
+      background: #222222;
+      border-color: rgba(56, 189, 248, 0.5);
+      color: #38BDF8;
+    }
+    .intel-chevron {
+      font-size: 10px;
+      transition: transform var(--dur-fast) var(--ease-base);
+    }
+    .btn-intel-toggle.active .intel-chevron {
+      transform: rotate(180deg);
+    }
+    .card-intel-drawer {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 4px;
+      animation: fadeInDrawer 160ms var(--ease-base);
+    }
+    .card-intel-drawer.open {
+      display: flex;
+    }
+    @keyframes fadeInDrawer {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Bangalore Verdict Note */
@@ -1710,11 +1863,10 @@
         border-radius: var(--radius-lg);
         margin-bottom: 14px;
       }
-      .filter-global-bar {
+      .filter-quick-bar {
         flex-direction: column;
         align-items: stretch;
         gap: 8px;
-        padding-bottom: 10px;
       }
       .search-input-wrap {
         width: 100%;
@@ -1725,8 +1877,17 @@
         padding: 8px 32px 8px 36px;
         min-height: 40px;
       }
-      .sort-wrap {
+      .quick-budget-strip {
         width: 100%;
+        justify-content: flex-start;
+      }
+      .quick-tools-strip {
+        width: 100%;
+        margin-left: 0;
+        justify-content: space-between;
+      }
+      .sort-wrap {
+        flex: 1;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -1799,12 +1960,21 @@
         min-height: 32px;
       }
 
-      /* Active Filters Bar */
+      /* Active Filters Bar & Density Switcher */
       .active-filters-bar {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
+        align-items: stretch;
+        gap: 8px;
         margin-bottom: 14px;
+      }
+      .active-tags-left {
+        width: 100%;
+        flex-wrap: wrap;
+      }
+      .active-tags-right {
+        width: 100%;
+        margin-left: 0;
+        justify-content: space-between;
       }
       #active-tags-container {
         width: 100%;
@@ -1815,9 +1985,6 @@
       }
       .results-count-wrap {
         margin-left: 0;
-        width: 100%;
-        padding-top: 4px;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
         font-size: 11.5px;
       }
 
@@ -1918,6 +2085,11 @@
       .card-verdict-text {
         font-size: 11px;
         line-height: 1.35;
+      }
+      .btn-intel-toggle {
+        min-height: 38px;
+        font-size: 11px;
+        padding: 8px 10px;
       }
       .card-footer {
         padding-top: 8px;
@@ -2162,8 +2334,12 @@
   </nav>
 
   <div class="shell">
-    <!-- Hero Section (B5) -->
+    <!-- Hero Section (Compact & Minimal) -->
     <header class="hero-section">
+      <div class="hero-tagline-wrap" id="tagline-reveal">
+        <span class="tagline-badge">Verified Deal Intelligence</span>
+        <span class="tagline-compact-text" id="tagline-words"></span>
+      </div>
       <h1 class="heading-1 hero-heading">Bangalore Top Used Car Deals</h1>
       <p class="body-3 hero-subhead">
         Curated shortlist of verified Bangalore cars under ₹5 Lakhs with high resale retention and certified inspection across Spinny and Cars24.
@@ -2188,18 +2364,10 @@
       </div>
     </div>
 
-    <!-- Mandatory Tagline Word-by-Word Reveal Section (B11) -->
-    <section class="tagline-section" id="tagline-reveal" aria-label="Core Commitment">
-      <span class="tagline-badge">Verified Deal Intelligence</span>
-      <p class="tagline-text" id="tagline-words">
-        <!-- Injected via JavaScript for scroll word-by-word reveal -->
-      </p>
-    </section>
-
-    <!-- Segregated Filter Console (3 Structured Categories) -->
+    <!-- Filter Console (Compact Quick Bar + Collapsible Deep Drawer) -->
     <section class="filter-console" id="filter-workbench" aria-label="Filter Controls">
-      <!-- Global Search & Sort Row -->
-      <div class="filter-global-bar">
+      <!-- Compact Quick Bar -->
+      <div class="filter-quick-bar">
         <div class="search-input-wrap">
           <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="8"></circle>
@@ -2209,28 +2377,46 @@
             type="text" 
             id="ctrl-search" 
             class="search-field" 
-            placeholder="Search by model, hub location, variant, or fuel..." 
+            placeholder="Search model, variant, hub..." 
             oninput="onSearchInput(this.value)"
           />
           <button type="button" id="btn-clear-search" class="search-clear-btn" onclick="clearSearch()" title="Clear search">✕</button>
         </div>
 
-        <div class="sort-wrap">
-          <label for="ctrl-sort" class="control-label">Sort By:</label>
-          <select id="ctrl-sort" class="select-dropdown" onchange="onSortChange(this.value)">
-            <option value="score">Best Value Score</option>
-            <option value="price_asc">Listed Price: Low to High</option>
-            <option value="price_desc">Listed Price: High to Low</option>
-            <option value="nego_asc">Negotiable Floor: Low to High</option>
-            <option value="discount_desc">Highest % Off Original Retail</option>
-            <option value="year_desc">Year: Newest First</option>
-            <option value="km_asc">Mileage: Lowest KM</option>
-          </select>
+        <div class="quick-budget-strip">
+          <span class="quick-label">Budget:</span>
+          <button type="button" class="facet-pill" onclick="setMaxBudget(4.0)">≤ ₹4L</button>
+          <button type="button" class="facet-pill active" id="btn-quick-5l" onclick="setMaxBudget(5.0)">≤ ₹5L</button>
+          <button type="button" class="facet-pill" onclick="setMaxBudget(7.0)">≤ ₹7L</button>
+          <button type="button" class="facet-pill" onclick="clearPrice()">All</button>
+        </div>
+
+        <div class="quick-tools-strip">
+          <div class="sort-wrap">
+            <label for="ctrl-sort" class="control-label">Sort:</label>
+            <select id="ctrl-sort" class="select-dropdown" onchange="onSortChange(this.value)">
+              <option value="score">Best Value Score</option>
+              <option value="price_asc">Price: Low to High</option>
+              <option value="price_desc">Price: High to Low</option>
+              <option value="nego_asc">Negotiable Floor: Low to High</option>
+              <option value="discount_desc">% Off Original Retail</option>
+              <option value="year_desc">Year: Newest First</option>
+              <option value="km_asc">Mileage: Lowest KM</option>
+            </select>
+          </div>
+
+          <button type="button" class="btn-toggle-filters" id="btn-toggle-filters" onclick="toggleFilterDrawer()">
+            <span>⚙️ Deep Filters</span>
+            <span class="filter-count-badge" id="filter-active-count">0</span>
+            <span class="drawer-arrow">▾</span>
+          </button>
         </div>
       </div>
 
-      <!-- Category 1: 💰 Budget & Deal Assurance -->
-      <div class="filter-category-card">
+      <!-- Collapsible Deep Filter Drawer (Categories 1, 2, 3) -->
+      <div class="filter-categories-drawer" id="filter-categories-drawer" style="display: none;">
+        <!-- Category 1: 💰 Budget & Deal Assurance -->
+        <div class="filter-category-card">
         <div class="filter-category-header">
           <div class="filter-category-title-group">
             <span class="category-num-badge">01</span>
@@ -2378,18 +2564,34 @@
           <button type="button" class="facet-pill pill-item" data-val="skoda" onclick="toggleMultiFilter('brands', 'skoda')">Skoda (<span id="count-skoda">0</span>)</button>
         </div>
       </div>
-    </section>
 
-    <!-- Active Filters Summary Strip -->
-    <div class="active-filters-bar" id="active-tags-strip">
-      <span class="caption-4" style="color:var(--text-subtle);">Active Filters:</span>
+      <div class="filter-drawer-footer">
+        <button type="button" class="btn-category-reset" onclick="resetAll()">Reset All Deep Filters</button>
+        <button type="button" class="nav-btn" onclick="toggleFilterDrawer()">Close Drawer ▴</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Active Filters Summary Strip & Density Switcher -->
+  <div class="active-filters-bar" id="active-tags-strip">
+    <div class="active-tags-left">
+      <span class="caption-4" style="color:var(--text-subtle);">Active:</span>
       <div id="active-tags-container" style="display:inline-flex; flex-wrap:wrap; gap:6px;"></div>
-      <button class="btn-reset-all" onclick="resetAll()">Reset All</button>
+      <button class="btn-reset-all" onclick="resetAll()">Reset</button>
+    </div>
+
+    <div class="active-tags-right">
+      <div class="density-switch-wrap" role="group" aria-label="Card density">
+        <span class="density-label">Cards:</span>
+        <button type="button" class="density-pill active" id="btn-density-min" onclick="setDensityMode('minimal')" title="Minimal view (compact cards with collapsible intel)">◻ Minimal</button>
+        <button type="button" class="density-pill" id="btn-density-exp" onclick="setDensityMode('detailed')" title="Detailed view (all intel and verdicts expanded)">☷ Detailed</button>
+      </div>
 
       <div class="results-count-wrap">
         Showing <strong id="res-count">0</strong> verified vehicles
       </div>
     </div>
+  </div>
 
     <!-- Cards Grid -->
     <main class="grid" id="cars-grid" aria-live="polite"></main>
@@ -2522,6 +2724,8 @@
     // Application state - Defaults strictly to Curated Top Deals to Consider (< ₹5L, Score 80+)
     const state = {
       viewMode: 'curated',
+      density: 'minimal',
+      filterDrawerOpen: false,
       search: '',
       min_year: 0,
       min_price: 0,
@@ -2534,6 +2738,7 @@
       fuels: new Set(),
       qualities: new Set(['top_deal'])
     };
+    const expandedCards = new Set();
 
     // Initialize counts
     const spinnyCount = CARS.filter(c => (c.platform || '').toLowerCase() === 'spinny').length;
@@ -2606,9 +2811,95 @@
       }
     }
 
+    function toggleFilterDrawer() {
+      const drawer = document.getElementById('filter-categories-drawer');
+      const btn = document.getElementById('btn-toggle-filters');
+      if (!drawer) return;
+      const isClosed = drawer.style.display === 'none';
+      if (isClosed) {
+        drawer.style.display = 'flex';
+        if (btn) btn.classList.add('open');
+        state.filterDrawerOpen = true;
+      } else {
+        drawer.style.display = 'none';
+        if (btn) btn.classList.remove('open');
+        state.filterDrawerOpen = false;
+      }
+    }
+
     function scrollToFilters() {
+      const drawer = document.getElementById('filter-categories-drawer');
+      const btn = document.getElementById('btn-toggle-filters');
+      if (drawer && drawer.style.display === 'none') {
+        drawer.style.display = 'flex';
+        if (btn) btn.classList.add('open');
+        state.filterDrawerOpen = true;
+      }
       const el = document.getElementById('filter-workbench');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function updateFilterBadge() {
+      let count = 0;
+      if (state.platforms.size > 0) count += state.platforms.size;
+      if (state.brands.size > 0) count += state.brands.size;
+      if (state.transmissions.size > 0) count += state.transmissions.size;
+      if (state.fuels.size > 0) count += state.fuels.size;
+      if (state.min_year > 0) count += 1;
+      if (state.max_km > 0 && !(state.viewMode === 'curated' && state.max_km === 80000)) count += 1;
+      if (state.min_price > 0 || (state.max_price > 0 && !(state.viewMode === 'curated' && state.max_price === 500000))) count += 1;
+      if (state.qualities.size > 0 && !(state.viewMode === 'curated' && state.qualities.size === 1 && state.qualities.has('top_deal'))) {
+        count += state.qualities.size;
+      }
+
+      const badge = document.getElementById('filter-active-count');
+      if (badge) badge.textContent = count;
+    }
+
+    function syncQuickBudgetButtons() {
+      const p = state.max_price;
+      document.querySelectorAll('.quick-budget-strip .facet-pill').forEach(btn => {
+        const txt = btn.textContent;
+        if (p === 400000 && txt.includes('4L')) btn.classList.add('active');
+        else if (p === 500000 && txt.includes('5L')) btn.classList.add('active');
+        else if (p === 700000 && txt.includes('7L')) btn.classList.add('active');
+        else if (p === 0 && txt.includes('All')) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+    }
+
+    function setDensityMode(mode) {
+      state.density = mode;
+      const btnMin = document.getElementById('btn-density-min');
+      const btnExp = document.getElementById('btn-density-exp');
+      if (mode === 'detailed') {
+        if (btnExp) btnExp.classList.add('active');
+        if (btnMin) btnMin.classList.remove('active');
+      } else {
+        if (btnMin) btnMin.classList.add('active');
+        if (btnExp) btnExp.classList.remove('active');
+      }
+      applyFilters();
+    }
+
+    function toggleCardIntel(carId, event) {
+      if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+      const drawer = document.getElementById(`intel-drawer-${carId}`);
+      const btn = document.getElementById(`intel-btn-${carId}`);
+      const strId = String(carId);
+
+      if (expandedCards.has(strId)) {
+        expandedCards.delete(strId);
+        if (drawer) drawer.classList.remove('open');
+        if (btn) btn.classList.remove('active');
+      } else {
+        expandedCards.add(strId);
+        if (drawer) drawer.classList.add('open');
+        if (btn) btn.classList.add('active');
+      }
     }
 
     // View Mode Switcher (Curated Top Deals vs All Market)
@@ -2827,6 +3118,7 @@
         state.max_price = 0;
         if (slider) slider.value = 20;
       }
+      syncQuickBudgetButtons();
       applyFilters();
     }
 
@@ -3090,6 +3382,8 @@
 
       const resCount = document.getElementById('res-count');
       if (resCount) resCount.textContent = filtered.length.toLocaleString('en-IN');
+      syncQuickBudgetButtons();
+      updateFilterBadge();
       renderActiveTags();
       renderCards(filtered);
     }
@@ -3457,9 +3751,10 @@
         }
 
         const rev = c.ownership_review || {};
+        const isExpanded = state.density === 'detailed' || expandedCards.has(String(c.id));
 
         return `
-          <article class="card">
+          <article class="card" id="card-${c.id}">
             <!-- Flat Photo Area (B4 flat #131209) -->
             <div class="card-photo">
               <!-- Score Grade Badge with Clickable Audit -->
@@ -3516,41 +3811,50 @@
                 </div>
               </div>
 
-              <!-- Ownership Intel Matrix (Clean 2x2 Grid) -->
-              <div class="card-intel-matrix">
-                <div class="intel-cell">
-                  <span class="intel-k">⛽ Mileage</span>
-                  <span class="intel-v">${rev.fuel_economy || '12–14 km/l city'}</span>
-                </div>
-                <div class="intel-cell">
-                  <span class="intel-k">🔧 Service</span>
-                  <span class="intel-v">${rev.annual_maintenance || '₹5k–₹7k/yr'}</span>
-                </div>
-                <div class="intel-cell">
-                  <span class="intel-k">🛣️ Road Ride</span>
-                  <span class="intel-v">${rev.ride_comfort || 'Speed breaker safe'}</span>
-                </div>
-                <div class="intel-cell">
-                  <span class="intel-k">⚠️ Watchlist</span>
-                  <span class="intel-v">${rev.known_issues || 'Inspect clutch & brakes'}</span>
-                </div>
-              </div>
-
-              <!-- Financial Telemetry Strip -->
+              <!-- Financial Telemetry Strip (Kept visible for fast buyback comparison) -->
               <div class="card-telemetry-strip">
                 <div class="telemetry-item">
-                  <span class="tele-k">${isAssured ? '24M Buyback Guarantee' : '24M Resale Estimate'}</span>
+                  <span class="tele-k">${isAssured ? '24M Buyback' : '24M Resale'}</span>
                   <span class="tele-v buyback">${buyback}</span>
                 </div>
                 <div class="telemetry-item" style="text-align: right;">
-                  <span class="tele-k">Depreciation Loss</span>
+                  <span class="tele-k">Depreciation</span>
                   <span class="tele-v loss">${monthly}</span>
                 </div>
               </div>
 
-              <!-- Bangalore Verdict Note -->
-              <div class="card-verdict-row">
-                <p class="card-verdict-text"><strong style="color:var(--text-body);">Bangalore Verdict:</strong> ${rev.bangalore_verdict || (c.verdict || 'Reliable urban commuter with steady resale demand.')}</p>
+              <!-- Progressive Disclosure: 1-Click Accordion Button -->
+              <button type="button" class="btn-intel-toggle ${isExpanded ? 'active' : ''}" id="intel-btn-${c.id}" onclick="toggleCardIntel('${c.id}', event)">
+                <span>✦ View Ownership Intel & Verdict</span>
+                <span class="intel-chevron">▾</span>
+              </button>
+
+              <!-- Collapsible Card Intel Drawer -->
+              <div class="card-intel-drawer ${isExpanded ? 'open' : ''}" id="intel-drawer-${c.id}">
+                <!-- Ownership Intel Matrix (Clean 2x2 Grid) -->
+                <div class="card-intel-matrix">
+                  <div class="intel-cell">
+                    <span class="intel-k">⛽ Mileage</span>
+                    <span class="intel-v">${rev.fuel_economy || '12–14 km/l city'}</span>
+                  </div>
+                  <div class="intel-cell">
+                    <span class="intel-k">🔧 Service</span>
+                    <span class="intel-v">${rev.annual_maintenance || '₹5k–₹7k/yr'}</span>
+                  </div>
+                  <div class="intel-cell">
+                    <span class="intel-k">🛣️ Road Ride</span>
+                    <span class="intel-v">${rev.ride_comfort || 'Speed breaker safe'}</span>
+                  </div>
+                  <div class="intel-cell">
+                    <span class="intel-k">⚠️ Watchlist</span>
+                    <span class="intel-v">${rev.known_issues || 'Inspect clutch & brakes'}</span>
+                  </div>
+                </div>
+
+                <!-- Bangalore Verdict Note -->
+                <div class="card-verdict-row">
+                  <p class="card-verdict-text"><strong style="color:var(--text-body);">Bangalore Verdict:</strong> ${rev.bangalore_verdict || (c.verdict || 'Reliable urban commuter with steady resale demand.')}</p>
+                </div>
               </div>
 
               <!-- Single Primary CTA in Footer -->
