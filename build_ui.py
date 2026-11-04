@@ -3115,7 +3115,7 @@ html_content = """<!DOCTYPE html>
       const body = document.getElementById('alerts-modal-body');
       if (!body) return;
       if (!ALERTS.length) {
-        body.innerHTML = '<p style="color:var(--text-muted); padding:20px; text-align:center;">No recent alerts recorded yet. Daily monitor checks morning & evening.</p>';
+        body.innerHTML = '<p style="color:var(--text-muted); padding:20px; text-align:center;">No recent alerts recorded yet. Hourly monitor refreshes active inventory continuously.</p>';
         return;
       }
       body.innerHTML = ALERTS.map(a => {
