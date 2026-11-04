@@ -1281,26 +1281,53 @@ html_content = """<!DOCTYPE html>
       left: 12px;
       font-family: var(--font-mono);
       font-size: 11px;
-      font-weight: 600;
-      padding: 3px 8px;
+      font-weight: 700;
+      padding: 4px 8px;
       border-radius: var(--radius-sm);
       letter-spacing: 0.04em;
-      z-index: 2;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      outline: none;
+      transition: all var(--dur-fast) var(--ease-base);
+      user-select: none;
+    }
+    .badge-grade:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      filter: brightness(1.15);
+    }
+    .badge-grade:active {
+      transform: translateY(0);
+    }
+    .badge-info-hint {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.85;
+      padding-left: 5px;
+      border-left: 1px solid rgba(0, 0, 0, 0.25);
     }
     .badge-grade.top {
       background: var(--accent-amber);
       color: #000000;
-      border: 1px solid var(--accent-amber);
+      border-color: #D97706;
     }
     .badge-grade.value {
       background: var(--accent-emerald);
       color: #000000;
-      border: 1px solid var(--accent-emerald);
+      border-color: #059669;
     }
     .badge-grade.fair {
-      background: var(--bg-subsurface);
-      border: 1px solid var(--border-color);
-      color: var(--text-muted);
+      background: #1A2232;
+      border-color: var(--border-color);
+      color: var(--text-body);
+    }
+    .badge-grade.fair .badge-info-hint {
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .badge-tier {
@@ -1438,138 +1465,27 @@ html_content = """<!DOCTYPE html>
       margin-top: 2px;
     }
 
-    /* Card Interactive Tabs (Score Audit vs Ownership Review) */
-    .card-tabs-nav {
-      display: grid;
-      grid-template-columns: 1.15fr 1fr;
-      gap: 6px;
-      background: #0A0F18;
-      padding: 3px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-color);
-      margin-top: 2px;
-    }
-    .card-tab-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 600;
-      padding: 6px 6px;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      transition: all var(--dur-fast) var(--ease-base);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .card-tab-btn:hover {
-      color: #FFFFFF;
-      background: rgba(255, 255, 255, 0.06);
-    }
-    .card-tab-btn.active {
-      background: #1E293B;
-      color: #FFFFFF;
-      border: 1px solid #38BDF8;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-    }
-
-    .card-tab-content {
-      display: none;
-      background: #0F1622;
+    /* Bangalore Ownership Intel Box */
+    .ownership-review-box {
+      background: #0B101A;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      padding: 10px 12px;
-      font-size: 12px;
-      margin-top: 2px;
-    }
-    .card-tab-content.active {
-      display: block;
-      animation: fadeIn 180ms var(--ease-base);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-2px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Score Breakdown Panel */
-    .score-rationale-line {
-      font-size: 12px;
-      color: var(--text-body);
-      line-height: 1.4;
-      font-weight: 500;
-      padding-bottom: 7px;
-      margin-bottom: 7px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .score-factor-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 8px;
-      padding: 3px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    }
-    .score-factor-row:last-child {
-      border-bottom: none;
-    }
-    .score-factor-label {
+      padding: 9px 12px;
       display: flex;
       flex-direction: column;
-      gap: 1px;
+      gap: 6px;
     }
-    .score-factor-label strong {
-      color: var(--text-body);
-      font-size: 11px;
-      font-weight: 600;
-    }
-    .score-factor-label span {
-      color: var(--text-subtle);
-      font-size: 10px;
-    }
-    .score-factor-pts {
-      font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 11px;
-      white-space: nowrap;
-      padding: 1px 5px;
-      border-radius: 3px;
-    }
-    .score-factor-pts.pos {
-      color: #34D399;
-      background: rgba(52, 211, 153, 0.14);
-    }
-    .score-factor-pts.neg {
-      color: #F87171;
-      background: rgba(248, 113, 113, 0.14);
-    }
-    .score-factor-pts.base {
-      color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    /* Ownership Review Panel */
     .review-grid {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
     .review-item {
       display: flex;
-      flex-direction: column;
-      gap: 1px;
-      padding-bottom: 5px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .review-item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
+      gap: 6px;
+      align-items: baseline;
+      font-size: 11.5px;
+      line-height: 1.35;
     }
     .review-k {
       font-family: var(--font-mono);
@@ -1578,27 +1494,272 @@ html_content = """<!DOCTYPE html>
       text-transform: uppercase;
       letter-spacing: 0.04em;
       color: var(--accent-blue);
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .review-v {
-      font-size: 12px;
       color: var(--text-body);
-      line-height: 1.35;
+      font-size: 11.5px;
     }
     .review-verdict-box {
-      background: #090E17;
-      border-left: 2px solid var(--accent-emerald);
-      padding: 6px 10px;
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      margin-top: 4px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 5px;
+      margin-top: 2px;
     }
     .review-verdict-box p {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.35;
+      font-style: normal;
+    }
+
+    /* Small link in card footer */
+    .btn-score-audit-link {
+      background: transparent;
+      border: none;
+      color: var(--accent-blue);
+      font-family: var(--font-mono);
       font-size: 11px;
-      color: var(--text-body);
-      line-height: 1.4;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 0;
+      text-align: left;
+      transition: color var(--dur-fast) var(--ease-base);
+    }
+    .btn-score-audit-link:hover {
+      color: #FFFFFF;
+      text-decoration: underline;
+    }
+
+    /* Score Calculation Pop-up Modal */
+    .score-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: var(--sp-200);
+      animation: modalFadeIn 200ms var(--ease-base);
+    }
+    .score-modal-backdrop.open {
+      display: flex;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .score-modal {
+      background: #121824;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      max-width: 580px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+      animation: modalSlideUp 200ms var(--ease-base);
+    }
+    @keyframes modalSlideUp {
+      from { transform: translateY(12px) scale(0.98); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    .score-modal-header {
+      padding: var(--sp-200);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background: #0B101A;
+    }
+    .score-modal-header h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .score-modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 18px;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      transition: all var(--dur-fast) var(--ease-base);
+    }
+    .score-modal-close:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .score-modal-body {
+      padding: var(--sp-200);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-200);
+    }
+    .score-modal-footer {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border-color);
+      background: #0B101A;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Modal Hero Snapshot */
+    .modal-car-hero {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      background: #0B101A;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+    }
+    .modal-car-thumb {
+      width: 72px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      background: #1A2232;
+      flex-shrink: 0;
+    }
+    .modal-hero-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .modal-score-grade {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+    }
+    .modal-score-grade.top {
+      background: var(--accent-amber);
+      color: #000000;
+    }
+    .modal-score-grade.value {
+      background: var(--accent-emerald);
+      color: #000000;
+    }
+    .modal-score-grade.fair {
+      background: #1A2232;
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+    }
+
+    .modal-rationale-box {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+    }
+    .modal-rationale-icon {
+      font-size: 16px;
+      line-height: 1.2;
+    }
+    .modal-rationale-text {
+      font-size: 13px;
+      color: #F1F5F9;
+      line-height: 1.45;
       font-weight: 500;
+    }
+
+    /* Modal Point Audit Table */
+    .modal-breakdown-wrap {
+      background: #0B101A;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .modal-breakdown-head {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 14px;
+      background: #151D2A;
+      border-bottom: 1px solid var(--border-color);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-subtle);
+    }
+    .score-audit-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .score-audit-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      gap: 12px;
+    }
+    .score-audit-row:last-child {
+      border-bottom: none;
+    }
+    .score-audit-pillar {
+      font-size: 13px;
+      font-weight: 600;
+      color: #FFFFFF;
+    }
+    .score-audit-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+    .score-audit-badge {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+    }
+    .score-audit-badge.pos {
+      background: rgba(52, 211, 153, 0.16);
+      color: #34D399;
+      border: 1px solid rgba(52, 211, 153, 0.3);
+    }
+    .score-audit-badge.neg {
+      background: rgba(248, 113, 113, 0.16);
+      color: #F87171;
+      border: 1px solid rgba(248, 113, 113, 0.3);
+    }
+    .score-audit-badge.base {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .modal-breakdown-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      background: #151D2A;
+      border-top: 1px solid var(--border-color);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .modal-breakdown-total strong {
+      color: var(--accent-emerald);
+      font-size: 15px;
     }
 
     /* Value Telemetry Strip */
@@ -1642,6 +1803,9 @@ html_content = """<!DOCTYPE html>
       margin-top: auto;
       padding-top: var(--sp-100);
       border-top: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
     .cta-btn {
       display: flex;
@@ -1954,6 +2118,26 @@ html_content = """<!DOCTYPE html>
       </div>
       <div class="alerts-modal-body" id="alerts-modal-body">
         <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Score Calculation Pop-up Modal -->
+  <div class="score-modal-backdrop" id="score-modal-backdrop" onclick="closeScoreModalOnBackdrop(event)">
+    <div class="score-modal" role="dialog" aria-modal="true" aria-labelledby="score-modal-title">
+      <div class="score-modal-header">
+        <div>
+          <span class="caption-5" style="color:var(--accent-blue); text-transform:uppercase; font-weight:700; letter-spacing:0.06em;">Mechanical & Value Scoring Engine</span>
+          <h3 id="score-modal-title" style="margin-top:2px;">Score Calculation</h3>
+        </div>
+        <button type="button" class="score-modal-close" onclick="closeScoreModal()" title="Close">✕</button>
+      </div>
+      <div class="score-modal-body" id="score-modal-body">
+        <!-- Injected dynamically on click -->
+      </div>
+      <div class="score-modal-footer">
+        <span class="caption-5" style="color:var(--text-subtle);">Algorithmically audited against Bangalore used vehicle reliability & depreciation curves.</span>
+        <button type="button" class="nav-btn" onclick="closeScoreModal()">Done</button>
       </div>
     </div>
   </div>
@@ -2524,15 +2708,110 @@ html_content = """<!DOCTYPE html>
       renderCards(filtered);
     }
 
-    function toggleCardTab(btn, targetClass) {
-      const card = btn.closest('.card');
-      if (!card) return;
-      card.querySelectorAll('.card-tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      card.querySelectorAll('.card-tab-content').forEach(p => p.classList.remove('active'));
-      const target = card.querySelector(`.card-tab-content.${targetClass}`);
-      if (target) target.classList.add('active');
+    function openScoreModal(carId, event) {
+      if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+      const car = CARS.find(x => String(x.id) === String(carId));
+      if (!car) return;
+
+      const isAssured = car.category === 'assured';
+      const isCars24 = (car.platform || '').toLowerCase() === 'cars24';
+      const platformName = car.platform || (isCars24 ? 'Cars24' : 'Spinny');
+      const title = `${car.make_year} ${car.make} ${car.model} ${car.variant || ''}`.trim();
+      const price = '₹' + (car.price / 100000).toFixed(2) + 'L';
+      const km = (car.mileage / 1000).toFixed(0) + 'k km';
+
+      let gradeClass = 'fair';
+      let gradeLabel = `Score ${car.deal_score}/100`;
+      if (car.deal_score >= 80) {
+        gradeClass = 'top';
+        gradeLabel = `💎 ${car.deal_score}/100 · TOP DEAL`;
+      } else if (car.deal_score >= 68) {
+        gradeClass = 'value';
+        gradeLabel = `⭐ ${car.deal_score}/100 · VALUE PICK`;
+      }
+
+      const factors = car.score_breakdown || [];
+      const factorsHtml = factors.map(f => {
+        const typeClass = f.type || 'pos';
+        return `
+          <div class="score-audit-row">
+            <div>
+              <div class="score-audit-pillar">${f.pillar}</div>
+              <div class="score-audit-desc">${f.detail}</div>
+            </div>
+            <span class="score-audit-badge ${typeClass}">${f.pts}</span>
+          </div>
+        `;
+      }).join('');
+
+      const modalTitle = document.getElementById('score-modal-title');
+      if (modalTitle) modalTitle.textContent = `${title} — Score Audit`;
+
+      const modalBody = document.getElementById('score-modal-body');
+      if (modalBody) {
+        modalBody.innerHTML = `
+          <div class="modal-car-hero">
+            ${car.img ? `<img src="${car.img}" alt="${title}" class="modal-car-thumb" loading="lazy" referrerpolicy="no-referrer" />` : ''}
+            <div class="modal-hero-info">
+              <div style="font-weight:700; color:#FFFFFF; font-size:14px;">${title}</div>
+              <div style="font-size:11.5px; color:var(--text-muted); margin-top:2px;">
+                ${price} · ${km} · ${(car.fuel_type || 'Petrol').toUpperCase()} · ${(car.transmission || 'MT').toUpperCase()} · ${platformName}
+              </div>
+            </div>
+            <div class="modal-score-grade ${gradeClass}">${gradeLabel}</div>
+          </div>
+
+          <div class="modal-rationale-box">
+            <span class="modal-rationale-icon">💡</span>
+            <div class="modal-rationale-text">
+              <strong>Why this rating?</strong> ${car.score_rationale || 'Score derived from odometer health, age, retail discount, and certified warranty.'}
+            </div>
+          </div>
+
+          <div class="modal-breakdown-wrap">
+            <div class="modal-breakdown-head">
+              <span>Pillar & Audit Details</span>
+              <span>Points Awarded</span>
+            </div>
+            <div class="score-audit-list">
+              ${factorsHtml}
+            </div>
+            <div class="modal-breakdown-total">
+              <span>Final Deal Score</span>
+              <strong>${car.deal_score} / 100</strong>
+            </div>
+          </div>
+        `;
+      }
+
+      const modal = document.getElementById('score-modal-backdrop');
+      if (modal) {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
     }
+
+    function closeScoreModal() {
+      const modal = document.getElementById('score-modal-backdrop');
+      if (modal) modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closeScoreModalOnBackdrop(e) {
+      if (e && e.target && e.target.id === 'score-modal-backdrop') {
+        closeScoreModal();
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeScoreModal();
+        closeAlertsModal();
+      }
+    });
 
     function renderCards(list) {
       const grid = document.getElementById('cars-grid');
@@ -2576,23 +2855,15 @@ html_content = """<!DOCTYPE html>
           gradeLabel = `⭐ ${c.deal_score} · VALUE PICK`;
         }
 
-        const scoreFactors = c.score_breakdown || [];
-        const factorsHtml = scoreFactors.map(f => `
-          <div class="score-factor-row">
-            <div class="score-factor-label">
-              <strong>${f.pillar}</strong>
-              <span>${f.detail}</span>
-            </div>
-            <span class="score-factor-pts ${f.type}">${f.pts}</span>
-          </div>
-        `).join('');
-
         const rev = c.ownership_review || {};
 
         return `
           <article class="card">
             <div class="card-photo">
-              <span class="badge-grade ${gradeClass}">${gradeLabel}</span>
+              <button type="button" class="badge-grade ${gradeClass}" onclick="openScoreModal('${c.id}', event)" title="Click to view full score audit & point breakdown">
+                <span>${gradeLabel}</span>
+                <span class="badge-info-hint" aria-hidden="true">📊 Audit</span>
+              </button>
               <span class="badge-tier ${isAssured ? 'assured' : ''}">
                 ${tierLabel}
               </span>
@@ -2631,26 +2902,8 @@ html_content = """<!DOCTYPE html>
                 </div>
               </div>
 
-              <!-- Interactive Tabs: Score Breakdown vs Bangalore Ownership Review -->
-              <div class="card-tabs-nav">
-                <button type="button" class="card-tab-btn active" onclick="toggleCardTab(this, 'score')">
-                  📊 Why Score ${c.deal_score}/100?
-                </button>
-                <button type="button" class="card-tab-btn" onclick="toggleCardTab(this, 'review')">
-                  🛡️ BLR Ownership Review
-                </button>
-              </div>
-
-              <!-- Score Audit Panel (Active by default) -->
-              <div class="card-tab-content score active">
-                <div class="score-rationale-line">${c.score_rationale || 'Score derived from odometer health, age, retail discount, and certified warranty.'}</div>
-                <div class="score-factors-list">
-                  ${factorsHtml}
-                </div>
-              </div>
-
-              <!-- Ownership Review Panel -->
-              <div class="card-tab-content review">
+              <!-- Bangalore Ownership Intel -->
+              <div class="ownership-review-box">
                 <div class="review-grid">
                   <div class="review-item">
                     <span class="review-k">⛽ Real BLR Mileage</span>
@@ -2661,11 +2914,11 @@ html_content = """<!DOCTYPE html>
                     <span class="review-v">${rev.annual_maintenance || '₹5,000 - ₹7,000 / yr'}</span>
                   </div>
                   <div class="review-item">
-                    <span class="review-k">🛣️ Bangalore Roads & Ride</span>
+                    <span class="review-k">🛣️ Roads & Ride</span>
                     <span class="review-v">${rev.ride_comfort || 'Solid ground clearance over speed breakers.'}</span>
                   </div>
                   <div class="review-item">
-                    <span class="review-k">⚠️ Inspection Watchlist</span>
+                    <span class="review-k">⚠️ Watchlist</span>
                     <span class="review-v">${rev.known_issues || 'Inspect clutch plate and brake pads.'}</span>
                   </div>
                 </div>
@@ -2687,6 +2940,9 @@ html_content = """<!DOCTYPE html>
               </div>
 
               <div class="card-footer">
+                <button type="button" class="btn-score-audit-link" onclick="openScoreModal('${c.id}', event)">
+                  <span>📊 Why Score ${c.deal_score}/100? View point audit &rarr;</span>
+                </button>
                 <a href="${c.url || '#'}" target="_blank" rel="noopener noreferrer" class="cta-btn">
                   <span>Inspect vehicle on ${platformName}</span>
                   <span>&rarr;</span>
