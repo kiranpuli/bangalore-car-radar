@@ -481,6 +481,9 @@ def fetch_cheapest_cars(city="bangalore", max_price=None, max_pages=48):
 
     filtered = []
     for c in cars:
+        # Strictly ignore booked, sold, or on-hold vehicles
+        if c.get("booked") is True or c.get("sold") is True or c.get("on_hold") is True or c.get("soft_unpublish") is True:
+            continue
         price = c.get("price", 0)
         km = c.get("mileage", 0)
         price_ok = True if (max_price is None or max_price <= 0) else (price <= max_price)
@@ -537,6 +540,13 @@ def fetch_cars24_cars(city_id="4709", max_pages=25, max_price=None):
         for it in items:
             aid = it.get("appointmentId")
             if aid and aid not in seen:
+                # Strictly ignore booked, reserved, or unavailable stock
+                st = str(it.get("status") or "").upper()
+                sub_st = str(it.get("subStatus") or "").upper()
+                if st != "AVAILABLE" or (sub_st and sub_st not in ["AVAILABLE", "NONE", "NULL"]):
+                    continue
+                if it.get("isBooked") is True:
+                    continue
                 price = it.get("listingPrice", 0)
                 km = (it.get("odometer") or {}).get("value", 0)
                 price_ok = True if (max_price is None or max_price <= 0) else (price <= max_price)

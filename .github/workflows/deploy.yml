@@ -2,8 +2,8 @@ name: Daily Spinny Deal Refresh & Deploy
 
 on:
   schedule:
-    # Runs at 03:00 UTC (08:30 AM IST) daily
-    - cron: '0 3 * * *'
+    # Runs every 3 hours during daytime IST: 08:30 AM, 11:30 AM, 02:30 PM, 05:30 PM, 08:30 PM IST
+    - cron: '0 3,6,9,12,15 * * *'
   workflow_dispatch:
 
 permissions:
