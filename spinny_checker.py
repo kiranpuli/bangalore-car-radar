@@ -183,8 +183,14 @@ def save_seen_ids(cache_file, seen_ids):
 
 
 def notify_mac(title, message):
-    script = f'display notification "{message}" with title "{title}" sound name "Glass"'
-    subprocess.run(["osascript", "-e", script], capture_output=True)
+    try:
+        import platform, shutil
+        if platform.system() != "Darwin" or not shutil.which("osascript"):
+            return
+        script = f'display notification "{message}" with title "{title}" sound name "Glass"'
+        subprocess.run(["osascript", "-e", script], capture_output=True)
+    except Exception:
+        pass
 
 
 def is_good_deal(car):
