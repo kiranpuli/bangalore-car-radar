@@ -2047,24 +2047,410 @@ html_content = """<!DOCTYPE html>
       outline-offset: 2px;
     }
 
-    /* Responsive Mobile @ 390px */
+    /* Mobile & Tablet Responsive Optimization (elayadesign/ai-design-skills) */
+    @media (max-width: 768px) {
+      .shell {
+        padding: 12px 10px 60px 10px;
+      }
+      .floating-nav {
+        top: 8px;
+        margin-bottom: 16px;
+        width: 100%;
+        padding: 0 8px;
+      }
+      .nav-inner {
+        width: 100%;
+        max-width: 100%;
+        padding: 6px 10px;
+        gap: 6px;
+        justify-content: space-between;
+      }
+      .nav-stats {
+        display: none;
+      }
+      .nav-btn {
+        padding: 6px 9px;
+        font-size: 11px;
+        min-height: 36px;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+    }
+
     @media (max-width: 640px) {
       .shell {
-        padding: 16px 12px 60px 12px;
+        padding: 10px 8px 56px 8px;
       }
+      .nav-inner {
+        padding: 5px 8px;
+        gap: 5px;
+      }
+      .nav-brand {
+        font-size: 13px;
+        gap: 5px;
+        flex-shrink: 0;
+      }
+      .nav-btn {
+        padding: 5px 8px;
+        font-size: 10.5px;
+        min-height: 34px;
+      }
+
+      /* Hero & View Mode */
+      .hero-section {
+        margin: 0 auto 16px auto;
+      }
+      .hero-heading {
+        font-size: clamp(23px, 6.8vw, 32px);
+      }
+      .hero-subhead {
+        font-size: 13px;
+        line-height: 19px;
+      }
+      .view-mode-bar {
+        width: 100%;
+        margin-bottom: 14px;
+      }
+      .view-mode-pills {
+        width: 100%;
+        display: flex;
+      }
+      .view-mode-pill {
+        flex: 1;
+        justify-content: center;
+        padding: 8px 6px;
+        font-size: 11.5px;
+        min-height: 40px;
+      }
+      .view-mode-status {
+        font-size: 10.5px;
+        padding: 0 4px;
+      }
+
+      /* Tagline Section */
+      .tagline-section {
+        padding: 14px 10px;
+        margin-bottom: 16px;
+        border-radius: var(--radius-lg);
+      }
+      .tagline-text {
+        font-size: clamp(16px, 4.4vw, 20px);
+        line-height: 1.4;
+      }
+
+      /* Filter Workbench */
       .filter-console {
-        padding: 14px;
+        padding: 12px 10px;
+        gap: 10px;
+        border-radius: var(--radius-lg);
+        margin-bottom: 14px;
       }
-      .filter-facets {
-        grid-template-columns: 1fr;
+      .filter-global-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding-bottom: 10px;
       }
-      .pricing-box {
-        grid-template-columns: 1fr;
+      .search-input-wrap {
+        width: 100%;
+        flex: 1 1 100%;
+      }
+      .search-field {
+        font-size: 13px;
+        padding: 8px 32px 8px 36px;
+        min-height: 40px;
+      }
+      .sort-wrap {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .select-dropdown {
+        flex: 1;
+        font-size: 12px;
+        padding: 7px 10px;
+        min-height: 38px;
+      }
+
+      /* Category Cards */
+      .filter-category-card {
+        padding: 10px;
+        gap: 8px;
+        border-radius: var(--radius-md);
+      }
+      .filter-category-header {
+        align-items: flex-start;
         gap: 6px;
       }
-      .telemetry-strip {
+      .category-num-badge {
+        font-size: 10px;
+        padding: 1px 5px;
+      }
+      .category-title {
+        font-size: 13px;
+      }
+      .category-desc {
+        font-size: 10.5px;
+      }
+      .btn-category-reset {
+        font-size: 10px;
+        padding: 2px 7px;
+        min-height: 26px;
+      }
+      .category-grid.budget-grid,
+      .category-grid.specs-grid {
         grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .price-inputs-row {
+        flex-wrap: wrap;
         gap: 6px;
+      }
+      .price-num-box {
+        width: 66px;
+        font-size: 12px;
+        padding: 5px 4px;
+        min-height: 36px;
+      }
+      .price-slider-input {
+        width: 100%;
+        flex: 1 1 100%;
+        order: 4;
+        margin-top: 4px;
+        height: 8px;
+      }
+      .facet-pills {
+        gap: 4px;
+      }
+      .facet-pill {
+        font-size: 11px;
+        padding: 5px 9px;
+        min-height: 34px;
+      }
+      .brands-container .facet-pill {
+        font-size: 10.5px;
+        padding: 4px 8px;
+        min-height: 32px;
+      }
+
+      /* Active Filters Bar */
+      .active-filters-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        margin-bottom: 14px;
+      }
+      #active-tags-container {
+        width: 100%;
+      }
+      .active-tag {
+        font-size: 11px;
+        padding: 3px 7px;
+      }
+      .results-count-wrap {
+        margin-left: 0;
+        width: 100%;
+        padding-top: 4px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        font-size: 11.5px;
+      }
+
+      /* Cards on Mobile */
+      .card {
+        border-radius: var(--radius-lg);
+      }
+      .card-photo {
+        height: 180px;
+        padding: 6px;
+      }
+      .badge-grade {
+        top: 8px;
+        left: 8px;
+        font-size: 10px;
+        padding: 3px 6px;
+      }
+      .badge-info-hint {
+        font-size: 8.5px;
+        padding-left: 4px;
+      }
+      .card-badges-top-right {
+        top: 8px;
+        right: 8px;
+        gap: 4px;
+      }
+      .badge-tier, .badge-platform {
+        font-size: 9.5px;
+        padding: 2px 6px;
+      }
+      .badge-availability {
+        bottom: 8px;
+        right: 8px;
+        font-size: 9px;
+        padding: 2px 5px;
+      }
+      .card-content {
+        padding: 10px 10px 12px 10px;
+        gap: 8px;
+      }
+      .car-title {
+        font-size: 15.5px;
+        line-height: 21px;
+      }
+      .car-specs-strip {
+        gap: 4px;
+      }
+      .spec-pill {
+        font-size: 10px;
+        padding: 2px 5px;
+      }
+      .card-pricing-bar {
+        padding: 6px 0 8px 0;
+        gap: 8px;
+      }
+      .pricing-sub-label {
+        font-size: 9.5px;
+      }
+      .pricing-val-main {
+        font-size: 18px;
+      }
+      .pricing-val-nego {
+        font-size: 15px;
+      }
+      .pricing-retail-hint {
+        font-size: 10px;
+        gap: 4px;
+      }
+      .discount-badge, .savings-badge {
+        font-size: 9px;
+        padding: 1px 5px;
+      }
+      .card-intel-matrix {
+        grid-template-columns: 1fr 1fr;
+        gap: 6px 8px;
+        padding: 6px 0;
+      }
+      .intel-k {
+        font-size: 9px;
+      }
+      .intel-v {
+        font-size: 10.5px;
+        line-height: 1.3;
+      }
+      .card-telemetry-strip {
+        padding: 4px 0;
+        gap: 8px;
+      }
+      .tele-k {
+        font-size: 9px;
+      }
+      .tele-v {
+        font-size: 11.5px;
+      }
+      .card-verdict-row {
+        padding: 6px 8px;
+      }
+      .card-verdict-text {
+        font-size: 11px;
+        line-height: 1.35;
+      }
+      .card-footer {
+        padding-top: 8px;
+      }
+      .cta-primary-btn {
+        min-height: 44px;
+        padding: 10px 14px;
+        font-size: 12.5px;
+      }
+
+      /* Bottom Sheet Modals on Mobile */
+      .score-modal-backdrop, .alerts-modal-backdrop {
+        padding: 0;
+        align-items: flex-end;
+      }
+      .score-modal, .alerts-modal {
+        max-width: 100%;
+        width: 100%;
+        max-height: 90vh;
+        border-radius: 16px 16px 0 0;
+        border-bottom: none;
+      }
+      .score-modal-header, .alerts-modal-header {
+        padding: 12px 14px;
+      }
+      .score-modal-header h3, .alerts-modal-header h3 {
+        font-size: 15px;
+      }
+      .score-modal-body, .alerts-modal-body {
+        padding: 12px 14px;
+        gap: 12px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .score-modal-footer {
+        padding: 10px 14px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+      .score-modal-footer .nav-btn {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        min-height: 44px;
+      }
+      .modal-car-hero {
+        padding: 8px 10px;
+        gap: 10px;
+      }
+      .modal-car-thumb {
+        width: 58px;
+        height: 40px;
+      }
+      .modal-score-grade {
+        font-size: 11.5px;
+        padding: 4px 8px;
+      }
+      .score-audit-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3px;
+        padding: 8px 0;
+      }
+    }
+
+    /* Small Phone Optimization (iPhone SE / 360px - 380px) */
+    @media (max-width: 380px) {
+      .nav-brand span:not(.pulse-dot) {
+        font-size: 11.5px;
+      }
+      .nav-btn {
+        padding: 4px 6px;
+        font-size: 10px;
+      }
+      .live-sync-btn span:last-child {
+        display: none;
+      }
+      .live-sync-btn::after {
+        content: "Sync";
+        font-size: 10px;
+      }
+      .pricing-val-main {
+        font-size: 17px;
+      }
+      .pricing-val-nego {
+        font-size: 14px;
+      }
+    }
+
+    /* Mobile Touch & Viewport Polish */
+    @media (hover: none) and (pointer: coarse) {
+      button, a, select, input {
+        -webkit-tap-highlight-color: transparent;
+      }
+      .facet-pill, .preset-chip-btn, .nav-btn, .cta-primary-btn {
+        min-height: 38px;
       }
     }
     /* Live Sync Button in Nav */
