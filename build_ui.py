@@ -1017,28 +1017,123 @@ html_content = """<!DOCTYPE html>
       border-color: var(--border-focus);
     }
 
-    /* Filter Workbench Facets Grid */
-    .filter-facets {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--sp-200);
-      padding-top: var(--sp-200);
-      border-top: 1px solid var(--border-color);
-    }
-    .facet-col {
+    /* Filter Workbench Container */
+    .filter-console {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: var(--sp-300);
+      margin-bottom: var(--sp-300);
       display: flex;
       flex-direction: column;
-      gap: var(--sp-75);
+      gap: var(--sp-200);
     }
-    .facet-title {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
+
+    /* Primary Search & Sort Bar */
+    .filter-global-bar {
+      display: flex;
+      gap: var(--sp-100);
+      align-items: center;
+      flex-wrap: wrap;
+      padding-bottom: var(--sp-200);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    /* Segregated Category Card */
+    .filter-category-card {
+      background: #181818;
+      border: 1px solid #272727;
+      border-radius: var(--radius-lg);
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .filter-category-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .filter-category-title-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .category-num-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-blue);
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+    .category-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #FFFFFF;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+    .category-desc {
+      font-size: 11.5px;
+      color: var(--text-subtle);
+      margin: 1px 0 0 0;
+    }
+    .btn-category-reset {
+      background: transparent;
+      border: 1px solid #333333;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all var(--dur-fast) var(--ease-base);
+    }
+    .btn-category-reset:hover {
+      color: #FFFFFF;
+      border-color: var(--text-subtle);
+    }
+
+    /* Category Grids */
+    .category-grid {
+      display: grid;
+      gap: 14px;
+    }
+    .category-grid.budget-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .category-grid.specs-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .group-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-subtle);
+    }
+    .group-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brands-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
     }
     .facet-pills {
       display: flex;
@@ -1442,31 +1537,24 @@ html_content = """<!DOCTYPE html>
       color: var(--text-subtle);
     }
 
-    /* Pricing Intelligence Box (B4: Flat #1F1F1F, 1px solid #272727, radius 10px) */
-    .pricing-card-box {
-      background: #1F1F1F;
-      border: 1px solid #272727;
-      border-radius: 10px;
-      padding: 10px 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .price-primary-row {
+    /* Consolidated Minimalist Pricing Bar */
+    .card-pricing-bar {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      gap: 8px;
+      align-items: flex-start;
+      padding: 8px 0 10px 0;
+      border-bottom: 1px solid #272727;
+      gap: 12px;
     }
-    .price-main-block, .price-nego-block {
+    .pricing-primary-col, .pricing-nego-col {
       display: flex;
       flex-direction: column;
     }
-    .price-nego-block {
-      text-align: right;
+    .pricing-nego-col {
       align-items: flex-end;
+      text-align: right;
     }
-    .price-label-mono {
+    .pricing-sub-label {
       font-family: var(--font-mono);
       font-size: 10px;
       font-weight: 700;
@@ -1474,7 +1562,7 @@ html_content = """<!DOCTYPE html>
       letter-spacing: 0.05em;
       color: var(--text-subtle);
     }
-    .price-val-hero {
+    .pricing-val-main {
       font-family: var(--font-mono);
       font-size: 20px;
       font-weight: 700;
@@ -1482,130 +1570,88 @@ html_content = """<!DOCTYPE html>
       line-height: 1.2;
       margin-top: 2px;
     }
-    .nego-val-wrap {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 6px;
-      margin-top: 2px;
-    }
-    .price-val-nego {
+    .pricing-val-nego {
       font-family: var(--font-mono);
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
       color: var(--accent-emerald);
+      line-height: 1.2;
+      margin-top: 2px;
     }
-    .savings-tag {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 700;
-      color: #34D399;
-      background: rgba(52, 211, 153, 0.15);
-      border: 1px solid rgba(52, 211, 153, 0.35);
-      padding: 1px 6px;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
-    .price-benchmark-row {
+    .pricing-retail-hint {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding-top: 5px;
-      font-size: 11px;
-    }
-    .price-benchmark-text {
+      gap: 6px;
       font-family: var(--font-mono);
+      font-size: 10.5px;
       color: var(--text-subtle);
+      margin-top: 4px;
     }
-    .discount-tag {
+    .discount-badge {
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 9.5px;
       font-weight: 700;
       color: var(--accent-blue);
       background: var(--accent-blue-bg);
       border: 1px solid rgba(56, 189, 248, 0.35);
-      padding: 1px 6px;
-      border-radius: 4px;
+      padding: 0 5px;
+      border-radius: 3px;
     }
-
-    /* Bangalore Ownership Intel Box (B4: Flat #1F1F1F, 1px solid #272727, radius 10px) */
-    .ownership-card-box {
-      background: #1F1F1F;
-      border: 1px solid #272727;
-      border-radius: 10px;
-      padding: 10px 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .ownership-header-line {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .ownership-title-mono {
+    .savings-badge {
       font-family: var(--font-mono);
       font-size: 10px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--accent-blue);
+      color: #34D399;
+      background: rgba(52, 211, 153, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.35);
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-top: 4px;
+      white-space: nowrap;
     }
-    .ownership-quad-grid {
+
+    /* Consolidated Ownership Intel Matrix (Clean 2x2 Grid) */
+    .card-intel-matrix {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid #272727;
+    }
+    .intel-cell {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 2px;
     }
-    .ownership-cell {
-      display: flex;
-      gap: 8px;
-      align-items: baseline;
-      font-size: 11.5px;
-      line-height: 1.35;
-    }
-    .cell-k {
+    .intel-k {
       font-family: var(--font-mono);
       font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.04em;
       color: var(--text-subtle);
-      white-space: nowrap;
-      flex-shrink: 0;
-      width: 105px;
     }
-    .cell-v {
+    .intel-v {
+      font-size: 11.5px;
       color: var(--text-body);
-      font-size: 11.5px;
-    }
-    .ownership-verdict-bar {
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding-top: 6px;
-      margin-top: 2px;
-    }
-    .ownership-verdict-text {
-      font-size: 11.5px;
-      color: var(--text-muted);
-      line-height: 1.4;
-      font-style: normal;
+      line-height: 1.35;
       text-wrap: pretty;
     }
 
-    /* Financial Telemetry Box (Flat #1F1F1F, 1px solid #272727, radius 10px) */
-    .telemetry-card-box {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      background: #1F1F1F;
-      border: 1px solid #272727;
-      border-radius: 10px;
-      padding: 8px 12px;
-      gap: 8px;
+    /* Consolidated Financial Telemetry Strip */
+    .card-telemetry-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 6px 0;
+      gap: 12px;
     }
-    .telemetry-cell {
+    .telemetry-item {
       display: flex;
       flex-direction: column;
+      gap: 2px;
     }
-    .telemetry-k {
+    .tele-k {
       font-family: var(--font-mono);
       font-size: 10px;
       font-weight: 700;
@@ -1613,44 +1659,40 @@ html_content = """<!DOCTYPE html>
       letter-spacing: 0.04em;
       color: var(--text-subtle);
     }
-    .telemetry-v {
+    .tele-v {
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
-      color: var(--text-body);
-      margin-top: 1px;
     }
-    .telemetry-v.buyback {
+    .tele-v.buyback {
       color: var(--accent-emerald);
     }
-    .telemetry-v.loss {
+    .tele-v.loss {
       color: var(--accent-blue);
     }
 
-    /* Card Footer Action Bar */
+    /* Bangalore Verdict Note */
+    .card-verdict-row {
+      padding: 7px 10px;
+      background: #1F1F1F;
+      border-left: 2px solid var(--accent-blue);
+      border-radius: 0 6px 6px 0;
+      margin-top: 2px;
+    }
+    .card-verdict-text {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.4;
+      text-wrap: pretty;
+      margin: 0;
+    }
+
+    /* Card Footer Action Bar (Single primary CTA) */
     .card-footer {
       margin-top: auto;
-      padding-top: 10px;
+      padding-top: 8px;
       border-top: 1px solid #272727;
       display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .btn-score-audit {
-      background: transparent;
-      border: none;
-      color: var(--accent-blue);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 600;
-      cursor: pointer;
-      padding: 2px 0;
-      text-align: left;
-      transition: color var(--dur-fast) var(--ease-base);
-    }
-    .btn-score-audit:hover {
-      color: #FFFFFF;
-      text-decoration: underline;
     }
     .cta-primary-btn {
       display: flex;
@@ -2205,10 +2247,10 @@ html_content = """<!DOCTYPE html>
       </p>
     </section>
 
-    <!-- Revamped Filter Console -->
+    <!-- Segregated Filter Console (3 Structured Categories) -->
     <section class="filter-console" id="filter-workbench" aria-label="Filter Controls">
-      <!-- Search & Sort Row -->
-      <div class="search-row">
+      <!-- Global Search & Sort Row -->
+      <div class="filter-global-bar">
         <div class="search-input-wrap">
           <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="8"></circle>
@@ -2238,123 +2280,153 @@ html_content = """<!DOCTYPE html>
         </div>
       </div>
 
-      <!-- Unified Multi-Select Facets Grid -->
-      <div class="filter-facets">
-        <!-- Platform Facet (Multi-Select) -->
-        <div class="facet-col">
-          <div class="facet-title">
-            <span>Listing Platform</span>
-            <button type="button" class="btn-facet-reset" onclick="clearMultiFilter('platforms')">Reset</button>
-          </div>
-          <div class="facet-pills" id="platforms-pills">
-            <button type="button" class="facet-pill pill-all active" onclick="clearMultiFilter('platforms')">Both Platforms</button>
-            <button type="button" class="facet-pill pill-item" data-val="Spinny" onclick="toggleMultiFilter('platforms', 'Spinny')">Spinny (<span id="count-spinny">0</span>)</button>
-            <button type="button" class="facet-pill pill-item" data-val="Cars24" onclick="toggleMultiFilter('platforms', 'Cars24')">Cars24 (<span id="count-cars24">0</span>)</button>
-          </div>
-        </div>
-
-        <!-- Budget Scrubber Facet -->
-        <div class="facet-col">
-          <div class="facet-title">
-            <span>Budget (₹ Lakhs)</span>
-            <button type="button" class="btn-facet-reset" onclick="clearPrice()">Reset</button>
-          </div>
-          <div class="price-scrubber">
-            <div class="price-inputs-row">
-              <span class="caption-4" style="color:var(--text-subtle);">₹</span>
-              <input type="number" id="ctrl-min-price" class="price-num-box" min="0" max="30" step="0.1" placeholder="Min" oninput="onPriceChange()" />
-              <span style="color:var(--text-subtle);">–</span>
-              <input type="number" id="ctrl-max-price" class="price-num-box" min="0" max="30" step="0.1" placeholder="Max" oninput="onPriceChange()" />
-              <input type="range" id="ctrl-price-range" class="price-slider-input" min="2" max="20" step="0.25" value="5" oninput="onSliderChange(this.value)" title="Scrub Max Budget" />
-            </div>
-            <div class="facet-pills">
-              <button type="button" class="facet-pill" onclick="setMaxBudget(4.0)">≤ ₹4L</button>
-              <button type="button" class="facet-pill" onclick="setMaxBudget(5.0)">≤ ₹5L</button>
-              <button type="button" class="facet-pill" onclick="setMaxBudget(7.0)">≤ ₹7L</button>
-              <button type="button" class="facet-pill" onclick="setMaxBudget(10.0)">≤ ₹10L</button>
-              <button type="button" class="facet-pill" onclick="clearPrice()">Any</button>
+      <!-- Category 1: 💰 Budget & Deal Assurance -->
+      <div class="filter-category-card">
+        <div class="filter-category-header">
+          <div class="filter-category-title-group">
+            <span class="category-num-badge">01</span>
+            <div>
+              <h3 class="category-title">Budget & Deal Assurance</h3>
+              <p class="category-desc">Set spending ceiling, listing platforms, and deal quality thresholds</p>
             </div>
           </div>
+          <button type="button" class="btn-category-reset" onclick="resetBudgetAndAssurance()">Reset Budget & Quality</button>
         </div>
 
-        <!-- Quality & Verification Facet (Multi-Select) -->
-        <div class="facet-col">
-          <div class="facet-title">
-            <span>Quality & Assurance</span>
-            <button type="button" class="btn-facet-reset" onclick="clearMultiFilter('qualities')">Reset</button>
+        <div class="category-grid budget-grid">
+          <!-- Platform Facet -->
+          <div class="filter-group">
+            <label class="group-label">Listing Platform</label>
+            <div class="facet-pills" id="platforms-pills">
+              <button type="button" class="facet-pill pill-all active" onclick="clearMultiFilter('platforms')">Both Platforms</button>
+              <button type="button" class="facet-pill pill-item" data-val="Spinny" onclick="toggleMultiFilter('platforms', 'Spinny')">Spinny (<span id="count-spinny">0</span>)</button>
+              <button type="button" class="facet-pill pill-item" data-val="Cars24" onclick="toggleMultiFilter('platforms', 'Cars24')">Cars24 (<span id="count-cars24">0</span>)</button>
+            </div>
           </div>
-          <div class="facet-pills" id="qualities-pills">
-            <button type="button" class="facet-pill pill-all" onclick="clearMultiFilter('qualities')">All Cars</button>
-            <button type="button" class="facet-pill pill-item active" data-val="top_deal" onclick="toggleMultiFilter('qualities', 'top_deal')">💎 Top Deals (80+)</button>
-            <button type="button" class="facet-pill pill-item" data-val="assured" onclick="toggleMultiFilter('qualities', 'assured')">🛡️ Certified Assured</button>
-            <button type="button" class="facet-pill pill-item" data-val="high_discount" onclick="toggleMultiFilter('qualities', 'high_discount')">💰 50%+ Off New</button>
+
+          <!-- Budget Scrubber Facet -->
+          <div class="filter-group">
+            <div class="group-label-row">
+              <label class="group-label">Budget Range (₹ Lakhs)</label>
+              <button type="button" class="btn-facet-reset" onclick="clearPrice()">Clear</button>
+            </div>
+            <div class="price-scrubber">
+              <div class="price-inputs-row">
+                <span class="caption-4" style="color:var(--text-subtle);">₹</span>
+                <input type="number" id="ctrl-min-price" class="price-num-box" min="0" max="30" step="0.1" placeholder="Min" oninput="onPriceChange()" />
+                <span style="color:var(--text-subtle);">–</span>
+                <input type="number" id="ctrl-max-price" class="price-num-box" min="0" max="30" step="0.1" placeholder="Max" oninput="onPriceChange()" />
+                <input type="range" id="ctrl-price-range" class="price-slider-input" min="2" max="20" step="0.25" value="5" oninput="onSliderChange(this.value)" title="Scrub Max Budget" />
+              </div>
+              <div class="facet-pills">
+                <button type="button" class="facet-pill" onclick="setMaxBudget(4.0)">≤ ₹4L</button>
+                <button type="button" class="facet-pill" onclick="setMaxBudget(5.0)">≤ ₹5L</button>
+                <button type="button" class="facet-pill" onclick="setMaxBudget(7.0)">≤ ₹7L</button>
+                <button type="button" class="facet-pill" onclick="setMaxBudget(10.0)">≤ ₹10L</button>
+                <button type="button" class="facet-pill" onclick="clearPrice()">Any</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quality Tier Facet -->
+          <div class="filter-group">
+            <label class="group-label">Deal Quality Tier</label>
+            <div class="facet-pills" id="qualities-pills">
+              <button type="button" class="facet-pill pill-all" onclick="clearMultiFilter('qualities')">All Cars</button>
+              <button type="button" class="facet-pill pill-item active" data-val="top_deal" onclick="toggleMultiFilter('qualities', 'top_deal')">💎 Top Deals (80+)</button>
+              <button type="button" class="facet-pill pill-item" data-val="assured" onclick="toggleMultiFilter('qualities', 'assured')">🛡️ Certified Assured</button>
+              <button type="button" class="facet-pill pill-item" data-val="high_discount" onclick="toggleMultiFilter('qualities', 'high_discount')">💰 50%+ Off New</button>
+            </div>
           </div>
         </div>
+      </div>
 
-        <!-- Gearbox & Fuel Facet (Multi-Select) -->
-        <div class="facet-col">
-          <div class="facet-title">
-            <span>Gearbox & Fuel</span>
-            <button type="button" class="btn-facet-reset" onclick="clearMultiFilter('transmissions'); clearMultiFilter('fuels');">Reset</button>
+      <!-- Category 2: ⚙️ Vehicle Specifications -->
+      <div class="filter-category-card">
+        <div class="filter-category-header">
+          <div class="filter-category-title-group">
+            <span class="category-num-badge">02</span>
+            <div>
+              <h3 class="category-title">Vehicle Specifications</h3>
+              <p class="category-desc">Transmission, fuel type, minimum registration year, and maximum mileage</p>
+            </div>
           </div>
-          <div class="facet-pills" id="transmissions-pills" style="margin-bottom:6px;">
-            <button type="button" class="facet-pill pill-all active" onclick="clearMultiFilter('transmissions')">All Trans</button>
-            <button type="button" class="facet-pill pill-item" data-val="automatic" onclick="toggleMultiFilter('transmissions', 'automatic')">Automatic</button>
-            <button type="button" class="facet-pill pill-item" data-val="manual" onclick="toggleMultiFilter('transmissions', 'manual')">Manual</button>
-          </div>
-          <div class="facet-pills" id="fuels-pills">
-            <button type="button" class="facet-pill pill-all active" onclick="clearMultiFilter('fuels')">All Fuels</button>
-            <button type="button" class="facet-pill pill-item" data-val="petrol" onclick="toggleMultiFilter('fuels', 'petrol')">Petrol</button>
-            <button type="button" class="facet-pill pill-item" data-val="diesel" onclick="toggleMultiFilter('fuels', 'diesel')">Diesel</button>
-            <button type="button" class="facet-pill pill-item" data-val="cng" onclick="toggleMultiFilter('fuels', 'cng')">CNG</button>
-          </div>
+          <button type="button" class="btn-category-reset" onclick="resetSpecsCategory()">Reset Specs</button>
         </div>
 
-        <!-- Manufacturer Facet (Multi-Select) -->
-        <div class="facet-col" style="grid-column: 1 / -1;">
-          <div class="facet-title">
-            <span>Manufacturers (Select multiple brands simultaneously)</span>
-            <button type="button" class="btn-facet-reset" onclick="clearMultiFilter('brands')">All Brands</button>
+        <div class="category-grid specs-grid">
+          <!-- Transmission Facet -->
+          <div class="filter-group">
+            <label class="group-label">Gearbox / Transmission</label>
+            <div class="facet-pills" id="transmissions-pills">
+              <button type="button" class="facet-pill pill-all active" onclick="clearMultiFilter('transmissions')">All Trans</button>
+              <button type="button" class="facet-pill pill-item" data-val="automatic" onclick="toggleMultiFilter('transmissions', 'automatic')">Automatic</button>
+              <button type="button" class="facet-pill pill-item" data-val="manual" onclick="toggleMultiFilter('transmissions', 'manual')">Manual</button>
+            </div>
           </div>
-          <div class="facet-pills" id="brands-pills">
-            <button type="button" class="facet-pill pill-all active" onclick="clearMultiFilter('brands')">All Brands</button>
-            <button type="button" class="facet-pill pill-item" data-val="maruti" onclick="toggleMultiFilter('brands', 'maruti')">Maruti (<span id="count-maruti">0</span>)</button>
-            <button type="button" class="facet-pill pill-item" data-val="hyundai" onclick="toggleMultiFilter('brands', 'hyundai')">Hyundai (<span id="count-hyundai">0</span>)</button>
-            <button type="button" class="facet-pill pill-item" data-val="tata" onclick="toggleMultiFilter('brands', 'tata')">Tata (<span id="count-tata">0</span>)</button>
-            <button type="button" class="facet-pill pill-item" data-val="renault" onclick="toggleMultiFilter('brands', 'renault')">Renault (<span id="count-renault">0</span>)</button>
-            <button type="button" class="facet-pill pill-item" data-val="honda" onclick="toggleMultiFilter('brands', 'honda')">Honda (<span id="count-honda">0</span>)</button>
-            <button type="button" class="facet-pill pill-item" data-val="volkswagen" onclick="toggleMultiFilter('brands', 'volkswagen')">Volkswagen (<span id="count-volkswagen">0</span>)</button>
-            <button type="button" class="facet-pill pill-item" data-val="toyota" onclick="toggleMultiFilter('brands', 'toyota')">Toyota (<span id="count-toyota">0</span>)</button>
-            <button type="button" class="facet-pill pill-item" data-val="mahindra" onclick="toggleMultiFilter('brands', 'mahindra')">Mahindra (<span id="count-mahindra">0</span>)</button>
-            <button type="button" class="facet-pill pill-item" data-val="ford" onclick="toggleMultiFilter('brands', 'ford')">Ford (<span id="count-ford">0</span>)</button>
-            <button type="button" class="facet-pill pill-item" data-val="kia" onclick="toggleMultiFilter('brands', 'kia')">Kia (<span id="count-kia">0</span>)</button>
-            <button type="button" class="facet-pill pill-item" data-val="skoda" onclick="toggleMultiFilter('brands', 'skoda')">Skoda (<span id="count-skoda">0</span>)</button>
-          </div>
-        </div>
 
-        <!-- Age & Mileage Facet -->
-        <div class="facet-col" style="grid-column: 1 / -1;">
-          <div class="facet-title">
-            <span>Age & Mileage Ceilings</span>
-            <button type="button" class="btn-facet-reset" onclick="setYear(0, document.querySelector('#year-pills .facet-pill')); setMaxKm(0, document.querySelector('#km-pills .facet-pill'));">Reset</button>
+          <!-- Fuel Facet -->
+          <div class="filter-group">
+            <label class="group-label">Fuel Type</label>
+            <div class="facet-pills" id="fuels-pills">
+              <button type="button" class="facet-pill pill-all active" onclick="clearMultiFilter('fuels')">All Fuels</button>
+              <button type="button" class="facet-pill pill-item" data-val="petrol" onclick="toggleMultiFilter('fuels', 'petrol')">Petrol</button>
+              <button type="button" class="facet-pill pill-item" data-val="diesel" onclick="toggleMultiFilter('fuels', 'diesel')">Diesel</button>
+              <button type="button" class="facet-pill pill-item" data-val="cng" onclick="toggleMultiFilter('fuels', 'cng')">CNG</button>
+            </div>
           </div>
-          <div style="display:flex; flex-wrap:wrap; gap:var(--sp-200); align-items:center;">
+
+          <!-- Age Facet -->
+          <div class="filter-group">
+            <label class="group-label">Minimum Year</label>
             <div class="facet-pills" id="year-pills">
-              <span class="control-label" style="align-self:center; margin-right:4px;">Min Year:</span>
               <button type="button" class="facet-pill active" onclick="setYear(0, this)">Any Year</button>
               <button type="button" class="facet-pill" onclick="setYear(2022, this)">2022+</button>
               <button type="button" class="facet-pill" onclick="setYear(2020, this)">2020+</button>
               <button type="button" class="facet-pill" onclick="setYear(2018, this)">2018+</button>
               <button type="button" class="facet-pill" onclick="setYear(2016, this)">2016+</button>
             </div>
+          </div>
+
+          <!-- Mileage Facet -->
+          <div class="filter-group">
+            <label class="group-label">Maximum Mileage</label>
             <div class="facet-pills" id="km-pills">
-              <span class="control-label" style="align-self:center; margin-right:4px;">Max Mileage:</span>
               <button type="button" class="facet-pill active" onclick="setMaxKm(0, this)">Any KM</button>
               <button type="button" class="facet-pill" onclick="setMaxKm(30000, this)">&le; 30k km</button>
               <button type="button" class="facet-pill" onclick="setMaxKm(50000, this)">&le; 50k km</button>
               <button type="button" class="facet-pill" onclick="setMaxKm(80000, this)">&le; 80k km</button>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Category 3: 🏷️ Brand & Manufacturer -->
+      <div class="filter-category-card">
+        <div class="filter-category-header">
+          <div class="filter-category-title-group">
+            <span class="category-num-badge">03</span>
+            <div>
+              <h3 class="category-title">Brand & Manufacturer</h3>
+              <p class="category-desc">Filter by one or multiple automakers simultaneously</p>
+            </div>
+          </div>
+          <button type="button" class="btn-category-reset" onclick="clearMultiFilter('brands')">All Brands</button>
+        </div>
+
+        <div class="facet-pills brands-container" id="brands-pills">
+          <button type="button" class="facet-pill pill-all active" onclick="clearMultiFilter('brands')">All Brands</button>
+          <button type="button" class="facet-pill pill-item" data-val="maruti" onclick="toggleMultiFilter('brands', 'maruti')">Maruti (<span id="count-maruti">0</span>)</button>
+          <button type="button" class="facet-pill pill-item" data-val="hyundai" onclick="toggleMultiFilter('brands', 'hyundai')">Hyundai (<span id="count-hyundai">0</span>)</button>
+          <button type="button" class="facet-pill pill-item" data-val="tata" onclick="toggleMultiFilter('brands', 'tata')">Tata (<span id="count-tata">0</span>)</button>
+          <button type="button" class="facet-pill pill-item" data-val="renault" onclick="toggleMultiFilter('brands', 'renault')">Renault (<span id="count-renault">0</span>)</button>
+          <button type="button" class="facet-pill pill-item" data-val="honda" onclick="toggleMultiFilter('brands', 'honda')">Honda (<span id="count-honda">0</span>)</button>
+          <button type="button" class="facet-pill pill-item" data-val="volkswagen" onclick="toggleMultiFilter('brands', 'volkswagen')">Volkswagen (<span id="count-volkswagen">0</span>)</button>
+          <button type="button" class="facet-pill pill-item" data-val="toyota" onclick="toggleMultiFilter('brands', 'toyota')">Toyota (<span id="count-toyota">0</span>)</button>
+          <button type="button" class="facet-pill pill-item" data-val="mahindra" onclick="toggleMultiFilter('brands', 'mahindra')">Mahindra (<span id="count-mahindra">0</span>)</button>
+          <button type="button" class="facet-pill pill-item" data-val="ford" onclick="toggleMultiFilter('brands', 'ford')">Ford (<span id="count-ford">0</span>)</button>
+          <button type="button" class="facet-pill pill-item" data-val="kia" onclick="toggleMultiFilter('brands', 'kia')">Kia (<span id="count-kia">0</span>)</button>
+          <button type="button" class="facet-pill pill-item" data-val="skoda" onclick="toggleMultiFilter('brands', 'skoda')">Skoda (<span id="count-skoda">0</span>)</button>
         </div>
       </div>
     </section>
@@ -2850,6 +2922,19 @@ html_content = """<!DOCTYPE html>
       state.min_price = 0;
       state.max_price = 0;
       applyFilters();
+    }
+
+    function resetBudgetAndAssurance() {
+      clearMultiFilter('platforms');
+      clearPrice();
+      clearMultiFilter('qualities');
+    }
+
+    function resetSpecsCategory() {
+      clearMultiFilter('transmissions');
+      clearMultiFilter('fuels');
+      setYear(0, document.querySelector('#year-pills .facet-pill'));
+      setMaxKm(0, document.querySelector('#km-pills .facet-pill'));
     }
 
     function resetAll() {
@@ -3465,71 +3550,62 @@ html_content = """<!DOCTYPE html>
                 </div>
               </div>
 
-              <!-- Pricing Intelligence Box (B4 Flat #1F1F1F) -->
-              <div class="pricing-card-box">
-                <div class="price-primary-row">
-                  <div class="price-main-block">
-                    <span class="price-label-mono">Listed Price</span>
-                    <span class="price-val-hero">${price}</span>
-                  </div>
-                  <div class="price-nego-block">
-                    <span class="price-label-mono">Target Negotiation</span>
-                    <div class="nego-val-wrap">
-                      <span class="price-val-nego">${negoPrice}</span>
-                      ${savings > 0 ? `<span class="savings-tag">Save ~${savingsFmt}</span>` : ''}
-                    </div>
+              <!-- Pricing Row (Minimalist, borderless flow) -->
+              <div class="card-pricing-bar">
+                <div class="pricing-primary-col">
+                  <span class="pricing-sub-label">Listed Price</span>
+                  <span class="pricing-val-main">${price}</span>
+                  <div class="pricing-retail-hint">
+                    <span>Showroom ${retailPrice}</span>
+                    ${c.retail_discount_pct ? `<span class="discount-badge">${c.retail_discount_pct}% off</span>` : ''}
                   </div>
                 </div>
-                <div class="price-benchmark-row">
-                  <span class="price-benchmark-text">Original showroom price ${retailPrice}</span>
-                  ${c.retail_discount_pct ? `<span class="discount-tag">${c.retail_discount_pct}% off new</span>` : ''}
+                <div class="pricing-nego-col">
+                  <span class="pricing-sub-label">Target Floor</span>
+                  <span class="pricing-val-nego">${negoPrice}</span>
+                  ${savings > 0 ? `<span class="savings-badge">Save ~${savingsFmt}</span>` : ''}
                 </div>
               </div>
 
-              <!-- Bangalore Ownership Intel (B4 Flat #1F1F1F) -->
-              <div class="ownership-card-box">
-                <div class="ownership-header-line">
-                  <span class="ownership-title-mono">Bangalore Ownership Intel</span>
+              <!-- Ownership Intel Matrix (Clean 2x2 Grid) -->
+              <div class="card-intel-matrix">
+                <div class="intel-cell">
+                  <span class="intel-k">⛽ Mileage</span>
+                  <span class="intel-v">${rev.fuel_economy || '12–14 km/l city'}</span>
                 </div>
-                <div class="ownership-quad-grid">
-                  <div class="ownership-cell">
-                    <span class="cell-k">⛽ Real Mileage</span>
-                    <span class="cell-v">${rev.fuel_economy || '12 to 14 km/l in city traffic'}</span>
-                  </div>
-                  <div class="ownership-cell">
-                    <span class="cell-k">🔧 Annual Service</span>
-                    <span class="cell-v">${rev.annual_maintenance || '₹5,000 to ₹7,000 yearly'}</span>
-                  </div>
-                  <div class="ownership-cell">
-                    <span class="cell-k">🛣️ Road Ride</span>
-                    <span class="cell-v">${rev.ride_comfort || 'Solid clearance over speed breakers'}</span>
-                  </div>
-                  <div class="ownership-cell">
-                    <span class="cell-k">⚠️ Watchlist</span>
-                    <span class="cell-v">${rev.known_issues || 'Inspect clutch wear and brake pads'}</span>
-                  </div>
+                <div class="intel-cell">
+                  <span class="intel-k">🔧 Service</span>
+                  <span class="intel-v">${rev.annual_maintenance || '₹5k–₹7k/yr'}</span>
                 </div>
-                <div class="ownership-verdict-bar">
-                  <p class="ownership-verdict-text">${rev.bangalore_verdict || (c.verdict || 'Reliable urban commuter with steady resale demand.')}</p>
+                <div class="intel-cell">
+                  <span class="intel-k">🛣️ Road Ride</span>
+                  <span class="intel-v">${rev.ride_comfort || 'Speed breaker safe'}</span>
+                </div>
+                <div class="intel-cell">
+                  <span class="intel-k">⚠️ Watchlist</span>
+                  <span class="intel-v">${rev.known_issues || 'Inspect clutch & brakes'}</span>
                 </div>
               </div>
 
-              <!-- Financial Telemetry Box (B4 Flat #1F1F1F) -->
-              <div class="telemetry-card-box">
-                <div class="telemetry-cell">
-                  <span class="telemetry-k">${isAssured ? '24 Month Buyback Guarantee' : '24 Month Market Resale'}</span>
-                  <span class="telemetry-v buyback">${buyback}</span>
+              <!-- Financial Telemetry Strip -->
+              <div class="card-telemetry-strip">
+                <div class="telemetry-item">
+                  <span class="tele-k">${isAssured ? '24M Buyback Guarantee' : '24M Resale Estimate'}</span>
+                  <span class="tele-v buyback">${buyback}</span>
                 </div>
-                <div class="telemetry-cell">
-                  <span class="telemetry-k">Estimated Depreciation</span>
-                  <span class="telemetry-v loss">${monthly}</span>
+                <div class="telemetry-item" style="text-align: right;">
+                  <span class="tele-k">Depreciation Loss</span>
+                  <span class="tele-v loss">${monthly}</span>
                 </div>
               </div>
 
+              <!-- Bangalore Verdict Note -->
+              <div class="card-verdict-row">
+                <p class="card-verdict-text"><strong style="color:var(--text-body);">Bangalore Verdict:</strong> ${rev.bangalore_verdict || (c.verdict || 'Reliable urban commuter with steady resale demand.')}</p>
+              </div>
+
+              <!-- Single Primary CTA in Footer -->
               <div class="card-footer">
-                <button type="button" class="btn-score-audit" onclick="openScoreModal('${c.id}', event)">
-                  <span>📊 Why Score ${c.deal_score}/100? View point audit &rarr;</span>
-                </button>
                 <a href="${c.url || '#'}" target="_blank" rel="noopener noreferrer" class="cta-primary-btn">
                   <span>Inspect vehicle on ${platformName}</span>
                   <span>&rarr;</span>
