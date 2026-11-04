@@ -55167,6 +55167,93 @@
     }
   },
   {
+    "id": 28502178,
+    "platform": "Spinny",
+    "make": "Hyundai",
+    "model": "Grand i10",
+    "variant": "Asta 1.2 Kappa VTVT",
+    "make_year": 2018,
+    "mileage": 57958,
+    "price": 456000.0,
+    "negotiable_price": 424225,
+    "negotiable_savings": 31775,
+    "orig_retail_price": 630000,
+    "retail_discount_pct": 28,
+    "fuel_type": "petrol",
+    "transmission": "manual",
+    "category": "assured",
+    "hub": "Spinny Park, Yelahanka, Bangalore",
+    "img": "https://assets.spinny.com/sp-file-system/public/2026-05-28/75f6f64502324fc2ac0db5feccc2b89c/raw/file.JPG",
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/grand-i10/asta-12-kappa-vtvt-yelahanka-2018/28502178/",
+    "deal_score": 85,
+    "deal_grade": "TOP DEAL",
+    "is_top_deal": true,
+    "verdict": "Feather-light clutch & steering for traffic",
+    "analysis": {
+      "pros": [
+        "Feather-light clutch & steering for traffic",
+        "Spares available at every neighborhood garage",
+        "Upright seating with clear visibility"
+      ],
+      "cons": [
+        "1.1L engine strains on highway inclines",
+        "City fuel economy ~11-12 kmpl with AC",
+        "Dated dashboard styling"
+      ],
+      "maintenance_yr": "\u20b94,000 - \u20b95,000",
+      "retention_pct": 0.71,
+      "est_buyback_2yr": 323760,
+      "total_loss_2yr": 132240.0,
+      "monthly_loss": 5510
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "Moderate mileage (57k km) \u00b7 healthy mechanical life",
+        "pts": "+12 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "Solid 2018 manufacture \u00b7 modern chassis",
+        "pts": "+11 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "28% under original retail value",
+        "pts": "+4 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
+        "pts": "+14 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Bangalore Resale Archetype",
+        "detail": "Sweet spot combo: high-liquidity resale engine",
+        "pts": "+4 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 85/100 primarily driven by odometer & engine wear, vehicle age & generation.",
+    "ownership_review": {
+      "fuel_economy": "11-13 km/l (BLR City) \u00b7 16-18 km/l (Highway)",
+      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
+      "ride_comfort": "Refined 4-cylinder engine with whisper-quiet cabin insulation; very light clutch for Bangalore traffic.",
+      "known_issues": "Steering column coupling bush wear causes dull thuds; clutch life typically 40k-50k km in heavy traffic.",
+      "bangalore_verdict": "Premium interior feel and smooth refinement make it one of the most comfortable daily hatchbacks."
+    }
+  },
+  {
     "id": 32773012,
     "platform": "Spinny",
     "make": "Hyundai",
