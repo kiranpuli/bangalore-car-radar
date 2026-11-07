@@ -410,18 +410,9 @@ for c in cars:
     # Ownership review
     c["ownership_review"] = get_ownership_review(c.get("make"), c.get("model"), c.get("fuel_type"), c.get("transmission"), year)
 
-    # Negotiable price
-    if not c.get("negotiable_price"):
-        cpd = c.get("current_price_data") or {}
-        pb2 = c.get("price_breakdown_v2") or {}
-        base_p = cpd.get("base_listing_price") or pb2.get("base_listing_price") or pb2.get("discounted_price_without_add_on_and_tax")
-        if base_p and 0 < base_p < price:
-            nego_p = round(base_p)
-        else:
-            discount_factor = 0.94 if is_assured else 0.91
-            nego_p = round((price * discount_factor) / 1000) * 1000
-        c["negotiable_price"] = nego_p
-        c["negotiable_savings"] = max(0, round(price - nego_p))
+    # Fixed price - Spinny and Cars24 operate on no-negotiation fixed pricing
+    c.pop("negotiable_price", None)
+    c.pop("negotiable_savings", None)
 
     pros = c.get("analysis", {}).get("pros", [])
     if pros:
@@ -987,7 +978,7 @@ html_content = """<!DOCTYPE html>
       color: var(--text-primary);
     }
 
-    .quick-budget-strip {
+    .quick-budget-strip, .quick-discount-strip {
       display: flex;
       align-items: center;
       gap: 5px;
@@ -1639,7 +1630,7 @@ html_content = """<!DOCTYPE html>
       color: var(--text-subtle);
     }
 
-    /* Consolidated Minimalist Pricing Bar */
+    /* Consolidated Minimalist Pricing Bar (Fixed Price & Top Price Discount) */
     .card-pricing-bar {
       display: flex;
       justify-content: space-between;
@@ -1648,11 +1639,11 @@ html_content = """<!DOCTYPE html>
       border-bottom: 1px solid #272727;
       gap: 12px;
     }
-    .pricing-primary-col, .pricing-nego-col {
+    .pricing-primary-col, .pricing-retail-col {
       display: flex;
       flex-direction: column;
     }
-    .pricing-nego-col {
+    .pricing-retail-col {
       align-items: flex-end;
       text-align: right;
     }
@@ -1672,41 +1663,29 @@ html_content = """<!DOCTYPE html>
       line-height: 1.2;
       margin-top: 2px;
     }
-    .pricing-val-nego {
+    .pricing-fixed-tag {
       font-family: var(--font-mono);
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--accent-emerald);
+      font-size: 9.5px;
+      color: var(--text-subtle);
+      margin-top: 3px;
+    }
+    .pricing-val-top {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-subtle);
+      text-decoration: line-through;
       line-height: 1.2;
       margin-top: 2px;
     }
-    .pricing-retail-hint {
-      display: flex;
-      align-items: center;
-      gap: 6px;
+    .discount-badge-lg {
       font-family: var(--font-mono);
       font-size: 10.5px;
-      color: var(--text-subtle);
-      margin-top: 4px;
-    }
-    .discount-badge {
-      font-family: var(--font-mono);
-      font-size: 9.5px;
       font-weight: 700;
-      color: var(--accent-blue);
-      background: var(--accent-blue-bg);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      padding: 0 5px;
-      border-radius: 3px;
-    }
-    .savings-badge {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 700;
-      color: #34D399;
+      color: var(--accent-emerald);
       background: rgba(52, 211, 153, 0.12);
       border: 1px solid rgba(52, 211, 153, 0.35);
-      padding: 1px 6px;
+      padding: 2px 7px;
       border-radius: 4px;
       margin-top: 4px;
       white-space: nowrap;
@@ -2483,15 +2462,11 @@ html_content = """<!DOCTYPE html>
       .pricing-val-main {
         font-size: 18px;
       }
-      .pricing-val-nego {
-        font-size: 15px;
+      .pricing-val-top {
+        font-size: 13px;
       }
-      .pricing-retail-hint {
-        font-size: 10px;
-        gap: 4px;
-      }
-      .discount-badge, .savings-badge {
-        font-size: 9px;
+      .discount-badge-lg {
+        font-size: 9.5px;
         padding: 1px 5px;
       }
       .card-intel-matrix {
@@ -2611,8 +2586,8 @@ html_content = """<!DOCTYPE html>
       .pricing-val-main {
         font-size: 17px;
       }
-      .pricing-val-nego {
-        font-size: 14px;
+      .pricing-val-top {
+        font-size: 12.5px;
       }
     }
 
@@ -2828,15 +2803,22 @@ html_content = """<!DOCTYPE html>
           <button type="button" class="facet-pill" onclick="clearPrice()">All</button>
         </div>
 
+        <div class="quick-discount-strip">
+          <span class="quick-label">Discount:</span>
+          <button type="button" class="facet-pill active" onclick="setMinDiscount(0, this)">Any</button>
+          <button type="button" class="facet-pill" onclick="setMinDiscount(30, this)">≥ 30%</button>
+          <button type="button" class="facet-pill" onclick="setMinDiscount(40, this)">≥ 40%</button>
+          <button type="button" class="facet-pill" onclick="setMinDiscount(50, this)">≥ 50%</button>
+        </div>
+
         <div class="quick-tools-strip">
           <div class="sort-wrap">
             <label for="ctrl-sort" class="control-label">Sort:</label>
             <select id="ctrl-sort" class="select-dropdown" onchange="onSortChange(this.value)">
               <option value="score">Best Value Score</option>
+              <option value="discount_desc">Highest % Off Top Price</option>
               <option value="price_asc">Price: Low to High</option>
               <option value="price_desc">Price: High to Low</option>
-              <option value="nego_asc">Negotiable Floor: Low to High</option>
-              <option value="discount_desc">% Off Original Retail</option>
               <option value="year_desc">Year: Newest First</option>
               <option value="km_asc">Mileage: Lowest KM</option>
             </select>
@@ -2900,6 +2882,21 @@ html_content = """<!DOCTYPE html>
             </div>
           </div>
 
+          <!-- Discount on Top Price Facet -->
+          <div class="filter-group">
+            <div class="group-label-row">
+              <label class="group-label">Discount Off Top Showroom Price</label>
+              <button type="button" class="btn-facet-reset" onclick="clearDiscount()">Clear</button>
+            </div>
+            <div class="facet-pills" id="discount-pills">
+              <button type="button" class="facet-pill active" onclick="setMinDiscount(0, this)">Any Discount</button>
+              <button type="button" class="facet-pill" onclick="setMinDiscount(25, this)">≥ 25% Off</button>
+              <button type="button" class="facet-pill" onclick="setMinDiscount(35, this)">≥ 35% Off</button>
+              <button type="button" class="facet-pill" onclick="setMinDiscount(50, this)">≥ 50% Off</button>
+              <button type="button" class="facet-pill" onclick="setMinDiscount(60, this)">≥ 60% Off</button>
+            </div>
+          </div>
+
           <!-- Quality Tier Facet -->
           <div class="filter-group">
             <label class="group-label">Deal Quality Tier</label>
@@ -2907,7 +2904,6 @@ html_content = """<!DOCTYPE html>
               <button type="button" class="facet-pill pill-all" onclick="clearMultiFilter('qualities')">All Cars</button>
               <button type="button" class="facet-pill pill-item active" data-val="top_deal" onclick="toggleMultiFilter('qualities', 'top_deal')">💎 Top Deals (80+)</button>
               <button type="button" class="facet-pill pill-item" data-val="assured" onclick="toggleMultiFilter('qualities', 'assured')">🛡️ Certified Assured</button>
-              <button type="button" class="facet-pill pill-item" data-val="high_discount" onclick="toggleMultiFilter('qualities', 'high_discount')">💰 50%+ Off New</button>
             </div>
           </div>
         </div>
@@ -3148,7 +3144,7 @@ html_content = """<!DOCTYPE html>
         </div>
       </div>
       <div class="score-modal-footer">
-        <span class="caption-5" style="color:var(--text-subtle);">Automated refresh scheduled daily at 08:30, 11:30, 14:30, 17:30, 20:30 IST.</span>
+        <span class="caption-5" style="color:var(--text-subtle);">Automated crawler runs every hour continuously on GitHub Actions.</span>
         <button type="button" class="nav-btn" onclick="closeLiveSyncModal()">Close</button>
       </div>
     </div>
@@ -3173,7 +3169,8 @@ html_content = """<!DOCTYPE html>
       brands: new Set(),
       transmissions: new Set(),
       fuels: new Set(),
-      qualities: new Set(['top_deal'])
+      qualities: new Set(['top_deal']),
+      min_discount: 0
     };
     const expandedCards = new Set();
 
@@ -3223,7 +3220,7 @@ html_content = """<!DOCTYPE html>
     });
 
     // Word-by-word reveal for B11 tagline
-    const taglineContent = "Transparent pricing and verified mechanical telemetry. Every Bangalore car evaluated before you negotiate.";
+    const taglineContent = "Transparent pricing and verified mechanical telemetry. Every Bangalore car evaluated for true value and mechanical health.";
     const taglineEl = document.getElementById('tagline-words');
     if (taglineEl) {
       taglineEl.innerHTML = taglineContent.split(' ').map((word, i) => `<span class="tagline-word" data-w="${i}">${word}</span>`).join(' ');
@@ -3285,6 +3282,7 @@ html_content = """<!DOCTYPE html>
       if (state.min_year > 0) count += 1;
       if (state.max_km > 0 && !(state.viewMode === 'curated' && state.max_km === 80000)) count += 1;
       if (state.min_price > 0 || (state.max_price > 0 && !(state.viewMode === 'curated' && state.max_price === 500000))) count += 1;
+      if (state.min_discount > 0) count += 1;
       if (state.qualities.size > 0 && !(state.viewMode === 'curated' && state.qualities.size === 1 && state.qualities.has('top_deal'))) {
         count += state.qualities.size;
       }
@@ -3303,6 +3301,28 @@ html_content = """<!DOCTYPE html>
         else if (p === 0 && txt.includes('All')) btn.classList.add('active');
         else btn.classList.remove('active');
       });
+    }
+
+    function syncDiscountButtons() {
+      const d = state.min_discount;
+      document.querySelectorAll('#discount-pills .facet-pill, .quick-discount-strip .facet-pill').forEach(btn => {
+        const txt = btn.textContent;
+        if (d === 0 && (txt === 'Any' || txt.includes('All Cars'))) btn.classList.add('active');
+        else if (d > 0 && txt.includes(`${d}%`)) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+    }
+
+    function setMinDiscount(pct, btn) {
+      state.min_discount = Number(pct);
+      syncDiscountButtons();
+      applyFilters();
+    }
+
+    function clearDiscount() {
+      state.min_discount = 0;
+      syncDiscountButtons();
+      applyFilters();
     }
 
     function setDensityMode(mode) {
@@ -3412,7 +3432,7 @@ html_content = """<!DOCTYPE html>
       body.innerHTML = ALERTS.map(a => {
         const title = `${a.make_year} ${a.make} ${a.model} ${a.variant || ''}`.trim();
         const price = '₹' + (a.price / 100000).toFixed(2) + 'L';
-        const negoPrice = a.negotiable_price ? ('₹' + (a.negotiable_price / 100000).toFixed(2) + 'L') : price;
+        const disc = a.retail_discount_pct ? `${a.retail_discount_pct}% off` : '';
         const km = (a.mileage / 1000).toFixed(0) + 'k km';
         const isCars24 = (a.platform || '').toLowerCase() === 'cars24';
         const platBadge = isCars24 ? 'badge-platform cars24' : 'badge-platform spinny';
@@ -3427,7 +3447,7 @@ html_content = """<!DOCTYPE html>
               </div>
               <div class="alert-card-meta">
                 <span class="alert-card-price">${price}</span>
-                <span>(Nego: ${negoPrice})</span>
+                ${disc ? `<span style="color:var(--accent-emerald); font-weight:600;">(${disc} top price)</span>` : ''}
                 <span>·</span>
                 <span>${km}</span>
                 <span>·</span>
@@ -3605,6 +3625,7 @@ html_content = """<!DOCTYPE html>
     function resetBudgetAndAssurance() {
       clearMultiFilter('platforms');
       clearPrice();
+      clearDiscount();
       clearMultiFilter('qualities');
     }
 
@@ -3622,6 +3643,7 @@ html_content = """<!DOCTYPE html>
       state.min_price = 0;
       state.max_price = 500000;
       state.max_km = 80000;
+      state.min_discount = 0;
       state.sort = 'score';
 
       state.platforms.clear();
@@ -3658,6 +3680,7 @@ html_content = """<!DOCTYPE html>
       });
 
       updateAllMultiFilterUIs();
+      syncDiscountButtons();
       applyFilters();
     }
 
@@ -3684,6 +3707,10 @@ html_content = """<!DOCTYPE html>
         const minL = state.min_price ? (state.min_price / 100000).toFixed(1) : '0';
         const maxL = state.max_price ? (state.max_price / 100000).toFixed(1) : 'Any';
         tags.push({ label: `Budget: ₹${minL}L – ₹${maxL}L`, clear: () => clearPrice() });
+      }
+
+      if (state.min_discount > 0) {
+        tags.push({ label: `Discount: ≥ ${state.min_discount}% Off Top Price`, clear: () => clearDiscount() });
       }
 
       if (state.brands.size > 0) {
@@ -3789,6 +3816,12 @@ html_content = """<!DOCTYPE html>
           if (state.qualities.has('high_discount') && (c.retail_discount_pct || 0) < 50) return false;
         }
 
+        // Discount on Top Price
+        if (state.min_discount > 0) {
+          const disc = c.retail_discount_pct || (c.orig_retail_price ? Math.round(((c.orig_retail_price - c.price) / c.orig_retail_price) * 100) : 0);
+          if (disc < state.min_discount) return false;
+        }
+
         // Budget range
         if (state.min_price > 0 && (c.price || 0) < state.min_price) return false;
         if (state.max_price > 0 && (c.price || 0) > state.max_price) return false;
@@ -3801,14 +3834,12 @@ html_content = """<!DOCTYPE html>
       });
 
       // Sorting
-      if (state.sort === 'price_asc') {
+      if (state.sort === 'discount_desc') {
+        filtered.sort((a, b) => (b.retail_discount_pct || 0) - (a.retail_discount_pct || 0));
+      } else if (state.sort === 'price_asc') {
         filtered.sort((a, b) => (a.price || 0) - (b.price || 0));
       } else if (state.sort === 'price_desc') {
         filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
-      } else if (state.sort === 'nego_asc') {
-        filtered.sort((a, b) => (a.negotiable_price || a.price || 0) - (b.negotiable_price || b.price || 0));
-      } else if (state.sort === 'discount_desc') {
-        filtered.sort((a, b) => (b.retail_discount_pct || 0) - (a.retail_discount_pct || 0));
       } else if (state.sort === 'year_desc') {
         filtered.sort((a, b) => (b.make_year || 0) - (a.make_year || 0));
       } else if (state.sort === 'km_asc') {
@@ -3820,6 +3851,7 @@ html_content = """<!DOCTYPE html>
       const resCount = document.getElementById('res-count');
       if (resCount) resCount.textContent = filtered.length.toLocaleString('en-IN');
       syncQuickBudgetButtons();
+      syncDiscountButtons();
       updateFilterBadge();
       renderActiveTags();
       renderCards(filtered);
@@ -4091,8 +4123,6 @@ html_content = """<!DOCTYPE html>
               make_year: year,
               mileage: km,
               price: price,
-              negotiable_price: Math.round((price * (isAssured ? 0.94 : 0.91)) / 1000) * 1000,
-              negotiable_savings: Math.max(0, price - Math.round((price * (isAssured ? 0.94 : 0.91)) / 1000) * 1000),
               orig_retail_price: Math.round((price * 1.4) / 10000) * 10000,
               retail_discount_pct: 35,
               fuel_type: it.fuelType || 'Petrol',
@@ -4166,10 +4196,10 @@ html_content = """<!DOCTYPE html>
         const platformName = c.platform || (isCars24 ? 'Cars24' : 'Spinny');
 
         const price = '₹' + (c.price / 100000).toFixed(2) + 'L';
-        const negoPrice = c.negotiable_price ? ('₹' + (c.negotiable_price / 100000).toFixed(2) + 'L') : price;
-        const retailPrice = c.orig_retail_price ? ('₹' + (c.orig_retail_price / 100000).toFixed(2) + 'L') : '—';
-        const savings = c.negotiable_savings || Math.max(0, c.price - (c.negotiable_price || c.price));
-        const savingsFmt = savings >= 100000 ? ('₹' + (savings / 100000).toFixed(2) + 'L') : ('₹' + Math.round(savings / 1000) + 'k');
+        const topPrice = c.orig_retail_price ? ('₹' + (c.orig_retail_price / 100000).toFixed(2) + 'L') : '—';
+        const discPct = c.retail_discount_pct || (c.orig_retail_price ? Math.round(((c.orig_retail_price - c.price) / c.orig_retail_price) * 100) : 0);
+        const topSavings = c.orig_retail_price ? Math.max(0, c.orig_retail_price - c.price) : 0;
+        const topSavingsFmt = topSavings >= 100000 ? ('₹' + (topSavings / 100000).toFixed(2) + 'L') : ('₹' + Math.round(topSavings / 1000) + 'k');
 
         const km = (c.mileage / 1000).toFixed(0) + 'k km';
         const title = `${c.make_year} ${c.make} ${c.model} ${c.variant || ''}`.trim();
@@ -4231,20 +4261,17 @@ html_content = """<!DOCTYPE html>
                 </div>
               </div>
 
-              <!-- Pricing Row (Minimalist, borderless flow) -->
+              <!-- Pricing Row (Fixed Price & Top Showroom Discount) -->
               <div class="card-pricing-bar">
                 <div class="pricing-primary-col">
-                  <span class="pricing-sub-label">Listed Price</span>
+                  <span class="pricing-sub-label">Fixed Price</span>
                   <span class="pricing-val-main">${price}</span>
-                  <div class="pricing-retail-hint">
-                    <span>Showroom ${retailPrice}</span>
-                    ${c.retail_discount_pct ? `<span class="discount-badge">${c.retail_discount_pct}% off</span>` : ''}
-                  </div>
+                  <span class="pricing-fixed-tag">Spinny / Cars24 Fixed</span>
                 </div>
-                <div class="pricing-nego-col">
-                  <span class="pricing-sub-label">Target Floor</span>
-                  <span class="pricing-val-nego">${negoPrice}</span>
-                  ${savings > 0 ? `<span class="savings-badge">Save ~${savingsFmt}</span>` : ''}
+                <div class="pricing-retail-col">
+                  <span class="pricing-sub-label">Original Top Price</span>
+                  <span class="pricing-val-top">${topPrice}</span>
+                  ${discPct > 0 ? `<span class="discount-badge-lg">-${discPct}% Off (Save ~${topSavingsFmt})</span>` : ''}
                 </div>
               </div>
 

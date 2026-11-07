@@ -232,7 +232,7 @@ def record_alerts(new_good_deals):
             "variant": d.get("variant"),
             "make_year": d.get("make_year"),
             "price": d.get("price"),
-            "negotiable_price": d.get("negotiable_price"),
+            "retail_discount_pct": d.get("retail_discount_pct"),
             "deal_score": d.get("deal_score"),
             "mileage": d.get("mileage"),
             "hub": d.get("hub"),
@@ -370,18 +370,6 @@ def enrich_cars(cars):
         total_loss_2yr = price - retention_val
         monthly_loss = round(total_loss_2yr / 24)
 
-        # Negotiable target price calculation
-        cpd = c.get("current_price_data") or {}
-        pb2 = c.get("price_breakdown_v2") or {}
-        base_p = cpd.get("base_listing_price") or pb2.get("base_listing_price") or pb2.get("discounted_price_without_add_on_and_tax")
-        if base_p and 0 < base_p < price:
-            negotiable_price = round(base_p)
-        else:
-            discount_factor = 0.94 if is_assured else 0.91
-            negotiable_price = round((price * discount_factor) / 1000) * 1000
-
-        negotiable_savings = max(0, round(price - negotiable_price))
-
         # Original retail price calculation
         orig_retail = estimate_original_retail(c.get("make"), c.get("model"), c.get("variant"), year, c.get("transmission"))
         if orig_retail <= price:
@@ -427,8 +415,6 @@ def enrich_cars(cars):
             "make_year": year,
             "mileage": km,
             "price": price,
-            "negotiable_price": negotiable_price,
-            "negotiable_savings": negotiable_savings,
             "orig_retail_price": orig_retail,
             "retail_discount_pct": retail_discount_pct,
             "fuel_type": c.get("fuel_type"),
@@ -603,10 +589,6 @@ def enrich_cars24(cars):
         total_loss_2yr = price - retention_val
         monthly_loss = round(total_loss_2yr / 24)
 
-        discount_factor = 0.94 if is_assured else 0.91
-        negotiable_price = round((price * discount_factor) / 1000) * 1000
-        negotiable_savings = max(0, round(price - negotiable_price))
-
         orig_retail = c.get("originalPrice") or estimate_original_retail(make, model, variant, year, (c.get("transmissionType") or {}).get("value"))
         if orig_retail <= price:
             orig_retail = round((price * 1.40) / 10000) * 10000
@@ -646,8 +628,6 @@ def enrich_cars24(cars):
             "make_year": year,
             "mileage": km,
             "price": price,
-            "negotiable_price": negotiable_price,
-            "negotiable_savings": negotiable_savings,
             "orig_retail_price": orig_retail,
             "retail_discount_pct": retail_discount_pct,
             "fuel_type": c.get("fuelType") or "Petrol",

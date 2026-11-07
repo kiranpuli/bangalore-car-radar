@@ -1,9 +1,9 @@
-name: Daily Spinny Deal Refresh & Deploy
+name: Hourly Bangalore Used Car Deals Scraper & Deploy
 
 on:
   schedule:
-    # Runs every hour at minute 0
-    - cron: '0 * * * *'
+    # Runs every 30 minutes (at minute 15 and 45) off-peak to guarantee fresh updates every hour without top-of-hour GitHub queue stalls
+    - cron: '15,45 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -34,4 +34,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add index.html deals.html clean_bangalore_cars.json latest_alerts.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: refresh Bangalore deals" && git push)
+          if ! git diff --quiet || ! git diff --staged --quiet; then
+            git commit -m "chore: refresh Bangalore deals"
+            git pull --rebase origin main
+            git push
+          fi
