@@ -3588,6 +3588,12 @@
       if (resCount) resCount.textContent = filtered.length.toLocaleString('en-IN');
       syncQuickBudgetButtons();
       syncDiscountButtons();
+      const btnGerman = document.getElementById('btn-german-5l');
+      if (btnGerman) {
+        const isGermanPreset = state.max_price === 500000 && state.brands.has('volkswagen') && state.brands.has('skoda');
+        if (isGermanPreset) btnGerman.classList.add('active');
+        else btnGerman.classList.remove('active');
+      }
       updateFilterBadge();
       renderActiveTags();
       renderCards(filtered);
@@ -3926,29 +3932,48 @@
     }
 
     function filterGermanUnder5L() {
-      state.mode = 'all';
+      // Toggle off if already active
+      const isCurrentlyActive = state.max_price === 500000 && state.brands.has('volkswagen') && state.brands.has('skoda');
+      if (isCurrentlyActive) {
+        resetAll();
+        return;
+      }
+
+      state.viewMode = 'all';
       const btnCurated = document.getElementById('btn-mode-curated');
       const btnAll = document.getElementById('btn-mode-all');
-      if (btnCurated) btnCurated.classList.remove('active');
+      if (btnCurated) btnCurated.classList.remove('active', 'curated');
       if (btnAll) btnAll.classList.add('active');
+
+      const statusText = document.getElementById('mode-status-text');
+      if (statusText) statusText.innerHTML = '<span class="pulse-dot" style="background:#34D399;"></span><span>Preset active: German European Cars (Volkswagen, Skoda, BMW, Audi) ≤ ₹5.0L</span>';
 
       state.search = '';
       const sInput = document.getElementById('ctrl-search');
       if (sInput) sInput.value = '';
+
       state.min_price = 0;
       state.max_price = 500000;
+      const maxInput = document.getElementById('ctrl-max-price');
+      if (maxInput) maxInput.value = '5.0';
+      const slider = document.getElementById('ctrl-price-range');
+      if (slider) slider.value = 5.0;
+
+      state.max_km = 0;
+      state.min_year = 0;
       state.min_discount = 0;
       state.qualities.clear();
       state.platforms.clear();
       state.transmissions.clear();
       state.fuels.clear();
+
       state.brands.clear();
       state.brands.add('volkswagen');
       state.brands.add('skoda');
       state.brands.add('bmw');
       state.brands.add('audi');
 
-      updateBudgetPillUI();
+      syncQuickBudgetButtons();
       updateAllMultiFilterUIs();
       applyFilters();
 
