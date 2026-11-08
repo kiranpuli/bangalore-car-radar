@@ -477,25 +477,25 @@ html_content = """<!DOCTYPE html>
       --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, monospace;
 
-      /* High-contrast, WCAG AAA legible dark tokens */
-      --bg-canvas: #090D16;
-      --bg-surface: #121824;
-      --bg-subsurface: #1A2232;
-      --bg-photo: #0B101A;
-      --border-color: #263346;
-      --border-focus: #38BDF8;
+      /* Warm Titanium Obsidian Theme (elayadesign/ai-design-skills) */
+      --bg-canvas: #131209;
+      --bg-surface: #1F1F1F;
+      --bg-subsurface: #272727;
+      --bg-photo: #181818;
+      --border-color: #313131;
+      --border-focus: #FFFFFF;
 
       --text-primary: #FFFFFF;
-      --text-body: #F1F5F9;
-      --text-muted: #CBD5E1;
-      --text-subtle: #94A3B8;
+      --text-body: #EDEDED;
+      --text-muted: #9B9B9B;
+      --text-subtle: #737373;
 
-      --accent-emerald: #34D399;
-      --accent-emerald-bg: rgba(52, 211, 153, 0.16);
-      --accent-amber: #FBBF24;
-      --accent-amber-bg: rgba(251, 191, 36, 0.16);
-      --accent-blue: #38BDF8;
-      --accent-blue-bg: rgba(56, 189, 248, 0.16);
+      --accent-emerald: #10B981;
+      --accent-emerald-bg: rgba(16, 185, 129, 0.16);
+      --accent-amber: #F59E0B;
+      --accent-amber-bg: rgba(245, 158, 11, 0.16);
+      --accent-blue: #3B82F6;
+      --accent-blue-bg: rgba(59, 130, 246, 0.16);
 
       /* Spacing scale */
       --sp-25: 2px;
@@ -866,15 +866,15 @@ html_content = """<!DOCTYPE html>
       color: #CBD5E1;
     }
     .hero-heading {
-      font-size: clamp(26px, 4.5vw, 38px);
+      font-size: clamp(28px, 4.5vw, 42px);
       line-height: 1.15;
       font-weight: 600;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.025em;
       text-wrap: balance;
-      background: linear-gradient(90deg, #FFFFFF 0%, #E2E8F0 100%);
+      background: linear-gradient(90deg, #FFFFFF 0%, #9B9B9B 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
     .hero-subhead {
       color: var(--text-muted);
@@ -884,32 +884,34 @@ html_content = """<!DOCTYPE html>
       margin-bottom: 8px;
     }
 
-            /* Minimal Visual System (elayadesign/ai-design-skills) */
+            /* Cohesive Filter Workbench & Data-Type Components (elayadesign/ai-design-skills) */
     .filter-deck {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-xl);
-      padding: 12px 14px;
-      margin-bottom: 10px;
+      padding: 16px;
+      margin-bottom: 12px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 14px;
     }
+
     .deck-row-primary {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
     }
+
     .deck-search-wrap {
-      flex: 1 1 200px;
+      flex: 1 1 240px;
       position: relative;
       display: flex;
       align-items: center;
     }
     .search-icon-svg {
       position: absolute;
-      left: 10px;
+      left: 12px;
       width: 15px;
       height: 15px;
       color: var(--text-subtle);
@@ -917,22 +919,23 @@ html_content = """<!DOCTYPE html>
     }
     .deck-search-input {
       width: 100%;
+      height: 38px;
       background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-pill);
+      border-radius: var(--radius-md);
       color: var(--text-primary);
       font-family: var(--font-sans);
       font-size: 13px;
-      padding: 7px 30px 7px 32px;
+      padding: 0 32px 0 36px;
       outline: none;
       transition: border-color var(--dur-fast) var(--ease-base);
     }
     .deck-search-input:focus {
-      border-color: var(--accent-blue);
+      border-color: var(--border-focus);
     }
     .search-clear-btn {
       position: absolute;
-      right: 9px;
+      right: 10px;
       background: transparent;
       border: none;
       color: var(--text-subtle);
@@ -940,27 +943,29 @@ html_content = """<!DOCTYPE html>
       cursor: pointer;
       display: none;
     }
+
     .deck-segmented-scope {
       display: inline-flex;
       align-items: center;
       background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-pill);
-      padding: 2.5px;
+      border-radius: var(--radius-md);
+      padding: 3px;
       gap: 2px;
     }
     .scope-segment {
       background: transparent;
       border: none;
       color: var(--text-muted);
-      font-size: 12px;
+      font-family: var(--font-sans);
+      font-size: 12.5px;
       font-weight: 500;
-      padding: 5px 12px;
-      border-radius: var(--radius-pill);
+      padding: 6px 14px;
+      border-radius: 6px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       transition: all var(--dur-fast) var(--ease-base);
       white-space: nowrap;
     }
@@ -974,88 +979,314 @@ html_content = """<!DOCTYPE html>
     }
     .scope-count {
       font-family: var(--font-mono);
-      font-size: 10px;
-      opacity: 0.7;
+      font-size: 10.5px;
+      opacity: 0.75;
     }
+
     .deck-actions-right {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       margin-left: auto;
     }
-    .deck-btn-bmw {
-      background: var(--bg-subsurface);
-      border: 1px solid var(--border-color);
-      color: var(--text-body);
-      font-size: 11.5px;
-      font-weight: 500;
-      padding: 6px 11px;
-      border-radius: var(--radius-pill);
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all var(--dur-fast) var(--ease-base);
-    }
-    .deck-btn-bmw:hover {
-      border-color: #38BDF8;
-      color: #38BDF8;
-    }
     .deck-sort-wrap {
       background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-pill);
-      padding: 2px 8px;
+      border-radius: var(--radius-md);
+      height: 38px;
+      padding: 0 10px;
+      display: inline-flex;
+      align-items: center;
     }
     .deck-select {
       background: transparent;
       border: none;
-      color: var(--text-body);
+      color: var(--text-primary);
       font-family: var(--font-sans);
-      font-size: 12px;
+      font-size: 12.5px;
       outline: none;
       cursor: pointer;
-      padding: 4px 0;
     }
     .deck-select option {
-      background: #121721;
+      background: #1F1F1F;
       color: #FFFFFF;
     }
 
-    /* Chips Row */
-    .deck-row-chips {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding-top: 8px;
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
-      flex-wrap: wrap;
+    /* Cohesive Filter Panels Grid (Data Type Tailored) */
+    .deck-panels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 12px;
     }
-    .chips-group {
-      display: inline-flex;
-      align-items: center;
+    .filter-panel {
       background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-pill);
-      padding: 2px;
-      gap: 1px;
+      border-radius: var(--radius-lg);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
-    .chips-label {
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .panel-title-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .panel-label {
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 600;
       color: var(--text-subtle);
       text-transform: uppercase;
-      padding: 0 6px 0 8px;
       letter-spacing: 0.04em;
     }
-    .chip-pill, .facet-pill, .ribbon-pill, .cluster-pill, .brand-chip {
+    .range-readout-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: var(--radius-sm);
+      background: #181818;
+      border: 1px solid var(--border-color);
+      color: var(--accent-amber);
+    }
+    .btn-panel-action {
+      background: transparent;
+      border: none;
+      color: var(--text-subtle);
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      cursor: pointer;
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: color var(--dur-fast) var(--ease-base);
+    }
+    .btn-panel-action:hover {
+      color: var(--text-primary);
+    }
+
+    /* Continuous Number Range Input UI */
+    .num-range-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .num-box {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .num-label {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .num-input-inner {
+      display: flex;
+      align-items: center;
+      background: #181818;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 0 8px;
+      height: 34px;
+      transition: border-color var(--dur-fast) var(--ease-base);
+    }
+    .num-input-inner:focus-within {
+      border-color: var(--border-focus);
+    }
+    .num-currency {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding-right: 4px;
+    }
+    .num-field {
+      flex: 1;
+      width: 100%;
+      min-width: 0;
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      outline: none;
+    }
+    .num-unit {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-subtle);
+      padding-left: 2px;
+    }
+    .num-range-divider {
+      color: var(--text-subtle);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      align-self: flex-end;
+      padding-bottom: 8px;
+    }
+
+    /* Visual Continuous Range Slider */
+    .slider-track-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-top: 2px;
+    }
+    .range-slider-accent {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 4px;
+      border-radius: 2px;
+      background: #313131;
+      outline: none;
+      cursor: pointer;
+    }
+    .range-slider-accent::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 2px solid var(--accent-amber);
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      transition: transform var(--dur-fast) var(--ease-base);
+    }
+    .range-slider-accent::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    .range-slider-accent::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 2px solid var(--accent-amber);
+      cursor: pointer;
+    }
+    .slider-ticks {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      color: var(--text-subtle);
+      padding: 0 2px;
+    }
+
+    /* Discrete Source Buttons */
+    .btn-group-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .ctrl-btn {
+      background: #181818;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all var(--dur-fast) var(--ease-base);
+      white-space: nowrap;
+    }
+    .ctrl-btn:hover {
+      color: var(--text-primary);
+      border-color: #4A4A4A;
+    }
+    .ctrl-btn.active {
+      background: #FFFFFF;
+      color: #000000;
+      font-weight: 600;
+      border-color: #FFFFFF;
+    }
+    .ctrl-btn.active .btn-count {
+      opacity: 0.85;
+      color: #000000;
+    }
+    .btn-count {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      opacity: 0.7;
+    }
+
+    /* Discrete Segmented Switches for Specs */
+    .specs-segmented-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .segmented-switch {
+      background: #181818;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .switch-opt {
+      flex: 1;
       background: transparent;
       border: none;
       color: var(--text-muted);
       font-family: var(--font-sans);
       font-size: 11.5px;
       font-weight: 500;
-      padding: 4px 9px;
-      border-radius: var(--radius-pill);
+      padding: 5px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+      transition: all var(--dur-fast) var(--ease-base);
+      white-space: nowrap;
+    }
+    .switch-opt:hover {
+      color: var(--text-primary);
+    }
+    .switch-opt.active {
+      background: #FFFFFF;
+      color: #000000;
+      font-weight: 600;
+    }
+
+    /* Discrete Brand Chips Panel */
+    .panel-brands {
+      grid-column: 1 / -1;
+    }
+    .brand-chips-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .brand-chips-wrap .chip-pill {
+      background: #181818;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 5px 10px;
+      border-radius: 6px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -1063,22 +1294,18 @@ html_content = """<!DOCTYPE html>
       transition: all var(--dur-fast) var(--ease-base);
       white-space: nowrap;
     }
-    .chip-pill:hover, .facet-pill:hover, .cluster-pill:hover, .brand-chip:hover {
+    .brand-chips-wrap .chip-pill:hover {
       color: var(--text-primary);
+      border-color: #4A4A4A;
     }
-    .chip-pill.active, .facet-pill.active, .cluster-pill.active, .brand-chip.active {
+    .brand-chips-wrap .chip-pill.active {
       background: #FFFFFF;
       color: #000000;
       font-weight: 600;
-    }
-    .chip-pill.pill-item.active::before, .cluster-pill.pill-item.active::before, .brand-chip.pill-item.active::before {
-      content: "✓";
-      font-size: 9px;
-      font-weight: 800;
-      color: #000000;
+      border-color: #FFFFFF;
     }
 
-    /* Cohesive Source Dot Indicators */
+    /* Source Dot Indicators */
     .source-dot {
       width: 5px;
       height: 5px;
@@ -1087,7 +1314,7 @@ html_content = """<!DOCTYPE html>
       flex-shrink: 0;
     }
     .spinny-dot { background: #F59E0B; }
-    .cars24-dot { background: #38BDF8; }
+    .cars24-dot { background: #3B82F6; }
     .truwo-dot  { background: #10B981; }
 
     /* Results Bar */
@@ -1096,7 +1323,7 @@ html_content = """<!DOCTYPE html>
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      padding: 4px 2px 10px 2px;
+      padding: 6px 2px 12px 2px;
       font-family: var(--font-mono);
       font-size: 12px;
       color: var(--text-muted);
@@ -1112,16 +1339,16 @@ html_content = """<!DOCTYPE html>
       flex-wrap: wrap;
     }
     .active-tag {
-      background: rgba(255, 255, 255, 0.06);
+      background: #1F1F1F;
       border: 1px solid var(--border-color);
       color: var(--text-body);
       font-family: var(--font-mono);
       font-size: 10.5px;
-      padding: 2px 7px;
+      padding: 3px 8px;
       border-radius: var(--radius-pill);
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
     }
     .active-tag-remove {
       background: transparent;
@@ -1139,16 +1366,23 @@ html_content = """<!DOCTYPE html>
       color: #F87171;
       font-family: var(--font-mono);
       font-size: 10.5px;
-      padding: 2px 7px;
+      padding: 3px 8px;
       border-radius: var(--radius-pill);
       cursor: pointer;
+      transition: all var(--dur-fast) var(--ease-base);
     }
     .btn-reset-all:hover {
       background: rgba(239, 68, 68, 0.15);
       color: #FFFFFF;
     }
 
-    /* Strict Minimal Card Component (elayadesign/ai-design-skills) */
+    /* Cars Grid & Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
+      gap: var(--sp-300);
+    }
+
     .card {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
@@ -1159,7 +1393,7 @@ html_content = """<!DOCTYPE html>
       transition: border-color var(--dur-fast) var(--ease-base), transform var(--dur-fast) var(--ease-base);
     }
     .card:hover {
-      border-color: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.25);
       transform: translateY(-2px);
     }
     .card-photo {
@@ -1167,14 +1401,13 @@ html_content = """<!DOCTYPE html>
       height: 200px;
       background: var(--bg-photo);
       overflow: hidden;
+      border-bottom: 1px solid var(--border-color);
     }
     .card-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      outline: 1px solid rgba(255, 255, 255, 0.06);
-      outline-offset: -1px;
     }
     .badge-grade {
       position: absolute;
@@ -1185,7 +1418,7 @@ html_content = """<!DOCTYPE html>
       font-weight: 700;
       padding: 3px 8px;
       border-radius: var(--radius-pill);
-      background: rgba(11, 14, 20, 0.88);
+      background: rgba(19, 18, 9, 0.9);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1198,11 +1431,11 @@ html_content = """<!DOCTYPE html>
     }
     .badge-grade.top {
       color: #FBBF24;
-      border-color: rgba(245, 158, 11, 0.4);
+      border-color: rgba(245, 158, 11, 0.5);
     }
     .badge-grade.value {
-      color: #38BDF8;
-      border-color: rgba(56, 189, 248, 0.4);
+      color: #10B981;
+      border-color: rgba(16, 185, 129, 0.5);
     }
     .card-badges-top-right {
       position: absolute;
@@ -1216,11 +1449,11 @@ html_content = """<!DOCTYPE html>
       font-weight: 600;
       padding: 3px 8px;
       border-radius: var(--radius-pill);
-      background: rgba(11, 14, 20, 0.88);
+      background: rgba(19, 18, 9, 0.9);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #F1F5F9;
+      color: #EDEDED;
       display: inline-flex;
       align-items: center;
       gap: 5px;
@@ -1238,6 +1471,7 @@ html_content = """<!DOCTYPE html>
       flex-direction: column;
       gap: 9px;
       flex: 1;
+      background: var(--bg-surface);
     }
     .car-title {
       font-size: 16px;
@@ -1291,7 +1525,7 @@ html_content = """<!DOCTYPE html>
       padding: 2px 5px;
       border-radius: var(--radius-sm);
       background: rgba(16, 185, 129, 0.14);
-      color: #34D399;
+      color: #10B981;
       border: 1px solid rgba(16, 185, 129, 0.3);
     }
     .pricing-source-badge {
@@ -1300,7 +1534,7 @@ html_content = """<!DOCTYPE html>
       color: var(--text-subtle);
     }
     .pricing-source-badge.truwo {
-      color: #34D399;
+      color: #10B981;
     }
     .card-verdict-line {
       font-size: 12px;
@@ -1342,476 +1576,6 @@ html_content = """<!DOCTYPE html>
     .cta-primary-btn:hover {
       background: #FFFFFF;
       border-color: #FFFFFF;
-      color: #000000;
-    }
-    .cta-primary-btn:active {
-      transform: scale(0.98);
-    }
-
-/* Cars Grid (Debloated Cards) */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
-      gap: var(--sp-300);
-    }
-
-    /* Strict Card Component per elayadesign/ai-design-skills */
-    .card {
-      background: #181818;
-      border: 1px solid #272727;
-      border-radius: var(--radius-xl);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      transition: border-color var(--dur-normal) var(--ease-base), transform var(--dur-normal) var(--ease-base), box-shadow var(--dur-normal) var(--ease-base);
-    }
-    .card:hover {
-      border-color: #38BDF8;
-      transform: translateY(-2px);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
-    }
-
-    /* Flat Photo slot with no gradient (B4: flat dark #131209) */
-    .card-photo {
-      height: 200px;
-      background: #131209;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom: 1px solid #272727;
-      padding: var(--sp-200);
-      overflow: hidden;
-    }
-    .card-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.65));
-      transition: transform var(--dur-normal) var(--ease-base);
-    }
-    .card:hover .card-photo img {
-      transform: scale(1.04);
-    }
-
-    /* Score Badge Button (Interactive with Audit hint) */
-    .badge-grade {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 8px;
-      border-radius: 6px;
-      letter-spacing: 0.04em;
-      z-index: 3;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      cursor: pointer;
-      border: 1px solid transparent;
-      outline: none;
-      transition: all var(--dur-fast) var(--ease-base);
-      user-select: none;
-    }
-    .badge-grade:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-      filter: brightness(1.15);
-    }
-    .badge-grade:active {
-      transform: translateY(0);
-    }
-    .badge-info-hint {
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      opacity: 0.85;
-      padding-left: 5px;
-      border-left: 1px solid rgba(0, 0, 0, 0.25);
-    }
-    .badge-grade.top {
-      background: var(--accent-amber);
-      color: #000000;
-      border-color: #D97706;
-    }
-    .badge-grade.value {
-      background: var(--accent-emerald);
-      color: #000000;
-      border-color: #059669;
-    }
-    .badge-grade.fair {
-      background: #1F1F1F;
-      border-color: #272727;
-      color: var(--text-body);
-    }
-    .badge-grade.fair .badge-info-hint {
-      border-left: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    /* Top-Right Badges Container */
-    .card-badges-top-right {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      z-index: 2;
-    }
-
-    .badge-tier {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 6px;
-      background: #1F1F1F;
-      border: 1px solid #272727;
-      color: var(--text-muted);
-    }
-    .badge-tier.assured {
-      color: #34D399;
-      border-color: rgba(52, 211, 153, 0.4);
-      background: rgba(52, 211, 153, 0.1);
-    }
-
-        /* Cohesive Vetted Platform Source Badges */
-    .card-badges-top-right {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      z-index: 2;
-    }
-    .source-tag {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3.5px 9px;
-      border-radius: var(--radius-pill);
-      background: rgba(14, 19, 30, 0.88);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #F1F5F9;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      letter-spacing: 0.02em;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-    }
-    .source-tier {
-      color: var(--text-subtle);
-      font-weight: 500;
-      font-size: 10px;
-      border-left: 1px solid rgba(255, 255, 255, 0.15);
-      padding-left: 6px;
-    }
-
-    /* Cohesive Pricing Source Indicator */
-    .pricing-source-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 600;
-      color: var(--text-subtle);
-      margin-top: 3px;
-      letter-spacing: 0.02em;
-    }
-    .pricing-source-badge.truwo {
-      color: #34D399;
-    }
-    .pricing-source-badge.spinny, .pricing-source-badge.cars24 {
-      color: var(--text-subtle);
-    }
-
-
-    /* Live unbooked stock indicator */
-    .badge-availability {
-      position: absolute;
-      bottom: 10px;
-      right: 12px;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 600;
-      padding: 2px 7px;
-      border-radius: 4px;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      color: #34D399;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      z-index: 2;
-    }
-    .avail-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #34D399;
-      box-shadow: 0 0 6px #34D399;
-    }
-
-    .card-content {
-      padding: var(--sp-200);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      flex: 1;
-    }
-
-    .car-header-block {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .car-title {
-      font-size: 18px;
-      line-height: 24px;
-      font-weight: 600;
-      color: #FFFFFF;
-      text-wrap: balance;
-      font-family: var(--font-sans);
-    }
-    .car-specs-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .spec-pill {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      background: #272727;
-      border: 1px solid #313131;
-      color: #CBD5E1;
-      padding: 2px 7px;
-      border-radius: 4px;
-    }
-    .spec-pill.hub {
-      color: var(--text-subtle);
-    }
-
-    /* Consolidated Minimalist Pricing Bar (Fixed Price & Top Price Discount) */
-    .card-pricing-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 8px 0 10px 0;
-      border-bottom: 1px solid #272727;
-      gap: 12px;
-    }
-    .pricing-primary-col, .pricing-retail-col {
-      display: flex;
-      flex-direction: column;
-    }
-    .pricing-retail-col {
-      align-items: flex-end;
-      text-align: right;
-    }
-    .pricing-sub-label {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-subtle);
-    }
-    .pricing-val-main {
-      font-family: var(--font-mono);
-      font-size: 20px;
-      font-weight: 700;
-      color: #FFFFFF;
-      line-height: 1.2;
-      margin-top: 2px;
-    }
-    .pricing-fixed-tag {
-      font-family: var(--font-mono);
-      font-size: 9.5px;
-      color: var(--text-subtle);
-      margin-top: 3px;
-    }
-    .pricing-val-top {
-      font-family: var(--font-mono);
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-subtle);
-      text-decoration: line-through;
-      line-height: 1.2;
-      margin-top: 2px;
-    }
-    .discount-badge-lg {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      font-weight: 700;
-      color: var(--accent-emerald);
-      background: rgba(52, 211, 153, 0.12);
-      border: 1px solid rgba(52, 211, 153, 0.35);
-      padding: 2px 7px;
-      border-radius: 4px;
-      margin-top: 4px;
-      white-space: nowrap;
-    }
-
-    /* Consolidated Ownership Intel Matrix (Clean 2x2 Grid) */
-    .card-intel-matrix {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px 12px;
-      padding: 8px 0;
-      border-bottom: 1px solid #272727;
-    }
-    .intel-cell {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .intel-k {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--text-subtle);
-    }
-    .intel-v {
-      font-size: 11.5px;
-      color: var(--text-body);
-      line-height: 1.35;
-      text-wrap: pretty;
-    }
-
-    /* Consolidated Financial Telemetry Strip */
-    .card-telemetry-strip {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: 6px 0;
-      gap: 12px;
-    }
-    .telemetry-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .tele-k {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--text-subtle);
-    }
-    .tele-v {
-      font-family: var(--font-mono);
-      font-size: 12.5px;
-      font-weight: 700;
-    }
-    .tele-v.buyback {
-      color: var(--accent-emerald);
-    }
-    .tele-v.loss {
-      color: var(--accent-blue);
-    }
-
-    /* Collapsible Ownership Intel & Verdict Drawer */
-    .btn-intel-toggle {
-      background: #1C1C1C;
-      border: 1px dashed #313131;
-      color: #94A3B8;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 600;
-      padding: 7px 10px;
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      cursor: pointer;
-      transition: all var(--dur-fast) var(--ease-base);
-      user-select: none;
-      margin-top: 2px;
-    }
-    .btn-intel-toggle:hover {
-      background: #242424;
-      border-color: #38BDF8;
-      color: #FFFFFF;
-    }
-    .btn-intel-toggle.active {
-      background: #222222;
-      border-color: rgba(56, 189, 248, 0.5);
-      color: #38BDF8;
-    }
-    .intel-chevron {
-      font-size: 10px;
-      transition: transform var(--dur-fast) var(--ease-base);
-    }
-    .btn-intel-toggle.active .intel-chevron {
-      transform: rotate(180deg);
-    }
-    .card-intel-drawer {
-      display: none;
-      flex-direction: column;
-      gap: 8px;
-      padding-top: 4px;
-      animation: fadeInDrawer 160ms var(--ease-base);
-    }
-    .card-intel-drawer.open {
-      display: flex;
-    }
-    @keyframes fadeInDrawer {
-      from { opacity: 0; transform: translateY(-4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Bangalore Verdict Note */
-    .card-verdict-row {
-      padding: 7px 10px;
-      background: #1F1F1F;
-      border-left: 2px solid var(--accent-blue);
-      border-radius: 0 6px 6px 0;
-      margin-top: 2px;
-    }
-    .card-verdict-text {
-      font-size: 11.5px;
-      color: var(--text-muted);
-      line-height: 1.4;
-      text-wrap: pretty;
-      margin: 0;
-    }
-
-    /* Card Footer Action Bar (Single primary CTA) */
-    .card-footer {
-      margin-top: auto;
-      padding-top: 8px;
-      border-top: 1px solid #272727;
-      display: flex;
-    }
-    .cta-primary-btn {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      color: #FFFFFF;
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 8px 12px;
-      border-radius: var(--radius-md);
-      text-decoration: none;
-      transition: all var(--dur-normal) var(--ease-base);
-    }
-    .cta-primary-btn:hover {
-      background: var(--text-primary);
-      border-color: var(--text-primary);
       color: #000000;
     }
     .cta-primary-btn:active {
@@ -2458,9 +2222,6 @@ html_content = """<!DOCTYPE html>
         <span class="live-pulse-dot"></span>
         <span>⚡ Live Sync</span>
       </button>
-      <button class="nav-btn bmw-guide-btn" onclick="openBmwModal()" title="BMW Under ₹5L Ownership Guide & Search">
-        <span>🏎️ BMW &lt; ₹5L</span>
-      </button>
       <button class="nav-btn" onclick="scrollToFilters()">Filters</button>
     </div>
   </nav>
@@ -2480,7 +2241,7 @@ html_content = """<!DOCTYPE html>
 
             <!-- Minimalist Filter Toolbar (elayadesign/ai-design-skills) -->
     <section class="filter-deck" id="filter-workbench" aria-label="Car Filter Control Deck">
-      <!-- Line 1: Instant Search, Curated Presets, BMW & Sort -->
+      <!-- Line 1: Instant Search, Curated Presets & Sort -->
       <div class="deck-row-primary">
         <div class="deck-search-wrap">
           <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2491,7 +2252,7 @@ html_content = """<!DOCTYPE html>
             type="text" 
             id="ctrl-search" 
             class="deck-search-input" 
-            placeholder="Search make, model, hub..." 
+            placeholder="Search make, model, hub, variant..." 
             oninput="onSearchInput(this.value)"
           />
           <button type="button" id="btn-clear-search" class="search-clear-btn" onclick="clearSearch()" title="Clear search">✕</button>
@@ -2502,10 +2263,6 @@ html_content = """<!DOCTYPE html>
             <span>🔥 Top Deals</span>
             <span class="scope-count" id="badge-curated-count">0</span>
           </button>
-          <button type="button" class="scope-segment" id="btn-german-5l" onclick="filterGermanUnder5L()" role="tab">
-            <span>🇩🇪 German &le; ₹5L</span>
-            <span class="scope-count" id="count-german-5l">32</span>
-          </button>
           <button type="button" class="scope-segment" id="btn-mode-all" onclick="setViewMode('all')" role="tab">
             <span>All Cars</span>
             <span class="scope-count" id="badge-all-count">0</span>
@@ -2513,15 +2270,12 @@ html_content = """<!DOCTYPE html>
         </div>
 
         <div class="deck-actions-right">
-          <button type="button" class="deck-btn-bmw" id="btn-bmw-intel" onclick="openBmwModal()">
-            <span>🏎️ BMW &lt; ₹5L</span>
-          </button>
           <div class="deck-sort-wrap">
             <select id="ctrl-sort" class="deck-select" onchange="onSortChange(this.value)">
-              <option value="score">Best Value</option>
-              <option value="discount_desc">Highest Discount %</option>
+              <option value="score">Best Value First</option>
               <option value="price_asc">Price: Low to High</option>
               <option value="price_desc">Price: High to Low</option>
+              <option value="discount_desc">Highest Discount %</option>
               <option value="year_desc">Newest First</option>
               <option value="km_asc">Lowest KM</option>
             </select>
@@ -2529,58 +2283,173 @@ html_content = """<!DOCTYPE html>
         </div>
       </div>
 
-      <!-- Line 2: Horizontal Minimal Filter Chips -->
-      <div class="deck-row-chips">
-        <div class="chips-group" id="platforms-pills">
-          <span class="chips-label">Source</span>
-          <button type="button" class="chip-pill pill-all active" onclick="clearMultiFilter('platforms')">All</button>
-          <button type="button" class="chip-pill pill-item" data-val="Spinny" onclick="toggleMultiFilter('platforms', 'Spinny')"><span class="source-dot spinny-dot"></span>Spinny (<span id="count-spinny">0</span>)</button>
-          <button type="button" class="chip-pill pill-item" data-val="Cars24" onclick="toggleMultiFilter('platforms', 'Cars24')"><span class="source-dot cars24-dot"></span>Cars24 (<span id="count-cars24">0</span>)</button>
-          <button type="button" class="chip-pill pill-item" data-val="Truwo" onclick="toggleMultiFilter('platforms', 'Truwo')"><span class="source-dot truwo-dot"></span>Truwo (<span id="count-truwo">0</span>)</button>
+      <!-- Cohesive Filter Controls Grid: Structured by Data Type -->
+      <div class="deck-panels-grid">
+        <!-- Control 1: Exact Number Range with Min/Max and Slider for Price -->
+        <div class="filter-panel panel-price">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <span class="panel-label">Budget</span>
+              <span class="range-readout-badge" id="price-readout">Up to ₹5.00L</span>
+            </div>
+            <button type="button" class="btn-panel-action" onclick="clearPrice()" title="Clear budget limits">Any Price</button>
+          </div>
+          <div class="num-range-row">
+            <div class="num-box">
+              <span class="num-label">Min</span>
+              <div class="num-input-inner">
+                <span class="num-currency">₹</span>
+                <input 
+                  type="number" 
+                  id="ctrl-min-price" 
+                  class="num-field" 
+                  placeholder="0.0" 
+                  step="0.25" 
+                  min="0" 
+                  max="25"
+                  value=""
+                  oninput="onMinPriceInput(this.value)"
+                />
+                <span class="num-unit">L</span>
+              </div>
+            </div>
+            <span class="num-range-divider">—</span>
+            <div class="num-box">
+              <span class="num-label">Max</span>
+              <div class="num-input-inner">
+                <span class="num-currency">₹</span>
+                <input 
+                  type="number" 
+                  id="ctrl-max-price" 
+                  class="num-field" 
+                  placeholder="5.0" 
+                  step="0.25" 
+                  min="0.5" 
+                  max="25"
+                  value="5.0"
+                  oninput="onMaxPriceInput(this.value)"
+                />
+                <span class="num-unit">L</span>
+              </div>
+            </div>
+          </div>
+          <div class="slider-track-wrap">
+            <input 
+              type="range" 
+              id="ctrl-price-range" 
+              class="range-slider-accent" 
+              min="1.0" 
+              max="15.0" 
+              step="0.25" 
+              value="5.0" 
+              oninput="onPriceSlider(this.value)"
+              aria-label="Budget Range Slider"
+            />
+            <div class="slider-ticks">
+              <span>₹1L</span>
+              <span>₹3L</span>
+              <span>₹5L</span>
+              <span>₹8L</span>
+              <span>₹10L</span>
+              <span>₹15L+</span>
+            </div>
+          </div>
         </div>
 
-        <div class="chips-group quick-budget-strip" id="cluster-budget">
-          <span class="chips-label">Budget</span>
-          <button type="button" class="chip-pill" onclick="setMaxBudget(4.0)">&le; ₹4L</button>
-          <button type="button" class="chip-pill active" id="btn-quick-5l" onclick="setMaxBudget(5.0)">&le; ₹5L</button>
-          <button type="button" class="chip-pill" onclick="setMaxBudget(7.0)">&le; ₹7L</button>
-          <button type="button" class="chip-pill" onclick="clearPrice()">All</button>
+        <!-- Control 2: Continuous Percentage Range Slider for Showroom Savings -->
+        <div class="filter-panel panel-discount">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <span class="panel-label">Showroom Savings</span>
+              <span class="range-readout-badge" id="discount-readout">Any</span>
+            </div>
+            <button type="button" class="btn-panel-action" onclick="clearDiscount()" title="Clear discount filter">Reset</button>
+          </div>
+          <div class="slider-track-wrap" style="padding-top:12px;">
+            <input 
+              type="range" 
+              id="ctrl-discount-range" 
+              class="range-slider-accent" 
+              min="0" 
+              max="60" 
+              step="5" 
+              value="0" 
+              oninput="onDiscountSlider(this.value)"
+              aria-label="Minimum showroom savings percentage"
+            />
+            <div class="slider-ticks" style="padding-top:6px;">
+              <span>Any</span>
+              <span>20% off</span>
+              <span>40% off</span>
+              <span>60%+ off</span>
+            </div>
+          </div>
         </div>
 
-        <div class="chips-group" id="discount-pills">
-          <span class="chips-label">Off Top</span>
-          <button type="button" class="chip-pill active" onclick="setMinDiscount(0, this)">Any</button>
-          <button type="button" class="chip-pill" onclick="setMinDiscount(30, this)">&ge; 30%</button>
-          <button type="button" class="chip-pill" onclick="setMinDiscount(40, this)">&ge; 40%</button>
-          <button type="button" class="chip-pill" onclick="setMinDiscount(50, this)">&ge; 50%</button>
+        <!-- Control 3: Discrete Source Multi-Select Buttons -->
+        <div class="filter-panel panel-sources">
+          <div class="panel-header">
+            <span class="panel-label">Source</span>
+          </div>
+          <div class="btn-group-row" id="platforms-pills">
+            <button type="button" class="ctrl-btn pill-all active" onclick="clearMultiFilter('platforms')">
+              All <span class="btn-count" id="count-all">1,477</span>
+            </button>
+            <button type="button" class="ctrl-btn pill-item" data-val="Spinny" onclick="toggleMultiFilter('platforms', 'Spinny')">
+              <span class="source-dot spinny-dot"></span>Spinny <span class="btn-count" id="count-spinny">0</span>
+            </button>
+            <button type="button" class="ctrl-btn pill-item" data-val="Cars24" onclick="toggleMultiFilter('platforms', 'Cars24')">
+              <span class="source-dot cars24-dot"></span>Cars24 <span class="btn-count" id="count-cars24">0</span>
+            </button>
+            <button type="button" class="ctrl-btn pill-item" data-val="Truwo" onclick="toggleMultiFilter('platforms', 'Truwo')">
+              <span class="source-dot truwo-dot"></span>Truwo <span class="btn-count" id="count-truwo">0</span>
+            </button>
+          </div>
         </div>
 
-        <div class="chips-group" id="transmissions-pills">
-          <span class="chips-label">Gear</span>
-          <button type="button" class="chip-pill pill-all active" onclick="clearMultiFilter('transmissions')">All</button>
-          <button type="button" class="chip-pill pill-item" data-val="automatic" onclick="toggleMultiFilter('transmissions', 'automatic')">Auto</button>
-          <button type="button" class="chip-pill pill-item" data-val="manual" onclick="toggleMultiFilter('transmissions', 'manual')">Manual</button>
+        <!-- Control 4: Discrete Segmented Switches for Specs -->
+        <div class="filter-panel panel-specs">
+          <div class="panel-header">
+            <span class="panel-label">Gearbox & Fuel</span>
+          </div>
+          <div class="specs-segmented-wrap">
+            <div class="segmented-switch" id="transmissions-pills" role="radiogroup" aria-label="Gearbox">
+              <button type="button" class="switch-opt pill-all active" onclick="clearMultiFilter('transmissions')">All Gears</button>
+              <button type="button" class="switch-opt pill-item" data-val="automatic" onclick="toggleMultiFilter('transmissions', 'automatic')">Auto</button>
+              <button type="button" class="switch-opt pill-item" data-val="manual" onclick="toggleMultiFilter('transmissions', 'manual')">Manual</button>
+            </div>
+            <div class="segmented-switch" id="fuels-pills" role="radiogroup" aria-label="Fuel">
+              <button type="button" class="switch-opt pill-all active" onclick="clearMultiFilter('fuels')">All Fuels</button>
+              <button type="button" class="switch-opt pill-item" data-val="petrol" onclick="toggleMultiFilter('fuels', 'petrol')">Petrol</button>
+              <button type="button" class="switch-opt pill-item" data-val="diesel" onclick="toggleMultiFilter('fuels', 'diesel')">Diesel</button>
+              <button type="button" class="switch-opt pill-item" data-val="cng" onclick="toggleMultiFilter('fuels', 'cng')">CNG</button>
+            </div>
+          </div>
         </div>
 
-        <div class="chips-group" id="fuels-pills">
-          <span class="chips-label">Fuel</span>
-          <button type="button" class="chip-pill pill-all active" onclick="clearMultiFilter('fuels')">All</button>
-          <button type="button" class="chip-pill pill-item" data-val="petrol" onclick="toggleMultiFilter('fuels', 'petrol')">Petrol</button>
-          <button type="button" class="chip-pill pill-item" data-val="diesel" onclick="toggleMultiFilter('fuels', 'diesel')">Diesel</button>
-        </div>
-
-        <div class="chips-group" id="brands-pills">
-          <span class="chips-label">Brand</span>
-          <button type="button" class="chip-pill pill-all active" onclick="clearMultiFilter('brands')">All</button>
-          <button type="button" class="chip-pill pill-item" data-val="maruti" onclick="toggleMultiFilter('brands', 'maruti')">Maruti (<span id="count-maruti">0</span>)</button>
-          <button type="button" class="chip-pill pill-item" data-val="hyundai" onclick="toggleMultiFilter('brands', 'hyundai')">Hyundai (<span id="count-hyundai">0</span>)</button>
-          <button type="button" class="chip-pill pill-item" data-val="tata" onclick="toggleMultiFilter('brands', 'tata')">Tata (<span id="count-tata">0</span>)</button>
-          <button type="button" class="chip-pill pill-item" data-val="honda" onclick="toggleMultiFilter('brands', 'honda')">Honda (<span id="count-honda">0</span>)</button>
-          <button type="button" class="chip-pill pill-item" data-val="volkswagen" onclick="toggleMultiFilter('brands', 'volkswagen')">VW (<span id="count-volkswagen">0</span>)</button>
-          <button type="button" class="chip-pill pill-item" data-val="toyota" onclick="toggleMultiFilter('brands', 'toyota')">Toyota (<span id="count-toyota">0</span>)</button>
-          <button type="button" class="chip-pill pill-item" data-val="mahindra" onclick="toggleMultiFilter('brands', 'mahindra')">Mahindra (<span id="count-mahindra">0</span>)</button>
-          <button type="button" class="chip-pill pill-item" data-val="skoda" onclick="toggleMultiFilter('brands', 'skoda')">Skoda (<span id="count-skoda">0</span>)</button>
-          <button type="button" class="chip-pill pill-item" data-val="bmw" onclick="toggleMultiFilter('brands', 'bmw')">BMW (<span id="count-bmw">0</span>)</button>
+        <!-- Control 5: Discrete Automaker Brand Chips -->
+        <div class="filter-panel panel-brands">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <span class="panel-label">Automakers</span>
+              <span class="caption-5" style="color:var(--text-subtle);">Select brand chips to filter</span>
+            </div>
+            <button type="button" class="btn-panel-action" onclick="clearMultiFilter('brands')" title="Reset brand selection">All Brands</button>
+          </div>
+          <div class="brand-chips-wrap" id="brands-pills">
+            <button type="button" class="chip-pill pill-all active" onclick="clearMultiFilter('brands')">All Brands</button>
+            <button type="button" class="chip-pill pill-item" data-val="maruti" onclick="toggleMultiFilter('brands', 'maruti')">Maruti (<span id="count-maruti">0</span>)</button>
+            <button type="button" class="chip-pill pill-item" data-val="hyundai" onclick="toggleMultiFilter('brands', 'hyundai')">Hyundai (<span id="count-hyundai">0</span>)</button>
+            <button type="button" class="chip-pill pill-item" data-val="tata" onclick="toggleMultiFilter('brands', 'tata')">Tata (<span id="count-tata">0</span>)</button>
+            <button type="button" class="chip-pill pill-item" data-val="honda" onclick="toggleMultiFilter('brands', 'honda')">Honda (<span id="count-honda">0</span>)</button>
+            <button type="button" class="chip-pill pill-item" data-val="volkswagen" onclick="toggleMultiFilter('brands', 'volkswagen')">Volkswagen (<span id="count-volkswagen">0</span>)</button>
+            <button type="button" class="chip-pill pill-item" data-val="toyota" onclick="toggleMultiFilter('brands', 'toyota')">Toyota (<span id="count-toyota">0</span>)</button>
+            <button type="button" class="chip-pill pill-item" data-val="skoda" onclick="toggleMultiFilter('brands', 'skoda')">Skoda (<span id="count-skoda">0</span>)</button>
+            <button type="button" class="chip-pill pill-item" data-val="bmw" onclick="toggleMultiFilter('brands', 'bmw')">BMW (<span id="count-bmw">0</span>)</button>
+            <button type="button" class="chip-pill pill-item" data-val="mahindra" onclick="toggleMultiFilter('brands', 'mahindra')">Mahindra (<span id="count-mahindra">0</span>)</button>
+            <button type="button" class="chip-pill pill-item" data-val="renault" onclick="toggleMultiFilter('brands', 'renault')">Renault (<span id="count-renault">0</span>)</button>
+            <button type="button" class="chip-pill pill-item" data-val="mg" onclick="toggleMultiFilter('brands', 'mg')">MG (<span id="count-mg">0</span>)</button>
+          </div>
         </div>
       </div>
     </section>
@@ -2846,9 +2715,6 @@ html_content = """<!DOCTYPE html>
     const countTruwo = document.getElementById('count-truwo');
     if (countTruwo) countTruwo.textContent = truwoCount.toLocaleString('en-IN');
 
-    const german5lCount = CARS.filter(c => (c.price || 0) <= 500000 && ['volkswagen', 'skoda', 'bmw', 'audi', 'mercedes'].some(b => (c.make || '').toLowerCase().includes(b))).length;
-    const countGerman5l = document.getElementById('count-german-5l');
-    if (countGerman5l) countGerman5l.textContent = german5lCount.toLocaleString('en-IN');
 
     // Dynamic brand counts
     ['maruti', 'hyundai', 'tata', 'renault', 'honda', 'volkswagen', 'toyota', 'mahindra', 'ford', 'kia', 'skoda', 'bmw', 'mg', 'jeep'].forEach(b => {
@@ -2943,40 +2809,6 @@ html_content = """<!DOCTYPE html>
       if (badge) badge.textContent = count;
     }
 
-    function syncQuickBudgetButtons() {
-      const p = state.max_price;
-      document.querySelectorAll('.quick-budget-strip button').forEach(btn => {
-        const txt = btn.textContent;
-        if (p === 400000 && txt.includes('4L')) btn.classList.add('active');
-        else if (p === 500000 && txt.includes('5L')) btn.classList.add('active');
-        else if (p === 700000 && txt.includes('7L')) btn.classList.add('active');
-        else if (p === 1000000 && txt.includes('10L')) btn.classList.add('active');
-        else if (p === 0 && txt.includes('All')) btn.classList.add('active');
-        else btn.classList.remove('active');
-      });
-    }
-
-    function syncDiscountButtons() {
-      const d = state.min_discount;
-      document.querySelectorAll('#discount-pills button').forEach(btn => {
-        const txt = btn.textContent;
-        if (d === 0 && (txt === 'Any' || txt.includes('All'))) btn.classList.add('active');
-        else if (d > 0 && txt.includes(`${d}%`)) btn.classList.add('active');
-        else btn.classList.remove('active');
-      });
-    }
-
-    function setMinDiscount(pct, btn) {
-      state.min_discount = Number(pct);
-      syncDiscountButtons();
-      applyFilters();
-    }
-
-    function clearDiscount() {
-      state.min_discount = 0;
-      syncDiscountButtons();
-      applyFilters();
-    }
 
     function setDensityMode(mode) {
       state.density = mode;
@@ -3012,58 +2844,47 @@ html_content = """<!DOCTYPE html>
       }
     }
 
-    // View Mode Switcher (Curated Top Deals vs German vs All Market)
+    // View Mode Switcher (Curated Top Deals vs All Market)
     function setViewMode(mode) {
       state.viewMode = mode;
       const btnCurated = document.getElementById('btn-mode-curated');
       const btnAll = document.getElementById('btn-mode-all');
-      const btnGerman = document.getElementById('btn-german-5l');
-      const statusText = document.getElementById('mode-status-text');
-
-      if (btnGerman) btnGerman.classList.remove('active');
 
       if (mode === 'curated') {
         if (btnCurated) btnCurated.classList.add('active', 'curated');
         if (btnAll) btnAll.classList.remove('active');
-        if (statusText) statusText.innerHTML = '<span class="pulse-dot"></span><span>Curated view: Under ₹5.0L · Deal Score 80+ · Low Mileage (&lt; 80k km) · Certified Assured</span>';
 
+        state.min_price = 0;
         state.max_price = 500000;
         state.max_km = 80000;
         state.brands.clear();
         state.qualities.clear();
         state.qualities.add('top_deal');
 
+        const minInput = document.getElementById('ctrl-min-price');
+        if (minInput) minInput.value = '';
         const maxInput = document.getElementById('ctrl-max-price');
         if (maxInput) maxInput.value = '5.0';
         const slider = document.getElementById('ctrl-price-range');
         if (slider) slider.value = 5.0;
-
-        document.querySelectorAll('#km-pills .facet-pill').forEach(b => {
-          if (b.textContent.includes('80k')) b.classList.add('active');
-          else b.classList.remove('active');
-        });
       } else {
         if (btnCurated) btnCurated.classList.remove('active', 'curated');
         if (btnAll) btnAll.classList.add('active');
-        if (statusText) statusText.innerHTML = '<span class="pulse-dot" style="background:var(--accent-blue); box-shadow:0 0 8px rgba(56,189,248,0.6);"></span><span>Showing all verified vehicles across Bangalore (Spinny, Cars24, Truwo).</span>';
 
+        state.min_price = 0;
         state.max_price = 0;
         state.max_km = 0;
         state.brands.clear();
         state.qualities.delete('top_deal');
 
+        const minInput = document.getElementById('ctrl-min-price');
+        if (minInput) minInput.value = '';
         const maxInput = document.getElementById('ctrl-max-price');
         if (maxInput) maxInput.value = '';
         const slider = document.getElementById('ctrl-price-range');
-        if (slider) slider.value = 20;
-
-        document.querySelectorAll('#km-pills .facet-pill').forEach((b, idx) => {
-          if (idx === 0) b.classList.add('active');
-          else b.classList.remove('active');
-        });
+        if (slider) slider.value = 15.0;
       }
-      syncQuickBudgetButtons();
-      syncDiscountButtons();
+      updatePriceReadout();
       updateAllMultiFilterUIs();
       applyFilters();
     }
@@ -3222,51 +3043,54 @@ html_content = """<!DOCTYPE html>
       applyFilters();
     }
 
-    // Continuous Price Controls & Quick Budget Caps
-    function setMaxBudget(val) {
-      const maxInput = document.getElementById('ctrl-max-price');
-      const slider = document.getElementById('ctrl-price-range');
-      if (val > 0) {
-        if (maxInput) maxInput.value = val.toFixed(1);
-        state.max_price = val * 100000;
-        if (slider) slider.value = Math.min(20, val);
+    function updatePriceReadout() {
+      const readout = document.getElementById('price-readout');
+      if (!readout) return;
+      const minL = state.min_price ? (state.min_price / 100000).toFixed(2).replace(/\\.00$/, '').replace(/(\\.[1-9])0$/, '$1') : '';
+      const maxL = state.max_price ? (state.max_price / 100000).toFixed(2).replace(/\\.00$/, '').replace(/(\\.[1-9])0$/, '$1') : '';
+
+      if (!minL && !maxL) {
+        readout.textContent = 'Any Price';
+      } else if (!minL && maxL) {
+        readout.textContent = `Up to ₹${maxL}L`;
+      } else if (minL && maxL) {
+        readout.textContent = `₹${minL}L – ₹${maxL}L`;
+      } else if (minL && !maxL) {
+        readout.textContent = `Above ₹${minL}L`;
+      }
+    }
+
+    function onMinPriceInput(val) {
+      const num = parseFloat(val);
+      state.min_price = (!isNaN(num) && num > 0) ? Math.round(num * 100000) : 0;
+      updatePriceReadout();
+      applyFilters();
+    }
+
+    function onMaxPriceInput(val) {
+      const num = parseFloat(val);
+      if (!isNaN(num) && num > 0) {
+        state.max_price = Math.round(num * 100000);
+        const slider = document.getElementById('ctrl-price-range');
+        if (slider) slider.value = Math.min(15.0, Math.max(1.0, num));
       } else {
-        if (maxInput) maxInput.value = '';
         state.max_price = 0;
-        if (slider) slider.value = 20;
       }
-      syncQuickBudgetButtons();
+      updatePriceReadout();
       applyFilters();
     }
 
-    function onPriceChange() {
-      const minVal = parseFloat(document.getElementById('ctrl-min-price').value);
-      const maxVal = parseFloat(document.getElementById('ctrl-max-price').value);
-
-      state.min_price = (!isNaN(minVal) && minVal > 0) ? minVal * 100000 : 0;
-      state.max_price = (!isNaN(maxVal) && maxVal > 0) ? maxVal * 100000 : 0;
-
-      const slider = document.getElementById('ctrl-price-range');
-      if (slider) {
-        if (state.max_price > 0 && maxVal <= 20) {
-          slider.value = maxVal;
-        } else if (state.max_price === 0) {
-          slider.value = 20;
-        }
-      }
-      applyFilters();
-    }
-
-    function onSliderChange(val) {
+    function onPriceSlider(val) {
       const num = parseFloat(val);
       const maxInput = document.getElementById('ctrl-max-price');
-      if (num >= 20) {
-        if (maxInput) maxInput.value = '';
-        state.max_price = 0;
+      if (num >= 15.0) {
+        state.max_price = 1500000;
+        if (maxInput) maxInput.value = '15.0';
       } else {
-        maxInput.value = num.toFixed(1);
-        state.max_price = num * 100000;
+        state.max_price = Math.round(num * 100000);
+        if (maxInput) maxInput.value = num.toFixed(2).replace(/\\.00$/, '').replace(/(\\.[1-9])0$/, '$1');
       }
+      updatePriceReadout();
       applyFilters();
     }
 
@@ -3276,25 +3100,34 @@ html_content = """<!DOCTYPE html>
       const maxInput = document.getElementById('ctrl-max-price');
       if (maxInput) maxInput.value = '';
       const slider = document.getElementById('ctrl-price-range');
-      if (slider) slider.value = 20;
+      if (slider) slider.value = 15.0;
       state.min_price = 0;
       state.max_price = 0;
+      updatePriceReadout();
       applyFilters();
     }
 
-    function resetBudgetAndAssurance() {
-      clearMultiFilter('platforms');
-      clearPrice();
-      clearDiscount();
-      clearMultiFilter('qualities');
+    function onDiscountSlider(val) {
+      const num = parseInt(val, 10);
+      state.min_discount = (!isNaN(num) && num > 0) ? num : 0;
+      const readout = document.getElementById('discount-readout');
+      if (readout) {
+        readout.textContent = state.min_discount > 0 ? `≥ ${state.min_discount}% Off` : 'Any';
+      }
+      applyFilters();
     }
 
-    function resetSpecsCategory() {
-      clearMultiFilter('transmissions');
-      clearMultiFilter('fuels');
-      setYear(0, document.querySelector('#year-pills .facet-pill'));
-      setMaxKm(0, document.querySelector('#km-pills .facet-pill'));
+    function clearDiscount() {
+      state.min_discount = 0;
+      const slider = document.getElementById('ctrl-discount-range');
+      if (slider) slider.value = 0;
+      const readout = document.getElementById('discount-readout');
+      if (readout) readout.textContent = 'Any';
+      applyFilters();
     }
+
+    function syncQuickBudgetButtons() {}
+    function syncDiscountButtons() {}
 
     function resetAll() {
       state.viewMode = 'curated';
@@ -3324,31 +3157,22 @@ html_content = """<!DOCTYPE html>
       if (maxInp) maxInp.value = '5.0';
       const slider = document.getElementById('ctrl-price-range');
       if (slider) slider.value = 5.0;
+
+      const dSlider = document.getElementById('ctrl-discount-range');
+      if (dSlider) dSlider.value = 0;
+      const dReadout = document.getElementById('discount-readout');
+      if (dReadout) dReadout.textContent = 'Any';
+
       const sDrop = document.getElementById('ctrl-sort');
       if (sDrop) sDrop.value = 'score';
 
       const btnCurated = document.getElementById('btn-mode-curated');
       const btnAll = document.getElementById('btn-mode-all');
-      const btnGerman = document.getElementById('btn-german-5l');
       if (btnCurated) btnCurated.classList.add('active', 'curated');
       if (btnAll) btnAll.classList.remove('active');
-      if (btnGerman) btnGerman.classList.remove('active');
 
-      const statusText = document.getElementById('mode-status-text');
-      if (statusText) statusText.innerHTML = '<span class="pulse-dot"></span><span>Curated view: Under ₹5.0L · Deal Score 80+ · Low Mileage (&lt; 80k km) · Certified Assured</span>';
-
-      document.querySelectorAll('#year-pills .facet-pill').forEach((p, idx) => {
-        if (idx === 0) p.classList.add('active');
-        else p.classList.remove('active');
-      });
-      document.querySelectorAll('#km-pills .facet-pill').forEach(b => {
-        if (b.textContent.includes('80k')) b.classList.add('active');
-        else b.classList.remove('active');
-      });
-
+      updatePriceReadout();
       updateAllMultiFilterUIs();
-      syncQuickBudgetButtons();
-      syncDiscountButtons();
       applyFilters();
     }
 
@@ -3412,11 +3236,11 @@ html_content = """<!DOCTYPE html>
       }
 
       if (state.min_year > 0) {
-        tags.push({ label: `Year: ${state.min_year}+`, clear: () => setYear(0, document.querySelector('#year-pills .facet-pill')) });
+        tags.push({ label: `Year: ${state.min_year}+`, clear: () => setYear(0, null) });
       }
 
       if (state.max_km > 0 && !(state.viewMode === 'curated' && state.max_km === 80000)) {
-        tags.push({ label: `Mileage: ≤ ${Math.round(state.max_km / 1000)}k km`, clear: () => setMaxKm(0, document.querySelector('#km-pills .facet-pill')) });
+        tags.push({ label: `Mileage: ≤ ${Math.round(state.max_km / 1000)}k km`, clear: () => setMaxKm(0, null) });
       }
 
       window._activeTags = tags;
@@ -3518,14 +3342,6 @@ html_content = """<!DOCTYPE html>
 
       const resCount = document.getElementById('res-count');
       if (resCount) resCount.textContent = filtered.length.toLocaleString('en-IN');
-      syncQuickBudgetButtons();
-      syncDiscountButtons();
-      const btnGerman = document.getElementById('btn-german-5l');
-      if (btnGerman) {
-        const isGermanPreset = state.max_price === 500000 && state.brands.has('volkswagen') && state.brands.has('skoda');
-        if (isGermanPreset) btnGerman.classList.add('active');
-        else btnGerman.classList.remove('active');
-      }
       updateFilterBadge();
       renderActiveTags();
       renderCards(filtered);
@@ -4043,6 +3859,7 @@ html_content = """<!DOCTYPE html>
 
     // Initial render
     renderAlertsList();
+    updatePriceReadout();
     updateAllMultiFilterUIs();
     applyFilters();
   </script>
