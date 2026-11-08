@@ -263,7 +263,7 @@ def calculate_score_and_breakdown(car, orig_retail, discount_pct):
     km = car.get("mileage", 100000)
     year = car.get("make_year", 2015)
     price = car.get("price", 500000)
-    is_assured = car.get("category") in ["assured", "verified"] or car.get("platform") == "Truwo"
+    is_assured = car.get("category") in ["assured", "verified"] or car.get("platform") in ["Truwo", "OLX"]
     make = (car.get("make") or "").lower()
 
     factors = []
@@ -345,6 +345,9 @@ def calculate_score_and_breakdown(car, orig_retail, discount_pct):
     if car.get("platform") == "Truwo":
         cert_pts = 14
         cert_desc = "Truwo Verified · Direct owner 200-pt inspection & title check"
+    elif car.get("platform") == "OLX":
+        cert_pts = 10
+        cert_desc = "OLX Direct Seller · Zero dealer markup & private seller pricing"
     elif is_assured:
         cert_pts = 14
         cert_desc = "Certified Assured · 200-pt mechanical inspection & 1-year warranty"
@@ -399,7 +402,9 @@ def calculate_score_and_breakdown(car, orig_retail, discount_pct):
 # Ensure consistent deal scoring, pricing intelligence, score breakdowns & ownership reviews
 for c in cars:
     if not c.get("platform"):
-        if str(c.get("id", "")).startswith("truwo_") or "truwo.ai" in c.get("url", ""):
+        if str(c.get("id", "")).startswith("olx_") or "olx.in" in c.get("url", ""):
+            c["platform"] = "OLX"
+        elif str(c.get("id", "")).startswith("truwo_") or "truwo.ai" in c.get("url", ""):
             c["platform"] = "Truwo"
         elif str(c.get("id", "")).startswith("c24_") or "cars24.com" in c.get("url", ""):
             c["platform"] = "Cars24"
@@ -456,7 +461,7 @@ html_content = """<!DOCTYPE html>
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <title>Bangalore Used Cars · Top Deals Under ₹5L Screener</title>
-  <meta name="description" content="Curated shortlist of verified Bangalore cars under ₹5 Lakhs with high resale retention and certified inspection across Spinny and Cars24." />
+  <meta name="description" content="Curated shortlist of verified Bangalore cars under ₹5 Lakhs with high resale retention and certified inspection across Spinny, Cars24, Truwo, and OLX." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1316,6 +1321,7 @@ html_content = """<!DOCTYPE html>
     .spinny-dot { background: #F59E0B; }
     .cars24-dot { background: #3B82F6; }
     .truwo-dot  { background: #10B981; }
+    .olx-dot    { background: #A855F7; }
 
     /* Results Bar */
     .results-bar {
@@ -1535,6 +1541,9 @@ html_content = """<!DOCTYPE html>
     }
     .pricing-source-badge.truwo {
       color: #10B981;
+    }
+    .pricing-source-badge.olx {
+      color: #C084FC;
     }
     .card-verdict-line {
       font-size: 12px;
@@ -2266,13 +2275,6 @@ html_content = """<!DOCTYPE html>
         padding: 4px 6px;
         font-size: 10px;
       }
-      .live-sync-btn span:last-child {
-        display: none;
-      }
-      .live-sync-btn::after {
-        content: "Sync";
-        font-size: 10px;
-      }
       .pricing-val-main {
         font-size: 17px;
       }
@@ -2289,125 +2291,6 @@ html_content = """<!DOCTYPE html>
       .facet-pill, .preset-chip-btn, .nav-btn, .cta-primary-btn {
         min-height: 38px;
       }
-    }
-    /* Live Sync Button in Nav */
-    .live-sync-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(56, 189, 248, 0.1) !important;
-      border: 1px solid rgba(56, 189, 248, 0.35) !important;
-      color: #38BDF8 !important;
-      font-weight: 600;
-    }
-    .live-sync-btn:hover {
-      background: rgba(56, 189, 248, 0.2) !important;
-      color: #FFFFFF !important;
-    }
-    .live-pulse-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #38BDF8;
-      box-shadow: 0 0 8px #38BDF8;
-      animation: pulseLiveSync 2s infinite ease-in-out;
-    }
-    @keyframes pulseLiveSync {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.35; transform: scale(0.85); }
-    }
-
-    /* Live Sync Modal */
-    .sync-status-box {
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      border-radius: var(--radius-md);
-      padding: 12px 14px;
-    }
-    .sync-status-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      color: #FFFFFF;
-    }
-    .sync-method-card {
-      background: var(--bg-subsurface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .sync-method-head {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .sync-method-head h4 {
-      font-size: 14px;
-      font-weight: 600;
-      color: #FFFFFF;
-    }
-    .sync-badge {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: var(--radius-sm);
-      background: rgba(52, 211, 153, 0.16);
-      color: #34D399;
-      border: 1px solid rgba(52, 211, 153, 0.35);
-    }
-    .sync-badge.github {
-      background: rgba(168, 85, 247, 0.16);
-      color: #C084FC;
-      border-color: rgba(168, 85, 247, 0.35);
-    }
-    .sync-badge.local {
-      background: rgba(245, 158, 11, 0.16);
-      color: #FBBF24;
-      border-color: rgba(245, 158, 11, 0.35);
-    }
-    .sync-action-btn {
-      margin-top: 4px;
-    }
-    .code-snippet-box {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--bg-photo);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      padding: 8px 12px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: #CBD5E1;
-      gap: 8px;
-    }
-    .code-snippet-box code {
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-    .copy-btn {
-      background: #272727;
-      border: 1px solid #313131;
-      color: #FFFFFF;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      padding: 4px 8px;
-      border-radius: 4px;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .copy-btn:hover {
-      background: var(--text-primary);
-      color: #000000;
-    }
-    .github-pat-row {
-      display: flex;
-      gap: 6px;
     }
   </style>
 </head>
@@ -2427,10 +2310,6 @@ html_content = """<!DOCTYPE html>
         <span>🔔 Alerts</span>
         <span id="badge-alerts-count" class="alert-count-pill">0</span>
       </button>
-      <button class="nav-btn live-sync-btn" onclick="openLiveSyncModal()" title="On-Demand Live Inventory Sync">
-        <span class="live-pulse-dot"></span>
-        <span>⚡ Live Sync</span>
-      </button>
       <button class="nav-btn" onclick="scrollToFilters()">Filters</button>
     </div>
   </nav>
@@ -2444,7 +2323,7 @@ html_content = """<!DOCTYPE html>
       </div>
       <h1 class="heading-1 hero-heading">Bangalore Top Used Car Deals</h1>
       <p class="body-3 hero-subhead">
-        Curated shortlist of verified Bangalore cars under ₹5 Lakhs with high resale retention and certified inspection across Spinny and Cars24.
+        Curated shortlist of verified Bangalore cars under ₹5 Lakhs with high resale retention and certified inspection across Spinny, Cars24, Truwo, and OLX.
       </p>
     </header>
 
@@ -2613,6 +2492,9 @@ html_content = """<!DOCTYPE html>
             <button type="button" class="ctrl-btn pill-item" data-val="Truwo" onclick="toggleMultiFilter('platforms', 'Truwo')">
               <span class="source-dot truwo-dot"></span>Truwo <span class="btn-count" id="count-truwo">0</span>
             </button>
+            <button type="button" class="ctrl-btn pill-item" data-val="OLX" onclick="toggleMultiFilter('platforms', 'OLX')">
+              <span class="source-dot olx-dot"></span>OLX <span class="btn-count" id="count-olx">0</span>
+            </button>
           </div>
         </div>
 
@@ -2712,89 +2594,6 @@ html_content = """<!DOCTYPE html>
           <span>Inspect Car</span>
           <span>&rarr;</span>
         </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- On-Demand Live Sync Modal -->
-  <div class="score-modal-backdrop" id="sync-modal-backdrop" onclick="closeSyncModalOnBackdrop(event)">
-    <div class="score-modal" role="dialog" aria-modal="true" aria-labelledby="sync-modal-title">
-      <div class="score-modal-header">
-        <div>
-          <span class="caption-5" style="color:var(--accent-blue); text-transform:uppercase; font-weight:700; letter-spacing:0.06em;">Real-time Pipeline Control</span>
-          <h3 id="sync-modal-title" style="margin-top:2px;">On-Demand Live Inventory Sync</h3>
-        </div>
-        <button type="button" class="score-modal-close" onclick="closeLiveSyncModal()" title="Close">✕</button>
-      </div>
-      <div class="score-modal-body">
-        <div class="sync-status-box">
-          <div class="sync-status-header">
-            <span class="live-pulse-dot"></span>
-            <strong>Bangalore Real-Time Inventory Health</strong>
-          </div>
-          <p class="caption-2" style="color:var(--text-muted); margin-top:4px;">
-            Top Bangalore deals often get booked in under 3 hours. All booked or reserved listings are filtered out automatically. Trigger fresh checks below on demand.
-          </p>
-        </div>
-
-        <!-- Method 1: In-Browser Direct Cars24 Real-time Fetch -->
-        <div class="sync-method-card">
-          <div class="sync-method-head">
-            <span class="sync-badge">CORS Enabled</span>
-            <h4>1. In-Browser Instant Cars24 Scan</h4>
-          </div>
-          <p class="caption-2" style="color:var(--text-muted);">
-            Directly queries the live Cars24 Bangalore gateway from your browser, rejects any booked stock, and injects active unbooked cars into your view.
-          </p>
-          <button type="button" class="cta-primary-btn sync-action-btn" id="btn-fetch-c24-live" onclick="fetchLiveCars24Direct()">
-            <span>⚡ Query Live Cars24 API Now</span>
-            <span id="c24-sync-spinner" style="display:none;">⏳ Fetching...</span>
-          </button>
-          <div id="c24-sync-result" class="caption-3" style="display:none; margin-top:8px;"></div>
-        </div>
-
-        <!-- Method 2: Trigger GitHub Actions Scraper Workflow -->
-        <div class="sync-method-card">
-          <div class="sync-method-head">
-            <span class="sync-badge github">GitHub Actions</span>
-            <h4>2. Trigger Full Scraper & Deploy (Spinny + Cars24)</h4>
-          </div>
-          <p class="caption-2" style="color:var(--text-muted);">
-            Runs the Python crawler workflow on GitHub Actions ubuntu runner to crawl full Bangalore inventory, prune booked cars, and redeploy GitHub Pages.
-          </p>
-          <div class="github-pat-row" style="margin-top:8px;">
-            <input type="password" id="gh-token-input" class="search-field" placeholder="Optional GitHub Token (saved locally) for 1-click dispatch" style="font-size:12px; height:36px;" />
-            <button type="button" class="facet-pill" onclick="saveGhToken()">Save</button>
-          </div>
-          <div style="display:flex; gap:8px; margin-top:8px;">
-            <button type="button" class="cta-primary-btn" onclick="triggerGithubDispatch()" style="flex:1;">
-              <span>🚀 Dispatch GitHub Scraper</span>
-            </button>
-            <a href="https://github.com/kiranpuli/spinny-deals/actions/workflows/deploy.yml" target="_blank" rel="noopener noreferrer" class="cta-primary-btn" style="flex:1; text-align:center;">
-              <span>Open Actions Web &rarr;</span>
-            </a>
-          </div>
-          <div id="gh-dispatch-status" class="caption-3" style="display:none; margin-top:8px;"></div>
-        </div>
-
-        <!-- Method 3: Local Terminal Command -->
-        <div class="sync-method-card">
-          <div class="sync-method-head">
-            <span class="sync-badge local">Local Terminal</span>
-            <h4>3. Run Scraper Locally</h4>
-          </div>
-          <p class="caption-2" style="color:var(--text-muted);">
-            Execute in your local shell to refresh deals and push to GitHub:
-          </p>
-          <div class="code-snippet-box">
-            <code>cd spinny_monitor && python3 spinny_checker.py --city bangalore</code>
-            <button type="button" class="copy-btn" onclick="copySnippet('cd spinny_monitor && python3 spinny_checker.py --city bangalore')">Copy</button>
-          </div>
-        </div>
-      </div>
-      <div class="score-modal-footer">
-        <span class="caption-5" style="color:var(--text-subtle);">Automated crawler runs every hour continuously on GitHub Actions.</span>
-        <button type="button" class="nav-btn" onclick="closeLiveSyncModal()">Close</button>
       </div>
     </div>
   </div>
@@ -2904,6 +2703,7 @@ html_content = """<!DOCTYPE html>
     const spinnyCount = CARS.filter(c => (c.platform || '').toLowerCase() === 'spinny').length;
     const cars24Count = CARS.filter(c => (c.platform || '').toLowerCase() === 'cars24').length;
     const truwoCount = CARS.filter(c => (c.platform || '').toLowerCase() === 'truwo').length;
+    const olxCount = CARS.filter(c => (c.platform || '').toLowerCase() === 'olx').length;
     const curatedCars = CARS.filter(c => (c.price || 0) <= 500000 && (c.deal_score || 0) >= 80 && (c.mileage || 0) <= 80000);
     const curatedCount = curatedCars.length;
 
@@ -2926,6 +2726,8 @@ html_content = """<!DOCTYPE html>
     if (countCars24) countCars24.textContent = cars24Count.toLocaleString('en-IN');
     const countTruwo = document.getElementById('count-truwo');
     if (countTruwo) countTruwo.textContent = truwoCount.toLocaleString('en-IN');
+    const countOlx = document.getElementById('count-olx');
+    if (countOlx) countOlx.textContent = olxCount.toLocaleString('en-IN');
 
 
     // Dynamic brand counts
@@ -3128,7 +2930,7 @@ html_content = """<!DOCTYPE html>
         const disc = a.retail_discount_pct ? `${a.retail_discount_pct}% off` : '';
         const km = (a.mileage / 1000).toFixed(0) + 'k km';
         const plat = (a.platform || '').toLowerCase();
-        const platBadge = plat === 'truwo' ? 'badge-platform truwo' : (plat === 'cars24' ? 'badge-platform cars24' : 'badge-platform spinny');
+        const platBadge = plat === 'truwo' ? 'badge-platform truwo' : (plat === 'olx' ? 'badge-platform olx' : (plat === 'cars24' ? 'badge-platform cars24' : 'badge-platform spinny'));
 
         return `
           <a href="${a.url || '#'}" target="_blank" rel="noopener noreferrer" class="alert-card">
@@ -3570,8 +3372,9 @@ html_content = """<!DOCTYPE html>
       const plat = (car.platform || '').toLowerCase();
       const isTruwo = plat === 'truwo';
       const isCars24 = plat === 'cars24';
-      const platformClass = isTruwo ? 'truwo' : (isCars24 ? 'cars24' : 'spinny');
-      const platformName = car.platform || (isTruwo ? 'Truwo' : (isCars24 ? 'Cars24' : 'Spinny'));
+      const isOlx = plat === 'olx';
+      const platformClass = isOlx ? 'olx' : (isTruwo ? 'truwo' : (isCars24 ? 'cars24' : 'spinny'));
+      const platformName = car.platform || (isOlx ? 'OLX' : (isTruwo ? 'Truwo' : (isCars24 ? 'Cars24' : 'Spinny')));
       const title = `${car.make_year} ${car.make} ${car.model} ${car.variant || ''}`.trim();
       const price = '₹' + (car.price / 100000).toFixed(2) + 'L';
       const topPrice = car.orig_retail_price ? ('₹' + (car.orig_retail_price / 100000).toFixed(2) + 'L') : '';
@@ -3733,218 +3536,6 @@ html_content = """<!DOCTYPE html>
       }
     }
 
-    function openLiveSyncModal() {
-      const modal = document.getElementById('sync-modal-backdrop');
-      if (modal) {
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
-      const savedToken = localStorage.getItem('spinny_gh_token');
-      const input = document.getElementById('gh-token-input');
-      if (input && savedToken) input.value = savedToken;
-    }
-
-    function closeLiveSyncModal() {
-      const modal = document.getElementById('sync-modal-backdrop');
-      if (modal) modal.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    function closeSyncModalOnBackdrop(e) {
-      if (e && e.target && e.target.id === 'sync-modal-backdrop') {
-        closeLiveSyncModal();
-      }
-    }
-
-    function saveGhToken() {
-      const input = document.getElementById('gh-token-input');
-      if (!input) return;
-      const val = input.value.trim();
-      if (val) {
-        localStorage.setItem('spinny_gh_token', val);
-        const statusBox = document.getElementById('gh-dispatch-status');
-        if (statusBox) {
-          statusBox.style.display = 'block';
-          statusBox.style.color = 'var(--accent-emerald)';
-          statusBox.textContent = '✓ GitHub token saved in browser storage.';
-        }
-      }
-    }
-
-    function copySnippet(text) {
-      if (navigator && navigator.clipboard) {
-        navigator.clipboard.writeText(text);
-        alert('Copied crawler command to clipboard!');
-      }
-    }
-
-    async function triggerGithubDispatch() {
-      const token = (document.getElementById('gh-token-input')?.value || localStorage.getItem('spinny_gh_token') || '').trim();
-      const statusBox = document.getElementById('gh-dispatch-status');
-      if (!token) {
-        if (statusBox) {
-          statusBox.style.display = 'block';
-          statusBox.style.color = '#FBBF24';
-          statusBox.innerHTML = 'Enter a GitHub Personal Access Token (with repo or workflow permissions) above, or <a href="https://github.com/kiranpuli/spinny-deals/actions/workflows/deploy.yml" target="_blank" style="color:#38BDF8; text-decoration:underline;">click here to trigger manually on GitHub</a>.';
-        }
-        return;
-      }
-
-      if (statusBox) {
-        statusBox.style.display = 'block';
-        statusBox.style.color = 'var(--accent-blue)';
-        statusBox.textContent = '🚀 Dispatching crawler workflow to GitHub Actions runner...';
-      }
-
-      try {
-        const res = await fetch('https://api.github.com/repos/kiranpuli/spinny-deals/actions/workflows/deploy.yml/dispatches', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/vnd.github.v3+json',
-            'Authorization': `Bearer ${token}`
-          },
-          body: JSON.stringify({ ref: 'main' })
-        });
-
-        if (res.status === 204) {
-          if (statusBox) {
-            statusBox.style.color = 'var(--accent-emerald)';
-            statusBox.innerHTML = '✓ Crawler workflow dispatched! Scraper is now crawling fresh unbooked Bangalore stock and will deploy in ~2 minutes.';
-          }
-        } else {
-          const err = await res.json().catch(() => ({}));
-          throw new Error(err.message || `HTTP ${res.status}`);
-        }
-      } catch (e) {
-        if (statusBox) {
-          statusBox.style.color = '#F87171';
-          statusBox.textContent = `Dispatch error: ${e.message}. You can trigger directly via GitHub Actions UI.`;
-        }
-      }
-    }
-
-    async function fetchLiveCars24Direct() {
-      const btn = document.getElementById('btn-fetch-c24-live');
-      const spinner = document.getElementById('c24-sync-spinner');
-      const resBox = document.getElementById('c24-sync-result');
-      if (spinner) spinner.style.display = 'inline';
-      if (btn) btn.disabled = true;
-
-      try {
-        const url = 'https://car-catalog-gateway-in.c24.tech/listing/v1/buy-used-car';
-        const payload = {
-          cityId: '4709',
-          size: 60,
-          sort: 'P',
-          searchFilter: [],
-          filterVersion: 4
-        };
-        const res = await fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X_TENANT_ID': 'INDIA_CAR_LISTING',
-            'SOURCE': 'WebApp'
-          },
-          body: JSON.stringify(payload)
-        });
-        if (!res.ok) throw new Error('Cars24 returned HTTP ' + res.status);
-        const data = await res.json();
-        const items = data.content || [];
-        
-        // Filter strictly active and unbooked cars
-        const liveItems = items.filter(it => {
-          const st = String(it.status || '').toUpperCase();
-          const sub = String(it.subStatus || '').toUpperCase();
-          if (st !== 'AVAILABLE') return false;
-          if (sub && sub !== 'AVAILABLE') return false;
-          if (it.isBooked) return false;
-          return true;
-        });
-
-        let newCount = 0;
-        liveItems.forEach(it => {
-          const aid = 'c24_' + it.appointmentId;
-          const exists = CARS.some(c => String(c.id) === aid);
-          if (!exists) {
-            const price = it.listingPrice || 0;
-            const km = (it.odometer && it.odometer.value) || 0;
-            const year = it.year || 2018;
-            const bt = JSON.stringify(it.businessTag || {}).toLowerCase();
-            const isAssured = bt.includes('assured') || bt.includes('owned');
-            const dImg = it.detailImage || {};
-            const img = dImg.bgRemovedUri || dImg.uri || '';
-
-            let score = 45;
-            if (km <= 25000) score += 24;
-            else if (km <= 40000) score += 18;
-            else if (km <= 60000) score += 12;
-            else if (km <= 80000) score += 5;
-            else if (km > 100000) score -= 10;
-
-            if (year >= 2021) score += 22;
-            else if (year >= 2019) score += 18;
-            else if (year >= 2017) score += 12;
-            else if (year >= 2015) score += 6;
-            else if (year <= 2013) score -= 6;
-
-            if (isAssured) score += 15;
-            if (year >= 2018 && km <= 40000) score += 6;
-            const deal_score = Math.min(99, Math.max(40, score));
-
-            CARS.unshift({
-              id: aid,
-              platform: 'Cars24',
-              make: it.make || '',
-              model: it.model || '',
-              variant: it.variant || '',
-              make_year: year,
-              mileage: km,
-              price: price,
-              orig_retail_price: Math.round((price * 1.4) / 10000) * 10000,
-              retail_discount_pct: 35,
-              fuel_type: it.fuelType || 'Petrol',
-              transmission: (it.transmissionType && it.transmissionType.value) || 'Manual',
-              category: isAssured ? 'assured' : 'market',
-              hub: (it.address && it.address.locality) || 'Cars24 Bangalore Hub',
-              img: img,
-              url: 'https://www.cars24.com/' + (it.cdpRelativeUrl || ''),
-              deal_score: deal_score,
-              score_rationale: 'Live in-browser verify: confirmed active unbooked stock on Cars24.',
-              score_breakdown: [
-                { pillar: 'Live Stock Verification', detail: 'Confirmed active & unbooked on Cars24 gateway', pts: '+25 pts', type: 'pos' },
-                { pillar: 'Odometer Health', detail: `${Math.round(km/1000)}k km verified`, pts: '+18 pts', type: 'pos' }
-              ],
-              ownership_review: {
-                fuel_economy: '12 to 14 km/l in city traffic',
-                annual_maintenance: '₹5,000 to ₹7,000 yearly',
-                ride_comfort: 'High clearance over Bangalore speed bumps',
-                known_issues: 'Standard brake pad & clutch check',
-                bangalore_verdict: 'Live active Cars24 stock in Bangalore.'
-              }
-            });
-            newCount++;
-          }
-        });
-
-        if (resBox) {
-          resBox.style.display = 'block';
-          resBox.style.color = 'var(--accent-emerald)';
-          resBox.textContent = `✓ Fetched ${liveItems.length} active unbooked Cars24 vehicles (${newCount} new added)!`;
-        }
-        applyFilters();
-      } catch (err) {
-        if (resBox) {
-          resBox.style.display = 'block';
-          resBox.style.color = '#F87171';
-          resBox.textContent = `Error fetching live Cars24: ${err.message}`;
-        }
-      } finally {
-        if (spinner) spinner.style.display = 'none';
-        if (btn) btn.disabled = false;
-      }
-    }
-
     function openBmwModal() {
       const modal = document.getElementById('bmw-modal-backdrop');
       if (modal) {
@@ -4021,7 +3612,6 @@ html_content = """<!DOCTYPE html>
       if (e.key === 'Escape') {
         closeScoreModal();
         closeAlertsModal();
-        closeLiveSyncModal();
         closeBmwModal();
       }
     });
@@ -4062,13 +3652,14 @@ html_content = """<!DOCTYPE html>
         const plat = (c.platform || '').toLowerCase();
         const isTruwo = plat === 'truwo';
         const isCars24 = plat === 'cars24';
+        const isOlx = plat === 'olx';
         const isAssured = c.category === 'assured' || c.category === 'verified';
-        const tierSubLabel = isTruwo 
-          ? 'Direct Owner' 
-          : (isCars24 ? (isAssured ? 'Assured' : 'Certified') : (isAssured ? 'Assured' : 'Wholesale'));
-        const pricingTagText = isTruwo ? 'Direct Owner' : 'Fixed Price';
-        const platformClass = isTruwo ? 'truwo' : (isCars24 ? 'cars24' : 'spinny');
-        const platformName = c.platform || (isTruwo ? 'Truwo' : (isCars24 ? 'Cars24' : 'Spinny'));
+        const tierSubLabel = isOlx 
+          ? 'Direct Seller' 
+          : (isTruwo ? 'Direct Owner' : (isCars24 ? (isAssured ? 'Assured' : 'Certified') : (isAssured ? 'Assured' : 'Wholesale')));
+        const pricingTagText = (isOlx || isTruwo) ? 'Direct Seller' : 'Fixed Price';
+        const platformClass = isOlx ? 'olx' : (isTruwo ? 'truwo' : (isCars24 ? 'cars24' : 'spinny'));
+        const platformName = c.platform || (isOlx ? 'OLX' : (isTruwo ? 'Truwo' : (isCars24 ? 'Cars24' : 'Spinny')));
 
         const price = '₹' + (c.price / 100000).toFixed(2) + 'L';
         const topPrice = c.orig_retail_price ? ('₹' + (c.orig_retail_price / 100000).toFixed(2) + 'L') : '';

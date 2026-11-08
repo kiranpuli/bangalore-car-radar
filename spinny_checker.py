@@ -915,6 +915,242 @@ def enrich_truwo(cars):
         })
     return cleaned
 
+def fetch_olx_cars(max_pages=8, max_price=None):
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept": "application/json, text/plain, */*",
+    }
+    cars = []
+    seen_ids = set()
+    price_param = f"&price_max={max_price}&price_min=50000" if (max_price and max_price > 0) else ""
+
+    try:
+        from scrapling.fetchers import Fetcher
+    except ImportError:
+        Fetcher = None
+
+    for page in range(max_pages):
+        url = f"https://www.olx.in/api/relevance/v4/search?category=84&facet_limit=1000&location=4058803&location_facet_limit=40&platform=web-desktop&pttEnabled=true&relaxedFilters=true&size=40&user=anonymous&lang=en-IN&page={page}{price_param}"
+        try:
+            if Fetcher:
+                res = Fetcher.get(url, headers=headers, timeout=15)
+                if res.status != 200:
+                    break
+                body = res.body.decode("utf-8", errors="ignore")
+            else:
+                r = requests.get(url, headers=headers, timeout=15)
+                if r.status_code != 200:
+                    break
+                body = r.text
+
+            data = json.loads(body)
+            items = data.get("data", [])
+            if not items:
+                break
+
+            for it in items:
+                ad_id = str(it.get("id") or "")
+                if not ad_id or ad_id in seen_ids:
+                    continue
+                seen_ids.add(ad_id)
+
+                status = str(it.get("status", {}).get("status") or it.get("status") or "").lower()
+                if status in ["deleted", "expired", "inactive"]:
+                    continue
+
+                raw_price = it.get("price", {}).get("value", {}).get("raw", 0)
+                if raw_price <= 0:
+                    continue
+                if max_price and max_price > 0 and raw_price > max_price:
+                    continue
+
+                params = {}
+                for p in it.get("parameters", []):
+                    k = p.get("key")
+                    v = p.get("value_name") or p.get("formatted_value") or p.get("value")
+                    if k and v:
+                        params[k] = v
+
+                loc = it.get("locations_resolved") or {}
+                subloc = loc.get("SUBLOCALITY_LEVEL_1_name") or "Bangalore"
+
+                imgs = [img.get("url") for img in it.get("images", []) if img.get("url")]
+                hero_img = imgs[0] if imgs else ""
+                if hero_img and not hero_img.endswith(";s=780x0;q=80"):
+                    hero_img = f"{hero_img};s=780x0;q=80"
+
+                cars.append({
+                    "id": ad_id,
+                    "title": it.get("title", ""),
+                    "price": float(raw_price),
+                    "params": params,
+                    "sublocality": subloc,
+                    "hero_img": hero_img,
+                    "ad_url": f"https://www.olx.in/item/iid-{ad_id}",
+                    "user_type": it.get("user_type", ""),
+                    "is_business": it.get("is_business", False),
+                })
+        except Exception as e:
+            print(f"[{datetime.now()}] Error fetching OLX page {page}: {e}", file=sys.stderr)
+            break
+
+    return cars
+
+
+def enrich_olx(cars):
+    cleaned = []
+    for c in cars:
+        params = c.get("params", {})
+        make = params.get("make") or ""
+        model = params.get("model") or ""
+        variant = params.get("variant") or ""
+
+        raw_title = c.get("title") or ""
+        if not make and raw_title:
+            parts = raw_title.split(" ")
+            make = parts[0] if parts else "Other"
+            model = parts[1] if len(parts) > 1 else ""
+            variant = " ".join(parts[2:]) if len(parts) > 2 else ""
+
+        try:
+            year = int(params.get("year") or 2017)
+        except Exception:
+            year = 2017
+
+        try:
+            km = int(re.sub(r"[^\d]", "", str(params.get("mileage") or "50000")))
+        except Exception:
+            km = 50000
+
+        fuel = (params.get("petrol") or "Petrol").capitalize()
+        transmission = (params.get("transmission") or "Manual").capitalize()
+        is_business = c.get("is_business", False)
+        owner = str(params.get("first_owner") or "")
+
+        model_name = f"{make} {model} {variant}".lower()
+
+        matched = None
+        for k in KNOWLEDGE_BASE:
+            if k in model_name:
+                matched = KNOWLEDGE_BASE[k]
+                break
+        if not matched:
+            matched = {
+                "pros": ["Direct seller listing with zero platform surcharge", "Real-world negotiation margin in Bangalore local market", "Complete maintenance and service history reviewable with owner"],
+                "cons": ["Direct buyer-seller diligence and RTO name transfer verification recommended"],
+                "maintenance_yr": "₹6,000 - ₹9,000",
+                "retention_pct": 0.68,
+            }
+
+        price = c.get("price") or 0
+        if price <= 0:
+            continue
+
+        retention_pct = matched["retention_pct"]
+        retention_val = round(price * retention_pct)
+        total_loss_2yr = price - retention_val
+        monthly_loss = round(total_loss_2yr / 24)
+
+        orig_retail = estimate_original_retail(make, model, variant, year, transmission)
+        if orig_retail <= price:
+            orig_retail = round((price * 1.45) / 10000) * 10000
+        retail_discount_pct = max(5, min(85, round((1.0 - (price / orig_retail)) * 100)))
+
+        score = 44
+        if km <= 25000: score += 24
+        elif km <= 40000: score += 18
+        elif km <= 60000: score += 12
+        elif km <= 80000: score += 5
+        elif km > 100000: score -= 10
+
+        if year >= 2021: score += 22
+        elif year >= 2019: score += 18
+        elif year >= 2017: score += 12
+        elif year >= 2015: score += 6
+        elif year <= 2012: score -= 8
+
+        if owner in ["1st", "1", "First"]: score += 6
+        if not is_business: score += 5
+        if year >= 2018 and km <= 40000: score += 5
+
+        final_score = min(99, max(40, score))
+        deal_grade = "TOP DEAL" if final_score >= 80 else ("VALUE PICK" if final_score >= 68 else "FAIR")
+
+        breakdown = [
+            {"pillar": "Base Inventory Baseline", "detail": "Direct Bangalore classified listing", "pts": "+40 pts", "type": "base"}
+        ]
+        if km <= 35000:
+            breakdown.append({"pillar": "Odometer & Engine Wear", "detail": f"Low mileage ({km//1000}k km) · well below market wear", "pts": "+18 pts", "type": "pos"})
+        elif km <= 65000:
+            breakdown.append({"pillar": "Odometer & Engine Wear", "detail": f"Average wear ({km//1000}k km) · typical city usage", "pts": "+10 pts", "type": "pos"})
+        elif km > 90000:
+            breakdown.append({"pillar": "Odometer & Engine Wear", "detail": f"High odometer ({km//1000}k km) · assess engine mounts", "pts": "-8 pts", "type": "neg"})
+
+        if year >= 2019:
+            breakdown.append({"pillar": "Vehicle Age & Generation", "detail": f"Recent {year} generation · low age wear", "pts": "+18 pts", "type": "pos"})
+        elif year >= 2015:
+            breakdown.append({"pillar": "Vehicle Age & Generation", "detail": f"Mature {year} vehicle · reliable mechanical platform", "pts": "+10 pts", "type": "pos"})
+        else:
+            breakdown.append({"pillar": "Vehicle Age & Generation", "detail": f"{year} model · age-related maintenance cycle", "pts": "-6 pts", "type": "neg"})
+
+        if retail_discount_pct >= 30:
+            breakdown.append({"pillar": "Depreciation Arbitrage", "detail": f"Direct seller savings · {retail_discount_pct}% off original MSRP", "pts": "+10 pts", "type": "pos"})
+
+        if owner in ["1st", "1", "First"]:
+            breakdown.append({"pillar": "Ownership History", "detail": "1st owner vehicle · clear title provenance", "pts": "+6 pts", "type": "pos"})
+
+        if not is_business:
+            breakdown.append({"pillar": "Direct Seller Liquidity", "detail": "Private seller deal · zero dealership inventory markup", "pts": "+5 pts", "type": "pos"})
+
+        rationale_reasons = []
+        if km <= 35000: rationale_reasons.append("low odometer wear")
+        if year >= 2019: rationale_reasons.append("recent generation")
+        if retail_discount_pct >= 30: rationale_reasons.append("strong depreciation arbitrage")
+        if not is_business: rationale_reasons.append("private seller value pricing")
+        score_rationale = f"Rated {final_score}/100 primarily driven by " + (", ".join(rationale_reasons) if rationale_reasons else "Bangalore market pricing and mechanical baseline") + "."
+
+        pros = matched.get("pros", [])
+        verdict = pros[0] if pros else "Direct private seller listing with high price arbitrage."
+
+        subloc = c.get("sublocality") or "Bangalore"
+        hub = f"{subloc}, Bangalore" if "bangalore" not in subloc.lower() else subloc
+
+        cleaned.append({
+            "id": f"olx_{c['id']}",
+            "platform": "OLX",
+            "make": make,
+            "model": model,
+            "variant": variant,
+            "make_year": year,
+            "mileage": km,
+            "price": price,
+            "orig_retail_price": orig_retail,
+            "retail_discount_pct": retail_discount_pct,
+            "fuel_type": fuel,
+            "transmission": transmission,
+            "category": "direct_owner" if not is_business else "dealer",
+            "hub": hub,
+            "img": c.get("hero_img") or "",
+            "url": c.get("ad_url") or f"https://www.olx.in/item/iid-{c['id']}",
+            "deal_score": final_score,
+            "deal_grade": deal_grade,
+            "is_top_deal": final_score >= 68,
+            "verdict": verdict,
+            "analysis": {
+                "pros": matched["pros"],
+                "cons": matched["cons"],
+                "maintenance_yr": matched["maintenance_yr"],
+                "retention_pct": retention_pct,
+                "est_buyback_2yr": retention_val,
+                "total_loss_2yr": total_loss_2yr,
+                "monthly_loss": monthly_loss,
+            },
+            "score_breakdown": breakdown,
+            "score_rationale": score_rationale,
+        })
+    return cleaned
+
+
 def update_deals_html(cleaned_cars):
     cur_dir = os.path.dirname(os.path.abspath(__file__))
     json_path = os.path.join(cur_dir, "clean_bangalore_cars.json")
@@ -964,7 +1200,12 @@ def run_monitor(city="bangalore", max_price=None):
     cleaned_truwo = enrich_truwo(truwo_raw)
     print(f"[{datetime.now()}] Fetched {len(cleaned_truwo)} Truwo cars.")
 
-    combined_cars = cleaned_spinny + cleaned_cars24 + cleaned_truwo
+    print(f"[{datetime.now()}] Fetching Bangalore cars from OLX API (Direct Seller Classifieds)...")
+    olx_raw = fetch_olx_cars(max_pages=8, max_price=max_price)
+    cleaned_olx = enrich_olx(olx_raw)
+    print(f"[{datetime.now()}] Fetched {len(cleaned_olx)} OLX cars.")
+
+    combined_cars = cleaned_spinny + cleaned_cars24 + cleaned_truwo + cleaned_olx
     combined_cars.sort(key=lambda x: x.get("deal_score", 0), reverse=True)
 
     new_cars = []
@@ -980,7 +1221,7 @@ def run_monitor(city="bangalore", max_price=None):
     update_deals_html(combined_cars)
 
     price_label = f"<= ₹{max_price//100000}L" if (max_price and max_price > 0) else "All Budgets"
-    print(f"[{datetime.now()}] === Bangalore Combined Deals Screener ({price_label}) — Found {len(combined_cars)} Cars ({len(cleaned_spinny)} Spinny + {len(cleaned_cars24)} Cars24 + {len(cleaned_truwo)} Truwo) ===")
+    print(f"[{datetime.now()}] === Bangalore Combined Deals Screener ({price_label}) — Found {len(combined_cars)} Cars ({len(cleaned_spinny)} Spinny + {len(cleaned_cars24)} Cars24 + {len(cleaned_truwo)} Truwo + {len(cleaned_olx)} OLX) ===")
     for idx, car in enumerate(combined_cars[:5], 1):
         title = f"{car.get('make_year')} {car.get('make')} {car.get('model')} {car.get('variant')}"
         price = f"₹{int(car.get('price', 0)):,}"
