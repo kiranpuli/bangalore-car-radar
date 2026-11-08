@@ -23,7 +23,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install requests
+          pip install requests "scrapling[fetchers]"
 
       - name: Fetch Fresh Bangalore Deals & Rebuild UI
         run: |

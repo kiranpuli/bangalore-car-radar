@@ -9,6 +9,7 @@ Rebuilds deals.html automatically and dispatches notifications on new finds.
 import argparse
 import json
 import os
+import re
 import subprocess
 import sys
 import requests
@@ -20,6 +21,10 @@ PRESTIGE_MODELS = [
     # German / European
     "polo", "vento", "ameo", "passat", "jetta", "taigun", "virtus", "tiguan", "t-roc", "beetle",
     "rapid", "fabia", "octavia", "superb", "kushaq", "slavia", "laura", "kodiaq", "yeti",
+    # Luxury European
+    "x1", "x3", "x5", "3 series", "5 series", "c-class", "e-class", "gla", "glc", "a4", "a6", "q3", "q5", "xf", "f-pace", "xc40", "xc60",
+    # MG
+    "astor", "hector", "gloster", "zs ev", "comet",
     # Honda
     "city", "amaze", "brio", "jazz", "wr-v", "civic", "cr-v", "elevate", "br-v", "accord",
     # Toyota
@@ -35,7 +40,7 @@ PRESTIGE_MODELS = [
     # Kia
     "seltos", "sonet", "carens", "carnival",
     # Mahindra
-    "xuv300", "xuv500", "xuv700", "thar", "scorpio", "kuv100",
+    "xuv300", "xuv500", "xuv700", "thar", "scorpio", "kuv100", "xev 9e", "be 6e", "xuv400",
     # Others
     "compass", "duster", "terrano", "kiger", "magnite", "triber",
 ]
@@ -284,6 +289,13 @@ MODEL_NEW_RETAIL_BASE = {
     "kuv100": 720000, "xuv300": 1150000, "thar": 1450000, "scorpio": 1550000, "xuv500": 1720000, "xuv700": 2150000,
     # Jeep
     "compass": 2350000,
+    # MG
+    "astor": 1380000, "hector": 1780000, "gloster": 3800000, "zs ev": 2200000, "comet": 780000,
+    # Luxury European
+    "x1": 4600000, "x3": 6600000, "3 series": 4800000, "5 series": 6800000,
+    "gla": 4800000, "glc": 6800000, "c-class": 5600000, "e-class": 7400000,
+    "a4": 4600000, "a6": 6200000, "q3": 4400000, "q5": 6600000,
+    "xf": 7200000, "f-pace": 7500000, "xc40": 4600000, "xc60": 6800000,
 }
 
 
@@ -336,7 +348,10 @@ def is_prestige_car(car):
         return True
 
     # If it's a recognised quality manufacturer and not a excluded tin can
-    reputable_makes = ["volkswagen", "honda", "toyota", "skoda", "hyundai", "ford", "tata", "kia", "mahindra", "jeep", "renault", "mg"]
+    reputable_makes = [
+        "volkswagen", "honda", "toyota", "skoda", "hyundai", "ford", "tata", "kia", "mahindra",
+        "jeep", "renault", "mg", "bmw", "mercedes", "mercedes-benz", "audi", "jaguar", "volvo", "land rover", "mini"
+    ]
     return any(rm in make for rm in reputable_makes)
 
 
@@ -653,6 +668,168 @@ def enrich_cars24(cars):
     return cleaned
 
 
+def fetch_truwo_cars(max_price=None):
+    url = "https://www.truwo.ai/listings"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+    }
+    html = ""
+    # Attempt extraction via Scrapling Fetcher if available, fallback to requests
+    try:
+        from scrapling.fetchers import Fetcher
+        res = Fetcher.get(url, headers=headers, timeout=15)
+        html = res.html_content or (res.body.decode("utf-8", errors="ignore") if hasattr(res, "body") else "")
+    except Exception:
+        pass
+
+    if not html:
+        try:
+            r = requests.get(url, headers=headers, timeout=15)
+            r.raise_for_status()
+            html = r.text
+        except Exception as e:
+            print(f"[{datetime.now()}] Error fetching Truwo listings: {e}", file=sys.stderr)
+            return []
+
+    cars = []
+    try:
+        chunks = re.findall(r'self\.__next_f\.push\(\[1,\s*\"(.*?)\"\]\)', html)
+        for c in chunks:
+            try:
+                unescaped = c.encode('utf-8').decode('unicode_escape')
+            except Exception:
+                unescaped = c
+            if '\"items\":[' in unescaped:
+                idx = unescaped.find('\"items\":[') + 8
+                arr, _ = json.JSONDecoder().raw_decode(unescaped[idx:])
+                cars = arr
+                break
+    except Exception as e:
+        print(f"[{datetime.now()}] Error parsing Truwo listings: {e}", file=sys.stderr)
+
+    filtered = []
+    for c in cars:
+        if c.get("sold") is True:
+            continue
+        price = c.get("truwo_price") or c.get("listed_price") or 0
+        km = c.get("kms_driven", 0)
+        price_ok = True if (max_price is None or max_price <= 0) else (price <= max_price)
+        if price_ok and km <= 140000 and is_prestige_car(c):
+            filtered.append(c)
+
+    return filtered
+
+
+def enrich_truwo(cars):
+    cleaned = []
+    for c in cars:
+        make = c.get("make") or ""
+        model = c.get("model") or ""
+        variant = c.get("variant") or ""
+        model_name = f"{make} {model} {variant}".lower()
+
+        matched = None
+        for k in KNOWLEDGE_BASE:
+            if k in model_name:
+                matched = KNOWLEDGE_BASE[k]
+                break
+        if not matched:
+            matched = {
+                "pros": ["Direct owner vehicle verified by 200+ point inspection", "Zero dealer margin or hidden inventory markups", "Clear title and RTO transfer assistance"],
+                "cons": ["Direct owner test drive scheduling required"],
+                "maintenance_yr": "₹6,000 - ₹8,500",
+                "retention_pct": 0.73,
+            }
+
+        price = c.get("truwo_price") or c.get("listed_price") or 0
+        km = c.get("kms_driven", 0)
+        year = c.get("year", 2020)
+        dealer_p = c.get("dealer_price") or 0
+
+        is_assured = c.get("verified", True)
+        tier = "verified" if is_assured else "owner"
+
+        retention_pct = matched["retention_pct"]
+        retention_val = round(price * retention_pct)
+        total_loss_2yr = price - retention_val
+        monthly_loss = round(total_loss_2yr / 24)
+
+        orig_retail = estimate_original_retail(make, model, variant, year, c.get("transmission"))
+        if orig_retail <= price:
+            orig_retail = round((price * 1.40) / 10000) * 10000
+        retail_discount_pct = max(5, min(85, round((1.0 - (price / orig_retail)) * 100)))
+
+        # Deal score calculation
+        score = 48  # Direct owner verified baseline
+        if km <= 25000: score += 24
+        elif km <= 40000: score += 18
+        elif km <= 60000: score += 12
+        elif km <= 80000: score += 5
+        elif km > 100000: score -= 10
+
+        if year >= 2021: score += 22
+        elif year >= 2019: score += 18
+        elif year >= 2017: score += 12
+        elif year >= 2015: score += 6
+        elif year <= 2013: score -= 6
+
+        if is_assured: score += 15
+        if year >= 2018 and km <= 40000: score += 6
+
+        # Value bonus if benchmarked below dealer price
+        if dealer_p > price and (dealer_p - price) >= 50000:
+            score += 4
+
+        final_score = min(99, max(40, score))
+        deal_grade = "TOP DEAL" if final_score >= 80 else ("VALUE PICK" if final_score >= 68 else "FAIR")
+
+        pros = matched.get("pros", [])
+        verdict = pros[0] if pros else "Inspected direct-owner vehicle benchmarked below dealer price."
+
+        locality = c.get("locality") or c.get("area") or "Bangalore"
+        hub = f"{locality}, Bangalore" if "bangalore" not in locality.lower() else locality
+
+        img_url = c.get("hero_photo")
+        slug = c.get("slug")
+        url = f"https://www.truwo.ai/i/{slug}" if slug else "https://www.truwo.ai/listings"
+
+        cleaned.append({
+            "id": f"truwo_{c.get('id') or slug}",
+            "platform": "Truwo",
+            "make": make,
+            "model": model,
+            "variant": variant,
+            "make_year": year,
+            "mileage": km,
+            "price": price,
+            "dealer_benchmark_price": dealer_p,
+            "orig_retail_price": orig_retail,
+            "retail_discount_pct": retail_discount_pct,
+            "fuel_type": (c.get("fuel_type") or "Petrol").capitalize(),
+            "transmission": (c.get("transmission") or "Manual").capitalize(),
+            "category": tier,
+            "hub": hub,
+            "img": img_url,
+            "url": url,
+            "deal_score": final_score,
+            "deal_grade": deal_grade,
+            "is_top_deal": final_score >= 68,
+            "verdict": verdict,
+            "analysis": {
+                "pros": matched["pros"],
+                "cons": matched["cons"],
+                "maintenance_yr": matched["maintenance_yr"],
+                "retention_pct": retention_pct,
+                "est_buyback_2yr": retention_val,
+                "total_loss_2yr": total_loss_2yr,
+                "monthly_loss": monthly_loss,
+            },
+        })
+    return cleaned
+
+
 def update_deals_html(cleaned_cars):
     cur_dir = os.path.dirname(os.path.abspath(__file__))
     json_path = os.path.join(cur_dir, "clean_bangalore_cars.json")
@@ -697,7 +874,12 @@ def run_monitor(city="bangalore", max_price=None):
     cleaned_cars24 = enrich_cars24(cars24_raw)
     print(f"[{datetime.now()}] Fetched {len(cleaned_cars24)} Cars24 cars.")
 
-    combined_cars = cleaned_spinny + cleaned_cars24
+    print(f"[{datetime.now()}] Fetching Bangalore cars from Truwo (Direct Owner Verified)...")
+    truwo_raw = fetch_truwo_cars(max_price=max_price)
+    cleaned_truwo = enrich_truwo(truwo_raw)
+    print(f"[{datetime.now()}] Fetched {len(cleaned_truwo)} Truwo cars.")
+
+    combined_cars = cleaned_spinny + cleaned_cars24 + cleaned_truwo
     combined_cars.sort(key=lambda x: x.get("deal_score", 0), reverse=True)
 
     new_cars = []
@@ -713,7 +895,7 @@ def run_monitor(city="bangalore", max_price=None):
     update_deals_html(combined_cars)
 
     price_label = f"<= ₹{max_price//100000}L" if (max_price and max_price > 0) else "All Budgets"
-    print(f"[{datetime.now()}] === Bangalore Combined Deals Screener ({price_label}) — Found {len(combined_cars)} Cars ({len(cleaned_spinny)} Spinny + {len(cleaned_cars24)} Cars24) ===")
+    print(f"[{datetime.now()}] === Bangalore Combined Deals Screener ({price_label}) — Found {len(combined_cars)} Cars ({len(cleaned_spinny)} Spinny + {len(cleaned_cars24)} Cars24 + {len(cleaned_truwo)} Truwo) ===")
     for idx, car in enumerate(combined_cars[:5], 1):
         title = f"{car.get('make_year')} {car.get('make')} {car.get('model')} {car.get('variant')}"
         price = f"₹{int(car.get('price', 0)):,}"

@@ -68,6 +68,13 @@ MODEL_NEW_RETAIL_BASE = {
     "kuv100": 720000, "xuv300": 1150000, "thar": 1450000, "scorpio": 1550000, "xuv500": 1720000, "xuv700": 2150000,
     # Jeep
     "compass": 2350000,
+    # MG
+    "astor": 1380000, "hector": 1780000, "gloster": 3800000, "zs ev": 2200000, "comet": 780000,
+    # Luxury European
+    "x1": 4600000, "x3": 6600000, "3 series": 4800000, "5 series": 6800000,
+    "gla": 4800000, "glc": 6800000, "c-class": 5600000, "e-class": 7400000,
+    "a4": 4600000, "a6": 6200000, "q3": 4400000, "q5": 6600000,
+    "xf": 7200000, "f-pace": 7500000, "xc40": 4600000, "xc60": 6800000,
 }
 
 
@@ -256,7 +263,7 @@ def calculate_score_and_breakdown(car, orig_retail, discount_pct):
     km = car.get("mileage", 100000)
     year = car.get("make_year", 2015)
     price = car.get("price", 500000)
-    is_assured = car.get("category") == "assured"
+    is_assured = car.get("category") in ["assured", "verified"] or car.get("platform") == "Truwo"
     make = (car.get("make") or "").lower()
 
     factors = []
@@ -335,7 +342,10 @@ def calculate_score_and_breakdown(car, orig_retail, discount_pct):
     })
 
     # 4. Certification & Warranty
-    if is_assured:
+    if car.get("platform") == "Truwo":
+        cert_pts = 14
+        cert_desc = "Truwo Verified · Direct owner 200-pt inspection & title check"
+    elif is_assured:
         cert_pts = 14
         cert_desc = "Certified Assured · 200-pt mechanical inspection & 1-year warranty"
     else:
@@ -357,6 +367,12 @@ def calculate_score_and_breakdown(car, orig_retail, discount_pct):
     if any(m in make for m in ["maruti", "hyundai", "honda", "toyota"]):
         extra_pts += 4
         sweet_reasons.append("high-liquidity resale engine")
+    dealer_bench = car.get("dealer_benchmark_price")
+    if dealer_bench and dealer_bench > price:
+        dealer_save = dealer_bench - price
+        if dealer_save >= 50000:
+            extra_pts += 4
+            sweet_reasons.append(f"₹{dealer_save//1000}k below dealer benchmark")
     if extra_pts > 0:
         factors.append({
             "pillar": "Bangalore Resale Archetype",
@@ -383,7 +399,12 @@ def calculate_score_and_breakdown(car, orig_retail, discount_pct):
 # Ensure consistent deal scoring, pricing intelligence, score breakdowns & ownership reviews
 for c in cars:
     if not c.get("platform"):
-        c["platform"] = "Cars24" if str(c.get("id", "")).startswith("c24_") or "cars24.com" in c.get("url", "") else "Spinny"
+        if str(c.get("id", "")).startswith("truwo_") or "truwo.ai" in c.get("url", ""):
+            c["platform"] = "Truwo"
+        elif str(c.get("id", "")).startswith("c24_") or "cars24.com" in c.get("url", ""):
+            c["platform"] = "Cars24"
+        else:
+            c["platform"] = "Spinny"
     year = c.get("make_year", 2012)
     km = c.get("mileage", 100000)
     price = c.get("price", 500000)
@@ -1563,6 +1584,11 @@ html_content = """<!DOCTYPE html>
       background: rgba(59, 130, 246, 0.15);
       border: 1px solid rgba(59, 130, 246, 0.4);
       color: #60A5FA;
+    }
+    .badge-platform.truwo {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34D399;
     }
 
     /* Live unbooked stock indicator */
@@ -2852,9 +2878,10 @@ html_content = """<!DOCTYPE html>
           <div class="filter-group">
             <label class="group-label">Listing Platform</label>
             <div class="facet-pills" id="platforms-pills">
-              <button type="button" class="facet-pill pill-all active" onclick="clearMultiFilter('platforms')">Both Platforms</button>
+              <button type="button" class="facet-pill pill-all active" onclick="clearMultiFilter('platforms')">All Platforms</button>
               <button type="button" class="facet-pill pill-item" data-val="Spinny" onclick="toggleMultiFilter('platforms', 'Spinny')">Spinny (<span id="count-spinny">0</span>)</button>
               <button type="button" class="facet-pill pill-item" data-val="Cars24" onclick="toggleMultiFilter('platforms', 'Cars24')">Cars24 (<span id="count-cars24">0</span>)</button>
+              <button type="button" class="facet-pill pill-item" data-val="Truwo" onclick="toggleMultiFilter('platforms', 'Truwo')">Truwo (<span id="count-truwo">0</span>)</button>
             </div>
           </div>
 
@@ -3177,6 +3204,7 @@ html_content = """<!DOCTYPE html>
     // Initialize counts
     const spinnyCount = CARS.filter(c => (c.platform || '').toLowerCase() === 'spinny').length;
     const cars24Count = CARS.filter(c => (c.platform || '').toLowerCase() === 'cars24').length;
+    const truwoCount = CARS.filter(c => (c.platform || '').toLowerCase() === 'truwo').length;
     const curatedCars = CARS.filter(c => (c.price || 0) <= 500000 && (c.deal_score || 0) >= 80 && (c.mileage || 0) <= 80000);
     const curatedCount = curatedCars.length;
 
@@ -3197,6 +3225,8 @@ html_content = """<!DOCTYPE html>
     if (countSpinny) countSpinny.textContent = spinnyCount.toLocaleString('en-IN');
     const countCars24 = document.getElementById('count-cars24');
     if (countCars24) countCars24.textContent = cars24Count.toLocaleString('en-IN');
+    const countTruwo = document.getElementById('count-truwo');
+    if (countTruwo) countTruwo.textContent = truwoCount.toLocaleString('en-IN');
 
     // Dynamic brand counts
     ['maruti', 'hyundai', 'tata', 'renault', 'honda', 'volkswagen', 'toyota', 'mahindra', 'ford', 'kia', 'skoda'].forEach(b => {
@@ -3434,8 +3464,8 @@ html_content = """<!DOCTYPE html>
         const price = '₹' + (a.price / 100000).toFixed(2) + 'L';
         const disc = a.retail_discount_pct ? `${a.retail_discount_pct}% off` : '';
         const km = (a.mileage / 1000).toFixed(0) + 'k km';
-        const isCars24 = (a.platform || '').toLowerCase() === 'cars24';
-        const platBadge = isCars24 ? 'badge-platform cars24' : 'badge-platform spinny';
+        const plat = (a.platform || '').toLowerCase();
+        const platBadge = plat === 'truwo' ? 'badge-platform truwo' : (plat === 'cars24' ? 'badge-platform cars24' : 'badge-platform spinny');
 
         return `
           <a href="${a.url || '#'}" target="_blank" rel="noopener noreferrer" class="alert-card">
@@ -3865,9 +3895,11 @@ html_content = """<!DOCTYPE html>
       const car = CARS.find(x => String(x.id) === String(carId));
       if (!car) return;
 
-      const isAssured = car.category === 'assured';
-      const isCars24 = (car.platform || '').toLowerCase() === 'cars24';
-      const platformName = car.platform || (isCars24 ? 'Cars24' : 'Spinny');
+      const isAssured = car.category === 'assured' || car.category === 'verified';
+      const plat = (car.platform || '').toLowerCase();
+      const isTruwo = plat === 'truwo';
+      const isCars24 = plat === 'cars24';
+      const platformName = car.platform || (isTruwo ? 'Truwo' : (isCars24 ? 'Cars24' : 'Spinny'));
       const title = `${car.make_year} ${car.make} ${car.model} ${car.variant || ''}`.trim();
       const price = '₹' + (car.price / 100000).toFixed(2) + 'L';
       const km = (car.mileage / 1000).toFixed(0) + 'k km';
@@ -4189,11 +4221,15 @@ html_content = """<!DOCTYPE html>
       }
 
       grid.innerHTML = list.map(c => {
-        const isAssured = c.category === 'assured';
-        const isCars24 = (c.platform || '').toLowerCase() === 'cars24';
-        const tierLabel = isCars24 ? (isAssured ? '✓ Cars24 Assured' : '⚡ Verified Stock') : (isAssured ? '✓ Spinny Assured' : '⚡ Wholesale Stock');
-        const platformClass = isCars24 ? 'cars24' : 'spinny';
-        const platformName = c.platform || (isCars24 ? 'Cars24' : 'Spinny');
+        const plat = (c.platform || '').toLowerCase();
+        const isTruwo = plat === 'truwo';
+        const isCars24 = plat === 'cars24';
+        const isAssured = c.category === 'assured' || c.category === 'verified';
+        const tierLabel = isTruwo 
+          ? '✓ Truwo Verified' 
+          : (isCars24 ? (isAssured ? '✓ Cars24 Assured' : '⚡ Verified Stock') : (isAssured ? '✓ Spinny Assured' : '⚡ Wholesale Stock'));
+        const platformClass = isTruwo ? 'truwo' : (isCars24 ? 'cars24' : 'spinny');
+        const platformName = c.platform || (isTruwo ? 'Truwo' : (isCars24 ? 'Cars24' : 'Spinny'));
 
         const price = '₹' + (c.price / 100000).toFixed(2) + 'L';
         const topPrice = c.orig_retail_price ? ('₹' + (c.orig_retail_price / 100000).toFixed(2) + 'L') : '—';
