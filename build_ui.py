@@ -1330,6 +1330,68 @@ html_content = """<!DOCTYPE html>
       font-weight: 600;
     }
 
+    /* Quick Specialist Strips & Presets */
+    .quick-presets-strip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .pill-preset-german {
+      border-color: rgba(52, 211, 153, 0.4);
+      color: #34D399;
+      background: rgba(52, 211, 153, 0.08);
+    }
+    .pill-preset-german:hover, .pill-preset-german.active {
+      background: rgba(52, 211, 153, 0.2);
+      border-color: #34D399;
+      color: #6EE7B7;
+    }
+    .pill-preset-bmw {
+      border-color: rgba(59, 130, 246, 0.4);
+      color: #60A5FA;
+      background: rgba(59, 130, 246, 0.08);
+    }
+    .pill-preset-bmw:hover {
+      background: rgba(59, 130, 246, 0.2);
+      border-color: #60A5FA;
+      color: #93C5FD;
+    }
+    .nav-btn.bmw-guide-btn {
+      border-color: rgba(59, 130, 246, 0.4);
+      color: #60A5FA;
+    }
+    .nav-btn.bmw-guide-btn:hover {
+      background: rgba(59, 130, 246, 0.15);
+      color: #93C5FD;
+    }
+    .bmw-empty-card {
+      border-color: rgba(59, 130, 246, 0.35);
+      background: #0E1626;
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .bmw-empty-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #60A5FA;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      padding: 3px 8px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .bmw-empty-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
     /* Active Filter Summary Strip & Density Switcher */
     .active-filters-bar {
       display: flex;
@@ -2767,6 +2829,9 @@ html_content = """<!DOCTYPE html>
         <span class="live-pulse-dot"></span>
         <span>⚡ Live Sync</span>
       </button>
+      <button class="nav-btn bmw-guide-btn" onclick="openBmwModal()" title="BMW Under ₹5L Ownership Guide & Search">
+        <span>🏎️ BMW &lt; ₹5L</span>
+      </button>
       <button class="nav-btn" onclick="scrollToFilters()">Filters</button>
     </div>
   </nav>
@@ -2835,6 +2900,12 @@ html_content = """<!DOCTYPE html>
           <button type="button" class="facet-pill" onclick="setMinDiscount(30, this)">≥ 30%</button>
           <button type="button" class="facet-pill" onclick="setMinDiscount(40, this)">≥ 40%</button>
           <button type="button" class="facet-pill" onclick="setMinDiscount(50, this)">≥ 50%</button>
+        </div>
+
+        <div class="quick-presets-strip">
+          <span class="quick-label">Specialist:</span>
+          <button type="button" class="facet-pill pill-preset-german" id="btn-german-5l" onclick="filterGermanUnder5L()">🇩🇪 German Cars ≤ ₹5L (<span id="count-german-5l">33</span>)</button>
+          <button type="button" class="facet-pill pill-preset-bmw" id="btn-bmw-intel" onclick="openBmwModal()">🏎️ BMW &lt; ₹5L Guide &amp; OLX</button>
         </div>
 
         <div class="quick-tools-strip">
@@ -3022,6 +3093,9 @@ html_content = """<!DOCTYPE html>
           <button type="button" class="facet-pill pill-item" data-val="ford" onclick="toggleMultiFilter('brands', 'ford')">Ford (<span id="count-ford">0</span>)</button>
           <button type="button" class="facet-pill pill-item" data-val="kia" onclick="toggleMultiFilter('brands', 'kia')">Kia (<span id="count-kia">0</span>)</button>
           <button type="button" class="facet-pill pill-item" data-val="skoda" onclick="toggleMultiFilter('brands', 'skoda')">Skoda (<span id="count-skoda">0</span>)</button>
+          <button type="button" class="facet-pill pill-item" data-val="bmw" onclick="toggleMultiFilter('brands', 'bmw')">BMW (<span id="count-bmw">0</span>)</button>
+          <button type="button" class="facet-pill pill-item" data-val="mg" onclick="toggleMultiFilter('brands', 'mg')">MG (<span id="count-mg">0</span>)</button>
+          <button type="button" class="facet-pill pill-item" data-val="jeep" onclick="toggleMultiFilter('brands', 'jeep')">Jeep (<span id="count-jeep">0</span>)</button>
         </div>
       </div>
 
@@ -3177,6 +3251,83 @@ html_content = """<!DOCTYPE html>
     </div>
   </div>
 
+  <!-- BMW Under ₹5L Ownership & Private Search Modal -->
+  <div class="score-modal-backdrop" id="bmw-modal-backdrop" onclick="closeBmwModalOnBackdrop(event)">
+    <div class="score-modal bmw-modal" role="dialog" aria-modal="true" aria-labelledby="bmw-modal-title">
+      <div class="score-modal-header">
+        <div>
+          <span class="caption-5" style="color:var(--accent-blue); text-transform:uppercase; font-weight:700; letter-spacing:0.06em;">Bangalore Pre-Owned Intelligence</span>
+          <h3 id="bmw-modal-title" style="margin-top:2px;">BMW Under ₹5 Lakhs: Buyer's Reality &amp; Tracker</h3>
+        </div>
+        <button type="button" class="score-modal-close" onclick="closeBmwModal()" title="Close">✕</button>
+      </div>
+      <div class="score-modal-body" style="gap:14px;">
+        <div class="bmw-intel-card" style="background:#161E2E; border:1px solid #25334D; border-radius:10px; padding:14px;">
+          <h4 style="font-size:13.5px; font-weight:700; color:#60A5FA; margin-bottom:6px; display:flex; align-items:center; gap:6px;">
+            <span>ℹ️</span> Why aren't sub-₹5L BMWs on Spinny, Cars24, or Truwo?
+          </h4>
+          <p style="font-size:12.5px; line-height:1.5; color:var(--text-muted); margin:0;">
+            Dealer platforms strictly cap inventory age (under 8–10 years) and require vehicles to qualify for 1-year warranty coverage. Any BMW priced under ₹5 Lakhs in Bangalore is 14 to 19 years old (2007–2011 E90 3 Series or 2005–2009 E60 5 Series) with over 100k km, which dealer platforms do not certify.
+          </p>
+        </div>
+
+        <div class="bmw-intel-card" style="background:#181818; border:1px solid #272727; border-radius:10px; padding:14px;">
+          <h4 style="font-size:13.5px; font-weight:700; color:#FBBF24; margin-bottom:6px;">
+            📍 Where Sub-₹5L BMWs Are Actually Sold in Bangalore
+          </h4>
+          <p style="font-size:12.5px; line-height:1.5; color:var(--text-muted); margin-bottom:12px;">
+            Direct private sellers are the only channel for sub-₹5L luxury in Bangalore. Deals appear on OLX Bangalore, Team-BHP Classifieds, and local enthusiast groups.
+          </p>
+          <a href="https://www.olx.in/en-in/bangalore_g4058803/cars_c84/q-bmw?filter=price_between_200000_to_500000" target="_blank" rel="noopener noreferrer" class="cta-primary-btn" style="text-decoration:none; display:flex; justify-content:space-between; align-items:center; background:#1E3A8A; border-color:#3B82F6;">
+            <span>🔍 Browse Live BMW Listings on OLX Bangalore (₹2L – ₹5L)</span>
+            <span>↗</span>
+          </a>
+        </div>
+
+        <div class="bmw-intel-card" style="background:#181818; border:1px solid #272727; border-radius:10px; padding:14px;">
+          <h4 style="font-size:13.5px; font-weight:700; color:#34D399; margin-bottom:10px;">
+            💰 The Real Cost of Ownership (4 Hard Numbers)
+          </h4>
+          <div style="display:flex; flex-direction:column; gap:8px; font-size:12.5px;">
+            <div style="display:flex; justify-content:space-between; border-bottom:1px solid #272727; padding-bottom:6px;">
+              <span style="color:var(--text-muted);">1. Purchase Price (OLX private)</span>
+              <strong style="color:var(--text-primary); font-family:var(--font-mono);">₹3.8L – ₹4.8L</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; border-bottom:1px solid #272727; padding-bottom:6px;">
+              <span style="color:var(--text-muted);">2. Day-One Repair Buffer (mandatory)</span>
+              <strong style="color:#EF4444; font-family:var(--font-mono);">+ ₹1.5L – ₹2.5L</strong>
+            </div>
+            <p style="color:var(--text-subtle); font-size:11.5px; margin:-4px 0 2px 0;">Covers brittle coolant tanks, aging hoses, oil filter housing gaskets, and front suspension control arm bushings.</p>
+            <div style="display:flex; justify-content:space-between; border-bottom:1px solid #272727; padding-bottom:6px;">
+              <span style="color:var(--text-muted);">3. Annual Maintenance (Bangalore FNGs)</span>
+              <strong style="color:#F59E0B; font-family:var(--font-mono);">₹60,000 – ₹1,00,000 / yr</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding-bottom:2px;">
+              <span style="color:var(--text-muted);">4. Karnataka 15-Year RTO Fitness Cliff</span>
+              <strong style="color:var(--text-primary); font-family:var(--font-mono);">₹35,000 – ₹60,000</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="bmw-intel-card" style="background:rgba(52, 211, 153, 0.08); border:1px solid rgba(52, 211, 153, 0.25); border-radius:10px; padding:14px;">
+          <h4 style="font-size:13.5px; font-weight:700; color:#34D399; margin-bottom:6px;">
+            🛡️ Turnkey German Alternative: 33 Inspected Cars &le; ₹5L
+          </h4>
+          <p style="font-size:12px; line-height:1.5; color:var(--text-muted); margin-bottom:10px;">
+            Want European high-speed stability and crash safety without high repair risk? Our dashboard tracks 33 inspected Volkswagen and Skoda cars (Polo, Ameo, Rapid) under ₹5L with warranty and accessible parts.
+          </p>
+          <button type="button" class="facet-pill active" onclick="closeBmwModal(); filterGermanUnder5L();" style="width:100%; padding:10px; font-size:12.5px; font-weight:600; text-align:center;">
+            Show 33 Inspected German Cars Under ₹5L
+          </button>
+        </div>
+      </div>
+      <div class="score-modal-footer">
+        <span class="caption-5" style="color:var(--text-subtle);">Compiled from Bangalore independent German garages (FNGs) &amp; Team-BHP real-world ownership data.</span>
+        <button type="button" class="nav-btn" onclick="closeBmwModal()">Done</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const CARS = """ + cars_json + """;
     const ALERTS = """ + alerts_json + """;
@@ -3228,8 +3379,12 @@ html_content = """<!DOCTYPE html>
     const countTruwo = document.getElementById('count-truwo');
     if (countTruwo) countTruwo.textContent = truwoCount.toLocaleString('en-IN');
 
+    const german5lCount = CARS.filter(c => (c.price || 0) <= 500000 && ['volkswagen', 'skoda', 'bmw', 'audi', 'mercedes'].some(b => (c.make || '').toLowerCase().includes(b))).length;
+    const countGerman5l = document.getElementById('count-german-5l');
+    if (countGerman5l) countGerman5l.textContent = german5lCount.toLocaleString('en-IN');
+
     // Dynamic brand counts
-    ['maruti', 'hyundai', 'tata', 'renault', 'honda', 'volkswagen', 'toyota', 'mahindra', 'ford', 'kia', 'skoda'].forEach(b => {
+    ['maruti', 'hyundai', 'tata', 'renault', 'honda', 'volkswagen', 'toyota', 'mahindra', 'ford', 'kia', 'skoda', 'bmw', 'mg', 'jeep'].forEach(b => {
       const el = document.getElementById(`count-${b}`);
       if (el) {
         const cnt = CARS.filter(c => (c.make || '').toLowerCase().includes(b)).length;
@@ -4199,17 +4354,88 @@ html_content = """<!DOCTYPE html>
       }
     }
 
+    function openBmwModal() {
+      const modal = document.getElementById('bmw-modal-backdrop');
+      if (modal) {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeBmwModal() {
+      const modal = document.getElementById('bmw-modal-backdrop');
+      if (modal) modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closeBmwModalOnBackdrop(e) {
+      if (e && e.target && e.target.id === 'bmw-modal-backdrop') {
+        closeBmwModal();
+      }
+    }
+
+    function filterGermanUnder5L() {
+      state.mode = 'all';
+      const btnCurated = document.getElementById('btn-mode-curated');
+      const btnAll = document.getElementById('btn-mode-all');
+      if (btnCurated) btnCurated.classList.remove('active');
+      if (btnAll) btnAll.classList.add('active');
+
+      state.search = '';
+      const sInput = document.getElementById('ctrl-search');
+      if (sInput) sInput.value = '';
+      state.min_price = 0;
+      state.max_price = 500000;
+      state.min_discount = 0;
+      state.qualities.clear();
+      state.platforms.clear();
+      state.transmissions.clear();
+      state.fuels.clear();
+      state.brands.clear();
+      state.brands.add('volkswagen');
+      state.brands.add('skoda');
+      state.brands.add('bmw');
+      state.brands.add('audi');
+
+      updateBudgetPillUI();
+      updateAllMultiFilterUIs();
+      applyFilters();
+
+      const resultsSection = document.getElementById('cars-grid');
+      if (resultsSection) resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeScoreModal();
         closeAlertsModal();
         closeLiveSyncModal();
+        closeBmwModal();
       }
     });
 
     function renderCards(list) {
       const grid = document.getElementById('cars-grid');
       if (!list.length) {
+        const isBmwQuery = (state.search && state.search.toLowerCase().includes('bmw')) || state.brands.has('bmw');
+        if (isBmwQuery) {
+          grid.innerHTML = `
+            <div class="empty-state bmw-empty-card">
+              <div class="bmw-empty-badge">🏎️ BMW Under ₹5 Lakhs Advisory</div>
+              <h3>No sub-₹5L BMWs on Spinny, Cars24, or Truwo</h3>
+              <p>Certified dealer platforms only stock 2015+ luxury vehicles due to warranty &amp; inspection criteria. Sub-₹5L BMWs (2007–2011 E90 3 Series &amp; E60 5 Series) are sold directly by private owners.</p>
+              <div class="bmw-empty-actions">
+                <a href="https://www.olx.in/en-in/bangalore_g4058803/cars_c84/q-bmw?filter=price_between_200000_to_500000" target="_blank" rel="noopener noreferrer" class="cta-primary-btn" style="display:inline-flex; width:auto; text-decoration:none; padding:10px 18px;">
+                  <span>Search Private Owner BMWs on OLX Bangalore (₹2L - ₹5L)</span>
+                  <span>&rarr;</span>
+                </a>
+                <button type="button" class="facet-pill active" onclick="openBmwModal()" style="padding:8px 14px;">Open Ownership &amp; Repair Cost Guide</button>
+                <button type="button" class="facet-pill" onclick="filterGermanUnder5L()" style="padding:8px 14px;">View 33 Inspected German Cars Under ₹5L (VW / Skoda)</button>
+              </div>
+            </div>
+          `;
+          return;
+        }
         grid.innerHTML = `
           <div class="empty-state">
             <h3>No matching vehicles found</h3>
