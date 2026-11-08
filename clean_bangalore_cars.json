@@ -16132,8 +16132,8 @@
     "variant": "XZ PLUS (L)",
     "make_year": 2023,
     "mileage": 17054,
-    "price": 926939,
-    "orig_retail_price": 986761,
+    "price": 923143,
+    "orig_retail_price": 982965,
     "retail_discount_pct": 6,
     "fuel_type": "Petrol",
     "transmission": "Manual",
@@ -16158,9 +16158,9 @@
       ],
       "maintenance_yr": "\u20b96,000 - \u20b98,000",
       "retention_pct": 0.76,
-      "est_buyback_2yr": 704474,
-      "total_loss_2yr": 222465,
-      "monthly_loss": 9269
+      "est_buyback_2yr": 701589,
+      "total_loss_2yr": 221554,
+      "monthly_loss": 9231
     },
     "score_breakdown": [
       {
@@ -19399,8 +19399,8 @@
     "variant": "XV PREMIUM TURBO (O) CVT",
     "make_year": 2023,
     "mileage": 21486,
-    "price": 778838,
-    "orig_retail_price": 815633,
+    "price": 776319,
+    "orig_retail_price": 813114,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Automatic",
@@ -19423,9 +19423,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 560763,
-      "total_loss_2yr": 218075,
-      "monthly_loss": 9086
+      "est_buyback_2yr": 558950,
+      "total_loss_2yr": 217369,
+      "monthly_loss": 9057
     },
     "score_breakdown": [
       {
@@ -20654,8 +20654,8 @@
     "variant": "1.5L I-VTEC ZX CVT",
     "make_year": 2022,
     "mileage": 19381,
-    "price": 1207636,
-    "orig_retail_price": 1261896,
+    "price": 1203840,
+    "orig_retail_price": 1258100,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Automatic",
@@ -20680,9 +20680,9 @@
       ],
       "maintenance_yr": "\u20b96,000 - \u20b98,000",
       "retention_pct": 0.75,
-      "est_buyback_2yr": 905727,
-      "total_loss_2yr": 301909,
-      "monthly_loss": 12580
+      "est_buyback_2yr": 902880,
+      "total_loss_2yr": 300960,
+      "monthly_loss": 12540
     },
     "score_breakdown": [
       {
@@ -23498,8 +23498,8 @@
     "variant": "HIGHLINE TSI 1.0 MT",
     "make_year": 2022,
     "mileage": 38454,
-    "price": 1000808,
-    "orig_retail_price": 1045086,
+    "price": 998289,
+    "orig_retail_price": 1042567,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Manual",
@@ -23522,9 +23522,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 720582,
-      "total_loss_2yr": 280226,
-      "monthly_loss": 11676
+      "est_buyback_2yr": 718768,
+      "total_loss_2yr": 279521,
+      "monthly_loss": 11647
     },
     "score_breakdown": [
       {
@@ -25753,8 +25753,8 @@
     "variant": "TITANIUM 1.5L PETROL",
     "make_year": 2020,
     "mileage": 32565,
-    "price": 724944,
-    "orig_retail_price": 756636,
+    "price": 721148,
+    "orig_retail_price": 752840,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Manual",
@@ -25779,9 +25779,9 @@
       ],
       "maintenance_yr": "\u20b96,500 - \u20b98,500",
       "retention_pct": 0.7,
-      "est_buyback_2yr": 507461,
-      "total_loss_2yr": 217483,
-      "monthly_loss": 9062
+      "est_buyback_2yr": 504804,
+      "total_loss_2yr": 216344,
+      "monthly_loss": 9014
     },
     "score_breakdown": [
       {
@@ -28840,8 +28840,8 @@
     "variant": "SX 1.0 (O) TURBO",
     "make_year": 2021,
     "mileage": 36353,
-    "price": 826796,
-    "orig_retail_price": 863182,
+    "price": 824322,
+    "orig_retail_price": 860708,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Manual",
@@ -28864,9 +28864,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 595293,
-      "total_loss_2yr": 231503,
-      "monthly_loss": 9646
+      "est_buyback_2yr": 593512,
+      "total_loss_2yr": 230810,
+      "monthly_loss": 9617
     },
     "score_breakdown": [
       {
@@ -38443,89 +38443,6 @@
     }
   },
   {
-    "id": "olx_1858573356",
-    "platform": "OLX",
-    "make": "Mercedes-Benz",
-    "model": "GLE",
-    "variant": "300d 4MATIC LWB",
-    "make_year": 2025,
-    "mileage": 7900,
-    "price": 9700000.0,
-    "orig_retail_price": 14060000,
-    "retail_discount_pct": 31,
-    "fuel_type": "Diesel",
-    "transmission": "Automatic",
-    "category": "dealer",
-    "hub": "Rajajinagar Industrial Town, Bangalore",
-    "img": "https://apollo.olx.in:443/v1/files/zazsbmpoi1dv1-IN/image;s=780x0;q=80",
-    "url": "https://www.olx.in/item/iid-1858573356",
-    "deal_score": 99,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Direct seller listing with zero platform surcharge",
-    "analysis": {
-      "pros": [
-        "Direct seller listing with zero platform surcharge",
-        "Real-world negotiation margin in Bangalore local market",
-        "Complete maintenance and service history reviewable with owner"
-      ],
-      "cons": [
-        "Direct buyer-seller diligence and RTO name transfer verification recommended"
-      ],
-      "maintenance_yr": "\u20b96,000 - \u20b99,000",
-      "retention_pct": 0.68,
-      "est_buyback_2yr": 6596000,
-      "total_loss_2yr": 3104000.0,
-      "monthly_loss": 129333
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Ultra-low odometer (7k km) \u00b7 pristine engine health",
-        "pts": "+24 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Modern 2025 model \u00b7 BS6 Phase 2 era & updated safety",
-        "pts": "+20 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "31% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
-        "pts": "+10 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Bangalore Resale Archetype",
-        "detail": "Sweet spot combo: post-2018 under 40k km",
-        "pts": "+5 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 99/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
-      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
-      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
-      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
-      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
-    }
-  },
-  {
     "id": "olx_1854658943",
     "platform": "OLX",
     "make": "Maruti Suzuki",
@@ -38694,6 +38611,89 @@
     }
   },
   {
+    "id": "olx_1858573356",
+    "platform": "OLX",
+    "make": "Mercedes-Benz",
+    "model": "GLE",
+    "variant": "300d 4MATIC LWB",
+    "make_year": 2025,
+    "mileage": 7900,
+    "price": 9700000.0,
+    "orig_retail_price": 14060000,
+    "retail_discount_pct": 31,
+    "fuel_type": "Diesel",
+    "transmission": "Automatic",
+    "category": "dealer",
+    "hub": "Rajajinagar Industrial Town, Bangalore",
+    "img": "https://apollo.olx.in:443/v1/files/zazsbmpoi1dv1-IN/image;s=780x0;q=80",
+    "url": "https://www.olx.in/item/iid-1858573356",
+    "deal_score": 99,
+    "deal_grade": "TOP DEAL",
+    "is_top_deal": true,
+    "verdict": "Direct seller listing with zero platform surcharge",
+    "analysis": {
+      "pros": [
+        "Direct seller listing with zero platform surcharge",
+        "Real-world negotiation margin in Bangalore local market",
+        "Complete maintenance and service history reviewable with owner"
+      ],
+      "cons": [
+        "Direct buyer-seller diligence and RTO name transfer verification recommended"
+      ],
+      "maintenance_yr": "\u20b96,000 - \u20b99,000",
+      "retention_pct": 0.68,
+      "est_buyback_2yr": 6596000,
+      "total_loss_2yr": 3104000.0,
+      "monthly_loss": 129333
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "Ultra-low odometer (7k km) \u00b7 pristine engine health",
+        "pts": "+24 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "Modern 2025 model \u00b7 BS6 Phase 2 era & updated safety",
+        "pts": "+20 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "31% under original retail value",
+        "pts": "+4 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
+        "pts": "+10 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Bangalore Resale Archetype",
+        "detail": "Sweet spot combo: post-2018 under 40k km",
+        "pts": "+5 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 99/100 primarily driven by odometer & engine wear, vehicle age & generation.",
+    "ownership_review": {
+      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
+      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
+      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
+      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
+      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
+    }
+  },
+  {
     "id": "olx_1859147551",
     "platform": "OLX",
     "make": "Skoda",
@@ -38751,89 +38751,6 @@
       {
         "pillar": "Depreciation Arbitrage",
         "detail": "15% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
-        "pts": "+10 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Bangalore Resale Archetype",
-        "detail": "Sweet spot combo: post-2018 under 40k km",
-        "pts": "+5 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 99/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
-      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
-      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
-      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
-      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
-    }
-  },
-  {
-    "id": "olx_1860701674",
-    "platform": "OLX",
-    "make": "Mercedes-Benz",
-    "model": "EQB",
-    "variant": "300 4 MATIC",
-    "make_year": 2023,
-    "mileage": 25000,
-    "price": 4900000.0,
-    "orig_retail_price": 7100000,
-    "retail_discount_pct": 31,
-    "fuel_type": "Electric",
-    "transmission": "Automatic",
-    "category": "dealer",
-    "hub": "Rajaji Nagar, Bangalore",
-    "img": "https://apollo.olx.in:443/v1/files/bjumzse2jrs91-IN/image;s=780x0;q=80",
-    "url": "https://www.olx.in/item/iid-1860701674",
-    "deal_score": 99,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Direct seller listing with zero platform surcharge",
-    "analysis": {
-      "pros": [
-        "Direct seller listing with zero platform surcharge",
-        "Real-world negotiation margin in Bangalore local market",
-        "Complete maintenance and service history reviewable with owner"
-      ],
-      "cons": [
-        "Direct buyer-seller diligence and RTO name transfer verification recommended"
-      ],
-      "maintenance_yr": "\u20b96,000 - \u20b99,000",
-      "retention_pct": 0.68,
-      "est_buyback_2yr": 3332000,
-      "total_loss_2yr": 1568000.0,
-      "monthly_loss": 65333
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Ultra-low odometer (25k km) \u00b7 pristine engine health",
-        "pts": "+24 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Modern 2023 model \u00b7 BS6 Phase 2 era & updated safety",
-        "pts": "+20 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "31% under original retail value",
         "pts": "+4 pts",
         "type": "pos"
       },
@@ -39109,42 +39026,40 @@
     }
   },
   {
-    "id": "olx_1860699438",
+    "id": "olx_1860701674",
     "platform": "OLX",
-    "make": "Hyundai",
-    "model": "Grand i10 Nios",
-    "variant": "1.2 Kappa VTVT Sportz",
+    "make": "Mercedes-Benz",
+    "model": "EQB",
+    "variant": "300 4 MATIC",
     "make_year": 2023,
-    "mileage": 24000,
-    "price": 615596.0,
-    "orig_retail_price": 730000,
-    "retail_discount_pct": 16,
-    "fuel_type": "Petrol",
-    "transmission": "Manual",
-    "category": "direct_owner",
-    "hub": "Basaveswara Nagar, Bangalore",
-    "img": "https://apollo.olx.in:443/v1/files/po2rjb4vws032-IN/image;s=780x0;q=80",
-    "url": "https://www.olx.in/item/iid-1860699438",
+    "mileage": 25000,
+    "price": 4900000.0,
+    "orig_retail_price": 7100000,
+    "retail_discount_pct": 31,
+    "fuel_type": "Electric",
+    "transmission": "Automatic",
+    "category": "dealer",
+    "hub": "Rajaji Nagar, Bangalore",
+    "img": "https://apollo.olx.in:443/v1/files/bjumzse2jrs91-IN/image;s=780x0;q=80",
+    "url": "https://www.olx.in/item/iid-1860701674",
     "deal_score": 99,
     "deal_grade": "TOP DEAL",
     "is_top_deal": true,
-    "verdict": "Feather-light clutch & steering for traffic",
+    "verdict": "Direct seller listing with zero platform surcharge",
     "analysis": {
       "pros": [
-        "Feather-light clutch & steering for traffic",
-        "Spares available at every neighborhood garage",
-        "Upright seating with clear visibility"
+        "Direct seller listing with zero platform surcharge",
+        "Real-world negotiation margin in Bangalore local market",
+        "Complete maintenance and service history reviewable with owner"
       ],
       "cons": [
-        "1.1L engine strains on highway inclines",
-        "City fuel economy ~11-12 kmpl with AC",
-        "Dated dashboard styling"
+        "Direct buyer-seller diligence and RTO name transfer verification recommended"
       ],
-      "maintenance_yr": "\u20b94,000 - \u20b95,000",
-      "retention_pct": 0.71,
-      "est_buyback_2yr": 437073,
-      "total_loss_2yr": 178523.0,
-      "monthly_loss": 7438
+      "maintenance_yr": "\u20b96,000 - \u20b99,000",
+      "retention_pct": 0.68,
+      "est_buyback_2yr": 3332000,
+      "total_loss_2yr": 1568000.0,
+      "monthly_loss": 65333
     },
     "score_breakdown": [
       {
@@ -39155,7 +39070,7 @@
       },
       {
         "pillar": "Odometer & Engine Wear",
-        "detail": "Ultra-low odometer (24k km) \u00b7 pristine engine health",
+        "detail": "Ultra-low odometer (25k km) \u00b7 pristine engine health",
         "pts": "+24 pts",
         "type": "pos"
       },
@@ -39167,7 +39082,7 @@
       },
       {
         "pillar": "Depreciation Arbitrage",
-        "detail": "16% under original retail value",
+        "detail": "31% under original retail value",
         "pts": "+4 pts",
         "type": "pos"
       },
@@ -39179,18 +39094,18 @@
       },
       {
         "pillar": "Bangalore Resale Archetype",
-        "detail": "Sweet spot combo: post-2018 under 40k km, high-liquidity resale engine",
-        "pts": "+9 pts",
+        "detail": "Sweet spot combo: post-2018 under 40k km",
+        "pts": "+5 pts",
         "type": "pos"
       }
     ],
     "score_rationale": "Rated 99/100 primarily driven by odometer & engine wear, vehicle age & generation.",
     "ownership_review": {
-      "fuel_economy": "11-13 km/l (BLR City) \u00b7 16-18 km/l (Highway)",
+      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
       "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
-      "ride_comfort": "Refined 4-cylinder engine with whisper-quiet cabin insulation; very light clutch for Bangalore traffic.",
-      "known_issues": "Steering column coupling bush wear causes dull thuds; clutch life typically 40k-50k km in heavy traffic.",
-      "bangalore_verdict": "Premium interior feel and smooth refinement make it one of the most comfortable daily hatchbacks."
+      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
+      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
+      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
     }
   },
   {
@@ -39274,6 +39189,91 @@
       "ride_comfort": "Magic carpet ride: absorbs cratered roads and broken tarmac better than cars twice its price.",
       "known_issues": "Plastic interior trim rattles over time; check AC cooling efficiency and clutch hydraulics.",
       "bangalore_verdict": "Best suspension setup for Bangalore's worst roads. Glides over potholes without shaking the cabin."
+    }
+  },
+  {
+    "id": "olx_1860699438",
+    "platform": "OLX",
+    "make": "Hyundai",
+    "model": "Grand i10 Nios",
+    "variant": "1.2 Kappa VTVT Sportz",
+    "make_year": 2023,
+    "mileage": 24000,
+    "price": 615596.0,
+    "orig_retail_price": 730000,
+    "retail_discount_pct": 16,
+    "fuel_type": "Petrol",
+    "transmission": "Manual",
+    "category": "direct_owner",
+    "hub": "Basaveswara Nagar, Bangalore",
+    "img": "https://apollo.olx.in:443/v1/files/po2rjb4vws032-IN/image;s=780x0;q=80",
+    "url": "https://www.olx.in/item/iid-1860699438",
+    "deal_score": 99,
+    "deal_grade": "TOP DEAL",
+    "is_top_deal": true,
+    "verdict": "Feather-light clutch & steering for traffic",
+    "analysis": {
+      "pros": [
+        "Feather-light clutch & steering for traffic",
+        "Spares available at every neighborhood garage",
+        "Upright seating with clear visibility"
+      ],
+      "cons": [
+        "1.1L engine strains on highway inclines",
+        "City fuel economy ~11-12 kmpl with AC",
+        "Dated dashboard styling"
+      ],
+      "maintenance_yr": "\u20b94,000 - \u20b95,000",
+      "retention_pct": 0.71,
+      "est_buyback_2yr": 437073,
+      "total_loss_2yr": 178523.0,
+      "monthly_loss": 7438
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "Ultra-low odometer (24k km) \u00b7 pristine engine health",
+        "pts": "+24 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "Modern 2023 model \u00b7 BS6 Phase 2 era & updated safety",
+        "pts": "+20 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "16% under original retail value",
+        "pts": "+4 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
+        "pts": "+10 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Bangalore Resale Archetype",
+        "detail": "Sweet spot combo: post-2018 under 40k km, high-liquidity resale engine",
+        "pts": "+9 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 99/100 primarily driven by odometer & engine wear, vehicle age & generation.",
+    "ownership_review": {
+      "fuel_economy": "11-13 km/l (BLR City) \u00b7 16-18 km/l (Highway)",
+      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
+      "ride_comfort": "Refined 4-cylinder engine with whisper-quiet cabin insulation; very light clutch for Bangalore traffic.",
+      "known_issues": "Steering column coupling bush wear causes dull thuds; clutch life typically 40k-50k km in heavy traffic.",
+      "bangalore_verdict": "Premium interior feel and smooth refinement make it one of the most comfortable daily hatchbacks."
     }
   },
   {
@@ -46054,89 +46054,6 @@
     }
   },
   {
-    "id": "olx_1860400238",
-    "platform": "OLX",
-    "make": "Skoda",
-    "model": "Superb",
-    "variant": "2.0 sportline TSI AT",
-    "make_year": 2023,
-    "mileage": 33552,
-    "price": 2974000.0,
-    "orig_retail_price": 4560000,
-    "retail_discount_pct": 35,
-    "fuel_type": "Petrol",
-    "transmission": "Automatic",
-    "category": "dealer",
-    "hub": "Richmond Town, Bangalore",
-    "img": "https://apollo.olx.in:443/v1/files/ovubtiocu32z2-IN/image;s=780x0;q=80",
-    "url": "https://www.olx.in/item/iid-1860400238",
-    "deal_score": 99,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Direct seller listing with zero platform surcharge",
-    "analysis": {
-      "pros": [
-        "Direct seller listing with zero platform surcharge",
-        "Real-world negotiation margin in Bangalore local market",
-        "Complete maintenance and service history reviewable with owner"
-      ],
-      "cons": [
-        "Direct buyer-seller diligence and RTO name transfer verification recommended"
-      ],
-      "maintenance_yr": "\u20b96,000 - \u20b99,000",
-      "retention_pct": 0.68,
-      "est_buyback_2yr": 2022320,
-      "total_loss_2yr": 951680.0,
-      "monthly_loss": 39653
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Low mileage (33k km) \u00b7 well below market wear",
-        "pts": "+18 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Modern 2023 model \u00b7 BS6 Phase 2 era & updated safety",
-        "pts": "+20 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "Healthy 35% savings from original MSRP",
-        "pts": "+9 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
-        "pts": "+10 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Bangalore Resale Archetype",
-        "detail": "Sweet spot combo: post-2018 under 40k km",
-        "pts": "+5 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 99/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
-      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
-      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
-      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
-      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
-    }
-  },
-  {
     "id": "olx_1861145530",
     "platform": "OLX",
     "make": "Mahindra",
@@ -51266,8 +51183,8 @@
     "variant": "XZA PLUS (L) DARK EDITION",
     "make_year": 2022,
     "mileage": 59403,
-    "price": 866534,
-    "orig_retail_price": 922248,
+    "price": 862738,
+    "orig_retail_price": 918452,
     "retail_discount_pct": 6,
     "fuel_type": "Petrol",
     "transmission": "Automatic",
@@ -51292,9 +51209,9 @@
       ],
       "maintenance_yr": "\u20b96,000 - \u20b98,000",
       "retention_pct": 0.76,
-      "est_buyback_2yr": 658566,
-      "total_loss_2yr": 207968,
-      "monthly_loss": 8665
+      "est_buyback_2yr": 655681,
+      "total_loss_2yr": 207057,
+      "monthly_loss": 8627
     },
     "score_breakdown": [
       {
@@ -52311,8 +52228,8 @@
     "variant": "XV EXECUTIVE TURBO",
     "make_year": 2021,
     "mileage": 44964,
-    "price": 576800,
-    "orig_retail_price": 602179,
+    "price": 574281,
+    "orig_retail_price": 599660,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Manual",
@@ -52335,9 +52252,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 415296,
-      "total_loss_2yr": 161504,
-      "monthly_loss": 6729
+      "est_buyback_2yr": 413482,
+      "total_loss_2yr": 160799,
+      "monthly_loss": 6700
     },
     "score_breakdown": [
       {
@@ -53739,8 +53656,8 @@
     "variant": "XL",
     "make_year": 2021,
     "mileage": 42776,
-    "price": 497373,
-    "orig_retail_price": 563371,
+    "price": 494854,
+    "orig_retail_price": 560852,
     "retail_discount_pct": 12,
     "fuel_type": "Petrol",
     "transmission": "Manual",
@@ -53763,9 +53680,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 358109,
-      "total_loss_2yr": 139264,
-      "monthly_loss": 5803
+      "est_buyback_2yr": 356295,
+      "total_loss_2yr": 138559,
+      "monthly_loss": 5773
     },
     "score_breakdown": [
       {
@@ -55155,8 +55072,8 @@
     "variant": "N10 R",
     "make_year": 2023,
     "mileage": 51208,
-    "price": 878957,
-    "orig_retail_price": 917636,
+    "price": 875116,
+    "orig_retail_price": 913795,
     "retail_discount_pct": 5,
     "fuel_type": "Diesel",
     "transmission": "Manual",
@@ -55179,9 +55096,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 632849,
-      "total_loss_2yr": 246108,
-      "monthly_loss": 10254
+      "est_buyback_2yr": 630084,
+      "total_loss_2yr": 245032,
+      "monthly_loss": 10210
     },
     "score_breakdown": [
       {
@@ -55548,8 +55465,8 @@
     "variant": "HTK PLUS 1.5 IMT",
     "make_year": 2022,
     "mileage": 47160,
-    "price": 941306,
-    "orig_retail_price": 990997,
+    "price": 937510,
+    "orig_retail_price": 987201,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Manual",
@@ -55572,9 +55489,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 677740,
-      "total_loss_2yr": 263566,
-      "monthly_loss": 10982
+      "est_buyback_2yr": 675007,
+      "total_loss_2yr": 262503,
+      "monthly_loss": 10938
     },
     "score_breakdown": [
       {
@@ -59535,8 +59452,8 @@
     "variant": "SUPER 1.5 PETROL",
     "make_year": 2020,
     "mileage": 48975,
-    "price": 901932,
-    "orig_retail_price": 923716,
+    "price": 898136,
+    "orig_retail_price": 919920,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Manual",
@@ -59559,9 +59476,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 649391,
-      "total_loss_2yr": 252541,
-      "monthly_loss": 10523
+      "est_buyback_2yr": 646658,
+      "total_loss_2yr": 251478,
+      "monthly_loss": 10478
     },
     "score_breakdown": [
       {
@@ -59689,8 +59606,8 @@
     "variant": "SHARP 1.5 DCT PETROL",
     "make_year": 2019,
     "mileage": 54449,
-    "price": 929625,
-    "orig_retail_price": 970716,
+    "price": 925829,
+    "orig_retail_price": 966920,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Automatic",
@@ -59713,9 +59630,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 669330,
-      "total_loss_2yr": 260295,
-      "monthly_loss": 10846
+      "est_buyback_2yr": 666597,
+      "total_loss_2yr": 259232,
+      "monthly_loss": 10801
     },
     "score_breakdown": [
       {
@@ -60800,83 +60717,6 @@
     }
   },
   {
-    "id": "olx_1860699916",
-    "platform": "OLX",
-    "make": "Mahindra",
-    "model": "Thar",
-    "variant": "LX Hard Top Diesel MT 4WD",
-    "make_year": 2021,
-    "mileage": 54000,
-    "price": 1295000.0,
-    "orig_retail_price": 1850000,
-    "retail_discount_pct": 30,
-    "fuel_type": "Diesel",
-    "transmission": "Manual",
-    "category": "direct_owner",
-    "hub": "Banashankari, Bangalore",
-    "img": "https://apollo.olx.in:443/v1/files/ktey0isrtspr2-IN/image;s=780x0;q=80",
-    "url": "https://www.olx.in/item/iid-1860699916",
-    "deal_score": 86,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Direct seller listing with zero platform surcharge",
-    "analysis": {
-      "pros": [
-        "Direct seller listing with zero platform surcharge",
-        "Real-world negotiation margin in Bangalore local market",
-        "Complete maintenance and service history reviewable with owner"
-      ],
-      "cons": [
-        "Direct buyer-seller diligence and RTO name transfer verification recommended"
-      ],
-      "maintenance_yr": "\u20b96,000 - \u20b99,000",
-      "retention_pct": 0.68,
-      "est_buyback_2yr": 880600,
-      "total_loss_2yr": 414400.0,
-      "monthly_loss": 17267
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Moderate mileage (54k km) \u00b7 healthy mechanical life",
-        "pts": "+12 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Modern 2021 model \u00b7 BS6 Phase 2 era & updated safety",
-        "pts": "+20 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "30% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
-        "pts": "+10 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 86/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "9-11 km/l (BLR City) \u00b7 13-15 km/l (Highway)",
-      "annual_maintenance": "\u20b98,000 - \u20b912,000 / yr",
-      "ride_comfort": "High-perch road commanding presence; ladder frame or monocoque clears any floodwater or crater effortlessly.",
-      "known_issues": "Heavy clutch pedal in bumper-to-bumper traffic; check suspension lower ball joints and brake pad life.",
-      "bangalore_verdict": "Mighty road presence and supreme durability for rough weekend excursions and long touring."
-    }
-  },
-  {
     "id": "olx_1860839721",
     "platform": "OLX",
     "make": "Renault",
@@ -60957,6 +60797,83 @@
       "ride_comfort": "Magic carpet ride: absorbs cratered roads and broken tarmac better than cars twice its price.",
       "known_issues": "Plastic interior trim rattles over time; check AC cooling efficiency and clutch hydraulics.",
       "bangalore_verdict": "Best suspension setup for Bangalore's worst roads. Glides over potholes without shaking the cabin."
+    }
+  },
+  {
+    "id": "olx_1860699916",
+    "platform": "OLX",
+    "make": "Mahindra",
+    "model": "Thar",
+    "variant": "LX Hard Top Diesel MT 4WD",
+    "make_year": 2021,
+    "mileage": 54000,
+    "price": 1295000.0,
+    "orig_retail_price": 1850000,
+    "retail_discount_pct": 30,
+    "fuel_type": "Diesel",
+    "transmission": "Manual",
+    "category": "direct_owner",
+    "hub": "Banashankari, Bangalore",
+    "img": "https://apollo.olx.in:443/v1/files/ktey0isrtspr2-IN/image;s=780x0;q=80",
+    "url": "https://www.olx.in/item/iid-1860699916",
+    "deal_score": 86,
+    "deal_grade": "TOP DEAL",
+    "is_top_deal": true,
+    "verdict": "Direct seller listing with zero platform surcharge",
+    "analysis": {
+      "pros": [
+        "Direct seller listing with zero platform surcharge",
+        "Real-world negotiation margin in Bangalore local market",
+        "Complete maintenance and service history reviewable with owner"
+      ],
+      "cons": [
+        "Direct buyer-seller diligence and RTO name transfer verification recommended"
+      ],
+      "maintenance_yr": "\u20b96,000 - \u20b99,000",
+      "retention_pct": 0.68,
+      "est_buyback_2yr": 880600,
+      "total_loss_2yr": 414400.0,
+      "monthly_loss": 17267
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "Moderate mileage (54k km) \u00b7 healthy mechanical life",
+        "pts": "+12 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "Modern 2021 model \u00b7 BS6 Phase 2 era & updated safety",
+        "pts": "+20 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "30% under original retail value",
+        "pts": "+4 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
+        "pts": "+10 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 86/100 primarily driven by odometer & engine wear, vehicle age & generation.",
+    "ownership_review": {
+      "fuel_economy": "9-11 km/l (BLR City) \u00b7 13-15 km/l (Highway)",
+      "annual_maintenance": "\u20b98,000 - \u20b912,000 / yr",
+      "ride_comfort": "High-perch road commanding presence; ladder frame or monocoque clears any floodwater or crater effortlessly.",
+      "known_issues": "Heavy clutch pedal in bumper-to-bumper traffic; check suspension lower ball joints and brake pad life.",
+      "bangalore_verdict": "Mighty road presence and supreme durability for rough weekend excursions and long touring."
     }
   },
   {
@@ -65598,8 +65515,8 @@
     "variant": "N 4",
     "make_year": 2022,
     "mileage": 67760,
-    "price": 714432,
-    "orig_retail_price": 729844,
+    "price": 710591,
+    "orig_retail_price": 726003,
     "retail_discount_pct": 5,
     "fuel_type": "Diesel",
     "transmission": "Manual",
@@ -65622,9 +65539,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 514391,
-      "total_loss_2yr": 200041,
-      "monthly_loss": 8335
+      "est_buyback_2yr": 511626,
+      "total_loss_2yr": 198965,
+      "monthly_loss": 8290
     },
     "score_breakdown": [
       {
@@ -68058,8 +67975,8 @@
     "variant": "SPORT 1.4 PETROL",
     "make_year": 2018,
     "mileage": 50577,
-    "price": 747774,
-    "orig_retail_price": 778858,
+    "price": 743873,
+    "orig_retail_price": 774957,
     "retail_discount_pct": 5,
     "fuel_type": "CNG",
     "transmission": "Manual",
@@ -68082,9 +67999,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 538397,
-      "total_loss_2yr": 209377,
-      "monthly_loss": 8724
+      "est_buyback_2yr": 535589,
+      "total_loss_2yr": 208284,
+      "monthly_loss": 8678
     },
     "score_breakdown": [
       {
@@ -69131,8 +69048,8 @@
     "variant": "TREND + 1.5L PETROL AT",
     "make_year": 2018,
     "mileage": 44673,
-    "price": 587229,
-    "orig_retail_price": 596813,
+    "price": 583433,
+    "orig_retail_price": 593017,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Automatic",
@@ -69157,9 +69074,9 @@
       ],
       "maintenance_yr": "\u20b96,500 - \u20b98,500",
       "retention_pct": 0.7,
-      "est_buyback_2yr": 411060,
-      "total_loss_2yr": 176169,
-      "monthly_loss": 7340
+      "est_buyback_2yr": 408403,
+      "total_loss_2yr": 175030,
+      "monthly_loss": 7293
     },
     "score_breakdown": [
       {
@@ -69546,8 +69463,8 @@
     "variant": "SPORTZ 1.2 KAPPA VTVT",
     "make_year": 2018,
     "mileage": 40363,
-    "price": 388251,
-    "orig_retail_price": 418460,
+    "price": 384455,
+    "orig_retail_price": 414664,
     "retail_discount_pct": 7,
     "fuel_type": "Petrol",
     "transmission": "Manual",
@@ -69572,9 +69489,9 @@
       ],
       "maintenance_yr": "\u20b94,000 - \u20b95,000",
       "retention_pct": 0.71,
-      "est_buyback_2yr": 275658,
-      "total_loss_2yr": 112593,
-      "monthly_loss": 4691
+      "est_buyback_2yr": 272963,
+      "total_loss_2yr": 111492,
+      "monthly_loss": 4646
     },
     "score_breakdown": [
       {
@@ -76942,8 +76859,8 @@
     "variant": "TOPLINE 1.0 TSI AT",
     "make_year": 2021,
     "mileage": 95193,
-    "price": 982521,
-    "orig_retail_price": 1019229,
+    "price": 980002,
+    "orig_retail_price": 1016710,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Automatic",
@@ -76966,9 +76883,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 707415,
-      "total_loss_2yr": 275106,
-      "monthly_loss": 11463
+      "est_buyback_2yr": 705601,
+      "total_loss_2yr": 274401,
+      "monthly_loss": 11433
     },
     "score_breakdown": [
       {
@@ -80409,6 +80326,84 @@
     }
   },
   {
+    "id": "olx_1858847282",
+    "platform": "OLX",
+    "make": "BMW",
+    "model": "7 Series",
+    "variant": "3.0 740Li",
+    "make_year": 2017,
+    "mileage": 39000,
+    "price": 4250000.0,
+    "orig_retail_price": 15050000,
+    "retail_discount_pct": 72,
+    "fuel_type": "Petrol",
+    "transmission": "Automatic",
+    "category": "direct_owner",
+    "hub": "Richmond Circle, Bangalore",
+    "img": "https://apollo.olx.in:443/v1/files/o1p5lhos9ofn1-IN/image;s=780x0;q=80",
+    "url": "https://www.olx.in/item/iid-1858847282",
+    "deal_score": 97,
+    "deal_grade": "TOP DEAL",
+    "is_top_deal": true,
+    "verdict": "Prestigious German badge and driver-focused mechanical precision",
+    "analysis": {
+      "pros": [
+        "Prestigious German badge and driver-focused mechanical precision",
+        "Substantial depreciation arbitrage \u2014 pre-owned at a fraction of on-road price",
+        "Strong network of Bangalore European specialist independent garages"
+      ],
+      "cons": [
+        "Mandatory pre-purchase OBD-II electronic diagnostic and hoist inspection",
+        "Higher routine consumables and insurance expense than Japanese/Korean cars"
+      ],
+      "maintenance_yr": "\u20b925,000 - \u20b942,000",
+      "retention_pct": 0.66,
+      "est_buyback_2yr": 2805000,
+      "total_loss_2yr": 1445000.0,
+      "monthly_loss": 60208
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "Low mileage (39k km) \u00b7 well below market wear",
+        "pts": "+18 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "Solid 2017 manufacture \u00b7 modern chassis",
+        "pts": "+11 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "Steep 72% discount vs \u20b9150.5L new price",
+        "pts": "+18 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
+        "pts": "+10 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 97/100 primarily driven by odometer & engine wear, vehicle age & generation.",
+    "ownership_review": {
+      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
+      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
+      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
+      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
+      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
+    }
+  },
+  {
     "id": "olx_1859658535",
     "platform": "OLX",
     "make": "BMW",
@@ -83534,8 +83529,8 @@
     "variant": "SX (O) 1.6 PETROL",
     "make_year": 2019,
     "mileage": 93029,
-    "price": 840848,
-    "orig_retail_price": 877017,
+    "price": 840803,
+    "orig_retail_price": 876972,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Manual",
@@ -83560,9 +83555,9 @@
       ],
       "maintenance_yr": "\u20b97,000 - \u20b99,500",
       "retention_pct": 0.78,
-      "est_buyback_2yr": 655861,
-      "total_loss_2yr": 184987,
-      "monthly_loss": 7708
+      "est_buyback_2yr": 655826,
+      "total_loss_2yr": 184977,
+      "monthly_loss": 7707
     },
     "score_breakdown": [
       {
@@ -87474,8 +87469,8 @@
     "variant": "SPORTZ (O) AT 1.2 KAPPA VTVT",
     "make_year": 2017,
     "mileage": 78399,
-    "price": 430405,
-    "orig_retail_price": 439476,
+    "price": 426609,
+    "orig_retail_price": 435680,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Automatic",
@@ -87500,9 +87495,9 @@
       ],
       "maintenance_yr": "\u20b94,000 - \u20b95,000",
       "retention_pct": 0.71,
-      "est_buyback_2yr": 305588,
-      "total_loss_2yr": 124817,
-      "monthly_loss": 5201
+      "est_buyback_2yr": 302892,
+      "total_loss_2yr": 123717,
+      "monthly_loss": 5155
     },
     "score_breakdown": [
       {
@@ -87642,8 +87637,8 @@
     "variant": "DELTA 1.5 SHVS MT PETROL",
     "make_year": 2018,
     "mileage": 64601,
-    "price": 570830,
-    "orig_retail_price": 598184,
+    "price": 567034,
+    "orig_retail_price": 594388,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Manual",
@@ -87666,9 +87661,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 410998,
-      "total_loss_2yr": 159832,
-      "monthly_loss": 6660
+      "est_buyback_2yr": 408264,
+      "total_loss_2yr": 158770,
+      "monthly_loss": 6615
     },
     "score_breakdown": [
       {
@@ -93598,8 +93593,8 @@
     "variant": "LIMITED 1.4 PETROL AT",
     "make_year": 2018,
     "mileage": 80092,
-    "price": 837243,
-    "orig_retail_price": 876461,
+    "price": 833447,
+    "orig_retail_price": 872665,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Automatic",
@@ -93622,9 +93617,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 602815,
-      "total_loss_2yr": 234428,
-      "monthly_loss": 9768
+      "est_buyback_2yr": 600082,
+      "total_loss_2yr": 233365,
+      "monthly_loss": 9724
     },
     "score_breakdown": [
       {
@@ -94730,8 +94725,8 @@
     "variant": "W6 1.5 Diesel",
     "make_year": 2021,
     "mileage": 110834,
-    "price": 642845,
-    "orig_retail_price": 653413,
+    "price": 639004,
+    "orig_retail_price": 649572,
     "retail_discount_pct": 5,
     "fuel_type": "Diesel",
     "transmission": "Manual",
@@ -94754,9 +94749,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 462848,
-      "total_loss_2yr": 179997,
-      "monthly_loss": 7500
+      "est_buyback_2yr": 460083,
+      "total_loss_2yr": 178921,
+      "monthly_loss": 7455
     },
     "score_breakdown": [
       {
@@ -94807,8 +94802,8 @@
     "variant": "VDI",
     "make_year": 2017,
     "mileage": 94186,
-    "price": 515465,
-    "orig_retail_price": 614366,
+    "price": 511669,
+    "orig_retail_price": 610570,
     "retail_discount_pct": 16,
     "fuel_type": "Diesel",
     "transmission": "Manual",
@@ -94831,9 +94826,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 371135,
-      "total_loss_2yr": 144330,
-      "monthly_loss": 6014
+      "est_buyback_2yr": 368402,
+      "total_loss_2yr": 143267,
+      "monthly_loss": 5969
     },
     "score_breakdown": [
       {
@@ -97488,8 +97483,8 @@
     "variant": "VL CVT PETROL",
     "make_year": 2015,
     "mileage": 67313,
-    "price": 716405,
-    "orig_retail_price": 731760,
+    "price": 708128,
+    "orig_retail_price": 723483,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Automatic",
@@ -97512,9 +97507,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 515812,
-      "total_loss_2yr": 200593,
-      "monthly_loss": 8358
+      "est_buyback_2yr": 509852,
+      "total_loss_2yr": 198276,
+      "monthly_loss": 8262
     },
     "score_breakdown": [
       {
@@ -97802,8 +97797,8 @@
     "variant": "ZXI+",
     "make_year": 2015,
     "mileage": 68060,
-    "price": 481799,
-    "orig_retail_price": 487508,
+    "price": 478003,
+    "orig_retail_price": 483712,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Manual",
@@ -97826,9 +97821,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 346895,
-      "total_loss_2yr": 134904,
-      "monthly_loss": 5621
+      "est_buyback_2yr": 344162,
+      "total_loss_2yr": 133841,
+      "monthly_loss": 5577
     },
     "score_breakdown": [
       {
@@ -101226,8 +101221,8 @@
     "variant": "SHARP 1.5 DCT PETROL",
     "make_year": 2019,
     "mileage": 120505,
-    "price": 905942,
-    "orig_retail_price": 941151,
+    "price": 902101,
+    "orig_retail_price": 937310,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Automatic",
@@ -101250,9 +101245,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 652278,
-      "total_loss_2yr": 253664,
-      "monthly_loss": 10569
+      "est_buyback_2yr": 649513,
+      "total_loss_2yr": 252588,
+      "monthly_loss": 10524
     },
     "score_breakdown": [
       {
@@ -101548,8 +101543,8 @@
     "variant": "1.5L I-DTEC V CVT",
     "make_year": 2020,
     "mileage": 123190,
-    "price": 587890,
-    "orig_retail_price": 604456,
+    "price": 584094,
+    "orig_retail_price": 600660,
     "retail_discount_pct": 5,
     "fuel_type": "Diesel",
     "transmission": "Automatic",
@@ -101574,9 +101569,9 @@
       ],
       "maintenance_yr": "\u20b95,000 - \u20b96,500",
       "retention_pct": 0.73,
-      "est_buyback_2yr": 429160,
-      "total_loss_2yr": 158730,
-      "monthly_loss": 6614
+      "est_buyback_2yr": 426389,
+      "total_loss_2yr": 157705,
+      "monthly_loss": 6571
     },
     "score_breakdown": [
       {
@@ -103202,91 +103197,6 @@
     }
   },
   {
-    "id": "olx_1858501916",
-    "platform": "OLX",
-    "make": "Hyundai",
-    "model": "Grand i10",
-    "variant": "Sportz Edition",
-    "make_year": 2014,
-    "mileage": 42000,
-    "price": 350000.0,
-    "orig_retail_price": 560000,
-    "retail_discount_pct": 38,
-    "fuel_type": "Petrol",
-    "transmission": "Manual",
-    "category": "direct_owner",
-    "hub": "Bangalore",
-    "img": "https://apollo.olx.in:443/v1/files/f6wiig5ov4vf2-IN/image;s=780x0;q=80",
-    "url": "https://www.olx.in/item/iid-1858501916",
-    "deal_score": 69,
-    "deal_grade": "VALUE PICK",
-    "is_top_deal": true,
-    "verdict": "Feather-light clutch & steering for traffic",
-    "analysis": {
-      "pros": [
-        "Feather-light clutch & steering for traffic",
-        "Spares available at every neighborhood garage",
-        "Upright seating with clear visibility"
-      ],
-      "cons": [
-        "1.1L engine strains on highway inclines",
-        "City fuel economy ~11-12 kmpl with AC",
-        "Dated dashboard styling"
-      ],
-      "maintenance_yr": "\u20b94,000 - \u20b95,000",
-      "retention_pct": 0.71,
-      "est_buyback_2yr": 248500,
-      "total_loss_2yr": 101500.0,
-      "monthly_loss": 4229
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Moderate mileage (42k km) \u00b7 healthy mechanical life",
-        "pts": "+12 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "2014 vintage \u00b7 older generation approaching 15-year fitness",
-        "pts": "-6 pts",
-        "type": "neg"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "Healthy 38% savings from original MSRP",
-        "pts": "+9 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
-        "pts": "+10 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Bangalore Resale Archetype",
-        "detail": "Sweet spot combo: high-liquidity resale engine",
-        "pts": "+4 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 69/100 primarily driven by odometer & engine wear, depreciation arbitrage.",
-    "ownership_review": {
-      "fuel_economy": "11-13 km/l (BLR City) \u00b7 16-18 km/l (Highway)",
-      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
-      "ride_comfort": "Refined 4-cylinder engine with whisper-quiet cabin insulation; very light clutch for Bangalore traffic.",
-      "known_issues": "Steering column coupling bush wear causes dull thuds; clutch life typically 40k-50k km in heavy traffic.",
-      "bangalore_verdict": "Premium interior feel and smooth refinement make it one of the most comfortable daily hatchbacks."
-    }
-  },
-  {
     "id": "olx_1853760413",
     "platform": "OLX",
     "make": "Hyundai",
@@ -103369,6 +103279,91 @@
       "ride_comfort": "190mm ground clearance floats effortlessly over potholed roads; high seating posture intimidates auto-rickshaws.",
       "known_issues": "Clutch hardness on manual variants; check brake pad wear and suspension stabilizer links.",
       "bangalore_verdict": "Bangalore's most popular compact SUV for a reason: high prestige, zero scraping, and top-tier resale value."
+    }
+  },
+  {
+    "id": "olx_1858501916",
+    "platform": "OLX",
+    "make": "Hyundai",
+    "model": "Grand i10",
+    "variant": "Sportz Edition",
+    "make_year": 2014,
+    "mileage": 42000,
+    "price": 350000.0,
+    "orig_retail_price": 560000,
+    "retail_discount_pct": 38,
+    "fuel_type": "Petrol",
+    "transmission": "Manual",
+    "category": "direct_owner",
+    "hub": "Bangalore",
+    "img": "https://apollo.olx.in:443/v1/files/f6wiig5ov4vf2-IN/image;s=780x0;q=80",
+    "url": "https://www.olx.in/item/iid-1858501916",
+    "deal_score": 69,
+    "deal_grade": "VALUE PICK",
+    "is_top_deal": true,
+    "verdict": "Feather-light clutch & steering for traffic",
+    "analysis": {
+      "pros": [
+        "Feather-light clutch & steering for traffic",
+        "Spares available at every neighborhood garage",
+        "Upright seating with clear visibility"
+      ],
+      "cons": [
+        "1.1L engine strains on highway inclines",
+        "City fuel economy ~11-12 kmpl with AC",
+        "Dated dashboard styling"
+      ],
+      "maintenance_yr": "\u20b94,000 - \u20b95,000",
+      "retention_pct": 0.71,
+      "est_buyback_2yr": 248500,
+      "total_loss_2yr": 101500.0,
+      "monthly_loss": 4229
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "Moderate mileage (42k km) \u00b7 healthy mechanical life",
+        "pts": "+12 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "2014 vintage \u00b7 older generation approaching 15-year fitness",
+        "pts": "-6 pts",
+        "type": "neg"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "Healthy 38% savings from original MSRP",
+        "pts": "+9 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
+        "pts": "+10 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Bangalore Resale Archetype",
+        "detail": "Sweet spot combo: high-liquidity resale engine",
+        "pts": "+4 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 69/100 primarily driven by odometer & engine wear, depreciation arbitrage.",
+    "ownership_review": {
+      "fuel_economy": "11-13 km/l (BLR City) \u00b7 16-18 km/l (Highway)",
+      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
+      "ride_comfort": "Refined 4-cylinder engine with whisper-quiet cabin insulation; very light clutch for Bangalore traffic.",
+      "known_issues": "Steering column coupling bush wear causes dull thuds; clutch life typically 40k-50k km in heavy traffic.",
+      "bangalore_verdict": "Premium interior feel and smooth refinement make it one of the most comfortable daily hatchbacks."
     }
   },
   {
@@ -109876,8 +109871,8 @@
     "variant": "V MT",
     "make_year": 2018,
     "mileage": 107692,
-    "price": 464870,
-    "orig_retail_price": 472368,
+    "price": 461074,
+    "orig_retail_price": 468572,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Manual",
@@ -109900,9 +109895,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 334706,
-      "total_loss_2yr": 130164,
-      "monthly_loss": 5424
+      "est_buyback_2yr": 331973,
+      "total_loss_2yr": 129101,
+      "monthly_loss": 5379
     },
     "score_breakdown": [
       {
@@ -110042,8 +110037,8 @@
     "variant": "LIMITED 1.4 PETROL AT",
     "make_year": 2017,
     "mileage": 120310,
-    "price": 769227,
-    "orig_retail_price": 785735,
+    "price": 765431,
+    "orig_retail_price": 781939,
     "retail_discount_pct": 5,
     "fuel_type": "Petrol",
     "transmission": "Automatic",
@@ -110066,9 +110061,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 553843,
-      "total_loss_2yr": 215384,
-      "monthly_loss": 8974
+      "est_buyback_2yr": 551110,
+      "total_loss_2yr": 214321,
+      "monthly_loss": 8930
     },
     "score_breakdown": [
       {
@@ -110607,8 +110602,8 @@
     "variant": "ASTA 1.4 CRDI",
     "make_year": 2017,
     "mileage": 118402,
-    "price": 516594,
-    "orig_retail_price": 538438,
+    "price": 512798,
+    "orig_retail_price": 534642,
     "retail_discount_pct": 5,
     "fuel_type": "Diesel",
     "transmission": "Manual",
@@ -110631,9 +110626,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 371948,
-      "total_loss_2yr": 144646,
-      "monthly_loss": 6027
+      "est_buyback_2yr": 369215,
+      "total_loss_2yr": 143583,
+      "monthly_loss": 5983
     },
     "score_breakdown": [
       {
@@ -111348,8 +111343,8 @@
     "variant": "XE (D)",
     "make_year": 2017,
     "mileage": 114440,
-    "price": 441825,
-    "orig_retail_price": 460142,
+    "price": 437984,
+    "orig_retail_price": 456301,
     "retail_discount_pct": 5,
     "fuel_type": "Diesel",
     "transmission": "Manual",
@@ -111372,9 +111367,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 318114,
-      "total_loss_2yr": 123711,
-      "monthly_loss": 5155
+      "est_buyback_2yr": 315348,
+      "total_loss_2yr": 122636,
+      "monthly_loss": 5110
     },
     "score_breakdown": [
       {
@@ -118780,6 +118775,91 @@
     }
   },
   {
+    "id": "olx_1855799737",
+    "platform": "OLX",
+    "make": "Hyundai",
+    "model": "Grand i10",
+    "variant": "Asta 1.2 AT VTVT",
+    "make_year": 2018,
+    "mileage": 102000,
+    "price": 495000.0,
+    "orig_retail_price": 630000,
+    "retail_discount_pct": 21,
+    "fuel_type": "Petrol",
+    "transmission": "Manual",
+    "category": "direct_owner",
+    "hub": "Karanataka bangalore nagarabhavi 2nd stage",
+    "img": "https://apollo.olx.in:443/v1/files/oz9c0lyzmyrt3-IN/image;s=780x0;q=80",
+    "url": "https://www.olx.in/item/iid-1855799737",
+    "deal_score": 61,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Feather-light clutch & steering for traffic",
+    "analysis": {
+      "pros": [
+        "Feather-light clutch & steering for traffic",
+        "Spares available at every neighborhood garage",
+        "Upright seating with clear visibility"
+      ],
+      "cons": [
+        "1.1L engine strains on highway inclines",
+        "City fuel economy ~11-12 kmpl with AC",
+        "Dated dashboard styling"
+      ],
+      "maintenance_yr": "\u20b94,000 - \u20b95,000",
+      "retention_pct": 0.71,
+      "est_buyback_2yr": 351450,
+      "total_loss_2yr": 143550.0,
+      "monthly_loss": 5981
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "High mileage (102k km) \u00b7 nearing major suspension service",
+        "pts": "-8 pts",
+        "type": "neg"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "Solid 2018 manufacture \u00b7 modern chassis",
+        "pts": "+11 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "21% under original retail value",
+        "pts": "+4 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
+        "pts": "+10 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Bangalore Resale Archetype",
+        "detail": "Sweet spot combo: high-liquidity resale engine",
+        "pts": "+4 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 61/100 primarily driven by vehicle age & generation, depreciation arbitrage.",
+    "ownership_review": {
+      "fuel_economy": "11-13 km/l (BLR City) \u00b7 16-18 km/l (Highway)",
+      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
+      "ride_comfort": "Refined 4-cylinder engine with whisper-quiet cabin insulation; very light clutch for Bangalore traffic.",
+      "known_issues": "Steering column coupling bush wear causes dull thuds; clutch life typically 40k-50k km in heavy traffic.",
+      "bangalore_verdict": "Premium interior feel and smooth refinement make it one of the most comfortable daily hatchbacks."
+    }
+  },
+  {
     "id": 33078861,
     "platform": "Spinny",
     "make": "Hyundai",
@@ -123170,84 +123250,6 @@
     }
   },
   {
-    "id": "olx_1860678414",
-    "platform": "OLX",
-    "make": "BMW",
-    "model": "7 Series",
-    "variant": "730Ld",
-    "make_year": 2016,
-    "mileage": 85000,
-    "price": 2200000.0,
-    "orig_retail_price": 14580000,
-    "retail_discount_pct": 85,
-    "fuel_type": "Diesel",
-    "transmission": "Automatic",
-    "category": "direct_owner",
-    "hub": "Bangalore",
-    "img": "https://apollo.olx.in:443/v1/files/j52an52ejjjt2-IN/image;s=780x0;q=80",
-    "url": "https://www.olx.in/item/iid-1860678414",
-    "deal_score": 65,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Prestigious German badge and driver-focused mechanical precision",
-    "analysis": {
-      "pros": [
-        "Prestigious German badge and driver-focused mechanical precision",
-        "Substantial depreciation arbitrage \u2014 pre-owned at a fraction of on-road price",
-        "Strong network of Bangalore European specialist independent garages"
-      ],
-      "cons": [
-        "Mandatory pre-purchase OBD-II electronic diagnostic and hoist inspection",
-        "Higher routine consumables and insurance expense than Japanese/Korean cars"
-      ],
-      "maintenance_yr": "\u20b925,000 - \u20b942,000",
-      "retention_pct": 0.66,
-      "est_buyback_2yr": 1452000,
-      "total_loss_2yr": 748000.0,
-      "monthly_loss": 31167
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "High mileage (85k km) \u00b7 nearing major suspension service",
-        "pts": "-8 pts",
-        "type": "neg"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "2016 model \u00b7 mid-life depreciation curve",
-        "pts": "+5 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "Steep 85% discount vs \u20b9145.8L new price",
-        "pts": "+18 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
-        "pts": "+10 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 65/100 primarily driven by vehicle age & generation, depreciation arbitrage.",
-    "ownership_review": {
-      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
-      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
-      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
-      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
-      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
-    }
-  },
-  {
     "id": "olx_1835225224",
     "platform": "OLX",
     "make": "Volkswagen",
@@ -123324,6 +123326,84 @@
       "ride_comfort": "Enthusiast's benchmark: laser-precise steering, tank-like door thud, and peerless highway stability.",
       "known_issues": "ABS wheel sensors fail frequently (\u20b92,500/wheel); verify DSG dual-clutch transmission history if automatic.",
       "bangalore_verdict": "Driver's delight. Higher annual maintenance than Maruti, but unmatched driving pleasure and road feel."
+    }
+  },
+  {
+    "id": "olx_1860678414",
+    "platform": "OLX",
+    "make": "BMW",
+    "model": "7 Series",
+    "variant": "730Ld",
+    "make_year": 2016,
+    "mileage": 85000,
+    "price": 2200000.0,
+    "orig_retail_price": 14580000,
+    "retail_discount_pct": 85,
+    "fuel_type": "Diesel",
+    "transmission": "Automatic",
+    "category": "direct_owner",
+    "hub": "Bangalore",
+    "img": "https://apollo.olx.in:443/v1/files/j52an52ejjjt2-IN/image;s=780x0;q=80",
+    "url": "https://www.olx.in/item/iid-1860678414",
+    "deal_score": 65,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Prestigious German badge and driver-focused mechanical precision",
+    "analysis": {
+      "pros": [
+        "Prestigious German badge and driver-focused mechanical precision",
+        "Substantial depreciation arbitrage \u2014 pre-owned at a fraction of on-road price",
+        "Strong network of Bangalore European specialist independent garages"
+      ],
+      "cons": [
+        "Mandatory pre-purchase OBD-II electronic diagnostic and hoist inspection",
+        "Higher routine consumables and insurance expense than Japanese/Korean cars"
+      ],
+      "maintenance_yr": "\u20b925,000 - \u20b942,000",
+      "retention_pct": 0.66,
+      "est_buyback_2yr": 1452000,
+      "total_loss_2yr": 748000.0,
+      "monthly_loss": 31167
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "High mileage (85k km) \u00b7 nearing major suspension service",
+        "pts": "-8 pts",
+        "type": "neg"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "2016 model \u00b7 mid-life depreciation curve",
+        "pts": "+5 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "Steep 85% discount vs \u20b9145.8L new price",
+        "pts": "+18 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
+        "pts": "+10 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 65/100 primarily driven by vehicle age & generation, depreciation arbitrage.",
+    "ownership_review": {
+      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
+      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
+      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
+      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
+      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
     }
   },
   {
@@ -128786,8 +128866,8 @@
     "variant": "1.3 LT ABS",
     "make_year": 2014,
     "mileage": 102672,
-    "price": 354205,
-    "orig_retail_price": 368700,
+    "price": 350364,
+    "orig_retail_price": 364859,
     "retail_discount_pct": 5,
     "fuel_type": "Diesel",
     "transmission": "Manual",
@@ -128810,9 +128890,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 255028,
-      "total_loss_2yr": 99177,
-      "monthly_loss": 4132
+      "est_buyback_2yr": 252262,
+      "total_loss_2yr": 98102,
+      "monthly_loss": 4088
     },
     "score_breakdown": [
       {
@@ -131189,85 +131269,6 @@
     }
   },
   {
-    "id": "olx_1857594704",
-    "platform": "OLX",
-    "make": "BMW",
-    "model": "3 Series GT",
-    "variant": "3 Series GT 320d GT Luxury Line",
-    "make_year": 2014,
-    "mileage": 65000,
-    "price": 1875000.0,
-    "orig_retail_price": 4850000,
-    "retail_discount_pct": 61,
-    "fuel_type": "Diesel",
-    "transmission": "Automatic",
-    "category": "dealer",
-    "hub": "Rajajinagar Industrial Town, Bangalore",
-    "img": "https://apollo.olx.in:443/v1/files/lnvzry012oyl2-IN/image;s=780x0;q=80",
-    "url": "https://www.olx.in/item/iid-1857594704",
-    "deal_score": 68,
-    "deal_grade": "VALUE PICK",
-    "is_top_deal": true,
-    "verdict": "Iconic 50:50 weight distribution & pure rear-wheel drive dynamics",
-    "analysis": {
-      "pros": [
-        "Iconic 50:50 weight distribution & pure rear-wheel drive dynamics",
-        "Refined 2.0L TwinPower turbo with slick ZF 8-speed automatic",
-        "Timeless German sports sedan pedigree with huge enthusiast community"
-      ],
-      "cons": [
-        "Run-flat tyres deliver firm ride over sharp Bangalore potholes",
-        "Dealership servicing carries luxury premium (independent European specialists advised)",
-        "Inspect cooling system, oil filter housing & ABS sensors above 60k km"
-      ],
-      "maintenance_yr": "\u20b925,000 - \u20b938,000",
-      "retention_pct": 0.68,
-      "est_buyback_2yr": 1275000,
-      "total_loss_2yr": 600000.0,
-      "monthly_loss": 25000
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Standard city mileage (65k km)",
-        "pts": "+6 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "2014 vintage \u00b7 older generation approaching 15-year fitness",
-        "pts": "-6 pts",
-        "type": "neg"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "Steep 61% discount vs \u20b948.5L new price",
-        "pts": "+18 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
-        "pts": "+10 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 68/100 primarily driven by odometer & engine wear, depreciation arbitrage.",
-    "ownership_review": {
-      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
-      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
-      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
-      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
-      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
-    }
-  },
-  {
     "id": "olx_1861015081",
     "platform": "OLX",
     "make": "Hyundai",
@@ -131342,6 +131343,85 @@
       }
     ],
     "score_rationale": "Rated 72/100 primarily driven by odometer & engine wear, depreciation arbitrage.",
+    "ownership_review": {
+      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
+      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
+      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
+      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
+      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
+    }
+  },
+  {
+    "id": "olx_1857594704",
+    "platform": "OLX",
+    "make": "BMW",
+    "model": "3 Series GT",
+    "variant": "3 Series GT 320d GT Luxury Line",
+    "make_year": 2014,
+    "mileage": 65000,
+    "price": 1875000.0,
+    "orig_retail_price": 4850000,
+    "retail_discount_pct": 61,
+    "fuel_type": "Diesel",
+    "transmission": "Automatic",
+    "category": "dealer",
+    "hub": "Rajajinagar Industrial Town, Bangalore",
+    "img": "https://apollo.olx.in:443/v1/files/lnvzry012oyl2-IN/image;s=780x0;q=80",
+    "url": "https://www.olx.in/item/iid-1857594704",
+    "deal_score": 68,
+    "deal_grade": "VALUE PICK",
+    "is_top_deal": true,
+    "verdict": "Iconic 50:50 weight distribution & pure rear-wheel drive dynamics",
+    "analysis": {
+      "pros": [
+        "Iconic 50:50 weight distribution & pure rear-wheel drive dynamics",
+        "Refined 2.0L TwinPower turbo with slick ZF 8-speed automatic",
+        "Timeless German sports sedan pedigree with huge enthusiast community"
+      ],
+      "cons": [
+        "Run-flat tyres deliver firm ride over sharp Bangalore potholes",
+        "Dealership servicing carries luxury premium (independent European specialists advised)",
+        "Inspect cooling system, oil filter housing & ABS sensors above 60k km"
+      ],
+      "maintenance_yr": "\u20b925,000 - \u20b938,000",
+      "retention_pct": 0.68,
+      "est_buyback_2yr": 1275000,
+      "total_loss_2yr": 600000.0,
+      "monthly_loss": 25000
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "Standard city mileage (65k km)",
+        "pts": "+6 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "2014 vintage \u00b7 older generation approaching 15-year fitness",
+        "pts": "-6 pts",
+        "type": "neg"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "Steep 61% discount vs \u20b948.5L new price",
+        "pts": "+18 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
+        "pts": "+10 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 68/100 primarily driven by odometer & engine wear, depreciation arbitrage.",
     "ownership_review": {
       "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
       "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
@@ -135880,85 +135960,6 @@
     }
   },
   {
-    "id": "olx_1859450407",
-    "platform": "OLX",
-    "make": "BMW",
-    "model": "X1",
-    "variant": "2013-2015 2.0 sDrive 20d M Sport",
-    "make_year": 2013,
-    "mileage": 150000,
-    "price": 500000.0,
-    "orig_retail_price": 4940000,
-    "retail_discount_pct": 85,
-    "fuel_type": "Diesel",
-    "transmission": "Automatic",
-    "category": "direct_owner",
-    "hub": "Cleveland Town, Bangalore",
-    "img": "https://apollo.olx.in:443/v1/files/xxn0ipmockhr-IN/image;s=780x0;q=80",
-    "url": "https://www.olx.in/item/iid-1859450407",
-    "deal_score": 54,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Generous 180mm ground clearance easily clears notorious Bangalore speedbreakers",
-    "analysis": {
-      "pros": [
-        "Generous 180mm ground clearance easily clears notorious Bangalore speedbreakers",
-        "Compact luxury SUV dimensions with commanding high seating & visibility",
-        "Spacious 505L cargo volume and flexible split-folding rear seats"
-      ],
-      "cons": [
-        "Stiff suspension setup communicates expansion joints and road ripples",
-        "Front-wheel drive architecture (UKL) on modern models lacks classic RWD drift",
-        "Synthetic engine oil and premium brake pads require strict upkeep"
-      ],
-      "maintenance_yr": "\u20b922,000 - \u20b934,000",
-      "retention_pct": 0.7,
-      "est_buyback_2yr": 350000,
-      "total_loss_2yr": 150000.0,
-      "monthly_loss": 6250
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "High mileage (150k km) \u00b7 nearing major suspension service",
-        "pts": "-8 pts",
-        "type": "neg"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "2013 vintage \u00b7 older generation approaching 15-year fitness",
-        "pts": "-6 pts",
-        "type": "neg"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "Steep 85% discount vs \u20b949.4L new price",
-        "pts": "+18 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
-        "pts": "+10 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 54/100 primarily driven by depreciation arbitrage, warranty & inspection.",
-    "ownership_review": {
-      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
-      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
-      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
-      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
-      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
-    }
-  },
-  {
     "id": 31484433,
     "platform": "Spinny",
     "make": "Ford",
@@ -137122,8 +137123,8 @@
     "variant": "1.3 LS ABS",
     "make_year": 2013,
     "mileage": 122829,
-    "price": 207769,
-    "orig_retail_price": 222221,
+    "price": 203928,
+    "orig_retail_price": 218380,
     "retail_discount_pct": 7,
     "fuel_type": "Diesel",
     "transmission": "Manual",
@@ -137146,9 +137147,9 @@
       ],
       "maintenance_yr": "\u20b95,500 - \u20b97,500",
       "retention_pct": 0.72,
-      "est_buyback_2yr": 149594,
-      "total_loss_2yr": 58175,
-      "monthly_loss": 2424
+      "est_buyback_2yr": 146828,
+      "total_loss_2yr": 57100,
+      "monthly_loss": 2379
     },
     "score_breakdown": [
       {
