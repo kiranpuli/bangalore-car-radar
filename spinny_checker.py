@@ -137,6 +137,37 @@ KNOWLEDGE_BASE = {
         "maintenance_yr": "₹5,000 - ₹6,500",
         "retention_pct": 0.72,
     },
+    # Luxury European (BMW, Mercedes, Audi)
+    "bmw 3 series": {
+        "pros": ["Iconic 50:50 weight distribution & pure rear-wheel drive dynamics", "Refined 2.0L TwinPower turbo with slick ZF 8-speed automatic", "Timeless German sports sedan pedigree with huge enthusiast community"],
+        "cons": ["Run-flat tyres deliver firm ride over sharp Bangalore potholes", "Dealership servicing carries luxury premium (independent European specialists advised)", "Inspect cooling system, oil filter housing & ABS sensors above 60k km"],
+        "maintenance_yr": "₹25,000 - ₹38,000",
+        "retention_pct": 0.68,
+    },
+    "bmw 5 series": {
+        "pros": ["Executive luxury cabin with whisper-quiet high-speed acoustic insulation", "Monumental 3.0L / 2.0L diesel torque for effortless highway cruising", "Flagship road presence and exceptional highway stability"],
+        "cons": ["Long 4.9m footprint needs extra care in central Bangalore alleys", "Higher maintenance costs (air suspension, brake discs, sensor calibrations)", "Annual insurance and 18-inch tyre replacements carry higher costs"],
+        "maintenance_yr": "₹35,000 - ₹55,000",
+        "retention_pct": 0.64,
+    },
+    "bmw x1": {
+        "pros": ["Generous 180mm ground clearance easily clears notorious Bangalore speedbreakers", "Compact luxury SUV dimensions with commanding high seating & visibility", "Spacious 505L cargo volume and flexible split-folding rear seats"],
+        "cons": ["Stiff suspension setup communicates expansion joints and road ripples", "Front-wheel drive architecture (UKL) on modern models lacks classic RWD drift", "Synthetic engine oil and premium brake pads require strict upkeep"],
+        "maintenance_yr": "₹22,000 - ₹34,000",
+        "retention_pct": 0.70,
+    },
+    "bmw x3": {
+        "pros": ["Intelligent xDrive all-wheel drive ensures unshakable wet monsoon grip", "Substantial cabin room with panoramic glass roof and executive rear comfort", "Punchy powertrain and 5-star Euro NCAP active safety architecture"],
+        "cons": ["Transfer case and differential fluid servicing required at higher mileage", "City fuel efficiency drops to 8-10 kmpl in peak Bengaluru congestion", "Replacement run-flat tyres are costly"],
+        "maintenance_yr": "₹30,000 - ₹48,000",
+        "retention_pct": 0.67,
+    },
+    "bmw": {
+        "pros": ["Prestigious German badge and driver-focused mechanical precision", "Substantial depreciation arbitrage — pre-owned at a fraction of on-road price", "Strong network of Bangalore European specialist independent garages"],
+        "cons": ["Mandatory pre-purchase OBD-II electronic diagnostic and hoist inspection", "Higher routine consumables and insurance expense than Japanese/Korean cars"],
+        "maintenance_yr": "₹25,000 - ₹42,000",
+        "retention_pct": 0.66,
+    },
     "city": {
         "pros": ["Legendary 1.5L i-VTEC benchmark performance", "Spacious executive rear legroom", "Superb highway high-speed cruising"],
         "cons": ["Low ground clearance requires caution on tall Bangalore speed bumps", "Thin sheet metal on doors", "Basic sound insulation"],
@@ -327,7 +358,16 @@ MODEL_NEW_RETAIL_BASE = {
     # MG
     "astor": 1380000, "hector": 1780000, "gloster": 3800000, "zs ev": 2200000, "comet": 780000,
     # Luxury European
-    "x1": 4600000, "x3": 6600000, "3 series": 4800000, "5 series": 6800000,
+    "bmw 3 series": 4800000, "3 series": 4800000, "320d": 4800000, "330i": 5200000, "m340i": 7200000,
+    "bmw 5 series": 6800000, "5 series": 6800000, "520d": 6800000, "530d": 7400000,
+    "bmw 7 series": 13500000, "7 series": 13500000,
+    "bmw 2 series": 4400000, "2 series": 4400000,
+    "bmw x1": 4600000, "x1": 4600000, "ix1": 6600000,
+    "bmw x3": 6600000, "x3": 6600000, "ix3": 7800000,
+    "bmw x4": 7500000, "x4": 7500000,
+    "bmw x5": 9500000, "x5": 9500000,
+    "bmw ix": 11500000, "ix": 11500000,
+    "bmw": 5000000,
     "gla": 4800000, "glc": 6800000, "c-class": 5600000, "e-class": 7400000,
     "a4": 4600000, "a6": 6200000, "q3": 4400000, "q5": 6600000,
     "xf": 7200000, "f-pace": 7500000, "xc40": 4600000, "xc60": 6800000,
@@ -950,7 +990,7 @@ def enrich_truwo(cars):
         })
     return cleaned
 
-def fetch_olx_cars(max_pages=8, max_price=None):
+def fetch_olx_cars(max_pages=8, max_price=None, make=None):
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
         "Accept": "application/json, text/plain, */*",
@@ -958,6 +998,7 @@ def fetch_olx_cars(max_pages=8, max_price=None):
     cars = []
     seen_ids = set()
     price_param = f"&price_max={max_price}&price_min=50000" if (max_price and max_price > 0) else ""
+    make_param = f"&make={make}" if make else ""
 
     try:
         from scrapling.fetchers import Fetcher
@@ -965,7 +1006,7 @@ def fetch_olx_cars(max_pages=8, max_price=None):
         Fetcher = None
 
     for page in range(max_pages):
-        url = f"https://www.olx.in/api/relevance/v4/search?category=84&facet_limit=1000&location=4058803&location_facet_limit=40&platform=web-desktop&pttEnabled=true&relaxedFilters=true&size=40&user=anonymous&lang=en-IN&page={page}{price_param}"
+        url = f"https://www.olx.in/api/relevance/v4/search?category=84&facet_limit=1000&location=4058803&location_facet_limit=40&platform=web-desktop&pttEnabled=true&relaxedFilters=true&size=40&user=anonymous&lang=en-IN&page={page}{price_param}{make_param}"
         try:
             if Fetcher:
                 res = Fetcher.get(url, headers=headers, timeout=15)
@@ -1240,7 +1281,18 @@ def run_monitor(city="bangalore", max_price=None):
     cleaned_olx = enrich_olx(olx_raw)
     print(f"[{datetime.now()}] Fetched {len(cleaned_olx)} OLX cars.")
 
-    combined_cars = [c for c in (cleaned_spinny + cleaned_cars24 + cleaned_truwo + cleaned_olx) if not is_excluded_car(c)]
+    print(f"[{datetime.now()}] Fetching Bangalore BMW inventory from OLX API (Targeted Luxury Pipeline)...")
+    olx_bmw_raw = fetch_olx_cars(max_pages=4, make="bmw")
+    cleaned_olx_bmw = enrich_olx(olx_bmw_raw)
+    print(f"[{datetime.now()}] Fetched {len(cleaned_olx_bmw)} targeted BMW cars from OLX.")
+
+    # Deduplicate OLX inventory by ad id
+    olx_dedup_map = {}
+    for c in (cleaned_olx + cleaned_olx_bmw):
+        olx_dedup_map[c.get("id")] = c
+    total_olx = list(olx_dedup_map.values())
+
+    combined_cars = [c for c in (cleaned_spinny + cleaned_cars24 + cleaned_truwo + total_olx) if not is_excluded_car(c)]
     combined_cars.sort(key=lambda x: x.get("deal_score", 0), reverse=True)
 
     new_cars = []
@@ -1256,7 +1308,7 @@ def run_monitor(city="bangalore", max_price=None):
     update_deals_html(combined_cars)
 
     price_label = f"<= ₹{max_price//100000}L" if (max_price and max_price > 0) else "All Budgets"
-    print(f"[{datetime.now()}] === Bangalore Combined Deals Screener ({price_label}) — Found {len(combined_cars)} Cars ({len(cleaned_spinny)} Spinny + {len(cleaned_cars24)} Cars24 + {len(cleaned_truwo)} Truwo + {len(cleaned_olx)} OLX) ===")
+    print(f"[{datetime.now()}] === Bangalore Combined Deals Screener ({price_label}) — Found {len(combined_cars)} Cars ({len(cleaned_spinny)} Spinny + {len(cleaned_cars24)} Cars24 + {len(cleaned_truwo)} Truwo + {len(total_olx)} OLX) ===")
     for idx, car in enumerate(combined_cars[:5], 1):
         title = f"{car.get('make_year')} {car.get('make')} {car.get('model')} {car.get('variant')}"
         price = f"₹{int(car.get('price', 0)):,}"
