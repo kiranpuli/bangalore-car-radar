@@ -455,6 +455,21 @@ def enrich_cars(cars):
     return cleaned
 
 
+def call_api_anything(site, op, timeout=15, **kwargs):
+    """Query an API operation via api-anything over plain HTTP."""
+    try:
+        cmd = ["npx", "-y", "api-anything", "call", site, op]
+        for k, v in kwargs.items():
+            if v is not None:
+                cmd.append(f"{k}={v}")
+        out = subprocess.check_output(cmd, text=True, timeout=timeout)
+        res = json.loads(out)
+        if res.get("ok"):
+            return res.get("data", [])
+    except Exception as e:
+        print(f"[{datetime.now()}] api-anything {site} {op} fallback: {e}", file=sys.stderr)
+    return None
+
 def fetch_cheapest_cars(city="bangalore", max_price=None, max_pages=48):
     session = requests.Session()
     session.headers.update(HEADERS)
@@ -669,6 +684,25 @@ def enrich_cars24(cars):
 
 
 def fetch_truwo_cars(max_price=None):
+    # 1. Primary: query via api-anything learned operation (ultra-fast, tier-1 plain HTTP)
+    data = call_api_anything("truwo", "listings", timeout=12, **{"--max-chars": "100000"})
+    if data and isinstance(data, list) and len(data) > 0:
+        filtered = []
+        for item in data:
+            price = item.get("price") or 0
+            price_ok = True if (max_price is None or max_price <= 0) else (price <= max_price)
+            if price_ok:
+                filtered.append({
+                    "name": item.get("name", ""),
+                    "truwo_price": price,
+                    "listed_price": price,
+                    "url": item.get("url", ""),
+                    "image": item.get("image", ""),
+                    "source_format": "schema_org"
+                })
+        return filtered
+
+    # 2. Fallback: Direct HTML requests & Next.js RSC parse
     url = "https://www.truwo.ai/listings"
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -676,7 +710,6 @@ def fetch_truwo_cars(max_price=None):
         "Accept-Language": "en-US,en;q=0.9",
     }
     html = ""
-    # Attempt extraction via Scrapling Fetcher if available, fallback to requests
     try:
         from scrapling.fetchers import Fetcher
         res = Fetcher.get(url, headers=headers, timeout=15)
@@ -694,20 +727,44 @@ def fetch_truwo_cars(max_price=None):
             return []
 
     cars = []
+    # Try Schema.org ItemList in script tags
     try:
-        chunks = re.findall(r'self\.__next_f\.push\(\[1,\s*\"(.*?)\"\]\)', html)
-        for c in chunks:
-            try:
-                unescaped = c.encode('utf-8').decode('unicode_escape')
-            except Exception:
-                unescaped = c
-            if '\"items\":[' in unescaped:
-                idx = unescaped.find('\"items\":[') + 8
-                arr, _ = json.JSONDecoder().raw_decode(unescaped[idx:])
-                cars = arr
+        scripts = re.findall(r'<script type=["\']application/ld\+json["\']>(.*?)</script>', html, re.DOTALL)
+        for s in scripts:
+            if '"@type":"ItemList"' in s:
+                d = json.loads(s)
+                for it in d.get("itemListElement", []):
+                    item = it.get("item", {})
+                    if item:
+                        price = (item.get("offers") or {}).get("price", 0)
+                        cars.append({
+                            "name": item.get("name", ""),
+                            "truwo_price": price,
+                            "listed_price": price,
+                            "url": item.get("url", ""),
+                            "image": item.get("image", ""),
+                            "source_format": "schema_org"
+                        })
                 break
-    except Exception as e:
-        print(f"[{datetime.now()}] Error parsing Truwo listings: {e}", file=sys.stderr)
+    except Exception:
+        pass
+
+    # Try Next.js RSC chunks
+    if not cars:
+        try:
+            chunks = re.findall(r'self\.__next_f\.push\(\[1,\s*\"(.*?)\"\]\)', html)
+            for c in chunks:
+                try:
+                    unescaped = c.encode('utf-8').decode('unicode_escape')
+                except Exception:
+                    unescaped = c
+                if '\"items\":[' in unescaped:
+                    idx = unescaped.find('\"items\":[') + 8
+                    arr, _ = json.JSONDecoder().raw_decode(unescaped[idx:])
+                    cars = arr
+                    break
+        except Exception as e:
+            print(f"[{datetime.now()}] Error parsing Truwo listings: {e}", file=sys.stderr)
 
     filtered = []
     for c in cars:
@@ -716,7 +773,7 @@ def fetch_truwo_cars(max_price=None):
         price = c.get("truwo_price") or c.get("listed_price") or 0
         km = c.get("kms_driven", 0)
         price_ok = True if (max_price is None or max_price <= 0) else (price <= max_price)
-        if price_ok and km <= 140000 and is_prestige_car(c):
+        if price_ok and km <= 140000:
             filtered.append(c)
 
     return filtered
@@ -728,6 +785,18 @@ def enrich_truwo(cars):
         make = c.get("make") or ""
         model = c.get("model") or ""
         variant = c.get("variant") or ""
+        year = c.get("year", 2020)
+
+        # Parse schema_org title if make not separated
+        raw_name = c.get("name") or ""
+        if not make and raw_name:
+            parts = raw_name.split(" ")
+            if parts and parts[0].isdigit() and len(parts[0]) == 4:
+                year = int(parts[0])
+                make = parts[1] if len(parts) > 1 else ""
+                model = parts[2] if len(parts) > 2 else ""
+                variant = " ".join(parts[3:]) if len(parts) > 3 else ""
+
         model_name = f"{make} {model} {variant}".lower()
 
         matched = None
@@ -745,7 +814,6 @@ def enrich_truwo(cars):
 
         price = c.get("truwo_price") or c.get("listed_price") or 0
         km = c.get("kms_driven", 0)
-        year = c.get("year", 2020)
         dealer_p = c.get("dealer_price") or 0
 
         is_assured = c.get("verified", True)
@@ -791,12 +859,30 @@ def enrich_truwo(cars):
         locality = c.get("locality") or c.get("area") or "Bangalore"
         hub = f"{locality}, Bangalore" if "bangalore" not in locality.lower() else locality
 
-        img_url = c.get("hero_photo")
+        img_url = c.get("hero_photo") or c.get("image")
         slug = c.get("slug")
-        url = f"https://www.truwo.ai/i/{slug}" if slug else "https://www.truwo.ai/listings"
+        url = c.get("url") or (f"https://www.truwo.ai/i/{slug}" if slug else "https://www.truwo.ai/listings")
+        cid = c.get("id") or (url.rstrip("/").split("/")[-1] if url else slug)
+
+        # Transmission inference if not provided
+        raw_trans = c.get("transmission")
+        if not raw_trans:
+            is_auto = any(k in model_name for k in [" at", "amt", "cvt", "auto", "ivt", "dct"])
+            transmission = "Automatic" if is_auto else "Manual"
+        else:
+            transmission = raw_trans.capitalize()
+
+        raw_fuel = c.get("fuel_type")
+        if not raw_fuel:
+            if "diesel" in model_name: fuel = "Diesel"
+            elif "cng" in model_name: fuel = "CNG"
+            elif "electric" in model_name or " ev" in model_name: fuel = "Electric"
+            else: fuel = "Petrol"
+        else:
+            fuel = raw_fuel.capitalize()
 
         cleaned.append({
-            "id": f"truwo_{c.get('id') or slug}",
+            "id": f"truwo_{cid}",
             "platform": "Truwo",
             "make": make,
             "model": model,
@@ -807,8 +893,8 @@ def enrich_truwo(cars):
             "dealer_benchmark_price": dealer_p,
             "orig_retail_price": orig_retail,
             "retail_discount_pct": retail_discount_pct,
-            "fuel_type": (c.get("fuel_type") or "Petrol").capitalize(),
-            "transmission": (c.get("transmission") or "Manual").capitalize(),
+            "fuel_type": fuel,
+            "transmission": transmission,
             "category": tier,
             "hub": hub,
             "img": img_url,
@@ -828,7 +914,6 @@ def enrich_truwo(cars):
             },
         })
     return cleaned
-
 
 def update_deals_html(cleaned_cars):
     cur_dir = os.path.dirname(os.path.abspath(__file__))
