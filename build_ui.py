@@ -1582,13 +1582,13 @@ html_content = """<!DOCTYPE html>
       transform: scale(0.98);
     }
 
-    /* Score Calculation Pop-up Modal */
+    /* Score Calculation Pop-up Modal (elayadesign/ai-design-skills) */
     .score-modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.78);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       z-index: 1000;
       display: none;
       align-items: center;
@@ -1604,16 +1604,16 @@ html_content = """<!DOCTYPE html>
       to { opacity: 1; }
     }
     .score-modal {
-      background: #121824;
+      background: var(--bg-surface);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-xl);
-      max-width: 580px;
+      max-width: 620px;
       width: 100%;
       max-height: 90vh;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.85);
       animation: modalSlideUp 200ms var(--ease-base);
     }
     @keyframes modalSlideUp {
@@ -1621,116 +1621,262 @@ html_content = """<!DOCTYPE html>
       to { transform: translateY(0) scale(1); opacity: 1; }
     }
     .score-modal-header {
-      padding: var(--sp-200);
+      padding: 14px 18px;
       border-bottom: 1px solid var(--border-color);
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      background: #0B101A;
+      align-items: center;
+      background: var(--bg-photo);
     }
     .score-modal-header h3 {
       font-size: 16px;
-      font-weight: 700;
-      color: #FFFFFF;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
     }
     .score-modal-close {
-      background: transparent;
-      border: none;
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
       color: var(--text-muted);
-      font-size: 18px;
+      font-size: 14px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
       cursor: pointer;
-      padding: 4px 8px;
-      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       transition: all var(--dur-fast) var(--ease-base);
     }
     .score-modal-close:hover {
-      color: #FFFFFF;
-      background: rgba(255, 255, 255, 0.1);
+      background: #FFFFFF;
+      border-color: #FFFFFF;
+      color: #000000;
     }
     .score-modal-body {
-      padding: var(--sp-200);
+      padding: 16px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: var(--sp-200);
+      gap: 12px;
+      background: var(--bg-surface);
     }
     .score-modal-footer {
-      padding: 12px 16px;
+      padding: 12px 18px;
       border-top: 1px solid var(--border-color);
-      background: #0B101A;
+      background: var(--bg-photo);
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 12px;
     }
+    .modal-dismiss-btn {
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--dur-fast) var(--ease-base);
+    }
+    .modal-dismiss-btn:hover {
+      color: var(--text-primary);
+      border-color: #4A4A4A;
+    }
+    .modal-action-cta {
+      width: auto !important;
+      padding: 8px 18px !important;
+      font-size: 12.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
 
     /* Modal Hero Snapshot */
     .modal-car-hero {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       align-items: center;
-      background: #0B101A;
+      background: var(--bg-photo);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 10px 14px;
+      border-radius: var(--radius-lg);
+      padding: 12px 14px;
+      flex-wrap: wrap;
     }
     .modal-car-thumb {
-      width: 72px;
-      height: 48px;
+      width: 80px;
+      height: 56px;
       object-fit: cover;
-      border-radius: var(--radius-sm);
-      background: #1A2232;
+      border-radius: 6px;
+      background: #000000;
+      border: 1px solid var(--border-color);
       flex-shrink: 0;
     }
+    .modal-car-thumb.no-thumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--text-subtle);
+    }
     .modal-hero-info {
-      flex: 1;
+      flex: 1 1 200px;
       min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
     }
-    .modal-score-grade {
+    .modal-hero-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+    .modal-hero-meta {
       font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 700;
-      padding: 6px 12px;
-      border-radius: var(--radius-sm);
-      white-space: nowrap;
-    }
-    .modal-score-grade.top {
-      background: var(--accent-amber);
-      color: #000000;
-    }
-    .modal-score-grade.value {
-      background: var(--accent-emerald);
-      color: #000000;
-    }
-    .modal-score-grade.fair {
-      background: #1A2232;
+      font-size: 12px;
       color: var(--text-muted);
+    }
+    .modal-hero-meta strong {
+      color: #FFFFFF;
+      font-size: 13px;
+    }
+    .modal-hero-source {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-subtle);
+    }
+    .modal-score-ring {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 8px;
       border: 1px solid var(--border-color);
+      background: var(--bg-subsurface);
+      min-width: 90px;
+      flex-shrink: 0;
+    }
+    .modal-score-ring.top {
+      background: var(--accent-amber);
+      border-color: #D97706;
+      color: #000000;
+    }
+    .modal-score-ring.top .score-ring-val,
+    .modal-score-ring.top .score-ring-lbl {
+      color: #000000;
+    }
+    .modal-score-ring.value {
+      background: var(--accent-emerald);
+      border-color: #059669;
+      color: #000000;
+    }
+    .modal-score-ring.value .score-ring-val,
+    .modal-score-ring.value .score-ring-lbl {
+      color: #000000;
+    }
+    .score-ring-val {
+      font-family: var(--font-mono);
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--text-primary);
+    }
+    .score-ring-lbl {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 3px;
+      color: var(--text-muted);
     }
 
-    .modal-rationale-box {
+    /* 4-Box Telemetry Grid */
+    .telemetry-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    .telemetry-box {
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
       display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.25);
+      flex-direction: column;
+      gap: 2px;
+    }
+    .telemetry-lbl {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .telemetry-num {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .telemetry-num.buyback { color: var(--accent-emerald); }
+    .telemetry-num.maint { color: var(--text-body); }
+    .telemetry-num.savings { color: var(--accent-amber); }
+    .telemetry-num.dep { color: #38BDF8; }
+    .telemetry-sub {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-subtle);
+    }
+
+    /* Rationale Callout */
+    .modal-rationale-box {
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      border-left: 3px solid var(--accent-amber);
       border-radius: var(--radius-md);
       padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
     }
-    .modal-rationale-icon {
-      font-size: 16px;
-      line-height: 1.2;
+    .modal-rationale-box.value {
+      border-left-color: var(--accent-emerald);
+    }
+    .rationale-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .rationale-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-amber);
+    }
+    .rationale-badge.value {
+      color: var(--accent-emerald);
     }
     .modal-rationale-text {
-      font-size: 13px;
-      color: #F1F5F9;
+      font-size: 12.5px;
+      color: var(--text-body);
       line-height: 1.45;
-      font-weight: 500;
     }
 
-    /* Modal Point Audit Table */
+    /* Point Audit Table */
     .modal-breakdown-wrap {
-      background: #0B101A;
+      background: var(--bg-photo);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       overflow: hidden;
@@ -1738,11 +1884,11 @@ html_content = """<!DOCTYPE html>
     .modal-breakdown-head {
       display: flex;
       justify-content: space-between;
-      padding: 8px 14px;
-      background: #151D2A;
+      padding: 8px 12px;
+      background: var(--bg-subsurface);
       border-bottom: 1px solid var(--border-color);
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -1756,17 +1902,21 @@ html_content = """<!DOCTYPE html>
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 14px;
+      padding: 8px 12px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-      gap: 12px;
+      gap: 10px;
     }
     .score-audit-row:last-child {
       border-bottom: none;
     }
+    .score-audit-text {
+      flex: 1;
+      min-width: 0;
+    }
     .score-audit-pillar {
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
-      color: #FFFFFF;
+      color: var(--text-primary);
     }
     .score-audit-desc {
       font-size: 11px;
@@ -1775,59 +1925,57 @@ html_content = """<!DOCTYPE html>
     }
     .score-audit-badge {
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
-      padding: 3px 8px;
+      padding: 2px 7px;
       border-radius: var(--radius-sm);
       white-space: nowrap;
+      flex-shrink: 0;
     }
     .score-audit-badge.pos {
-      background: rgba(52, 211, 153, 0.16);
-      color: #34D399;
-      border: 1px solid rgba(52, 211, 153, 0.3);
+      background: rgba(16, 185, 129, 0.16);
+      color: #10B981;
+      border: 1px solid rgba(16, 185, 129, 0.3);
     }
     .score-audit-badge.neg {
-      background: rgba(248, 113, 113, 0.16);
-      color: #F87171;
-      border: 1px solid rgba(248, 113, 113, 0.3);
+      background: rgba(239, 68, 68, 0.16);
+      color: #EF4444;
+      border: 1px solid rgba(239, 68, 68, 0.3);
     }
     .score-audit-badge.base {
-      background: rgba(255, 255, 255, 0.08);
+      background: #272727;
       color: var(--text-muted);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid var(--border-color);
     }
     .modal-breakdown-total {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 14px;
-      background: #151D2A;
+      padding: 10px 12px;
+      background: var(--bg-subsurface);
       border-top: 1px solid var(--border-color);
       font-family: var(--font-mono);
       font-size: 13px;
       font-weight: 700;
-      color: #FFFFFF;
-    }
-    .modal-breakdown-total strong {
-      color: var(--accent-emerald);
-      font-size: 15px;
+      color: var(--text-primary);
     }
 
-    /* Value Telemetry Strip */
-    .telemetry-strip {
+    /* Mechanic Notes (Pros / Cons) */
+    .modal-mechanic-notes {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      background: #0A0F18;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 8px 12px;
+      grid-template-columns: repeat(2, 1fr);
       gap: 8px;
     }
-    .telemetry-col {
+    .notes-col {
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
       display: flex;
       flex-direction: column;
+      gap: 6px;
     }
-    .telemetry-label {
+    .notes-head {
       font-family: var(--font-mono);
       font-size: 10px;
       font-weight: 700;
@@ -1835,18 +1983,56 @@ html_content = """<!DOCTYPE html>
       letter-spacing: 0.04em;
       color: var(--text-subtle);
     }
-    .telemetry-val {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 700;
+    .pros-col .notes-head { color: var(--accent-emerald); }
+    .cons-col .notes-head { color: var(--accent-amber); }
+    .notes-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin: 0;
+      padding: 0;
+    }
+    .notes-list li {
+      font-size: 11.5px;
       color: var(--text-body);
-      margin-top: 1px;
+      line-height: 1.4;
+      display: flex;
+      align-items: flex-start;
+      gap: 5px;
     }
-    .telemetry-val.buyback {
+    .pro-dot {
       color: var(--accent-emerald);
+      font-weight: bold;
+      font-size: 11px;
+      flex-shrink: 0;
     }
-    .telemetry-val.cost {
-      color: var(--accent-blue);
+    .con-dot {
+      color: var(--accent-amber);
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+
+    .card-audit-btn {
+      margin-left: auto;
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      transition: all var(--dur-fast) var(--ease-base);
+    }
+    .card-audit-btn:hover {
+      background: var(--text-primary);
+      color: #000000;
+      border-color: var(--text-primary);
     }
 
     /* Action Button (B2 Button-md padding 8px 12px) */
@@ -1906,7 +2092,7 @@ html_content = """<!DOCTYPE html>
 
     /* Focus visible rings */
     button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible {
-      outline: 2px solid var(--accent-blue);
+      outline: 2px solid var(--border-focus);
       outline-offset: 2px;
     }
 
@@ -2046,6 +2232,29 @@ html_content = """<!DOCTYPE html>
       .pricing-val-main {
         font-size: 20px;
       }
+      .score-modal-backdrop {
+        padding: 8px;
+      }
+      .score-modal {
+        max-height: 94vh;
+        border-radius: var(--radius-lg);
+      }
+      .modal-car-hero {
+        padding: 10px;
+        gap: 10px;
+      }
+      .modal-score-ring {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 6px 12px;
+      }
+      .score-ring-lbl {
+        margin-top: 0;
+      }
+      .modal-mechanic-notes {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Small Phone Optimization (iPhone SE / 360px - 380px) */
@@ -2123,7 +2332,7 @@ html_content = """<!DOCTYPE html>
       color: #FFFFFF;
     }
     .sync-method-card {
-      background: #0B101A;
+      background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       padding: 14px;
@@ -2168,7 +2377,7 @@ html_content = """<!DOCTYPE html>
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #151D2A;
+      background: var(--bg-photo);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-sm);
       padding: 8px 12px;
@@ -2489,17 +2698,20 @@ html_content = """<!DOCTYPE html>
     <div class="score-modal" role="dialog" aria-modal="true" aria-labelledby="score-modal-title">
       <div class="score-modal-header">
         <div>
-          <span class="caption-5" style="color:var(--accent-blue); text-transform:uppercase; font-weight:700; letter-spacing:0.06em;">Mechanical & Value Scoring Engine</span>
+          <span class="caption-5" style="color:var(--accent-amber); font-family:var(--font-mono); text-transform:uppercase; font-weight:700; letter-spacing:0.06em;">Deal Scorecard &amp; Mechanical Audit</span>
           <h3 id="score-modal-title" style="margin-top:2px;">Score Calculation</h3>
         </div>
-        <button type="button" class="score-modal-close" onclick="closeScoreModal()" title="Close">✕</button>
+        <button type="button" class="score-modal-close" onclick="closeScoreModal()" title="Close dialog">✕</button>
       </div>
       <div class="score-modal-body" id="score-modal-body">
         <!-- Injected dynamically on click -->
       </div>
       <div class="score-modal-footer">
-        <span class="caption-5" style="color:var(--text-subtle);">Algorithmically audited against Bangalore used vehicle reliability & depreciation curves.</span>
-        <button type="button" class="nav-btn" onclick="closeScoreModal()">Done</button>
+        <button type="button" class="modal-dismiss-btn" onclick="closeScoreModal()">Done</button>
+        <a href="#" target="_blank" rel="noopener noreferrer" class="cta-primary-btn modal-action-cta" id="modal-footer-cta">
+          <span>Inspect Car</span>
+          <span>&rarr;</span>
+        </a>
       </div>
     </div>
   </div>
@@ -3355,23 +3567,34 @@ html_content = """<!DOCTYPE html>
       const car = CARS.find(x => String(x.id) === String(carId));
       if (!car) return;
 
-      const isAssured = car.category === 'assured' || car.category === 'verified';
       const plat = (car.platform || '').toLowerCase();
       const isTruwo = plat === 'truwo';
       const isCars24 = plat === 'cars24';
+      const platformClass = isTruwo ? 'truwo' : (isCars24 ? 'cars24' : 'spinny');
       const platformName = car.platform || (isTruwo ? 'Truwo' : (isCars24 ? 'Cars24' : 'Spinny'));
       const title = `${car.make_year} ${car.make} ${car.model} ${car.variant || ''}`.trim();
       const price = '₹' + (car.price / 100000).toFixed(2) + 'L';
+      const topPrice = car.orig_retail_price ? ('₹' + (car.orig_retail_price / 100000).toFixed(2) + 'L') : '';
+      const discPct = car.retail_discount_pct || (car.orig_retail_price ? Math.round(((car.orig_retail_price - car.price) / car.orig_retail_price) * 100) : 0);
       const km = (car.mileage / 1000).toFixed(0) + 'k km';
 
+      const an = car.analysis || {};
+      const buyback = an.est_buyback_2yr ? ('₹' + (an.est_buyback_2yr / 100000).toFixed(2) + 'L') : ('₹' + ((car.price * 0.65) / 100000).toFixed(2) + 'L');
+      const maint = an.maintenance_yr || '₹6,000 - ₹8,000/yr';
+      const retention = an.retention_pct ? `${Math.round(an.retention_pct * 100)}%` : '65%';
+      const monthly = an.monthly_loss ? ('₹' + Math.round(an.monthly_loss).toLocaleString('en-IN') + '/mo') : ('₹' + Math.round((car.price * 0.35) / 24).toLocaleString('en-IN') + '/mo');
+
       let gradeClass = 'fair';
-      let gradeLabel = `Score ${car.deal_score}/100`;
+      let gradeLabel = 'Fair Value';
+      let gradeColor = 'var(--text-body)';
       if (car.deal_score >= 80) {
         gradeClass = 'top';
-        gradeLabel = `💎 ${car.deal_score}/100 · TOP DEAL`;
+        gradeLabel = 'Top Deal';
+        gradeColor = 'var(--accent-amber)';
       } else if (car.deal_score >= 68) {
         gradeClass = 'value';
-        gradeLabel = `⭐ ${car.deal_score}/100 · VALUE PICK`;
+        gradeLabel = 'Value Pick';
+        gradeColor = 'var(--accent-emerald)';
       }
 
       const factors = car.score_breakdown || [];
@@ -3379,7 +3602,7 @@ html_content = """<!DOCTYPE html>
         const typeClass = f.type || 'pos';
         return `
           <div class="score-audit-row">
-            <div>
+            <div class="score-audit-text">
               <div class="score-audit-pillar">${f.pillar}</div>
               <div class="score-audit-desc">${f.detail}</div>
             </div>
@@ -3388,33 +3611,74 @@ html_content = """<!DOCTYPE html>
         `;
       }).join('');
 
+      const prosList = (an.pros || []).map(p => `<li><span class="pro-dot">✓</span><span>${p}</span></li>`).join('');
+      const consList = (an.cons || []).map(c => `<li><span class="con-dot">⚠</span><span>${c}</span></li>`).join('');
+
       const modalTitle = document.getElementById('score-modal-title');
-      if (modalTitle) modalTitle.textContent = `${title} — Score Audit`;
+      if (modalTitle) modalTitle.textContent = `${title}`;
 
       const modalBody = document.getElementById('score-modal-body');
       if (modalBody) {
         modalBody.innerHTML = `
+          <!-- Vehicle Summary Hero Card -->
           <div class="modal-car-hero">
-            ${car.img ? `<img src="${car.img}" alt="${title}" class="modal-car-thumb" loading="lazy" referrerpolicy="no-referrer" />` : ''}
+            ${car.img ? `<img src="${car.img}" alt="${title}" class="modal-car-thumb" loading="lazy" referrerpolicy="no-referrer" />` : '<div class="modal-car-thumb no-thumb">No Image</div>'}
             <div class="modal-hero-info">
-              <div style="font-weight:700; color:#FFFFFF; font-size:14px;">${title}</div>
-              <div style="font-size:11.5px; color:var(--text-muted); margin-top:2px;">
-                ${price} · ${km} · ${(car.fuel_type || 'Petrol').toUpperCase()} · ${(car.transmission || 'MT').toUpperCase()} · ${platformName}
+              <div class="modal-hero-title">${title}</div>
+              <div class="modal-hero-meta">
+                <strong>${price}</strong> · <span>${km}</span> · <span>${(car.fuel_type || 'Petrol').toUpperCase()}</span> · <span>${(car.transmission || 'MT').toUpperCase()}</span>
+              </div>
+              <div class="modal-hero-source">
+                <span class="source-dot ${platformClass}-dot"></span>
+                <span>${platformName}</span>
+                <span class="meta-hub">(${car.hub || 'Bangalore'})</span>
               </div>
             </div>
-            <div class="modal-score-grade ${gradeClass}">${gradeLabel}</div>
-          </div>
-
-          <div class="modal-rationale-box">
-            <span class="modal-rationale-icon">💡</span>
-            <div class="modal-rationale-text">
-              <strong>Why this rating?</strong> ${car.score_rationale || 'Score derived from odometer health, age, retail discount, and certified warranty.'}
+            <div class="modal-score-ring ${gradeClass}">
+              <div class="score-ring-val">${car.deal_score}</div>
+              <div class="score-ring-lbl">${gradeLabel}</div>
             </div>
           </div>
 
+          <!-- 4-Box Value & Depreciation Telemetry -->
+          <div class="telemetry-grid">
+            <div class="telemetry-box">
+              <span class="telemetry-lbl">2-Yr Estimated Buyback</span>
+              <span class="telemetry-num buyback">${buyback}</span>
+              <span class="telemetry-sub">${retention} retention</span>
+            </div>
+            <div class="telemetry-box">
+              <span class="telemetry-lbl">Annual Maintenance</span>
+              <span class="telemetry-num maint">${maint}</span>
+              <span class="telemetry-sub">FNG / dealer avg</span>
+            </div>
+            <div class="telemetry-box">
+              <span class="telemetry-lbl">Showroom Savings</span>
+              <span class="telemetry-num savings">${discPct > 0 ? `-${discPct}%` : 'Fair'}</span>
+              <span class="telemetry-sub">${topPrice ? `Original MRP: ${topPrice}` : 'vs Bangalore new'}</span>
+            </div>
+            <div class="telemetry-box">
+              <span class="telemetry-lbl">Depreciation Pace</span>
+              <span class="telemetry-num dep">${monthly}</span>
+              <span class="telemetry-sub">Monthly true cost</span>
+            </div>
+          </div>
+
+          <!-- Algorithmic Score Rationale -->
+          <div class="modal-rationale-box ${gradeClass}">
+            <div class="rationale-head">
+              <span class="rationale-badge ${gradeClass}">Rating Analysis</span>
+              <span class="caption-5" style="color:var(--text-subtle);">200-Pt Telemetry</span>
+            </div>
+            <div class="modal-rationale-text">
+              ${car.score_rationale || 'Score computed from odometer health, age wear, retail discount arbitrage, and certified mechanical warranty coverage.'}
+            </div>
+          </div>
+
+          <!-- Score Breakdown Table -->
           <div class="modal-breakdown-wrap">
             <div class="modal-breakdown-head">
-              <span>Pillar & Audit Details</span>
+              <span>Pillar & Telemetry Audit</span>
               <span>Points Awarded</span>
             </div>
             <div class="score-audit-list">
@@ -3422,10 +3686,32 @@ html_content = """<!DOCTYPE html>
             </div>
             <div class="modal-breakdown-total">
               <span>Final Deal Score</span>
-              <strong>${car.deal_score} / 100</strong>
+              <strong style="color:${gradeColor}">${car.deal_score} / 100</strong>
             </div>
           </div>
+
+          <!-- Pros & Considerations -->
+          ${(prosList || consList) ? `
+          <div class="modal-mechanic-notes">
+            ${prosList ? `
+            <div class="notes-col pros-col">
+              <div class="notes-head">Key Advantages</div>
+              <ul class="notes-list">${prosList}</ul>
+            </div>` : ''}
+            ${consList ? `
+            <div class="notes-col cons-col">
+              <div class="notes-head">Things to Inspect</div>
+              <ul class="notes-list">${consList}</ul>
+            </div>` : ''}
+          </div>` : ''}
         `;
+      }
+
+      // Update footer actions
+      const footerCta = document.getElementById('modal-footer-cta');
+      if (footerCta) {
+        footerCta.href = car.url || '#';
+        footerCta.innerHTML = `<span>Inspect on ${platformName}</span> <span>&rarr;</span>`;
       }
 
       const modal = document.getElementById('score-modal-backdrop');
@@ -3843,6 +4129,7 @@ html_content = """<!DOCTYPE html>
 
               <div class="card-intel-peek">
                 <span>24M Buyback: ${buyback}</span> · <span>Maint: ${an.maintenance_yr || '₹6.5k/yr'}</span>
+                <button type="button" class="card-audit-btn" onclick="openScoreModal('${c.id}', event)" title="View mechanical audit scorecard">Scorecard &rarr;</button>
               </div>
 
               <div class="card-footer">
