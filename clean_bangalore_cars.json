@@ -23234,89 +23234,6 @@
     }
   },
   {
-    "id": "c24_10219971144",
-    "platform": "Cars24",
-    "make": "Nissan",
-    "model": "MAGNITE",
-    "variant": "XV Premium AMT",
-    "make_year": 2024,
-    "mileage": 14505,
-    "price": 708435,
-    "orig_retail_price": 746840,
-    "retail_discount_pct": 5,
-    "fuel_type": "Petrol",
-    "transmission": "Automatic",
-    "category": "assured",
-    "hub": "Hosur Road, Chikku Lakshmaiah Layout, Koramangala, Bangalore",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/1a53de2c-b764-11f1-bd5e-02ede2007fbe/m/fa92af19-3c91-4829-b1aa-b875f7a380b5/f64e193d-3bbb-44ee-97bd-71ee1339368d/330bf48b-1b33-4752-85a8-528631ee630d/slot/1.png",
-    "url": "https://www.cars24.com/buy-used-nissan-magnite-2024-cars-bangalore-10219971144/",
-    "deal_score": 99,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 510073,
-      "total_loss_2yr": 198362,
-      "monthly_loss": 8265
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Ultra-low odometer (14k km) \u00b7 pristine engine health",
-        "pts": "+24 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Modern 2024 model \u00b7 BS6 Phase 2 era & updated safety",
-        "pts": "+20 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "5% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Bangalore Resale Archetype",
-        "detail": "Sweet spot combo: post-2018 under 40k km",
-        "pts": "+5 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 99/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
-      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
-      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
-      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
-      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
-    }
-  },
-  {
     "id": "c24_10217277144",
     "platform": "Cars24",
     "make": "MG",
@@ -27242,6 +27159,89 @@
     }
   },
   {
+    "id": "c24_10247670133",
+    "platform": "Cars24",
+    "make": "Hyundai",
+    "model": "VENUE",
+    "variant": "SX 1.0 TURBO",
+    "make_year": 2019,
+    "mileage": 29279,
+    "price": 677864,
+    "orig_retail_price": 703147,
+    "retail_discount_pct": 5,
+    "fuel_type": "Petrol",
+    "transmission": "Manual",
+    "category": "assured",
+    "hub": "Whitefield Main Road, Bhoruka Tech Park, Bengaluru",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/66603446-bd9f-11f1-bd5e-02ede2007fbe/m/63989c73-6aff-4d9c-ae44-0fe61321009a/622f8f18-e595-43af-aff2-7078b5e10402/80cd2d5c-289a-4aa8-a1d8-1c89ddf21ea7/slot/1.png",
+    "url": "https://www.cars24.com/buy-used-hyundai-venue-2019-cars-bangalore-10247670133/",
+    "deal_score": 99,
+    "deal_grade": "TOP DEAL",
+    "is_top_deal": true,
+    "verdict": "Reliable brand backing with steady resale demand",
+    "analysis": {
+      "pros": [
+        "Reliable brand backing with steady resale demand",
+        "Smooth city drivability",
+        "Predictable routine service upkeep"
+      ],
+      "cons": [
+        "Regular periodic maintenance required"
+      ],
+      "maintenance_yr": "\u20b95,500 - \u20b97,500",
+      "retention_pct": 0.72,
+      "est_buyback_2yr": 488062,
+      "total_loss_2yr": 189802,
+      "monthly_loss": 7908
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "Low mileage (29k km) \u00b7 well below market wear",
+        "pts": "+18 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "Recent 2019 generation \u00b7 BS6 compliant & low age wear",
+        "pts": "+16 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "5% under original retail value",
+        "pts": "+4 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
+        "pts": "+14 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Bangalore Resale Archetype",
+        "detail": "Sweet spot combo: post-2018 under 40k km, high-liquidity resale engine",
+        "pts": "+9 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 99/100 primarily driven by odometer & engine wear, vehicle age & generation.",
+    "ownership_review": {
+      "fuel_economy": "11-13 km/l (BLR City) \u00b7 16-18 km/l (Highway)",
+      "annual_maintenance": "\u20b96,000 - \u20b98,500 / yr",
+      "ride_comfort": "195mm ground clearance handles monsoon flooding and giant speed breakers with absolute confidence.",
+      "known_issues": "Slightly stiff rear suspension on sharp potholes; DCT automatic can heat up in standstill traffic.",
+      "bangalore_verdict": "Compact footprint with true SUV stance. Easy to park in Whitefield tech parks while soaking up cratered roads."
+    }
+  },
+  {
     "id": "c24_10215978141",
     "platform": "Cars24",
     "make": "KIA",
@@ -28578,89 +28578,6 @@
     }
   },
   {
-    "id": "c24_10236571151",
-    "platform": "Cars24",
-    "make": "Skoda",
-    "model": "KUSHAQ",
-    "variant": "STYLE 1.5L TSI MT",
-    "make_year": 2022,
-    "mileage": 37471,
-    "price": 1044307,
-    "orig_retail_price": 1047297,
-    "retail_discount_pct": 5,
-    "fuel_type": "Petrol",
-    "transmission": "Manual",
-    "category": "assured",
-    "hub": "GT World Mall, Bengaluru",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/63154562-a5e2-11f1-bd5e-02ede2007fbe/89b9c154-226d-42d5-9ca2-3a7983652251/b331d5b9-3cb0-46c2-bd17-fe7d3c2d68dd/47db91b5-e7b6-4100-b7c5-11361012c85b/slot/1.png",
-    "url": "https://www.cars24.com/buy-used-skoda-kushaq-2022-cars-bangalore-10236571151/",
-    "deal_score": 99,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 751901,
-      "total_loss_2yr": 292406,
-      "monthly_loss": 12184
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Low mileage (37k km) \u00b7 well below market wear",
-        "pts": "+18 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Modern 2022 model \u00b7 BS6 Phase 2 era & updated safety",
-        "pts": "+20 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "5% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Bangalore Resale Archetype",
-        "detail": "Sweet spot combo: post-2018 under 40k km",
-        "pts": "+5 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 99/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
-      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
-      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
-      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
-      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
-    }
-  },
-  {
     "id": "c24_10276373186",
     "platform": "Cars24",
     "make": "Maruti",
@@ -28814,89 +28731,6 @@
         "pillar": "Bangalore Resale Archetype",
         "detail": "Sweet spot combo: post-2018 under 40k km, high-liquidity resale engine",
         "pts": "+9 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 99/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
-      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
-      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
-      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
-      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
-    }
-  },
-  {
-    "id": "c24_10205375182",
-    "platform": "Cars24",
-    "make": "Volkswagen",
-    "model": "TAIGUN",
-    "variant": "COMFORTLINE 1.0 TSI MT",
-    "make_year": 2024,
-    "mileage": 21374,
-    "price": 937679,
-    "orig_retail_price": 953521,
-    "retail_discount_pct": 5,
-    "fuel_type": "Petrol",
-    "transmission": "Manual",
-    "category": "assured",
-    "hub": "GT World Mall, Bengaluru",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/b56bfe96-b686-11f1-bd5e-02ede2007fbe/e442d6b3-1e0f-48f4-b4f8-3fdae3e88b1e/291dd6f5-45ad-4387-a0c0-99d5e3d27701/8aa810a7-eac1-44e1-a294-c30b6c100a8f/slot/1.png",
-    "url": "https://www.cars24.com/buy-used-volkswagen-taigun-2024-cars-bangalore-10205375182/",
-    "deal_score": 99,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 675129,
-      "total_loss_2yr": 262550,
-      "monthly_loss": 10940
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Ultra-low odometer (21k km) \u00b7 pristine engine health",
-        "pts": "+24 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Modern 2024 model \u00b7 BS6 Phase 2 era & updated safety",
-        "pts": "+20 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "5% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Bangalore Resale Archetype",
-        "detail": "Sweet spot combo: post-2018 under 40k km",
-        "pts": "+5 pts",
         "type": "pos"
       }
     ],
@@ -30327,6 +30161,89 @@
     }
   },
   {
+    "id": "c24_10236571151",
+    "platform": "Cars24",
+    "make": "Skoda",
+    "model": "KUSHAQ",
+    "variant": "STYLE 1.5L TSI MT",
+    "make_year": 2022,
+    "mileage": 37471,
+    "price": 1044307,
+    "orig_retail_price": 1047297,
+    "retail_discount_pct": 5,
+    "fuel_type": "Petrol",
+    "transmission": "Manual",
+    "category": "assured",
+    "hub": "GT World Mall, Bengaluru",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/63154562-a5e2-11f1-bd5e-02ede2007fbe/89b9c154-226d-42d5-9ca2-3a7983652251/b331d5b9-3cb0-46c2-bd17-fe7d3c2d68dd/47db91b5-e7b6-4100-b7c5-11361012c85b/slot/1.png",
+    "url": "https://www.cars24.com/buy-used-skoda-kushaq-2022-cars-bangalore-10236571151/",
+    "deal_score": 99,
+    "deal_grade": "TOP DEAL",
+    "is_top_deal": true,
+    "verdict": "Reliable brand backing with steady resale demand",
+    "analysis": {
+      "pros": [
+        "Reliable brand backing with steady resale demand",
+        "Smooth city drivability",
+        "Predictable routine service upkeep"
+      ],
+      "cons": [
+        "Regular periodic maintenance required"
+      ],
+      "maintenance_yr": "\u20b95,500 - \u20b97,500",
+      "retention_pct": 0.72,
+      "est_buyback_2yr": 751901,
+      "total_loss_2yr": 292406,
+      "monthly_loss": 12184
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "Low mileage (37k km) \u00b7 well below market wear",
+        "pts": "+18 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "Modern 2022 model \u00b7 BS6 Phase 2 era & updated safety",
+        "pts": "+20 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "5% under original retail value",
+        "pts": "+4 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
+        "pts": "+14 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Bangalore Resale Archetype",
+        "detail": "Sweet spot combo: post-2018 under 40k km",
+        "pts": "+5 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 99/100 primarily driven by odometer & engine wear, vehicle age & generation.",
+    "ownership_review": {
+      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
+      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
+      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
+      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
+      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
+    }
+  },
+  {
     "id": "c24_10256070102",
     "platform": "Cars24",
     "make": "Hyundai",
@@ -30990,172 +30907,6 @@
       "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
       "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
       "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
-    }
-  },
-  {
-    "id": "c24_10286116198",
-    "platform": "Cars24",
-    "make": "Renault",
-    "model": "TRIBER",
-    "variant": "RXZ AMT",
-    "make_year": 2020,
-    "mileage": 28076,
-    "price": 546133,
-    "orig_retail_price": 569532,
-    "retail_discount_pct": 5,
-    "fuel_type": "Petrol",
-    "transmission": "Automatic",
-    "category": "assured",
-    "hub": "Gandhi Nagar",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/64bdc4be-d460-11f1-af2d-02ede2007fbe/77f65de9-4a89-4788-95de-b4c43c5097ee/493a55ab-60c3-4951-8934-3880ecd13ee6/057fb809-9d6a-445f-b50f-04f32bd3514a/slot/1.png",
-    "url": "https://www.cars24.com/buy-used-renault-triber-2020-cars-bangalore-10286116198/",
-    "deal_score": 97,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 393216,
-      "total_loss_2yr": 152917,
-      "monthly_loss": 6372
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Low mileage (28k km) \u00b7 well below market wear",
-        "pts": "+18 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Recent 2020 generation \u00b7 BS6 compliant & low age wear",
-        "pts": "+16 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "5% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Bangalore Resale Archetype",
-        "detail": "Sweet spot combo: post-2018 under 40k km",
-        "pts": "+5 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 97/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "11-13 km/l (BLR City) \u00b7 16-18 km/l (Highway)",
-      "annual_maintenance": "\u20b95,000 - \u20b96,500 / yr",
-      "ride_comfort": "182mm ground clearance with long suspension travel absorbs bad roads; modular 7-seater flexibility.",
-      "known_issues": "1.0L engine feels underpowered with full 7-passenger load on steep flyovers; verify clutch health.",
-      "bangalore_verdict": "Unbeatable space-per-rupee for Bangalore families needing 7-seater capability on a tight budget."
-    }
-  },
-  {
-    "id": "c24_10269771167",
-    "platform": "Cars24",
-    "make": "Hyundai",
-    "model": "VENUE",
-    "variant": "S 1.2",
-    "make_year": 2023,
-    "mileage": 29772,
-    "price": 765377,
-    "orig_retail_price": 810609,
-    "retail_discount_pct": 6,
-    "fuel_type": "CNG",
-    "transmission": "Manual",
-    "category": "assured",
-    "hub": "Whitefield Main Road, Bhoruka Tech Park, Bengaluru",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/07fea404-cbba-11f1-af2c-02ede2007fbe/m/4bf0db8b-e9aa-4297-abde-d54b74ddda90/7dd98ecf-82f2-4f0e-af88-ce75b90cb050/c3d46adb-9619-41c2-9c4a-392972a6cfb4/slot/1.png",
-    "url": "https://www.cars24.com/buy-used-hyundai-venue-2023-cars-bangalore-10269771167/",
-    "deal_score": 99,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 551071,
-      "total_loss_2yr": 214306,
-      "monthly_loss": 8929
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Low mileage (29k km) \u00b7 well below market wear",
-        "pts": "+18 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Modern 2023 model \u00b7 BS6 Phase 2 era & updated safety",
-        "pts": "+20 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "6% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Bangalore Resale Archetype",
-        "detail": "Sweet spot combo: post-2018 under 40k km, high-liquidity resale engine",
-        "pts": "+9 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 99/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "11-13 km/l (BLR City) \u00b7 16-18 km/l (Highway)",
-      "annual_maintenance": "\u20b96,000 - \u20b98,500 / yr",
-      "ride_comfort": "195mm ground clearance handles monsoon flooding and giant speed breakers with absolute confidence.",
-      "known_issues": "Slightly stiff rear suspension on sharp potholes; DCT automatic can heat up in standstill traffic.",
-      "bangalore_verdict": "Compact footprint with true SUV stance. Easy to park in Whitefield tech parks while soaking up cratered roads."
     }
   },
   {
@@ -56814,160 +56565,6 @@
     }
   },
   {
-    "id": "c24_10252890199",
-    "platform": "Cars24",
-    "make": "Renault",
-    "model": "Duster",
-    "variant": "110 PS RXZ DIESEL",
-    "make_year": 2015,
-    "mileage": 18700,
-    "price": 402152,
-    "orig_retail_price": 424500,
-    "retail_discount_pct": 5,
-    "fuel_type": "Diesel",
-    "transmission": "Manual",
-    "category": "assured",
-    "hub": "Bellahalli, Bengaluru",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/4818c824-4098-11f1-bd55-02ede2007fbe/749e8371-29d1-45be-9c02-e33691ab1ad3/e7e718c9-31fb-4106-abe5-133b54e0e4e3/61764481-0381-4707-8cb3-17caa833f126/slot/camera-SRP.png",
-    "url": "https://www.cars24.com/buy-used-renault-duster-2015-cars-bangalore-10252890199/",
-    "deal_score": 87,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 289549,
-      "total_loss_2yr": 112603,
-      "monthly_loss": 4692
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Ultra-low odometer (18k km) \u00b7 pristine engine health",
-        "pts": "+24 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "2015 model \u00b7 mid-life depreciation curve",
-        "pts": "+5 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "5% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 87/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
-      "annual_maintenance": "\u20b95,500 - \u20b97,500 / yr",
-      "ride_comfort": "Magic carpet ride: absorbs cratered roads and broken tarmac better than cars twice its price.",
-      "known_issues": "Plastic interior trim rattles over time; check AC cooling efficiency and clutch hydraulics.",
-      "bangalore_verdict": "Best suspension setup for Bangalore's worst roads. Glides over potholes without shaking the cabin."
-    }
-  },
-  {
-    "id": "c24_10237477130",
-    "platform": "Cars24",
-    "make": "Ford",
-    "model": "FREESTYLE",
-    "variant": "TITANIUM 1.2 PETROL",
-    "make_year": 2019,
-    "mileage": 56972,
-    "price": 428575,
-    "orig_retail_price": 438680,
-    "retail_discount_pct": 5,
-    "fuel_type": "Petrol",
-    "transmission": "Manual",
-    "category": "assured",
-    "hub": "Bellahalli, Bengaluru",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/ae8a6dd2-b67d-11f1-bd5e-02ede2007fbe/09b092dc-c32d-4dec-9038-44ed353df272/54b7ad89-6369-41d3-a595-585b2553bfd2/3a6c348e-6291-4d12-8097-d92de58704d3/slot/1.png",
-    "url": "https://www.cars24.com/buy-used-ford-freestyle-2019-cars-bangalore-10237477130/",
-    "deal_score": 86,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 308574,
-      "total_loss_2yr": 120001,
-      "monthly_loss": 5000
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Moderate mileage (56k km) \u00b7 healthy mechanical life",
-        "pts": "+12 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Recent 2019 generation \u00b7 BS6 compliant & low age wear",
-        "pts": "+16 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "5% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 86/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
-      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
-      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
-      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
-      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
-    }
-  },
-  {
     "id": 33580035,
     "platform": "Spinny",
     "make": "Tata",
@@ -66793,85 +66390,6 @@
       "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
       "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
       "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
-    }
-  },
-  {
-    "id": "c24_10244075179",
-    "platform": "Cars24",
-    "make": "Tata",
-    "model": "Tiago",
-    "variant": "XT PETROL",
-    "make_year": 2017,
-    "mileage": 51425,
-    "price": 394587,
-    "orig_retail_price": 411296,
-    "retail_discount_pct": 5,
-    "fuel_type": "Petrol",
-    "transmission": "Manual",
-    "category": "assured",
-    "hub": "Bellahalli, Bengaluru",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/f0ebb30c-d0bd-11f1-af2d-02ede2007fbe/d3f11ea7-fb24-4927-9d1e-0fc0d50332e4/e01a95ed-30f9-489d-84fd-4f539451ee0b/fa0b9ed8-3215-490f-bd3d-8273f11df9f7/slot/1.png",
-    "url": "https://www.cars24.com/buy-used-tata-tiago-2017-cars-bangalore-10244075179/",
-    "deal_score": 81,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Solid 4-star Global NCAP crash safety",
-    "analysis": {
-      "pros": [
-        "Solid 4-star Global NCAP crash safety",
-        "Best-in-class 8-speaker Harman sound system",
-        "Thick European sheet metal feel"
-      ],
-      "cons": [
-        "3-cylinder Revotron engine vibrates at idle",
-        "Tata service center experience varies",
-        "Clutch has slightly long travel"
-      ],
-      "maintenance_yr": "\u20b95,000 - \u20b96,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 284103,
-      "total_loss_2yr": 110484,
-      "monthly_loss": 4604
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Moderate mileage (51k km) \u00b7 healthy mechanical life",
-        "pts": "+12 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Solid 2017 manufacture \u00b7 modern chassis",
-        "pts": "+11 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "5% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 81/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "12-14 km/l (BLR City) \u00b7 18-20 km/l (Highway)",
-      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
-      "ride_comfort": "Solid build quality that feels much safer than Maruti rivals; stable at highway speeds.",
-      "known_issues": "3-cylinder engine vibration at idle; check power window switches and front suspension bushes.",
-      "bangalore_verdict": "Safe, sturdy entry hatchback that offers great value and peace of mind on both city and highway trips."
     }
   },
   {
@@ -88119,6 +87637,83 @@
     }
   },
   {
+    "id": "c24_10247275179",
+    "platform": "Cars24",
+    "make": "Tata",
+    "model": "Nano",
+    "variant": "TWIST XT",
+    "make_year": 2014,
+    "mileage": 51924,
+    "price": 126092,
+    "orig_retail_price": 136227,
+    "retail_discount_pct": 7,
+    "fuel_type": "Petrol",
+    "transmission": "Manual",
+    "category": "assured",
+    "hub": "Whitefield Main Road, Bhoruka Tech Park, Bengaluru",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/1a6b1cae-9f18-11f1-bd5d-02ede2007fbe/b82be81a-07d8-46bb-821f-d7b9ce9e86a4/82a2fa63-4c07-4ae4-bcd9-aa9c9d6f994b/9e2605a3-dff5-482e-a66e-6ee73207ef90/slot/1.png",
+    "url": "https://www.cars24.com/buy-used-tata-nano-2014-cars-bangalore-10247275179/",
+    "deal_score": 64,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Reliable brand backing with steady resale demand",
+    "analysis": {
+      "pros": [
+        "Reliable brand backing with steady resale demand",
+        "Smooth city drivability",
+        "Predictable routine service upkeep"
+      ],
+      "cons": [
+        "Regular periodic maintenance required"
+      ],
+      "maintenance_yr": "\u20b95,500 - \u20b97,500",
+      "retention_pct": 0.72,
+      "est_buyback_2yr": 90786,
+      "total_loss_2yr": 35306,
+      "monthly_loss": 1471
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "Moderate mileage (51k km) \u00b7 healthy mechanical life",
+        "pts": "+12 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "2014 vintage \u00b7 older generation approaching 15-year fitness",
+        "pts": "-6 pts",
+        "type": "neg"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "7% under original retail value",
+        "pts": "+4 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
+        "pts": "+14 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 64/100 primarily driven by odometer & engine wear, depreciation arbitrage.",
+    "ownership_review": {
+      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
+      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
+      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
+      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
+      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
+    }
+  },
+  {
     "id": 32302166,
     "platform": "Spinny",
     "make": "Hyundai",
@@ -88683,89 +88278,6 @@
       "ride_comfort": "200mm ground clearance with dynamic sporty steering; feels indestructible over rough patches.",
       "known_issues": "Ford official service exists but parts take 3-5 days to arrive; inspect timing belt condition on Dragon petrols.",
       "bangalore_verdict": "Original compact SUV with rock-solid dynamics. Tremendous second-hand value if serviced regularly."
-    }
-  },
-  {
-    "id": 33547264,
-    "platform": "Spinny",
-    "make": "Hyundai",
-    "model": "Elite i20",
-    "variant": "Asta 1.2",
-    "make_year": 2016,
-    "mileage": 71451,
-    "price": 553000.0,
-    "orig_retail_price": 940000,
-    "retail_discount_pct": 41,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "assured",
-    "hub": "Spinny Car Hub, Electronic City, Bangalore",
-    "img": "https://assets.spinny.com/sp-file-system/public/2026-11-03/cfb0d3fa622b497f8519570a1d0a4188/raw/file.JPG",
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/elite-i20/asta-12-electronic-city-phase-i-2016/33547264/",
-    "deal_score": 78,
-    "deal_grade": "VALUE PICK",
-    "is_top_deal": true,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 398160,
-      "total_loss_2yr": 154840.0,
-      "monthly_loss": 6452
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Standard city mileage (71k km)",
-        "pts": "+6 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "2016 model \u00b7 mid-life depreciation curve",
-        "pts": "+5 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "Healthy 41% savings from original MSRP",
-        "pts": "+9 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Bangalore Resale Archetype",
-        "detail": "Sweet spot combo: high-liquidity resale engine",
-        "pts": "+4 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 78/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "10-12 km/l (BLR City) \u00b7 15-17 km/l (Highway)",
-      "annual_maintenance": "\u20b96,000 - \u20b98,000 / yr",
-      "ride_comfort": "Solid European-like highway composure and well-damped suspension; comfortable rear bench with rear AC vents.",
-      "known_issues": "Slightly thirsty 1.2L petrol in Silk Board traffic (9-10 km/l); check steering rack end play.",
-      "bangalore_verdict": "Feature-packed premium hatchback that feels like a segment above on Mysore highway road trips."
     }
   },
   {
@@ -90317,6 +89829,83 @@
       "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
       "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
       "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
+    }
+  },
+  {
+    "id": "c24_10278766789",
+    "platform": "Cars24",
+    "make": "Renault",
+    "model": "Duster",
+    "variant": "85 PS RXE DIESEL",
+    "make_year": 2015,
+    "mileage": 77065,
+    "price": 369522,
+    "orig_retail_price": 378059,
+    "retail_discount_pct": 5,
+    "fuel_type": "Diesel",
+    "transmission": "Manual",
+    "category": "assured",
+    "hub": "Bellahalli, Bengaluru",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/3e40cc05-486a-4e38-9cdb-c1a361d59fef/6e7c6447-3d4e-4971-85e0-1d60ea84aa70/slot/thumbnail.png",
+    "url": "https://www.cars24.com/buy-used-renault-duster-2015-cars-bangalore-10278766789/",
+    "deal_score": 69,
+    "deal_grade": "VALUE PICK",
+    "is_top_deal": true,
+    "verdict": "Reliable brand backing with steady resale demand",
+    "analysis": {
+      "pros": [
+        "Reliable brand backing with steady resale demand",
+        "Smooth city drivability",
+        "Predictable routine service upkeep"
+      ],
+      "cons": [
+        "Regular periodic maintenance required"
+      ],
+      "maintenance_yr": "\u20b95,500 - \u20b97,500",
+      "retention_pct": 0.72,
+      "est_buyback_2yr": 266056,
+      "total_loss_2yr": 103466,
+      "monthly_loss": 4311
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "Standard city mileage (77k km)",
+        "pts": "+6 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "2015 model \u00b7 mid-life depreciation curve",
+        "pts": "+5 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "5% under original retail value",
+        "pts": "+4 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
+        "pts": "+14 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 69/100 primarily driven by odometer & engine wear, vehicle age & generation.",
+    "ownership_review": {
+      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
+      "annual_maintenance": "\u20b95,500 - \u20b97,500 / yr",
+      "ride_comfort": "Magic carpet ride: absorbs cratered roads and broken tarmac better than cars twice its price.",
+      "known_issues": "Plastic interior trim rattles over time; check AC cooling efficiency and clutch hydraulics.",
+      "bangalore_verdict": "Best suspension setup for Bangalore's worst roads. Glides over potholes without shaking the cabin."
     }
   },
   {
@@ -95959,6 +95548,83 @@
     }
   },
   {
+    "id": "c24_10251665708",
+    "platform": "Cars24",
+    "make": "Renault",
+    "model": "Duster",
+    "variant": "85 PS RXE DIESEL",
+    "make_year": 2015,
+    "mileage": 87162,
+    "price": 363842,
+    "orig_retail_price": 510000,
+    "retail_discount_pct": 29,
+    "fuel_type": "Diesel",
+    "transmission": "Manual",
+    "category": "assured",
+    "hub": "Bellahalli, Bengaluru",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/796a7460-3704-11f1-bd53-02ede2007fbe/m/f4c898f5-eea8-4b62-8b66-8c7ccacafab2/c511adc8-93bc-4197-b3cb-b012ed5783b1/b57a04d6-d389-42be-a57a-e70f411cb939/slot/1.png",
+    "url": "https://www.cars24.com/buy-used-renault-duster-2015-cars-bangalore-10251665708/",
+    "deal_score": 55,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Reliable brand backing with steady resale demand",
+    "analysis": {
+      "pros": [
+        "Reliable brand backing with steady resale demand",
+        "Smooth city drivability",
+        "Predictable routine service upkeep"
+      ],
+      "cons": [
+        "Regular periodic maintenance required"
+      ],
+      "maintenance_yr": "\u20b95,500 - \u20b97,500",
+      "retention_pct": 0.72,
+      "est_buyback_2yr": 261966,
+      "total_loss_2yr": 101876,
+      "monthly_loss": 4245
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "High mileage (87k km) \u00b7 nearing major suspension service",
+        "pts": "-8 pts",
+        "type": "neg"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "2015 model \u00b7 mid-life depreciation curve",
+        "pts": "+5 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "29% under original retail value",
+        "pts": "+4 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
+        "pts": "+14 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 55/100 primarily driven by vehicle age & generation, depreciation arbitrage.",
+    "ownership_review": {
+      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
+      "annual_maintenance": "\u20b95,500 - \u20b97,500 / yr",
+      "ride_comfort": "Magic carpet ride: absorbs cratered roads and broken tarmac better than cars twice its price.",
+      "known_issues": "Plastic interior trim rattles over time; check AC cooling efficiency and clutch hydraulics.",
+      "bangalore_verdict": "Best suspension setup for Bangalore's worst roads. Glides over potholes without shaking the cabin."
+    }
+  },
+  {
     "id": "c24_16596994193",
     "platform": "Cars24",
     "make": "Maruti",
@@ -96529,83 +96195,6 @@
       "ride_comfort": "Solid European-like highway composure and well-damped suspension; comfortable rear bench with rear AC vents.",
       "known_issues": "Slightly thirsty 1.2L petrol in Silk Board traffic (9-10 km/l); check steering rack end play.",
       "bangalore_verdict": "Feature-packed premium hatchback that feels like a segment above on Mysore highway road trips."
-    }
-  },
-  {
-    "id": "c24_10289875173",
-    "platform": "Cars24",
-    "make": "Nissan",
-    "model": "Micra",
-    "variant": "XV CVT",
-    "make_year": 2014,
-    "mileage": 65478,
-    "price": 364831,
-    "orig_retail_price": 372776,
-    "retail_discount_pct": 5,
-    "fuel_type": "Petrol",
-    "transmission": "Automatic",
-    "category": "assured",
-    "hub": "Whitefield Main Road, Bhoruka Tech Park, Bengaluru",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/62935874-d21d-11f1-af2d-02ede2007fbe/472b8542-46a6-4944-9acf-45dc5ac4f855/54a2cb91-0881-42b8-bdf5-7818fb077e18/431a70fb-0a94-4248-8db2-64ce62a2017b/slot/1.png",
-    "url": "https://www.cars24.com/buy-used-nissan-micra-2014-cars-bangalore-10289875173/",
-    "deal_score": 58,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 262678,
-      "total_loss_2yr": 102153,
-      "monthly_loss": 4256
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Standard city mileage (65k km)",
-        "pts": "+6 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "2014 vintage \u00b7 older generation approaching 15-year fitness",
-        "pts": "-6 pts",
-        "type": "neg"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "5% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 58/100 primarily driven by odometer & engine wear, depreciation arbitrage.",
-    "ownership_review": {
-      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
-      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
-      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
-      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
-      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
     }
   },
   {
@@ -102382,6 +101971,83 @@
     }
   },
   {
+    "id": "c24_10296793190",
+    "platform": "Cars24",
+    "make": "Tata",
+    "model": "Nano",
+    "variant": "TWIST XT",
+    "make_year": 2014,
+    "mileage": 89598,
+    "price": 116704,
+    "orig_retail_price": 125790,
+    "retail_discount_pct": 7,
+    "fuel_type": "Petrol",
+    "transmission": "Manual",
+    "category": "assured",
+    "hub": "Bellahalli, Bengaluru",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/a35e7b1e-9699-11f1-bd5d-02ede2007fbe/m/ecb93188-60ce-40e5-b82e-7af7e92ddf77/37fc3145-b39d-4e5e-8041-7b2565e85361/25c5c548-2a5a-43ba-aad3-988f57c48838/slot/1.png",
+    "url": "https://www.cars24.com/buy-used-tata-nano-2014-cars-bangalore-10296793190/",
+    "deal_score": 44,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Reliable brand backing with steady resale demand",
+    "analysis": {
+      "pros": [
+        "Reliable brand backing with steady resale demand",
+        "Smooth city drivability",
+        "Predictable routine service upkeep"
+      ],
+      "cons": [
+        "Regular periodic maintenance required"
+      ],
+      "maintenance_yr": "\u20b95,500 - \u20b97,500",
+      "retention_pct": 0.72,
+      "est_buyback_2yr": 84027,
+      "total_loss_2yr": 32677,
+      "monthly_loss": 1362
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "High mileage (89k km) \u00b7 nearing major suspension service",
+        "pts": "-8 pts",
+        "type": "neg"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "2014 vintage \u00b7 older generation approaching 15-year fitness",
+        "pts": "-6 pts",
+        "type": "neg"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "7% under original retail value",
+        "pts": "+4 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
+        "pts": "+14 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 44/100 primarily driven by depreciation arbitrage, warranty & inspection.",
+    "ownership_review": {
+      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
+      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
+      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
+      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
+      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
+    }
+  },
+  {
     "id": "c24_10298778153",
     "platform": "Cars24",
     "make": "Fiat",
@@ -103010,6 +102676,85 @@
       {
         "pillar": "Depreciation Arbitrage",
         "detail": "5% under original retail value",
+        "pts": "+4 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
+        "pts": "+14 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 58/100 primarily driven by odometer & engine wear, depreciation arbitrage.",
+    "ownership_review": {
+      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
+      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
+      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
+      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
+      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
+    }
+  },
+  {
+    "id": "c24_10254797160",
+    "platform": "Cars24",
+    "make": "Ford",
+    "model": "Figo",
+    "variant": "TITANIUM 1.2 PETROL",
+    "make_year": 2013,
+    "mileage": 70785,
+    "price": 224170,
+    "orig_retail_price": 237240,
+    "retail_discount_pct": 6,
+    "fuel_type": "Petrol",
+    "transmission": "Manual",
+    "category": "assured",
+    "hub": "Vaishnavi Sapphire Centre, Yeswanthpur",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/05fa97a0-8419-11f1-bd58-02ede2007fbe/fcf2d825-fc1d-4d05-83d0-135593ae0873/9e25f2cd-5094-4d92-9b16-2084e75caf57/5bc1a03b-6d06-40b9-a0f3-a04cc6e84012/slot/camera-SRP.png",
+    "url": "https://www.cars24.com/buy-used-ford-figo-2013-cars-bangalore-10254797160/",
+    "deal_score": 58,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Tank-like European build quality & safety",
+    "analysis": {
+      "pros": [
+        "Tank-like European build quality & safety",
+        "Plush suspension over Bangalore potholes",
+        "Excellent highway high-speed stability"
+      ],
+      "cons": [
+        "Ford service network is independent/FNG reliant",
+        "Weak low-end torque in 2nd gear traffic",
+        "Slightly heavier clutch"
+      ],
+      "maintenance_yr": "\u20b95,500 - \u20b97,000",
+      "retention_pct": 0.67,
+      "est_buyback_2yr": 150194,
+      "total_loss_2yr": 73976,
+      "monthly_loss": 3082
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "Standard city mileage (70k km)",
+        "pts": "+6 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "2013 vintage \u00b7 older generation approaching 15-year fitness",
+        "pts": "-6 pts",
+        "type": "neg"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "6% under original retail value",
         "pts": "+4 pts",
         "type": "pos"
       },
@@ -107770,6 +107515,85 @@
     }
   },
   {
+    "id": "c24_10227319175",
+    "platform": "Cars24",
+    "make": "Ford",
+    "model": "Ecosport",
+    "variant": "TITANIUM 1.0L ECOBOOST",
+    "make_year": 2015,
+    "mileage": 104015,
+    "price": 378419,
+    "orig_retail_price": 398320,
+    "retail_discount_pct": 5,
+    "fuel_type": "Petrol",
+    "transmission": "Manual",
+    "category": "assured",
+    "hub": "Whitefield Main Road, Bhoruka Tech Park, Bengaluru",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/8724295e-d3ce-11f1-af2d-02ede2007fbe/20a7e1c1-80f6-497c-ae6f-914b0b09b575/7383ebe7-9f2c-4314-bfef-6bb56dc7700e/76567862-b4c7-435f-a034-4ca0babf8c30/slot/1.png",
+    "url": "https://www.cars24.com/buy-used-ford-ecosport-2015-cars-bangalore-10227319175/",
+    "deal_score": 55,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Heavy tank-like body integrity and solid doors",
+    "analysis": {
+      "pros": [
+        "Heavy tank-like body integrity and solid doors",
+        "Punchy performance with direct steering feel",
+        "High 200mm ground clearance"
+      ],
+      "cons": [
+        "Stiff low-speed suspension",
+        "Tight rear legroom",
+        "Ford service is independent garage reliant"
+      ],
+      "maintenance_yr": "\u20b96,500 - \u20b98,500",
+      "retention_pct": 0.7,
+      "est_buyback_2yr": 264893,
+      "total_loss_2yr": 113526,
+      "monthly_loss": 4730
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "High mileage (104k km) \u00b7 nearing major suspension service",
+        "pts": "-8 pts",
+        "type": "neg"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "2015 model \u00b7 mid-life depreciation curve",
+        "pts": "+5 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "5% under original retail value",
+        "pts": "+4 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
+        "pts": "+14 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 55/100 primarily driven by vehicle age & generation, depreciation arbitrage.",
+    "ownership_review": {
+      "fuel_economy": "11-13 km/l (BLR City) \u00b7 15-17 km/l (Highway)",
+      "annual_maintenance": "\u20b97,000 - \u20b910,000 / yr",
+      "ride_comfort": "200mm ground clearance with dynamic sporty steering; feels indestructible over rough patches.",
+      "known_issues": "Ford official service exists but parts take 3-5 days to arrive; inspect timing belt condition on Dragon petrols.",
+      "bangalore_verdict": "Original compact SUV with rock-solid dynamics. Tremendous second-hand value if serviced regularly."
+    }
+  },
+  {
     "id": "c24_10281274171",
     "platform": "Cars24",
     "make": "Honda",
@@ -107852,85 +107676,6 @@
       "ride_comfort": "Huge 420L boot and comfortable suspension; CVT automatic is butter-smooth in crawling traffic.",
       "known_issues": "Lightweight steering at triple digit speeds; check brake disc rotor scoring.",
       "bangalore_verdict": "Extremely reliable compact sedan with Honda mechanical dependability and stress-free ownership."
-    }
-  },
-  {
-    "id": "c24_10227319175",
-    "platform": "Cars24",
-    "make": "Ford",
-    "model": "Ecosport",
-    "variant": "TITANIUM 1.0L ECOBOOST",
-    "make_year": 2015,
-    "mileage": 104015,
-    "price": 378419,
-    "orig_retail_price": 398320,
-    "retail_discount_pct": 5,
-    "fuel_type": "Petrol",
-    "transmission": "Manual",
-    "category": "assured",
-    "hub": "Whitefield Main Road, Bhoruka Tech Park, Bengaluru",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/8724295e-d3ce-11f1-af2d-02ede2007fbe/20a7e1c1-80f6-497c-ae6f-914b0b09b575/7383ebe7-9f2c-4314-bfef-6bb56dc7700e/76567862-b4c7-435f-a034-4ca0babf8c30/slot/1.png",
-    "url": "https://www.cars24.com/buy-used-ford-ecosport-2015-cars-bangalore-10227319175/",
-    "deal_score": 55,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Heavy tank-like body integrity and solid doors",
-    "analysis": {
-      "pros": [
-        "Heavy tank-like body integrity and solid doors",
-        "Punchy performance with direct steering feel",
-        "High 200mm ground clearance"
-      ],
-      "cons": [
-        "Stiff low-speed suspension",
-        "Tight rear legroom",
-        "Ford service is independent garage reliant"
-      ],
-      "maintenance_yr": "\u20b96,500 - \u20b98,500",
-      "retention_pct": 0.7,
-      "est_buyback_2yr": 264893,
-      "total_loss_2yr": 113526,
-      "monthly_loss": 4730
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "High mileage (104k km) \u00b7 nearing major suspension service",
-        "pts": "-8 pts",
-        "type": "neg"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "2015 model \u00b7 mid-life depreciation curve",
-        "pts": "+5 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "5% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 55/100 primarily driven by vehicle age & generation, depreciation arbitrage.",
-    "ownership_review": {
-      "fuel_economy": "11-13 km/l (BLR City) \u00b7 15-17 km/l (Highway)",
-      "annual_maintenance": "\u20b97,000 - \u20b910,000 / yr",
-      "ride_comfort": "200mm ground clearance with dynamic sporty steering; feels indestructible over rough patches.",
-      "known_issues": "Ford official service exists but parts take 3-5 days to arrive; inspect timing belt condition on Dragon petrols.",
-      "bangalore_verdict": "Original compact SUV with rock-solid dynamics. Tremendous second-hand value if serviced regularly."
     }
   },
   {
@@ -108354,6 +108099,89 @@
       "ride_comfort": "Plush low-speed damping over broken tarmac; 163mm ground clearance needs gentle angling on huge humps.",
       "known_issues": "Steering column rattle over rumble strips; inspect clutch plate wear from bumper-to-bumper ORR crawling.",
       "bangalore_verdict": "Bangalore's gold standard commuter: instant parts availability at any FNG and fastest resale turnaround."
+    }
+  },
+  {
+    "id": "c24_10222408781",
+    "platform": "Cars24",
+    "make": "Hyundai",
+    "model": "Verna",
+    "variant": "FLUIDIC VTVT 1.6 EX AT",
+    "make_year": 2013,
+    "mileage": 92978,
+    "price": 323130,
+    "orig_retail_price": 341417,
+    "retail_discount_pct": 5,
+    "fuel_type": "Petrol",
+    "transmission": "Automatic",
+    "category": "assured",
+    "hub": "Bellahalli, Bengaluru",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/8d5ca426-9d16-11f0-bd45-02ede2007fbe/m/3726fd59-e20e-4455-89ca-f1026839eb4c/aec90a50-d3da-4c07-a536-c16ec1f10459/a4fd0767-4b1a-46ec-809e-9a86e0690be6/slot/camera-SRP.png",
+    "url": "https://www.cars24.com/buy-used-hyundai-verna-2013-cars-bangalore-10222408781/",
+    "deal_score": 48,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Reliable brand backing with steady resale demand",
+    "analysis": {
+      "pros": [
+        "Reliable brand backing with steady resale demand",
+        "Smooth city drivability",
+        "Predictable routine service upkeep"
+      ],
+      "cons": [
+        "Regular periodic maintenance required"
+      ],
+      "maintenance_yr": "\u20b95,500 - \u20b97,500",
+      "retention_pct": 0.72,
+      "est_buyback_2yr": 232654,
+      "total_loss_2yr": 90476,
+      "monthly_loss": 3770
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "High mileage (92k km) \u00b7 nearing major suspension service",
+        "pts": "-8 pts",
+        "type": "neg"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "2013 vintage \u00b7 older generation approaching 15-year fitness",
+        "pts": "-6 pts",
+        "type": "neg"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "5% under original retail value",
+        "pts": "+4 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
+        "pts": "+14 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Bangalore Resale Archetype",
+        "detail": "Sweet spot combo: high-liquidity resale engine",
+        "pts": "+4 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 48/100 primarily driven by depreciation arbitrage, warranty & inspection.",
+    "ownership_review": {
+      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
+      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
+      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
+      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
+      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
     }
   },
   {
