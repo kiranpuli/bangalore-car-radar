@@ -1902,7 +1902,7 @@
         <span>🔔 Alerts</span>
         <span id="badge-alerts-count" class="alert-count-pill">0</span>
       </button>
-      <button class="nav-btn push-alerts-btn" onclick="openPushModal()" title="Instant Mobile Push Alerts">
+      <button class="nav-btn push-alerts-btn" id="btn-open-push" onclick="openPushModal()" title="Instant Mobile Push Alerts">
         <span>📲 Push</span>
       </button>
       <button class="nav-btn" onclick="scrollToFilters()">Filters</button>
@@ -2227,21 +2227,34 @@
           </p>
         </div>
 
-        <a href="https://ntfy.sh/kiran-car-radar" target="_blank" rel="noopener noreferrer" class="cta-primary-btn" style="text-decoration:none; display:flex; justify-content:center; align-items:center; gap:8px; padding:12px; font-size:13.5px; font-weight:700;">
-          <span>📱 Open on Phone to Subscribe (ntfy.sh/kiran-car-radar)</span>
-          <span>&rarr;</span>
-        </a>
-
-        <div style="background:var(--bg-subsurface); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:12px 14px; display:flex; flex-direction:column; gap:8px;">
-          <span class="caption-5" style="color:var(--text-subtle); text-transform:uppercase; font-weight:700; font-family:var(--font-mono);">How to Subscribe in 30 Seconds</span>
-          <div style="font-size:12px; color:var(--text-body); line-height:1.5;">
-            <strong>iPhone (iOS):</strong> Tap the link above in Safari &rarr; Tap "Subscribe", or install the free <code>ntfy</code> app from App Store & subscribe to <code>kiran-car-radar</code>.<br/>
-            <strong>Android:</strong> Tap the link above in Chrome &rarr; Tap "Subscribe", or install <code>ntfy</code> from Google Play Store.
+        <div style="display:flex; flex-direction:column; align-items:center; gap:10px; background:var(--bg-subsurface); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:14px; text-align:center;">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&amp;margin=6&amp;data=https://ntfy.sh/kiran-car-radar" alt="Scan with Samsung S25 Ultra Camera" style="border-radius:10px; border:1px solid var(--border-color); width:130px; height:130px; background:#fff; padding:4px;" />
+          <div style="font-size:12px; color:var(--text-muted);">
+            Point your <strong>Samsung S25 Ultra camera</strong> at this QR code, or use the direct buttons below:
           </div>
         </div>
 
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a href="https://ntfy.sh/kiran-car-radar" target="_blank" rel="noopener noreferrer" class="cta-primary-btn" style="text-decoration:none; display:flex; justify-content:center; align-items:center; gap:8px; padding:12px; font-size:13.5px; font-weight:700;">
+            <span>📱 1-Tap Browser Push (Open ntfy.sh/kiran-car-radar)</span>
+            <span>&rarr;</span>
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank" rel="noopener noreferrer" class="nav-btn" style="text-decoration:none; display:flex; justify-content:center; align-items:center; gap:8px; padding:10px; font-size:12.5px; font-weight:600; background:rgba(59,130,246,0.1); border-color:rgba(59,130,246,0.3); color:#60A5FA;">
+            <span>🤖 Google Play Store: Install Free ntfy App (Topic: kiran-car-radar)</span>
+            <span>↗</span>
+          </a>
+        </div>
+
+        <div style="background:var(--bg-subsurface); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:12px 14px; display:flex; flex-direction:column; gap:6px;">
+          <span class="caption-5" style="color:var(--text-subtle); text-transform:uppercase; font-weight:700; font-family:var(--font-mono);">Samsung S25 Ultra Setup (Under 1 Minute)</span>
+          <ol style="margin:0; padding-left:18px; font-size:12px; color:var(--text-body); line-height:1.6;">
+            <li><strong>Browser push (Chrome / Samsung Internet):</strong> Tap the blue button above &rarr; Tap <strong>Subscribe</strong> &rarr; When Android asks, tap <strong>Allow</strong>.</li>
+            <li><strong>Or Android App (Play Store):</strong> Install <strong>ntfy</strong> &rarr; Tap <code>+</code> &rarr; Type <code>kiran-car-radar</code> &rarr; Tap <strong>Subscribe</strong>.</li>
+          </ol>
+        </div>
+
         <button type="button" class="nav-btn" onclick="sendTestPushFromBrowser()" style="width:100%; justify-content:center; padding:10px; font-size:12.5px; font-weight:600;">
-          <span>⚡ Send Test Push Notification to My Phone</span>
+          <span>⚡ Send Live Test Push Notification to Phone</span>
         </button>
         <div id="push-test-result" style="display:none; font-size:12px; font-family:var(--font-mono); text-align:center;"></div>
       </div>
