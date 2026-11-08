@@ -884,39 +884,34 @@ html_content = """<!DOCTYPE html>
       margin-bottom: 8px;
     }
 
-        /* Unified Filter Workbench (Cohesive, Type-Specific Controls) */
+            /* Minimal Visual System (elayadesign/ai-design-skills) */
     .filter-deck {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-xl);
-      padding: 14px 16px;
-      margin-bottom: var(--sp-200);
+      padding: 12px 14px;
+      margin-bottom: 10px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      gap: 10px;
     }
-
-    /* Tier 1: Search, Curated Presets, BMW Advisory & Sort */
     .deck-row-primary {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
     }
-
     .deck-search-wrap {
-      flex: 1 1 240px;
-      min-width: 200px;
+      flex: 1 1 200px;
       position: relative;
       display: flex;
       align-items: center;
     }
     .search-icon-svg {
       position: absolute;
-      left: 12px;
-      width: 16px;
-      height: 16px;
+      left: 10px;
+      width: 15px;
+      height: 15px;
       color: var(--text-subtle);
       pointer-events: none;
     }
@@ -924,97 +919,64 @@ html_content = """<!DOCTYPE html>
       width: 100%;
       background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-pill);
       color: var(--text-primary);
       font-family: var(--font-sans);
-      font-size: 13.5px;
-      padding: 8px 32px 8px 36px;
+      font-size: 13px;
+      padding: 7px 30px 7px 32px;
       outline: none;
-      transition: all var(--dur-normal) var(--ease-base);
+      transition: border-color var(--dur-fast) var(--ease-base);
     }
     .deck-search-input:focus {
       border-color: var(--accent-blue);
-      box-shadow: 0 0 0 2px var(--accent-blue-bg);
-      background: #11141B;
     }
     .search-clear-btn {
       position: absolute;
-      right: 10px;
+      right: 9px;
       background: transparent;
       border: none;
       color: var(--text-subtle);
-      font-size: 13px;
+      font-size: 12px;
       cursor: pointer;
       display: none;
-      padding: 3px;
     }
-    .search-clear-btn:hover {
-      color: var(--text-primary);
-    }
-
-    /* Curated Intent Scope Switcher */
     .deck-segmented-scope {
       display: inline-flex;
       align-items: center;
       background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-pill);
-      padding: 3px;
+      padding: 2.5px;
       gap: 2px;
     }
     .scope-segment {
       background: transparent;
-      border: 1px solid transparent;
+      border: none;
       color: var(--text-muted);
       font-size: 12px;
-      font-weight: 600;
-      padding: 6px 13px;
+      font-weight: 500;
+      padding: 5px 12px;
       border-radius: var(--radius-pill);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      transition: all 180ms cubic-bezier(0.22, 1, 0.36, 1);
-      user-select: none;
+      gap: 5px;
+      transition: all var(--dur-fast) var(--ease-base);
       white-space: nowrap;
     }
     .scope-segment:hover {
       color: var(--text-primary);
     }
-    .scope-segment.active {
-      background: #252833;
-      border-color: var(--border-focus);
-      color: #FFFFFF;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    }
-    .scope-segment.active.curated {
-      background: rgba(245, 158, 11, 0.14);
-      border-color: rgba(245, 158, 11, 0.5);
-      color: #FBBF24;
-    }
-    .scope-icon {
-      font-size: 13px;
-      line-height: 1;
+    .scope-segment.active, .scope-segment.active.curated {
+      background: #FFFFFF;
+      color: #000000;
+      font-weight: 600;
     }
     .scope-count {
-      background: rgba(255, 255, 255, 0.08);
       font-family: var(--font-mono);
       font-size: 10px;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: var(--radius-pill);
-      color: var(--text-muted);
+      opacity: 0.7;
     }
-    .scope-segment.active.curated .scope-count {
-      background: rgba(245, 158, 11, 0.25);
-      color: #FBBF24;
-    }
-    .scope-segment.active .scope-count {
-      background: rgba(255, 255, 255, 0.2);
-      color: #FFFFFF;
-    }
-
-    /* Right Deck Actions */
     .deck-actions-right {
       display: inline-flex;
       align-items: center;
@@ -1024,314 +986,366 @@ html_content = """<!DOCTYPE html>
     .deck-btn-bmw {
       background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
-      color: #F8FAFC;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 7px 12px;
-      border-radius: var(--radius-md);
+      color: var(--text-body);
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 6px 11px;
+      border-radius: var(--radius-pill);
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 180ms ease;
       white-space: nowrap;
+      transition: all var(--dur-fast) var(--ease-base);
     }
     .deck-btn-bmw:hover {
       border-color: #38BDF8;
-      background: rgba(56, 189, 248, 0.12);
       color: #38BDF8;
     }
     .deck-sort-wrap {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
       background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 3px 8px;
-    }
-    .deck-micro-label {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      font-weight: 600;
-      color: var(--text-subtle);
-      text-transform: uppercase;
+      border-radius: var(--radius-pill);
+      padding: 2px 8px;
     }
     .deck-select {
       background: transparent;
       border: none;
-      color: var(--text-primary);
+      color: var(--text-body);
       font-family: var(--font-sans);
-      font-size: 12.5px;
-      font-weight: 500;
+      font-size: 12px;
       outline: none;
       cursor: pointer;
+      padding: 4px 0;
     }
     .deck-select option {
-      background: #161D2B;
-      color: #F1F5F9;
+      background: #121721;
+      color: #FFFFFF;
     }
 
-    /* Tier 2: Tailored Controls by Filter Type */
-    .deck-row-filters {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      flex-wrap: wrap;
-    }
-    .filter-cluster {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .cluster-label {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-subtle);
-      white-space: nowrap;
-    }
-    .cluster-segmented {
-      display: inline-flex;
-      align-items: center;
-      background: var(--bg-subsurface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-pill);
-      padding: 2.5px;
-      gap: 2px;
-    }
-    .cluster-pill, .ribbon-pill, .facet-pill {
-      background: transparent;
-      border: 1px solid transparent;
-      color: var(--text-muted);
-      font-size: 12px;
-      font-weight: 500;
-      padding: 4px 10px;
-      border-radius: var(--radius-pill);
-      cursor: pointer;
-      user-select: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: all 180ms cubic-bezier(0.22, 1, 0.36, 1);
-      white-space: nowrap;
-    }
-    .cluster-pill:hover, .ribbon-pill:hover, .facet-pill:hover {
-      color: var(--text-primary);
-      border-color: rgba(255, 255, 255, 0.15);
-    }
-    .cluster-pill.active, .ribbon-pill.active, .facet-pill.active {
-      background: #FFFFFF;
-      border-color: #FFFFFF;
-      color: #000000;
-      font-weight: 600;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
-    }
-    .cluster-pill.pill-item.active::before, .ribbon-pill.pill-item.active::before, .facet-pill.pill-item.active::before {
-      content: "✓";
-      font-weight: 800;
-      font-size: 10px;
-      color: #000000;
-      margin-right: 1px;
-    }
-    .filter-divider {
-      width: 1px;
-      height: 22px;
-      background: var(--border-color);
-      opacity: 0.7;
-    }
-
-    /* Cohesive Source Dot Indicators */
-    .source-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      display: inline-block;
-      flex-shrink: 0;
-    }
-    .spinny-dot { background: #F59E0B; box-shadow: 0 0 5px rgba(245, 158, 11, 0.7); }
-    .cars24-dot { background: #38BDF8; box-shadow: 0 0 5px rgba(56, 189, 248, 0.7); }
-    .truwo-dot  { background: #34D399; box-shadow: 0 0 5px rgba(52, 211, 153, 0.7); }
-
-    /* Tier 3: Compact Brand Chips Bar */
-    .deck-row-brands {
+    /* Chips Row */
+    .deck-row-chips {
       display: flex;
       align-items: center;
       gap: 8px;
       padding-top: 8px;
-      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
       flex-wrap: wrap;
     }
-    .brand-chips-wrap {
+    .chips-group {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      flex-wrap: wrap;
-    }
-    .brand-chip {
       background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
+      border-radius: var(--radius-pill);
+      padding: 2px;
+      gap: 1px;
+    }
+    .chips-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      padding: 0 6px 0 8px;
+      letter-spacing: 0.04em;
+    }
+    .chip-pill, .facet-pill, .ribbon-pill, .cluster-pill, .brand-chip {
+      background: transparent;
+      border: none;
       color: var(--text-muted);
+      font-family: var(--font-sans);
       font-size: 11.5px;
       font-weight: 500;
-      padding: 3px 9px;
+      padding: 4px 9px;
       border-radius: var(--radius-pill);
       cursor: pointer;
-      user-select: none;
-      transition: all 180ms ease;
       display: inline-flex;
       align-items: center;
       gap: 4px;
+      transition: all var(--dur-fast) var(--ease-base);
+      white-space: nowrap;
     }
-    .brand-chip:hover {
+    .chip-pill:hover, .facet-pill:hover, .cluster-pill:hover, .brand-chip:hover {
       color: var(--text-primary);
-      border-color: var(--text-muted);
     }
-    .brand-chip.active {
+    .chip-pill.active, .facet-pill.active, .cluster-pill.active, .brand-chip.active {
       background: #FFFFFF;
-      border-color: #FFFFFF;
       color: #000000;
       font-weight: 600;
     }
-    .brand-chip.pill-item.active::before {
+    .chip-pill.pill-item.active::before, .cluster-pill.pill-item.active::before, .brand-chip.pill-item.active::before {
       content: "✓";
+      font-size: 9px;
       font-weight: 800;
-      font-size: 10px;
       color: #000000;
     }
 
-    /* Scope Context & Status Line */
-    .deck-status-bar {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11.5px;
-      color: var(--text-subtle);
-      font-family: var(--font-mono);
-      padding-top: 6px;
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
-    }
-    .pulse-dot {
-      width: 7px;
-      height: 7px;
+    /* Cohesive Source Dot Indicators */
+    .source-dot {
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
-      background: #F59E0B;
-      box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+      display: inline-block;
       flex-shrink: 0;
-      animation: pulseGlow 2s infinite ease-in-out;
     }
+    .spinny-dot { background: #F59E0B; }
+    .cars24-dot { background: #38BDF8; }
+    .truwo-dot  { background: #10B981; }
 
-    /* Active Filters Summary Strip & Density Switcher */
-    .active-filters-bar {
+    /* Results Bar */
+    .results-bar {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      padding: 4px 2px;
-      margin-bottom: var(--sp-200);
+      gap: 10px;
+      padding: 4px 2px 10px 2px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
       flex-wrap: wrap;
     }
-    .active-tags-left {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
+    .results-meta strong {
+      color: var(--text-primary);
     }
-    .active-tag {
+    .active-tags-row {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(255, 255, 255, 0.07);
+      flex-wrap: wrap;
+    }
+    .active-tag {
+      background: rgba(255, 255, 255, 0.06);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-pill);
-      padding: 3px 9px;
+      color: var(--text-body);
       font-family: var(--font-mono);
-      font-size: 11px;
-      color: #E2E8F0;
+      font-size: 10.5px;
+      padding: 2px 7px;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
     .active-tag-remove {
       background: transparent;
       border: none;
       color: var(--text-subtle);
       cursor: pointer;
-      font-size: 12px;
-      padding: 0 2px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      font-size: 11px;
     }
     .active-tag-remove:hover {
       color: #EF4444;
     }
     .btn-reset-all {
       background: transparent;
-      border: 1px solid rgba(239, 68, 68, 0.4);
+      border: 1px solid rgba(239, 68, 68, 0.35);
       color: #F87171;
       font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3px 8px;
+      font-size: 10.5px;
+      padding: 2px 7px;
       border-radius: var(--radius-pill);
       cursor: pointer;
-      transition: all 180ms ease;
     }
     .btn-reset-all:hover {
       background: rgba(239, 68, 68, 0.15);
-      border-color: #EF4444;
       color: #FFFFFF;
     }
-    .active-tags-right {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-left: auto;
+
+    /* Strict Minimal Card Component (elayadesign/ai-design-skills) */
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color var(--dur-fast) var(--ease-base), transform var(--dur-fast) var(--ease-base);
     }
-    .density-switch-wrap {
+    .card:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    .card-photo {
+      position: relative;
+      height: 200px;
+      background: var(--bg-photo);
+      overflow: hidden;
+    }
+    .card-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      outline: 1px solid rgba(255, 255, 255, 0.06);
+      outline-offset: -1px;
+    }
+    .badge-grade {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      background: rgba(11, 14, 20, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      background: var(--bg-subsurface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-pill);
-      padding: 2px;
+      z-index: 2;
     }
-    .density-label {
+    .badge-grade.top {
+      color: #FBBF24;
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+    .badge-grade.value {
+      color: #38BDF8;
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+    .card-badges-top-right {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+    }
+    .source-tag {
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 600;
-      color: var(--text-subtle);
-      text-transform: uppercase;
-      padding-left: 6px;
-    }
-    .density-pill {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-family: var(--font-sans);
-      font-size: 11px;
-      font-weight: 500;
       padding: 3px 8px;
       border-radius: var(--radius-pill);
-      cursor: pointer;
-      transition: all 180ms ease;
+      background: rgba(11, 14, 20, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #F1F5F9;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
-    .density-pill.active {
-      background: #252833;
-      color: #FFFFFF;
-      font-weight: 600;
-    }
-    .results-count-wrap {
-      font-family: var(--font-mono);
-      font-size: 12.5px;
+    .source-tier {
       color: var(--text-muted);
-      white-space: nowrap;
+      font-size: 9.5px;
+      font-weight: 400;
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+      padding-left: 5px;
     }
-    .results-count-wrap strong {
+    .card-content {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      flex: 1;
+    }
+    .car-title {
+      font-size: 16px;
+      font-weight: 600;
       color: var(--text-primary);
+      line-height: 1.3;
+      text-wrap: balance;
+    }
+    .car-meta-line {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+    .meta-hub {
+      color: var(--text-subtle);
+    }
+    .card-pricing-bar {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 4px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .pricing-main-wrap {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .pricing-val-main {
+      font-family: var(--font-mono);
+      font-size: 22px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+    .pricing-val-top {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-subtle);
+      text-decoration: line-through;
+    }
+    .discount-pill {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: var(--radius-sm);
+      background: rgba(16, 185, 129, 0.14);
+      color: #34D399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .pricing-source-badge {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--text-subtle);
+    }
+    .pricing-source-badge.truwo {
+      color: #34D399;
+    }
+    .card-verdict-line {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.4;
+      text-wrap: pretty;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card-intel-peek {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--text-subtle);
+      display: flex;
+      gap: 6px;
+    }
+    .card-footer {
+      margin-top: auto;
+      padding-top: 4px;
+    }
+    .cta-primary-btn {
+      width: 100%;
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 9px 12px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      transition: all var(--dur-fast) var(--ease-base);
+    }
+    .cta-primary-btn:hover {
+      background: #FFFFFF;
+      border-color: #FFFFFF;
+      color: #000000;
+    }
+    .cta-primary-btn:active {
+      transform: scale(0.98);
     }
 
 /* Cars Grid (Debloated Cards) */
@@ -2139,7 +2153,7 @@ html_content = """<!DOCTYPE html>
         max-width: 100vw;
       }
       .shell {
-        padding: 10px 8px 60px 8px;
+        padding: 8px 8px 50px 8px;
         max-width: 100%;
         overflow-x: hidden;
       }
@@ -2172,7 +2186,7 @@ html_content = """<!DOCTYPE html>
       }
       .grid {
         grid-template-columns: 1fr;
-        gap: 14px;
+        gap: 12px;
       }
     }
 
@@ -2188,26 +2202,17 @@ html_content = """<!DOCTYPE html>
         line-height: 18px;
       }
       .filter-deck {
-        padding: 12px 10px;
-        gap: 10px;
+        padding: 10px;
+        gap: 8px;
         border-radius: var(--radius-lg);
-        margin-bottom: 12px;
-        max-width: 100%;
-        overflow-x: hidden;
       }
       .deck-row-primary {
         flex-direction: column;
         align-items: stretch;
-        gap: 8px;
+        gap: 6px;
       }
       .deck-search-wrap {
         width: 100%;
-        flex: 1 1 100%;
-      }
-      .deck-search-input {
-        font-size: 13px;
-        padding: 8px 30px 8px 34px;
-        min-height: 38px;
       }
       .deck-segmented-scope {
         width: 100%;
@@ -2217,346 +2222,65 @@ html_content = """<!DOCTYPE html>
         flex: 1;
         justify-content: center;
         padding: 6px 2px;
-        font-size: 10.5px;
-        min-height: 36px;
-        gap: 3px;
-      }
-      .scope-icon {
         font-size: 11px;
-      }
-      .scope-title {
-        font-size: 10.5px;
-      }
-      .scope-count {
-        font-size: 9px;
-        padding: 1px 4px;
       }
       .deck-actions-right {
         width: 100%;
-        margin-left: 0;
         display: flex;
         gap: 6px;
       }
       .deck-btn-bmw {
-        flex: 1 1 45%;
-        justify-content: center;
-        padding: 6px 8px;
-        font-size: 11px;
-        min-height: 36px;
+        flex: 1;
+        text-align: center;
+        min-height: 34px;
       }
       .deck-sort-wrap {
-        flex: 1 1 55%;
-        min-height: 36px;
-        padding: 2px 6px;
+        flex: 1.2;
+        min-height: 34px;
       }
       .deck-select {
-        flex: 1;
-        font-size: 11px;
-        padding: 4px 0;
-        min-height: 34px;
         width: 100%;
+        min-height: 32px;
       }
-
-      /* Mobile Tailored Filter Clusters */
-      .deck-row-filters {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-        padding-top: 8px;
-        width: 100%;
-      }
-      .filter-divider {
-        display: none;
-      }
-      .filter-cluster {
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-      }
-      .cluster-label {
-        font-size: 10px;
-        color: var(--text-subtle);
-      }
-      .cluster-segmented {
-        width: 100%;
-        display: flex;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        padding: 2px;
-        gap: 2px;
-      }
-      .cluster-segmented::-webkit-scrollbar {
-        display: none;
-      }
-      .cluster-pill {
-        flex: 1 0 auto;
-        justify-content: center;
-        text-align: center;
-        padding: 5px 8px;
-        font-size: 11px;
-        min-height: 34px;
-        white-space: nowrap;
-      }
-      .cluster-pill.pill-item.active::before {
-        font-size: 9px;
-      }
-
-      /* Drivetrain split on mobile */
-      .drivetrain-cluster {
-        width: 100%;
-        gap: 6px;
-      }
-      #transmissions-pills, #fuels-pills {
-        width: 100%;
-      }
-
-      /* Brands Row on Mobile */
-      .deck-row-brands {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-        padding-top: 8px;
-        width: 100%;
-      }
-      .brand-chips-wrap {
-        width: 100%;
+      .deck-row-chips {
         display: flex;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         flex-wrap: nowrap;
-        padding-bottom: 2px;
-        gap: 4px;
+        gap: 6px;
+        padding-top: 6px;
       }
-      .brand-chips-wrap::-webkit-scrollbar {
+      .deck-row-chips::-webkit-scrollbar {
         display: none;
       }
-      .brand-chip {
+      .chips-group {
         flex-shrink: 0;
-        padding: 4px 9px;
-        font-size: 11px;
-        min-height: 32px;
-        white-space: nowrap;
       }
-
-      /* Active Filters Bar & Density Switcher */
-      .active-filters-bar {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 8px;
-        margin-bottom: 12px;
-      }
-      .active-tags-left {
-        width: 100%;
-        flex-wrap: wrap;
-        gap: 4px;
-      }
-      .active-tags-right {
-        width: 100%;
-        margin-left: 0;
-        justify-content: space-between;
-      }
-      #active-tags-container {
-        width: 100%;
-      }
-      .active-tag {
-        font-size: 10.5px;
-        padding: 2px 7px;
-      }
-      .results-count-wrap {
-        margin-left: 0;
-        font-size: 11.5px;
-      }
-
-      /* Cards on Mobile: Compact and collision-free */
-      .card {
-        border-radius: var(--radius-lg);
-        max-width: 100%;
-        overflow: hidden;
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
       }
       .card-photo {
-        height: 185px;
-        padding: 6px;
+        height: 180px;
       }
       .badge-grade {
-        top: 8px;
-        left: 8px;
-        font-size: 9.5px;
-        padding: 3px 6px;
         max-width: 52%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .badge-info-hint {
-        display: none;
+        font-size: 9.5px;
+        padding: 2px 6px;
       }
       .card-badges-top-right {
-        top: 8px;
-        right: 8px;
-        gap: 3px;
         max-width: 46%;
       }
       .source-tag {
         font-size: 9.5px;
-        padding: 2.5px 6px;
-        gap: 3px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .source-dot {
-        width: 5px;
-        height: 5px;
-      }
-      .source-tier {
-        font-size: 8.5px;
-        padding-left: 3px;
-      }
-      .badge-availability {
-        bottom: 8px;
-        right: 8px;
-        font-size: 8.5px;
-        padding: 2px 5px;
-      }
-      .card-content {
-        padding: 10px 10px 12px 10px;
-        gap: 8px;
+        padding: 2px 6px;
       }
       .car-title {
         font-size: 15px;
-        line-height: 20px;
-      }
-      .car-specs-strip {
-        gap: 4px;
-      }
-      .spec-pill {
-        font-size: 9.5px;
-        padding: 2px 5px;
-      }
-      .spec-pill.hub {
-        max-width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-      .card-pricing-bar {
-        padding: 6px 0 8px 0;
-        gap: 8px;
-      }
-      .pricing-sub-label {
-        font-size: 9px;
       }
       .pricing-val-main {
-        font-size: 18px;
-      }
-      .pricing-val-top {
-        font-size: 12.5px;
-      }
-      .pricing-source-badge {
-        font-size: 9px;
-      }
-      .discount-badge-lg {
-        font-size: 9px;
-        padding: 1px 4px;
-      }
-      .card-intel-matrix {
-        grid-template-columns: 1fr 1fr;
-        gap: 6px 8px;
-        padding: 6px 0;
-      }
-      .intel-k {
-        font-size: 9px;
-      }
-      .intel-v {
-        font-size: 10px;
-        line-height: 1.3;
-      }
-      .card-telemetry-strip {
-        padding: 4px 0;
-        gap: 8px;
-      }
-      .tele-k {
-        font-size: 9px;
-      }
-      .tele-v {
-        font-size: 11px;
-      }
-      .card-verdict-row {
-        padding: 6px 8px;
-      }
-      .card-verdict-text {
-        font-size: 10.5px;
-        line-height: 1.35;
-      }
-      .btn-intel-toggle {
-        min-height: 36px;
-        font-size: 10.5px;
-        padding: 6px 8px;
-      }
-      .card-footer {
-        padding-top: 6px;
-      }
-      .cta-primary-btn {
-        min-height: 42px;
-        padding: 8px 12px;
-        font-size: 12px;
-      }
-
-      /* Bottom Sheet Modals on Mobile */
-      .score-modal-backdrop, .alerts-modal-backdrop {
-        padding: 0;
-        align-items: flex-end;
-      }
-      .score-modal, .alerts-modal {
-        max-width: 100%;
-        width: 100%;
-        max-height: 90vh;
-        border-radius: 16px 16px 0 0;
-        border-bottom: none;
-      }
-      .score-modal-header, .alerts-modal-header {
-        padding: 12px 14px;
-      }
-      .score-modal-header h3, .alerts-modal-header h3 {
-        font-size: 15px;
-      }
-      .score-modal-body, .alerts-modal-body {
-        padding: 12px 14px;
-        gap: 12px;
-        -webkit-overflow-scrolling: touch;
-      }
-      .score-modal-footer {
-        padding: 10px 14px;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 8px;
-      }
-      .score-modal-footer .nav-btn {
-        width: 100%;
-        text-align: center;
-        padding: 10px;
-        min-height: 44px;
-      }
-      .modal-car-hero {
-        padding: 8px 10px;
-        gap: 10px;
-      }
-      .modal-car-thumb {
-        width: 58px;
-        height: 40px;
-      }
-      .modal-score-grade {
-        font-size: 11.5px;
-        padding: 4px 8px;
-      }
-      .score-audit-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 3px;
-        padding: 8px 0;
+        font-size: 20px;
       }
     }
 
@@ -2754,11 +2478,10 @@ html_content = """<!DOCTYPE html>
       </p>
     </header>
 
-        <!-- Unified Filter Workbench (Cohesive, Type-Specific Controls, Reduced & Merged) -->
+            <!-- Minimalist Filter Toolbar (elayadesign/ai-design-skills) -->
     <section class="filter-deck" id="filter-workbench" aria-label="Car Filter Control Deck">
-      <!-- Tier 1: Instant Search, Curated Presets, BMW Guide & Sort -->
+      <!-- Line 1: Instant Search, Curated Presets, BMW & Sort -->
       <div class="deck-row-primary">
-        <!-- Search Field -->
         <div class="deck-search-wrap">
           <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="8"></circle>
@@ -2768,161 +2491,110 @@ html_content = """<!DOCTYPE html>
             type="text" 
             id="ctrl-search" 
             class="deck-search-input" 
-            placeholder="Search model, variant, hub..." 
+            placeholder="Search make, model, hub..." 
             oninput="onSearchInput(this.value)"
           />
           <button type="button" id="btn-clear-search" class="search-clear-btn" onclick="clearSearch()" title="Clear search">✕</button>
         </div>
 
-        <!-- Curated Intent Scope Switcher -->
         <div class="deck-segmented-scope" role="tablist" aria-label="Inventory Scope">
-          <button type="button" class="scope-segment active curated" id="btn-mode-curated" onclick="setViewMode('curated')" role="tab" title="Handpicked Bangalore deals under ₹5L with Deal Score 80+">
-            <span class="scope-icon">🔥</span>
-            <span class="scope-title">Top Deals</span>
+          <button type="button" class="scope-segment active curated" id="btn-mode-curated" onclick="setViewMode('curated')" role="tab">
+            <span>🔥 Top Deals</span>
             <span class="scope-count" id="badge-curated-count">0</span>
           </button>
-          <button type="button" class="scope-segment" id="btn-german-5l" onclick="filterGermanUnder5L()" role="tab" title="Volkswagen, Skoda, BMW, Audi under ₹5L">
-            <span class="scope-icon">🇩🇪</span>
-            <span class="scope-title">German &le; ₹5L</span>
-            <span class="scope-count" id="count-german-5l">33</span>
+          <button type="button" class="scope-segment" id="btn-german-5l" onclick="filterGermanUnder5L()" role="tab">
+            <span>🇩🇪 German &le; ₹5L</span>
+            <span class="scope-count" id="count-german-5l">32</span>
           </button>
-          <button type="button" class="scope-segment" id="btn-mode-all" onclick="setViewMode('all')" role="tab" title="Entire verified Bangalore inventory">
-            <span class="scope-icon">📦</span>
-            <span class="scope-title">All Cars</span>
+          <button type="button" class="scope-segment" id="btn-mode-all" onclick="setViewMode('all')" role="tab">
+            <span>All Cars</span>
             <span class="scope-count" id="badge-all-count">0</span>
           </button>
         </div>
 
-        <!-- Right Deck Utilities: BMW Advisory & Sort Select -->
         <div class="deck-actions-right">
-          <button type="button" class="deck-btn-bmw" id="btn-bmw-intel" onclick="openBmwModal()" title="BMW Under ₹5L Ownership Guide & Search">
+          <button type="button" class="deck-btn-bmw" id="btn-bmw-intel" onclick="openBmwModal()">
             <span>🏎️ BMW &lt; ₹5L</span>
           </button>
-
           <div class="deck-sort-wrap">
-            <label for="ctrl-sort" class="deck-micro-label">Sort</label>
             <select id="ctrl-sort" class="deck-select" onchange="onSortChange(this.value)">
-              <option value="score">Best Value Score</option>
-              <option value="discount_desc">Highest % Off Top Price</option>
+              <option value="score">Best Value</option>
+              <option value="discount_desc">Highest Discount %</option>
               <option value="price_asc">Price: Low to High</option>
               <option value="price_desc">Price: High to Low</option>
-              <option value="year_desc">Year: Newest First</option>
-              <option value="km_asc">Mileage: Lowest KM</option>
+              <option value="year_desc">Newest First</option>
+              <option value="km_asc">Lowest KM</option>
             </select>
           </div>
         </div>
       </div>
 
-      <!-- Tier 2: Tailored Controls by Filter Type (Source Platform, Stepped Budget, Showroom Savings, Drivetrain) -->
-      <div class="deck-row-filters">
-        <!-- 1. Source Platform: Discrete Entity Multi-Select with Live Counts & Subtle Dots -->
-        <div class="filter-cluster source-cluster" id="cluster-source">
-          <span class="cluster-label">Source</span>
-          <div class="cluster-segmented" id="platforms-pills">
-            <button type="button" class="cluster-pill pill-all active" onclick="clearMultiFilter('platforms')">All (<span id="tele-total-sources">0</span>)</button>
-            <button type="button" class="cluster-pill pill-item pill-spinny" data-val="Spinny" onclick="toggleMultiFilter('platforms', 'Spinny')">
-              <span class="source-dot spinny-dot"></span>Spinny (<span id="count-spinny">0</span>)
-            </button>
-            <button type="button" class="cluster-pill pill-item pill-cars24" data-val="Cars24" onclick="toggleMultiFilter('platforms', 'Cars24')">
-              <span class="source-dot cars24-dot"></span>Cars24 (<span id="count-cars24">0</span>)
-            </button>
-            <button type="button" class="cluster-pill pill-item pill-truwo" data-val="Truwo" onclick="toggleMultiFilter('platforms', 'Truwo')">
-              <span class="source-dot truwo-dot"></span>Truwo (<span id="count-truwo">0</span>)
-            </button>
-          </div>
+      <!-- Line 2: Horizontal Minimal Filter Chips -->
+      <div class="deck-row-chips">
+        <div class="chips-group" id="platforms-pills">
+          <span class="chips-label">Source</span>
+          <button type="button" class="chip-pill pill-all active" onclick="clearMultiFilter('platforms')">All</button>
+          <button type="button" class="chip-pill pill-item" data-val="Spinny" onclick="toggleMultiFilter('platforms', 'Spinny')"><span class="source-dot spinny-dot"></span>Spinny (<span id="count-spinny">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="Cars24" onclick="toggleMultiFilter('platforms', 'Cars24')"><span class="source-dot cars24-dot"></span>Cars24 (<span id="count-cars24">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="Truwo" onclick="toggleMultiFilter('platforms', 'Truwo')"><span class="source-dot truwo-dot"></span>Truwo (<span id="count-truwo">0</span>)</button>
         </div>
 
-        <div class="filter-divider" aria-hidden="true"></div>
-
-        <!-- 2. Max Budget: Bounded Stepped Range Selector -->
-        <div class="filter-cluster budget-cluster" id="cluster-budget">
-          <span class="cluster-label">Max Budget</span>
-          <div class="cluster-segmented quick-budget-strip">
-            <button type="button" class="cluster-pill" onclick="setMaxBudget(4.0)">&le; ₹4L</button>
-            <button type="button" class="cluster-pill active" id="btn-quick-5l" onclick="setMaxBudget(5.0)">&le; ₹5L</button>
-            <button type="button" class="cluster-pill" onclick="setMaxBudget(7.0)">&le; ₹7L</button>
-            <button type="button" class="cluster-pill" onclick="clearPrice()">All</button>
-          </div>
+        <div class="chips-group quick-budget-strip" id="cluster-budget">
+          <span class="chips-label">Budget</span>
+          <button type="button" class="chip-pill" onclick="setMaxBudget(4.0)">&le; ₹4L</button>
+          <button type="button" class="chip-pill active" id="btn-quick-5l" onclick="setMaxBudget(5.0)">&le; ₹5L</button>
+          <button type="button" class="chip-pill" onclick="setMaxBudget(7.0)">&le; ₹7L</button>
+          <button type="button" class="chip-pill" onclick="clearPrice()">All</button>
         </div>
 
-        <div class="filter-divider" aria-hidden="true"></div>
-
-        <!-- 3. Showroom Savings: Percentage Value Threshold Selector -->
-        <div class="filter-cluster discount-cluster" id="cluster-discount">
-          <span class="cluster-label">Savings</span>
-          <div class="cluster-segmented" id="discount-pills">
-            <button type="button" class="cluster-pill active" onclick="setMinDiscount(0, this)">Any</button>
-            <button type="button" class="cluster-pill" onclick="setMinDiscount(30, this)">&ge; 30%</button>
-            <button type="button" class="cluster-pill" onclick="setMinDiscount(40, this)">&ge; 40%</button>
-            <button type="button" class="cluster-pill" onclick="setMinDiscount(50, this)">&ge; 50%</button>
-          </div>
+        <div class="chips-group" id="discount-pills">
+          <span class="chips-label">Off Top</span>
+          <button type="button" class="chip-pill active" onclick="setMinDiscount(0, this)">Any</button>
+          <button type="button" class="chip-pill" onclick="setMinDiscount(30, this)">&ge; 30%</button>
+          <button type="button" class="chip-pill" onclick="setMinDiscount(40, this)">&ge; 40%</button>
+          <button type="button" class="chip-pill" onclick="setMinDiscount(50, this)">&ge; 50%</button>
         </div>
 
-        <div class="filter-divider" aria-hidden="true"></div>
-
-        <!-- 4. Drivetrain: Micro-Segmented Binary/Ternary Toggles (Transmission + Fuel) -->
-        <div class="filter-cluster drivetrain-cluster" id="cluster-drivetrain">
-          <span class="cluster-label">Drivetrain</span>
-          <div class="cluster-segmented" id="transmissions-pills">
-            <button type="button" class="cluster-pill pill-all active" onclick="clearMultiFilter('transmissions')">All Trans</button>
-            <button type="button" class="cluster-pill pill-item" data-val="automatic" onclick="toggleMultiFilter('transmissions', 'automatic')">Auto</button>
-            <button type="button" class="cluster-pill pill-item" data-val="manual" onclick="toggleMultiFilter('transmissions', 'manual')">Manual</button>
-          </div>
-          <div class="cluster-segmented" id="fuels-pills">
-            <button type="button" class="cluster-pill pill-all active" onclick="clearMultiFilter('fuels')">All Fuel</button>
-            <button type="button" class="cluster-pill pill-item" data-val="petrol" onclick="toggleMultiFilter('fuels', 'petrol')">Petrol</button>
-            <button type="button" class="cluster-pill pill-item" data-val="diesel" onclick="toggleMultiFilter('fuels', 'diesel')">Diesel</button>
-          </div>
+        <div class="chips-group" id="transmissions-pills">
+          <span class="chips-label">Gear</span>
+          <button type="button" class="chip-pill pill-all active" onclick="clearMultiFilter('transmissions')">All</button>
+          <button type="button" class="chip-pill pill-item" data-val="automatic" onclick="toggleMultiFilter('transmissions', 'automatic')">Auto</button>
+          <button type="button" class="chip-pill pill-item" data-val="manual" onclick="toggleMultiFilter('transmissions', 'manual')">Manual</button>
         </div>
-      </div>
 
-      <!-- Tier 3: Compact Brand Chips Bar (Quick Scannable Brand Selection) -->
-      <div class="deck-row-brands">
-        <span class="cluster-label">Brands</span>
-        <div class="brand-chips-wrap" id="brands-pills">
-          <button type="button" class="brand-chip pill-all active" onclick="clearMultiFilter('brands')">All Brands</button>
-          <button type="button" class="brand-chip pill-item" data-val="maruti" onclick="toggleMultiFilter('brands', 'maruti')">Maruti (<span id="count-maruti">0</span>)</button>
-          <button type="button" class="brand-chip pill-item" data-val="hyundai" onclick="toggleMultiFilter('brands', 'hyundai')">Hyundai (<span id="count-hyundai">0</span>)</button>
-          <button type="button" class="brand-chip pill-item" data-val="tata" onclick="toggleMultiFilter('brands', 'tata')">Tata (<span id="count-tata">0</span>)</button>
-          <button type="button" class="brand-chip pill-item" data-val="honda" onclick="toggleMultiFilter('brands', 'honda')">Honda (<span id="count-honda">0</span>)</button>
-          <button type="button" class="brand-chip pill-item" data-val="volkswagen" onclick="toggleMultiFilter('brands', 'volkswagen')">Volkswagen (<span id="count-volkswagen">0</span>)</button>
-          <button type="button" class="brand-chip pill-item" data-val="toyota" onclick="toggleMultiFilter('brands', 'toyota')">Toyota (<span id="count-toyota">0</span>)</button>
-          <button type="button" class="brand-chip pill-item" data-val="mahindra" onclick="toggleMultiFilter('brands', 'mahindra')">Mahindra (<span id="count-mahindra">0</span>)</button>
-          <button type="button" class="brand-chip pill-item" data-val="renault" onclick="toggleMultiFilter('brands', 'renault')">Renault (<span id="count-renault">0</span>)</button>
-          <button type="button" class="brand-chip pill-item" data-val="skoda" onclick="toggleMultiFilter('brands', 'skoda')">Skoda (<span id="count-skoda">0</span>)</button>
-          <button type="button" class="brand-chip pill-item" data-val="bmw" onclick="toggleMultiFilter('brands', 'bmw')">BMW (<span id="count-bmw">0</span>)</button>
+        <div class="chips-group" id="fuels-pills">
+          <span class="chips-label">Fuel</span>
+          <button type="button" class="chip-pill pill-all active" onclick="clearMultiFilter('fuels')">All</button>
+          <button type="button" class="chip-pill pill-item" data-val="petrol" onclick="toggleMultiFilter('fuels', 'petrol')">Petrol</button>
+          <button type="button" class="chip-pill pill-item" data-val="diesel" onclick="toggleMultiFilter('fuels', 'diesel')">Diesel</button>
         </div>
-      </div>
 
-      <!-- Scope Status Text Line -->
-      <div class="deck-status-bar" id="mode-status-text">
-        <span class="pulse-dot"></span>
-        <span>Curated view: Under ₹5.0L · Deal Score 80+ · Low Mileage (&lt; 80k km) · Certified Assured</span>
+        <div class="chips-group" id="brands-pills">
+          <span class="chips-label">Brand</span>
+          <button type="button" class="chip-pill pill-all active" onclick="clearMultiFilter('brands')">All</button>
+          <button type="button" class="chip-pill pill-item" data-val="maruti" onclick="toggleMultiFilter('brands', 'maruti')">Maruti (<span id="count-maruti">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="hyundai" onclick="toggleMultiFilter('brands', 'hyundai')">Hyundai (<span id="count-hyundai">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="tata" onclick="toggleMultiFilter('brands', 'tata')">Tata (<span id="count-tata">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="honda" onclick="toggleMultiFilter('brands', 'honda')">Honda (<span id="count-honda">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="volkswagen" onclick="toggleMultiFilter('brands', 'volkswagen')">VW (<span id="count-volkswagen">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="toyota" onclick="toggleMultiFilter('brands', 'toyota')">Toyota (<span id="count-toyota">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="mahindra" onclick="toggleMultiFilter('brands', 'mahindra')">Mahindra (<span id="count-mahindra">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="skoda" onclick="toggleMultiFilter('brands', 'skoda')">Skoda (<span id="count-skoda">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="bmw" onclick="toggleMultiFilter('brands', 'bmw')">BMW (<span id="count-bmw">0</span>)</button>
+        </div>
       </div>
     </section>
 
-<!-- Active Filters Summary Strip & Density Switcher -->
-  <div class="active-filters-bar" id="active-tags-strip">
-    <div class="active-tags-left">
-      <span class="caption-4" style="color:var(--text-subtle);">Active:</span>
-      <div id="active-tags-container" style="display:inline-flex; flex-wrap:wrap; gap:6px;"></div>
-      <button class="btn-reset-all" onclick="resetAll()">Reset</button>
+    <!-- Results Status Bar -->
+    <div class="results-bar">
+      <div class="results-meta">
+        Showing <strong id="res-count">0</strong> verified Bangalore cars
+      </div>
+      <div id="active-tags-container" class="active-tags-row"></div>
+      <button class="btn-reset-all" id="btn-global-reset" onclick="resetAll()">Reset All ✕</button>
     </div>
 
-    <div class="active-tags-right">
-      <div class="density-switch-wrap" role="group" aria-label="Card density">
-        <span class="density-label">Cards:</span>
-        <button type="button" class="density-pill active" id="btn-density-min" onclick="setDensityMode('minimal')" title="Minimal view (compact cards with collapsible intel)">◻ Minimal</button>
-        <button type="button" class="density-pill" id="btn-density-exp" onclick="setDensityMode('detailed')" title="Detailed view (all intel and verdicts expanded)">☷ Detailed</button>
-      </div>
 
-      <div class="results-count-wrap">
-        Showing <strong id="res-count">0</strong> verified vehicles
-      </div>
-    </div>
-  </div>
-
-    <!-- Cards Grid -->
     <main class="grid" id="cars-grid" aria-live="polite"></main>
   </div>
 
@@ -4292,139 +3964,74 @@ html_content = """<!DOCTYPE html>
         const tierSubLabel = isTruwo 
           ? 'Direct Owner' 
           : (isCars24 ? (isAssured ? 'Assured' : 'Certified') : (isAssured ? 'Assured' : 'Wholesale'));
-        const pricingTagText = isTruwo ? 'Direct Owner · Inspected' : 'Fixed Price · No Haggle';
+        const pricingTagText = isTruwo ? 'Direct Owner' : 'Fixed Price';
         const platformClass = isTruwo ? 'truwo' : (isCars24 ? 'cars24' : 'spinny');
         const platformName = c.platform || (isTruwo ? 'Truwo' : (isCars24 ? 'Cars24' : 'Spinny'));
 
         const price = '₹' + (c.price / 100000).toFixed(2) + 'L';
-        const topPrice = c.orig_retail_price ? ('₹' + (c.orig_retail_price / 100000).toFixed(2) + 'L') : '—';
+        const topPrice = c.orig_retail_price ? ('₹' + (c.orig_retail_price / 100000).toFixed(2) + 'L') : '';
         const discPct = c.retail_discount_pct || (c.orig_retail_price ? Math.round(((c.orig_retail_price - c.price) / c.orig_retail_price) * 100) : 0);
-        const topSavings = c.orig_retail_price ? Math.max(0, c.orig_retail_price - c.price) : 0;
-        const topSavingsFmt = topSavings >= 100000 ? ('₹' + (topSavings / 100000).toFixed(2) + 'L') : ('₹' + Math.round(topSavings / 1000) + 'k');
 
         const km = (c.mileage / 1000).toFixed(0) + 'k km';
         const title = `${c.make_year} ${c.make} ${c.model} ${c.variant || ''}`.trim();
         const an = c.analysis || {};
         const buyback = '₹' + ((an.est_buyback_2yr || 0) / 100000).toFixed(2) + 'L';
-        const monthly = '₹' + Math.round(an.monthly_loss || 0).toLocaleString('en-IN') + ' per mo';
 
         let gradeClass = 'fair';
-        let gradeLabel = `Score ${c.deal_score}`;
+        let gradeLabel = `${c.deal_score} · Fair`;
         if (c.deal_score >= 80) {
           gradeClass = 'top';
-          gradeLabel = `💎 ${c.deal_score} · TOP DEAL`;
+          gradeLabel = `${c.deal_score} · Top Deal`;
         } else if (c.deal_score >= 68) {
           gradeClass = 'value';
-          gradeLabel = `⭐ ${c.deal_score} · VALUE PICK`;
+          gradeLabel = `${c.deal_score} · Value`;
         }
 
-        const rev = c.ownership_review || {};
-        const isExpanded = state.density === 'detailed' || expandedCards.has(String(c.id));
+        const verdictText = (c.verdict || (an.pros && an.pros[0]) || 'Certified inspected vehicle with verified service history.');
 
         return `
           <article class="card" id="card-${c.id}">
-            <!-- Flat Photo Area (B4 flat #131209) -->
             <div class="card-photo">
-              <!-- Score Grade Badge with Clickable Audit -->
-              <button type="button" class="badge-grade ${gradeClass}" onclick="openScoreModal('${c.id}', event)" title="Click to view score audit & point breakdown">
-                <span>${gradeLabel}</span>
-                <span class="badge-info-hint" aria-hidden="true">📊 Audit</span>
+              <button type="button" class="badge-grade ${gradeClass}" onclick="openScoreModal('${c.id}', event)" title="Click to view score audit breakdown">
+                <span>★ ${gradeLabel}</span>
               </button>
               
-              <!-- Top-Right Badges Container -->
               <div class="card-badges-top-right">
                 <span class="source-tag source-${platformClass}">
                   <span class="source-dot ${platformClass}-dot"></span>
-                  <span class="source-name">${platformName}</span>
+                  <span>${platformName}</span>
                   <span class="source-tier">${tierSubLabel}</span>
                 </span>
               </div>
 
-              <!-- Live Unbooked Status -->
-              <div class="badge-availability">
-                <span class="avail-dot"></span>
-                <span>Available Stock</span>
-              </div>
-
-              ${c.img ? `<img src="${c.img}" alt="${title}" loading="lazy" referrerpolicy="no-referrer" />` : '<span class="caption-5" style="color:var(--text-subtle);">No image preview</span>'}
+              ${c.img ? `<img src="${c.img}" alt="${title}" loading="lazy" referrerpolicy="no-referrer" />` : '<div style="height:100%; display:flex; align-items:center; justify-content:center; color:var(--text-subtle); font-size:12px;">No image preview</div>'}
             </div>
 
             <div class="card-content">
-              <!-- Header Block -->
-              <div class="car-header-block">
-                <h2 class="car-title">${title}</h2>
-                <div class="car-specs-strip">
-                  <span class="spec-pill">${km}</span>
-                  <span class="spec-pill">${(c.fuel_type || 'Petrol').toUpperCase()}</span>
-                  <span class="spec-pill">${(c.transmission || 'MT').toUpperCase()}</span>
-                  <span class="spec-pill hub">${c.hub}</span>
-                </div>
+              <h2 class="car-title">${title}</h2>
+
+              <div class="car-meta-line">
+                <span>${km}</span> · <span>${(c.fuel_type || 'Petrol').toUpperCase()}</span> · <span>${(c.transmission || 'MT').toUpperCase()}</span> · <span class="meta-hub">${c.hub}</span>
               </div>
 
-              <!-- Pricing Row (Fixed Price & Top Showroom Discount) -->
               <div class="card-pricing-bar">
-                <div class="pricing-primary-col">
-                  <span class="pricing-sub-label">${isTruwo ? 'Owner Price' : 'Fixed Price'}</span>
+                <div class="pricing-main-wrap">
                   <span class="pricing-val-main">${price}</span>
-                  <span class="pricing-source-badge ${platformClass}">${pricingTagText}</span>
+                  ${topPrice ? `<span class="pricing-val-top">${topPrice}</span>` : ''}
+                  ${discPct > 0 ? `<span class="discount-pill">-${discPct}%</span>` : ''}
                 </div>
-                <div class="pricing-retail-col">
-                  <span class="pricing-sub-label">Original Top Price</span>
-                  <span class="pricing-val-top">${topPrice}</span>
-                  ${discPct > 0 ? `<span class="discount-badge-lg">-${discPct}% Off (Save ~${topSavingsFmt})</span>` : ''}
-                </div>
+                <span class="pricing-source-badge ${platformClass}">${pricingTagText}</span>
               </div>
 
-              <!-- Financial Telemetry Strip (Kept visible for fast buyback comparison) -->
-              <div class="card-telemetry-strip">
-                <div class="telemetry-item">
-                  <span class="tele-k">${isAssured ? '24M Buyback' : '24M Resale'}</span>
-                  <span class="tele-v buyback">${buyback}</span>
-                </div>
-                <div class="telemetry-item" style="text-align: right;">
-                  <span class="tele-k">Depreciation</span>
-                  <span class="tele-v loss">${monthly}</span>
-                </div>
+              <p class="card-verdict-line">${verdictText}</p>
+
+              <div class="card-intel-peek">
+                <span>24M Buyback: ${buyback}</span> · <span>Maint: ${an.maintenance_yr || '₹6.5k/yr'}</span>
               </div>
 
-              <!-- Progressive Disclosure: 1-Click Accordion Button -->
-              <button type="button" class="btn-intel-toggle ${isExpanded ? 'active' : ''}" id="intel-btn-${c.id}" onclick="toggleCardIntel('${c.id}', event)">
-                <span>✦ View Ownership Intel & Verdict</span>
-                <span class="intel-chevron">▾</span>
-              </button>
-
-              <!-- Collapsible Card Intel Drawer -->
-              <div class="card-intel-drawer ${isExpanded ? 'open' : ''}" id="intel-drawer-${c.id}">
-                <!-- Ownership Intel Matrix (Clean 2x2 Grid) -->
-                <div class="card-intel-matrix">
-                  <div class="intel-cell">
-                    <span class="intel-k">⛽ Mileage</span>
-                    <span class="intel-v">${rev.fuel_economy || '12–14 km/l city'}</span>
-                  </div>
-                  <div class="intel-cell">
-                    <span class="intel-k">🔧 Service</span>
-                    <span class="intel-v">${rev.annual_maintenance || '₹5k–₹7k/yr'}</span>
-                  </div>
-                  <div class="intel-cell">
-                    <span class="intel-k">🛣️ Road Ride</span>
-                    <span class="intel-v">${rev.ride_comfort || 'Speed breaker safe'}</span>
-                  </div>
-                  <div class="intel-cell">
-                    <span class="intel-k">⚠️ Watchlist</span>
-                    <span class="intel-v">${rev.known_issues || 'Inspect clutch & brakes'}</span>
-                  </div>
-                </div>
-
-                <!-- Bangalore Verdict Note -->
-                <div class="card-verdict-row">
-                  <p class="card-verdict-text"><strong style="color:var(--text-body);">Bangalore Verdict:</strong> ${rev.bangalore_verdict || (c.verdict || 'Reliable urban commuter with steady resale demand.')}</p>
-                </div>
-              </div>
-
-              <!-- Single Primary CTA in Footer -->
               <div class="card-footer">
                 <a href="${c.url || '#'}" target="_blank" rel="noopener noreferrer" class="cta-primary-btn">
-                  <span>Inspect vehicle on ${platformName}</span>
+                  <span>Inspect on ${platformName}</span>
                   <span>&rarr;</span>
                 </a>
               </div>
