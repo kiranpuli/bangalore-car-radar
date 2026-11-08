@@ -1565,6 +1565,57 @@ html_content = """<!DOCTYPE html>
     .card-footer {
       margin-top: auto;
       padding-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-hide-btn {
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 8px 10px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+      transition: all var(--dur-fast) var(--ease-base);
+      white-space: nowrap;
+    }
+    .card-hide-btn:hover {
+      color: #EF4444;
+      border-color: rgba(239, 68, 68, 0.4);
+      background: rgba(239, 68, 68, 0.08);
+    }
+    .card-hide-btn:active {
+      transform: scale(0.97);
+    }
+    .deck-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #181818;
+      border: 1px solid #313131;
+      color: #FFFFFF;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 200ms ease;
+    }
+    .deck-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
     .cta-primary-btn {
       width: 100%;
@@ -2310,6 +2361,9 @@ html_content = """<!DOCTYPE html>
         <span>🔔 Alerts</span>
         <span id="badge-alerts-count" class="alert-count-pill">0</span>
       </button>
+      <button class="nav-btn push-alerts-btn" onclick="openPushModal()" title="Instant Mobile Push Alerts">
+        <span>📲 Push</span>
+      </button>
       <button class="nav-btn" onclick="scrollToFilters()">Filters</button>
     </div>
   </nav>
@@ -2589,14 +2643,92 @@ html_content = """<!DOCTYPE html>
         <!-- Injected dynamically on click -->
       </div>
       <div class="score-modal-footer">
-        <button type="button" class="modal-dismiss-btn" onclick="closeScoreModal()">Done</button>
-        <a href="#" target="_blank" rel="noopener noreferrer" class="cta-primary-btn modal-action-cta" id="modal-footer-cta">
-          <span>Inspect Car</span>
-          <span>&rarr;</span>
-        </a>
+        <button type="button" class="card-hide-btn" id="modal-hide-btn" style="padding:8px 12px;" onclick="excludeModelFromModal()">
+          <span>⊘ Hide Model</span>
+        </button>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <button type="button" class="modal-dismiss-btn" onclick="closeScoreModal()">Done</button>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="cta-primary-btn modal-action-cta" id="modal-footer-cta">
+            <span>Inspect Car</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Mobile Push Notifications Setup Modal -->
+  <div class="score-modal-backdrop" id="push-modal-backdrop" onclick="closePushModalOnBackdrop(event)">
+    <div class="score-modal" role="dialog" aria-modal="true" aria-labelledby="push-modal-title">
+      <div class="score-modal-header">
+        <div>
+          <span class="caption-5" style="color:var(--accent-amber); font-family:var(--font-mono); text-transform:uppercase; font-weight:700; letter-spacing:0.06em;">Real-Time Alert Pipeline</span>
+          <h3 id="push-modal-title" style="margin-top:2px;">Instant Mobile Push Alerts</h3>
+        </div>
+        <button type="button" class="score-modal-close" onclick="closePushModal()" title="Close dialog">✕</button>
+      </div>
+      <div class="score-modal-body" style="gap:14px;">
+        <div style="background:var(--bg-photo); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:14px; display:flex; flex-direction:column; gap:8px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:18px;">📲</span>
+            <strong style="color:var(--text-primary); font-size:14px;">Get Deals Pushed Directly to Your Phone</strong>
+          </div>
+          <p class="caption-2" style="color:var(--text-muted); margin:0; line-height:1.5;">
+            Top Bangalore deals get booked in under 3 hours. Connect your phone via <strong>ntfy.sh</strong> (free, open source, zero signups) to receive instant push alerts with direct listing links whenever a qualifying car drops.
+          </p>
+        </div>
+
+        <a href="https://ntfy.sh/kiran-car-radar" target="_blank" rel="noopener noreferrer" class="cta-primary-btn" style="text-decoration:none; display:flex; justify-content:center; align-items:center; gap:8px; padding:12px; font-size:13.5px; font-weight:700;">
+          <span>📱 Open on Phone to Subscribe (ntfy.sh/kiran-car-radar)</span>
+          <span>&rarr;</span>
+        </a>
+
+        <div style="background:var(--bg-subsurface); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:12px 14px; display:flex; flex-direction:column; gap:8px;">
+          <span class="caption-5" style="color:var(--text-subtle); text-transform:uppercase; font-weight:700; font-family:var(--font-mono);">How to Subscribe in 30 Seconds</span>
+          <div style="font-size:12px; color:var(--text-body); line-height:1.5;">
+            <strong>iPhone (iOS):</strong> Tap the link above in Safari &rarr; Tap "Subscribe", or install the free <code>ntfy</code> app from App Store & subscribe to <code>kiran-car-radar</code>.<br/>
+            <strong>Android:</strong> Tap the link above in Chrome &rarr; Tap "Subscribe", or install <code>ntfy</code> from Google Play Store.
+          </div>
+        </div>
+
+        <button type="button" class="nav-btn" onclick="sendTestPushFromBrowser()" style="width:100%; justify-content:center; padding:10px; font-size:12.5px; font-weight:600;">
+          <span>⚡ Send Test Push Notification to My Phone</span>
+        </button>
+        <div id="push-test-result" style="display:none; font-size:12px; font-family:var(--font-mono); text-align:center;"></div>
+      </div>
+      <div class="score-modal-footer">
+        <span class="caption-5" style="color:var(--text-subtle);">Automated crawler dispatches push alerts on every qualifying top deal.</span>
+        <button type="button" class="modal-dismiss-btn" onclick="closePushModal()">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Excluded Models Manager Modal -->
+  <div class="score-modal-backdrop" id="excluded-modal-backdrop" onclick="closeExcludedModalOnBackdrop(event)">
+    <div class="score-modal" role="dialog" aria-modal="true" aria-labelledby="excluded-modal-title">
+      <div class="score-modal-header">
+        <div>
+          <span class="caption-5" style="color:#EF4444; font-family:var(--font-mono); text-transform:uppercase; font-weight:700; letter-spacing:0.06em;">Preference Filter</span>
+          <h3 id="excluded-modal-title" style="margin-top:2px;">Hidden Car Models</h3>
+        </div>
+        <button type="button" class="score-modal-close" onclick="closeExcludedModal()" title="Close dialog">✕</button>
+      </div>
+      <div class="score-modal-body" style="gap:12px;">
+        <p class="caption-2" style="color:var(--text-muted); margin:0;">
+          Cars matching these models are hidden from your feed and scoring. Click "⊘ Hide Model" on any vehicle card to hide more models.
+        </p>
+        <div id="excluded-models-list" style="display:flex; flex-direction:column; gap:6px;">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+      <div class="score-modal-footer">
+        <button type="button" class="nav-btn" onclick="unhideAllModels()" style="color:#EF4444; border-color:rgba(239,68,68,0.3);">Restore All Models</button>
+        <button type="button" class="modal-dismiss-btn" onclick="closeExcludedModal()">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="deck-toast" class="deck-toast" role="status" aria-live="polite"></div>
 
   <!-- BMW Under ₹5L Ownership & Private Search Modal -->
   <div class="score-modal-backdrop" id="bmw-modal-backdrop" onclick="closeBmwModalOnBackdrop(event)">
@@ -2680,6 +2812,33 @@ html_content = """<!DOCTYPE html>
     const ALERTS = """ + alerts_json + """;
 
     // Application state - Defaults strictly to Curated Top Deals to Consider (< ₹5L, Score 80+)
+    function loadExcludedModels() {
+      try {
+        const saved = localStorage.getItem('spinny_excluded_models');
+        if (saved) {
+          const arr = JSON.parse(saved);
+          return new Set(arr.map(x => String(x).toLowerCase().trim()));
+        }
+      } catch (e) {}
+      return new Set();
+    }
+
+    function saveExcludedModels() {
+      try {
+        localStorage.setItem('spinny_excluded_models', JSON.stringify(Array.from(state.excludedModels)));
+      } catch (e) {}
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('deck-toast');
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
     const state = {
       viewMode: 'curated',
       density: 'minimal',
@@ -2695,7 +2854,8 @@ html_content = """<!DOCTYPE html>
       transmissions: new Set(),
       fuels: new Set(),
       qualities: new Set(['top_deal']),
-      min_discount: 0
+      min_discount: 0,
+      excludedModels: loadExcludedModels()
     };
     const expandedCards = new Set();
 
@@ -3199,6 +3359,10 @@ html_content = """<!DOCTYPE html>
         tags.push({ label: '🔥 Curated: Under ₹5L & Score 80+', clear: () => setViewMode('all') });
       }
 
+      if (state.excludedModels && state.excludedModels.size > 0) {
+        tags.push({ label: `⊘ Hidden (${state.excludedModels.size} models)`, clear: () => openExcludedModal() });
+      }
+
       if (state.search) {
         tags.push({ label: `Search: "${state.search}"`, clear: () => clearSearch() });
       }
@@ -3273,6 +3437,14 @@ html_content = """<!DOCTYPE html>
 
     function applyFilters() {
       let filtered = CARS.filter(c => {
+        // Excluded models check
+        if (state.excludedModels && state.excludedModels.size > 0) {
+          const fullCarName = `${c.make || ''} ${c.model || ''}`.toLowerCase();
+          for (const ex of state.excludedModels) {
+            if (fullCarName.includes(ex)) return false;
+          }
+        }
+
         // Search
         if (state.search) {
           const text = `${c.make_year} ${c.make} ${c.model} ${c.variant || ''} ${c.hub || ''} ${c.transmission || ''} ${c.fuel_type || ''}`.toLowerCase();
@@ -3516,6 +3688,13 @@ html_content = """<!DOCTYPE html>
         footerCta.href = car.url || '#';
         footerCta.innerHTML = `<span>Inspect on ${platformName}</span> <span>&rarr;</span>`;
       }
+      const hideModalBtn = document.getElementById('modal-hide-btn');
+      if (hideModalBtn) {
+        hideModalBtn.onclick = function(ev) {
+          closeScoreModal();
+          excludeModel(car.make, car.model, ev);
+        };
+      }
 
       const modal = document.getElementById('score-modal-backdrop');
       if (modal) {
@@ -3533,6 +3712,128 @@ html_content = """<!DOCTYPE html>
     function closeScoreModalOnBackdrop(e) {
       if (e && e.target && e.target.id === 'score-modal-backdrop') {
         closeScoreModal();
+      }
+    }
+
+    function excludeModel(make, model, event) {
+      if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+      const modelClean = `${make || ''} ${model || ''}`.trim();
+      if (!modelClean) return;
+      const key = modelClean.toLowerCase();
+      state.excludedModels.add(key);
+      saveExcludedModels();
+      showToast(`⊘ Hidden all ${modelClean} cars from your feed`);
+      applyFilters();
+    }
+
+    function unhideModel(key) {
+      state.excludedModels.delete(key.toLowerCase());
+      saveExcludedModels();
+      renderExcludedModal();
+      showToast(`Restored ${key} to your feed`);
+      applyFilters();
+    }
+
+    function unhideAllModels() {
+      state.excludedModels.clear();
+      saveExcludedModels();
+      renderExcludedModal();
+      showToast('Restored all hidden models');
+      applyFilters();
+    }
+
+    function renderExcludedModal() {
+      const container = document.getElementById('excluded-models-list');
+      if (!container) return;
+      if (state.excludedModels.size === 0) {
+        container.innerHTML = '<p style="color:var(--text-muted); font-size:12.5px; padding:18px 0; text-align:center;">No models hidden yet.<br/>Click "⊘ Hide Model" on any vehicle card to filter it out.</p>';
+        return;
+      }
+      container.innerHTML = Array.from(state.excludedModels).map(m => `
+        <div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg-subsurface); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:8px 12px;">
+          <span style="font-size:13px; font-weight:600; text-transform:capitalize; color:var(--text-primary);">⊘ ${m}</span>
+          <button type="button" class="nav-btn" onclick="unhideModel('${m.replace(/'/g, "\\'")}')" style="font-size:11px; padding:3px 8px; color:var(--accent-emerald); border-color:rgba(16,185,129,0.3);">
+            ✕ Unhide
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function openExcludedModal() {
+      renderExcludedModal();
+      const modal = document.getElementById('excluded-modal-backdrop');
+      if (modal) {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeExcludedModal() {
+      const modal = document.getElementById('excluded-modal-backdrop');
+      if (modal) modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closeExcludedModalOnBackdrop(e) {
+      if (e && e.target && e.target.id === 'excluded-modal-backdrop') {
+        closeExcludedModal();
+      }
+    }
+
+    function openPushModal() {
+      const modal = document.getElementById('push-modal-backdrop');
+      if (modal) {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closePushModal() {
+      const modal = document.getElementById('push-modal-backdrop');
+      if (modal) modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closePushModalOnBackdrop(e) {
+      if (e && e.target && e.target.id === 'push-modal-backdrop') {
+        closePushModal();
+      }
+    }
+
+    async function sendTestPushFromBrowser() {
+      const resBox = document.getElementById('push-test-result');
+      if (resBox) {
+        resBox.style.display = 'block';
+        resBox.style.color = 'var(--accent-amber)';
+        resBox.textContent = '⚡ Dispatching push notification to ntfy.sh/kiran-car-radar...';
+      }
+      try {
+        const res = await fetch('https://ntfy.sh/kiran-car-radar', {
+          method: 'POST',
+          headers: {
+            'Title': 'Top Deal Alert (Test)',
+            'Tags': 'car,fire',
+            'Priority': 'high',
+            'Click': window.location.href
+          },
+          body: 'Bangalore Car Radar: Mobile push alerts are connected successfully!'
+        });
+        if (res.ok) {
+          if (resBox) {
+            resBox.style.color = 'var(--accent-emerald)';
+            resBox.textContent = '✓ Push sent! Open ntfy on your phone or check notification.';
+          }
+        } else {
+          throw new Error('HTTP ' + res.status);
+        }
+      } catch (e) {
+        if (resBox) {
+          resBox.style.color = '#EF4444';
+          resBox.textContent = 'Push error: ' + e.message;
+        }
       }
     }
 
@@ -3613,6 +3914,8 @@ html_content = """<!DOCTYPE html>
         closeScoreModal();
         closeAlertsModal();
         closeBmwModal();
+        closePushModal();
+        closeExcludedModal();
       }
     });
 
@@ -3724,6 +4027,9 @@ html_content = """<!DOCTYPE html>
               </div>
 
               <div class="card-footer">
+                <button type="button" class="card-hide-btn" onclick="excludeModel('${(c.make || '').replace(/'/g, "\\'")}', '${(c.model || '').replace(/'/g, "\\'")}', event)" title="Hide all ${c.make} ${c.model} listings">
+                  <span>⊘ Hide Model</span>
+                </button>
                 <a href="${c.url || '#'}" target="_blank" rel="noopener noreferrer" class="cta-primary-btn">
                   <span>Inspect on ${platformName}</span>
                   <span>&rarr;</span>

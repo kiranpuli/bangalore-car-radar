@@ -46,9 +46,17 @@ PRESTIGE_MODELS = [
 ]
 
 EXCLUDE_MODELS = [
-    "alto", "eeco", "omni", "s-presso", "spresso",
-    "celerio", "wagon r", "eon", "santro", "kwid", "nano", "matiz", "spark",
+    "alto", "eeco", "omni", "s-presso", "spresso", "s presso", "presso",
+    "celerio", "wagon r", "wagonr", "wagon", "eon", "santro", "kwid", "nano", "matiz", "spark",
+    "datsun", "redi-go", "redigo", "kuv100", "kuv 100", "zen estilo", "estilo", "ritz",
 ]
+
+def is_excluded_car(car):
+    make = (car.get("make") or "").lower()
+    model = (car.get("model") or "").lower()
+    variant = (car.get("variant") or "").lower()
+    full_name = f"{make} {model} {variant}".strip()
+    return any(ex in full_name for ex in EXCLUDE_MODELS)
 
 KNOWLEDGE_BASE = {
     "brio": {
@@ -192,13 +200,40 @@ def notify_mac(title, message):
         import platform, shutil
         if platform.system() != "Darwin" or not shutil.which("osascript"):
             return
-        script = f'display notification "{message}" with title "{title}" sound name "Glass"'
+        clean_msg = message.replace('"', '\\"')
+        clean_title = title.replace('"', '\\"')
+        script = f'display notification "{clean_msg}" with title "{clean_title}" sound name "Glass"'
         subprocess.run(["osascript", "-e", script], capture_output=True)
     except Exception:
         pass
 
 
+NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "kiran-car-radar")
+
+def send_mobile_push(title, message, click_url=None, topic=NTFY_TOPIC):
+    try:
+        headers = {
+            "Title": title,
+            "Tags": "car,fire",
+            "Priority": "high"
+        }
+        if click_url:
+            headers["Click"] = click_url
+        res = requests.post(
+            f"https://ntfy.sh/{topic}",
+            data=message.encode("utf-8"),
+            headers=headers,
+            timeout=8
+        )
+        if res.status_code == 200:
+            print(f"[{datetime.now()}] Mobile push dispatched to ntfy.sh/{topic}")
+    except Exception as e:
+        print(f"[{datetime.now()}] Push notification error: {e}", file=sys.stderr)
+
+
 def is_good_deal(car):
+    if is_excluded_car(car):
+        return False
     price = car.get("price", 9999999)
     score = car.get("deal_score", 0)
     km = car.get("mileage", 999999)
@@ -1205,7 +1240,7 @@ def run_monitor(city="bangalore", max_price=None):
     cleaned_olx = enrich_olx(olx_raw)
     print(f"[{datetime.now()}] Fetched {len(cleaned_olx)} OLX cars.")
 
-    combined_cars = cleaned_spinny + cleaned_cars24 + cleaned_truwo + cleaned_olx
+    combined_cars = [c for c in (cleaned_spinny + cleaned_cars24 + cleaned_truwo + cleaned_olx) if not is_excluded_car(c)]
     combined_cars.sort(key=lambda x: x.get("deal_score", 0), reverse=True)
 
     new_cars = []
@@ -1237,8 +1272,11 @@ def run_monitor(city="bangalore", max_price=None):
             price_l = f"₹{d.get('price')/100000:.2f}L"
             km_k = f"{d.get('mileage')//1000}k km"
             plat = d.get('platform', 'Spinny')
-            notify_mac(f"🔥 Top {plat} Deal Alert!", f"{title} for {price_l} ({km_k}, Score {d.get('deal_score')})")
-        print(f"[{datetime.now()}] Alert dispatched for {len(good_deals)} high-conviction deal(s).")
+            score = d.get('deal_score', 0)
+            url = d.get('url', '')
+            notify_mac(f"Top {plat} Deal Alert!", f"{title} for {price_l} ({km_k}, Score {score})")
+            send_mobile_push(f"Top {plat} Deal: {title}", f"{price_l} · {km_k} · Score {score}/100", click_url=url)
+        print(f"[{datetime.now()}] Alert & mobile push dispatched for {len(good_deals)} high-conviction deal(s).")
     elif not is_initial_run:
         print(f"[{datetime.now()}] Inventory refreshed. No new qualifying top deals (< ₹5L, Score 80+).")
 
@@ -1248,11 +1286,14 @@ if __name__ == "__main__":
     parser.add_argument("--city", default="bangalore", help="Target city")
     parser.add_argument("--max-price", type=int, default=0, help="Max budget threshold (0 for unlimited)")
     parser.add_argument("--test-notify", action="store_true", help="Dispatch a test macOS notification")
+    parser.add_argument("--test-push", action="store_true", help="Dispatch a test mobile push notification via ntfy")
     args = parser.parse_args()
 
-    if args.test_notify:
-        notify_mac("🔥 Top Deal Alert (Test)!", "2022 Renault Kwid RXT 1.0 AMT for ₹4.26L (Score 99, 14k km)")
-        print(f"[{datetime.now()}] Test macOS desktop notification dispatched successfully.")
+    if args.test_notify or args.test_push:
+        notify_mac("Top Deal Alert (Test)!", "2021 VW Polo TSI for ₹4.85L (Score 98, 22k km)")
+        send_mobile_push("Top Deal (Test): 2021 VW Polo TSI", "₹4.85L · 22k km · Score 98/100 on Spinny", click_url="https://kiranpuli.github.io/spinny-deals/")
+        print(f"[{datetime.now()}] Test desktop banner and mobile push notification dispatched to ntfy.sh/{NTFY_TOPIC}.")
+        sys.exit(0)
         sys.exit(0)
 
     max_p = None if args.max_price <= 0 else args.max_price
