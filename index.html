@@ -435,7 +435,7 @@
       margin-bottom: 8px;
     }
 
-    /* Master Filter Control Deck (Cohesive, Minimalist, Engineered) */
+        /* Unified Filter Workbench (Cohesive, Type-Specific Controls) */
     .filter-deck {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
@@ -448,7 +448,7 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
     }
 
-    /* Tier 1: Primary Scope & Global Actions */
+    /* Tier 1: Search, Curated Presets, BMW Advisory & Sort */
     .deck-row-primary {
       display: flex;
       align-items: center;
@@ -456,7 +456,6 @@
       flex-wrap: wrap;
     }
 
-    /* Deck Search */
     .deck-search-wrap {
       flex: 1 1 240px;
       min-width: 200px;
@@ -504,7 +503,7 @@
       color: var(--text-primary);
     }
 
-    /* Segmented Scope Switcher (Curated vs German vs All) */
+    /* Curated Intent Scope Switcher */
     .deck-segmented-scope {
       display: inline-flex;
       align-items: center;
@@ -512,21 +511,21 @@
       border: 1px solid var(--border-color);
       border-radius: var(--radius-pill);
       padding: 3px;
-      gap: 3px;
+      gap: 2px;
     }
     .scope-segment {
       background: transparent;
       border: 1px solid transparent;
       color: var(--text-muted);
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 600;
-      padding: 6px 14px;
+      padding: 6px 13px;
       border-radius: var(--radius-pill);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: all var(--dur-normal) var(--ease-base);
+      transition: all 180ms cubic-bezier(0.22, 1, 0.36, 1);
       user-select: none;
       white-space: nowrap;
     }
@@ -540,8 +539,8 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     }
     .scope-segment.active.curated {
-      background: rgba(245, 158, 11, 0.12);
-      border-color: rgba(245, 158, 11, 0.45);
+      background: rgba(245, 158, 11, 0.14);
+      border-color: rgba(245, 158, 11, 0.5);
       color: #FBBF24;
     }
     .scope-icon {
@@ -551,16 +550,22 @@
     .scope-count {
       background: rgba(255, 255, 255, 0.08);
       font-family: var(--font-mono);
-      font-size: 11px;
-      padding: 1px 6px;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
       border-radius: var(--radius-pill);
-      color: inherit;
+      color: var(--text-muted);
     }
     .scope-segment.active.curated .scope-count {
       background: rgba(245, 158, 11, 0.25);
+      color: #FBBF24;
+    }
+    .scope-segment.active .scope-count {
+      background: rgba(255, 255, 255, 0.2);
+      color: #FFFFFF;
     }
 
-    /* Right Action Cluster */
+    /* Right Deck Actions */
     .deck-actions-right {
       display: inline-flex;
       align-items: center;
@@ -568,123 +573,186 @@
       margin-left: auto;
     }
     .deck-btn-bmw {
-      background: rgba(59, 130, 246, 0.08);
-      border: 1px solid rgba(59, 130, 246, 0.25);
-      color: #93C5FD;
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      color: #F8FAFC;
       font-size: 12px;
       font-weight: 600;
-      padding: 6.5px 11px;
+      padding: 7px 12px;
       border-radius: var(--radius-md);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: all var(--dur-fast) var(--ease-base);
+      transition: all 180ms ease;
       white-space: nowrap;
     }
     .deck-btn-bmw:hover {
-      background: rgba(59, 130, 246, 0.18);
-      border-color: var(--accent-blue);
-      color: #FFFFFF;
+      border-color: #38BDF8;
+      background: rgba(56, 189, 248, 0.12);
+      color: #38BDF8;
     }
     .deck-sort-wrap {
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 3px 8px;
     }
     .deck-micro-label {
       font-family: var(--font-mono);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-size: 10.5px;
+      font-weight: 600;
       color: var(--text-subtle);
+      text-transform: uppercase;
     }
     .deck-select {
-      background: var(--bg-subsurface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      color: var(--text-body);
-      font-family: var(--font-mono);
-      font-size: 12px;
-      padding: 6.5px 10px;
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 12.5px;
+      font-weight: 500;
       outline: none;
       cursor: pointer;
-      transition: border-color var(--dur-normal) var(--ease-base);
     }
-    .deck-select:focus {
-      border-color: var(--accent-blue);
-    }
-    .deck-btn-drawer {
-      background: var(--bg-subsurface);
-      border: 1px solid var(--border-color);
-      color: var(--text-body);
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 6.5px 12px;
-      border-radius: var(--radius-md);
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      cursor: pointer;
-      transition: all var(--dur-fast) var(--ease-base);
-      user-select: none;
-    }
-    .deck-btn-drawer:hover, .deck-btn-drawer.open {
-      background: var(--border-color);
-      border-color: var(--accent-blue);
-      color: #FFFFFF;
-    }
-    .filter-count-badge {
-      background: var(--accent-blue);
-      color: #000000;
-      font-size: 10px;
-      font-weight: 700;
-      padding: 1px 6px;
-      border-radius: var(--radius-pill);
-    }
-    .drawer-arrow {
-      font-size: 11px;
-      transition: transform var(--dur-fast) var(--ease-base);
-    }
-    .deck-btn-drawer.open .drawer-arrow {
-      transform: rotate(180deg);
+    .deck-select option {
+      background: #161D2B;
+      color: #F1F5F9;
     }
 
-    /* Tier 2: Secondary Quick Filter Ribbon (Platform, Budget, Discount) */
-    .deck-row-ribbon {
+    /* Tier 2: Tailored Controls by Filter Type */
+    .deck-row-filters {
       display: flex;
       align-items: center;
       gap: 12px;
       padding-top: 10px;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
       flex-wrap: wrap;
     }
-    .ribbon-group {
+    .filter-cluster {
       display: inline-flex;
       align-items: center;
       gap: 8px;
     }
-    .ribbon-label {
+    .cluster-label {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
       color: var(--text-subtle);
       white-space: nowrap;
     }
-    .ribbon-pills {
+    .cluster-segmented {
+      display: inline-flex;
+      align-items: center;
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-pill);
+      padding: 2.5px;
+      gap: 2px;
+    }
+    .cluster-pill, .ribbon-pill, .facet-pill {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 180ms cubic-bezier(0.22, 1, 0.36, 1);
+      white-space: nowrap;
+    }
+    .cluster-pill:hover, .ribbon-pill:hover, .facet-pill:hover {
+      color: var(--text-primary);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+    .cluster-pill.active, .ribbon-pill.active, .facet-pill.active {
+      background: #FFFFFF;
+      border-color: #FFFFFF;
+      color: #000000;
+      font-weight: 600;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+    }
+    .cluster-pill.pill-item.active::before, .ribbon-pill.pill-item.active::before, .facet-pill.pill-item.active::before {
+      content: "✓";
+      font-weight: 800;
+      font-size: 10px;
+      color: #000000;
+      margin-right: 1px;
+    }
+    .filter-divider {
+      width: 1px;
+      height: 22px;
+      background: var(--border-color);
+      opacity: 0.7;
+    }
+
+    /* Cohesive Source Dot Indicators */
+    .source-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .spinny-dot { background: #F59E0B; box-shadow: 0 0 5px rgba(245, 158, 11, 0.7); }
+    .cars24-dot { background: #38BDF8; box-shadow: 0 0 5px rgba(56, 189, 248, 0.7); }
+    .truwo-dot  { background: #34D399; box-shadow: 0 0 5px rgba(52, 211, 153, 0.7); }
+
+    /* Tier 3: Compact Brand Chips Bar */
+    .deck-row-brands {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      flex-wrap: wrap;
+    }
+    .brand-chips-wrap {
       display: inline-flex;
       align-items: center;
       gap: 4px;
       flex-wrap: wrap;
     }
-    .ribbon-divider {
-      width: 1px;
-      height: 20px;
-      background: var(--border-color);
-      opacity: 0.7;
+    .brand-chip {
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      user-select: none;
+      transition: all 180ms ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .brand-chip:hover {
+      color: var(--text-primary);
+      border-color: var(--text-muted);
+    }
+    .brand-chip.active {
+      background: #FFFFFF;
+      border-color: #FFFFFF;
+      color: #000000;
+      font-weight: 600;
+    }
+    .brand-chip.pill-item.active::before {
+      content: "✓";
+      font-weight: 800;
+      font-size: 10px;
+      color: #000000;
     }
 
     /* Scope Context & Status Line */
@@ -695,7 +763,7 @@
       font-size: 11.5px;
       color: var(--text-subtle);
       font-family: var(--font-mono);
-      padding-top: 4px;
+      padding-top: 6px;
       border-top: 1px solid rgba(255, 255, 255, 0.04);
     }
     .pulse-dot {
@@ -708,415 +776,108 @@
       animation: pulseGlow 2s infinite ease-in-out;
     }
 
-    /* Collapsible Deep Drawer (3 Structured Columns) */
-    .deck-drawer {
-      padding-top: 14px;
-      border-top: 1px solid var(--border-color);
-      animation: fadeInDrawer 200ms var(--ease-base);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .drawer-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    .drawer-card {
-      background: #15171C;
-      border: 1px solid #232732;
-      border-radius: var(--radius-md);
-      padding: 12px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .drawer-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .drawer-card-title {
-      font-size: 11.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #E2E8F0;
-      font-family: var(--font-mono);
-    }
-    .drawer-reset-link {
-      background: transparent;
-      border: none;
-      color: var(--text-subtle);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      cursor: pointer;
-      padding: 2px 4px;
-      transition: color var(--dur-fast) var(--ease-base);
-    }
-    .drawer-reset-link:hover {
-      color: #FFFFFF;
-    }
-    .drawer-card-body {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .drawer-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 6px;
-    }
-    .drawer-close-btn {
-      background: var(--bg-subsurface);
-      border: 1px solid var(--border-color);
-      color: var(--text-body);
-      font-size: 12px;
-      font-family: var(--font-mono);
-      padding: 6px 12px;
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      transition: all var(--dur-fast) var(--ease-base);
-    }
-    .drawer-close-btn:hover {
-      background: var(--border-color);
-      color: #FFFFFF;
-    }
-
-    /* Category Grids */
-    .category-grid {
-      display: grid;
-      gap: 14px;
-    }
-    .category-grid.budget-grid {
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    }
-    .category-grid.specs-grid {
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
-    .filter-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .group-label {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-subtle);
-    }
-    .group-label-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .brands-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .facet-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .ribbon-pill, .facet-pill {
-      background: var(--bg-subsurface);
-      border: 1px solid var(--border-color);
-      color: var(--text-muted);
-      font-size: 12px;
-      font-weight: 500;
-      padding: 5px 11px;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      user-select: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: all var(--dur-fast) var(--ease-base);
-      white-space: nowrap;
-    }
-    .ribbon-pill:hover, .facet-pill:hover {
-      border-color: var(--text-muted);
-      color: var(--text-primary);
-    }
-    .ribbon-pill.active, .facet-pill.active {
-      background: #FFFFFF;
-      border-color: #FFFFFF;
-      color: #000000;
-      font-weight: 600;
-    }
-    .ribbon-pill.pill-item.active::before, .facet-pill.pill-item.active::before {
-      content: "✓";
-      font-weight: 800;
-      font-size: 10.5px;
-      color: #000000;
-    }
-    .btn-facet-reset {
-      background: transparent;
-      border: none;
-      color: var(--text-subtle);
-      font-family: var(--font-mono);
-      font-size: 10px;
-      cursor: pointer;
-      text-transform: uppercase;
-      padding: 2px 6px;
-      border-radius: var(--radius-sm);
-      transition: color var(--dur-fast) var(--ease-base);
-    }
-    .btn-facet-reset:hover {
-      color: var(--text-primary);
-    }
-
-    /* Continuous Price Controls */
-    .price-scrubber {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .price-inputs-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .price-num-box {
-      width: 78px;
-      background: var(--bg-subsurface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      color: var(--text-primary);
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 7px 8px;
-      text-align: center;
-      outline: none;
-      transition: border-color var(--dur-normal) var(--ease-base);
-    }
-    .price-num-box:focus {
-      border-color: var(--border-focus);
-    }
-    .price-slider-input {
-      flex: 1;
-      -webkit-appearance: none;
-      appearance: none;
-      height: 6px;
-      border-radius: 3px;
-      background: var(--border-color);
-      outline: none;
-      cursor: pointer;
-      accent-color: var(--accent-blue);
-    }
-    .price-slider-input::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--accent-blue);
-      cursor: pointer;
-      box-shadow: 0 0 6px rgba(59, 130, 246, 0.6);
-    }
-
-    /* Presets Bar */
-    .presets-container {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: var(--sp-75);
-      padding: var(--sp-100) 0 0 0;
-      border-top: 1px solid var(--border-color);
-    }
-    .preset-chip-btn {
-      background: transparent;
-      border: 1px solid var(--border-color);
-      color: var(--text-muted);
-      font-size: 12px;
-      font-weight: 500;
-      padding: 5px 11px;
-      border-radius: var(--radius-pill);
-      cursor: pointer;
-      transition: all var(--dur-fast) var(--ease-base);
-    }
-    .preset-chip-btn:hover {
-      border-color: var(--text-primary);
-      color: var(--text-primary);
-    }
-    .preset-chip-btn.active {
-      background: var(--accent-blue);
-      border-color: var(--accent-blue);
-      color: #FFFFFF;
-      font-weight: 600;
-    }
-
-    /* Quick Specialist Strips & Presets */
-    .quick-presets-strip {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-    .pill-preset-german {
-      border-color: rgba(52, 211, 153, 0.4);
-      color: #34D399;
-      background: rgba(52, 211, 153, 0.08);
-    }
-    .pill-preset-german:hover, .pill-preset-german.active {
-      background: rgba(52, 211, 153, 0.2);
-      border-color: #34D399;
-      color: #6EE7B7;
-    }
-    .pill-preset-bmw {
-      border-color: rgba(59, 130, 246, 0.4);
-      color: #60A5FA;
-      background: rgba(59, 130, 246, 0.08);
-    }
-    .pill-preset-bmw:hover {
-      background: rgba(59, 130, 246, 0.2);
-      border-color: #60A5FA;
-      color: #93C5FD;
-    }
-    .nav-btn.bmw-guide-btn {
-      border-color: rgba(59, 130, 246, 0.4);
-      color: #60A5FA;
-    }
-    .nav-btn.bmw-guide-btn:hover {
-      background: rgba(59, 130, 246, 0.15);
-      color: #93C5FD;
-    }
-    .bmw-empty-card {
-      border-color: rgba(59, 130, 246, 0.35);
-      background: #0E1626;
-      max-width: 680px;
-      margin: 0 auto;
-      text-align: left;
-    }
-    .bmw-empty-badge {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: #60A5FA;
-      background: rgba(59, 130, 246, 0.15);
-      border: 1px solid rgba(59, 130, 246, 0.35);
-      padding: 3px 8px;
-      border-radius: 6px;
-      margin-bottom: 10px;
-    }
-    .bmw-empty-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    /* Active Filter Summary Strip & Density Switcher */
+    /* Active Filters Summary Strip & Density Switcher */
     .active-filters-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: var(--sp-300);
-      font-size: 13px;
+      padding: 4px 2px;
+      margin-bottom: var(--sp-200);
+      flex-wrap: wrap;
     }
     .active-tags-left {
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       gap: 8px;
+      flex-wrap: wrap;
+    }
+    .active-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-pill);
+      padding: 3px 9px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #E2E8F0;
+    }
+    .active-tag-remove {
+      background: transparent;
+      border: none;
+      color: var(--text-subtle);
+      cursor: pointer;
+      font-size: 12px;
+      padding: 0 2px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .active-tag-remove:hover {
+      color: #EF4444;
+    }
+    .btn-reset-all {
+      background: transparent;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #F87171;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: all 180ms ease;
+    }
+    .btn-reset-all:hover {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: #EF4444;
+      color: #FFFFFF;
     }
     .active-tags-right {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       margin-left: auto;
     }
     .density-switch-wrap {
       display: inline-flex;
       align-items: center;
-      background: #181818;
-      border: 1px solid #272727;
+      gap: 4px;
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-pill);
-      padding: 2px 4px;
-      gap: 3px;
+      padding: 2px;
     }
     .density-label {
       font-family: var(--font-mono);
       font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      font-weight: 600;
       color: var(--text-subtle);
-      padding: 0 4px;
+      text-transform: uppercase;
+      padding-left: 6px;
     }
     .density-pill {
       background: transparent;
-      border: 1px solid transparent;
+      border: none;
       color: var(--text-muted);
-      font-family: var(--font-mono);
+      font-family: var(--font-sans);
       font-size: 11px;
-      font-weight: 600;
-      padding: 3px 9px;
+      font-weight: 500;
+      padding: 3px 8px;
       border-radius: var(--radius-pill);
       cursor: pointer;
-      transition: all var(--dur-fast) var(--ease-base);
-    }
-    .density-pill:hover {
-      color: var(--text-primary);
+      transition: all 180ms ease;
     }
     .density-pill.active {
-      background: #272727;
+      background: #252833;
       color: #FFFFFF;
-      border-color: #383838;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-    }
-    .active-tag {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 4px 10px;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--text-body);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .active-tag-remove {
-      background: none;
-      border: none;
-      color: var(--text-subtle);
-      cursor: pointer;
-      font-size: 13px;
-      padding: 0 2px;
-      line-height: 1;
-    }
-    .active-tag-remove:hover {
-      color: var(--text-primary);
-    }
-    .btn-reset-all {
-      background: transparent;
-      border: none;
-      color: var(--accent-blue);
-      font-family: var(--font-mono);
-      font-size: 12px;
-      cursor: pointer;
-      padding: 4px 8px;
-      text-decoration: underline;
-    }
-    .btn-reset-all:hover {
-      color: #FFFFFF;
+      font-weight: 600;
     }
     .results-count-wrap {
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--text-muted);
       white-space: nowrap;
     }
@@ -1124,7 +885,7 @@
       color: var(--text-primary);
     }
 
-    /* Cars Grid (Debloated Cards) */
+/* Cars Grid (Debloated Cards) */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
@@ -1253,29 +1014,60 @@
       background: rgba(52, 211, 153, 0.1);
     }
 
-    .badge-platform {
+        /* Cohesive Vetted Platform Source Badges */
+    .card-badges-top-right {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 2;
+    }
+    .source-tag {
       font-family: var(--font-mono);
       font-size: 11px;
       font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 6px;
-      letter-spacing: 0.04em;
+      padding: 3.5px 9px;
+      border-radius: var(--radius-pill);
+      background: rgba(14, 19, 30, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #F1F5F9;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.02em;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
     }
-    .badge-platform.spinny {
-      background: rgba(245, 158, 11, 0.15);
-      border: 1px solid rgba(245, 158, 11, 0.4);
-      color: #FBBF24;
+    .source-tier {
+      color: var(--text-subtle);
+      font-weight: 500;
+      font-size: 10px;
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+      padding-left: 6px;
     }
-    .badge-platform.cars24 {
-      background: rgba(59, 130, 246, 0.15);
-      border: 1px solid rgba(59, 130, 246, 0.4);
-      color: #60A5FA;
+
+    /* Cohesive Pricing Source Indicator */
+    .pricing-source-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-subtle);
+      margin-top: 3px;
+      letter-spacing: 0.02em;
     }
-    .badge-platform.truwo {
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.4);
+    .pricing-source-badge.truwo {
       color: #34D399;
     }
+    .pricing-source-badge.spinny, .pricing-source-badge.cars24 {
+      color: var(--text-subtle);
+    }
+
 
     /* Live unbooked stock indicator */
     .badge-availability {
@@ -2451,9 +2243,9 @@
       </p>
     </header>
 
-    <!-- Unified Filter Deck (Minimalist, Integrated, 2-Tier Control) -->
+        <!-- Unified Filter Workbench (Cohesive, Type-Specific Controls, Reduced & Merged) -->
     <section class="filter-deck" id="filter-workbench" aria-label="Car Filter Control Deck">
-      <!-- Tier 1: Primary Scope & Global Actions -->
+      <!-- Tier 1: Instant Search, Curated Presets, BMW Guide & Sort -->
       <div class="deck-row-primary">
         <!-- Search Field -->
         <div class="deck-search-wrap">
@@ -2471,7 +2263,7 @@
           <button type="button" id="btn-clear-search" class="search-clear-btn" onclick="clearSearch()" title="Clear search">✕</button>
         </div>
 
-        <!-- Scope Segmented Switcher -->
+        <!-- Curated Intent Scope Switcher -->
         <div class="deck-segmented-scope" role="tablist" aria-label="Inventory Scope">
           <button type="button" class="scope-segment active curated" id="btn-mode-curated" onclick="setViewMode('curated')" role="tab" title="Handpicked Bangalore deals under ₹5L with Deal Score 80+">
             <span class="scope-icon">🔥</span>
@@ -2490,9 +2282,9 @@
           </button>
         </div>
 
-        <!-- Quick Utilities: BMW Advisory, Sort, Drawer Toggle -->
+        <!-- Right Deck Utilities: BMW Advisory & Sort Select -->
         <div class="deck-actions-right">
-          <button type="button" class="deck-btn-bmw" id="btn-bmw-intel" onclick="openBmwModal()" title="BMW Under ₹5L Buying Guide & OLX Bangalore Search">
+          <button type="button" class="deck-btn-bmw" id="btn-bmw-intel" onclick="openBmwModal()" title="BMW Under ₹5L Ownership Guide & Search">
             <span>🏎️ BMW &lt; ₹5L</span>
           </button>
 
@@ -2507,172 +2299,87 @@
               <option value="km_asc">Mileage: Lowest KM</option>
             </select>
           </div>
-
-          <button type="button" class="deck-btn-drawer" id="btn-toggle-filters" onclick="toggleFilterDrawer()" title="Expand advanced filters">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21v-7m0-4V3m8 18v-9m0-4V3m8 18v-5m0-4V3M1 14h6m2-6h6m2 8h6"/></svg>
-            <span>Filters</span>
-            <span class="filter-count-badge" id="filter-active-count">0</span>
-            <span class="drawer-arrow">▾</span>
-          </button>
         </div>
       </div>
 
-      <!-- Tier 2: Secondary Quick Filter Ribbon (Platform, Budget, Discount) -->
-      <div class="deck-row-ribbon">
-        <!-- Platform Group -->
-        <div class="ribbon-group" id="ribbon-platform-group">
-          <span class="ribbon-label">Platform</span>
-          <div class="ribbon-pills" id="platforms-pills">
-            <button type="button" class="ribbon-pill pill-all active" onclick="clearMultiFilter('platforms')">All</button>
-            <button type="button" class="ribbon-pill pill-item" data-val="Spinny" onclick="toggleMultiFilter('platforms', 'Spinny')">Spinny (<span id="count-spinny">0</span>)</button>
-            <button type="button" class="ribbon-pill pill-item" data-val="Cars24" onclick="toggleMultiFilter('platforms', 'Cars24')">Cars24 (<span id="count-cars24">0</span>)</button>
-            <button type="button" class="ribbon-pill pill-item" data-val="Truwo" onclick="toggleMultiFilter('platforms', 'Truwo')">Truwo (<span id="count-truwo">0</span>)</button>
+      <!-- Tier 2: Tailored Controls by Filter Type (Source Platform, Stepped Budget, Showroom Savings, Drivetrain) -->
+      <div class="deck-row-filters">
+        <!-- 1. Source Platform: Discrete Entity Multi-Select with Live Counts & Subtle Dots -->
+        <div class="filter-cluster source-cluster" id="cluster-source">
+          <span class="cluster-label">Source</span>
+          <div class="cluster-segmented" id="platforms-pills">
+            <button type="button" class="cluster-pill pill-all active" onclick="clearMultiFilter('platforms')">All (<span id="tele-total-sources">0</span>)</button>
+            <button type="button" class="cluster-pill pill-item pill-spinny" data-val="Spinny" onclick="toggleMultiFilter('platforms', 'Spinny')">
+              <span class="source-dot spinny-dot"></span>Spinny (<span id="count-spinny">0</span>)
+            </button>
+            <button type="button" class="cluster-pill pill-item pill-cars24" data-val="Cars24" onclick="toggleMultiFilter('platforms', 'Cars24')">
+              <span class="source-dot cars24-dot"></span>Cars24 (<span id="count-cars24">0</span>)
+            </button>
+            <button type="button" class="cluster-pill pill-item pill-truwo" data-val="Truwo" onclick="toggleMultiFilter('platforms', 'Truwo')">
+              <span class="source-dot truwo-dot"></span>Truwo (<span id="count-truwo">0</span>)
+            </button>
           </div>
         </div>
 
-        <div class="ribbon-divider" aria-hidden="true"></div>
+        <div class="filter-divider" aria-hidden="true"></div>
 
-        <!-- Budget Group -->
-        <div class="ribbon-group" id="ribbon-budget-group">
-          <span class="ribbon-label">Budget</span>
-          <div class="ribbon-pills quick-budget-strip">
-            <button type="button" class="ribbon-pill" onclick="setMaxBudget(4.0)">≤ ₹4L</button>
-            <button type="button" class="ribbon-pill active" id="btn-quick-5l" onclick="setMaxBudget(5.0)">≤ ₹5L</button>
-            <button type="button" class="ribbon-pill" onclick="setMaxBudget(7.0)">≤ ₹7L</button>
-            <button type="button" class="ribbon-pill" onclick="setMaxBudget(10.0)">≤ ₹10L</button>
-            <button type="button" class="ribbon-pill" onclick="clearPrice()">All</button>
+        <!-- 2. Max Budget: Bounded Stepped Range Selector -->
+        <div class="filter-cluster budget-cluster" id="cluster-budget">
+          <span class="cluster-label">Max Budget</span>
+          <div class="cluster-segmented quick-budget-strip">
+            <button type="button" class="cluster-pill" onclick="setMaxBudget(4.0)">&le; ₹4L</button>
+            <button type="button" class="cluster-pill active" id="btn-quick-5l" onclick="setMaxBudget(5.0)">&le; ₹5L</button>
+            <button type="button" class="cluster-pill" onclick="setMaxBudget(7.0)">&le; ₹7L</button>
+            <button type="button" class="cluster-pill" onclick="clearPrice()">All</button>
           </div>
         </div>
 
-        <div class="ribbon-divider" aria-hidden="true"></div>
+        <div class="filter-divider" aria-hidden="true"></div>
 
-        <!-- Discount on Top Showroom Price Group -->
-        <div class="ribbon-group" id="ribbon-discount-group">
-          <span class="ribbon-label">Discount</span>
-          <div class="ribbon-pills quick-discount-strip" id="discount-pills">
-            <button type="button" class="ribbon-pill active" onclick="setMinDiscount(0, this)">Any</button>
-            <button type="button" class="ribbon-pill" onclick="setMinDiscount(30, this)">≥ 30%</button>
-            <button type="button" class="ribbon-pill" onclick="setMinDiscount(40, this)">≥ 40%</button>
-            <button type="button" class="ribbon-pill" onclick="setMinDiscount(50, this)">≥ 50%</button>
+        <!-- 3. Showroom Savings: Percentage Value Threshold Selector -->
+        <div class="filter-cluster discount-cluster" id="cluster-discount">
+          <span class="cluster-label">Savings</span>
+          <div class="cluster-segmented" id="discount-pills">
+            <button type="button" class="cluster-pill active" onclick="setMinDiscount(0, this)">Any</button>
+            <button type="button" class="cluster-pill" onclick="setMinDiscount(30, this)">&ge; 30%</button>
+            <button type="button" class="cluster-pill" onclick="setMinDiscount(40, this)">&ge; 40%</button>
+            <button type="button" class="cluster-pill" onclick="setMinDiscount(50, this)">&ge; 50%</button>
+          </div>
+        </div>
+
+        <div class="filter-divider" aria-hidden="true"></div>
+
+        <!-- 4. Drivetrain: Micro-Segmented Binary/Ternary Toggles (Transmission + Fuel) -->
+        <div class="filter-cluster drivetrain-cluster" id="cluster-drivetrain">
+          <span class="cluster-label">Drivetrain</span>
+          <div class="cluster-segmented" id="transmissions-pills">
+            <button type="button" class="cluster-pill pill-all active" onclick="clearMultiFilter('transmissions')">All Trans</button>
+            <button type="button" class="cluster-pill pill-item" data-val="automatic" onclick="toggleMultiFilter('transmissions', 'automatic')">Auto</button>
+            <button type="button" class="cluster-pill pill-item" data-val="manual" onclick="toggleMultiFilter('transmissions', 'manual')">Manual</button>
+          </div>
+          <div class="cluster-segmented" id="fuels-pills">
+            <button type="button" class="cluster-pill pill-all active" onclick="clearMultiFilter('fuels')">All Fuel</button>
+            <button type="button" class="cluster-pill pill-item" data-val="petrol" onclick="toggleMultiFilter('fuels', 'petrol')">Petrol</button>
+            <button type="button" class="cluster-pill pill-item" data-val="diesel" onclick="toggleMultiFilter('fuels', 'diesel')">Diesel</button>
           </div>
         </div>
       </div>
 
-      <!-- Collapsible Deep Drawer (3 Structured Columns) -->
-      <div class="deck-drawer" id="filter-categories-drawer" style="display: none;">
-        <div class="drawer-grid">
-          
-          <!-- Column 1: Custom Scrubber & Quality Tier -->
-          <div class="drawer-card">
-            <div class="drawer-card-header">
-              <span class="drawer-card-title">01 · Budget Scrubber &amp; Quality</span>
-              <button type="button" class="drawer-reset-link" onclick="resetBudgetAndAssurance()">Reset</button>
-            </div>
-            <div class="drawer-card-body">
-              <div class="filter-group">
-                <label class="group-label">Exact Budget Range (₹ Lakhs)</label>
-                <div class="price-scrubber">
-                  <div class="price-inputs-row">
-                    <span class="caption-4" style="color:var(--text-subtle);">₹</span>
-                    <input type="number" id="ctrl-min-price" class="price-num-box" min="0" max="30" step="0.1" placeholder="Min" oninput="onPriceChange()" />
-                    <span style="color:var(--text-subtle);">–</span>
-                    <input type="number" id="ctrl-max-price" class="price-num-box" min="0" max="30" step="0.1" placeholder="Max" oninput="onPriceChange()" />
-                    <input type="range" id="ctrl-price-range" class="price-slider-input" min="2" max="20" step="0.25" value="5" oninput="onSliderChange(this.value)" title="Scrub Max Budget" />
-                  </div>
-                </div>
-              </div>
-
-              <div class="filter-group" style="margin-top: 14px;">
-                <label class="group-label">Deal Quality Tier</label>
-                <div class="facet-pills" id="qualities-pills">
-                  <button type="button" class="facet-pill pill-all" onclick="clearMultiFilter('qualities')">All Cars</button>
-                  <button type="button" class="facet-pill pill-item active" data-val="top_deal" onclick="toggleMultiFilter('qualities', 'top_deal')">💎 Top Deals (80+)</button>
-                  <button type="button" class="facet-pill pill-item" data-val="assured" onclick="toggleMultiFilter('qualities', 'assured')">🛡️ Certified Assured</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Column 2: Vehicle Specs & Mechanics -->
-          <div class="drawer-card">
-            <div class="drawer-card-header">
-              <span class="drawer-card-title">02 · Vehicle Specifications</span>
-              <button type="button" class="drawer-reset-link" onclick="resetSpecsCategory()">Reset</button>
-            </div>
-            <div class="drawer-card-body">
-              <div class="filter-group">
-                <label class="group-label">Gearbox / Transmission</label>
-                <div class="facet-pills" id="transmissions-pills">
-                  <button type="button" class="facet-pill pill-all active" onclick="clearMultiFilter('transmissions')">All</button>
-                  <button type="button" class="facet-pill pill-item" data-val="automatic" onclick="toggleMultiFilter('transmissions', 'automatic')">Automatic</button>
-                  <button type="button" class="facet-pill pill-item" data-val="manual" onclick="toggleMultiFilter('transmissions', 'manual')">Manual</button>
-                </div>
-              </div>
-
-              <div class="filter-group" style="margin-top: 10px;">
-                <label class="group-label">Fuel Type</label>
-                <div class="facet-pills" id="fuels-pills">
-                  <button type="button" class="facet-pill pill-all active" onclick="clearMultiFilter('fuels')">All</button>
-                  <button type="button" class="facet-pill pill-item" data-val="petrol" onclick="toggleMultiFilter('fuels', 'petrol')">Petrol</button>
-                  <button type="button" class="facet-pill pill-item" data-val="diesel" onclick="toggleMultiFilter('fuels', 'diesel')">Diesel</button>
-                  <button type="button" class="facet-pill pill-item" data-val="cng" onclick="toggleMultiFilter('fuels', 'cng')">CNG</button>
-                </div>
-              </div>
-
-              <div class="filter-group" style="margin-top: 10px;">
-                <label class="group-label">Minimum Registration Year</label>
-                <div class="facet-pills" id="year-pills">
-                  <button type="button" class="facet-pill active" onclick="setYear(0, this)">Any Year</button>
-                  <button type="button" class="facet-pill" onclick="setYear(2022, this)">2022+</button>
-                  <button type="button" class="facet-pill" onclick="setYear(2020, this)">2020+</button>
-                  <button type="button" class="facet-pill" onclick="setYear(2018, this)">2018+</button>
-                  <button type="button" class="facet-pill" onclick="setYear(2016, this)">2016+</button>
-                </div>
-              </div>
-
-              <div class="filter-group" style="margin-top: 10px;">
-                <label class="group-label">Maximum Mileage</label>
-                <div class="facet-pills" id="km-pills">
-                  <button type="button" class="facet-pill active" onclick="setMaxKm(0, this)">Any KM</button>
-                  <button type="button" class="facet-pill" onclick="setMaxKm(30000, this)">&le; 30k</button>
-                  <button type="button" class="facet-pill" onclick="setMaxKm(50000, this)">&le; 50k</button>
-                  <button type="button" class="facet-pill" onclick="setMaxKm(80000, this)">&le; 80k</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Column 3: Automaker Brands -->
-          <div class="drawer-card">
-            <div class="drawer-card-header">
-              <span class="drawer-card-title">03 · Automaker Brands</span>
-              <button type="button" class="drawer-reset-link" onclick="clearMultiFilter('brands')">All Brands</button>
-            </div>
-            <div class="drawer-card-body">
-              <div class="facet-pills brands-container" id="brands-pills">
-                <button type="button" class="facet-pill pill-all active" onclick="clearMultiFilter('brands')">All Brands</button>
-                <button type="button" class="facet-pill pill-item" data-val="maruti" onclick="toggleMultiFilter('brands', 'maruti')">Maruti (<span id="count-maruti">0</span>)</button>
-                <button type="button" class="facet-pill pill-item" data-val="hyundai" onclick="toggleMultiFilter('brands', 'hyundai')">Hyundai (<span id="count-hyundai">0</span>)</button>
-                <button type="button" class="facet-pill pill-item" data-val="tata" onclick="toggleMultiFilter('brands', 'tata')">Tata (<span id="count-tata">0</span>)</button>
-                <button type="button" class="facet-pill pill-item" data-val="renault" onclick="toggleMultiFilter('brands', 'renault')">Renault (<span id="count-renault">0</span>)</button>
-                <button type="button" class="facet-pill pill-item" data-val="honda" onclick="toggleMultiFilter('brands', 'honda')">Honda (<span id="count-honda">0</span>)</button>
-                <button type="button" class="facet-pill pill-item" data-val="volkswagen" onclick="toggleMultiFilter('brands', 'volkswagen')">Volkswagen (<span id="count-volkswagen">0</span>)</button>
-                <button type="button" class="facet-pill pill-item" data-val="toyota" onclick="toggleMultiFilter('brands', 'toyota')">Toyota (<span id="count-toyota">0</span>)</button>
-                <button type="button" class="facet-pill pill-item" data-val="mahindra" onclick="toggleMultiFilter('brands', 'mahindra')">Mahindra (<span id="count-mahindra">0</span>)</button>
-                <button type="button" class="facet-pill pill-item" data-val="ford" onclick="toggleMultiFilter('brands', 'ford')">Ford (<span id="count-ford">0</span>)</button>
-                <button type="button" class="facet-pill pill-item" data-val="kia" onclick="toggleMultiFilter('brands', 'kia')">Kia (<span id="count-kia">0</span>)</button>
-                <button type="button" class="facet-pill pill-item" data-val="skoda" onclick="toggleMultiFilter('brands', 'skoda')">Skoda (<span id="count-skoda">0</span>)</button>
-                <button type="button" class="facet-pill pill-item" data-val="bmw" onclick="toggleMultiFilter('brands', 'bmw')">BMW (<span id="count-bmw">0</span>)</button>
-                <button type="button" class="facet-pill pill-item" data-val="mg" onclick="toggleMultiFilter('brands', 'mg')">MG (<span id="count-mg">0</span>)</button>
-                <button type="button" class="facet-pill pill-item" data-val="jeep" onclick="toggleMultiFilter('brands', 'jeep')">Jeep (<span id="count-jeep">0</span>)</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="drawer-footer">
-          <button type="button" class="drawer-reset-link" onclick="resetAll()">Reset All Filters</button>
-          <button type="button" class="drawer-close-btn" onclick="toggleFilterDrawer()">Close Filters ▴</button>
+      <!-- Tier 3: Compact Brand Chips Bar (Quick Scannable Brand Selection) -->
+      <div class="deck-row-brands">
+        <span class="cluster-label">Brands</span>
+        <div class="brand-chips-wrap" id="brands-pills">
+          <button type="button" class="brand-chip pill-all active" onclick="clearMultiFilter('brands')">All Brands</button>
+          <button type="button" class="brand-chip pill-item" data-val="maruti" onclick="toggleMultiFilter('brands', 'maruti')">Maruti (<span id="count-maruti">0</span>)</button>
+          <button type="button" class="brand-chip pill-item" data-val="hyundai" onclick="toggleMultiFilter('brands', 'hyundai')">Hyundai (<span id="count-hyundai">0</span>)</button>
+          <button type="button" class="brand-chip pill-item" data-val="tata" onclick="toggleMultiFilter('brands', 'tata')">Tata (<span id="count-tata">0</span>)</button>
+          <button type="button" class="brand-chip pill-item" data-val="honda" onclick="toggleMultiFilter('brands', 'honda')">Honda (<span id="count-honda">0</span>)</button>
+          <button type="button" class="brand-chip pill-item" data-val="volkswagen" onclick="toggleMultiFilter('brands', 'volkswagen')">Volkswagen (<span id="count-volkswagen">0</span>)</button>
+          <button type="button" class="brand-chip pill-item" data-val="toyota" onclick="toggleMultiFilter('brands', 'toyota')">Toyota (<span id="count-toyota">0</span>)</button>
+          <button type="button" class="brand-chip pill-item" data-val="mahindra" onclick="toggleMultiFilter('brands', 'mahindra')">Mahindra (<span id="count-mahindra">0</span>)</button>
+          <button type="button" class="brand-chip pill-item" data-val="renault" onclick="toggleMultiFilter('brands', 'renault')">Renault (<span id="count-renault">0</span>)</button>
+          <button type="button" class="brand-chip pill-item" data-val="skoda" onclick="toggleMultiFilter('brands', 'skoda')">Skoda (<span id="count-skoda">0</span>)</button>
+          <button type="button" class="brand-chip pill-item" data-val="bmw" onclick="toggleMultiFilter('brands', 'bmw')">BMW (<span id="count-bmw">0</span>)</button>
         </div>
       </div>
 
@@ -2682,6 +2389,7 @@
         <span>Curated view: Under ₹5.0L · Deal Score 80+ · Low Mileage (&lt; 80k km) · Certified Assured</span>
       </div>
     </section>
+
 <!-- Active Filters Summary Strip & Density Switcher -->
   <div class="active-filters-bar" id="active-tags-strip">
     <div class="active-tags-left">
@@ -3054,7 +2762,7 @@
 
     function syncQuickBudgetButtons() {
       const p = state.max_price;
-      document.querySelectorAll('.quick-budget-strip .facet-pill, .quick-budget-strip .ribbon-pill').forEach(btn => {
+      document.querySelectorAll('.quick-budget-strip button').forEach(btn => {
         const txt = btn.textContent;
         if (p === 400000 && txt.includes('4L')) btn.classList.add('active');
         else if (p === 500000 && txt.includes('5L')) btn.classList.add('active');
@@ -3067,7 +2775,7 @@
 
     function syncDiscountButtons() {
       const d = state.min_discount;
-      document.querySelectorAll('#discount-pills .facet-pill, #discount-pills .ribbon-pill, .quick-discount-strip .ribbon-pill').forEach(btn => {
+      document.querySelectorAll('#discount-pills button').forEach(btn => {
         const txt = btn.textContent;
         if (d === 0 && (txt === 'Any' || txt.includes('All'))) btn.classList.add('active');
         else if (d > 0 && txt.includes(`${d}%`)) btn.classList.add('active');
@@ -4070,9 +3778,10 @@
         const isTruwo = plat === 'truwo';
         const isCars24 = plat === 'cars24';
         const isAssured = c.category === 'assured' || c.category === 'verified';
-        const tierLabel = isTruwo 
-          ? '✓ Truwo Verified' 
-          : (isCars24 ? (isAssured ? '✓ Cars24 Assured' : '⚡ Verified Stock') : (isAssured ? '✓ Spinny Assured' : '⚡ Wholesale Stock'));
+        const tierSubLabel = isTruwo 
+          ? 'Direct Owner' 
+          : (isCars24 ? (isAssured ? 'Assured' : 'Certified') : (isAssured ? 'Assured' : 'Wholesale'));
+        const pricingTagText = isTruwo ? 'Direct Owner · Inspected' : 'Fixed Price · No Haggle';
         const platformClass = isTruwo ? 'truwo' : (isCars24 ? 'cars24' : 'spinny');
         const platformName = c.platform || (isTruwo ? 'Truwo' : (isCars24 ? 'Cars24' : 'Spinny'));
 
@@ -4113,11 +3822,10 @@
               
               <!-- Top-Right Badges Container -->
               <div class="card-badges-top-right">
-                <span class="badge-tier ${isAssured ? 'assured' : ''}">
-                  ${tierLabel}
-                </span>
-                <span class="badge-platform ${platformClass}">
-                  ${platformName}
+                <span class="source-tag source-${platformClass}">
+                  <span class="source-dot ${platformClass}-dot"></span>
+                  <span class="source-name">${platformName}</span>
+                  <span class="source-tier">${tierSubLabel}</span>
                 </span>
               </div>
 
@@ -4145,9 +3853,9 @@
               <!-- Pricing Row (Fixed Price & Top Showroom Discount) -->
               <div class="card-pricing-bar">
                 <div class="pricing-primary-col">
-                  <span class="pricing-sub-label">Fixed Price</span>
+                  <span class="pricing-sub-label">${isTruwo ? 'Owner Price' : 'Fixed Price'}</span>
                   <span class="pricing-val-main">${price}</span>
-                  <span class="pricing-fixed-tag">Spinny / Cars24 Fixed</span>
+                  <span class="pricing-source-badge ${platformClass}">${pricingTagText}</span>
                 </div>
                 <div class="pricing-retail-col">
                   <span class="pricing-sub-label">Original Top Price</span>
