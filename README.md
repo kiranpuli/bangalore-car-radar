@@ -90,7 +90,8 @@
     <li><strong>Showroom Savings:</strong> Discount percentage pills (<code>Any</code>, <code>20%+</code>, <code>35%+</code>, <code>50%+</code>) with 0% to 60%+ slider.</li>
     <li><strong>Max Mileage:</strong> Ceiling pills (<code>Any</code>, <code>&le; 40k</code>, <code>&le; 60k</code>, <code>&le; 80k</code>, <code>&le; 100k</code>) and 20k to 120k km slider.</li>
     <li><strong>Source Platforms:</strong> Multi-select buttons with live inventory counters.</li>
-    <li><strong>Gearbox &amp; Fuel:</strong> Segmented dual switches for Transmission and Fuel.</li>
+    <li><strong>Transmission:</strong> Dedicated gearbox facet panel with live count badges for <code>All (1,780+)</code>, <code>⚡ Automatic (830+)</code>, and <code>🕹️ Manual (940+)</code>.</li>
+    <li><strong>Fuel Type:</strong> Dedicated fuel facet panel with live count badges for <code>All</code>, <code>⛽ Petrol (1,280+)</code>, <code>🛢️ Diesel (450+)</code>, and <code>🍃 CNG (40+)</code>.</li>
     <li><strong>Automakers:</strong> Live brand chip selectors with inventory counts.</li>
     <li><strong>Model Exclusion:</strong> <em>⊘ Hide Model</em> buttons save unwanted models to browser <code>localStorage</code>.</li>
   </ul>

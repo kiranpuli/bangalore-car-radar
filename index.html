@@ -853,19 +853,22 @@
       font-size: 11.5px;
       font-weight: 500;
       padding: 0 10px;
-      height: 32px;
+      height: 34px;
       border-radius: 6px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      transition: all var(--dur-fast) var(--ease-base);
+      transition: background-color var(--dur-fast) var(--ease-base), color var(--dur-fast) var(--ease-base), border-color var(--dur-fast) var(--ease-base), transform var(--dur-fast) var(--ease-base);
       white-space: nowrap;
       box-sizing: border-box;
     }
     .ctrl-btn:hover {
       color: var(--text-primary);
       border-color: #4A4A4A;
+    }
+    .ctrl-btn:active {
+      transform: scale(0.97);
     }
     .ctrl-btn.active {
       background: #FFFFFF;
@@ -880,7 +883,14 @@
     .btn-count {
       font-family: var(--font-mono);
       font-size: 10px;
+      font-variant-numeric: tabular-nums;
       opacity: 0.7;
+    }
+    .btn-icon-symbol {
+      display: inline-block;
+      line-height: 1;
+      font-size: 11.5px;
+      transform: translateY(-0.5px);
     }
 
     /* Discrete Segmented Switches for Specs */
@@ -1858,10 +1868,19 @@
       .deck-metrics-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+      .deck-facets-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .panel-sources {
+        grid-column: 1 / -1;
+      }
     }
-    @media (max-width: 860px) {
+    @media (max-width: 760px) {
       .deck-facets-grid {
         grid-template-columns: 1fr;
+      }
+      .panel-sources {
+        grid-column: auto;
       }
     }
 
@@ -2318,12 +2337,62 @@
         </div>
       </div>
 
-      <!-- Symmetrical 2-Panel Facets Grid (Sources & Specs) -->
+      <!-- Symmetrical 3-Card Facets Grid (Transmission, Fuel, Sources) -->
       <div class="deck-facets-grid">
-        <!-- Control 5: Discrete Source Multi-Select Buttons -->
+        <!-- Control 5: Dedicated Transmission Filter (elayadesign/ai-design-skills) -->
+        <div class="filter-panel panel-transmission">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <span class="panel-label">Transmission</span>
+              <span class="range-readout-badge" id="trans-readout">Any Gearbox</span>
+            </div>
+            <button type="button" class="btn-panel-action" onclick="clearMultiFilter('transmissions')" title="Reset transmission filter">All Gears</button>
+          </div>
+          <div class="btn-group-row-pills" id="transmissions-pills" role="radiogroup" aria-label="Transmission">
+            <button type="button" class="ctrl-btn pill-all active" onclick="clearMultiFilter('transmissions')">
+              All <span class="btn-count" id="count-trans-all">1,780</span>
+            </button>
+            <button type="button" class="ctrl-btn pill-item" data-val="automatic" onclick="toggleMultiFilter('transmissions', 'automatic')">
+              <span class="btn-icon-symbol">⚡</span><span>Auto</span> <span class="btn-count" id="count-trans-auto">0</span>
+            </button>
+            <button type="button" class="ctrl-btn pill-item" data-val="manual" onclick="toggleMultiFilter('transmissions', 'manual')">
+              <span class="btn-icon-symbol">🕹️</span><span>Manual</span> <span class="btn-count" id="count-trans-manual">0</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Control 6: Dedicated Fuel Type Filter -->
+        <div class="filter-panel panel-fuel">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <span class="panel-label">Fuel Type</span>
+              <span class="range-readout-badge" id="fuel-readout">Any Fuel</span>
+            </div>
+            <button type="button" class="btn-panel-action" onclick="clearMultiFilter('fuels')" title="Reset fuel filter">All Fuels</button>
+          </div>
+          <div class="btn-group-row-pills" id="fuels-pills" role="radiogroup" aria-label="Fuel">
+            <button type="button" class="ctrl-btn pill-all active" onclick="clearMultiFilter('fuels')">
+              All <span class="btn-count" id="count-fuel-all">1,780</span>
+            </button>
+            <button type="button" class="ctrl-btn pill-item" data-val="petrol" onclick="toggleMultiFilter('fuels', 'petrol')">
+              <span class="btn-icon-symbol">⛽</span><span>Petrol</span> <span class="btn-count" id="count-petrol">0</span>
+            </button>
+            <button type="button" class="ctrl-btn pill-item" data-val="diesel" onclick="toggleMultiFilter('fuels', 'diesel')">
+              <span class="btn-icon-symbol">🛢️</span><span>Diesel</span> <span class="btn-count" id="count-diesel">0</span>
+            </button>
+            <button type="button" class="ctrl-btn pill-item" data-val="cng" onclick="toggleMultiFilter('fuels', 'cng')">
+              <span class="btn-icon-symbol">🍃</span><span>CNG</span> <span class="btn-count" id="count-cng">0</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Control 7: Discrete Source Multi-Select Buttons -->
         <div class="filter-panel panel-sources">
           <div class="panel-header">
-            <span class="panel-label">Source Platforms</span>
+            <div class="panel-title-wrap">
+              <span class="panel-label">Source Platforms</span>
+              <span class="range-readout-badge" id="sources-readout">All Platforms</span>
+            </div>
             <button type="button" class="btn-panel-action" onclick="clearMultiFilter('platforms')">All Sources</button>
           </div>
           <div class="btn-group-row" id="platforms-pills">
@@ -2342,26 +2411,6 @@
             <button type="button" class="ctrl-btn pill-item" data-val="OLX" onclick="toggleMultiFilter('platforms', 'OLX')">
               <span class="source-dot olx-dot"></span>OLX <span class="btn-count" id="count-olx">0</span>
             </button>
-          </div>
-        </div>
-
-        <!-- Control 6: Discrete Segmented Switches for Specs -->
-        <div class="filter-panel panel-specs">
-          <div class="panel-header">
-            <span class="panel-label">Gearbox &amp; Fuel Type</span>
-          </div>
-          <div class="specs-segmented-wrap">
-            <div class="segmented-switch" id="transmissions-pills" role="radiogroup" aria-label="Gearbox">
-              <button type="button" class="switch-opt pill-all active" onclick="clearMultiFilter('transmissions')">All Gears</button>
-              <button type="button" class="switch-opt pill-item" data-val="automatic" onclick="toggleMultiFilter('transmissions', 'automatic')">Auto</button>
-              <button type="button" class="switch-opt pill-item" data-val="manual" onclick="toggleMultiFilter('transmissions', 'manual')">Manual</button>
-            </div>
-            <div class="segmented-switch" id="fuels-pills" role="radiogroup" aria-label="Fuel">
-              <button type="button" class="switch-opt pill-all active" onclick="clearMultiFilter('fuels')">All Fuels</button>
-              <button type="button" class="switch-opt pill-item" data-val="petrol" onclick="toggleMultiFilter('fuels', 'petrol')">Petrol</button>
-              <button type="button" class="switch-opt pill-item" data-val="diesel" onclick="toggleMultiFilter('fuels', 'diesel')">Diesel</button>
-              <button type="button" class="switch-opt pill-item" data-val="cng" onclick="toggleMultiFilter('fuels', 'cng')">CNG</button>
-            </div>
           </div>
         </div>
       </div>
@@ -2638,6 +2687,32 @@
         el.textContent = cnt.toLocaleString('en-IN');
       }
     });
+
+    // Dynamic transmission counts
+    const autoCount = CARS.filter(c => {
+      const t = (c.transmission || '').toLowerCase();
+      return t.includes('auto') || t.includes('amt') || t.includes('at') || t.includes('cvt') || t.includes('dsg') || t.includes('dct');
+    }).length;
+    const manualCount = CARS.length - autoCount;
+    const countTransAuto = document.getElementById('count-trans-auto');
+    if (countTransAuto) countTransAuto.textContent = autoCount.toLocaleString('en-IN');
+    const countTransManual = document.getElementById('count-trans-manual');
+    if (countTransManual) countTransManual.textContent = manualCount.toLocaleString('en-IN');
+    const countTransAll = document.getElementById('count-trans-all');
+    if (countTransAll) countTransAll.textContent = CARS.length.toLocaleString('en-IN');
+
+    // Dynamic fuel counts
+    const petrolCount = CARS.filter(c => (c.fuel_type || '').toLowerCase().includes('petrol')).length;
+    const dieselCount = CARS.filter(c => (c.fuel_type || '').toLowerCase().includes('diesel')).length;
+    const cngCount = CARS.length - petrolCount - dieselCount;
+    const countPetrol = document.getElementById('count-petrol');
+    if (countPetrol) countPetrol.textContent = petrolCount.toLocaleString('en-IN');
+    const countDiesel = document.getElementById('count-diesel');
+    if (countDiesel) countDiesel.textContent = dieselCount.toLocaleString('en-IN');
+    const countCng = document.getElementById('count-cng');
+    if (countCng) countCng.textContent = cngCount.toLocaleString('en-IN');
+    const countFuelAll = document.getElementById('count-fuel-all');
+    if (countFuelAll) countFuelAll.textContent = CARS.length.toLocaleString('en-IN');
 
     // Initialize inputs to curated defaults
     const ctrlMaxPrice = document.getElementById('ctrl-max-price');
@@ -2959,6 +3034,25 @@
           }
         });
       }
+
+      if (groupKey === 'transmissions') {
+        const readout = document.getElementById('trans-readout');
+        if (readout) {
+          if (set.size === 0 || (set.has('automatic') && set.has('manual'))) readout.textContent = 'Any Gearbox';
+          else if (set.has('automatic')) readout.textContent = '⚡ Automatic';
+          else if (set.has('manual')) readout.textContent = '🕹️ Manual';
+        }
+      } else if (groupKey === 'fuels') {
+        const readout = document.getElementById('fuel-readout');
+        if (readout) {
+          readout.textContent = set.size === 0 ? 'Any Fuel' : Array.from(set).map(f => f.charAt(0).toUpperCase() + f.slice(1)).join(', ');
+        }
+      } else if (groupKey === 'platforms') {
+        const readout = document.getElementById('sources-readout');
+        if (readout) {
+          readout.textContent = set.size === 0 ? 'All Platforms' : Array.from(set).join(', ');
+        }
+      }
     }
 
     function updateAllMultiFilterUIs() {
@@ -3208,7 +3302,9 @@
 
       if (state.transmissions.size > 0) {
         state.transmissions.forEach(t => {
-          tags.push({ label: `Gearbox: ${t.charAt(0).toUpperCase() + t.slice(1)}`, clear: () => toggleMultiFilter('transmissions', t) });
+          const icon = t === 'automatic' ? '⚡' : '🕹️';
+          const name = t === 'automatic' ? 'Automatic' : 'Manual';
+          tags.push({ label: `Transmission: ${icon} ${name}`, clear: () => toggleMultiFilter('transmissions', t) });
         });
       }
 
