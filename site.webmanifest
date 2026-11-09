@@ -1,0 +1,31 @@
+{
+  "name": "Bangalore Car Radar",
+  "short_name": "Car Radar",
+  "description": "Real-time pre-owned deal screener & mechanical telemetry analyzer across Bangalore",
+  "start_url": "/spinny-deals/",
+  "scope": "/spinny-deals/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#131209",
+  "theme_color": "#131209",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

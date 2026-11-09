@@ -456,13 +456,58 @@ html_content = """<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>Bangalore Used Cars · Top Deals Under ₹5L Screener</title>
-  <meta name="description" content="Curated shortlist of verified Bangalore cars under ₹5 Lakhs with high resale retention and certified inspection across Spinny, Cars24, Truwo, and OLX." />
-  
+
+  <!-- Primary Meta Tags -->
+  <title>Bangalore Car Radar — Curated Pre-Owned Deals &amp; Mechanical Telemetry Screener</title>
+  <meta name="title" content="Bangalore Car Radar — Curated Pre-Owned Deals &amp; Mechanical Telemetry Screener">
+  <meta name="description" content="Continuous pre-owned car market intelligence indexing 1,790+ verified vehicles in Bangalore across Spinny, Cars24, Truwo, and OLX with 200-point telemetry audits, depreciation analysis, and instant push alerts.">
+  <meta name="keywords" content="Bangalore used cars, Spinny Bangalore, Cars24 Bangalore, Truwo Bangalore, OLX cars Bangalore, pre-owned cars, BMW Bangalore, German cars under 5 lakhs, used car deals, Bangalore car valuation">
+  <meta name="author" content="Bangalore Car Radar">
+  <meta name="robots" content="index, follow">
+
+  <!-- Mobile, PWA & Browser Theme -->
+  <meta name="theme-color" content="#131209">
+  <meta name="color-scheme" content="dark">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Car Radar">
+  <meta name="application-name" content="Bangalore Car Radar">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- Favicons & App Icons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kiranpuli.github.io/spinny-deals/">
+  <meta property="og:title" content="Bangalore Car Radar — Curated Pre-Owned Deals &amp; Mechanical Telemetry Screener">
+  <meta property="og:description" content="Live market intelligence indexing 1,790+ inspected cars across Spinny, Cars24, Truwo, and OLX with 200-point mechanical audits, depreciation tracking, and mobile push alerts.">
+  <meta property="og:image" content="https://kiranpuli.github.io/spinny-deals/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Bangalore Car Radar — Real-Time Deal Screener Preview">
+  <meta property="og:site_name" content="Bangalore Car Radar">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://kiranpuli.github.io/spinny-deals/">
+  <meta name="twitter:title" content="Bangalore Car Radar — Curated Pre-Owned Deals &amp; Mechanical Telemetry Screener">
+  <meta name="twitter:description" content="Live market intelligence indexing 1,790+ inspected cars across Spinny, Cars24, Truwo, and OLX with 200-point mechanical audits, depreciation tracking, and mobile push alerts.">
+  <meta name="twitter:image" content="https://kiranpuli.github.io/spinny-deals/og-image.png">
+  <meta name="twitter:image:alt" content="Bangalore Car Radar Preview">
+
+  <!-- Typography Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -681,6 +726,22 @@ html_content = """<!DOCTYPE html>
     .nav-stats strong {
       color: var(--text-primary);
     }
+    .nav-brand-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .btn-nav-icon {
+      width: 13px;
+      height: 13px;
+      stroke-width: 2;
+      stroke: currentColor;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
     .nav-btn {
       background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
@@ -691,6 +752,9 @@ html_content = """<!DOCTYPE html>
       border-radius: var(--radius-pill);
       cursor: pointer;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       transition: all var(--dur-normal) var(--ease-base);
     }
     .nav-btn:hover {
@@ -2346,6 +2410,7 @@ html_content = """<!DOCTYPE html>
   <nav class="floating-nav" aria-label="Main Navigation">
     <div class="nav-inner">
       <a href="#" class="nav-brand">
+        <img src="favicon.svg" alt="Car Radar" class="nav-brand-icon" />
         <span class="pulse-dot"></span>
         <span>Bangalore Car Radar</span>
       </a>
@@ -2353,13 +2418,18 @@ html_content = """<!DOCTYPE html>
         Top Deals: <strong id="tele-curated">0</strong> (<span id="tele-total">0</span> market)
       </div>
       <button class="nav-btn alert-bell-btn" onclick="toggleAlertsModal()" title="View Recent Deal Alerts">
-        <span>🔔 Alerts</span>
+        <svg class="btn-nav-icon" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+        <span>Alerts</span>
         <span id="badge-alerts-count" class="alert-count-pill">0</span>
       </button>
       <button class="nav-btn push-alerts-btn" id="btn-open-push" onclick="openPushModal()" title="Instant Mobile Push Alerts">
-        <span>📲 Push</span>
+        <svg class="btn-nav-icon" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-9.33-5"></path><path d="M22 12A10 10 0 0 0 8.5 2.18"></path><rect x="2" y="6" width="12" height="16" rx="2"></rect><line x1="8" y1="18" x2="8.01" y2="18"></line></svg>
+        <span>Push</span>
       </button>
-      <button class="nav-btn" onclick="scrollToFilters()">Filters</button>
+      <button class="nav-btn" onclick="scrollToFilters()">
+        <svg class="btn-nav-icon" viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+        <span>Filters</span>
+      </button>
     </div>
   </nav>
 
@@ -2372,7 +2442,7 @@ html_content = """<!DOCTYPE html>
       </div>
       <h1 class="heading-1 hero-heading">Bangalore Top Used Car Deals</h1>
       <p class="body-3 hero-subhead">
-        Curated shortlist of verified Bangalore cars under ₹5 Lakhs with high resale retention and certified inspection across Spinny, Cars24, Truwo, and OLX.
+        Curated shortlist of verified Bangalore cars with high resale retention, 200-point mechanical audits, and real-time deal alerts across Spinny, Cars24, Truwo, and OLX.
       </p>
     </header>
 
