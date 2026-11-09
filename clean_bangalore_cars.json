@@ -37351,89 +37351,6 @@
     }
   },
   {
-    "id": "olx_1861195281",
-    "platform": "OLX",
-    "make": "Mahindra",
-    "model": "Thar",
-    "variant": "2.2 LX Hard Top MT 4 Str",
-    "make_year": 2024,
-    "mileage": 32000,
-    "price": 1850000.0,
-    "orig_retail_price": 2000000,
-    "retail_discount_pct": 7,
-    "fuel_type": "Diesel",
-    "transmission": "Manual",
-    "category": "direct_owner",
-    "hub": "Banashankari Stage 3, Bangalore",
-    "img": "https://apollo.olx.in:443/v1/files/g4h7x1li9v6u3-IN/image;s=780x0;q=80",
-    "url": "https://www.olx.in/item/iid-1861195281",
-    "deal_score": 97,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Direct seller listing with zero platform surcharge",
-    "analysis": {
-      "pros": [
-        "Direct seller listing with zero platform surcharge",
-        "Real-world negotiation margin in Bangalore local market",
-        "Complete maintenance and service history reviewable with owner"
-      ],
-      "cons": [
-        "Direct buyer-seller diligence and RTO name transfer verification recommended"
-      ],
-      "maintenance_yr": "\u20b96,000 - \u20b99,000",
-      "retention_pct": 0.68,
-      "est_buyback_2yr": 1258000,
-      "total_loss_2yr": 592000.0,
-      "monthly_loss": 24667
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Low mileage (32k km) \u00b7 well below market wear",
-        "pts": "+18 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Modern 2024 model \u00b7 BS6 Phase 2 era & updated safety",
-        "pts": "+20 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "7% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
-        "pts": "+10 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Bangalore Resale Archetype",
-        "detail": "Sweet spot combo: post-2018 under 40k km",
-        "pts": "+5 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 97/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "9-11 km/l (BLR City) \u00b7 13-15 km/l (Highway)",
-      "annual_maintenance": "\u20b98,000 - \u20b912,000 / yr",
-      "ride_comfort": "High-perch road commanding presence; ladder frame or monocoque clears any floodwater or crater effortlessly.",
-      "known_issues": "Heavy clutch pedal in bumper-to-bumper traffic; check suspension lower ball joints and brake pad life.",
-      "bangalore_verdict": "Mighty road presence and supreme durability for rough weekend excursions and long touring."
-    }
-  },
-  {
     "id": "olx_1849695657",
     "platform": "OLX",
     "make": "Mahindra",
@@ -95034,6 +94951,83 @@
       "ride_comfort": "5-Star Global NCAP safety tank with 209mm ground clearance; impervious to Bangalore's worst potholes.",
       "known_issues": "AMT gearbox feels jerky between 1st and 2nd gear; touchscreen infotainment occasionally lags.",
       "bangalore_verdict": "Heavy-duty road safety and rugged suspension make it the ultimate crater-proof Bangalore city SUV."
+    }
+  },
+  {
+    "id": "olx_1860223720",
+    "platform": "OLX",
+    "make": "Mahindra",
+    "model": "Thar",
+    "variant": "LX D AT 4WD HT",
+    "make_year": 2023,
+    "mileage": 82000,
+    "price": 1495000.0,
+    "orig_retail_price": 1920000,
+    "retail_discount_pct": 22,
+    "fuel_type": "Diesel",
+    "transmission": "Automatic",
+    "category": "dealer",
+    "hub": "Rajaji Nagar, Bangalore",
+    "img": "https://apollo.olx.in:443/v1/files/978jibjtkeye2-IN/image;s=780x0;q=80",
+    "url": "https://www.olx.in/item/iid-1860223720",
+    "deal_score": 66,
+    "deal_grade": "FAIR",
+    "is_top_deal": false,
+    "verdict": "Direct seller listing with zero platform surcharge",
+    "analysis": {
+      "pros": [
+        "Direct seller listing with zero platform surcharge",
+        "Real-world negotiation margin in Bangalore local market",
+        "Complete maintenance and service history reviewable with owner"
+      ],
+      "cons": [
+        "Direct buyer-seller diligence and RTO name transfer verification recommended"
+      ],
+      "maintenance_yr": "\u20b96,000 - \u20b99,000",
+      "retention_pct": 0.68,
+      "est_buyback_2yr": 1016600,
+      "total_loss_2yr": 478400.0,
+      "monthly_loss": 19933
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "High mileage (82k km) \u00b7 nearing major suspension service",
+        "pts": "-8 pts",
+        "type": "neg"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "Modern 2023 model \u00b7 BS6 Phase 2 era & updated safety",
+        "pts": "+20 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "22% under original retail value",
+        "pts": "+4 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
+        "pts": "+10 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 66/100 primarily driven by vehicle age & generation, depreciation arbitrage.",
+    "ownership_review": {
+      "fuel_economy": "9-11 km/l (BLR City) \u00b7 13-15 km/l (Highway)",
+      "annual_maintenance": "\u20b98,000 - \u20b912,000 / yr",
+      "ride_comfort": "High-perch road commanding presence; ladder frame or monocoque clears any floodwater or crater effortlessly.",
+      "known_issues": "Heavy clutch pedal in bumper-to-bumper traffic; check suspension lower ball joints and brake pad life.",
+      "bangalore_verdict": "Mighty road presence and supreme durability for rough weekend excursions and long touring."
     }
   },
   {
