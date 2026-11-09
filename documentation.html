@@ -408,8 +408,19 @@
     </section>
 
     <section>
-      <h2>4. Ergonomic Filter Control Deck</h2>
-      <p>The dashboard provides a symmetrical, data-type tailored control deck designed for rapid refinement across both desktop and mobile viewports:</p>
+      <h2>4. Ergonomic Filter Control Deck &amp; Mobile Bottom Sheet</h2>
+      <p>The dashboard provides a responsive, dual-mode filter architecture designed for rapid refinement across desktop and mobile viewports:</p>
+      
+      <h3>Mobile Experience (&lt; 768px): Zero-Overhead Bottom Sheet</h3>
+      <p>On mobile screens, static vertical filter forms are eliminated to keep cars in the primary viewport:</p>
+      <ul>
+        <li><strong>Sticky Command Bar:</strong> Integrated search box with instant clear, quick sort select, and dedicated <code>⚙️ Filters [count]</code> trigger button.</li>
+        <li><strong>Horizontal Quick-Chip Strip:</strong> Smooth-scrolling 1-touch facet chips (<code>🔥 Top Deals</code>, <code>⚡ Auto</code>, <code>🕹️ Manual</code>, <code>≤ ₹5L</code>, <code>⛽ Petrol</code>, <code>🛢️ Diesel</code>, <code>🛡️ German ≤5L</code>, <code>🏎️ BMW</code>, <code>All Cars</code>).</li>
+        <li><strong>Slide-Up Filter Drawer:</strong> Tapping <code>⚙️ Filters</code> smoothly opens an 86vh bottom-sheet drawer with backdrop blur, full slider controls, and a sticky <code>View X Verified Cars →</code> action button.</li>
+        <li><strong>Immediate Inventory Visibility:</strong> First car cards appear immediately below the quick chips—no 1,400px scroll penalty.</li>
+      </ul>
+
+      <h3>Desktop Experience (≥ 768px): Symmetrical 4-Card Workbench</h3>
       <ul>
         <li><strong>Budget Slider &amp; Number Fields:</strong> Exact numerical input boxes for Minimum and Maximum price in Lakhs (₹ L), paired with a continuous scrub slider from ₹1.0L to ₹15.0L+.</li>
         <li><strong>Model Year Floor:</strong> Quick segmented pill buttons (<code>All</code>, <code>2016+</code>, <code>2018+</code>, <code>2020+</code>, <code>2022+</code>) and continuous year slider (2012 to 2024).</li>

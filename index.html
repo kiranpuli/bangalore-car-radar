@@ -1831,19 +1831,31 @@
     }
 
     /* Mobile & Tablet Responsive Optimization (elayadesign/ai-design-skills) */
+    @media (max-width: 1100px) {
+      .deck-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .deck-facets-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .panel-sources {
+        grid-column: 1 / -1;
+      }
+    }
+
     @media (max-width: 768px) {
       html, body {
         overflow-x: hidden;
         max-width: 100vw;
       }
       .shell {
-        padding: 8px 8px 50px 8px;
+        padding: 4px 8px 60px 8px;
         max-width: 100%;
         overflow-x: hidden;
       }
       .floating-nav {
-        top: 6px;
-        margin-bottom: 12px;
+        top: 4px;
+        margin-bottom: 8px;
         width: 100%;
         padding: 0 4px;
       }
@@ -1868,127 +1880,342 @@
         min-height: 34px;
         flex-shrink: 0;
       }
-      .grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-    }
 
-    @media (max-width: 1100px) {
-      .deck-metrics-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .deck-facets-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .panel-sources {
-        grid-column: 1 / -1;
-      }
-    }
-    @media (max-width: 760px) {
-      .deck-facets-grid {
-        grid-template-columns: 1fr;
-      }
-      .panel-sources {
-        grid-column: auto;
-      }
-    }
-
-    @media (max-width: 640px) {
+      /* Ultra-Compact Hero on Mobile */
       .hero-section {
-        margin: 0 auto 12px auto;
+        margin: 0 auto 4px auto;
+        padding: 4px 4px 2px 4px;
+        text-align: left;
+      }
+      .hero-tagline-wrap {
+        display: none !important;
       }
       .hero-heading {
-        font-size: clamp(22px, 6.5vw, 28px);
+        font-size: 19px;
+        line-height: 24px;
+        letter-spacing: -0.02em;
+        margin-bottom: 2px;
       }
       .hero-subhead {
-        font-size: 12.5px;
-        line-height: 18px;
+        display: none !important;
       }
-      .filter-deck {
-        padding: 10px;
-        gap: 10px;
-        border-radius: var(--radius-lg);
-      }
-      .deck-row-primary {
+
+      /* Mobile Command Bar (Sticky & Compact) */
+      .mobile-command-bar {
+        display: flex !important;
         flex-direction: column;
-        align-items: stretch;
+        gap: 8px;
+        position: sticky;
+        top: 0;
+        z-index: 80;
+        background: rgba(19, 18, 9, 0.94);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        padding: 8px 6px 8px 6px;
+        border-bottom: 1px solid var(--border-color);
+        margin: 0 -8px 8px -8px;
+      }
+      .mobile-search-row {
+        display: flex;
+        align-items: center;
         gap: 8px;
       }
-      .deck-search-wrap {
+      .mobile-search-box {
+        flex: 1 1 auto;
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .mobile-search-box .search-icon-svg {
+        left: 10px;
+        width: 14px;
+        height: 14px;
+      }
+      .mobile-search-input {
         width: 100%;
         height: 38px;
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        color: var(--text-primary);
+        font-family: var(--font-sans);
+        font-size: 13px;
+        padding: 0 28px 0 32px;
+        outline: none;
+        transition: border-color var(--dur-fast);
       }
-      .deck-segmented-scope {
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 4px;
-        padding: 4px;
+      .mobile-search-input:focus {
+        border-color: var(--border-focus);
       }
-      .scope-segment {
-        width: 100%;
-        height: 34px;
-        justify-content: center;
-        padding: 0 6px;
-        font-size: 11.5px;
-      }
-      .deck-actions-right {
-        width: 100%;
-        display: flex;
+      .btn-mobile-filter-trigger {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
         gap: 6px;
-      }
-      .deck-sort-wrap {
-        width: 100%;
-        min-height: 36px;
-      }
-      .deck-select {
-        width: 100%;
-        min-height: 32px;
-      }
-      .deck-metrics-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-      .deck-facets-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-      .num-box {
-        min-width: 0;
-      }
-      .num-input-inner {
-        padding: 0 4px;
-      }
-      .num-field {
+        height: 38px;
+        padding: 0 12px;
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        color: var(--text-primary);
+        font-family: var(--font-sans);
         font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s, border-color 0.15s;
       }
-      .btn-group-row-pills .ctrl-btn {
+      .btn-mobile-filter-trigger:active {
+        transform: scale(0.96);
+      }
+      .mobile-filter-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 18px;
+        height: 18px;
+        padding: 0 4px;
+        border-radius: 9px;
         font-size: 10px;
-        padding: 0 2px;
+        font-weight: 700;
+        background: var(--accent-amber);
+        color: #131209;
+        font-variant-numeric: tabular-nums;
       }
-      .slider-ticks span {
-        font-size: 8.5px;
+      .mobile-sort-wrap {
+        flex-shrink: 0;
       }
-      .deck-row-chips {
+      .mobile-sort-select {
+        height: 38px;
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        color: var(--text-muted);
+        font-family: var(--font-sans);
+        font-size: 11.5px;
+        font-weight: 500;
+        padding: 0 6px;
+        outline: none;
+      }
+
+      /* Horizontal Quick Filter Carousel */
+      .mobile-quick-chips-strip {
         display: flex;
+        align-items: center;
+        gap: 6px;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        flex-wrap: nowrap;
-        gap: 6px;
-        padding-top: 6px;
+        padding: 2px 0 2px 0;
       }
-      .deck-row-chips::-webkit-scrollbar {
+      .mobile-quick-chips-strip::-webkit-scrollbar {
         display: none;
       }
-      .chips-group {
+      .quick-chip {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        height: 32px;
+        padding: 0 10px;
+        background: var(--bg-subsurface);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        color: var(--text-muted);
+        font-family: var(--font-sans);
+        font-size: 11.5px;
+        font-weight: 500;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all var(--dur-fast);
+      }
+      .quick-chip:active {
+        transform: scale(0.95);
+      }
+      .quick-chip.active {
+        background: rgba(245, 158, 11, 0.16);
+        border-color: var(--accent-amber);
+        color: #fbbf24;
+        font-weight: 600;
+      }
+      .qchip-count {
+        font-size: 10px;
+        opacity: 0.85;
+        font-variant-numeric: tabular-nums;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1px 4px;
+        border-radius: 6px;
+      }
+
+      /* Filter Deck as Slide-up Bottom Sheet on Mobile */
+      .filter-deck {
+        display: none !important;
+      }
+
+      body.mobile-drawer-open .mobile-filter-backdrop {
+        display: block !important;
+        position: fixed !important;
+        inset: 0 !important;
+        background: rgba(0, 0, 0, 0.75) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        z-index: 999 !important;
+        opacity: 1 !important;
+      }
+
+      body.mobile-drawer-open .filter-deck {
+        display: flex !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 86vh !important;
+        max-height: 86vh !important;
+        z-index: 1000 !important;
+        background: var(--bg-surface) !important;
+        border-radius: 22px 22px 0 0 !important;
+        border: 1px solid var(--border-focus) !important;
+        box-shadow: 0 -12px 48px rgba(0, 0, 0, 0.95) !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+        animation: slideUpDrawer 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+      }
+
+      .mobile-drawer-header {
+        display: flex !important;
+        flex-direction: column;
+        padding: 10px 16px 10px 16px;
+        border-bottom: 1px solid var(--border-color);
+        background: var(--bg-subsurface);
         flex-shrink: 0;
       }
+      .sheet-handle-bar {
+        width: 36px;
+        height: 4px;
+        border-radius: 2px;
+        background: var(--border-color);
+        margin: 0 auto 8px auto;
+      }
+      .drawer-title-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .drawer-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+      .drawer-count-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 20px;
+        height: 20px;
+        padding: 0 6px;
+        border-radius: 10px;
+        font-size: 11px;
+        font-weight: 700;
+        background: var(--accent-amber);
+        color: #131209;
+      }
+      .drawer-header-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .btn-drawer-reset {
+        background: none;
+        border: none;
+        color: var(--accent-amber);
+        font-size: 12.5px;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 4px 6px;
+      }
+      .btn-drawer-close {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .deck-row-primary {
+        display: none !important;
+      }
+
+      .drawer-scrollable-body {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 12px 14px 85px 14px !important;
+        flex: 1 1 auto !important;
+      }
+
+      .deck-metrics-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+      }
+      .deck-facets-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+      }
+
+      .mobile-drawer-footer {
+        display: flex !important;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 10px 14px;
+        background: var(--bg-surface);
+        border-top: 1px solid var(--border-color);
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.5);
+        z-index: 10;
+      }
+      .btn-drawer-apply {
+        width: 100%;
+        height: 44px;
+        border-radius: var(--radius-md);
+        background: var(--accent-amber);
+        color: #131209;
+        border: none;
+        font-family: var(--font-sans);
+        font-size: 13.5px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+      }
+      .btn-drawer-apply:active {
+        transform: scale(0.98);
+      }
+
       .grid {
         grid-template-columns: 1fr;
         gap: 12px;
+      }
       }
       .card-photo {
         height: 180px;
@@ -2110,8 +2337,107 @@
       </p>
     </header>
 
-            <!-- Minimalist Filter Toolbar (elayadesign/ai-design-skills) -->
+    <!-- Mobile Command & Quick Facet Bar (Visible only on mobile <= 768px) -->
+    <div class="mobile-command-bar" id="mobile-command-bar">
+      <div class="mobile-search-row">
+        <div class="mobile-search-box">
+          <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="text" 
+            id="ctrl-mobile-search" 
+            class="mobile-search-input" 
+            placeholder="Search make, model, hub..." 
+            oninput="onSearchInput(this.value)"
+          />
+          <button type="button" id="btn-clear-mobile-search" class="search-clear-btn" onclick="clearSearch()" title="Clear search">✕</button>
+        </div>
+
+        <button type="button" class="btn-mobile-filter-trigger" id="btn-open-filters" onclick="openMobileFilters()" aria-label="Open Filter Drawer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line>
+            <line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line>
+            <line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line>
+          </svg>
+          <span>Filters</span>
+          <span class="mobile-filter-badge" id="mobile-filter-badge" style="display:none;">0</span>
+        </button>
+
+        <div class="mobile-sort-wrap">
+          <select id="ctrl-mobile-sort" class="mobile-sort-select" onchange="onSortChange(this.value)" aria-label="Sort cars">
+            <option value="score">Best Value</option>
+            <option value="price_asc">Price: Low-High</option>
+            <option value="price_desc">Price: High-Low</option>
+            <option value="discount_desc">Top Discount %</option>
+            <option value="year_desc">Newest</option>
+            <option value="km_asc">Lowest KM</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Horizontal Quick Filter Carousel -->
+      <div class="mobile-quick-chips-strip" id="mobile-quick-strip" role="toolbar" aria-label="Quick Filters">
+        <button type="button" class="quick-chip active" id="qchip-curated" onclick="toggleQuickFilter('curated')">
+          <span>🔥 Top Deals</span>
+          <span class="qchip-count" id="qcount-curated">0</span>
+        </button>
+        <button type="button" class="quick-chip" id="qchip-auto" onclick="toggleQuickFilter('transmission', 'automatic')">
+          <span>⚡ Auto</span>
+        </button>
+        <button type="button" class="quick-chip" id="qchip-manual" onclick="toggleQuickFilter('transmission', 'manual')">
+          <span>🕹️ Manual</span>
+        </button>
+        <button type="button" class="quick-chip" id="qchip-under5l" onclick="toggleQuickFilter('budget5l')">
+          <span>≤ ₹5L</span>
+        </button>
+        <button type="button" class="quick-chip" id="qchip-petrol" onclick="toggleQuickFilter('fuel', 'petrol')">
+          <span>⛽ Petrol</span>
+        </button>
+        <button type="button" class="quick-chip" id="qchip-diesel" onclick="toggleQuickFilter('fuel', 'diesel')">
+          <span>🛢️ Diesel</span>
+        </button>
+        <button type="button" class="quick-chip" id="qchip-german" onclick="filterGermanUnder5L()">
+          <span>🛡️ German ≤5L</span>
+        </button>
+        <button type="button" class="quick-chip" id="qchip-bmw" onclick="filterBmwDeals()">
+          <span>🏎️ BMW</span>
+        </button>
+        <button type="button" class="quick-chip" id="qchip-all" onclick="setViewMode('all')">
+          <span>All Cars</span>
+          <span class="qchip-count" id="qcount-all">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Backdrop Overlay -->
+    <div class="mobile-filter-backdrop" id="mobile-filter-backdrop" onclick="closeMobileFilters()"></div>
+
+    <!-- Minimalist Filter Toolbar / Mobile Drawer (elayadesign/ai-design-skills) -->
     <section class="filter-deck" id="filter-workbench" aria-label="Car Filter Control Deck">
+      <!-- Mobile Drawer Top Bar (Hidden on desktop) -->
+      <div class="mobile-drawer-header">
+        <div class="sheet-handle-bar"></div>
+        <div class="drawer-title-row">
+          <div class="drawer-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="color:var(--accent-amber);">
+              <line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line>
+              <line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line>
+              <line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line>
+            </svg>
+            <span>Filters</span>
+            <span class="drawer-count-badge" id="drawer-active-count">0</span>
+          </div>
+          <div class="drawer-header-actions">
+            <button type="button" class="btn-drawer-reset" onclick="resetAll()">Reset All</button>
+            <button type="button" class="btn-drawer-close" onclick="closeMobileFilters()" title="Close filters">✕</button>
+          </div>
+        </div>
+      </div>
+
       <!-- Line 1: Instant Search, Curated Presets & Sort -->
       <div class="deck-row-primary">
         <div class="deck-search-wrap">
@@ -2162,8 +2488,10 @@
         </div>
       </div>
 
-      <!-- Symmetrical 4-Card Numerical / Continuous Ranges Grid -->
-      <div class="deck-metrics-grid">
+      <!-- Drawer Scrollable Body Wrapper (Scrolls smoothly inside drawer on mobile) -->
+      <div class="drawer-scrollable-body">
+        <!-- Symmetrical 4-Card Numerical / Continuous Ranges Grid -->
+        <div class="deck-metrics-grid">
         <!-- Metric 1: Budget Range (Min, Max, Slider) -->
         <div class="filter-panel panel-budget">
           <div class="panel-header">
@@ -2453,6 +2781,17 @@
           <button type="button" class="chip-pill pill-item" data-val="mg" onclick="toggleMultiFilter('brands', 'mg')">MG (<span id="count-mg">0</span>)</button>
         </div>
       </div>
+      </div> <!-- end .drawer-scrollable-body -->
+
+      <!-- Mobile Drawer Sticky Footer Action (Hidden on desktop) -->
+      <div class="mobile-drawer-footer">
+        <button type="button" class="btn-drawer-apply" onclick="closeMobileFilters()">
+          <span>View</span>
+          <span id="drawer-cars-count">0</span>
+          <span>Verified Cars</span>
+          <span>&rarr;</span>
+        </button>
+      </div>
     </section>
 
     <!-- Results Status Bar -->
@@ -2728,6 +3067,18 @@
     const countFuelAll = document.getElementById('count-fuel-all');
     if (countFuelAll) countFuelAll.textContent = CARS.length.toLocaleString('en-IN');
 
+    // Mobile Quick Chips Counts
+    const qCuratedCount = document.getElementById('qcount-curated');
+    if (qCuratedCount) qCuratedCount.textContent = curatedCount.toLocaleString('en-IN');
+    const qAllCount = document.getElementById('qcount-all');
+    if (qAllCount) qAllCount.textContent = CARS.length.toLocaleString('en-IN');
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && document.body.classList.contains('mobile-drawer-open')) {
+        closeMobileFilters();
+      }
+    });
+
     // Initialize inputs to curated defaults
     const ctrlMaxPrice = document.getElementById('ctrl-max-price');
     if (ctrlMaxPrice) ctrlMaxPrice.value = '5.0';
@@ -2782,15 +3133,73 @@
     }
 
     function scrollToFilters() {
-      const drawer = document.getElementById('filter-categories-drawer');
-      const btn = document.getElementById('btn-toggle-filters');
-      if (drawer && drawer.style.display === 'none') {
-        drawer.style.display = 'flex';
-        if (btn) btn.classList.add('open');
-        state.filterDrawerOpen = true;
+      if (window.innerWidth <= 768) {
+        openMobileFilters();
+      } else {
+        const el = document.getElementById('filter-workbench');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
       }
-      const el = document.getElementById('filter-workbench');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function openMobileFilters() {
+      document.body.classList.add('mobile-drawer-open');
+      document.body.style.overflow = 'hidden';
+      const drawerCount = document.getElementById('drawer-cars-count');
+      if (drawerCount) {
+        const resEl = document.getElementById('res-count');
+        drawerCount.textContent = resEl ? resEl.textContent : '0';
+      }
+    }
+
+    function closeMobileFilters() {
+      document.body.classList.remove('mobile-drawer-open');
+      document.body.style.overflow = '';
+    }
+
+    function toggleQuickFilter(type, val) {
+      if (type === 'curated') {
+        if (state.viewMode === 'curated') {
+          setViewMode('all');
+        } else {
+          setViewMode('curated');
+        }
+      } else if (type === 'transmission') {
+        toggleMultiFilter('transmissions', val);
+      } else if (type === 'fuel') {
+        toggleMultiFilter('fuels', val);
+      } else if (type === 'budget5l') {
+        if (state.max_price === 500000 && state.viewMode !== 'curated') {
+          state.max_price = 0;
+          syncPriceUI(state.min_price, 0);
+        } else {
+          state.max_price = 500000;
+          syncPriceUI(state.min_price, 500000);
+        }
+        applyFilters();
+      }
+      updateQuickChips();
+    }
+
+    function updateQuickChips() {
+      const qCurated = document.getElementById('qchip-curated');
+      const qAuto = document.getElementById('qchip-auto');
+      const qManual = document.getElementById('qchip-manual');
+      const qPetrol = document.getElementById('qchip-petrol');
+      const qDiesel = document.getElementById('qchip-diesel');
+      const qUnder5L = document.getElementById('qchip-under5l');
+      const qGerman = document.getElementById('qchip-german');
+      const qBmw = document.getElementById('qchip-bmw');
+      const qAll = document.getElementById('qchip-all');
+
+      if (qCurated) qCurated.classList.toggle('active', state.viewMode === 'curated');
+      if (qAuto) qAuto.classList.toggle('active', state.transmissions.has('automatic'));
+      if (qManual) qManual.classList.toggle('active', state.transmissions.has('manual'));
+      if (qPetrol) qPetrol.classList.toggle('active', state.fuels.has('petrol'));
+      if (qDiesel) qDiesel.classList.toggle('active', state.fuels.has('diesel'));
+      if (qUnder5L) qUnder5L.classList.toggle('active', state.max_price === 500000 && state.viewMode !== 'curated');
+      if (qGerman) qGerman.classList.toggle('active', state.brands.has('volkswagen') && state.brands.has('skoda'));
+      if (qBmw) qBmw.classList.toggle('active', state.brands.has('bmw') && state.brands.size === 1);
+      if (qAll) qAll.classList.toggle('active', state.viewMode === 'all' && state.transmissions.size === 0 && state.fuels.size === 0 && state.brands.size === 0 && state.max_price === 0);
     }
 
     function updateFilterBadge() {
@@ -2809,6 +3218,13 @@
 
       const badge = document.getElementById('filter-active-count');
       if (badge) badge.textContent = count;
+      const mBadge = document.getElementById('mobile-filter-badge');
+      if (mBadge) {
+        mBadge.textContent = count;
+        mBadge.style.display = count > 0 ? 'inline-flex' : 'none';
+      }
+      const dBadge = document.getElementById('drawer-active-count');
+      if (dBadge) dBadge.textContent = count;
     }
 
 
@@ -2983,20 +3399,30 @@
     // Search input handler
     function onSearchInput(val) {
       state.search = (val || '').toLowerCase().trim();
-      const clearBtn = document.getElementById('btn-clear-search');
-      if (clearBtn) clearBtn.style.display = state.search ? 'block' : 'none';
+      const dInput = document.getElementById('ctrl-search');
+      const mInput = document.getElementById('ctrl-mobile-search');
+      if (dInput && dInput.value !== val) dInput.value = val;
+      if (mInput && mInput.value !== val) mInput.value = val;
+
+      const dClear = document.getElementById('btn-clear-search');
+      const mClear = document.getElementById('btn-clear-mobile-search');
+      if (dClear) dClear.style.display = state.search ? 'block' : 'none';
+      if (mClear) mClear.style.display = state.search ? 'block' : 'none';
+
       applyFilters();
     }
 
     function clearSearch() {
-      const input = document.getElementById('ctrl-search');
-      if (input) input.value = '';
       onSearchInput('');
     }
 
     // Sort handler
     function onSortChange(val) {
       state.sort = val;
+      const dSort = document.getElementById('ctrl-sort');
+      const mSort = document.getElementById('ctrl-mobile-sort');
+      if (dSort && dSort.value !== val) dSort.value = val;
+      if (mSort && mSort.value !== val) mSort.value = val;
       applyFilters();
     }
 
@@ -3248,8 +3674,17 @@
 
       const sInp = document.getElementById('ctrl-search');
       if (sInp) sInp.value = '';
+      const mInp = document.getElementById('ctrl-mobile-search');
+      if (mInp) mInp.value = '';
       const clearBtn = document.getElementById('btn-clear-search');
       if (clearBtn) clearBtn.style.display = 'none';
+      const mClearBtn = document.getElementById('btn-clear-mobile-search');
+      if (mClearBtn) mClearBtn.style.display = 'none';
+
+      const sSort = document.getElementById('ctrl-sort');
+      if (sSort) sSort.value = 'score';
+      const mSort = document.getElementById('ctrl-mobile-sort');
+      if (mSort) mSort.value = 'score';
 
       const minInp = document.getElementById('ctrl-min-price');
       if (minInp) minInp.value = '';
@@ -3272,6 +3707,7 @@
       syncDiscountUI(0);
       updatePriceReadout();
       updateAllMultiFilterUIs();
+      updateQuickChips();
       applyFilters();
     }
 
@@ -3455,7 +3891,10 @@
 
       const resCount = document.getElementById('res-count');
       if (resCount) resCount.textContent = filtered.length.toLocaleString('en-IN');
+      const drawerCount = document.getElementById('drawer-cars-count');
+      if (drawerCount) drawerCount.textContent = filtered.length.toLocaleString('en-IN');
       updateFilterBadge();
+      updateQuickChips();
       renderActiveTags();
       renderCards(filtered);
     }

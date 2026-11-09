@@ -74,10 +74,18 @@ Original showroom price (`orig_retail_price`) and savings discount (`retail_disc
 
 ---
 
-## 5. Ergonomic Filter Control Deck
+## 5. Ergonomic Filter Control Deck & Mobile Architecture
 
-The dashboard provides a symmetrical, data-type tailored control deck designed for rapid refinement across both desktop and mobile viewports:
+The dashboard provides a responsive, dual-mode filter architecture designed for rapid refinement across both desktop and mobile viewports:
 
+### Mobile Viewport (< 768px): Zero-Overhead Bottom Sheet
+On mobile devices, vertical filter forms are eliminated to keep car cards in the first viewport:
+- **Sticky Command Bar (40px):** Search input with instant clear, quick sort selector, and dedicated `⚙️ Filters [count]` trigger button.
+- **Horizontal Quick-Chip Strip (32px):** Smooth-scrolling, 1-touch facet chips (`🔥 Top Deals`, `⚡ Auto`, `🕹️ Manual`, `≤ ₹5L`, `⛽ Petrol`, `🛢️ Diesel`, `🛡️ German ≤5L`, `🏎️ BMW`, `All Cars`) with real-time inventory counts.
+- **Slide-Up Bottom Sheet Drawer:** Tapping `⚙️ Filters` slides up a native-feeling bottom sheet (86vh max-height, backdrop blur, swipe-down handle) housing the full granular control suite, with a sticky bottom `View X Verified Cars →` action bar.
+- **Instant Result Visibility:** Cars appear immediately below the quick chip strip—zero screen space wasted.
+
+### Desktop Viewport (≥ 768px): Symmetrical 4-Card Workbench
 - **Budget Slider & Number Fields:** Exact numerical input boxes for Minimum and Maximum price in Lakhs (₹ L), paired with a continuous scrub slider from ₹1.0L to ₹15.0L+.
 - **Model Year Floor:** Quick segmented pill buttons (`All`, `2016+`, `2018+`, `2020+`, `2022+`) and continuous year slider (2012 to 2024).
 - **Showroom Savings %:** Discrete discount percentage selector (`Any`, `20%+`, `35%+`, `50%+`) with 0% to 60%+ range slider.
