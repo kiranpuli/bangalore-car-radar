@@ -2530,6 +2530,10 @@ html_content = """<!DOCTYPE html>
         <svg class="btn-nav-icon" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-9.33-5"></path><path d="M22 12A10 10 0 0 0 8.5 2.18"></path><rect x="2" y="6" width="12" height="16" rx="2"></rect><line x1="8" y1="18" x2="8.01" y2="18"></line></svg>
         <span>Push</span>
       </button>
+      <a href="documentation.html" class="nav-btn" title="Technical Documentation & Guide" style="text-decoration:none;">
+        <svg class="btn-nav-icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        <span>Docs</span>
+      </a>
       <button class="nav-btn" onclick="scrollToFilters()">
         <svg class="btn-nav-icon" viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
         <span>Filters</span>

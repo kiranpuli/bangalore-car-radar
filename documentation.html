@@ -396,7 +396,7 @@
       <p>Zero signups, open-source notification pipeline via <code>ntfy.sh/kiran-car-radar</code>. High-priority push notifications include direct listing links and car photographs, dispatached instantly to Android and iOS devices.</p>
       <pre><code>curl -d "🔥 2018 Honda Jazz Petrol dropped to ₹4.20L at Spinny Whitefield!" \
      -H "Title: Car Deal Radar Alert" \
-     -H "Click: https://www.spinny.com/buy-used-cars/bangalore/honda/jazz/" \
+     -H "Click: https://kiranpuli.github.io/bangalore-car-radar/" \
      https://ntfy.sh/kiran-car-radar</code></pre>
 
       <h3>Channel B: PWA (Progressive Web Application)</h3>
@@ -407,21 +407,24 @@
       <h2>6. Automated Hourly Sync Architecture</h2>
       <p>The monitoring pipeline runs autonomously on two parallel schedules:</p>
       <ol>
-        <li><strong>GitHub Actions Workflow:</strong> <code>.github/workflows/</code> schedules an hourly runner that executes scrapers, runs mechanical scoring, regenerates <code>deals.html</code> and <code>index.html</code>, and commits updates to <code>main</code>.</li>
+        <li><strong>GitHub Actions Workflow:</strong> <code>.github/workflows/deploy.yml</code> schedules an hourly runner that executes scrapers, runs mechanical scoring, regenerates <code>deals.html</code> and <code>index.html</code>, and commits updates to <code>main</code>.</li>
         <li><strong>Local Cron Daemon:</strong> <code>hourly_update.sh</code> runs via macOS <code>launchd</code> / <code>cron</code> with rebase resilience:
-          <pre><code>0 * * * * cd /Users/kiran/workplace/spinny_monitor && ./hourly_update.sh >> hourly_sync.log 2>&1</code></pre>
+          <pre><code>0 * * * * cd /Users/kiran/workplace/bangalore-car-radar && ./hourly_update.sh >> hourly_sync.log 2>&1</code></pre>
         </li>
       </ol>
     </section>
 
     <section>
       <h2>7. Local Development &amp; CLI Commands</h2>
-      <p>Run these commands locally to test scrapers or rebuild static UI:</p>
+      <p>Run these commands locally to test scrapers, rebuild static UI, or re-render launch media:</p>
       <h3>Recompile Dashboard UI</h3>
       <pre><code>python3 build_ui.py</code></pre>
 
       <h3>Run Live Marketplace Scrapers</h3>
       <pre><code>python3 spinny_checker.py --headless</code></pre>
+
+      <h3>Re-render Product Launch Video (Hyperframes)</h3>
+      <pre><code>cd brag-output/composition && npx hyperframes check && npx hyperframes render -o ../brag.mp4</code></pre>
 
       <h3>Test Dispatch Push Alert</h3>
       <pre><code>python3 -c "
