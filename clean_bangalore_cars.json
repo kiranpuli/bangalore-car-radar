@@ -4779,91 +4779,6 @@
     }
   },
   {
-    "id": 31916085,
-    "platform": "Spinny",
-    "make": "Maruti Suzuki",
-    "model": "Baleno",
-    "variant": "Alpha AGS",
-    "make_year": 2023,
-    "mileage": 21637,
-    "price": 839000.0,
-    "orig_retail_price": 1110000,
-    "retail_discount_pct": 24,
-    "fuel_type": "petrol",
-    "transmission": "automatic",
-    "category": "assured",
-    "hub": "Spinny Park, Yelahanka, Bangalore",
-    "img": "https://assets.spinny.com/sp-file-system/public/2026-09-29/da83acf0486d4757a2982b2a79812f7c/raw/file.JPG",
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/maruti-suzuki/baleno/alpha-ags-yelahanka-2023/31916085/",
-    "deal_score": 99,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Extremely frugal 18-20 kmpl fuel economy",
-    "analysis": {
-      "pros": [
-        "Extremely frugal 18-20 kmpl fuel economy",
-        "Spacious cabin with wide rear bench",
-        "Cheapest spare parts in segment"
-      ],
-      "cons": [
-        "Lightweight build quality",
-        "Steering does not self-center eagerly at low speeds",
-        "Thin paint finish"
-      ],
-      "maintenance_yr": "\u20b94,000 - \u20b95,500",
-      "retention_pct": 0.78,
-      "est_buyback_2yr": 654420,
-      "total_loss_2yr": 184580.0,
-      "monthly_loss": 7691
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Ultra-low odometer (21k km) \u00b7 pristine engine health",
-        "pts": "+24 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Modern 2023 model \u00b7 BS6 Phase 2 era & updated safety",
-        "pts": "+20 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "24% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Bangalore Resale Archetype",
-        "detail": "Sweet spot combo: post-2018 under 40k km, high-liquidity resale engine",
-        "pts": "+9 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 99/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "13-15 km/l (BLR City) \u00b7 19-21 km/l (Highway)",
-      "annual_maintenance": "\u20b94,500 - \u20b96,000 / yr",
-      "ride_comfort": "Wide, airy cabin with light steering effortless in Bangalore traffic; supple low-speed ride.",
-      "known_issues": "Thin sheet metal prone to minor city door dings; check lower suspension arm ball joints.",
-      "bangalore_verdict": "Superb rear seat legroom and low running costs make it an ideal family hatchback for daily city use."
-    }
-  },
-  {
     "id": 31781213,
     "platform": "Spinny",
     "make": "Maruti Suzuki",
@@ -11116,89 +11031,6 @@
       "ride_comfort": "High-perch road commanding presence; ladder frame or monocoque clears any floodwater or crater effortlessly.",
       "known_issues": "Heavy clutch pedal in bumper-to-bumper traffic; check suspension lower ball joints and brake pad life.",
       "bangalore_verdict": "Mighty road presence and supreme durability for rough weekend excursions and long touring."
-    }
-  },
-  {
-    "id": 33535697,
-    "platform": "Spinny",
-    "make": "Hyundai",
-    "model": "Verna",
-    "variant": "SX (O)1.5 Petrol MT",
-    "make_year": 2023,
-    "mileage": 3185,
-    "price": 1333000.0,
-    "orig_retail_price": 1780000,
-    "retail_discount_pct": 25,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "assured",
-    "hub": "Spinny Car Hub, Bellandur, Bangalore",
-    "img": "https://assets.spinny.com/sp-file-system/public/2026-11-07/dc253360f1ad4c57a8712a141aab776a/raw/file.JPG",
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/verna/sx-o15-petrol-mt-2024/33535697/",
-    "deal_score": 99,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 959760,
-      "total_loss_2yr": 373240.0,
-      "monthly_loss": 15552
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Ultra-low odometer (3k km) \u00b7 pristine engine health",
-        "pts": "+24 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Modern 2023 model \u00b7 BS6 Phase 2 era & updated safety",
-        "pts": "+20 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "25% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Bangalore Resale Archetype",
-        "detail": "Sweet spot combo: post-2018 under 40k km, high-liquidity resale engine",
-        "pts": "+9 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 99/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
-      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
-      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
-      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
-      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
     }
   },
   {
@@ -28580,6 +28412,89 @@
     }
   },
   {
+    "id": "c24_10224971147",
+    "platform": "Cars24",
+    "make": "Renault",
+    "model": "Kiger",
+    "variant": "RXZ TURBO CVT",
+    "make_year": 2023,
+    "mileage": 26358,
+    "price": 731980,
+    "orig_retail_price": 794949,
+    "retail_discount_pct": 8,
+    "fuel_type": "Petrol",
+    "transmission": "Automatic",
+    "category": "assured",
+    "hub": "Gandhi Nagar",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/b4a3d34a-d48f-11f1-af2d-02ede2007fbe/38a7f269-b596-4a39-b375-0231f8f65106/dcc773ec-f90b-47f3-a7f1-155a6d8ebd9a/7a12be24-6ff0-40dc-a4d5-7b067e49ccfe/slot/1.png",
+    "url": "https://www.cars24.com/buy-used-renault-kiger-2023-cars-bangalore-10224971147/",
+    "deal_score": 99,
+    "deal_grade": "TOP DEAL",
+    "is_top_deal": true,
+    "verdict": "Reliable brand backing with steady resale demand",
+    "analysis": {
+      "pros": [
+        "Reliable brand backing with steady resale demand",
+        "Smooth city drivability",
+        "Predictable routine service upkeep"
+      ],
+      "cons": [
+        "Regular periodic maintenance required"
+      ],
+      "maintenance_yr": "\u20b95,500 - \u20b97,500",
+      "retention_pct": 0.72,
+      "est_buyback_2yr": 527026,
+      "total_loss_2yr": 204954,
+      "monthly_loss": 8540
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "Low mileage (26k km) \u00b7 well below market wear",
+        "pts": "+18 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "Modern 2023 model \u00b7 BS6 Phase 2 era & updated safety",
+        "pts": "+20 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "8% under original retail value",
+        "pts": "+4 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
+        "pts": "+14 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Bangalore Resale Archetype",
+        "detail": "Sweet spot combo: post-2018 under 40k km",
+        "pts": "+5 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 99/100 primarily driven by odometer & engine wear, vehicle age & generation.",
+    "ownership_review": {
+      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
+      "annual_maintenance": "\u20b95,500 - \u20b97,500 / yr",
+      "ride_comfort": "Magic carpet ride: absorbs cratered roads and broken tarmac better than cars twice its price.",
+      "known_issues": "Plastic interior trim rattles over time; check AC cooling efficiency and clutch hydraulics.",
+      "bangalore_verdict": "Best suspension setup for Bangalore's worst roads. Glides over potholes without shaking the cabin."
+    }
+  },
+  {
     "id": "truwo_2026-hyundai-verna-hx-8-petrol-1-5l-turbo-manual-d2cc98d5",
     "platform": "Truwo",
     "make": "Hyundai",
@@ -44871,89 +44786,6 @@
       }
     ],
     "score_rationale": "Rated 92/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
-      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
-      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
-      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
-      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
-    }
-  },
-  {
-    "id": "c24_10203019174",
-    "platform": "Cars24",
-    "make": "Hyundai",
-    "model": "Verna",
-    "variant": "1.6 VTVT SX",
-    "make_year": 2018,
-    "mileage": 26295,
-    "price": 704117,
-    "orig_retail_price": 990000,
-    "retail_discount_pct": 29,
-    "fuel_type": "Petrol",
-    "transmission": "Manual",
-    "category": "assured",
-    "hub": "Whitefield Main Road, Bhoruka Tech Park, Bengaluru",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/41939f86-d78f-11f1-af2d-02ede2007fbe/f0f4e04e-f6f7-40a3-b47e-03ecf36e42d5/779af278-aeed-4312-8aef-d9fb1425433b/e610d8b9-a01e-489f-901e-7f147518073b/slot/1.png",
-    "url": "https://www.cars24.com/buy-used-hyundai-verna-2018-cars-bangalore-10203019174/",
-    "deal_score": 96,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 506964,
-      "total_loss_2yr": 197153,
-      "monthly_loss": 8215
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Low mileage (26k km) \u00b7 well below market wear",
-        "pts": "+18 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Solid 2018 manufacture \u00b7 modern chassis",
-        "pts": "+11 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "29% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Bangalore Resale Archetype",
-        "detail": "Sweet spot combo: post-2018 under 40k km, high-liquidity resale engine",
-        "pts": "+9 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 96/100 primarily driven by odometer & engine wear, vehicle age & generation.",
     "ownership_review": {
       "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
       "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
@@ -62692,6 +62524,83 @@
       "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
       "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
       "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
+    }
+  },
+  {
+    "id": "olx_1860699916",
+    "platform": "OLX",
+    "make": "Mahindra",
+    "model": "Thar",
+    "variant": "LX Hard Top Diesel MT 4WD",
+    "make_year": 2021,
+    "mileage": 54000,
+    "price": 1295000.0,
+    "orig_retail_price": 1850000,
+    "retail_discount_pct": 30,
+    "fuel_type": "Diesel",
+    "transmission": "Manual",
+    "category": "direct_owner",
+    "hub": "Banashankari, Bangalore",
+    "img": "https://apollo.olx.in:443/v1/files/ktey0isrtspr2-IN/image;s=780x0;q=80",
+    "url": "https://www.olx.in/item/iid-1860699916",
+    "deal_score": 86,
+    "deal_grade": "TOP DEAL",
+    "is_top_deal": true,
+    "verdict": "Direct seller listing with zero platform surcharge",
+    "analysis": {
+      "pros": [
+        "Direct seller listing with zero platform surcharge",
+        "Real-world negotiation margin in Bangalore local market",
+        "Complete maintenance and service history reviewable with owner"
+      ],
+      "cons": [
+        "Direct buyer-seller diligence and RTO name transfer verification recommended"
+      ],
+      "maintenance_yr": "\u20b96,000 - \u20b99,000",
+      "retention_pct": 0.68,
+      "est_buyback_2yr": 880600,
+      "total_loss_2yr": 414400.0,
+      "monthly_loss": 17267
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "Moderate mileage (54k km) \u00b7 healthy mechanical life",
+        "pts": "+12 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "Modern 2021 model \u00b7 BS6 Phase 2 era & updated safety",
+        "pts": "+20 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "30% under original retail value",
+        "pts": "+4 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
+        "pts": "+10 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 86/100 primarily driven by odometer & engine wear, vehicle age & generation.",
+    "ownership_review": {
+      "fuel_economy": "9-11 km/l (BLR City) \u00b7 13-15 km/l (Highway)",
+      "annual_maintenance": "\u20b98,000 - \u20b912,000 / yr",
+      "ride_comfort": "High-perch road commanding presence; ladder frame or monocoque clears any floodwater or crater effortlessly.",
+      "known_issues": "Heavy clutch pedal in bumper-to-bumper traffic; check suspension lower ball joints and brake pad life.",
+      "bangalore_verdict": "Mighty road presence and supreme durability for rough weekend excursions and long touring."
     }
   },
   {
@@ -123922,85 +123831,6 @@
       "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
       "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
       "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
-    }
-  },
-  {
-    "id": "olx_1861191728",
-    "platform": "OLX",
-    "make": "Volkswagen",
-    "model": "Polo",
-    "variant": "[2013-2015] 1.5 TDI Highline",
-    "make_year": 2014,
-    "mileage": 67000,
-    "price": 500000.0,
-    "orig_retail_price": 870000,
-    "retail_discount_pct": 43,
-    "fuel_type": "Diesel",
-    "transmission": "Manual",
-    "category": "direct_owner",
-    "hub": "Anekal Taluka Avalahalli, Bangalore",
-    "img": "https://apollo.olx.in:443/v1/files/risejw5jpr0b1-IN/image;s=780x0;q=80",
-    "url": "https://www.olx.in/item/iid-1861191728",
-    "deal_score": 59,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Unmatched German chassis stability & paint quality",
-    "analysis": {
-      "pros": [
-        "Unmatched German chassis stability & paint quality",
-        "Heavy doors with thud sound (5-star feel)",
-        "Timeless styling and prestige"
-      ],
-      "cons": [
-        "Higher parts cost if sensors fail",
-        "Tighter rear legroom",
-        "3-cylinder petrol is vocal at high RPM"
-      ],
-      "maintenance_yr": "\u20b97,500 - \u20b910,000",
-      "retention_pct": 0.75,
-      "est_buyback_2yr": 375000,
-      "total_loss_2yr": 125000.0,
-      "monthly_loss": 5208
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Standard city mileage (67k km)",
-        "pts": "+6 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "2014 vintage \u00b7 older generation approaching 15-year fitness",
-        "pts": "-6 pts",
-        "type": "neg"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "Healthy 43% savings from original MSRP",
-        "pts": "+9 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "OLX Direct Seller \u00b7 Zero dealer markup & private seller pricing",
-        "pts": "+10 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 59/100 primarily driven by odometer & engine wear, depreciation arbitrage.",
-    "ownership_review": {
-      "fuel_economy": "10-12 km/l (BLR City) \u00b7 15-18 km/l (Highway)",
-      "annual_maintenance": "\u20b99,000 - \u20b914,000 / yr",
-      "ride_comfort": "Enthusiast's benchmark: laser-precise steering, tank-like door thud, and peerless highway stability.",
-      "known_issues": "ABS wheel sensors fail frequently (\u20b92,500/wheel); verify DSG dual-clutch transmission history if automatic.",
-      "bangalore_verdict": "Driver's delight. Higher annual maintenance than Maruti, but unmatched driving pleasure and road feel."
     }
   },
   {
