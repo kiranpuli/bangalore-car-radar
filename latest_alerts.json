@@ -1,5 +1,21 @@
 [
   {
+    "id": "olx_1853747875",
+    "timestamp": "2026-11-09 15:01",
+    "platform": "OLX",
+    "make": "Hyundai",
+    "model": "Grand i10",
+    "variant": "Sportz 1.2 Kappa VTVT",
+    "make_year": 2018,
+    "price": 525000.0,
+    "retail_discount_pct": 17,
+    "deal_score": 91,
+    "mileage": 18363,
+    "hub": "Banashankari Stage 2, Bangalore",
+    "url": "https://www.olx.in/item/iid-1853747875",
+    "img": "https://apollo.olx.in:443/v1/files/eizlfbuack2a3-IN/image;s=780x0;q=80"
+  },
+  {
     "id": 33835107,
     "timestamp": "2026-11-09 07:55",
     "platform": "Spinny",
@@ -462,21 +478,5 @@
     "hub": "Spinny Park, Mysore Road, Bangalore",
     "url": "https://www.spinny.com/buy-used-cars/bangalore/ford/freestyle/titanium-12-tivct-2020/32916832/",
     "img": "https://assets.spinny.com/sp-file-system/public/2026-10-25/60557c67631646c28d1101c0116017ba/raw/file.JPG"
-  },
-  {
-    "id": "c24_11158774152",
-    "timestamp": "2026-11-09 07:55",
-    "platform": "Cars24",
-    "make": "Volkswagen",
-    "model": "Polo",
-    "variant": "HIGHLINE 1.0L",
-    "make_year": 2019,
-    "price": 548214,
-    "retail_discount_pct": 7,
-    "deal_score": 90,
-    "mileage": 49981,
-    "hub": "Bellahalli, Bengaluru",
-    "url": "https://www.cars24.com/buy-used-volkswagen-polo-2019-cars-bangalore-11158774152/",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/7052d5de-b3aa-11f1-bd5e-02ede2007fbe/95cd0626-d62f-4551-be93-1f4c9c424bdc/ce6fdc2a-7db2-4b8b-bc24-9c6e5c5bf55d/b5e87605-57c9-4e0a-b33f-9966804cb275/slot/1.png"
   }
 ]
