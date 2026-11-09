@@ -1020,16 +1020,19 @@ html_content = """<!DOCTYPE html>
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       padding: 3px;
-      gap: 2px;
+      gap: 3px;
+      height: 38px;
+      box-sizing: border-box;
     }
     .scope-segment {
       background: transparent;
       border: none;
       color: var(--text-muted);
       font-family: var(--font-sans);
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 500;
-      padding: 6px 14px;
+      padding: 0 12px;
+      height: 30px;
       border-radius: 6px;
       cursor: pointer;
       display: inline-flex;
@@ -1066,6 +1069,7 @@ html_content = """<!DOCTYPE html>
       padding: 0 10px;
       display: inline-flex;
       align-items: center;
+      box-sizing: border-box;
     }
     .deck-select {
       background: transparent;
@@ -1081,13 +1085,18 @@ html_content = """<!DOCTYPE html>
       color: #FFFFFF;
     }
 
-    /* Cohesive Filter Panels Grid (Data Type Tailored) */
-    .deck-panels-grid {
+    /* Cohesive Symmetrical Filter Grids */
+    .deck-metrics-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 12px;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
       padding-top: 12px;
+    }
+    .deck-facets-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 12px;
     }
     .filter-panel {
       background: var(--bg-subsurface);
@@ -1097,17 +1106,21 @@ html_content = """<!DOCTYPE html>
       display: flex;
       flex-direction: column;
       gap: 10px;
+      box-sizing: border-box;
+      min-width: 0;
     }
     .panel-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
+      height: 22px;
     }
     .panel-title-wrap {
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      min-width: 0;
     }
     .panel-label {
       font-family: var(--font-mono);
@@ -1116,6 +1129,7 @@ html_content = """<!DOCTYPE html>
       color: var(--text-subtle);
       text-transform: uppercase;
       letter-spacing: 0.04em;
+      white-space: nowrap;
     }
     .range-readout-badge {
       font-family: var(--font-mono);
@@ -1126,6 +1140,7 @@ html_content = """<!DOCTYPE html>
       background: #181818;
       border: 1px solid var(--border-color);
       color: var(--accent-amber);
+      white-space: nowrap;
     }
     .btn-panel-action {
       background: transparent;
@@ -1137,6 +1152,7 @@ html_content = """<!DOCTYPE html>
       padding: 2px 4px;
       border-radius: 4px;
       transition: color var(--dur-fast) var(--ease-base);
+      white-space: nowrap;
     }
     .btn-panel-action:hover {
       color: var(--text-primary);
@@ -1147,19 +1163,14 @@ html_content = """<!DOCTYPE html>
       display: flex;
       align-items: center;
       gap: 8px;
+      height: 34px;
+      box-sizing: border-box;
     }
     .num-box {
       flex: 1;
+      min-width: 0;
       display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-    .num-label {
-      font-family: var(--font-mono);
-      font-size: 9.5px;
-      color: var(--text-subtle);
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
+      align-items: center;
     }
     .num-input-inner {
       display: flex;
@@ -1169,6 +1180,9 @@ html_content = """<!DOCTYPE html>
       border-radius: 6px;
       padding: 0 8px;
       height: 34px;
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
       transition: border-color var(--dur-fast) var(--ease-base);
     }
     .num-input-inner:focus-within {
@@ -1180,6 +1194,7 @@ html_content = """<!DOCTYPE html>
       font-weight: 600;
       color: var(--text-muted);
       padding-right: 4px;
+      flex-shrink: 0;
     }
     .num-field {
       flex: 1;
@@ -1199,13 +1214,32 @@ html_content = """<!DOCTYPE html>
       font-weight: 600;
       color: var(--text-subtle);
       padding-left: 2px;
+      flex-shrink: 0;
     }
     .num-range-divider {
       color: var(--text-subtle);
       font-family: var(--font-mono);
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    /* Uniform Metric Pills Row */
+    .btn-group-row-pills {
+      display: flex;
+      gap: 4px;
+      height: 34px;
+      align-items: center;
+      box-sizing: border-box;
+    }
+    .btn-group-row-pills .ctrl-btn {
+      flex: 1;
+      min-width: 0;
+      height: 34px;
+      padding: 0 4px;
       font-size: 11px;
-      align-self: flex-end;
-      padding-bottom: 8px;
+      justify-content: center;
+      text-align: center;
+      box-sizing: border-box;
     }
 
     /* Visual Continuous Range Slider */
@@ -1214,6 +1248,7 @@ html_content = """<!DOCTYPE html>
       flex-direction: column;
       gap: 4px;
       padding-top: 2px;
+      box-sizing: border-box;
     }
     .range-slider-accent {
       -webkit-appearance: none;
@@ -1262,6 +1297,7 @@ html_content = """<!DOCTYPE html>
       display: flex;
       gap: 6px;
       flex-wrap: wrap;
+      align-items: center;
     }
     .ctrl-btn {
       background: #181818;
@@ -1270,7 +1306,8 @@ html_content = """<!DOCTYPE html>
       font-family: var(--font-sans);
       font-size: 11.5px;
       font-weight: 500;
-      padding: 6px 10px;
+      padding: 0 10px;
+      height: 32px;
       border-radius: 6px;
       cursor: pointer;
       display: inline-flex;
@@ -1278,6 +1315,7 @@ html_content = """<!DOCTYPE html>
       gap: 5px;
       transition: all var(--dur-fast) var(--ease-base);
       white-space: nowrap;
+      box-sizing: border-box;
     }
     .ctrl-btn:hover {
       color: var(--text-primary);
@@ -1303,7 +1341,7 @@ html_content = """<!DOCTYPE html>
     .specs-segmented-wrap {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
     .segmented-switch {
       background: #181818;
@@ -1313,6 +1351,8 @@ html_content = """<!DOCTYPE html>
       display: flex;
       align-items: center;
       gap: 2px;
+      height: 34px;
+      box-sizing: border-box;
     }
     .switch-opt {
       flex: 1;
@@ -1322,10 +1362,13 @@ html_content = """<!DOCTYPE html>
       font-family: var(--font-sans);
       font-size: 11.5px;
       font-weight: 500;
-      padding: 5px 8px;
+      padding: 0 8px;
+      height: 28px;
       border-radius: 4px;
       cursor: pointer;
-      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       transition: all var(--dur-fast) var(--ease-base);
       white-space: nowrap;
     }
@@ -1341,6 +1384,7 @@ html_content = """<!DOCTYPE html>
     /* Discrete Brand Chips Panel */
     .panel-brands {
       grid-column: 1 / -1;
+      width: 100%;
     }
     .brand-chips-wrap {
       display: flex;
@@ -2264,6 +2308,17 @@ html_content = """<!DOCTYPE html>
       }
     }
 
+    @media (max-width: 1100px) {
+      .deck-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 860px) {
+      .deck-facets-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 640px) {
       .hero-section {
         margin: 0 auto 12px auto;
@@ -2277,26 +2332,32 @@ html_content = """<!DOCTYPE html>
       }
       .filter-deck {
         padding: 10px;
-        gap: 8px;
+        gap: 10px;
         border-radius: var(--radius-lg);
       }
       .deck-row-primary {
         flex-direction: column;
         align-items: stretch;
-        gap: 6px;
+        gap: 8px;
       }
       .deck-search-wrap {
         width: 100%;
+        height: 38px;
       }
       .deck-segmented-scope {
         width: 100%;
-        display: flex;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4px;
+        padding: 4px;
       }
       .scope-segment {
-        flex: 1;
+        width: 100%;
+        height: 34px;
         justify-content: center;
-        padding: 6px 2px;
-        font-size: 11px;
+        padding: 0 6px;
+        font-size: 11.5px;
       }
       .deck-actions-right {
         width: 100%;
@@ -2304,12 +2365,36 @@ html_content = """<!DOCTYPE html>
         gap: 6px;
       }
       .deck-sort-wrap {
-        flex: 1.2;
-        min-height: 34px;
+        width: 100%;
+        min-height: 36px;
       }
       .deck-select {
         width: 100%;
         min-height: 32px;
+      }
+      .deck-metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .deck-facets-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .num-box {
+        min-width: 0;
+      }
+      .num-input-inner {
+        padding: 0 4px;
+      }
+      .num-field {
+        font-size: 12px;
+      }
+      .btn-group-row-pills .ctrl-btn {
+        font-size: 10px;
+        padding: 0 2px;
+      }
+      .slider-ticks span {
+        font-size: 8.5px;
       }
       .deck-row-chips {
         display: flex;
@@ -2498,10 +2583,10 @@ html_content = """<!DOCTYPE html>
         </div>
       </div>
 
-      <!-- Cohesive Filter Controls Grid: Structured by Data Type -->
-      <div class="deck-panels-grid">
-        <!-- Control 1: Exact Number Range with Min/Max and Slider for Price -->
-        <div class="filter-panel panel-price">
+      <!-- Symmetrical 4-Card Numerical / Continuous Ranges Grid -->
+      <div class="deck-metrics-grid">
+        <!-- Metric 1: Budget Range (Min, Max, Slider) -->
+        <div class="filter-panel panel-budget">
           <div class="panel-header">
             <div class="panel-title-wrap">
               <span class="panel-label">Budget</span>
@@ -2571,7 +2656,46 @@ html_content = """<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- Control 2: Continuous Percentage Range Slider for Showroom Savings -->
+        <!-- Metric 2: Model Year (Year Floor Pills & Slider) -->
+        <div class="filter-panel panel-year">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <span class="panel-label">Model Year</span>
+              <span class="range-readout-badge" id="year-readout">Any Year</span>
+            </div>
+            <button type="button" class="btn-panel-action" onclick="clearYear()" title="Clear year filter">All Years</button>
+          </div>
+          <div class="btn-group-row-pills" id="year-pills">
+            <button type="button" class="ctrl-btn pill-all active" data-val="0" onclick="setYear(0, this)">All</button>
+            <button type="button" class="ctrl-btn pill-item" data-val="2016" onclick="setYear(2016, this)">2016+</button>
+            <button type="button" class="ctrl-btn pill-item" data-val="2018" onclick="setYear(2018, this)">2018+</button>
+            <button type="button" class="ctrl-btn pill-item" data-val="2020" onclick="setYear(2020, this)">2020+</button>
+            <button type="button" class="ctrl-btn pill-item" data-val="2022" onclick="setYear(2022, this)">2022+</button>
+          </div>
+          <div class="slider-track-wrap">
+            <input 
+              type="range" 
+              id="ctrl-year-range" 
+              class="range-slider-accent" 
+              min="2012" 
+              max="2024" 
+              step="1" 
+              value="2012" 
+              oninput="onYearSlider(this.value)"
+              aria-label="Minimum Model Year Slider"
+            />
+            <div class="slider-ticks">
+              <span>Any</span>
+              <span>2016</span>
+              <span>2018</span>
+              <span>2020</span>
+              <span>2022</span>
+              <span>2024</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric 3: Showroom Savings (Discount Pills & Slider) -->
         <div class="filter-panel panel-discount">
           <div class="panel-header">
             <div class="panel-title-wrap">
@@ -2580,7 +2704,13 @@ html_content = """<!DOCTYPE html>
             </div>
             <button type="button" class="btn-panel-action" onclick="clearDiscount()" title="Clear discount filter">Reset</button>
           </div>
-          <div class="slider-track-wrap" style="padding-top:12px;">
+          <div class="btn-group-row-pills" id="discount-pills">
+            <button type="button" class="ctrl-btn pill-all active" data-val="0" onclick="onDiscountSlider(0)">Any</button>
+            <button type="button" class="ctrl-btn pill-item" data-val="20" onclick="onDiscountSlider(20)">20%+</button>
+            <button type="button" class="ctrl-btn pill-item" data-val="35" onclick="onDiscountSlider(35)">35%+</button>
+            <button type="button" class="ctrl-btn pill-item" data-val="50" onclick="onDiscountSlider(50)">50%+</button>
+          </div>
+          <div class="slider-track-wrap">
             <input 
               type="range" 
               id="ctrl-discount-range" 
@@ -2592,23 +2722,67 @@ html_content = """<!DOCTYPE html>
               oninput="onDiscountSlider(this.value)"
               aria-label="Minimum showroom savings percentage"
             />
-            <div class="slider-ticks" style="padding-top:6px;">
+            <div class="slider-ticks">
               <span>Any</span>
-              <span>20% off</span>
-              <span>40% off</span>
-              <span>60%+ off</span>
+              <span>15%</span>
+              <span>30%</span>
+              <span>45%</span>
+              <span>60%+</span>
             </div>
           </div>
         </div>
 
-        <!-- Control 3: Discrete Source Multi-Select Buttons -->
+        <!-- Metric 4: Maximum Mileage (KM Pills & Slider) -->
+        <div class="filter-panel panel-mileage">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <span class="panel-label">Max Mileage</span>
+              <span class="range-readout-badge" id="km-readout">≤ 80k km</span>
+            </div>
+            <button type="button" class="btn-panel-action" onclick="clearKm()" title="Clear mileage ceiling">Any KM</button>
+          </div>
+          <div class="btn-group-row-pills" id="km-pills">
+            <button type="button" class="ctrl-btn pill-all" data-val="0" onclick="setMaxKm(0, this)">Any</button>
+            <button type="button" class="ctrl-btn pill-item" data-val="40000" onclick="setMaxKm(40000, this)">≤ 40k</button>
+            <button type="button" class="ctrl-btn pill-item" data-val="60000" onclick="setMaxKm(60000, this)">≤ 60k</button>
+            <button type="button" class="ctrl-btn pill-item active" data-val="80000" onclick="setMaxKm(80000, this)">≤ 80k</button>
+            <button type="button" class="ctrl-btn pill-item" data-val="100000" onclick="setMaxKm(100000, this)">≤ 100k</button>
+          </div>
+          <div class="slider-track-wrap">
+            <input 
+              type="range" 
+              id="ctrl-km-range" 
+              class="range-slider-accent" 
+              min="20" 
+              max="120" 
+              step="10" 
+              value="80" 
+              oninput="onKmSlider(this.value)"
+              aria-label="Maximum Mileage Slider"
+            />
+            <div class="slider-ticks">
+              <span>20k</span>
+              <span>40k</span>
+              <span>60k</span>
+              <span>80k</span>
+              <span>100k</span>
+              <span>120k+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Symmetrical 2-Panel Facets Grid (Sources & Specs) -->
+      <div class="deck-facets-grid">
+        <!-- Control 5: Discrete Source Multi-Select Buttons -->
         <div class="filter-panel panel-sources">
           <div class="panel-header">
-            <span class="panel-label">Source</span>
+            <span class="panel-label">Source Platforms</span>
+            <button type="button" class="btn-panel-action" onclick="clearMultiFilter('platforms')">All Sources</button>
           </div>
           <div class="btn-group-row" id="platforms-pills">
             <button type="button" class="ctrl-btn pill-all active" onclick="clearMultiFilter('platforms')">
-              All <span class="btn-count" id="count-all">1,477</span>
+              All <span class="btn-count" id="count-all">1,780</span>
             </button>
             <button type="button" class="ctrl-btn pill-item" data-val="Spinny" onclick="toggleMultiFilter('platforms', 'Spinny')">
               <span class="source-dot spinny-dot"></span>Spinny <span class="btn-count" id="count-spinny">0</span>
@@ -2625,10 +2799,10 @@ html_content = """<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- Control 4: Discrete Segmented Switches for Specs -->
+        <!-- Control 6: Discrete Segmented Switches for Specs -->
         <div class="filter-panel panel-specs">
           <div class="panel-header">
-            <span class="panel-label">Gearbox & Fuel</span>
+            <span class="panel-label">Gearbox &amp; Fuel Type</span>
           </div>
           <div class="specs-segmented-wrap">
             <div class="segmented-switch" id="transmissions-pills" role="radiogroup" aria-label="Gearbox">
@@ -2644,30 +2818,30 @@ html_content = """<!DOCTYPE html>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Control 5: Discrete Automaker Brand Chips -->
-        <div class="filter-panel panel-brands">
-          <div class="panel-header">
-            <div class="panel-title-wrap">
-              <span class="panel-label">Automakers</span>
-              <span class="caption-5" style="color:var(--text-subtle);">Select brand chips to filter</span>
-            </div>
-            <button type="button" class="btn-panel-action" onclick="clearMultiFilter('brands')" title="Reset brand selection">All Brands</button>
+      <!-- Automakers Brand Chips (Full Width) -->
+      <div class="filter-panel panel-brands">
+        <div class="panel-header">
+          <div class="panel-title-wrap">
+            <span class="panel-label">Automakers</span>
+            <span class="caption-5" style="color:var(--text-subtle);">Click brand chips to toggle filter</span>
           </div>
-          <div class="brand-chips-wrap" id="brands-pills">
-            <button type="button" class="chip-pill pill-all active" onclick="clearMultiFilter('brands')">All Brands</button>
-            <button type="button" class="chip-pill pill-item" data-val="maruti" onclick="toggleMultiFilter('brands', 'maruti')">Maruti (<span id="count-maruti">0</span>)</button>
-            <button type="button" class="chip-pill pill-item" data-val="hyundai" onclick="toggleMultiFilter('brands', 'hyundai')">Hyundai (<span id="count-hyundai">0</span>)</button>
-            <button type="button" class="chip-pill pill-item" data-val="tata" onclick="toggleMultiFilter('brands', 'tata')">Tata (<span id="count-tata">0</span>)</button>
-            <button type="button" class="chip-pill pill-item" data-val="honda" onclick="toggleMultiFilter('brands', 'honda')">Honda (<span id="count-honda">0</span>)</button>
-            <button type="button" class="chip-pill pill-item" data-val="volkswagen" onclick="toggleMultiFilter('brands', 'volkswagen')">Volkswagen (<span id="count-volkswagen">0</span>)</button>
-            <button type="button" class="chip-pill pill-item" data-val="toyota" onclick="toggleMultiFilter('brands', 'toyota')">Toyota (<span id="count-toyota">0</span>)</button>
-            <button type="button" class="chip-pill pill-item" data-val="skoda" onclick="toggleMultiFilter('brands', 'skoda')">Skoda (<span id="count-skoda">0</span>)</button>
-            <button type="button" class="chip-pill pill-item" data-val="bmw" onclick="toggleMultiFilter('brands', 'bmw')">BMW (<span id="count-bmw">0</span>)</button>
-            <button type="button" class="chip-pill pill-item" data-val="mahindra" onclick="toggleMultiFilter('brands', 'mahindra')">Mahindra (<span id="count-mahindra">0</span>)</button>
-            <button type="button" class="chip-pill pill-item" data-val="renault" onclick="toggleMultiFilter('brands', 'renault')">Renault (<span id="count-renault">0</span>)</button>
-            <button type="button" class="chip-pill pill-item" data-val="mg" onclick="toggleMultiFilter('brands', 'mg')">MG (<span id="count-mg">0</span>)</button>
-          </div>
+          <button type="button" class="btn-panel-action" onclick="clearMultiFilter('brands')" title="Reset brand selection">All Brands</button>
+        </div>
+        <div class="brand-chips-wrap" id="brands-pills">
+          <button type="button" class="chip-pill pill-all active" onclick="clearMultiFilter('brands')">All Brands</button>
+          <button type="button" class="chip-pill pill-item" data-val="maruti" onclick="toggleMultiFilter('brands', 'maruti')">Maruti (<span id="count-maruti">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="hyundai" onclick="toggleMultiFilter('brands', 'hyundai')">Hyundai (<span id="count-hyundai">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="tata" onclick="toggleMultiFilter('brands', 'tata')">Tata (<span id="count-tata">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="honda" onclick="toggleMultiFilter('brands', 'honda')">Honda (<span id="count-honda">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="volkswagen" onclick="toggleMultiFilter('brands', 'volkswagen')">Volkswagen (<span id="count-volkswagen">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="toyota" onclick="toggleMultiFilter('brands', 'toyota')">Toyota (<span id="count-toyota">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="skoda" onclick="toggleMultiFilter('brands', 'skoda')">Skoda (<span id="count-skoda">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="bmw" onclick="toggleMultiFilter('brands', 'bmw')">BMW (<span id="count-bmw">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="mahindra" onclick="toggleMultiFilter('brands', 'mahindra')">Mahindra (<span id="count-mahindra">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="renault" onclick="toggleMultiFilter('brands', 'renault')">Renault (<span id="count-renault">0</span>)</button>
+          <button type="button" class="chip-pill pill-item" data-val="mg" onclick="toggleMultiFilter('brands', 'mg')">MG (<span id="count-mg">0</span>)</button>
         </div>
       </div>
     </section>
@@ -2925,11 +3099,10 @@ html_content = """<!DOCTYPE html>
     const ctrlSlider = document.getElementById('ctrl-price-range');
     if (ctrlSlider) ctrlSlider.value = 5.0;
 
-    // Set curated default km pill active (<= 80k km)
-    document.querySelectorAll('#km-pills .facet-pill').forEach(b => {
-      if (b.textContent.includes('80k')) b.classList.add('active');
-      else b.classList.remove('active');
-    });
+    syncYearUI(state.min_year);
+    syncKmUI(state.max_km);
+    syncDiscountUI(state.min_discount);
+    updatePriceReadout();
 
     // Word-by-word reveal for B11 tagline
     const taglineContent = "Transparent pricing and verified mechanical telemetry. Every Bangalore car evaluated for true value and mechanical health.";
@@ -3057,6 +3230,8 @@ html_content = """<!DOCTYPE html>
         state.min_price = 0;
         state.max_price = 500000;
         state.max_km = 80000;
+        state.min_year = 0;
+        state.min_discount = 0;
         state.brands.clear();
         state.qualities.clear();
         state.qualities.add('top_deal');
@@ -3067,12 +3242,18 @@ html_content = """<!DOCTYPE html>
         if (maxInput) maxInput.value = '5.0';
         const slider = document.getElementById('ctrl-price-range');
         if (slider) slider.value = 5.0;
+
+        syncYearUI(0);
+        syncKmUI(80000);
+        syncDiscountUI(0);
       } else {
         if (btnAll) btnAll.classList.add('active');
 
         state.min_price = 0;
         state.max_price = 0;
         state.max_km = 0;
+        state.min_year = 0;
+        state.min_discount = 0;
         state.brands.clear();
         state.qualities.delete('top_deal');
 
@@ -3082,6 +3263,10 @@ html_content = """<!DOCTYPE html>
         if (maxInput) maxInput.value = '';
         const slider = document.getElementById('ctrl-price-range');
         if (slider) slider.value = 15.0;
+
+        syncYearUI(0);
+        syncKmUI(0);
+        syncDiscountUI(0);
       }
       updatePriceReadout();
       updateAllMultiFilterUIs();
@@ -3234,20 +3419,66 @@ html_content = """<!DOCTYPE html>
       ['platforms', 'brands', 'transmissions', 'fuels', 'qualities'].forEach(updateMultiFilterUI);
     }
 
-    // Year handler
+    // Year handlers
+    function syncYearUI(yr) {
+      const readout = document.getElementById('year-readout');
+      if (readout) readout.textContent = yr > 0 ? `${yr}+` : 'Any Year';
+      const slider = document.getElementById('ctrl-year-range');
+      if (slider) slider.value = yr || 2012;
+      document.querySelectorAll('#year-pills .ctrl-btn').forEach(b => {
+        const val = Number(b.getAttribute('data-val') || 0);
+        if (yr === val) b.classList.add('active');
+        else b.classList.remove('active');
+      });
+    }
+
     function setYear(year, btn) {
-      state.min_year = Number(year);
-      document.querySelectorAll('#year-pills .facet-pill').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
+      const yr = Number(year) || 0;
+      state.min_year = yr;
+      syncYearUI(yr);
       applyFilters();
     }
 
-    // Mileage handler
-    function setMaxKm(km, btn) {
-      state.max_km = Number(km);
-      document.querySelectorAll('#km-pills .facet-pill').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
+    function onYearSlider(val) {
+      const yr = Number(val);
+      state.min_year = yr <= 2012 ? 0 : yr;
+      syncYearUI(state.min_year);
       applyFilters();
+    }
+
+    function clearYear() {
+      setYear(0, null);
+    }
+
+    // Mileage handlers
+    function syncKmUI(km) {
+      const readout = document.getElementById('km-readout');
+      if (readout) readout.textContent = km > 0 ? `≤ ${Math.round(km / 1000)}k km` : 'Any KM';
+      const slider = document.getElementById('ctrl-km-range');
+      if (slider) slider.value = km ? Math.round(km / 1000) : 120;
+      document.querySelectorAll('#km-pills .ctrl-btn').forEach(b => {
+        const val = Number(b.getAttribute('data-val') || 0);
+        if (km === val) b.classList.add('active');
+        else b.classList.remove('active');
+      });
+    }
+
+    function setMaxKm(km, btn) {
+      const k = Number(km) || 0;
+      state.max_km = k;
+      syncKmUI(k);
+      applyFilters();
+    }
+
+    function onKmSlider(val) {
+      const k = Number(val);
+      state.max_km = k >= 120 ? 0 : k * 1000;
+      syncKmUI(state.max_km);
+      applyFilters();
+    }
+
+    function clearKm() {
+      setMaxKm(0, null);
     }
 
     function updatePriceReadout() {
@@ -3314,22 +3545,30 @@ html_content = """<!DOCTYPE html>
       applyFilters();
     }
 
+    // Discount handlers
+    function syncDiscountUI(disc) {
+      const num = parseInt(disc, 10) || 0;
+      const readout = document.getElementById('discount-readout');
+      if (readout) readout.textContent = num > 0 ? `≥ ${num}% Off` : 'Any';
+      const slider = document.getElementById('ctrl-discount-range');
+      if (slider) slider.value = num;
+      document.querySelectorAll('#discount-pills .ctrl-btn').forEach(b => {
+        const val = Number(b.getAttribute('data-val') || 0);
+        if (num === val) b.classList.add('active');
+        else b.classList.remove('active');
+      });
+    }
+
     function onDiscountSlider(val) {
       const num = parseInt(val, 10);
       state.min_discount = (!isNaN(num) && num > 0) ? num : 0;
-      const readout = document.getElementById('discount-readout');
-      if (readout) {
-        readout.textContent = state.min_discount > 0 ? `≥ ${state.min_discount}% Off` : 'Any';
-      }
+      syncDiscountUI(state.min_discount);
       applyFilters();
     }
 
     function clearDiscount() {
       state.min_discount = 0;
-      const slider = document.getElementById('ctrl-discount-range');
-      if (slider) slider.value = 0;
-      const readout = document.getElementById('discount-readout');
-      if (readout) readout.textContent = 'Any';
+      syncDiscountUI(0);
       applyFilters();
     }
 
@@ -3365,14 +3604,6 @@ html_content = """<!DOCTYPE html>
       const slider = document.getElementById('ctrl-price-range');
       if (slider) slider.value = 5.0;
 
-      const dSlider = document.getElementById('ctrl-discount-range');
-      if (dSlider) dSlider.value = 0;
-      const dReadout = document.getElementById('discount-readout');
-      if (dReadout) dReadout.textContent = 'Any';
-
-      const sDrop = document.getElementById('ctrl-sort');
-      if (sDrop) sDrop.value = 'score';
-
       const btnCurated = document.getElementById('btn-mode-curated');
       const btnAll = document.getElementById('btn-mode-all');
       const btnGerman = document.getElementById('btn-german-5l');
@@ -3382,6 +3613,9 @@ html_content = """<!DOCTYPE html>
       if (btnGerman) btnGerman.classList.remove('active');
       if (btnBmw) btnBmw.classList.remove('active');
 
+      syncYearUI(0);
+      syncKmUI(80000);
+      syncDiscountUI(0);
       updatePriceReadout();
       updateAllMultiFilterUIs();
       applyFilters();
@@ -3921,6 +4155,9 @@ html_content = """<!DOCTYPE html>
       state.brands.add('bmw');
       state.brands.add('audi');
 
+      syncYearUI(0);
+      syncKmUI(0);
+      syncDiscountUI(0);
       updatePriceReadout();
       updateAllMultiFilterUIs();
       applyFilters();
@@ -3973,6 +4210,9 @@ html_content = """<!DOCTYPE html>
       state.brands.clear();
       state.brands.add('bmw');
 
+      syncYearUI(0);
+      syncKmUI(0);
+      syncDiscountUI(0);
       updatePriceReadout();
       updateAllMultiFilterUIs();
       applyFilters();

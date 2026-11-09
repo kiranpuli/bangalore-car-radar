@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bangalore Car Radar — Technical Documentation</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-canvas: #0A0A0A;
+      --bg-surface: #141414;
+      --bg-subsurface: #1B1B1B;
+      --border-color: #262626;
+      --border-light: #333333;
+      --text-primary: #F5F5F5;
+      --text-muted: #A3A3A3;
+      --text-subtle: #737373;
+      --accent-amber: #F59E0B;
+      --accent-blue: #3B82F6;
+      --accent-emerald: #10B981;
+      --accent-purple: #A855F7;
+      --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'Geist Mono', 'SF Mono', Consolas, monospace;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      font-size: 15px;
+      padding: 32px 20px 80px 20px;
+    }
+    .doc-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    header.doc-header {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 28px;
+      margin-bottom: 36px;
+    }
+    .doc-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-amber);
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: 9999px;
+      padding: 4px 12px;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+      color: #FFFFFF;
+    }
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-color);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-top: 24px;
+      margin-bottom: 10px;
+      color: #E5E5E5;
+    }
+    p {
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      font-size: 14.5px;
+    }
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 18px;
+      color: var(--text-muted);
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    strong {
+      color: var(--text-primary);
+    }
+    code {
+      font-family: var(--font-mono);
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #FBBF24;
+    }
+    pre {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      overflow-x: auto;
+      margin-bottom: 20px;
+    }
+    pre code {
+      background: transparent;
+      border: none;
+      padding: 0;
+      color: #ECEFF4;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin: 20px 0;
+    }
+    .stat-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+    .stat-number {
+      font-family: var(--font-mono);
+      font-size: 26px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    th, td {
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 13.5px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    th {
+      background: var(--bg-subsurface);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    td {
+      color: var(--text-muted);
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    .callout {
+      background: var(--bg-surface);
+      border-left: 3px solid var(--accent-amber);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 14px 18px;
+      margin: 20px 0;
+      border-top: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .callout-title {
+      font-weight: 600;
+      color: var(--accent-amber);
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.15s ease;
+    }
+    .nav-btn:hover {
+      border-color: var(--border-light);
+      background: #252525;
+    }
+    .tag-pill {
+      display: inline-block;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .tag-spinny { background: rgba(245, 158, 11, 0.15); color: #F59E0B; }
+    .tag-cars24 { background: rgba(59, 130, 246, 0.15); color: #3B82F6; }
+    .tag-truwo  { background: rgba(16, 185, 129, 0.15); color: #10B981; }
+    .tag-olx    { background: rgba(168, 85, 247, 0.15); color: #A855F7; }
+  </style>
+</head>
+<body>
+  <div class="doc-container">
+    <header class="doc-header">
+      <div class="doc-badge">LIVE MONITORING TELEMETRY</div>
+      <h1>Bangalore Car Radar</h1>
+      <p>Autonomous multi-platform used vehicle radar tracking, scoring, and alert pipeline for the Bangalore pre-owned car market across Spinny, Cars24, Truwo, and OLX.</p>
+      <div class="nav-links">
+        <a href="https://kiranpuli.github.io/spinny-deals/" class="nav-btn">🌐 Live Dashboard</a>
+        <a href="https://github.com/kiranpuli/spinny-deals" class="nav-btn">🐙 GitHub Repository</a>
+        <a href="https://ntfy.sh/kiran-car-radar" class="nav-btn">📲 Mobile Alerts Channel</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>1. Overview &amp; Market Intelligence</h2>
+      <p>Bangalore Car Radar aggregates and evaluates pre-owned vehicle inventory across all major automotive platforms in Bangalore. It eliminates speculative dealership pricing by computing algorithmic fair-market valuations, running 200-point mechanical audits, and monitoring live listings hourly.</p>
+      
+      <div class="grid-cards">
+        <div class="stat-card">
+          <div class="stat-number">1,780+</div>
+          <div class="stat-label">Tracked Bangalore Cars</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">4</div>
+          <div class="stat-label">Integrated Marketplaces</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">Hourly</div>
+          <div class="stat-label">Sync &amp; Dispatches</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">200-Pt</div>
+          <div class="stat-label">Mechanical Audit Engine</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. Supported Marketplace Sources</h2>
+      <p>The monitoring pipeline pulls verified inventory with mechanical inspection sheets and direct vehicle listing URLs:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Platform</th>
+            <th>Identifier</th>
+            <th>Type</th>
+            <th>Inspection Guarantee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Spinny</strong></td>
+            <td><span class="tag-pill tag-spinny">Spinny</span></td>
+            <td>API &amp; Hub Feeds</td>
+            <td>200-Point Spinny Assured &amp; Max certified inspection</td>
+          </tr>
+          <tr>
+            <td><strong>Cars24</strong></td>
+            <td><span class="tag-pill tag-cars24">Cars24</span></td>
+            <td>Search Endpoints</td>
+            <td>140-Point Cars24 Assured mechanical warranty</td>
+          </tr>
+          <tr>
+            <td><strong>Truwo</strong></td>
+            <td><span class="tag-pill tag-truwo">Truwo</span></td>
+            <td>Hub Feed</td>
+            <td>Verified mechanical inspection, Bengaluru South/East hubs</td>
+          </tr>
+          <tr>
+            <td><strong>OLX</strong></td>
+            <td><span class="tag-pill tag-olx">OLX</span></td>
+            <td>Bangalore Feed</td>
+            <td>Direct seller &amp; certified listings across Bangalore</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>3. Deal Scoring Algorithm (0 – 100)</h2>
+      <p>Every vehicle receives an objective 0 to 100 conviction score evaluating mechanical integrity, market depreciation, and price positioning:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Weight</th>
+            <th>Calculation Basis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Price Retention &amp; Depreciation</strong></td>
+            <td>40 Points</td>
+            <td>Compares asking price against model-year depreciation curve for Bangalore Indian used car market.</td>
+          </tr>
+          <tr>
+            <td><strong>Mechanical Audit Score</strong></td>
+            <td>30 Points</td>
+            <td>Analyzes mechanical checklist: suspension health, tyre tread depth (≥ 4mm), engine bay leaks, coolant condition, battery health, and AC performance.</td>
+          </tr>
+          <tr>
+            <td><strong>Mileage &amp; Odometer Integrity</strong></td>
+            <td>15 Points</td>
+            <td>Points awarded for verified odometers under 60k km; deductions applied for high cumulative annual mileage (> 15,000 km/year).</td>
+          </tr>
+          <tr>
+            <td><strong>Ownership &amp; Bodywork</strong></td>
+            <td>15 Points</td>
+            <td>Deductions for structural repainting, panel replacements, minor scratch counts, and third-or-higher owner history.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <div class="callout-title">Curated Top Deal Threshold</div>
+        <div>Cars scoring <strong>≥ 80/100</strong>, priced <strong>≤ ₹5.00 Lakh</strong>, and under <strong>80,000 km</strong> are automatically promoted to the <em>🔥 Top Deals</em> curated shortlist and triggered for push alerts.</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>4. Ergonomic Filter Control Deck</h2>
+      <p>The dashboard provides a symmetrical, data-type tailored control deck designed for rapid refinement across both desktop and mobile viewports:</p>
+      <ul>
+        <li><strong>Budget Slider &amp; Number Fields:</strong> Exact numerical input boxes for Minimum and Maximum price in Lakhs (₹ L), paired with a continuous scrub slider from ₹1.0L to ₹15.0L+.</li>
+        <li><strong>Model Year Floor:</strong> Quick segmented pill buttons (<code>All</code>, <code>2016+</code>, <code>2018+</code>, <code>2020+</code>, <code>2022+</code>) and continuous year slider (2012 to 2024).</li>
+        <li><strong>Showroom Savings %:</strong> Discrete discount percentage selector (<code>Any</code>, <code>20%+</code>, <code>35%+</code>, <code>50%+</code>) with 0% to 60%+ range slider.</li>
+        <li><strong>Maximum Mileage Ceiling:</strong> Quick km pills (<code>Any</code>, <code>≤ 40k</code>, <code>≤ 60k</code>, <code>≤ 80k</code>, <code>≤ 100k</code>) and 20k to 120k km slider.</li>
+        <li><strong>Source Platforms:</strong> Multi-select discrete buttons for Spinny, Cars24, Truwo, and OLX with live count badges.</li>
+        <li><strong>Gearbox &amp; Fuel Type:</strong> Segmented dual switches for Transmission (All, Automatic, Manual) and Fuel (All, Petrol, Diesel, CNG).</li>
+        <li><strong>Automaker Chips:</strong> One-click brand chips with live count badges for Maruti, Hyundai, Tata, Honda, Volkswagen, Toyota, Skoda, BMW, Mahindra, Renault, and MG.</li>
+        <li><strong>Model Exclusion (Hide Model):</strong> Permanent model exclusion button on cards and scorecard modals, persisting hidden models in browser <code>localStorage</code>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5. Mobile &amp; Push Notification Architecture</h2>
+      <p>Pre-owned car deals under ₹5L often receive reservations within 3 hours in Bangalore. The system provides two notification channels:</p>
+      <h3>Channel A: Mobile Push (ntfy.sh / Samsung S25 Ultra)</h3>
+      <p>Zero signups, open-source notification pipeline via <code>ntfy.sh/kiran-car-radar</code>. High-priority push notifications include direct listing links and car photographs, dispatached instantly to Android and iOS devices.</p>
+      <pre><code>curl -d "🔥 2018 Honda Jazz Petrol dropped to ₹4.20L at Spinny Whitefield!" \
+     -H "Title: Car Deal Radar Alert" \
+     -H "Click: https://www.spinny.com/buy-used-cars/bangalore/honda/jazz/" \
+     https://ntfy.sh/kiran-car-radar</code></pre>
+
+      <h3>Channel B: PWA (Progressive Web Application)</h3>
+      <p>Configured with web application manifests (<code>site.webmanifest</code>, <code>manifest.json</code>), high-resolution vector SVG favicon, 192px/512px maskable icons, and <code>#131209</code> dark status bar theme color.</p>
+    </section>
+
+    <section>
+      <h2>6. Automated Hourly Sync Architecture</h2>
+      <p>The monitoring pipeline runs autonomously on two parallel schedules:</p>
+      <ol>
+        <li><strong>GitHub Actions Workflow:</strong> <code>.github/workflows/</code> schedules an hourly runner that executes scrapers, runs mechanical scoring, regenerates <code>deals.html</code> and <code>index.html</code>, and commits updates to <code>main</code>.</li>
+        <li><strong>Local Cron Daemon:</strong> <code>hourly_update.sh</code> runs via macOS <code>launchd</code> / <code>cron</code> with rebase resilience:
+          <pre><code>0 * * * * cd /Users/kiran/workplace/spinny_monitor && ./hourly_update.sh >> hourly_sync.log 2>&1</code></pre>
+        </li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>7. Local Development &amp; CLI Commands</h2>
+      <p>Run these commands locally to test scrapers or rebuild static UI:</p>
+      <h3>Recompile Dashboard UI</h3>
+      <pre><code>python3 build_ui.py</code></pre>
+
+      <h3>Run Live Marketplace Scrapers</h3>
+      <pre><code>python3 spinny_checker.py --headless</code></pre>
+
+      <h3>Test Dispatch Push Alert</h3>
+      <pre><code>python3 -c "
+import urllib.request
+req = urllib.request.Request('https://ntfy.sh/kiran-car-radar', data=b'Test alert from Bangalore Car Radar', headers={'Title': 'Radar Test Alert'})
+urllib.request.urlopen(req)
+print('Alert dispatched successfully')
+"</code></pre>
+    </section>
+  </div>
+</body>
+</html>
