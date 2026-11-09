@@ -5,13 +5,13 @@
 ### **Stop Overpaying Dealerships ₹1,50,000 for Used Cars in Bangalore.**
 
 [![Status: Live](https://img.shields.io/badge/Status-Live%20Radar%20Active-10B981?style=for-the-badge&logo=radar&logoColor=white)](https://kiranpuli.github.io/bangalore-car-radar/)
-[![Coverage](https://img.shields.io/badge/Coverage-1%2C784%20Bangalore%20Cars-3B82F6?style=for-the-badge)](https://kiranpuli.github.io/bangalore-car-radar/)
+[![Coverage](https://img.shields.io/badge/Coverage-1%2C746%20Bangalore%20Cars-3B82F6?style=for-the-badge)](https://kiranpuli.github.io/bangalore-car-radar/)
 [![Alerts](https://img.shields.io/badge/Alerts-Instant%20Mobile%20Push-F59E0B?style=for-the-badge&logo=google-cloud&logoColor=white)](https://ntfy.sh/kiran-car-radar)
-[![Audit](https://img.shields.io/badge/Audit-200--Point%20Telemetry-8B5CF6?style=for-the-badge)](documentation.html)
+[![Audit](https://img.shields.io/badge/Audit-200--Point%20Telemetry-8B5CF6?style=for-the-badge)](DOCUMENTATION.md)
 
 *The autonomous multi-platform intelligence feed that analyzes 200-point inspection sheets, scores deals on an algorithmic conviction index, and pings your phone before dealers flip them.*
 
-[**🚀 Open Free Live Radar**](https://kiranpuli.github.io/bangalore-car-radar/) &nbsp;•&nbsp; [**📲 Get Mobile Push Alerts**](https://ntfy.sh/kiran-car-radar) &nbsp;•&nbsp; [**📖 Technical Documentation**](documentation.html) &nbsp;•&nbsp; [**🎬 1080p Launch Video**](product-launch.mp4)
+[**🚀 Open Free Live Radar**](https://kiranpuli.github.io/bangalore-car-radar/) &nbsp;•&nbsp; [**📲 Get Mobile Push Alerts**](https://ntfy.sh/kiran-car-radar) &nbsp;•&nbsp; [**📖 Architecture & Docs (Markdown)**](DOCUMENTATION.md) &nbsp;•&nbsp; [**🎬 1080p Launch Video**](product-launch.mp4)
 
 <br/>
 
