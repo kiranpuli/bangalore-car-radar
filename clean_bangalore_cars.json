@@ -66658,6 +66658,83 @@
     }
   },
   {
+    "id": 19162396,
+    "platform": "Spinny",
+    "make": "Mahindra",
+    "model": "XUV500",
+    "variant": "W9 AT",
+    "make_year": 2018,
+    "mileage": 50653,
+    "price": 1153000.0,
+    "orig_retail_price": 1980000,
+    "retail_discount_pct": 42,
+    "fuel_type": "diesel",
+    "transmission": "automatic",
+    "category": "assured",
+    "hub": "Spinny Car Hub, Nexus Shanti Niketan Mall - Whitefield Rd, Bangalore",
+    "img": "https://assets.spinny.com/sp-file-system/public/2025-07-01/bc725df436374530b5fe65b8cb8c041c/raw/file.JPG",
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/mahindra/xuv500/w9-at-whitefield-road-2018/19162396/",
+    "deal_score": 86,
+    "deal_grade": "TOP DEAL",
+    "is_top_deal": true,
+    "verdict": "Reliable brand backing with steady resale demand",
+    "analysis": {
+      "pros": [
+        "Reliable brand backing with steady resale demand",
+        "Smooth city drivability",
+        "Predictable routine service upkeep"
+      ],
+      "cons": [
+        "Regular periodic maintenance required"
+      ],
+      "maintenance_yr": "\u20b95,500 - \u20b97,500",
+      "retention_pct": 0.72,
+      "est_buyback_2yr": 830160,
+      "total_loss_2yr": 322840.0,
+      "monthly_loss": 13452
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "Moderate mileage (50k km) \u00b7 healthy mechanical life",
+        "pts": "+12 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "Solid 2018 manufacture \u00b7 modern chassis",
+        "pts": "+11 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "Healthy 42% savings from original MSRP",
+        "pts": "+9 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
+        "pts": "+14 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 86/100 primarily driven by odometer & engine wear, vehicle age & generation.",
+    "ownership_review": {
+      "fuel_economy": "9-11 km/l (BLR City) \u00b7 13-15 km/l (Highway)",
+      "annual_maintenance": "\u20b98,000 - \u20b912,000 / yr",
+      "ride_comfort": "High-perch road commanding presence; ladder frame or monocoque clears any floodwater or crater effortlessly.",
+      "known_issues": "Heavy clutch pedal in bumper-to-bumper traffic; check suspension lower ball joints and brake pad life.",
+      "bangalore_verdict": "Mighty road presence and supreme durability for rough weekend excursions and long touring."
+    }
+  },
+  {
     "id": "c24_17398370101",
     "platform": "Cars24",
     "make": "Hyundai",
