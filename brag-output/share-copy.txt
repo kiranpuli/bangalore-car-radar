@@ -1,0 +1,14 @@
+# Bangalore Car Radar — Launch Video Share Copy
+
+🏎️ Stop overpaying dealers ₹1.5L for used cars in Bangalore.
+
+Bangalore Car Radar scans 1,780+ live used cars across Spinny, Cars24, Truwo, and OLX every single hour.
+
+What makes it different:
+• 200-Point Mechanical Telemetry: Tyre tread depth, engine health, suspension, and battery health analyzed before you visit the hub.
+• Deal Conviction Score (0-100): Spot genuine sub-₹5L bargains with fair depreciation curves.
+• Laser Filters: Automatic vs Manual transmission live counts, Petrol/Diesel/CNG, and 1-click model exclusion.
+• Zero-Setup Push Alerts: Real-time price drop notifications straight to your phone (Samsung S25 Ultra / iOS).
+
+Explore live: https://kiranpuli.github.io/spinny-deals/
+GitHub: https://github.com/kiranpuli/spinny-deals

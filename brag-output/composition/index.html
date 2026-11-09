@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, height=1080" />
+  <title>Bangalore Car Radar Launch Video</title>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #07090e;
+      --card-bg: rgba(16, 22, 36, 0.90);
+      --card-border: rgba(255, 255, 255, 0.14);
+      --emerald: #10b981;
+      --amber: #f59e0b;
+      --blue: #3b82f6;
+      --purple: #8b5cf6;
+      --rose: #f43f5e;
+      --text-white: #ffffff;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: var(--bg-dark);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-white);
+      -webkit-font-smoothing: antialiased;
+    }
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 15%, #162035 0%, #07090e 75%);
+    }
+
+    /* Ambient radar sweep background */
+    .radar-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 1px solid rgba(16, 185, 129, 0.14);
+      pointer-events: none;
+    }
+    .radar-c1 { width: 450px; height: 450px; }
+    .radar-c2 { width: 900px; height: 900px; }
+    .radar-c3 { width: 1400px; height: 1400px; }
+
+    /* Scene wrappers */
+    .scene {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1920px;
+      height: 1080px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px;
+    }
+    .scene-content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Scene 1: Problem */
+    #scene-1 .alert-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 28px;
+      border-radius: 9999px;
+      background: rgba(244, 63, 94, 0.15);
+      border: 1px solid rgba(244, 63, 94, 0.4);
+      color: #fda4af;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    #scene-1 .headline {
+      font-size: 82px;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      max-width: 1450px;
+      margin-bottom: 36px;
+    }
+    #scene-1 .subhead {
+      font-size: 40px;
+      color: var(--text-muted);
+      text-align: center;
+      max-width: 1100px;
+      line-height: 1.4;
+    }
+
+    /* Scene 2: The Radar Reveal */
+    #scene-2 .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 32px;
+      border-radius: 9999px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #6ee7b7;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    #scene-2 .radar-headline {
+      font-size: 86px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    #scene-2 .radar-sub {
+      font-size: 38px;
+      color: var(--text-muted);
+      margin-bottom: 56px;
+    }
+    .platform-cards {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .platform-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 32px 40px;
+      text-align: center;
+      min-width: 280px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .platform-logo {
+      font-size: 44px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .platform-count {
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--emerald);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .platform-label {
+      font-size: 28px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    /* Scene 3: Mechanical Audit */
+    #scene-3 .scorecard-grid {
+      display: flex;
+      gap: 60px;
+      align-items: center;
+      max-width: 1550px;
+      width: 100%;
+    }
+    .car-hero-card {
+      flex: 1.1;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 28px;
+      padding: 44px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    }
+    .deal-badge {
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 9999px;
+      background: rgba(245, 158, 11, 0.2);
+      border: 1px solid rgba(245, 158, 11, 0.5);
+      color: #fbbf24;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .car-title {
+      font-size: 46px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .car-meta {
+      font-size: 32px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .car-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+    }
+    .car-price {
+      font-size: 58px;
+      font-weight: 800;
+      color: var(--emerald);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .car-discount {
+      font-size: 30px;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.15);
+      padding: 8px 18px;
+      border-radius: 12px;
+    }
+
+    .telemetry-col {
+      flex: 1.2;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .telemetry-title {
+      font-size: 44px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .telemetry-sub {
+      font-size: 30px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .telemetry-item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 22px 30px;
+    }
+    .telemetry-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .bar-bg {
+      width: 100%;
+      height: 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #10b981, #34d399);
+      width: 0%;
+    }
+
+    /* Scene 4: Filters & Push */
+    #scene-4 .s4-wrapper {
+      display: flex;
+      gap: 60px;
+      align-items: center;
+      max-width: 1600px;
+      width: 100%;
+    }
+    .filter-showcase {
+      flex: 1.1;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .filter-group-title {
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .f-pill {
+      padding: 16px 28px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+    .f-pill.active {
+      background: #10b981;
+      border-color: #10b981;
+      color: #022c22;
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+    }
+    .phone-mockup {
+      flex: 1;
+      background: #000;
+      border: 6px solid #334155;
+      border-radius: 48px;
+      padding: 36px 30px;
+      box-shadow: 0 35px 70px rgba(0, 0, 0, 0.7);
+      position: relative;
+    }
+    .phone-notch {
+      width: 140px;
+      height: 24px;
+      background: #1e293b;
+      border-radius: 9999px;
+      margin: 0 auto 30px auto;
+    }
+    .push-card {
+      background: rgba(30, 41, 59, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    }
+    .push-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .push-app {
+      font-size: 28px;
+      font-weight: 800;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .push-time {
+      font-size: 28px;
+      color: var(--text-dim);
+    }
+    .push-title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .push-body {
+      font-size: 28px;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    /* Scene 5: Outro / CTA */
+    #scene-5 .final-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 34px;
+      border-radius: 9999px;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      color: #93c5fd;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+    #scene-5 .final-title {
+      font-size: 96px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    #scene-5 .final-tag {
+      font-size: 42px;
+      color: var(--text-muted);
+      text-align: center;
+      max-width: 1200px;
+      line-height: 1.4;
+      margin-bottom: 54px;
+    }
+    .cta-button-box {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #022c22;
+      padding: 24px 64px;
+      border-radius: 9999px;
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      box-shadow: 0 20px 50px rgba(16, 185, 129, 0.5);
+      margin-bottom: 40px;
+    }
+    .trust-badges {
+      display: flex;
+      gap: 40px;
+    }
+    .trust-item {
+      font-size: 28px;
+      font-weight: 700;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="main" data-start="0" data-duration="18" data-width="1920" data-height="1080">
+    
+    <!-- Audio Layer -->
+    <audio id="bg-music" data-start="0" data-duration="18" data-track-index="10" data-volume="0.32" src="assets/music/happy-beats-business-moves-vol-1-by-ende-dot-app.mp3"></audio>
+    <audio id="sfx-01" data-start="0.1" data-duration="0.18" data-track-index="11" data-volume="0.75" src="assets/sfx/impact/impactSoft_medium_001.ogg"></audio>
+    <audio id="sfx-02" data-start="3.5" data-duration="0.12" data-track-index="12" data-volume="0.80" src="assets/sfx/interface/bong_001.ogg"></audio>
+    <audio id="sfx-03" data-start="4.2" data-duration="0.10" data-track-index="13" data-volume="0.70" src="assets/sfx/interface/click_001.ogg"></audio>
+    <audio id="sfx-04" data-start="7.6" data-duration="0.11" data-track-index="14" data-volume="0.80" src="assets/sfx/interface/drop_001.ogg"></audio>
+    <audio id="sfx-05" data-start="11.6" data-duration="0.10" data-track-index="15" data-volume="0.70" src="assets/sfx/interface/click_001.ogg"></audio>
+    <audio id="sfx-06" data-start="12.4" data-duration="0.11" data-track-index="16" data-volume="0.80" src="assets/sfx/interface/drop_001.ogg"></audio>
+    <audio id="sfx-07" data-start="15.1" data-duration="1.48" data-track-index="17" data-volume="0.85" src="assets/sfx/impact/impactBell_heavy_000.ogg"></audio>
+
+    <!-- Background Radar Circles -->
+    <div class="radar-circle radar-c1" data-layout-allow-overflow></div>
+    <div class="radar-circle radar-c2" data-layout-allow-overflow></div>
+    <div class="radar-circle radar-c3" data-layout-allow-overflow></div>
+
+    <!-- SCENE 1: The Problem (0.0s - 3.5s) -->
+    <div id="scene-1" class="scene clip" data-start="0" data-duration="3.5" data-track-index="1">
+      <div class="scene-content" id="s1-content" data-hold>
+        <div class="alert-pill">⚠️ Bangalore Used Car Market Alert</div>
+        <h1 class="headline">Dealers Markup Bangalore Cars by ₹1.5 Lakhs.<br><span style="color: #fda4af;">And Hide Critical Defects.</span></h1>
+        <p class="subhead" data-layout-ignore>Checking Spinny, Cars24, Truwo, and OLX manually takes 4 hours every day.</p>
+      </div>
+    </div>
+
+    <!-- SCENE 2: The Solution / Radar (3.5s - 7.5s) -->
+    <div id="scene-2" class="scene clip" data-start="3.5" data-duration="4.0" data-track-index="2">
+      <div class="scene-content" id="s2-content" data-hold>
+        <div class="brand-badge">⚡ Autonomous Used Car Radar</div>
+        <h1 class="radar-headline">1,784 Bangalore Cars Tracked Hourly</h1>
+        <p class="radar-sub">Real-time valuation algorithms scan 4 major platforms 24/7</p>
+        
+        <div class="platform-cards" data-layout-ignore>
+          <div class="platform-card" id="card-spinny">
+            <div class="platform-logo" style="color: #f97316;">Spinny</div>
+            <div class="platform-count">740+ Cars</div>
+            <div class="platform-label">200-Pt Audits</div>
+          </div>
+          <div class="platform-card" id="card-cars24">
+            <div class="platform-logo" style="color: #3b82f6;">Cars24</div>
+            <div class="platform-count">620+ Cars</div>
+            <div class="platform-label">140-Pt Audits</div>
+          </div>
+          <div class="platform-card" id="card-truwo">
+            <div class="platform-logo" style="color: #10b981;">Truwo</div>
+            <div class="platform-count">210+ Cars</div>
+            <div class="platform-label">Bangalore Hubs</div>
+          </div>
+          <div class="platform-card" id="card-olx">
+            <div class="platform-logo" style="color: #a855f7;">OLX</div>
+            <div class="platform-count">210+ Cars</div>
+            <div class="platform-label">Direct Verified</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCENE 3: Mechanical Audit & Scoring (7.5s - 11.5s) -->
+    <div id="scene-3" class="scene clip" data-start="7.5" data-duration="4.0" data-track-index="3">
+      <div class="scene-content" id="s3-content" data-hold>
+        <div class="scorecard-grid" data-layout-ignore>
+          <div class="car-hero-card" id="car-card">
+            <div class="deal-badge">🔥 TOP DEAL SCORE: 94 / 100</div>
+            <div class="car-title">2018 Honda Jazz 1.2 V</div>
+            <div class="car-meta">48,200 km · 1st Owner · Spinny Whitefield</div>
+            <div class="car-price-row">
+              <div class="car-price">₹4,25,000</div>
+              <div class="car-discount">Save 48% vs New</div>
+            </div>
+          </div>
+          <div class="telemetry-col" id="telemetry-box">
+            <div class="telemetry-title">200-Point Mechanical Telemetry</div>
+            <div class="telemetry-sub">Scored before you waste time traveling to the hub:</div>
+            <div class="telemetry-item">
+              <div class="telemetry-header">
+                <span>🛞 Tyre Tread Depth (5.2 mm avg)</span>
+                <span style="color: #10b981;">94%</span>
+              </div>
+              <div class="bar-bg"><div class="bar-fill" id="bar-tyre" style="width: 94%;"></div></div>
+            </div>
+            <div class="telemetry-item">
+              <div class="telemetry-header">
+                <span>⚙️ Suspension &amp; Struts</span>
+                <span style="color: #10b981;">98%</span>
+              </div>
+              <div class="bar-bg"><div class="bar-fill" id="bar-susp" style="width: 98%;"></div></div>
+            </div>
+            <div class="telemetry-item">
+              <div class="telemetry-header">
+                <span>🔋 Engine, Battery &amp; AC Health</span>
+                <span style="color: #10b981;">95%</span>
+              </div>
+              <div class="bar-bg"><div class="bar-fill" id="bar-eng" style="width: 95%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCENE 4: Laser Filters & Mobile Push (11.5s - 15.0s) -->
+    <div id="scene-4" class="scene clip" data-start="11.5" data-duration="3.5" data-track-index="4">
+      <div class="scene-content" id="s4-content" data-hold>
+        <div class="s4-wrapper">
+          <div class="filter-showcase" data-layout-ignore>
+            <div>
+              <div class="filter-group-title">TRANSMISSION SELECTOR</div>
+              <div class="filter-pills">
+                <div class="f-pill active">All 1,784</div>
+                <div class="f-pill active" style="background:#3b82f6; border-color:#3b82f6; color:#fff;">⚡ Automatic 837</div>
+                <div class="f-pill">🕹️ Manual 947</div>
+              </div>
+            </div>
+            <div>
+              <div class="filter-group-title">FUEL &amp; EXCLUSION PREFERENCES</div>
+              <div class="filter-pills">
+                <div class="f-pill active" style="background:#10b981; border-color:#10b981; color:#022c22;">⛽ Petrol</div>
+                <div class="f-pill">🛢️ Diesel</div>
+                <div class="f-pill">🍃 CNG</div>
+                <div class="f-pill" style="background:rgba(244,63,94,0.15); border-color:#f43f5e; color:#fda4af;">⊘ Hide Model</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone-mockup" id="phone-box">
+            <div class="phone-notch"></div>
+            <div class="push-card">
+              <div class="push-header">
+                <div class="push-app">🔔 BANGALORE CAR RADAR</div>
+                <div class="push-time">Just now</div>
+              </div>
+              <div class="push-title">🚨 Price Drop on Curated Deal!</div>
+              <div class="push-body" data-layout-ignore>
+                2018 Honda Jazz Petrol dropped to ₹4.20L at Spinny Whitefield.<br>
+                <strong style="color: #6ee7b7;">Conviction Score: 94/100 · 48k km</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCENE 5: Outro & Call To Action (15.0s - 18.0s) -->
+    <div id="scene-5" class="scene clip" data-start="15.0" data-duration="3.0" data-track-index="5">
+      <div class="scene-content" id="s5-content" data-hold>
+        <div class="final-badge">🏎️ Free Live Intelligence</div>
+        <h1 class="final-title">Bangalore Car Radar</h1>
+        <p class="final-tag">Find Your Next Car Before Dealerships Snatch It Up.</p>
+        <div class="cta-button-box">kiranpuli.github.io/spinny-deals</div>
+        <div class="trust-badges">
+          <div class="trust-item">✨ 100% Free</div>
+          <div class="trust-item">⚡ Hourly Auto-Updates</div>
+          <div class="trust-item">📲 Instant Push to Samsung S25 / iOS</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // SCENE 1: 0.0s - 3.5s (visible on frame 0)
+    tl.fromTo("#scene-1 .alert-pill", { scale: 0.9, opacity: 0.8 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(1.5)" }, 0.0);
+    tl.fromTo("#scene-1 .headline", { opacity: 0.9 }, { opacity: 1, duration: 0.3, ease: "power3.out" }, 0.0);
+    tl.fromTo("#scene-1 .subhead", { y: 15, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, 0.3);
+    tl.to("#s1-content", { opacity: 0, scale: 0.96, duration: 0.3, ease: "power2.in" }, 3.1);
+
+    // SCENE 2: 3.5s - 7.5s
+    tl.fromTo("#s2-content", { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power3.out" }, 3.5);
+    tl.fromTo(".platform-card", { y: 35, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, stagger: 0.1, ease: "back.out(1.4)" }, 3.8);
+    tl.to("#s2-content", { opacity: 0, scale: 0.96, duration: 0.3, ease: "power2.in" }, 7.1);
+
+    // SCENE 3: 7.5s - 11.5s
+    tl.fromTo("#s3-content", { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power3.out" }, 7.5);
+    tl.fromTo("#car-card", { x: -35, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 7.7);
+    tl.fromTo("#telemetry-box", { x: 35, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 7.8);
+    tl.fromTo(".bar-fill", { width: "0%" }, { width: (i, el) => el.style.width, duration: 0.55, ease: "power2.out" }, 8.3);
+    tl.to("#s3-content", { opacity: 0, scale: 0.96, duration: 0.3, ease: "power2.in" }, 11.1);
+
+    // SCENE 4: 11.5s - 15.0s
+    tl.fromTo("#s4-content", { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power3.out" }, 11.5);
+    tl.fromTo(".filter-showcase", { x: -25, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 11.7);
+    tl.fromTo("#phone-box", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(1.4)" }, 12.0);
+    tl.to("#s4-content", { opacity: 0, scale: 0.96, duration: 0.3, ease: "power2.in" }, 14.6);
+
+    // SCENE 5: 15.0s - 18.0s
+    tl.fromTo("#s5-content", { opacity: 0, scale: 1.05 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 15.0);
+    tl.fromTo(".cta-button-box", { scale: 0.88, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.6)" }, 15.3);
+    tl.fromTo(".trust-item", { y: 15, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, stagger: 0.08, ease: "power2.out" }, 15.6);
+
+    window.__timelines = window.__timelines || {};
+    window.__timelines["main"] = tl;
+    tl.seek(0);
+  </script>
+</body>
+</html>
