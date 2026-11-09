@@ -1757,35 +1757,75 @@ html_content = """<!DOCTYPE html>
     }
     .card-footer {
       margin-top: auto;
-      padding-top: 4px;
+      padding-top: var(--sp-100);
+      border-top: 1px solid var(--border-color);
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
     .card-hide-btn {
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: var(--text-muted);
+      cursor: pointer;
+      box-sizing: border-box;
+      transition: color var(--dur-fast) var(--ease-base),
+                  border-color var(--dur-fast) var(--ease-base),
+                  background var(--dur-fast) var(--ease-base),
+                  transform var(--dur-fast) var(--ease-base);
+    }
+    .card-hide-btn svg {
+      width: 15px;
+      height: 15px;
+      pointer-events: none;
+      transition: transform var(--dur-fast) var(--ease-base);
+    }
+    .card-hide-btn:hover {
+      color: #F43F5E;
+      border-color: rgba(244, 63, 94, 0.4);
+      background: rgba(244, 63, 94, 0.08);
+    }
+    .card-hide-btn:hover svg {
+      transform: scale(1.1);
+    }
+    .card-hide-btn:active {
+      transform: scale(0.92);
+    }
+    .modal-hide-btn {
+      background: transparent;
       border: 1px solid var(--border-color);
       color: var(--text-muted);
       font-family: var(--font-sans);
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 500;
-      padding: 8px 10px;
+      padding: 8px 12px;
       border-radius: var(--radius-md);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      flex-shrink: 0;
+      gap: 6px;
       transition: all var(--dur-fast) var(--ease-base);
-      white-space: nowrap;
     }
-    .card-hide-btn:hover {
-      color: #EF4444;
-      border-color: rgba(239, 68, 68, 0.4);
-      background: rgba(239, 68, 68, 0.08);
+    .modal-hide-btn svg {
+      width: 14px;
+      height: 14px;
+      pointer-events: none;
     }
-    .card-hide-btn:active {
-      transform: scale(0.97);
+    .modal-hide-btn:hover {
+      color: #F43F5E;
+      border-color: rgba(244, 63, 94, 0.4);
+      background: rgba(244, 63, 94, 0.08);
+    }
+    .modal-hide-btn:active {
+      transform: scale(0.96);
     }
     .deck-toast {
       position: fixed;
@@ -1798,32 +1838,56 @@ html_content = """<!DOCTYPE html>
       font-family: var(--font-sans);
       font-size: 13px;
       font-weight: 500;
-      padding: 10px 18px;
+      padding: 9px 16px;
       border-radius: var(--radius-pill);
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
       z-index: 2000;
       opacity: 0;
       pointer-events: none;
       transition: all 200ms ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 90vw;
     }
     .deck-toast.show {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
+      pointer-events: auto;
+    }
+    .deck-toast-undo {
+      background: none;
+      border: none;
+      color: var(--accent-amber);
+      font-weight: 700;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 4px;
+      transition: background var(--dur-fast);
+      text-decoration: underline;
+    }
+    .deck-toast-undo:hover {
+      background: rgba(245, 158, 11, 0.15);
     }
     .cta-primary-btn {
-      width: 100%;
+      flex: 1;
+      min-width: 0;
       background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
       color: var(--text-primary);
       font-size: 12.5px;
       font-weight: 600;
-      padding: 9px 12px;
+      padding: 0 12px;
+      height: 36px;
       border-radius: var(--radius-md);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: space-between;
       text-decoration: none;
+      box-sizing: border-box;
       transition: all var(--dur-fast) var(--ease-base);
     }
     .cta-primary-btn:hover {
@@ -2288,39 +2352,6 @@ html_content = """<!DOCTYPE html>
       border-color: var(--text-primary);
     }
 
-    /* Action Button (B2 Button-md padding 8px 12px) */
-    .card-footer {
-      margin-top: auto;
-      padding-top: var(--sp-100);
-      border-top: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .cta-btn {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      background: transparent;
-      border: 1px solid var(--border-color);
-      color: var(--text-body);
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 8px 12px;
-      border-radius: var(--radius-md);
-      text-decoration: none;
-      transition: all var(--dur-normal) var(--ease-base);
-    }
-    .cta-btn:hover {
-      background: var(--text-primary);
-      border-color: var(--text-primary);
-      color: #000000;
-    }
-    .cta-btn:active {
-      transform: scale(0.98);
-    }
 
     /* Empty State */
     .empty-state {
@@ -2804,8 +2835,16 @@ html_content = """<!DOCTYPE html>
       button, a, select, input {
         -webkit-tap-highlight-color: transparent;
       }
-      .facet-pill, .preset-chip-btn, .nav-btn, .cta-primary-btn {
-        min-height: 38px;
+      .facet-pill, .preset-chip-btn, .nav-btn, .cta-primary-btn, .card-hide-btn {
+        min-height: 40px;
+      }
+      .cta-primary-btn {
+        height: 40px;
+      }
+      .card-hide-btn {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
       }
     }
   </style>
@@ -3357,8 +3396,12 @@ html_content = """<!DOCTYPE html>
         <!-- Injected dynamically on click -->
       </div>
       <div class="score-modal-footer">
-        <button type="button" class="card-hide-btn" id="modal-hide-btn" style="padding:8px 12px;" onclick="excludeModelFromModal()">
-          <span>⊘ Hide Model</span>
+        <button type="button" class="modal-hide-btn" id="modal-hide-btn" onclick="excludeModelFromModal()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+            <line x1="1" y1="1" x2="23" y2="23"></line>
+          </svg>
+          <span>Hide Model</span>
         </button>
         <div style="display:flex; gap:8px; align-items:center;">
           <button type="button" class="modal-dismiss-btn" onclick="closeScoreModal()">Done</button>
@@ -3442,7 +3485,7 @@ html_content = """<!DOCTYPE html>
       </div>
       <div class="score-modal-body" style="gap:12px;">
         <p class="caption-2" style="color:var(--text-muted); margin:0;">
-          Cars matching these models are hidden from your feed and scoring. Click "⊘ Hide Model" on any vehicle card to hide more models.
+          Cars matching these models are hidden from your feed and scoring. Click the hide icon on any vehicle card to hide more models.
         </p>
         <div id="excluded-models-list" style="display:flex; flex-direction:column; gap:6px;">
           <!-- Injected dynamically -->
@@ -3479,14 +3522,30 @@ html_content = """<!DOCTYPE html>
       } catch (e) {}
     }
 
-    function showToast(msg) {
+    let toastTimeout = null;
+    function showToast(msg, undoFn) {
       const toast = document.getElementById('deck-toast');
       if (!toast) return;
-      toast.textContent = msg;
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toast.innerHTML = '';
+      const textSpan = document.createElement('span');
+      textSpan.textContent = msg;
+      toast.appendChild(textSpan);
+      if (undoFn) {
+        const undoBtn = document.createElement('button');
+        undoBtn.type = 'button';
+        undoBtn.className = 'deck-toast-undo';
+        undoBtn.textContent = 'Undo';
+        undoBtn.onclick = () => {
+          undoFn();
+          toast.classList.remove('show');
+        };
+        toast.appendChild(undoBtn);
+      }
       toast.classList.add('show');
-      setTimeout(() => {
+      toastTimeout = setTimeout(() => {
         toast.classList.remove('show');
-      }, 2500);
+      }, 3500);
     }
 
     const state = {
@@ -4600,6 +4659,10 @@ html_content = """<!DOCTYPE html>
       }
     }
 
+    function excludeModelFromModal() {
+      closeScoreModal();
+    }
+
     function excludeModel(make, model, event) {
       if (event) {
         event.stopPropagation();
@@ -4610,7 +4673,7 @@ html_content = """<!DOCTYPE html>
       const key = modelClean.toLowerCase();
       state.excludedModels.add(key);
       saveExcludedModels();
-      showToast(`⊘ Hidden all ${modelClean} cars from your feed`);
+      showToast(`Hidden all ${modelClean} cars from feed`, () => unhideModel(key));
       applyFilters();
     }
 
@@ -4634,7 +4697,7 @@ html_content = """<!DOCTYPE html>
       const container = document.getElementById('excluded-models-list');
       if (!container) return;
       if (state.excludedModels.size === 0) {
-        container.innerHTML = '<p style="color:var(--text-muted); font-size:12.5px; padding:18px 0; text-align:center;">No models hidden yet.<br/>Click "⊘ Hide Model" on any vehicle card to filter it out.</p>';
+        container.innerHTML = '<p style="color:var(--text-muted); font-size:12.5px; padding:18px 0; text-align:center;">No models hidden yet.<br/>Click the hide icon on any vehicle card to filter it out.</p>';
         return;
       }
       container.innerHTML = Array.from(state.excludedModels).map(m => `
@@ -4933,13 +4996,16 @@ html_content = """<!DOCTYPE html>
               </div>
 
               <div class="card-footer">
-                <button type="button" class="card-hide-btn" onclick="excludeModel('${(c.make || '').replace(/'/g, "\\'")}', '${(c.model || '').replace(/'/g, "\\'")}', event)" title="Hide all ${c.make} ${c.model} listings">
-                  <span>⊘ Hide Model</span>
-                </button>
                 <a href="${c.url || '#'}" target="_blank" rel="noopener noreferrer" class="cta-primary-btn">
                   <span>Inspect on ${platformName}</span>
                   <span>&rarr;</span>
                 </a>
+                <button type="button" class="card-hide-btn" onclick="excludeModel('${(c.make || '').replace(/'/g, "\\'")}', '${(c.model || '').replace(/'/g, "\\'")}', event)" title="Hide all ${c.make} ${c.model} listings" aria-label="Hide all ${c.make} ${c.model} listings">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                  </svg>
+                </button>
               </div>
             </div>
           </article>
