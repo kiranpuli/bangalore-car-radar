@@ -489,10 +489,10 @@ html_content = """<!DOCTYPE html>
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://kiranpuli.github.io/spinny-deals/">
+  <meta property="og:url" content="https://kiranpuli.github.io/bangalore-car-radar/">
   <meta property="og:title" content="Bangalore Car Radar — Curated Pre-Owned Deals &amp; Mechanical Telemetry Screener">
   <meta property="og:description" content="Live market intelligence indexing 1,790+ inspected cars across Spinny, Cars24, Truwo, and OLX with 200-point mechanical audits, depreciation tracking, and mobile push alerts.">
-  <meta property="og:image" content="https://kiranpuli.github.io/spinny-deals/og-image.png">
+  <meta property="og:image" content="https://kiranpuli.github.io/bangalore-car-radar/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Bangalore Car Radar — Real-Time Deal Screener Preview">
@@ -501,10 +501,10 @@ html_content = """<!DOCTYPE html>
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://kiranpuli.github.io/spinny-deals/">
+  <meta name="twitter:url" content="https://kiranpuli.github.io/bangalore-car-radar/">
   <meta name="twitter:title" content="Bangalore Car Radar — Curated Pre-Owned Deals &amp; Mechanical Telemetry Screener">
   <meta name="twitter:description" content="Live market intelligence indexing 1,790+ inspected cars across Spinny, Cars24, Truwo, and OLX with 200-point mechanical audits, depreciation tracking, and mobile push alerts.">
-  <meta name="twitter:image" content="https://kiranpuli.github.io/spinny-deals/og-image.png">
+  <meta name="twitter:image" content="https://kiranpuli.github.io/bangalore-car-radar/og-image.png">
   <meta name="twitter:image:alt" content="Bangalore Car Radar Preview">
 
   <!-- Typography Preconnect -->

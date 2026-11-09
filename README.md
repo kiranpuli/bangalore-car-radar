@@ -4,18 +4,18 @@
 
 ### **Stop Overpaying Dealerships ₹1,50,000 for Used Cars in Bangalore.**
 
-[![Status: Live](https://img.shields.io/badge/Status-Live%20Radar%20Active-10B981?style=for-the-badge&logo=radar&logoColor=white)](https://kiranpuli.github.io/spinny-deals/)
-[![Coverage](https://img.shields.io/badge/Coverage-1%2C784%20Bangalore%20Cars-3B82F6?style=for-the-badge)](https://kiranpuli.github.io/spinny-deals/)
+[![Status: Live](https://img.shields.io/badge/Status-Live%20Radar%20Active-10B981?style=for-the-badge&logo=radar&logoColor=white)](https://kiranpuli.github.io/bangalore-car-radar/)
+[![Coverage](https://img.shields.io/badge/Coverage-1%2C784%20Bangalore%20Cars-3B82F6?style=for-the-badge)](https://kiranpuli.github.io/bangalore-car-radar/)
 [![Alerts](https://img.shields.io/badge/Alerts-Instant%20Mobile%20Push-F59E0B?style=for-the-badge&logo=google-cloud&logoColor=white)](https://ntfy.sh/kiran-car-radar)
 [![Audit](https://img.shields.io/badge/Audit-200--Point%20Telemetry-8B5CF6?style=for-the-badge)](documentation.html)
 
 *The autonomous multi-platform intelligence feed that analyzes 200-point inspection sheets, scores deals on an algorithmic conviction index, and pings your phone before dealers flip them.*
 
-[**🚀 Open Free Live Radar**](https://kiranpuli.github.io/spinny-deals/) &nbsp;•&nbsp; [**📲 Get Mobile Push Alerts**](https://ntfy.sh/kiran-car-radar) &nbsp;•&nbsp; [**📖 Technical Documentation**](documentation.html) &nbsp;•&nbsp; [**🎬 1080p Launch Video**](product-launch.mp4)
+[**🚀 Open Free Live Radar**](https://kiranpuli.github.io/bangalore-car-radar/) &nbsp;•&nbsp; [**📲 Get Mobile Push Alerts**](https://ntfy.sh/kiran-car-radar) &nbsp;•&nbsp; [**📖 Technical Documentation**](documentation.html) &nbsp;•&nbsp; [**🎬 1080p Launch Video**](product-launch.mp4)
 
 <br/>
 
-[![Bangalore Car Radar Product Launch Preview](product-preview.gif)](https://kiranpuli.github.io/spinny-deals/)
+[![Bangalore Car Radar Product Launch Preview](product-preview.gif)](https://kiranpuli.github.io/bangalore-car-radar/)
 
 <sub>🎬 18-second product overview showing real-time radar sweep, 200-point telemetry, transmission facets, and push alerts. <a href="product-launch.mp4">Download high-definition MP4 with audio</a>.</sub>
 
@@ -74,7 +74,7 @@ Get alerted the exact minute a price drop or new high-conviction deal appears. B
 # Test sending a push notification right from your terminal:
 curl -d "🔥 2018 Honda Jazz Petrol dropped to ₹4.20L at Spinny Whitefield!" \
      -H "Title: Car Deal Radar Alert" \
-     -H "Click: https://kiranpuli.github.io/spinny-deals/" \
+     -H "Click: https://kiranpuli.github.io/bangalore-car-radar/" \
      https://ntfy.sh/kiran-car-radar
 ```
 
@@ -110,7 +110,7 @@ cd brag-output/composition && npx hyperframes check && npx hyperframes render -o
 
 ### Ready to find your car?
 
-[**👉 Launch Bangalore Car Radar (Free)**](https://kiranpuli.github.io/spinny-deals/)
+[**👉 Launch Bangalore Car Radar (Free)**](https://kiranpuli.github.io/bangalore-car-radar/)
 
 <sub>Maintained by [Kiran Puli](https://github.com/kiranpuli) • Standalone documentation at [documentation.html](documentation.html) • Push Channel: [ntfy.sh/kiran-car-radar](https://ntfy.sh/kiran-car-radar)</sub>
 

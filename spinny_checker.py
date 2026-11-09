@@ -1343,7 +1343,7 @@ if __name__ == "__main__":
 
     if args.test_notify or args.test_push:
         notify_mac("Top Deal Alert (Test)!", "2021 VW Polo TSI for ₹4.85L (Score 98, 22k km)")
-        send_mobile_push("Top Deal (Test): 2021 VW Polo TSI", "₹4.85L · 22k km · Score 98/100 on Spinny", click_url="https://kiranpuli.github.io/spinny-deals/")
+        send_mobile_push("Top Deal (Test): 2021 VW Polo TSI", "₹4.85L · 22k km · Score 98/100 on Spinny", click_url="https://kiranpuli.github.io/bangalore-car-radar/")
         print(f"[{datetime.now()}] Test desktop banner and mobile push notification dispatched to ntfy.sh/{NTFY_TOPIC}.")
         sys.exit(0)
         sys.exit(0)

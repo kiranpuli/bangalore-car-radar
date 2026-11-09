@@ -10,5 +10,5 @@ What makes it different:
 • Laser Filters: Automatic vs Manual transmission live counts, Petrol/Diesel/CNG, and 1-click model exclusion.
 • Zero-Setup Push Alerts: Real-time price drop notifications straight to your phone (Samsung S25 Ultra / iOS).
 
-Explore live: https://kiranpuli.github.io/spinny-deals/
-GitHub: https://github.com/kiranpuli/spinny-deals
+Explore live: https://kiranpuli.github.io/bangalore-car-radar/
+GitHub: https://github.com/kiranpuli/bangalore-car-radar
