@@ -5613,91 +5613,6 @@
     }
   },
   {
-    "id": 32759100,
-    "platform": "Spinny",
-    "make": "Honda",
-    "model": "City",
-    "variant": "V Petrol",
-    "make_year": 2020,
-    "mileage": 29566,
-    "price": 880000.0,
-    "orig_retail_price": 1670000,
-    "retail_discount_pct": 47,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "assured",
-    "hub": "Spinny Car Hub, Bangalore Vega Mall",
-    "img": "https://assets.spinny.com/sp-file-system/public/2026-10-10/15ef56f649db4ef1a4ba7c6e9ddf1d02/raw/file.JPG",
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/honda/city/v-petrol-btm-layout-2020/32759100/",
-    "deal_score": 99,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Legendary 1.5L i-VTEC benchmark performance",
-    "analysis": {
-      "pros": [
-        "Legendary 1.5L i-VTEC benchmark performance",
-        "Spacious executive rear legroom",
-        "Superb highway high-speed cruising"
-      ],
-      "cons": [
-        "Low ground clearance requires caution on tall Bangalore speed bumps",
-        "Thin sheet metal on doors",
-        "Basic sound insulation"
-      ],
-      "maintenance_yr": "\u20b96,000 - \u20b98,000",
-      "retention_pct": 0.75,
-      "est_buyback_2yr": 660000,
-      "total_loss_2yr": 220000.0,
-      "monthly_loss": 9167
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Low mileage (29k km) \u00b7 well below market wear",
-        "pts": "+18 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Recent 2020 generation \u00b7 BS6 compliant & low age wear",
-        "pts": "+16 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "High 47% discount vs original retail",
-        "pts": "+14 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Bangalore Resale Archetype",
-        "detail": "Sweet spot combo: post-2018 under 40k km, high-liquidity resale engine",
-        "pts": "+9 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 99/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "10-12 km/l (BLR City) \u00b7 16-18 km/l (Highway)",
-      "annual_maintenance": "\u20b96,500 - \u20b99,000 / yr",
-      "ride_comfort": "Silky 1.5L i-VTEC petrol engine is an absolute mechanical masterpiece; sofa-grade rear seat comfort.",
-      "known_issues": "Soft rear suspension bottoms out on tall Bangalore unscientific speed breakers with 4 adults onboard.",
-      "bangalore_verdict": "Timeless executive sedan. Engine will easily outlast 200,000 km with basic annual fluid changes."
-    }
-  },
-  {
     "id": 33610179,
     "platform": "Spinny",
     "make": "Kia",
@@ -10697,91 +10612,6 @@
       "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
       "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
       "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
-    }
-  },
-  {
-    "id": 33710610,
-    "platform": "Spinny",
-    "make": "Honda",
-    "model": "City",
-    "variant": "ZX CVT Petrol",
-    "make_year": 2022,
-    "mileage": 22177,
-    "price": 1259000.0,
-    "orig_retail_price": 1880000,
-    "retail_discount_pct": 33,
-    "fuel_type": "petrol",
-    "transmission": "automatic",
-    "category": "assured",
-    "hub": "Spinny Car Hub, Bangalore Vega Mall",
-    "img": "https://assets.spinny.com/sp-file-system/public/2026-10-30/72a8a947905f4d8a928a9398635bf5fb/raw/file.JPG",
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/honda/city/zx-cvt-petrol-2022/33710610/",
-    "deal_score": 99,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Legendary 1.5L i-VTEC benchmark performance",
-    "analysis": {
-      "pros": [
-        "Legendary 1.5L i-VTEC benchmark performance",
-        "Spacious executive rear legroom",
-        "Superb highway high-speed cruising"
-      ],
-      "cons": [
-        "Low ground clearance requires caution on tall Bangalore speed bumps",
-        "Thin sheet metal on doors",
-        "Basic sound insulation"
-      ],
-      "maintenance_yr": "\u20b96,000 - \u20b98,000",
-      "retention_pct": 0.75,
-      "est_buyback_2yr": 944250,
-      "total_loss_2yr": 314750.0,
-      "monthly_loss": 13115
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Ultra-low odometer (22k km) \u00b7 pristine engine health",
-        "pts": "+24 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Modern 2022 model \u00b7 BS6 Phase 2 era & updated safety",
-        "pts": "+20 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "33% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Bangalore Resale Archetype",
-        "detail": "Sweet spot combo: post-2018 under 40k km, high-liquidity resale engine",
-        "pts": "+9 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 99/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "10-12 km/l (BLR City) \u00b7 16-18 km/l (Highway)",
-      "annual_maintenance": "\u20b96,500 - \u20b99,000 / yr",
-      "ride_comfort": "Silky 1.5L i-VTEC petrol engine is an absolute mechanical masterpiece; sofa-grade rear seat comfort.",
-      "known_issues": "Soft rear suspension bottoms out on tall Bangalore unscientific speed breakers with 4 adults onboard.",
-      "bangalore_verdict": "Timeless executive sedan. Engine will easily outlast 200,000 km with basic annual fluid changes."
     }
   },
   {
@@ -51431,91 +51261,6 @@
     }
   },
   {
-    "id": 17077042,
-    "platform": "Spinny",
-    "make": "Honda",
-    "model": "City",
-    "variant": "ZX CVT Petrol",
-    "make_year": 2022,
-    "mileage": 49310,
-    "price": 1220946.0,
-    "orig_retail_price": 1880000,
-    "retail_discount_pct": 35,
-    "fuel_type": "petrol",
-    "transmission": "automatic",
-    "category": "assured",
-    "hub": "Spinny Car Hub, Bangalore Vega Mall",
-    "img": "https://assets.spinny.com/sp-file-system/public/2026-10-29/4dcad3d6084e418c886c1c74672e036e/raw/file.JPG",
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/honda/city/zx-cvt-petrol-btm-layout-2022/17077042/",
-    "deal_score": 99,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Legendary 1.5L i-VTEC benchmark performance",
-    "analysis": {
-      "pros": [
-        "Legendary 1.5L i-VTEC benchmark performance",
-        "Spacious executive rear legroom",
-        "Superb highway high-speed cruising"
-      ],
-      "cons": [
-        "Low ground clearance requires caution on tall Bangalore speed bumps",
-        "Thin sheet metal on doors",
-        "Basic sound insulation"
-      ],
-      "maintenance_yr": "\u20b96,000 - \u20b98,000",
-      "retention_pct": 0.75,
-      "est_buyback_2yr": 915710,
-      "total_loss_2yr": 305236.0,
-      "monthly_loss": 12718
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Moderate mileage (49k km) \u00b7 healthy mechanical life",
-        "pts": "+12 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Modern 2022 model \u00b7 BS6 Phase 2 era & updated safety",
-        "pts": "+20 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "Healthy 35% savings from original MSRP",
-        "pts": "+9 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Bangalore Resale Archetype",
-        "detail": "Sweet spot combo: high-liquidity resale engine",
-        "pts": "+4 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 99/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "10-12 km/l (BLR City) \u00b7 16-18 km/l (Highway)",
-      "annual_maintenance": "\u20b96,500 - \u20b99,000 / yr",
-      "ride_comfort": "Silky 1.5L i-VTEC petrol engine is an absolute mechanical masterpiece; sofa-grade rear seat comfort.",
-      "known_issues": "Soft rear suspension bottoms out on tall Bangalore unscientific speed breakers with 4 adults onboard.",
-      "bangalore_verdict": "Timeless executive sedan. Engine will easily outlast 200,000 km with basic annual fluid changes."
-    }
-  },
-  {
     "id": 27029937,
     "platform": "Spinny",
     "make": "Hyundai",
@@ -57667,6 +57412,89 @@
       "ride_comfort": "5-Star safety chassis with doors opening 90 degrees; planted European high-speed stability.",
       "known_issues": "Naturally aspirated petrol feels relaxed on overtakes; verify clutch cable smoothness.",
       "bangalore_verdict": "Top choice for safety-conscious buyers wanting a stylish, rock-solid premium hatchback."
+    }
+  },
+  {
+    "id": "c24_10239573147",
+    "platform": "Cars24",
+    "make": "Hyundai",
+    "model": "ALCAZAR",
+    "variant": "PLATINUM 2.0 MT 7STR",
+    "make_year": 2021,
+    "mileage": 47660,
+    "price": 1231991,
+    "orig_retail_price": 1296377,
+    "retail_discount_pct": 5,
+    "fuel_type": "Petrol",
+    "transmission": "Manual",
+    "category": "assured",
+    "hub": "Vaishnavi Sapphire Centre, Yeswanthpur",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/b63803b8-b96c-11f1-bd5e-02ede2007fbe/m/6b792e83-919b-47ad-8e14-9d57343fcce6/484f4831-2c91-4573-a23c-416705b0d20f/5c37705a-9610-4f8a-b768-12eebac0dfd5/slot/1.png",
+    "url": "https://www.cars24.com/buy-used-hyundai-alcazar-2021-cars-bangalore-10239573147/",
+    "deal_score": 94,
+    "deal_grade": "TOP DEAL",
+    "is_top_deal": true,
+    "verdict": "Reliable brand backing with steady resale demand",
+    "analysis": {
+      "pros": [
+        "Reliable brand backing with steady resale demand",
+        "Smooth city drivability",
+        "Predictable routine service upkeep"
+      ],
+      "cons": [
+        "Regular periodic maintenance required"
+      ],
+      "maintenance_yr": "\u20b95,500 - \u20b97,500",
+      "retention_pct": 0.72,
+      "est_buyback_2yr": 887034,
+      "total_loss_2yr": 344957,
+      "monthly_loss": 14373
+    },
+    "score_breakdown": [
+      {
+        "pillar": "Base Inventory Baseline",
+        "detail": "Verified clear title & documentation",
+        "pts": "+40 pts",
+        "type": "base"
+      },
+      {
+        "pillar": "Odometer & Engine Wear",
+        "detail": "Moderate mileage (47k km) \u00b7 healthy mechanical life",
+        "pts": "+12 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Vehicle Age & Generation",
+        "detail": "Modern 2021 model \u00b7 BS6 Phase 2 era & updated safety",
+        "pts": "+20 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Depreciation Arbitrage",
+        "detail": "5% under original retail value",
+        "pts": "+4 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Warranty & Inspection",
+        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
+        "pts": "+14 pts",
+        "type": "pos"
+      },
+      {
+        "pillar": "Bangalore Resale Archetype",
+        "detail": "Sweet spot combo: high-liquidity resale engine",
+        "pts": "+4 pts",
+        "type": "pos"
+      }
+    ],
+    "score_rationale": "Rated 94/100 primarily driven by odometer & engine wear, vehicle age & generation.",
+    "ownership_review": {
+      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
+      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
+      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
+      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
+      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
     }
   },
   {
@@ -67826,83 +67654,6 @@
     }
   },
   {
-    "id": 31603122,
-    "platform": "Spinny",
-    "make": "Ford",
-    "model": "Freestyle",
-    "variant": "Titanium Plus 1.2 Ti-VCT",
-    "make_year": 2018,
-    "mileage": 49279,
-    "price": 497000.0,
-    "orig_retail_price": 960000,
-    "retail_discount_pct": 48,
-    "fuel_type": "petrol",
-    "transmission": "manual",
-    "category": "assured",
-    "hub": "Spinny Park, Yelahanka, Bangalore",
-    "img": "https://assets.spinny.com/sp-file-system/public/2026-08-30/6e8cd9b86f194da0971b827ee0dbffce/raw/file.JPG",
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/ford/freestyle/titanium-plus-12-tivct-yelahanka-2018/31603122/",
-    "deal_score": 91,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.72,
-      "est_buyback_2yr": 357840,
-      "total_loss_2yr": 139160.0,
-      "monthly_loss": 5798
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Moderate mileage (49k km) \u00b7 healthy mechanical life",
-        "pts": "+12 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Solid 2018 manufacture \u00b7 modern chassis",
-        "pts": "+11 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "High 48% discount vs original retail",
-        "pts": "+14 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 91/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "12-14 km/l (BLR City) \u00b7 17-19 km/l (Highway)",
-      "annual_maintenance": "\u20b95,000 - \u20b97,000 / yr",
-      "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
-      "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
-      "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
-    }
-  },
-  {
     "id": 32161273,
     "platform": "Spinny",
     "make": "Maruti Suzuki",
@@ -75469,85 +75220,6 @@
       "ride_comfort": "Balanced suspension over city potholes; 170mm ground clearance clears normal Bangalore humps.",
       "known_issues": "Inspect clutch wear in stop-and-go traffic; check front suspension bushes and brake pads.",
       "bangalore_verdict": "Practical daily Bangalore commuter with steady parts availability and reliable resale liquidity."
-    }
-  },
-  {
-    "id": "c24_10281372102",
-    "platform": "Cars24",
-    "make": "Tata",
-    "model": "NEXON",
-    "variant": "XZ PLUS PETROL",
-    "make_year": 2019,
-    "mileage": 64039,
-    "price": 630042,
-    "orig_retail_price": 670020,
-    "retail_discount_pct": 6,
-    "fuel_type": "Petrol",
-    "transmission": "Manual",
-    "category": "assured",
-    "hub": "Nexus Whitefield",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/6b21f3ce-c728-11f1-af2c-02ede2007fbe/m/c2301717-64ce-4c8e-8c2e-b6e53010cf45/ba876c98-29de-41f0-8c7d-b1dd454d58c3/877c8564-670c-4eb7-8999-a8a788a43e3e/slot/1.png",
-    "url": "https://www.cars24.com/buy-used-tata-nexon-2019-cars-bangalore-10281372102/",
-    "deal_score": 80,
-    "deal_grade": "TOP DEAL",
-    "is_top_deal": true,
-    "verdict": "5-star Global NCAP crash test rating",
-    "analysis": {
-      "pros": [
-        "5-star Global NCAP crash test rating",
-        "Class-leading 209mm ground clearance for waterlogging",
-        "Plush ride over potholes"
-      ],
-      "cons": [
-        "Thick A-pillar creates front-right blind spot",
-        "AMT gearbox has noticeable shifts",
-        "Interior panel fit can have minor gaps"
-      ],
-      "maintenance_yr": "\u20b96,000 - \u20b98,000",
-      "retention_pct": 0.76,
-      "est_buyback_2yr": 478832,
-      "total_loss_2yr": 151210,
-      "monthly_loss": 6300
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "Standard city mileage (64k km)",
-        "pts": "+6 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Recent 2019 generation \u00b7 BS6 compliant & low age wear",
-        "pts": "+16 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "6% under original retail value",
-        "pts": "+4 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Certified Assured \u00b7 200-pt mechanical inspection & 1-year warranty",
-        "pts": "+14 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 80/100 primarily driven by odometer & engine wear, vehicle age & generation.",
-    "ownership_review": {
-      "fuel_economy": "11-13 km/l (BLR City) \u00b7 16-18 km/l (Highway)",
-      "annual_maintenance": "\u20b96,000 - \u20b98,500 / yr",
-      "ride_comfort": "5-Star Global NCAP safety tank with 209mm ground clearance; impervious to Bangalore's worst potholes.",
-      "known_issues": "AMT gearbox feels jerky between 1st and 2nd gear; touchscreen infotainment occasionally lags.",
-      "bangalore_verdict": "Heavy-duty road safety and rugged suspension make it the ultimate crater-proof Bangalore city SUV."
     }
   },
   {
@@ -118114,83 +117786,6 @@
       "ride_comfort": "Enthusiast's benchmark: laser-precise steering, tank-like door thud, and peerless highway stability.",
       "known_issues": "ABS wheel sensors fail frequently (\u20b92,500/wheel); verify DSG dual-clutch transmission history if automatic.",
       "bangalore_verdict": "Driver's delight. Higher annual maintenance than Maruti, but unmatched driving pleasure and road feel."
-    }
-  },
-  {
-    "id": 32797960,
-    "platform": "Spinny",
-    "make": "Mahindra",
-    "model": "XUV500",
-    "variant": "W6 AT",
-    "make_year": 2017,
-    "mileage": 91571,
-    "price": 829000.0,
-    "orig_retail_price": 1920000,
-    "retail_discount_pct": 57,
-    "fuel_type": "diesel",
-    "transmission": "automatic",
-    "category": "auction",
-    "hub": "Spinny Car Hub, Bellandur, Bangalore",
-    "img": "https://assets.spinny.com/sp-file-system/public/2026-09-25/df19d027a63943a384bcbf3a84c95ccd/raw/file.JPG",
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/mahindra/xuv500/w6-at-2018/32797960/",
-    "deal_score": 65,
-    "deal_grade": "FAIR",
-    "is_top_deal": false,
-    "verdict": "Reliable brand backing with steady resale demand",
-    "analysis": {
-      "pros": [
-        "Reliable brand backing with steady resale demand",
-        "Smooth city drivability",
-        "Predictable routine service upkeep"
-      ],
-      "cons": [
-        "Regular periodic maintenance required"
-      ],
-      "maintenance_yr": "\u20b95,500 - \u20b97,500",
-      "retention_pct": 0.65,
-      "est_buyback_2yr": 538850,
-      "total_loss_2yr": 290150.0,
-      "monthly_loss": 12090
-    },
-    "score_breakdown": [
-      {
-        "pillar": "Base Inventory Baseline",
-        "detail": "Verified clear title & documentation",
-        "pts": "+40 pts",
-        "type": "base"
-      },
-      {
-        "pillar": "Odometer & Engine Wear",
-        "detail": "High mileage (91k km) \u00b7 nearing major suspension service",
-        "pts": "-8 pts",
-        "type": "neg"
-      },
-      {
-        "pillar": "Vehicle Age & Generation",
-        "detail": "Solid 2017 manufacture \u00b7 modern chassis",
-        "pts": "+11 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Depreciation Arbitrage",
-        "detail": "Steep 57% discount vs \u20b919.2L new price",
-        "pts": "+18 pts",
-        "type": "pos"
-      },
-      {
-        "pillar": "Warranty & Inspection",
-        "detail": "Standard verification checklist \u00b7 independent inspection recommended",
-        "pts": "+4 pts",
-        "type": "pos"
-      }
-    ],
-    "score_rationale": "Rated 65/100 primarily driven by vehicle age & generation, depreciation arbitrage.",
-    "ownership_review": {
-      "fuel_economy": "9-11 km/l (BLR City) \u00b7 13-15 km/l (Highway)",
-      "annual_maintenance": "\u20b98,000 - \u20b912,000 / yr",
-      "ride_comfort": "High-perch road commanding presence; ladder frame or monocoque clears any floodwater or crater effortlessly.",
-      "known_issues": "Heavy clutch pedal in bumper-to-bumper traffic; check suspension lower ball joints and brake pad life.",
-      "bangalore_verdict": "Mighty road presence and supreme durability for rough weekend excursions and long touring."
     }
   },
   {
