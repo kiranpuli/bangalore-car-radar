@@ -1,5 +1,21 @@
 [
   {
+    "id": "c24_10259775106",
+    "timestamp": "2026-11-09 19:01",
+    "platform": "Cars24",
+    "make": "Honda",
+    "model": "Jazz",
+    "variant": "1.2L I-VTEC SV",
+    "make_year": 2017,
+    "price": 395500,
+    "retail_discount_pct": 28,
+    "deal_score": 77,
+    "mileage": 75962,
+    "hub": "Gandhi Nagar",
+    "url": "https://www.cars24.com/buy-used-honda-jazz-2017-cars-bangalore-10259775106/",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/779bb8aa-d20a-11f1-af2d-02ede2007fbe/660cc51f-1acf-4f21-b391-966c03529c7f/fe18357a-7513-48b1-b6ac-ff9817e7d177/287c1162-39b0-4083-972e-38e7943c0b9b/slot/1.png"
+  },
+  {
     "id": "olx_1853747875",
     "timestamp": "2026-11-09 15:01",
     "platform": "OLX",
@@ -462,21 +478,5 @@
     "hub": "Spinny Car Hub, Bangalore Vega Mall",
     "url": "https://www.spinny.com/buy-used-cars/bangalore/hyundai/grand-i10/sportz-12-kappa-vtvt-2019/32868237/",
     "img": "https://assets.spinny.com/sp-file-system/public/2026-11-02/b6a09cb2b2dc41479c47cd38959658ee/raw/file.JPG"
-  },
-  {
-    "id": 32916832,
-    "timestamp": "2026-11-09 07:55",
-    "platform": "Spinny",
-    "make": "Ford",
-    "model": "Freestyle",
-    "variant": "Titanium 1.2 Ti-VCT",
-    "make_year": 2020,
-    "price": 537000.0,
-    "retail_discount_pct": 47,
-    "deal_score": 90,
-    "mileage": 43038,
-    "hub": "Spinny Park, Mysore Road, Bangalore",
-    "url": "https://www.spinny.com/buy-used-cars/bangalore/ford/freestyle/titanium-12-tivct-2020/32916832/",
-    "img": "https://assets.spinny.com/sp-file-system/public/2026-10-25/60557c67631646c28d1101c0116017ba/raw/file.JPG"
   }
 ]
