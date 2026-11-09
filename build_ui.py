@@ -35,62 +35,127 @@ if os.path.exists(alerts_path):
 else:
     alerts_list = []
 
+import re
+
 MODEL_NEW_RETAIL_BASE = {
-    # Maruti
-    "alto": 380000, "alto k10": 420000, "a-star": 440000, "wagon r": 540000, "celerio": 560000,
-    "ignis": 680000, "swift": 720000, "dzire": 760000, "swift dzire": 740000, "baleno": 780000,
-    "fronx": 950000, "brezza": 1050000, "vitara brezza": 980000, "grand vitara": 1380000,
-    "scross": 1080000, "s-cross": 1080000, "ciaz": 1150000, "ertiga": 1080000, "xl6": 1280000, "ritz": 580000,
+    # Maruti Suzuki
+    "alto": 380000, "alto k10": 440000, "a-star": 440000, "astar": 440000, "wagon r": 540000, "celerio": 560000,
+    "ignis": 680000, "swift": 740000, "dzire": 780000, "swift dzire": 760000, "baleno": 820000,
+    "fronx": 980000, "brezza": 1080000, "vitara brezza": 1020000, "grand vitara": 1420000, "jimny": 1380000,
+    "scross": 1080000, "s-cross": 1080000, "s cross": 1080000, "ciaz": 1150000, "ertiga": 1120000, "xl6": 1320000,
+    "ritz": 580000, "eeco": 540000, "invicto": 2850000, "esteem": 480000,
     # Hyundai
-    "eon": 390000, "santro": 520000, "i10": 540000, "grand i10": 690000, "aura": 780000,
-    "xcent": 740000, "i20": 850000, "elite i20": 860000, "i20 active": 920000, "venue": 1050000,
-    "verna": 1320000, "creta": 1480000, "alcazar": 1950000, "tucson": 2800000,
+    "eon": 390000, "santro": 520000, "i10": 540000, "grand i10": 720000, "grand i10 nios": 740000, "aura": 820000,
+    "xcent": 760000, "i20": 880000, "elite i20": 890000, "i20 active": 940000, "exter": 840000, "venue": 1080000,
+    "verna": 1380000, "creta": 1540000, "alcazar": 2050000, "tucson": 3100000, "elantra": 1950000, "getz": 450000,
     # Honda
-    "brio": 590000, "amaze": 820000, "jazz": 880000, "wr-v": 1050000, "city": 1350000,
-    "civic": 2100000, "cr-v": 2900000, "elevate": 1380000,
+    "brio": 590000, "amaze": 840000, "jazz": 900000, "wr-v": 1080000, "city": 1420000, "br-v": 1180000, "mobilio": 940000,
+    "civic": 2250000, "cr-v": 3200000, "elevate": 1420000,
     # Volkswagen & Skoda
-    "polo": 840000, "ameo": 780000, "vento": 1220000, "virtus": 1450000, "taigun": 1550000,
-    "rapid": 1180000, "slavia": 1420000, "kushaq": 1520000, "octavia": 2400000, "superb": 3200000,
+    "polo": 860000, "ameo": 800000, "vento": 1250000, "virtus": 1480000, "taigun": 1580000, "tiguan": 3600000,
+    "rapid": 1220000, "slavia": 1450000, "kushaq": 1550000, "kodiaq": 3900000, "octavia": 2850000, "superb": 3600000, "fabia": 620000,
     # Tata
-    "nano": 240000, "tiago": 640000, "tigor": 740000, "zest": 760000, "bolt": 680000,
-    "altroz": 850000, "punch": 820000, "nexon": 1120000, "harrier": 1980000, "safari": 2200000,
+    "nano": 240000, "tiago": 650000, "tigor": 760000, "zest": 780000, "bolt": 690000,
+    "altroz": 880000, "punch": 840000, "curvv": 1550000, "nexon": 1150000, "harrier": 2050000, "safari": 2280000, "hexa": 1650000, "sierra": 1600000,
     # Ford
-    "figo": 660000, "aspire": 780000, "freestyle": 820000, "ecosport": 1080000, "endeavour": 3400000,
+    "figo": 680000, "aspire": 800000, "freestyle": 840000, "fiesta": 880000, "ecosport": 1120000, "endeavour": 3600000,
     # Toyota
-    "etios liva": 680000, "etios": 790000, "glanza": 820000, "yaris": 1150000,
-    "urban cruiser": 1120000, "hyryder": 1550000, "corolla": 1750000, "corolla altis": 1850000,
-    "innova": 2100000, "innova crysta": 2450000, "fortuner": 3800000,
+    "etios liva": 690000, "etios": 820000, "glanza": 840000, "yaris": 1180000, "rumion": 1180000,
+    "urban cruiser": 1150000, "hyryder": 1580000, "urban cruiser hyryder": 1580000, "taisor": 1050000,
+    "corolla": 1780000, "corolla altis": 1920000, "camry": 4400000, "innova": 2150000, "innova crysta": 2550000, "innova hycross": 2850000,
+    "fortuner": 4100000, "qualis": 550000,
     # Renault & Nissan
-    "kwid": 480000, "triber": 760000, "kiger": 820000, "magnite": 820000, "duster": 1150000, "terrano": 1180000,
+    "kwid": 490000, "triber": 780000, "kiger": 840000, "captur": 1250000, "lodgy": 1080000, "duster": 1220000,
+    "magnite": 840000, "micra": 640000, "micra active": 580000, "kicks": 1280000, "terrano": 1220000, "sunny": 920000,
     # Kia
-    "sonet": 1100000, "seltos": 1520000, "carens": 1380000,
+    "sonet": 1150000, "seltos": 1580000, "carens": 1420000, "syros": 1250000, "carnival": 3400000, "ev6": 6500000,
     # Mahindra
-    "kuv100": 720000, "xuv300": 1150000, "thar": 1450000, "scorpio": 1550000, "xuv500": 1720000, "xuv700": 2150000,
+    "kuv100": 740000, "xuv300": 1180000, "xuv 300": 1180000, "xuv 3xo": 1180000, "3xo": 1180000, "xuv400": 1850000,
+    "thar": 1520000, "scorpio": 1620000, "scorpio n": 1850000, "scorpio classic": 1550000, "xuv500": 1780000, "xuv700": 2250000,
+    "bolero": 980000, "bolero neo": 1020000, "bolero neo plus": 1150000, "tuv300": 980000, "tuv 300": 980000, "verito": 720000, "xev": 2900000,
     # Jeep
-    "compass": 2350000,
+    "compass": 2450000, "meridian": 3400000, "wrangler": 6800000,
     # MG
-    "astor": 1380000, "hector": 1780000, "gloster": 3800000, "zs ev": 2200000, "comet": 780000,
-    # Luxury European
-    "x1": 4600000, "x3": 6600000, "3 series": 4800000, "5 series": 6800000,
-    "gla": 4800000, "glc": 6800000, "c-class": 5600000, "e-class": 7400000,
-    "a4": 4600000, "a6": 6200000, "q3": 4400000, "q5": 6600000,
-    "xf": 7200000, "f-pace": 7500000, "xc40": 4600000, "xc60": 6800000,
+    "astor": 1420000, "hector": 1820000, "hector plus": 1950000, "gloster": 3950000, "zs ev": 2350000, "comet": 820000,
+    # BMW
+    "bmw 2 series": 4600000, "2 series": 4600000, "2 series gran coupe": 4600000,
+    "bmw 3 series": 5200000, "3 series": 5200000, "320d": 5200000, "330i": 5600000, "m340i": 7400000,
+    "bmw 5 series": 7200000, "5 series": 7200000, "520d": 7200000, "530d": 7800000,
+    "bmw 6 series": 7800000, "6 series": 7800000, "6 series gt": 7800000,
+    "bmw 7 series": 14500000, "7 series": 14500000,
+    "bmw x1": 4900000, "x1": 4900000, "ix1": 6800000,
+    "bmw x3": 6900000, "x3": 6900000, "ix3": 8200000,
+    "bmw x4": 7800000, "x4": 7800000,
+    "bmw x5": 10200000, "x5": 10200000,
+    "bmw x7": 12800000, "x7": 12800000,
+    "bmw ix": 12200000, "ix": 12200000,
+    "bmw z4": 9200000, "z4": 9200000,
+    # Mercedes-Benz
+    "a-class": 4600000, "a class": 4600000, "c-class": 5800000, "c class": 5800000,
+    "e-class": 7800000, "e class": 7800000, "s-class": 17500000, "s class": 17500000,
+    "gla": 5100000, "glb": 6500000, "glc": 7400000, "gle": 9800000, "gls": 13500000,
+    "eqb": 7600000, "eqs": 16500000,
+    # Audi
+    "a3": 3600000, "a4": 4900000, "a6": 6800000, "a8": 13500000,
+    "q2": 3900000, "q3": 4700000, "q5": 6900000, "q7": 8900000, "q8": 11500000,
+    # Land Rover & Jaguar
+    "defender": 9800000, "discovery": 9200000, "discovery sport": 7200000,
+    "range rover evoque": 7200000, "evoque": 7200000,
+    "range rover velar": 8900000, "velar": 8900000,
+    "range rover sport": 16500000, "range rover": 24000000,
+    "xf": 7500000, "xe": 5200000, "f-pace": 7800000,
+    # Volvo & Porsche & Luxury
+    "xc40": 4800000, "xc60": 7100000, "xc90": 10200000, "s60": 4800000, "s90": 7200000,
+    "cayenne": 14200000, "macan": 9200000, "panamera": 16500000, "gallardo": 28000000,
+    "countryman": 4600000, "cooper": 4200000,
+    # Others
+    "beat": 450000, "sail": 620000, "sail uva": 580000, "avventura": 780000, "linea": 920000,
+    "atto 3": 3400000, "c3": 690000
 }
+
+BRAND_BASE_FALLBACK = {
+    "lamborghini": 32000000, "ferrari": 45000000, "porsche": 13500000,
+    "land rover": 8500000, "range rover": 12000000, "jaguar": 7500000,
+    "mercedes-benz": 6500000, "mercedes": 6500000,
+    "bmw": 5800000, "audi": 5200000, "volvo": 6200000, "mini": 4200000, "lexus": 7200000,
+    "jeep": 2800000, "byd": 3200000,
+    "toyota": 1450000, "mahindra": 1350000, "mg": 1550000, "mg motor": 1550000,
+    "kia": 1350000, "volkswagen": 1250000, "skoda": 1250000,
+    "hyundai": 1050000, "honda": 1150000, "tata": 1050000,
+    "ford": 1050000, "renault": 850000, "nissan": 850000,
+    "maruti suzuki": 780000, "maruti": 780000, "fiat": 750000, "chevrolet": 650000
+}
+
+def _clean_str(s):
+    return re.sub(r"[\s\-_]+", "", (s or "").lower())
+
+_SORTED_MODEL_ITEMS = sorted(MODEL_NEW_RETAIL_BASE.items(), key=lambda x: len(x[0]), reverse=True)
 
 
 def estimate_original_retail(make, model, variant, year, transmission):
-    full = f"{make} {model}".lower()
-    base = 720000
-    for k, v in MODEL_NEW_RETAIL_BASE.items():
-        if k in full:
+    full_str = f"{make} {model} {variant or ''}".lower()
+    full_clean = _clean_str(full_str)
+    
+    base = None
+    for k, v in _SORTED_MODEL_ITEMS:
+        if _clean_str(k) in full_clean:
             base = v
             break
+
+    if not base:
+        m_clean = (make or "").lower().strip()
+        for bk, bv in BRAND_BASE_FALLBACK.items():
+            if bk in m_clean or m_clean in bk:
+                base = bv
+                break
+        if not base:
+            base = 820000
 
     year_diff = (year or 2016) - 2016
     multiplier = 1.0 + (year_diff * 0.035)
 
     v_lower = (variant or "").lower()
-    if any(top in v_lower for top in ["zxi", "asta", "alpha", "titanium", "highline", "zx", "vx", "xz", "plus", "o"]):
+    if any(top in v_lower for top in ["zxi", "asta", "alpha", "titanium", "highline", "zx", "vx", "xz", "plus", "o", "tech", "luxury", "gt"]):
         multiplier += 0.10
 
     t_lower = (transmission or "").lower()
@@ -415,13 +480,13 @@ for c in cars:
     price = c.get("price", 500000)
     is_assured = c.get("category") == "assured"
 
-    # Original retail price
-    orig_p = c.get("orig_retail_price")
-    if not orig_p:
-        orig_p = estimate_original_retail(c.get("make"), c.get("model"), c.get("variant"), year, c.get("transmission"))
-        if orig_p <= price:
-            orig_p = round((price * 1.40) / 10000) * 10000
-        c["orig_retail_price"] = orig_p
+    # Original retail price (Accurate Ex-Showroom Benchmark)
+    orig_p = estimate_original_retail(c.get("make"), c.get("model"), c.get("variant"), year, c.get("transmission"))
+    if orig_p <= price:
+        # Realistic depreciation floor based on age if asking price exceeds estimated base
+        age = max(1, 2026 - year)
+        orig_p = round((price * max(1.25, 1.0 + (age * 0.07))) / 10000) * 10000
+    c["orig_retail_price"] = orig_p
     discount_pct = max(5, min(85, round((1.0 - (price / orig_p)) * 100)))
     c["retail_discount_pct"] = discount_pct
 

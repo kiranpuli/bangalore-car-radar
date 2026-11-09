@@ -27,7 +27,7 @@
 
 | Traditional Used Car Hunting | Bangalore Car Radar |
 | :--- | :--- |
-| ❌ Manually browsing 4 different apps (Spinny, Cars24, Truwo, OLX) every day | ✅ **1,780+ live Bangalore vehicles unified into one high-speed dashboard** |
+| ❌ Manually browsing 4 different apps (Spinny, Cars24, Truwo, OLX) every day | ✅ **1,746 live Bangalore vehicles unified into one high-speed dashboard** |
 | ❌ Dealing with dealership markups of ₹1,00,000 to ₹1,50,000 | ✅ **Fair-value depreciation curves spotlighting true bargains under ₹5 Lakhs** |
 | ❌ Hidden tyre wear, suspension issues, and engine leaks discovered after booking | ✅ **200-Point mechanical telemetry scored (0 to 100) before you travel to the hub** |
 | ❌ Sifting through unwanted car models repeatedly | ✅ **1-Click "⊘ Hide Model" button removes unwanted models permanently from your view** |
@@ -39,10 +39,10 @@
 
 ### 1. Four Major Marketplaces in One Radar
 Stop jumping between tabs. Every hour, our scrapers sync live pre-owned inventories across all Bangalore hubs:
-- **Spinny (740+ cars):** Whitefield, Yelahanka, Electronic City, and Mysore Road hubs.
-- **Cars24 (620+ cars):** All Bangalore Assured inspection centers.
-- **Truwo (210+ cars):** Verified direct hub inventory across Bengaluru South & East.
-- **OLX (210+ cars):** Curated and verified direct seller listings.
+- **Spinny (594 cars):** Whitefield, Yelahanka, Electronic City, and Mysore Road hubs.
+- **Cars24 (620 cars):** All Bangalore Assured inspection centers.
+- **Truwo (106 cars):** Verified direct hub inventory across Bengaluru South & East.
+- **OLX (426 cars):** Curated and verified direct seller listings.
 
 ### 2. 200-Point Mechanical Telemetry Audit
 We extract raw inspection data so you never waste time visiting a showroom for a defective vehicle:
@@ -61,9 +61,9 @@ Our valuation algorithm scores every car based on Bangalore market retention cur
 > **Curated Threshold:** Cars scoring 80+ priced under ₹5.00 Lakhs are automatically badged with **🔥 Top Deal**.
 
 ### 4. Laser-Targeted Transmission, Fuel & Year Filters
-Filter 1,780+ cars in under 100 milliseconds with dedicated facet decks:
-- **Dedicated Transmission Panel:** Real-time count badges for `All (1,784)`, `⚡ Automatic (837)`, and `🕹️ Manual (947)`.
-- **Fuel Type Selector:** `All`, `⛽ Petrol (1,280+)`, `🛢️ Diesel (450+)`, and `🍃 CNG (40+)`.
+Filter 1,746 cars in under 100 milliseconds with dedicated facet decks:
+- **Dedicated Transmission Panel:** Real-time count badges for `All (1,746)`, `⚡ Automatic (805)`, and `🕹️ Manual (941)`.
+- **Fuel Type Selector:** `All`, `⛽ Petrol (1,249)`, `🛢️ Diesel (449)`, and `🍃 CNG (12)`.
 - **Model Year Pills:** 1-Click jumps for `All`, `2016+`, `2018+`, `2020+`, and `2022+` plus continuous slider.
 - **Custom Model Exclusion:** Hit **⊘ Hide Model** on any car card to hide that model across all platforms instantly (saved to device `localStorage`).
 

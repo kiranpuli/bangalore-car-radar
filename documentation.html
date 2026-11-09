@@ -274,7 +274,7 @@
       
       <div class="grid-cards">
         <div class="stat-card">
-          <div class="stat-number">1,780+</div>
+          <div class="stat-number">1,746</div>
           <div class="stat-label">Tracked Bangalore Cars</div>
         </div>
         <div class="stat-card">
@@ -371,6 +371,40 @@
         <div class="callout-title">Curated Top Deal Threshold</div>
         <div>Cars scoring <strong>≥ 80/100</strong>, priced <strong>≤ ₹5.00 Lakh</strong>, and under <strong>80,000 km</strong> are automatically promoted to the <em>🔥 Top Deals</em> curated shortlist and triggered for push alerts.</div>
       </div>
+
+      <h3>Ex-Showroom Retail Benchmark &amp; Discount Calculation</h3>
+      <p>Original showroom price (<code>orig_retail_price</code>) and savings discount (<code>retail_discount_pct</code>) are derived through a 4-tier normalized evaluation pipeline:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Mechanism</th>
+            <th>Formula &amp; Behavior</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Model Baseline Matrix</strong></td>
+            <td>100+ vehicle lines matched by normalized longest-substring priority</td>
+            <td>Whitespace/hyphen stripped regex match prevents misclassification (e.g. <em>Grand i10</em> before <em>i10</em>; <em>BMW X5</em> before generic <em>BMW</em>).</td>
+          </tr>
+          <tr>
+            <td><strong>2. Brand-Level Fallback</strong></td>
+            <td>Segment anchors for unlisted or sparse trims</td>
+            <td>Luxury brands anchored accurately (BMW ₹58L, Mercedes ₹65L, Audi ₹52L, Volvo ₹62L, Toyota ₹14.5L).</td>
+          </tr>
+          <tr>
+            <td><strong>3. Year &amp; Trim Adjustments</strong></td>
+            <td>Dynamic inflation and variant scaling</td>
+            <td><code>base * (1 + (year - 2016) * 0.035) * (+10% top-spec) * (+8% AT)</code>.</td>
+          </tr>
+          <tr>
+            <td><strong>4. Age Depreciation Floor</strong></td>
+            <td>Logical floor gate against source payload anomalies</td>
+            <td>If asking price exceeds model base, enforces <code>orig_retail = price * max(1.25, 1.0 + age * 0.07)</code>. Ignores marketplace pre-markdown listing strikes.</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
     <section>
@@ -381,8 +415,8 @@
         <li><strong>Model Year Floor:</strong> Quick segmented pill buttons (<code>All</code>, <code>2016+</code>, <code>2018+</code>, <code>2020+</code>, <code>2022+</code>) and continuous year slider (2012 to 2024).</li>
         <li><strong>Showroom Savings %:</strong> Discrete discount percentage selector (<code>Any</code>, <code>20%+</code>, <code>35%+</code>, <code>50%+</code>) with 0% to 60%+ range slider.</li>
         <li><strong>Maximum Mileage Ceiling:</strong> Quick km pills (<code>Any</code>, <code>≤ 40k</code>, <code>≤ 60k</code>, <code>≤ 80k</code>, <code>≤ 100k</code>) and 20k to 120k km slider.</li>
-        <li><strong>Transmission:</strong> Dedicated gearbox facet panel with live count badges for <code>All (1,780+)</code>, <code>⚡ Automatic (830+)</code>, and <code>🕹️ Manual (940+)</code>.</li>
-        <li><strong>Fuel Type:</strong> Dedicated fuel facet panel with live count badges for <code>All</code>, <code>⛽ Petrol (1,280+)</code>, <code>🛢️ Diesel (450+)</code>, and <code>🍃 CNG (40+)</code>.</li>
+        <li><strong>Transmission:</strong> Dedicated gearbox facet panel with live count badges for <code>All (1,746)</code>, <code>⚡ Automatic (805)</code>, and <code>🕹️ Manual (941)</code>.</li>
+        <li><strong>Fuel Type:</strong> Dedicated fuel facet panel with live count badges for <code>All</code>, <code>⛽ Petrol (1,249)</code>, <code>🛢️ Diesel (449)</code>, and <code>🍃 CNG (12)</code>.</li>
         <li><strong>Source Platforms:</strong> Multi-select discrete buttons for Spinny, Cars24, Truwo, and OLX with live count badges.</li>
         <li><strong>Automaker Chips:</strong> One-click brand chips with live count badges for Maruti, Hyundai, Tata, Honda, Volkswagen, Toyota, Skoda, BMW, Mahindra, Renault, and MG.</li>
         <li><strong>Model Exclusion (Hide Model):</strong> Permanent model exclusion button on cards and scorecard modals, persisting hidden models in browser <code>localStorage</code>.</li>
