@@ -1652,6 +1652,19 @@ html_content = """<!DOCTYPE html>
       object-fit: cover;
       display: block;
     }
+    .card-photo-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--bg-subsurface);
+      color: var(--text-subtle);
+      font-size: 11px;
+      font-weight: 500;
+    }
     .badge-grade {
       position: absolute;
       top: 10px;
@@ -5142,7 +5155,7 @@ html_content = """<!DOCTYPE html>
                 </span>
               </div>
 
-              ${c.img ? `<img src="${c.img}" alt="${title}" loading="lazy" referrerpolicy="no-referrer" />` : '<div style="height:100%; display:flex; align-items:center; justify-content:center; color:var(--text-subtle); font-size:12px;">No image preview</div>'}
+              ${c.img ? `<img src="${c.img}" alt="${title}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'card-photo-fallback\\'>🚗 <span>Preview Unavailable</span></div>';" />` : '<div class="card-photo-fallback">🚗 <span>No Preview</span></div>'}
             </div>
 
             <div class="card-content">

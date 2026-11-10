@@ -813,7 +813,22 @@ def enrich_cars24(cars):
         verdict = pros[0] if pros else "Dependable commuter with accessible service network."
 
         d_img = c.get("detailImage") or {}
-        img_url = d_img.get("bgRemovedUri") or d_img.get("uri")
+        l_img = c.get("listingImage") or {}
+        candidates = [
+            d_img.get("bgRemovedUri"),
+            d_img.get("uri"),
+            l_img.get("bgRemovedUri"),
+            l_img.get("uri")
+        ]
+        img_url = None
+        for cand in candidates:
+            if cand and isinstance(cand, str):
+                c_clean = cand.strip()
+                if "UPCOMING_CAR" in c_clean or "comindia" in c_clean:
+                    continue
+                if c_clean.startswith("http"):
+                    img_url = c_clean
+                    break
 
         cleaned.append({
             "id": f"c24_{c.get('appointmentId')}",
