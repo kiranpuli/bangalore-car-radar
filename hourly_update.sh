@@ -12,6 +12,7 @@ if [[ -n $(git status --porcelain clean_bangalore_cars.json deals.html index.htm
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] Changes detected. Committing and pushing to website..."
     git add clean_bangalore_cars.json deals.html index.html latest_alerts.json
     git commit -m "chore(auto): hourly deals sync [$(date '+%Y-%m-%d %H:%M')]"
+    git pull --rebase origin main
     git push origin main
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] Successfully published to website."
 else

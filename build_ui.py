@@ -3610,6 +3610,161 @@ html_content = """<!DOCTYPE html>
       excludedModels: loadExcludedModels()
     };
     const expandedCards = new Set();
+    const STORAGE_KEY = 'bangalore_car_radar_filters';
+
+    let isInternalFilterSync = false;
+
+    function saveFilterState() {
+      if (isInternalFilterSync) return;
+      try {
+        const data = {
+          viewMode: state.viewMode,
+          search: state.search,
+          min_price: state.min_price,
+          max_price: state.max_price,
+          min_year: state.min_year,
+          max_km: state.max_km,
+          min_discount: state.min_discount,
+          sort: state.sort,
+          platforms: Array.from(state.platforms),
+          brands: Array.from(state.brands),
+          transmissions: Array.from(state.transmissions),
+          fuels: Array.from(state.fuels),
+          qualities: Array.from(state.qualities)
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+
+        // Sync URL query parameters without reloading
+        const params = new URLSearchParams();
+        if (state.search) params.set('q', state.search);
+        if (state.viewMode && state.viewMode !== 'curated') params.set('view', state.viewMode);
+        if (state.min_price > 0) params.set('min_p', state.min_price);
+        if (state.max_price > 0 && state.max_price !== 500000) params.set('max_p', state.max_price);
+        if (state.max_price === 0) params.set('max_p', '0');
+        if (state.min_year > 0) params.set('year', state.min_year);
+        if (state.max_km > 0 && state.max_km !== 80000) params.set('max_km', state.max_km);
+        if (state.max_km === 0) params.set('max_km', '0');
+        if (state.min_discount > 0) params.set('disc', state.min_discount);
+        if (state.sort && state.sort !== 'score') params.set('sort', state.sort);
+        if (state.platforms.size > 0) params.set('platforms', Array.from(state.platforms).join(','));
+        if (state.brands.size > 0) params.set('brands', Array.from(state.brands).join(','));
+        if (state.transmissions.size > 0) params.set('trans', Array.from(state.transmissions).join(','));
+        if (state.fuels.size > 0) params.set('fuel', Array.from(state.fuels).join(','));
+        if (state.qualities.size > 0 && (!state.qualities.has('top_deal') || state.qualities.size > 1)) {
+          params.set('quality', Array.from(state.qualities).join(','));
+        }
+
+        const qs = params.toString();
+        const targetSearch = qs ? `?${qs}` : '';
+        if (window.location.search !== targetSearch) {
+          history.replaceState(null, '', window.location.pathname + targetSearch);
+        }
+      } catch (e) {}
+    }
+
+    function loadFilterState() {
+      let loaded = null;
+
+      // 1. URL search params take highest precedence (supports link sharing)
+      try {
+        const params = new URLSearchParams(window.location.search);
+        if (Array.from(params.keys()).length > 0) {
+          loaded = {
+            search: params.get('q') || '',
+            viewMode: params.get('view') || (params.has('q') ? 'custom' : 'curated'),
+            min_price: params.has('min_p') ? Number(params.get('min_p')) || 0 : 0,
+            max_price: params.has('max_p') ? Number(params.get('max_p')) || 0 : 500000,
+            min_year: params.has('year') ? Number(params.get('year')) || 0 : 0,
+            max_km: params.has('max_km') ? Number(params.get('max_km')) || 0 : 80000,
+            min_discount: params.has('disc') ? Number(params.get('disc')) || 0 : 0,
+            sort: params.get('sort') || 'score',
+            platforms: params.has('platforms') ? params.get('platforms').split(',').map(x => x.trim()).filter(Boolean) : [],
+            brands: params.has('brands') ? params.get('brands').split(',').map(x => x.trim().toLowerCase()).filter(Boolean) : [],
+            transmissions: params.has('trans') ? params.get('trans').split(',').map(x => x.trim().toLowerCase()).filter(Boolean) : [],
+            fuels: params.has('fuel') ? params.get('fuel').split(',').map(x => x.trim().toLowerCase()).filter(Boolean) : [],
+            qualities: params.has('quality') ? params.get('quality').split(',').map(x => x.trim()).filter(Boolean) : (params.get('view') === 'all' ? [] : ['top_deal'])
+          };
+        }
+      } catch (e) {}
+
+      // 2. If no URL params, load from localStorage
+      if (!loaded) {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (raw) {
+            loaded = JSON.parse(raw);
+          }
+        } catch (e) {}
+      }
+
+      if (!loaded) return;
+
+      if (typeof loaded.search === 'string') state.search = loaded.search;
+      if (typeof loaded.viewMode === 'string') state.viewMode = loaded.viewMode;
+      if (typeof loaded.min_price === 'number') state.min_price = loaded.min_price;
+      if (typeof loaded.max_price === 'number') state.max_price = loaded.max_price;
+      if (typeof loaded.min_year === 'number') state.min_year = loaded.min_year;
+      if (typeof loaded.max_km === 'number') state.max_km = loaded.max_km;
+      if (typeof loaded.min_discount === 'number') state.min_discount = loaded.min_discount;
+      if (typeof loaded.sort === 'string') state.sort = loaded.sort;
+
+      if (Array.isArray(loaded.platforms)) state.platforms = new Set(loaded.platforms);
+      if (Array.isArray(loaded.brands)) state.brands = new Set(loaded.brands);
+      if (Array.isArray(loaded.transmissions)) state.transmissions = new Set(loaded.transmissions);
+      if (Array.isArray(loaded.fuels)) state.fuels = new Set(loaded.fuels);
+      if (Array.isArray(loaded.qualities)) state.qualities = new Set(loaded.qualities);
+    }
+
+    function syncAllFilterUIsFromState() {
+      isInternalFilterSync = true;
+      try {
+        // Search inputs
+        const sInp = document.getElementById('ctrl-search');
+        if (sInp) sInp.value = state.search || '';
+        const mInp = document.getElementById('ctrl-mobile-search');
+        if (mInp) mInp.value = state.search || '';
+        const clearBtn = document.getElementById('btn-clear-search');
+        if (clearBtn) clearBtn.style.display = state.search ? 'block' : 'none';
+        const mClearBtn = document.getElementById('btn-clear-mobile-search');
+        if (mClearBtn) mClearBtn.style.display = state.search ? 'block' : 'none';
+
+        // Sort selects
+        const sSort = document.getElementById('ctrl-sort');
+        if (sSort) sSort.value = state.sort || 'score';
+        const mSort = document.getElementById('ctrl-mobile-sort');
+        if (mSort) mSort.value = state.sort || 'score';
+
+        // Price inputs and slider
+        const minInp = document.getElementById('ctrl-min-price');
+        if (minInp) minInp.value = state.min_price > 0 ? (state.min_price / 100000).toFixed(1) : '';
+        const maxInp = document.getElementById('ctrl-max-price');
+        if (maxInp) maxInp.value = state.max_price > 0 ? (state.max_price / 100000).toFixed(1) : '';
+        const slider = document.getElementById('ctrl-price-range');
+        if (slider) slider.value = state.max_price > 0 ? (state.max_price / 100000) : 15.0;
+
+        // Year, KM, Discount, Readout, Multi-filter Pills & Chips
+        syncYearUI(state.min_year);
+        syncKmUI(state.max_km);
+        syncDiscountUI(state.min_discount);
+        updatePriceReadout();
+        updateAllMultiFilterUIs();
+
+        // View mode buttons
+        const btnCurated = document.getElementById('btn-mode-curated');
+        const btnAll = document.getElementById('btn-mode-all');
+        const btnGerman = document.getElementById('btn-german-5l');
+        const btnBmw = document.getElementById('btn-mode-bmw');
+        if (btnCurated) btnCurated.classList.toggle('active', state.viewMode === 'curated');
+        if (btnCurated) btnCurated.classList.toggle('curated', state.viewMode === 'curated');
+        if (btnAll) btnAll.classList.toggle('active', state.viewMode === 'all');
+        if (btnGerman) btnGerman.classList.toggle('active', state.viewMode === 'german');
+        if (btnBmw) btnBmw.classList.toggle('active', state.viewMode === 'bmw');
+
+        updateQuickChips();
+      } finally {
+        isInternalFilterSync = false;
+      }
+    }
 
     // Initialize counts
     const spinnyCount = CARS.filter(c => (c.platform || '').toLowerCase() === 'spinny').length;
@@ -3700,16 +3855,8 @@ html_content = """<!DOCTYPE html>
       }
     });
 
-    // Initialize inputs to curated defaults
-    const ctrlMaxPrice = document.getElementById('ctrl-max-price');
-    if (ctrlMaxPrice) ctrlMaxPrice.value = '5.0';
-    const ctrlSlider = document.getElementById('ctrl-price-range');
-    if (ctrlSlider) ctrlSlider.value = 5.0;
-
-    syncYearUI(state.min_year);
-    syncKmUI(state.max_km);
-    syncDiscountUI(state.min_discount);
-    updatePriceReadout();
+    loadFilterState();
+    syncAllFilterUIsFromState();
 
     // Word-by-word reveal for B11 tagline
     const taglineContent = "Transparent pricing and verified mechanical telemetry. Every Bangalore car evaluated for true value and mechanical health.";
@@ -4293,42 +4440,14 @@ html_content = """<!DOCTYPE html>
       state.qualities.clear();
       state.qualities.add('top_deal');
 
-      const sInp = document.getElementById('ctrl-search');
-      if (sInp) sInp.value = '';
-      const mInp = document.getElementById('ctrl-mobile-search');
-      if (mInp) mInp.value = '';
-      const clearBtn = document.getElementById('btn-clear-search');
-      if (clearBtn) clearBtn.style.display = 'none';
-      const mClearBtn = document.getElementById('btn-clear-mobile-search');
-      if (mClearBtn) mClearBtn.style.display = 'none';
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+        if (window.location.search) {
+          history.replaceState(null, '', window.location.pathname);
+        }
+      } catch (e) {}
 
-      const sSort = document.getElementById('ctrl-sort');
-      if (sSort) sSort.value = 'score';
-      const mSort = document.getElementById('ctrl-mobile-sort');
-      if (mSort) mSort.value = 'score';
-
-      const minInp = document.getElementById('ctrl-min-price');
-      if (minInp) minInp.value = '';
-      const maxInp = document.getElementById('ctrl-max-price');
-      if (maxInp) maxInp.value = '5.0';
-      const slider = document.getElementById('ctrl-price-range');
-      if (slider) slider.value = 5.0;
-
-      const btnCurated = document.getElementById('btn-mode-curated');
-      const btnAll = document.getElementById('btn-mode-all');
-      const btnGerman = document.getElementById('btn-german-5l');
-      const btnBmw = document.getElementById('btn-mode-bmw');
-      if (btnCurated) btnCurated.classList.add('active', 'curated');
-      if (btnAll) btnAll.classList.remove('active');
-      if (btnGerman) btnGerman.classList.remove('active');
-      if (btnBmw) btnBmw.classList.remove('active');
-
-      syncYearUI(0);
-      syncKmUI(80000);
-      syncDiscountUI(0);
-      updatePriceReadout();
-      updateAllMultiFilterUIs();
-      updateQuickChips();
+      syncAllFilterUIsFromState();
       applyFilters();
     }
 
@@ -4518,6 +4637,7 @@ html_content = """<!DOCTYPE html>
       updateQuickChips();
       renderActiveTags();
       renderCards(filtered);
+      saveFilterState();
     }
 
     function openScoreModal(carId, event) {
@@ -5058,9 +5178,15 @@ html_content = """<!DOCTYPE html>
 
     // Initial render
     renderAlertsList();
-    updatePriceReadout();
-    updateAllMultiFilterUIs();
+    loadFilterState();
+    syncAllFilterUIsFromState();
     applyFilters();
+
+    window.addEventListener('popstate', () => {
+      loadFilterState();
+      syncAllFilterUIsFromState();
+      applyFilters();
+    });
   </script>
 </body>
 </html>

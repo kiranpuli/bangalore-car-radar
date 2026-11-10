@@ -59,6 +59,42 @@ def is_excluded_car(car):
     return any(ex in full_name for ex in EXCLUDE_MODELS)
 
 KNOWLEDGE_BASE = {
+    "wagon r": {
+        "pros": ["Tall-boy easy ingress and egress for all ages", "Superb city fuel economy 16+ kmpl with AC", "Spacious rear legroom with high market resale demand"],
+        "cons": ["Body roll around sharp highway turns", "Light sheet metal feel"],
+        "maintenance_yr": "₹3,500 - ₹4,500",
+        "retention_pct": 0.76,
+    },
+    "wagonr": {
+        "pros": ["Tall-boy easy ingress and egress for all ages", "Superb city fuel economy 16+ kmpl with AC", "Spacious rear legroom with high market resale demand"],
+        "cons": ["Body roll around sharp highway turns", "Light sheet metal feel"],
+        "maintenance_yr": "₹3,500 - ₹4,500",
+        "retention_pct": 0.76,
+    },
+    "celerio": {
+        "pros": ["Compact footprint and very economical K10C engine", "Effortless parking and steering in Bangalore traffic", "Pocket-friendly maintenance and cheap spares"],
+        "cons": ["Lightweight build", "Basic highway overtaking punch"],
+        "maintenance_yr": "₹3,500 - ₹4,500",
+        "retention_pct": 0.75,
+    },
+    "alto": {
+        "pros": ["Zero maintenance headaches with ubiquitous neighborhood spares", "Outstanding 17+ kmpl city fuel efficiency", "Ideal low-cost entry hatchback for city commuting"],
+        "cons": ["Compact rear seat and boot", "Minimal safety equipment on older trims"],
+        "maintenance_yr": "₹3,000 - ₹4,000",
+        "retention_pct": 0.74,
+    },
+    "kwid": {
+        "pros": ["SUV-inspired styling with high 184mm ground clearance", "Impressive 279L boot space for its segment", "Modern touchscreen infotainment on RXT trims"],
+        "cons": ["3-cylinder engine vibration at idle", "AMT shift pauses in bumper-to-bumper jams"],
+        "maintenance_yr": "₹4,000 - ₹5,000",
+        "retention_pct": 0.70,
+    },
+    "s-presso": {
+        "pros": ["High seating position with panoramic forward visibility", "High 180mm ground clearance for huge speedbumps", "Peculiarly roomy cabin for 4 adults"],
+        "cons": ["Unconventional central speedometer styling", "Light highway stability in crosswinds"],
+        "maintenance_yr": "₹3,500 - ₹4,500",
+        "retention_pct": 0.72,
+    },
     "brio": {
         "pros": ["Bulletproof Honda 1.2L i-VTEC engine", "Easiest car to park in tight Bangalore spots", "Zippy 88 bhp with tight turning radius"],
         "cons": ["Stiff rear ride on bad roads/potholes", "Small 175L glass boot", "Basic interior features"],
@@ -638,14 +674,14 @@ def fetch_cheapest_cars(city="bangalore", max_price=None, max_pages=48):
         price = c.get("price", 0)
         km = c.get("mileage", 0)
         price_ok = True if (max_price is None or max_price <= 0) else (price <= max_price)
-        if price_ok and km <= 140000 and is_prestige_car(c):
+        if price_ok and km <= 250000:
             filtered.append(c)
 
     filtered.sort(key=lambda x: x.get("price", 0))
     return filtered
 
 
-def fetch_cars24_cars(city_id="4709", max_pages=25, max_price=None):
+def fetch_cars24_cars(city_id="4709", max_pages=80, max_price=None):
     url = "https://car-catalog-gateway-in.c24.tech/listing/v1/buy-used-car"
     headers = {
         "Content-Type": "application/json",
@@ -701,7 +737,7 @@ def fetch_cars24_cars(city_id="4709", max_pages=25, max_price=None):
                 price = it.get("listingPrice", 0)
                 km = (it.get("odometer") or {}).get("value", 0)
                 price_ok = True if (max_price is None or max_price <= 0) else (price <= max_price)
-                if price_ok and km <= 140000:
+                if price_ok and km <= 250000:
                     seen.add(aid)
                     cars.append(it)
 
@@ -1045,7 +1081,7 @@ def enrich_truwo(cars):
         })
     return cleaned
 
-def fetch_olx_cars(max_pages=8, max_price=None, make=None):
+def fetch_olx_cars(max_pages=15, max_price=None, make=None):
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
         "Accept": "application/json, text/plain, */*",
@@ -1322,7 +1358,7 @@ def run_monitor(city="bangalore", max_price=None):
     print(f"[{datetime.now()}] Fetched {len(cleaned_spinny)} Spinny cars.")
 
     print(f"[{datetime.now()}] Fetching Bangalore cars from Cars24 API (REA reverse-engineered)...")
-    cars24_raw = fetch_cars24_cars(city_id="4709", max_pages=25, max_price=max_price)
+    cars24_raw = fetch_cars24_cars(city_id="4709", max_pages=75, max_price=max_price)
     cleaned_cars24 = enrich_cars24(cars24_raw)
     print(f"[{datetime.now()}] Fetched {len(cleaned_cars24)} Cars24 cars.")
 
@@ -1332,7 +1368,7 @@ def run_monitor(city="bangalore", max_price=None):
     print(f"[{datetime.now()}] Fetched {len(cleaned_truwo)} Truwo cars.")
 
     print(f"[{datetime.now()}] Fetching Bangalore cars from OLX API (Direct Seller Classifieds)...")
-    olx_raw = fetch_olx_cars(max_pages=8, max_price=max_price)
+    olx_raw = fetch_olx_cars(max_pages=15, max_price=max_price)
     cleaned_olx = enrich_olx(olx_raw)
     print(f"[{datetime.now()}] Fetched {len(cleaned_olx)} OLX cars.")
 
@@ -1347,7 +1383,7 @@ def run_monitor(city="bangalore", max_price=None):
         olx_dedup_map[c.get("id")] = c
     total_olx = list(olx_dedup_map.values())
 
-    combined_cars = [c for c in (cleaned_spinny + cleaned_cars24 + cleaned_truwo + total_olx) if not is_excluded_car(c)]
+    combined_cars = cleaned_spinny + cleaned_cars24 + cleaned_truwo + total_olx
     combined_cars.sort(key=lambda x: x.get("deal_score", 0), reverse=True)
 
     new_cars = []
