@@ -304,14 +304,14 @@ def is_good_deal(car):
     price = car.get("price", 9999999)
     score = car.get("deal_score", 0)
     km = car.get("mileage", 999999)
-    # High conviction: under 5.0L, deal score 80+, km <= 80k
-    if price <= 500000 and score >= 80 and km <= 80000:
+    # High conviction: under 4.0L, deal score 80+, km <= 80k
+    if price <= 400000 and score >= 80 and km <= 80000:
         return True
-    # Great value: under 4.5L, deal score 75+, km <= 90k
-    if price <= 450000 and score >= 75 and km <= 90000:
+    # Great value: under 3.5L, deal score 75+, km <= 90k
+    if price <= 350000 and score >= 75 and km <= 90000:
         return True
-    # Rare steal: under 5.5L, score 90+, km <= 50k
-    if price <= 550000 and score >= 90 and km <= 50000:
+    # Rare steal: under 4.5L, score 90+, km <= 50k
+    if price <= 450000 and score >= 90 and km <= 50000:
         return True
     return False
 
@@ -1421,7 +1421,7 @@ def run_monitor(city="bangalore", max_price=None):
             send_mobile_push(f"Top {plat} Deal: {title}", f"{price_l} · {km_k} · Score {score}/100", click_url=url)
         print(f"[{datetime.now()}] Alert & mobile push dispatched for {len(good_deals)} high-conviction deal(s).")
     elif not is_initial_run:
-        print(f"[{datetime.now()}] Inventory refreshed. No new qualifying top deals (< ₹5L, Score 80+).")
+        print(f"[{datetime.now()}] Inventory refreshed. No new qualifying top deals (< ₹4L, Score 80+).")
 
 
 if __name__ == "__main__":

@@ -27,8 +27,8 @@
 
 | Traditional Used Car Hunting | Bangalore Car Radar |
 | :--- | :--- |
-| ❌ Manually browsing 4 different apps (Spinny, Cars24, Truwo, OLX) every day | ✅ **1,746 live Bangalore vehicles unified into one high-speed dashboard** |
-| ❌ Dealing with dealership markups of ₹1,00,000 to ₹1,50,000 | ✅ **Fair-value depreciation curves spotlighting true bargains under ₹5 Lakhs** |
+| ❌ Manually browsing 4 different apps (Spinny, Cars24, Truwo, OLX) every day | ✅ **3,600+ live Bangalore vehicles unified into one high-speed dashboard** |
+| ❌ Dealing with dealership markups of ₹1,00,000 to ₹1,50,000 | ✅ **Fair-value depreciation curves spotlighting true bargains under ₹4 Lakhs** |
 | ❌ Hidden tyre wear, suspension issues, and engine leaks discovered after booking | ✅ **200-Point mechanical telemetry scored (0 to 100) before you travel to the hub** |
 | ❌ Sifting through unwanted car models repeatedly | ✅ **1-Click "⊘ Hide Model" button removes unwanted models permanently from your view** |
 | ❌ Missing under-priced deals because someone else saw them first | ✅ **Zero-setup push notifications straight to your Samsung S25 Ultra or iPhone** |

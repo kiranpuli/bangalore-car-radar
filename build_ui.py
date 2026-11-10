@@ -530,7 +530,7 @@ html_content = """<!DOCTYPE html>
   <title>Bangalore Car Radar — Curated Pre-Owned Deals &amp; Mechanical Telemetry Screener</title>
   <meta name="title" content="Bangalore Car Radar — Curated Pre-Owned Deals &amp; Mechanical Telemetry Screener">
   <meta name="description" content="Continuous pre-owned car market intelligence indexing 1,790+ verified vehicles in Bangalore across Spinny, Cars24, Truwo, and OLX with 200-point telemetry audits, depreciation analysis, and instant push alerts.">
-  <meta name="keywords" content="Bangalore used cars, Spinny Bangalore, Cars24 Bangalore, Truwo Bangalore, OLX cars Bangalore, pre-owned cars, BMW Bangalore, German cars under 5 lakhs, used car deals, Bangalore car valuation">
+  <meta name="keywords" content="Bangalore used cars, Spinny Bangalore, Cars24 Bangalore, Truwo Bangalore, OLX cars Bangalore, pre-owned cars, BMW Bangalore, German cars under 4 lakhs, used car deals, Bangalore car valuation">
   <meta name="author" content="Bangalore Car Radar">
   <meta name="robots" content="index, follow">
 
@@ -2991,8 +2991,8 @@ html_content = """<!DOCTYPE html>
         <button type="button" class="quick-chip" id="qchip-manual" onclick="toggleQuickFilter('transmission', 'manual')">
           <span>🕹️ Manual</span>
         </button>
-        <button type="button" class="quick-chip" id="qchip-under5l" onclick="toggleQuickFilter('budget5l')">
-          <span>≤ ₹5L</span>
+        <button type="button" class="quick-chip" id="qchip-under4l" onclick="toggleQuickFilter('budget4l')">
+          <span>≤ ₹4L</span>
         </button>
         <button type="button" class="quick-chip" id="qchip-petrol" onclick="toggleQuickFilter('fuel', 'petrol')">
           <span>⛽ Petrol</span>
@@ -3000,8 +3000,8 @@ html_content = """<!DOCTYPE html>
         <button type="button" class="quick-chip" id="qchip-diesel" onclick="toggleQuickFilter('fuel', 'diesel')">
           <span>🛢️ Diesel</span>
         </button>
-        <button type="button" class="quick-chip" id="qchip-german" onclick="filterGermanUnder5L()">
-          <span>🛡️ German ≤5L</span>
+        <button type="button" class="quick-chip" id="qchip-german" onclick="filterGermanUnder4L()">
+          <span>🛡️ German ≤4L</span>
         </button>
         <button type="button" class="quick-chip" id="qchip-bmw" onclick="filterBmwDeals()">
           <span>🏎️ BMW</span>
@@ -3061,8 +3061,8 @@ html_content = """<!DOCTYPE html>
             <span>🔥 Top Deals</span>
             <span class="scope-count" id="badge-curated-count">0</span>
           </button>
-          <button type="button" class="scope-segment" id="btn-german-5l" onclick="filterGermanUnder5L()" role="tab">
-            <span>🛡️ German ≤ ₹5L</span>
+          <button type="button" class="scope-segment" id="btn-german-4l" onclick="filterGermanUnder4L()" role="tab">
+            <span>🛡️ German ≤ ₹4L</span>
             <span class="scope-count" id="badge-german-count">0</span>
           </button>
           <button type="button" class="scope-segment" id="btn-mode-bmw" onclick="filterBmwDeals()" role="tab">
@@ -3130,11 +3130,11 @@ html_content = """<!DOCTYPE html>
                   type="number" 
                   id="ctrl-max-price" 
                   class="num-field" 
-                  placeholder="5.0" 
+                  placeholder="4.0" 
                   step="0.25" 
                   min="0.5" 
                   max="25"
-                  value="5.0"
+                  value="4.0"
                   oninput="onMaxPriceInput(this.value)"
                 />
                 <span class="num-unit">L</span>
@@ -3149,15 +3149,15 @@ html_content = """<!DOCTYPE html>
               min="1.0" 
               max="15.0" 
               step="0.25" 
-              value="5.0" 
+              value="4.0" 
               oninput="onPriceSlider(this.value)"
               aria-label="Budget Range Slider"
             />
             <div class="slider-ticks">
               <span>₹1L</span>
-              <span>₹3L</span>
-              <span>₹5L</span>
-              <span>₹8L</span>
+              <span>₹2.5L</span>
+              <span>₹4L</span>
+              <span>₹7L</span>
               <span>₹10L</span>
               <span>₹15L+</span>
             </div>
@@ -3412,11 +3412,11 @@ html_content = """<!DOCTYPE html>
   <div class="alerts-modal-backdrop" id="alerts-modal-backdrop" onclick="closeAlertsModalOnBackdrop(event)">
     <div class="alerts-modal" role="dialog" aria-modal="true" aria-labelledby="alerts-modal-title">
       <div class="alerts-modal-header">
-        <h3 id="alerts-modal-title">🔔 Recent Top Deal Alerts (&lt; ₹5L)</h3>
+        <h3 id="alerts-modal-title">🔔 Recent Top Deal Alerts (&lt; ₹4L)</h3>
         <button class="alerts-modal-close" onclick="toggleAlertsModal()" title="Close">✕</button>
       </div>
       <div style="padding:12px 16px; background:var(--bg-subsurface); border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
-        <span class="caption-5" style="color:var(--text-muted);">Dispatches automatically when deals under ₹5L are discovered.</span>
+        <span class="caption-5" style="color:var(--text-muted);">Dispatches automatically when deals under ₹4L are discovered.</span>
         <button class="nav-btn" id="btn-req-notify" onclick="requestBrowserNotifications()">Enable Desktop Alerts</button>
       </div>
       <div class="alerts-modal-body" id="alerts-modal-body">
@@ -3598,7 +3598,7 @@ html_content = """<!DOCTYPE html>
       search: '',
       min_year: 0,
       min_price: 0,
-      max_price: 500000,
+      max_price: 400000,
       max_km: 80000,
       sort: 'score',
       platforms: new Set(),
@@ -3639,7 +3639,7 @@ html_content = """<!DOCTYPE html>
         if (state.search) params.set('q', state.search);
         if (state.viewMode && state.viewMode !== 'curated') params.set('view', state.viewMode);
         if (state.min_price > 0) params.set('min_p', state.min_price);
-        if (state.max_price > 0 && state.max_price !== 500000) params.set('max_p', state.max_price);
+        if (state.max_price > 0 && state.max_price !== 400000) params.set('max_p', state.max_price);
         if (state.max_price === 0) params.set('max_p', '0');
         if (state.min_year > 0) params.set('year', state.min_year);
         if (state.max_km > 0 && state.max_km !== 80000) params.set('max_km', state.max_km);
@@ -3673,7 +3673,7 @@ html_content = """<!DOCTYPE html>
             search: params.get('q') || '',
             viewMode: params.get('view') || (params.has('q') ? 'custom' : 'curated'),
             min_price: params.has('min_p') ? Number(params.get('min_p')) || 0 : 0,
-            max_price: params.has('max_p') ? Number(params.get('max_p')) || 0 : 500000,
+            max_price: params.has('max_p') ? Number(params.get('max_p')) || 0 : 400000,
             min_year: params.has('year') ? Number(params.get('year')) || 0 : 0,
             max_km: params.has('max_km') ? Number(params.get('max_km')) || 0 : 80000,
             min_discount: params.has('disc') ? Number(params.get('disc')) || 0 : 0,
@@ -3752,7 +3752,7 @@ html_content = """<!DOCTYPE html>
         // View mode buttons
         const btnCurated = document.getElementById('btn-mode-curated');
         const btnAll = document.getElementById('btn-mode-all');
-        const btnGerman = document.getElementById('btn-german-5l');
+        const btnGerman = document.getElementById('btn-german-4l');
         const btnBmw = document.getElementById('btn-mode-bmw');
         if (btnCurated) btnCurated.classList.toggle('active', state.viewMode === 'curated');
         if (btnCurated) btnCurated.classList.toggle('curated', state.viewMode === 'curated');
@@ -3771,7 +3771,7 @@ html_content = """<!DOCTYPE html>
     const cars24Count = CARS.filter(c => (c.platform || '').toLowerCase() === 'cars24').length;
     const truwoCount = CARS.filter(c => (c.platform || '').toLowerCase() === 'truwo').length;
     const olxCount = CARS.filter(c => (c.platform || '').toLowerCase() === 'olx').length;
-    const curatedCars = CARS.filter(c => (c.price || 0) <= 500000 && (c.deal_score || 0) >= 80 && (c.mileage || 0) <= 80000);
+    const curatedCars = CARS.filter(c => (c.price || 0) <= 400000 && (c.deal_score || 0) >= 80 && (c.mileage || 0) <= 80000);
     const curatedCount = curatedCars.length;
 
     const teleTotal = document.getElementById('tele-total');
@@ -3787,7 +3787,7 @@ html_content = """<!DOCTYPE html>
 
     const germanCount = CARS.filter(c => {
       const m = (c.make || '').toLowerCase();
-      return (m.includes('volkswagen') || m.includes('skoda') || m.includes('bmw') || m.includes('audi')) && (c.price || 0) <= 500000;
+      return (m.includes('volkswagen') || m.includes('skoda') || m.includes('bmw') || m.includes('audi')) && (c.price || 0) <= 400000;
     }).length;
     const badgeGerman = document.getElementById('badge-german-count');
     if (badgeGerman) badgeGerman.textContent = germanCount.toLocaleString('en-IN');
@@ -3935,17 +3935,27 @@ html_content = """<!DOCTYPE html>
         toggleMultiFilter('transmissions', val);
       } else if (type === 'fuel') {
         toggleMultiFilter('fuels', val);
-      } else if (type === 'budget5l') {
-        if (state.max_price === 500000 && state.viewMode !== 'curated') {
+      } else if (type === 'budget4l') {
+        if (state.max_price === 400000 && state.viewMode !== 'curated') {
           state.max_price = 0;
           syncPriceUI(state.min_price, 0);
         } else {
-          state.max_price = 500000;
-          syncPriceUI(state.min_price, 500000);
+          state.max_price = 400000;
+          syncPriceUI(state.min_price, 400000);
         }
         applyFilters();
       }
       updateQuickChips();
+    }
+
+    function syncPriceUI(minPrice, maxPrice) {
+      const minInp = document.getElementById('ctrl-min-price');
+      if (minInp) minInp.value = minPrice > 0 ? (minPrice / 100000).toFixed(1) : '';
+      const maxInp = document.getElementById('ctrl-max-price');
+      if (maxInp) maxInp.value = maxPrice > 0 ? (maxPrice / 100000).toFixed(1) : '';
+      const slider = document.getElementById('ctrl-price-range');
+      if (slider) slider.value = maxPrice > 0 ? (maxPrice / 100000) : 15.0;
+      updatePriceReadout();
     }
 
     function updateQuickChips() {
@@ -3954,7 +3964,7 @@ html_content = """<!DOCTYPE html>
       const qManual = document.getElementById('qchip-manual');
       const qPetrol = document.getElementById('qchip-petrol');
       const qDiesel = document.getElementById('qchip-diesel');
-      const qUnder5L = document.getElementById('qchip-under5l');
+      const qUnder4L = document.getElementById('qchip-under4l');
       const qGerman = document.getElementById('qchip-german');
       const qBmw = document.getElementById('qchip-bmw');
       const qAll = document.getElementById('qchip-all');
@@ -3964,7 +3974,7 @@ html_content = """<!DOCTYPE html>
       if (qManual) qManual.classList.toggle('active', state.transmissions.has('manual'));
       if (qPetrol) qPetrol.classList.toggle('active', state.fuels.has('petrol'));
       if (qDiesel) qDiesel.classList.toggle('active', state.fuels.has('diesel'));
-      if (qUnder5L) qUnder5L.classList.toggle('active', state.max_price === 500000 && state.viewMode !== 'curated');
+      if (qUnder4L) qUnder4L.classList.toggle('active', state.max_price === 400000 && state.viewMode !== 'curated');
       if (qGerman) qGerman.classList.toggle('active', state.brands.has('volkswagen') && state.brands.has('skoda'));
       if (qBmw) qBmw.classList.toggle('active', state.brands.has('bmw') && state.brands.size === 1);
       if (qAll) qAll.classList.toggle('active', state.viewMode === 'all' && state.transmissions.size === 0 && state.fuels.size === 0 && state.brands.size === 0 && state.max_price === 0);
@@ -3978,7 +3988,7 @@ html_content = """<!DOCTYPE html>
       if (state.fuels.size > 0) count += state.fuels.size;
       if (state.min_year > 0) count += 1;
       if (state.max_km > 0 && !(state.viewMode === 'curated' && state.max_km === 80000)) count += 1;
-      if (state.min_price > 0 || (state.max_price > 0 && !(state.viewMode === 'curated' && state.max_price === 500000))) count += 1;
+      if (state.min_price > 0 || (state.max_price > 0 && !(state.viewMode === 'curated' && state.max_price === 400000))) count += 1;
       if (state.min_discount > 0) count += 1;
       if (state.qualities.size > 0 && !(state.viewMode === 'curated' && state.qualities.size === 1 && state.qualities.has('top_deal'))) {
         count += state.qualities.size;
@@ -4035,7 +4045,7 @@ html_content = """<!DOCTYPE html>
       state.viewMode = mode;
       const btnCurated = document.getElementById('btn-mode-curated');
       const btnAll = document.getElementById('btn-mode-all');
-      const btnGerman = document.getElementById('btn-german-5l');
+      const btnGerman = document.getElementById('btn-german-4l');
       const btnBmw = document.getElementById('btn-mode-bmw');
 
       if (btnCurated) btnCurated.classList.remove('active', 'curated');
@@ -4047,7 +4057,7 @@ html_content = """<!DOCTYPE html>
         if (btnCurated) btnCurated.classList.add('active', 'curated');
 
         state.min_price = 0;
-        state.max_price = 500000;
+        state.max_price = 400000;
         state.max_km = 80000;
         state.min_year = 0;
         state.min_discount = 0;
@@ -4058,9 +4068,9 @@ html_content = """<!DOCTYPE html>
         const minInput = document.getElementById('ctrl-min-price');
         if (minInput) minInput.value = '';
         const maxInput = document.getElementById('ctrl-max-price');
-        if (maxInput) maxInput.value = '5.0';
+        if (maxInput) maxInput.value = '4.0';
         const slider = document.getElementById('ctrl-price-range');
-        if (slider) slider.value = 5.0;
+        if (slider) slider.value = 4.0;
 
         syncYearUI(0);
         syncKmUI(80000);
@@ -4155,7 +4165,7 @@ html_content = """<!DOCTYPE html>
         if (permission === 'granted') {
           if (btn) btn.textContent = '✓ Desktop Alerts Active';
           new Notification('🔥 Bangalore Deal Alerts Active', {
-            body: 'You will receive desktop alerts when high-conviction car deals (< ₹5L) are found!',
+            body: 'You will receive desktop alerts when high-conviction car deals (< ₹4L) are found!',
             icon: 'https://www.spinny.com/favicon.ico'
           });
         } else {
@@ -4201,8 +4211,8 @@ html_content = """<!DOCTYPE html>
         state[groupKey].delete(val);
       } else {
         state[groupKey].add(val);
-        // If selecting BMW as brand while constrained by default sub-5L ceiling, uncap budget to show all BMWs
-        if (groupKey === 'brands' && val === 'bmw' && state.max_price > 0 && state.max_price <= 500000 && state.brands.size === 1) {
+        // If selecting BMW as brand while constrained by default sub-4L ceiling, uncap budget to show all BMWs
+        if (groupKey === 'brands' && val === 'bmw' && state.max_price > 0 && state.max_price <= 400000 && state.brands.size === 1) {
           state.max_price = 0;
           const maxInput = document.getElementById('ctrl-max-price');
           if (maxInput) maxInput.value = '';
@@ -4428,7 +4438,7 @@ html_content = """<!DOCTYPE html>
       state.search = '';
       state.min_year = 0;
       state.min_price = 0;
-      state.max_price = 500000;
+      state.max_price = 400000;
       state.max_km = 80000;
       state.min_discount = 0;
       state.sort = 'score';
@@ -4456,8 +4466,8 @@ html_content = """<!DOCTYPE html>
       if (!container) return;
       const tags = [];
 
-      if (state.viewMode === 'curated' && state.max_price === 500000 && state.max_km === 80000 && state.qualities.has('top_deal')) {
-        tags.push({ label: '🔥 Curated: Under ₹5L & Score 80+', clear: () => setViewMode('all') });
+      if (state.viewMode === 'curated' && state.max_price === 400000 && state.max_km === 80000 && state.qualities.has('top_deal')) {
+        tags.push({ label: '🔥 Curated: Under ₹4L & Score 80+', clear: () => setViewMode('all') });
       }
 
       if (state.excludedModels && state.excludedModels.size > 0) {
@@ -4948,8 +4958,8 @@ html_content = """<!DOCTYPE html>
       }
     }
 
-    function filterGermanUnder5L() {
-      const isCurrentlyActive = state.viewMode === 'german' || (state.max_price === 500000 && state.brands.has('volkswagen') && state.brands.has('skoda'));
+    function filterGermanUnder4L() {
+      const isCurrentlyActive = state.viewMode === 'german' || (state.max_price === 400000 && state.brands.has('volkswagen') && state.brands.has('skoda'));
       if (isCurrentlyActive) {
         setViewMode('curated');
         return;
@@ -4958,7 +4968,7 @@ html_content = """<!DOCTYPE html>
       state.viewMode = 'german';
       const btnCurated = document.getElementById('btn-mode-curated');
       const btnAll = document.getElementById('btn-mode-all');
-      const btnGerman = document.getElementById('btn-german-5l');
+      const btnGerman = document.getElementById('btn-german-4l');
       const btnBmw = document.getElementById('btn-mode-bmw');
       if (btnCurated) btnCurated.classList.remove('active', 'curated');
       if (btnAll) btnAll.classList.remove('active');
@@ -4966,20 +4976,20 @@ html_content = """<!DOCTYPE html>
       if (btnBmw) btnBmw.classList.remove('active');
 
       const statusText = document.getElementById('mode-status-text');
-      if (statusText) statusText.innerHTML = '<span class="pulse-dot" style="background:#34D399; box-shadow:0 0 8px rgba(52,211,153,0.6);"></span><span>German Cars Scope: Volkswagen, Skoda, BMW, Audi ≤ ₹5.0L across Bangalore</span>';
+      if (statusText) statusText.innerHTML = '<span class="pulse-dot" style="background:#34D399; box-shadow:0 0 8px rgba(52,211,153,0.6);"></span><span>German Cars Scope: Volkswagen, Skoda, BMW, Audi ≤ ₹4.0L across Bangalore</span>';
 
       state.search = '';
       const sInput = document.getElementById('ctrl-search');
       if (sInput) sInput.value = '';
 
       state.min_price = 0;
-      state.max_price = 500000;
+      state.max_price = 400000;
       const minInput = document.getElementById('ctrl-min-price');
       if (minInput) minInput.value = '';
       const maxInput = document.getElementById('ctrl-max-price');
-      if (maxInput) maxInput.value = '5.0';
+      if (maxInput) maxInput.value = '4.0';
       const slider = document.getElementById('ctrl-price-range');
-      if (slider) slider.value = 5.0;
+      if (slider) slider.value = 4.0;
 
       state.max_km = 0;
       state.min_year = 0;
@@ -5016,7 +5026,7 @@ html_content = """<!DOCTYPE html>
       state.viewMode = 'bmw';
       const btnCurated = document.getElementById('btn-mode-curated');
       const btnAll = document.getElementById('btn-mode-all');
-      const btnGerman = document.getElementById('btn-german-5l');
+      const btnGerman = document.getElementById('btn-german-4l');
       const btnBmw = document.getElementById('btn-mode-bmw');
       if (btnCurated) btnCurated.classList.remove('active', 'curated');
       if (btnAll) btnAll.classList.remove('active');

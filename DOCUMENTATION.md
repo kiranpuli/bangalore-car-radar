@@ -81,7 +81,7 @@ The dashboard provides a responsive, dual-mode filter architecture designed for 
 ### Mobile Viewport (< 768px): Zero-Overhead Bottom Sheet
 On mobile devices, vertical filter forms are eliminated to keep car cards in the first viewport:
 - **Sticky Command Bar (40px):** Search input with instant clear, quick sort selector, and dedicated `⚙️ Filters [count]` trigger button.
-- **Horizontal Quick-Chip Strip (32px):** Smooth-scrolling, 1-touch facet chips (`🔥 Top Deals`, `⚡ Auto`, `🕹️ Manual`, `≤ ₹5L`, `⛽ Petrol`, `🛢️ Diesel`, `🛡️ German ≤5L`, `🏎️ BMW`, `All Cars`) with real-time inventory counts.
+- **Horizontal Quick-Chip Strip (32px):** Smooth-scrolling, 1-touch facet chips (`🔥 Top Deals`, `⚡ Auto`, `🕹️ Manual`, `≤ ₹4L`, `⛽ Petrol`, `🛢️ Diesel`, `🛡️ German ≤4L`, `🏎️ BMW`, `All Cars`) with real-time inventory counts.
 - **Slide-Up Bottom Sheet Drawer:** Tapping `⚙️ Filters` slides up a native-feeling bottom sheet (86vh max-height, backdrop blur, swipe-down handle) housing the full granular control suite, with a sticky bottom `View X Verified Cars →` action bar.
 - **Instant Result Visibility:** Cars appear immediately below the quick chip strip—zero screen space wasted.
 
@@ -100,7 +100,7 @@ On mobile devices, vertical filter forms are eliminated to keep car cards in the
 
 ## 6. Mobile & Push Notification Architecture
 
-Pre-owned car deals under ₹5L often receive reservations within 3 hours in Bangalore. The system provides two notification channels:
+Pre-owned car deals under ₹4L often receive reservations within 3 hours in Bangalore. The system provides two notification channels:
 
 ### Channel A: Mobile Push (ntfy.sh / Samsung S25 Ultra)
 Zero signups, open-source notification pipeline via `ntfy.sh/kiran-car-radar`. High-priority push notifications include direct listing links and car photographs, dispatched instantly to Android and iOS devices:
