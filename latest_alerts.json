@@ -1,5 +1,21 @@
 [
   {
+    "id": 33903551,
+    "timestamp": "2026-11-10 11:23",
+    "platform": "Spinny",
+    "make": "Renault",
+    "model": "Kiger",
+    "variant": "RXT 1.0 Turbo MT",
+    "make_year": 2021,
+    "price": 542000.0,
+    "retail_discount_pct": 49,
+    "deal_score": 94,
+    "mileage": 43786,
+    "hub": "Spinny Car Hub, Nexus Shanti Niketan Mall - Whitefield Rd, Bangalore",
+    "url": "https://www.spinny.com/buy-used-cars/bangalore/renault/kiger/rxt-10-turbo-mt-2021/33903551/",
+    "img": "https://assets.spinny.com/sp-file-system/public/2026-11-10/0f3d3f84a2d7457583f7d12629fc149d/raw/file.JPG"
+  },
+  {
     "id": "c24_10269876142",
     "timestamp": "2026-11-10 11:09",
     "platform": "Cars24",
@@ -462,21 +478,5 @@
     "hub": "Jogupalya Bengaluru Karnataka",
     "url": "https://www.cars24.com/buy-used-honda-amaze-2017-cars-bangalore-10201979100/",
     "img": "https://marketplace-cdn.cars24.comindia/listingpage/UPCOMING_CAR.png"
-  },
-  {
-    "id": "olx_1856927476",
-    "timestamp": "2026-11-10 11:00",
-    "platform": "OLX",
-    "make": "Volkswagen",
-    "model": "Ameo",
-    "variant": "1.2 MPI Highline",
-    "make_year": 2017,
-    "price": 495000.0,
-    "retail_discount_pct": 46,
-    "deal_score": 80,
-    "mileage": 33000,
-    "hub": "Banashankari Stage 2, Bangalore",
-    "url": "https://www.olx.in/item/iid-1856927476",
-    "img": "https://apollo.olx.in:443/v1/files/iq2rqxbl1s793-IN/image;s=780x0;q=80"
   }
 ]
