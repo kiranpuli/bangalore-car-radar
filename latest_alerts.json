@@ -1,5 +1,21 @@
 [
   {
+    "id": "olx_1858035416",
+    "timestamp": "2026-11-11 19:01",
+    "platform": "OLX",
+    "make": "Honda",
+    "model": "Jazz",
+    "variant": "S Manual",
+    "make_year": 2015,
+    "price": 398000.0,
+    "retail_discount_pct": 54,
+    "deal_score": 80,
+    "mileage": 3890,
+    "hub": "Rajaji Nagar, Bangalore",
+    "url": "https://www.olx.in/item/iid-1858035416",
+    "img": "https://apollo.olx.in:443/v1/files/4ce9cheuj1412-IN/image;s=780x0;q=80"
+  },
+  {
     "id": "c24_10232612190",
     "timestamp": "2026-11-11 09:30",
     "platform": "Cars24",
@@ -462,21 +478,5 @@
     "hub": "Londenpet Venkatapuram",
     "url": "https://www.cars24.com/buy-used-renault-triber-2020-cars-bangalore-10288919199/",
     "img": "https://marketplace-cdn.cars24.com/visio/prod/10288919199/mainimage/FrontRightSide-Transparent/virtualBackground/17923964562285SFRF7.png"
-  },
-  {
-    "id": "c24_10290014170",
-    "timestamp": "2026-11-10 11:09",
-    "platform": "Cars24",
-    "make": "Renault",
-    "model": "TRIBER",
-    "variant": "RXE MT",
-    "make_year": 2024,
-    "price": 500000,
-    "retail_discount_pct": 50,
-    "deal_score": 91,
-    "mileage": 35907,
-    "hub": "Pandeshwar Mangaluru Karnataka",
-    "url": "https://www.cars24.com/buy-used-renault-triber-2024-cars-bangalore-10290014170/",
-    "img": "https://marketplace-cdn.cars24.com/visio/prod/10290014170/mainimage/FrontRightSide-Transparent/virtualBackground/1793516698332O0URKO.png"
   }
 ]
