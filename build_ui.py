@@ -697,7 +697,25 @@ html_content = """<!DOCTYPE html>
       font-size: 16px;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       overflow-x: clip;
+    }
+
+    /* ECC typography, text wrapping & tabular numerals (make-interfaces-feel-better) */
+    .hero-heading, .car-title, .panel-label, .drawer-title, .score-modal-header h3, .empty-state h3 {
+      text-wrap: balance;
+    }
+    .hero-subhead, .card-verdict-line, .modal-rationale-text, .score-audit-desc, .empty-state p {
+      text-wrap: pretty;
+    }
+    .pricing-val-main, .pricing-val-top, .discount-pill, .cmdk-item-badge,
+    .car-meta-line, .cmdk-item-sub, .range-readout-badge, .num-field,
+    .scope-count, .btn-count, .qchip-count, .mobile-filter-badge,
+    .drawer-count-badge, #res-count, .telemetry-num, .score-ring-val, .slider-ticks {
+      font-variant-numeric: tabular-nums;
+    }
+    button:active, .ctrl-btn:active, .quick-chip:active, .scope-segment:active, .cta-primary-btn:active, .nav-btn:active, .chip-pill:active {
+      transform: scale(0.97);
     }
 
     /* Named Text Styles */
@@ -908,7 +926,9 @@ html_content = """<!DOCTYPE html>
       align-items: center;
       gap: 6px;
       box-sizing: border-box;
-      transition: all var(--dur-fast) var(--ease-base);
+      transition-property: background-color, border-color, color, transform;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: var(--ease-base);
       white-space: nowrap;
     }
     .nav-btn:hover {
@@ -928,15 +948,17 @@ html_content = """<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 38px;
-      height: 38px;
+      width: 42px;
+      height: 42px;
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       color: var(--text-primary);
       font-size: 16px;
       cursor: pointer;
-      transition: all var(--dur-fast) ease;
+      transition-property: background-color, border-color, color, transform;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: ease;
     }
     .mobile-theme-btn:active {
       transform: scale(0.92);
@@ -1184,22 +1206,40 @@ html_content = """<!DOCTYPE html>
       color: var(--text-primary);
       font-family: var(--font-sans);
       font-size: 13px;
-      padding: 0 32px 0 36px;
+      padding: 0 36px 0 36px;
       outline: none;
-      transition: border-color var(--dur-fast) var(--ease-base);
+      transition-property: border-color, box-shadow;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: var(--ease-base);
     }
     .deck-search-input:focus {
       border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
     }
     .search-clear-btn {
       position: absolute;
-      right: 10px;
+      right: 4px;
+      width: 30px;
+      height: 30px;
       background: transparent;
       border: none;
       color: var(--text-subtle);
-      font-size: 12px;
+      font-size: 13px;
       cursor: pointer;
       display: none;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition-property: background-color, color, transform;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: var(--ease-base);
+    }
+    .search-clear-btn:hover {
+      background: var(--bg-subsurface-hover);
+      color: var(--text-primary);
+    }
+    .search-clear-btn:active {
+      transform: scale(0.90);
     }
 
     .deck-segmented-scope {
@@ -1227,7 +1267,9 @@ html_content = """<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: all var(--dur-fast) var(--ease-base);
+      transition-property: background-color, color, border-color, box-shadow;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: var(--ease-base);
       white-space: nowrap;
     }
     .scope-segment:hover {
@@ -1442,34 +1484,42 @@ html_content = """<!DOCTYPE html>
       -webkit-appearance: none;
       appearance: none;
       width: 100%;
-      height: 4px;
-      border-radius: 2px;
+      height: 6px;
+      border-radius: var(--radius-pill);
       background: var(--border-color);
       outline: none;
       cursor: pointer;
+      transition-property: background, border-color;
+      transition-duration: var(--dur-fast);
     }
     .range-slider-accent::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       background: var(--bg-surface);
       border: 2px solid var(--accent-amber);
       cursor: pointer;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-      transition: transform var(--dur-fast) var(--ease-base);
+      transition-property: transform, box-shadow, border-color;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: var(--ease-base);
     }
     .range-slider-accent::-webkit-slider-thumb:hover {
-      transform: scale(1.15);
+      transform: scale(1.18);
+      box-shadow: 0 0 0 4px var(--accent-amber-bg);
     }
     .range-slider-accent::-moz-range-thumb {
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       background: var(--bg-surface);
       border: 2px solid var(--accent-amber);
       cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      transition-property: transform, box-shadow, border-color;
+      transition-duration: var(--dur-fast);
     }
     .slider-ticks {
       display: flex;
@@ -1567,7 +1617,9 @@ html_content = """<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: all var(--dur-fast) var(--ease-base);
+      transition-property: background-color, color;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: var(--ease-base);
       white-space: nowrap;
     }
     .switch-opt:hover {
@@ -1602,7 +1654,9 @@ html_content = """<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      transition: all var(--dur-fast) var(--ease-base);
+      transition-property: background-color, color, border-color, transform;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: var(--ease-base);
       white-space: nowrap;
     }
     .brand-chips-wrap .chip-pill:hover {
@@ -1681,7 +1735,9 @@ html_content = """<!DOCTYPE html>
       padding: 3px 8px;
       border-radius: var(--radius-pill);
       cursor: pointer;
-      transition: all var(--dur-fast) var(--ease-base);
+      transition-property: background-color, border-color, color, transform;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: var(--ease-base);
     }
     .btn-reset-all:hover {
       background: rgba(239, 68, 68, 0.15);
@@ -1724,6 +1780,12 @@ html_content = """<!DOCTYPE html>
       height: 100%;
       object-fit: cover;
       display: block;
+      outline: 1px solid rgba(0, 0, 0, 0.08);
+      outline-offset: -1px;
+    }
+    [data-theme="dark"] .card-photo img {
+      outline: 1px solid rgba(255, 255, 255, 0.08);
+      outline-offset: -1px;
     }
     .card-photo-fallback {
       width: 100%;
@@ -1942,7 +2004,9 @@ html_content = """<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: all var(--dur-fast) var(--ease-base);
+      transition-property: background-color, border-color, color, transform;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: var(--ease-base);
     }
     .modal-hide-btn svg {
       width: 14px;
@@ -1984,7 +2048,9 @@ html_content = """<!DOCTYPE html>
       gap: 12px;
       pointer-events: auto;
       animation: sonnerEnter 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      transition: all 180ms ease;
+      transition-property: transform, opacity;
+      transition-duration: 180ms;
+      transition-timing-function: ease;
     }
     @keyframes sonnerEnter {
       from {
@@ -2040,7 +2106,9 @@ html_content = """<!DOCTYPE html>
       border-radius: 6px;
       cursor: pointer;
       flex-shrink: 0;
-      transition: all var(--dur-fast) ease;
+      transition-property: background-color, border-color, color, transform;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: ease;
     }
     .sonner-undo-btn:hover {
       background: var(--accent-amber-bg);
@@ -2215,7 +2283,9 @@ html_content = """<!DOCTYPE html>
       padding: 5px 10px;
       border-radius: 6px;
       cursor: pointer;
-      transition: all var(--dur-fast) ease;
+      transition-property: background-color, border-color, color, transform;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: ease;
     }
     .nav-search-trigger:hover {
       background: var(--bg-subsurface-hover);
@@ -2248,7 +2318,9 @@ html_content = """<!DOCTYPE html>
       justify-content: space-between;
       text-decoration: none;
       box-sizing: border-box;
-      transition: all var(--dur-fast) var(--ease-base);
+      transition-property: background-color, border-color, color, transform;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: var(--ease-base);
     }
     .cta-primary-btn:hover {
       background: var(--text-primary);
@@ -2323,7 +2395,9 @@ html_content = """<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: all var(--dur-fast) var(--ease-base);
+      transition-property: background-color, border-color, color, transform;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: var(--ease-base);
     }
     .score-modal-close:hover {
       background: #FFFFFF;
@@ -2357,7 +2431,9 @@ html_content = """<!DOCTYPE html>
       padding: 8px 14px;
       border-radius: var(--radius-md);
       cursor: pointer;
-      transition: all var(--dur-fast) var(--ease-base);
+      transition-property: background-color, border-color, color;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: var(--ease-base);
     }
     .modal-dismiss-btn:hover {
       color: var(--text-primary);
@@ -2706,7 +2782,9 @@ html_content = """<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 3px;
-      transition: all var(--dur-fast) var(--ease-base);
+      transition-property: background-color, border-color, color, transform;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: var(--ease-base);
     }
     .card-audit-btn:hover {
       background: var(--text-primary);
@@ -2759,7 +2837,9 @@ html_content = """<!DOCTYPE html>
       font-size: 10.5px;
       font-weight: 600;
       text-decoration: none;
-      transition: all var(--dur-fast) var(--ease-base);
+      transition-property: background-color, border-color, color, transform;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: var(--ease-base);
     }
     .pdi-portal-link:hover {
       background: rgba(56, 189, 248, 0.18);
@@ -2958,26 +3038,28 @@ html_content = """<!DOCTYPE html>
       }
       .mobile-search-input {
         width: 100%;
-        height: 38px;
+        height: 42px;
         background: var(--bg-surface);
         border: 1px solid var(--border-color);
         border-radius: var(--radius-md);
         color: var(--text-primary);
         font-family: var(--font-sans);
         font-size: 13px;
-        padding: 0 28px 0 32px;
+        padding: 0 36px 0 34px;
         outline: none;
-        transition: border-color var(--dur-fast);
+        transition-property: border-color, box-shadow;
+        transition-duration: var(--dur-fast);
       }
       .mobile-search-input:focus {
         border-color: var(--border-focus);
+        box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
       }
       .btn-mobile-filter-trigger {
         flex-shrink: 0;
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        height: 38px;
+        height: 42px;
         padding: 0 12px;
         background: var(--bg-surface);
         border: 1px solid var(--border-color);
@@ -2987,7 +3069,8 @@ html_content = """<!DOCTYPE html>
         font-size: 12px;
         font-weight: 600;
         cursor: pointer;
-        transition: background 0.15s, border-color 0.15s;
+        transition-property: background-color, border-color, transform;
+        transition-duration: 0.15s;
       }
       .btn-mobile-filter-trigger:active {
         transform: scale(0.96);
@@ -3010,7 +3093,7 @@ html_content = """<!DOCTYPE html>
         flex-shrink: 0;
       }
       .mobile-sort-select {
-        height: 38px;
+        height: 42px;
         background: var(--bg-surface);
         border: 1px solid var(--border-color);
         border-radius: var(--radius-md);
@@ -3018,7 +3101,7 @@ html_content = """<!DOCTYPE html>
         font-family: var(--font-sans);
         font-size: 11.5px;
         font-weight: 500;
-        padding: 0 6px;
+        padding: 0 8px;
         outline: none;
       }
 
@@ -3040,18 +3123,19 @@ html_content = """<!DOCTYPE html>
         display: inline-flex;
         align-items: center;
         gap: 5px;
-        height: 32px;
-        padding: 0 10px;
+        height: 34px;
+        padding: 0 11px;
         background: var(--bg-subsurface);
         border: 1px solid var(--border-color);
-        border-radius: 16px;
+        border-radius: 17px;
         color: var(--text-muted);
         font-family: var(--font-sans);
         font-size: 11.5px;
         font-weight: 500;
         cursor: pointer;
         white-space: nowrap;
-        transition: all var(--dur-fast);
+        transition-property: background-color, border-color, color, transform;
+        transition-duration: var(--dur-fast);
       }
       .quick-chip:active {
         transform: scale(0.95);
@@ -4153,6 +4237,13 @@ html_content = """<!DOCTYPE html>
       }
     }
 
+    function applySearchFromCmdk(val) {
+      closeCmdk();
+      onSearchInput(val);
+      const grid = document.getElementById('cars-grid');
+      if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
     function onCmdkInput(val) {
       renderCmdkSuggestions(val.trim());
     }
@@ -4234,39 +4325,56 @@ html_content = """<!DOCTYPE html>
         return;
       }
 
-      const q = query.toLowerCase();
+      const q = query.trim().toLowerCase();
+      const queryTokens = q.split(/\\s+/).filter(Boolean);
+
       const matches = CARS.filter(c => {
-        const text = `${c.make_year} ${c.make} ${c.model} ${c.variant || ''} ${c.hub || ''} ${c.fuel_type || ''}`.toLowerCase();
-        return text.includes(q);
-      }).slice(0, 10);
+        const t = (c.transmission || '').toLowerCase();
+        const isAuto = t.includes('auto') || t.includes('amt') || t.includes('at') || t.includes('cvt') || t.includes('dsg') || t.includes('dct');
+        const transSynonyms = isAuto ? 'automatic auto amt at cvt dsg dct' : 'manual mt stick';
+        const makeSynonyms = (c.make || '').toLowerCase().includes('maruti') ? 'maruti suzuki suzuki' : (c.make || '').toLowerCase();
+        const text = `${c.id} ${c.make_year} ${c.make} ${makeSynonyms} ${c.model} ${c.variant || ''} ${c.hub || ''} ${c.transmission || ''} ${transSynonyms} ${c.fuel_type || ''} ${c.platform || ''}`.toLowerCase();
+        return queryTokens.every(tok => text.includes(tok));
+      }).slice(0, 8);
+
+      let html = `
+        <div class="cmdk-item selected" onclick="applySearchFromCmdk('${q.replace(/'/g, "\\'")}')" id="cmdk-action-search">
+          <div class="cmdk-item-left">
+            <span class="cmdk-item-icon">🔍</span>
+            <span class="cmdk-item-label">Search all cars for <strong>"${query}"</strong></span>
+            <span class="cmdk-item-sub">Apply search to main inventory (${matches.length} matches found)</span>
+          </div>
+          <span class="cmdk-item-badge">Press ↵</span>
+        </div>
+      `;
 
       if (!matches.length) {
-        container.innerHTML = `
-          <div style="padding:28px 16px; text-align:center; color:#888; font-size:13px; line-height:1.5;">
-            No cars found matching "<strong>${query}</strong>".<br/>
-            Try searching "Swift", "City", "Automatic", or "Petrol".
-          </div>
-        `;
-        return;
-      }
-
-      let html = `<div class="cmdk-group-title">Matching Cars (${matches.length})</div>`;
-      matches.forEach(c => {
-        const title = `${c.make_year} ${c.make} ${c.model} ${c.variant || ''}`.trim();
-        const price = '₹' + (c.price / 100000).toFixed(2) + 'L';
-        const km = (c.mileage / 1000).toFixed(0) + 'k km';
-        const trans = (c.transmission || 'MT').toUpperCase();
         html += `
-          <div class="cmdk-item" onclick="selectCmdkCar('${c.id}')">
-            <div class="cmdk-item-left">
-              <span class="cmdk-item-icon">🚗</span>
-              <span class="cmdk-item-label">${title}</span>
-              <span class="cmdk-item-sub">${km} · ${trans} · ${c.hub || 'Bangalore'}</span>
-            </div>
-            <span class="cmdk-item-badge">${price}</span>
+          <div style="padding:28px 16px; text-align:center; color:var(--text-muted); font-size:13px; line-height:1.5;">
+            No cars found matching "<strong>${query}</strong>".<br/>
+            Try searching "Swift", "City", "Automatic", "Petrol", or "Creta".
           </div>
         `;
-      });
+      } else {
+        html += `<div class="cmdk-group-title">Matching Cars (${matches.length})</div>`;
+        matches.forEach(c => {
+          const title = `${c.make_year} ${c.make} ${c.model} ${c.variant || ''}`.trim();
+          const price = '₹' + (c.price / 100000).toFixed(2) + 'L';
+          const km = (c.mileage / 1000).toFixed(0) + 'k km';
+          const trans = (c.transmission || 'MT').toUpperCase();
+          const plat = c.platform || 'Spinny';
+          html += `
+            <div class="cmdk-item" onclick="selectCmdkCar('${c.id}')">
+              <div class="cmdk-item-left">
+                <span class="cmdk-item-icon">🚗</span>
+                <span class="cmdk-item-label">${title}</span>
+                <span class="cmdk-item-sub">${km} · ${trans} · ${plat} · ${c.hub || 'Bangalore'}</span>
+              </div>
+              <span class="cmdk-item-badge">${price}</span>
+            </div>
+          `;
+        });
+      }
       container.innerHTML = html;
     }
 
@@ -4332,16 +4440,46 @@ html_content = """<!DOCTYPE html>
 
     // Global keyboard listener for cmdk
     document.addEventListener('keydown', (e) => {
+      const backdrop = document.getElementById('cmdk-backdrop');
+      const isCmdkOpen = backdrop && backdrop.classList.contains('open');
+
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
-        const backdrop = document.getElementById('cmdk-backdrop');
-        if (backdrop && backdrop.classList.contains('open')) {
+        if (isCmdkOpen) {
           closeCmdk();
         } else {
           openCmdk();
         }
       } else if (e.key === 'Escape') {
-        closeCmdk();
+        if (isCmdkOpen) closeCmdk();
+      } else if (isCmdkOpen) {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          const items = Array.from(document.querySelectorAll('#cmdk-results .cmdk-item'));
+          if (!items.length) return;
+          let idx = items.findIndex(it => it.classList.contains('selected'));
+          if (idx === -1) idx = 0;
+          items[idx].classList.remove('selected');
+          if (e.key === 'ArrowDown') {
+            idx = (idx + 1) % items.length;
+          } else {
+            idx = (idx - 1 + items.length) % items.length;
+          }
+          items[idx].classList.add('selected');
+          items[idx].scrollIntoView({ block: 'nearest' });
+        } else if (e.key === 'Enter') {
+          const selected = document.querySelector('#cmdk-results .cmdk-item.selected');
+          if (selected) {
+            e.preventDefault();
+            selected.click();
+          } else {
+            const input = document.getElementById('cmdk-input');
+            if (input && input.value.trim()) {
+              e.preventDefault();
+              applySearchFromCmdk(input.value.trim());
+            }
+          }
+        }
       }
     });
 
@@ -5003,22 +5141,52 @@ html_content = """<!DOCTYPE html>
 
     // Search input handler
     function onSearchInput(val) {
+      const prevSearch = state.search;
       state.search = (val || '').toLowerCase().trim();
       const dInput = document.getElementById('ctrl-search');
       const mInput = document.getElementById('ctrl-mobile-search');
-      if (dInput && dInput.value !== val) dInput.value = val;
-      if (mInput && mInput.value !== val) mInput.value = val;
+      if (dInput && dInput.value !== (val || '')) dInput.value = val || '';
+      if (mInput && mInput.value !== (val || '')) mInput.value = val || '';
 
       const dClear = document.getElementById('btn-clear-search');
       const mClear = document.getElementById('btn-clear-mobile-search');
-      if (dClear) dClear.style.display = state.search ? 'block' : 'none';
-      if (mClear) mClear.style.display = state.search ? 'block' : 'none';
+      if (dClear) dClear.style.display = state.search ? 'inline-flex' : 'none';
+      if (mClear) mClear.style.display = state.search ? 'inline-flex' : 'none';
+
+      // Auto-scope logic: when searching, lift default 4L cap & curated constraint so all matching models appear
+      if (state.search && !prevSearch) {
+        if (state.viewMode === 'curated') {
+          state._previousViewMode = 'curated';
+          state.viewMode = 'all';
+          state.max_price = 0;
+          state.qualities.delete('top_deal');
+          state.max_km = 0;
+          const maxInput = document.getElementById('ctrl-max-price');
+          if (maxInput) maxInput.value = '';
+          const slider = document.getElementById('ctrl-price-range');
+          if (slider) slider.value = 15.0;
+          updatePriceReadout();
+          syncKmUI(0);
+          updateAllMultiFilterUIs();
+          showToast(`Searching all Bangalore cars for "${val.trim()}"`);
+        }
+      } else if (!state.search && prevSearch) {
+        if (state._previousViewMode === 'curated') {
+          state._previousViewMode = null;
+          setViewMode('curated');
+          return;
+        }
+      }
 
       applyFilters();
     }
 
     function clearSearch() {
       onSearchInput('');
+      const dInput = document.getElementById('ctrl-search');
+      const mInput = document.getElementById('ctrl-mobile-search');
+      if (dInput && window.innerWidth > 768) dInput.focus();
+      else if (mInput && window.innerWidth <= 768) mInput.focus();
     }
 
     // Sort handler
@@ -5104,12 +5272,26 @@ html_content = """<!DOCTYPE html>
       ['platforms', 'brands', 'transmissions', 'fuels', 'qualities'].forEach(updateMultiFilterUI);
     }
 
+    // Slider Track Progress Indicator
+    function updateSliderProgress(sliderId) {
+      const s = document.getElementById(sliderId);
+      if (!s) return;
+      const min = parseFloat(s.min) || 0;
+      const max = parseFloat(s.max) || 100;
+      const val = parseFloat(s.value) || min;
+      const pct = Math.max(0, Math.min(100, ((val - min) / (max - min)) * 100));
+      s.style.background = `linear-gradient(to right, var(--accent-amber) 0%, var(--accent-amber) ${pct}%, var(--border-color) ${pct}%, var(--border-color) 100%)`;
+    }
+
     // Year handlers
     function syncYearUI(yr) {
       const readout = document.getElementById('year-readout');
       if (readout) readout.textContent = yr > 0 ? `${yr}+` : 'Any Year';
       const slider = document.getElementById('ctrl-year-range');
-      if (slider) slider.value = yr || 2012;
+      if (slider) {
+        slider.value = yr || 2012;
+        updateSliderProgress('ctrl-year-range');
+      }
       document.querySelectorAll('#year-pills .ctrl-btn').forEach(b => {
         const val = Number(b.getAttribute('data-val') || 0);
         if (yr === val) b.classList.add('active');
@@ -5127,6 +5309,7 @@ html_content = """<!DOCTYPE html>
     function onYearSlider(val) {
       const yr = Number(val);
       state.min_year = yr <= 2012 ? 0 : yr;
+      updateSliderProgress('ctrl-year-range');
       syncYearUI(state.min_year);
       applyFilters();
     }
@@ -5140,7 +5323,10 @@ html_content = """<!DOCTYPE html>
       const readout = document.getElementById('km-readout');
       if (readout) readout.textContent = km > 0 ? `≤ ${Math.round(km / 1000)}k km` : 'Any KM';
       const slider = document.getElementById('ctrl-km-range');
-      if (slider) slider.value = km ? Math.round(km / 1000) : 120;
+      if (slider) {
+        slider.value = km ? Math.round(km / 1000) : 120;
+        updateSliderProgress('ctrl-km-range');
+      }
       document.querySelectorAll('#km-pills .ctrl-btn').forEach(b => {
         const val = Number(b.getAttribute('data-val') || 0);
         if (km === val) b.classList.add('active');
@@ -5158,6 +5344,7 @@ html_content = """<!DOCTYPE html>
     function onKmSlider(val) {
       const k = Number(val);
       state.max_km = k >= 120 ? 0 : k * 1000;
+      updateSliderProgress('ctrl-km-range');
       syncKmUI(state.max_km);
       applyFilters();
     }
@@ -5181,6 +5368,7 @@ html_content = """<!DOCTYPE html>
       } else if (minL && !maxL) {
         readout.textContent = `Above ₹${minL}L`;
       }
+      updateSliderProgress('ctrl-price-range');
     }
 
     function onMinPriceInput(val) {
@@ -5195,7 +5383,10 @@ html_content = """<!DOCTYPE html>
       if (!isNaN(num) && num > 0) {
         state.max_price = Math.round(num * 100000);
         const slider = document.getElementById('ctrl-price-range');
-        if (slider) slider.value = Math.min(15.0, Math.max(1.0, num));
+        if (slider) {
+          slider.value = Math.min(15.0, Math.max(1.0, num));
+          updateSliderProgress('ctrl-price-range');
+        }
       } else {
         state.max_price = 0;
       }
@@ -5213,6 +5404,7 @@ html_content = """<!DOCTYPE html>
         state.max_price = Math.round(num * 100000);
         if (maxInput) maxInput.value = num.toFixed(2).replace(/\\.00$/, '').replace(/(\\.[1-9])0$/, '$1');
       }
+      updateSliderProgress('ctrl-price-range');
       updatePriceReadout();
       applyFilters();
     }
@@ -5223,7 +5415,10 @@ html_content = """<!DOCTYPE html>
       const maxInput = document.getElementById('ctrl-max-price');
       if (maxInput) maxInput.value = '';
       const slider = document.getElementById('ctrl-price-range');
-      if (slider) slider.value = 15.0;
+      if (slider) {
+        slider.value = 15.0;
+        updateSliderProgress('ctrl-price-range');
+      }
       state.min_price = 0;
       state.max_price = 0;
       updatePriceReadout();
@@ -5236,7 +5431,10 @@ html_content = """<!DOCTYPE html>
       const readout = document.getElementById('discount-readout');
       if (readout) readout.textContent = num > 0 ? `≥ ${num}% Off` : 'Any';
       const slider = document.getElementById('ctrl-discount-range');
-      if (slider) slider.value = num;
+      if (slider) {
+        slider.value = num;
+        updateSliderProgress('ctrl-discount-range');
+      }
       document.querySelectorAll('#discount-pills .ctrl-btn').forEach(b => {
         const val = Number(b.getAttribute('data-val') || 0);
         if (num === val) b.classList.add('active');
@@ -5247,6 +5445,7 @@ html_content = """<!DOCTYPE html>
     function onDiscountSlider(val) {
       const num = parseInt(val, 10);
       state.min_discount = (!isNaN(num) && num > 0) ? num : 0;
+      updateSliderProgress('ctrl-discount-range');
       syncDiscountUI(state.min_discount);
       applyFilters();
     }
@@ -5302,7 +5501,7 @@ html_content = """<!DOCTYPE html>
       }
 
       if (state.search) {
-        tags.push({ label: `Search: "${state.search}"`, clear: () => clearSearch() });
+        tags.push({ label: `🔍 "${state.search}"`, clear: () => clearSearch() });
       }
 
       if (state.platforms.size > 0) {
@@ -5385,10 +5584,16 @@ html_content = """<!DOCTYPE html>
           }
         }
 
-        // Search
+        // Search (Multi-token keyword matching across all fields + transmission & brand synonyms)
         if (state.search) {
-          const text = `${c.make_year} ${c.make} ${c.model} ${c.variant || ''} ${c.hub || ''} ${c.transmission || ''} ${c.fuel_type || ''}`.toLowerCase();
-          if (!text.includes(state.search)) return false;
+          const queryTokens = state.search.toLowerCase().split(/\\s+/).filter(Boolean);
+          const t = (c.transmission || '').toLowerCase();
+          const isAuto = t.includes('auto') || t.includes('amt') || t.includes('at') || t.includes('cvt') || t.includes('dsg') || t.includes('dct');
+          const transSynonyms = isAuto ? 'automatic auto amt at cvt dsg dct' : 'manual mt stick';
+          const makeSynonyms = (c.make || '').toLowerCase().includes('maruti') ? 'maruti suzuki suzuki' : (c.make || '').toLowerCase();
+          const searchTarget = `${c.id} ${c.make_year} ${c.make} ${makeSynonyms} ${c.model} ${c.variant || ''} ${c.hub || ''} ${c.transmission || ''} ${transSynonyms} ${c.fuel_type || ''} ${c.platform || ''} ${c.category || ''} ${c.verdict || ''}`.toLowerCase();
+          const matchesAllTokens = queryTokens.every(tok => searchTarget.includes(tok));
+          if (!matchesAllTokens) return false;
         }
 
         // Platform (Multi-Select)
@@ -5953,14 +6158,32 @@ html_content = """<!DOCTYPE html>
     function renderCards(list) {
       const grid = document.getElementById('cars-grid');
       if (!list.length) {
-        grid.innerHTML = `
-          <div class="empty-state">
-            <div class="empty-state-icon">🚗💨</div>
-            <h3>Oops! No cars match all those filters</h3>
-            <p>Try easing your price range or clearing a filter to see more Bangalore cars.</p>
-            <button class="facet-pill active" onclick="resetAll()">Reset All Filters 🔄</button>
-          </div>
-        `;
+        if (state.search) {
+          grid.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-state-icon">🔍🚗</div>
+              <h3>Oops! No cars match "${state.search}"</h3>
+              <p>Check the spelling or tap one of these popular choices to explore:</p>
+              <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:16px 0;">
+                <button type="button" class="ctrl-btn" onclick="executeCmdkAction('filter_under4l')">💰 Under ₹4 Lakh</button>
+                <button type="button" class="ctrl-btn" onclick="executeCmdkAction('filter_auto')">⚡ Automatic Cars</button>
+                <button type="button" class="ctrl-btn" onclick="onSearchInput('Swift')">🚗 Maruti Swift</button>
+                <button type="button" class="ctrl-btn" onclick="onSearchInput('i20')">🚗 Hyundai i20</button>
+                <button type="button" class="ctrl-btn" onclick="onSearchInput('City')">🚗 Honda City</button>
+              </div>
+              <button class="facet-pill active" onclick="clearSearch()">Clear Search ✕</button>
+            </div>
+          `;
+        } else {
+          grid.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-state-icon">🚗💨</div>
+              <h3>Oops! No cars match all those filters</h3>
+              <p>Try easing your price range or clearing a filter to see more Bangalore cars.</p>
+              <button class="facet-pill active" onclick="resetAll()">Reset All Filters 🔄</button>
+            </div>
+          `;
+        }
         return;
       }
 
@@ -6013,7 +6236,8 @@ html_content = """<!DOCTYPE html>
                 </span>
               </div>
 
-              ${c.img ? `<img src="${c.img}" alt="${title}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'card-photo-fallback\\'>🚗 <span>Preview Unavailable</span></div>';" />` : '<div class="card-photo-fallback">🚗 <span>No Preview</span></div>'}
+              ${c.img ? `<img src="${c.img}" alt="${title}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';" />` : ''}
+              <div class="card-photo-fallback" style="${c.img ? 'display:none;' : 'display:flex;'}">🚗 <span>Preview Unavailable</span></div>
             </div>
 
             <div class="card-content">
