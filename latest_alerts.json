@@ -1,7 +1,7 @@
 [
   {
     "id": "c24_10232612190",
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -17,7 +17,7 @@
   },
   {
     "id": "c24_10660874127",
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -33,7 +33,7 @@
   },
   {
     "id": "c24_10252890199",
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "Cars24",
     "make": "Renault",
     "model": "Duster",
@@ -49,7 +49,7 @@
   },
   {
     "id": 32778904,
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "Spinny",
     "make": "Hyundai",
     "model": "i10",
@@ -65,7 +65,7 @@
   },
   {
     "id": 28645789,
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "Spinny",
     "make": "Tata",
     "model": "Zest",
@@ -81,7 +81,7 @@
   },
   {
     "id": "c24_10280174107",
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "Cars24",
     "make": "Hyundai",
     "model": "Grand i10",
@@ -97,7 +97,7 @@
   },
   {
     "id": "c24_10218575105",
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "Cars24",
     "make": "Fiat",
     "model": "Avventura",
@@ -112,8 +112,24 @@
     "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/bbb7f012-d6e2-11f1-af2d-02ede2007fbe/2b791394-cbb3-4a3f-954b-fe8530542106/6d7b18ee-183a-4134-b36f-1e9d1d49caa7/0b191485-efef-46aa-ac3c-79c39bd94fba/slot/1.png"
   },
   {
+    "id": "c24_10214172189",
+    "timestamp": "2026-11-11 23:44",
+    "platform": "Cars24",
+    "make": "Nissan",
+    "model": "Micra",
+    "variant": "XV CVT",
+    "make_year": 2018,
+    "price": 360433,
+    "retail_discount_pct": 51,
+    "deal_score": 84,
+    "mileage": 43777,
+    "hub": "Bellahalli, Bengaluru",
+    "url": "https://www.cars24.com/buy-used-nissan-micra-2018-cars-bangalore-10214172189/",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/86368912-aec9-11f1-bd5e-02ede2007fbe/m/0a3dd725-a563-4cce-aa6c-32e5aa8363f0/2c983bcc-6fc7-4c97-aa03-a060ce310c5f/63ad3dda-8180-4158-b557-bc55fc47126c/slot/1.png"
+  },
+  {
     "id": "c24_10221017194",
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra",
@@ -129,7 +145,7 @@
   },
   {
     "id": "c24_10247377180",
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "Cars24",
     "make": "Hyundai",
     "model": "Grand i10",
@@ -144,40 +160,8 @@
     "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/d2429c10-b1d5-11f1-bd5e-02ede2007fbe/b32c5f04-5614-433b-a652-f212958c3d4b/641a63cc-3aa9-4425-a510-6c15ce7fea51/f069bb69-22d8-4ceb-9e03-3b28c0166de7/slot/1.png"
   },
   {
-    "id": "c24_10214172189",
-    "timestamp": "2026-11-11 17:29",
-    "platform": "Cars24",
-    "make": "Nissan",
-    "model": "Micra",
-    "variant": "XV CVT",
-    "make_year": 2018,
-    "price": 360433,
-    "retail_discount_pct": 51,
-    "deal_score": 84,
-    "mileage": 43777,
-    "hub": "Bellahalli, Bengaluru",
-    "url": "https://www.cars24.com/buy-used-nissan-micra-2018-cars-bangalore-10214172189/",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/86368912-aec9-11f1-bd5e-02ede2007fbe/m/0a3dd725-a563-4cce-aa6c-32e5aa8363f0/2c983bcc-6fc7-4c97-aa03-a060ce310c5f/63ad3dda-8180-4158-b557-bc55fc47126c/slot/1.png"
-  },
-  {
-    "id": "c24_10244075179",
-    "timestamp": "2026-11-11 17:29",
-    "platform": "Cars24",
-    "make": "Tata",
-    "model": "Tiago",
-    "variant": "XT PETROL",
-    "make_year": 2017,
-    "price": 394587,
-    "retail_discount_pct": 47,
-    "deal_score": 84,
-    "mileage": 51425,
-    "hub": "Bellahalli, Bengaluru",
-    "url": "https://www.cars24.com/buy-used-tata-tiago-2017-cars-bangalore-10244075179/",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/f0ebb30c-d0bd-11f1-af2d-02ede2007fbe/d3f11ea7-fb24-4927-9d1e-0fc0d50332e4/e01a95ed-30f9-489d-84fd-4f539451ee0b/fa0b9ed8-3215-490f-bd3d-8273f11df9f7/slot/1.png"
-  },
-  {
     "id": "c24_10290814179",
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra Active",
@@ -192,8 +176,24 @@
     "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/597a90b8-dcef-11f1-af2d-02ede2007fbe/m/8b8525ec-6ae7-4aae-9688-d1131b54ef48/e5f365c2-7a39-4ebe-bdb1-e2bff8d918f8/43735aa5-b746-45ff-9481-0259445127b3/slot/1.png"
   },
   {
+    "id": "c24_10244075179",
+    "timestamp": "2026-11-11 23:44",
+    "platform": "Cars24",
+    "make": "Tata",
+    "model": "Tiago",
+    "variant": "XT PETROL",
+    "make_year": 2017,
+    "price": 394587,
+    "retail_discount_pct": 47,
+    "deal_score": 84,
+    "mileage": 51425,
+    "hub": "Bellahalli, Bengaluru",
+    "url": "https://www.cars24.com/buy-used-tata-tiago-2017-cars-bangalore-10244075179/",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/f0ebb30c-d0bd-11f1-af2d-02ede2007fbe/d3f11ea7-fb24-4927-9d1e-0fc0d50332e4/e01a95ed-30f9-489d-84fd-4f539451ee0b/fa0b9ed8-3215-490f-bd3d-8273f11df9f7/slot/1.png"
+  },
+  {
     "id": "c24_10223975102",
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "Cars24",
     "make": "Tata",
     "model": "TIGOR",
@@ -209,7 +209,7 @@
   },
   {
     "id": "c24_10294777144",
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -225,7 +225,7 @@
   },
   {
     "id": "c24_10227715119",
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -241,7 +241,7 @@
   },
   {
     "id": "olx_1858035416",
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "OLX",
     "make": "Honda",
     "model": "Jazz",
@@ -257,7 +257,7 @@
   },
   {
     "id": "c24_10210674123",
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "Cars24",
     "make": "Chevrolet",
     "model": "Beat",
@@ -273,7 +273,7 @@
   },
   {
     "id": "c24_10248918191",
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra Active",
@@ -289,7 +289,7 @@
   },
   {
     "id": "c24_10276714176",
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "Cars24",
     "make": "Ford",
     "model": "Ecosport",
@@ -305,7 +305,7 @@
   },
   {
     "id": "c24_10217512195",
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "Cars24",
     "make": "Hyundai",
     "model": "Grand i10",
@@ -321,7 +321,7 @@
   },
   {
     "id": "c24_10201979100",
-    "timestamp": "2026-11-11 17:29",
+    "timestamp": "2026-11-11 23:44",
     "platform": "Cars24",
     "make": "Honda",
     "model": "Amaze",
