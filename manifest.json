@@ -1,13 +1,13 @@
 {
   "name": "Bangalore Car Radar",
   "short_name": "Car Radar",
-  "description": "Real-time pre-owned deal screener & mechanical telemetry analyzer across Bangalore",
+  "description": "Hourly used car price ratings, cost breakdown & instant deal alerts across Bangalore",
   "start_url": "/bangalore-car-radar/",
   "scope": "/bangalore-car-radar/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#131209",
-  "theme_color": "#131209",
+  "background_color": "#090D16",
+  "theme_color": "#090D16",
   "icons": [
     {
       "src": "icon-192.png",

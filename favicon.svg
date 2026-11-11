@@ -1,117 +1,163 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
+    <!-- Background Gradient -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#161922"/>
-      <stop offset="100%" stop-color="#08090C"/>
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="50%" stop-color="#090D16"/>
+      <stop offset="100%" stop-color="#020617"/>
     </linearGradient>
-    <linearGradient id="carGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38BDF8"/>
-      <stop offset="60%" stop-color="#3B82F6"/>
-      <stop offset="100%" stop-color="#10B981"/>
+
+    <!-- Border Glow Gradient -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#1E293B" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0.6"/>
     </linearGradient>
-    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#1E293B"/>
-      <stop offset="100%" stop-color="#050811"/>
-    </linearGradient>
-    <radialGradient id="radarGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#10B981" stop-opacity="0.35"/>
+
+    <!-- Radar Sweep Glow -->
+    <radialGradient id="radarSweep" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.45"/>
+      <stop offset="70%" stop-color="#059669" stop-opacity="0.15"/>
       <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
     </radialGradient>
+
+    <!-- Ambient Core Glow -->
     <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.25"/>
+      <stop offset="60%" stop-color="#3B82F6" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#020617" stop-opacity="0"/>
     </radialGradient>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="6" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+
+    <!-- Aerodynamic Car Body Gradient -->
+    <linearGradient id="carBody" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="45%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+
+    <!-- Cockpit Glass Gradient -->
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+
+    <!-- Speedline Accent -->
+    <linearGradient id="speedline" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#67E8F9" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#A5F3FC" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#34D399" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Laser Headlight Beam -->
+    <linearGradient id="headlightBeam" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="30%" stop-color="#38BDF8" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Drop Shadows / Glow Filter -->
+    <filter id="glowLight" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <filter id="shadowCar" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.8"/>
     </filter>
   </defs>
 
-  <!-- Background squircle -->
-  <rect width="512" height="512" rx="128" fill="url(#bgGrad)"/>
-  <rect width="504" height="504" x="4" y="4" rx="124" fill="none" stroke="#242C3D" stroke-width="4"/>
+  <!-- Background Squircle Card (Apple / Material Squircle) -->
+  <rect width="512" height="512" rx="116" fill="url(#bgGrad)"/>
+  <rect width="506" height="506" x="3" y="3" rx="113" fill="none" stroke="url(#borderGrad)" stroke-width="3"/>
 
-  <!-- Subtle ambient radar glow -->
-  <circle cx="256" cy="256" r="210" fill="url(#centerGlow)"/>
+  <!-- Core Ambient Glow -->
+  <circle cx="256" cy="256" r="215" fill="url(#centerGlow)"/>
 
-  <!-- Concentric Radar Rings -->
-  <circle cx="256" cy="256" r="190" fill="none" stroke="#1E293B" stroke-width="3.5" stroke-dasharray="10 8"/>
-  <circle cx="256" cy="256" r="135" fill="none" stroke="#263346" stroke-width="2.5"/>
-  <circle cx="256" cy="256" r="80" fill="none" stroke="#334155" stroke-width="2"/>
+  <!-- Concentric Radar Grid Rings -->
+  <circle cx="256" cy="256" r="192" fill="none" stroke="#1E293B" stroke-width="3" stroke-dasharray="10 8" opacity="0.8"/>
+  <circle cx="256" cy="256" r="138" fill="none" stroke="#334155" stroke-width="2.5" opacity="0.6"/>
+  <circle cx="256" cy="256" r="82" fill="none" stroke="#475569" stroke-width="2" opacity="0.45"/>
 
-  <!-- Axis Crosshairs -->
-  <line x1="256" y1="50" x2="256" y2="462" stroke="#222F42" stroke-width="2" stroke-dasharray="8 8"/>
-  <line x1="50" y1="256" x2="462" y2="256" stroke="#222F42" stroke-width="2" stroke-dasharray="8 8"/>
+  <!-- Radar Crosshairs -->
+  <line x1="256" y1="58" x2="256" y2="454" stroke="#1E293B" stroke-width="2" stroke-dasharray="6 6"/>
+  <line x1="58" y1="256" x2="454" y2="256" stroke="#1E293B" stroke-width="2" stroke-dasharray="6 6"/>
 
-  <!-- Radar Sweep Arc Sector -->
-  <path d="M256 256 L400 130 A190 190 0 0 0 256 66 Z" fill="url(#radarGlow)" opacity="0.65"/>
+  <!-- Dynamic Radar Sweep Sector (Upper Right) -->
+  <path d="M256 256 L410 120 A192 192 0 0 0 256 64 Z" fill="url(#radarSweep)"/>
+  <line x1="256" y1="256" x2="410" y2="120" stroke="#34D399" stroke-width="2.5" opacity="0.85" filter="url(#glowLight)"/>
 
-  <!-- Sleek High-Performance Sports Coupe -->
-  <g transform="translate(0, 10)">
-    <!-- Main Body Shell -->
-    <path d="M84 296 
-             C84 286 92 278 106 274 
-             L148 262 
-             L210 216 
-             C222 206 238 202 256 202 
-             L312 202 
-             C330 202 346 210 358 224 
-             L396 268 
-             L438 284 
-             C446 287 450 293 450 300 
-             L450 308 
-             C450 314 445 318 438 318 
-             L392 318 
-             C388 300 374 286 356 286 
-             C338 286 324 300 320 318 
-             L188 318 
-             C184 300 170 286 152 286 
-             C134 286 120 300 116 318 
-             L92 318 
-             C86 318 82 312 82 306 
-             Z" 
-          fill="url(#carGrad)"/>
-
-    <!-- Greenish/Cyan Speedline Accent -->
-    <path d="M112 276 L154 265 L214 220 L310 220 L354 268 L432 286" fill="none" stroke="#67E8F9" stroke-width="2" opacity="0.6"/>
-
-    <!-- Greenhouse / Cockpit Glass -->
-    <path d="M218 248 
-             L228 222 
-             C232 214 240 210 252 210 
-             L306 210 
-             C318 210 326 215 332 224 
-             L356 250 
-             Z" 
-          fill="url(#glassGrad)"/>
-    
-    <!-- Windshield Pillar Divider -->
-    <line x1="286" y1="210" x2="286" y2="248" stroke="#334155" stroke-width="2.5"/>
-
-    <!-- Sports Wheels -->
-    <!-- Rear Wheel -->
-    <circle cx="152" cy="318" r="30" fill="#070A12" stroke="#38BDF8" stroke-width="5"/>
-    <circle cx="152" cy="318" r="14" fill="#1E293B"/>
-    <circle cx="152" cy="318" r="6" fill="#38BDF8"/>
-
-    <!-- Front Wheel -->
-    <circle cx="356" cy="318" r="30" fill="#070A12" stroke="#10B981" stroke-width="5"/>
-    <circle cx="356" cy="318" r="14" fill="#1E293B"/>
-    <circle cx="356" cy="318" r="6" fill="#10B981"/>
-
-    <!-- LED Headlight / Laser projector -->
-    <path d="M444 290 L466 295 L444 298 Z" fill="#67E8F9" filter="url(#glow)"/>
-    <circle cx="442" cy="294" r="4" fill="#FFFFFF"/>
-
-    <!-- OLED Tail Lamp Strip -->
-    <path d="M88 288 L80 292 L88 295 Z" fill="#F43F5E" filter="url(#glow)"/>
-    <circle cx="90" cy="292" r="3" fill="#FDA4AF"/>
+  <!-- Target Radar Beacon Lock (Upper-Right Detected Vehicle) -->
+  <g transform="translate(390, 138)">
+    <circle cx="0" cy="0" r="8" fill="#10B981" filter="url(#glowLight)"/>
+    <circle cx="0" cy="0" r="18" fill="none" stroke="#34D399" stroke-width="2.5" opacity="0.85"/>
+    <circle cx="0" cy="0" r="28" fill="none" stroke="#10B981" stroke-width="1.8" stroke-dasharray="4 4" opacity="0.6"/>
   </g>
 
-  <!-- Live Target Radar Lock Blip -->
-  <g transform="translate(385, 135)">
-    <circle cx="0" cy="0" r="10" fill="#10B981" filter="url(#glow)"/>
-    <circle cx="0" cy="0" r="22" fill="none" stroke="#34D399" stroke-width="3" opacity="0.85"/>
-    <circle cx="0" cy="0" r="34" fill="none" stroke="#10B981" stroke-width="2" stroke-dasharray="6 6" opacity="0.6"/>
+  <!-- Aerodynamic Sports Coupe (Centerpiece) -->
+  <g filter="url(#shadowCar)" transform="translate(0, 16)">
+    <!-- Forward Headlight Beam Throw -->
+    <path d="M434 292 L490 278 L490 310 Z" fill="url(#headlightBeam)"/>
+
+    <!-- Main Aerodynamic Body Shell -->
+    <path d="M82 296 
+             C82 284 92 274 108 270 
+             L152 258 
+             L214 212 
+             C226 202 242 198 260 198 
+             L318 198 
+             C336 198 352 206 364 220 
+             L402 264 
+             L442 280 
+             C452 284 456 290 456 298 
+             L456 308 
+             C456 315 450 320 442 320 
+             L394 320 
+             C390 300 374 285 354 285 
+             C334 285 318 300 314 320 
+             L186 320 
+             C182 300 166 285 146 285 
+             C126 285 110 300 106 320 
+             L90 320 
+             C84 320 82 314 82 308 
+             Z" 
+          fill="url(#carBody)"/>
+
+    <!-- Fluid High-Contrast Speedline Reflection -->
+    <path d="M114 272 L158 260 L218 216 L316 216 L360 264 L438 282" fill="none" stroke="url(#speedline)" stroke-width="3.5" stroke-linecap="round"/>
+
+    <!-- Cockpit Glass Canopy -->
+    <path d="M222 248 
+             L232 222 
+             C236 214 244 208 256 208 
+             L312 208 
+             C324 208 332 214 338 222 
+             L362 250 
+             Z" 
+          fill="url(#glassGrad)" 
+          stroke="#38BDF8" 
+          stroke-width="1.5" 
+          stroke-opacity="0.4"/>
+    
+    <!-- Windshield B-Pillar Divider -->
+    <line x1="292" y1="208" x2="292" y2="248" stroke="#334155" stroke-width="3"/>
+
+    <!-- Front & Rear Performance Wheels -->
+    <!-- Rear Wheel -->
+    <circle cx="146" cy="320" r="32" fill="#090D16" stroke="#38BDF8" stroke-width="5.5"/>
+    <circle cx="146" cy="320" r="16" fill="#1E293B" stroke="#67E8F9" stroke-width="2"/>
+    <circle cx="146" cy="320" r="7" fill="#38BDF8"/>
+
+    <!-- Front Wheel -->
+    <circle cx="354" cy="320" r="32" fill="#090D16" stroke="#10B981" stroke-width="5.5"/>
+    <circle cx="354" cy="320" r="16" fill="#1E293B" stroke="#34D399" stroke-width="2"/>
+    <circle cx="354" cy="320" r="7" fill="#10B981"/>
+
+    <!-- Front LED Projector Light (White + Cyan Core) -->
+    <path d="M448 290 L460 293 L448 296 Z" fill="#FFFFFF" filter="url(#glowLight)"/>
+    <circle cx="448" cy="293" r="3.5" fill="#E0F2FE"/>
+
+    <!-- Rear Tail Lamp Strip (Crimson Ruby) -->
+    <path d="M88 288 L78 292 L88 295 Z" fill="#F43F5E" filter="url(#glowLight)"/>
+    <circle cx="86" cy="291" r="3" fill="#FDA4AF"/>
   </g>
 </svg>

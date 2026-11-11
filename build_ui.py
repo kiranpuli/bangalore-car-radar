@@ -530,11 +530,11 @@ html_content = """<!DOCTYPE html>
   <meta http-equiv="Expires" content="0" />
 
   <!-- Primary Meta Tags -->
-  <title>Bangalore Used Car Finder — Honest Ratings &amp; Best Pre-Owned Deals</title>
-  <meta name="title" content="Bangalore Used Car Finder — Honest Ratings &amp; Best Pre-Owned Deals">
+  <title>Bangalore Car Radar — Honest Ratings &amp; Best Pre-Owned Deals</title>
+  <meta name="title" content="Bangalore Car Radar — Honest Ratings &amp; Best Pre-Owned Deals">
   <meta name="description" content="Find verified used cars in Bangalore from Spinny, Cars24, Truwo, and OLX. Transparent prices, honest inspection checks, and live price deal ratings.">
-  <meta name="keywords" content="Bangalore used cars, Spinny Bangalore, Cars24 Bangalore, Truwo Bangalore, OLX cars Bangalore, pre-owned cars, BMW Bangalore, cars under 4 lakhs, used car deals, Bangalore car valuation">
-  <meta name="author" content="Bangalore Used Car Finder">
+  <meta name="keywords" content="Bangalore used cars, Spinny Bangalore, Cars24 Bangalore, Truwo Bangalore, OLX cars Bangalore, pre-owned cars, cars under 4 lakhs, used car deals, Bangalore car valuation">
+  <meta name="author" content="Bangalore Car Radar">
   <meta name="robots" content="index, follow">
 
   <!-- Mobile, PWA & Browser Theme -->
@@ -544,7 +544,7 @@ html_content = """<!DOCTYPE html>
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="Car Finder">
+  <meta name="apple-mobile-web-app-title" content="Bangalore Car Radar">
   <meta name="application-name" content="Bangalore Car Radar">
   <meta name="format-detection" content="telephone=no">
 
@@ -3852,6 +3852,208 @@ html_content = """<!DOCTYPE html>
         min-width: 44px;
       }
     }
+
+    /* Polished Brand & Navbar Elements */
+    .nav-brand-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      transition: transform var(--dur-fast) var(--ease-base);
+    }
+    .nav-brand:hover .nav-brand-icon {
+      transform: scale(1.06);
+    }
+    .nav-brand-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 7px;
+      border-radius: var(--radius-pill);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--badge-fair-text);
+      border: 1px solid rgba(16, 185, 129, 0.28);
+      text-transform: uppercase;
+      margin-left: 2px;
+      flex-shrink: 0;
+    }
+    @media (max-width: 640px) {
+      .nav-brand-pill {
+        display: none;
+      }
+    }
+
+    /* Hero Platform Indicator Bar */
+    .hero-platforms-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      margin-top: 14px;
+    }
+    .hero-plat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      font-size: 11.5px;
+      color: var(--text-secondary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      transition: all var(--dur-fast) var(--ease-base);
+    }
+    .hero-plat-badge:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-1px);
+    }
+    .hero-plat-badge strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Market-Ready Comprehensive Footer */
+    .site-footer {
+      margin-top: 48px;
+      padding-top: 36px;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+    .footer-top-grid {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1.5fr 1.2fr;
+      gap: 32px 24px;
+      margin-bottom: 32px;
+    }
+    .footer-brand-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-brand-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+    .footer-brand-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+    }
+    .footer-brand-desc {
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--text-muted);
+      max-width: 320px;
+    }
+    .footer-live-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .footer-stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px;
+      font-size: 11px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+    .footer-col-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+    .footer-links-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .footer-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 12.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color var(--dur-fast) var(--ease-base);
+    }
+    .footer-link:hover {
+      color: var(--accent-primary);
+    }
+    .footer-link-badge {
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: rgba(59, 130, 246, 0.12);
+      color: #3b82f6;
+      text-transform: uppercase;
+    }
+    .footer-bottom {
+      padding: 20px 0 28px 0;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+    .footer-disclaimer {
+      max-width: 600px;
+      line-height: 1.5;
+    }
+    .footer-credits {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .footer-credits a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .footer-credits a:hover {
+      color: var(--accent-primary);
+    }
+    @media (max-width: 900px) {
+      .footer-top-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px 20px;
+      }
+    }
+    @media (max-width: 580px) {
+      .footer-top-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
   </style>
 </head>
 <body>
@@ -3860,9 +4062,10 @@ html_content = """<!DOCTYPE html>
   <header class="site-header" role="banner">
     <div class="site-header-inner">
       <div class="site-header-left">
-        <a href="#" class="nav-brand" title="Bangalore Used Car Finder">
-          <img src="favicon.svg" alt="Car Finder" class="nav-brand-icon" />
-          <span class="nav-brand-name">Bangalore Used Car Finder</span>
+        <a href="#" class="nav-brand" title="Bangalore Car Radar — Verified Used Cars">
+          <img src="favicon.svg" alt="Bangalore Car Radar" class="nav-brand-icon" />
+          <span class="nav-brand-name">Bangalore Car Radar</span>
+          <span class="nav-brand-pill">LIVE RADAR</span>
         </a>
         <div class="nav-status-badge">
           <span class="pulse-dot" aria-hidden="true"></span>
@@ -3909,6 +4112,12 @@ html_content = """<!DOCTYPE html>
       <p class="body-3 hero-subhead">
         Honest price ratings, clean service history, and zero sales pressure. Pick a car below or use the quick filters.
       </p>
+      <div class="hero-platforms-bar">
+        <span class="hero-plat-badge"><span class="source-dot spinny-dot"></span><strong>Spinny</strong> (740+)</span>
+        <span class="hero-plat-badge"><span class="source-dot cars24-dot"></span><strong>Cars24</strong> (620+)</span>
+        <span class="hero-plat-badge"><span class="source-dot truwo-dot"></span><strong>Truwo</strong> (210+)</span>
+        <span class="hero-plat-badge"><span class="source-dot olx-dot"></span><strong>OLX</strong> (210+)</span>
+      </div>
     </header>
 
     <!-- Mobile Command & Quick Facet Bar (Visible only on mobile <= 768px) -->
@@ -4300,6 +4509,66 @@ html_content = """<!DOCTYPE html>
 
 
     <main class="grid" id="cars-grid" aria-live="polite"></main>
+
+    <!-- Market-Ready Comprehensive Footer -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-top-grid">
+        <div class="footer-brand-wrap">
+          <a href="#" class="footer-brand-title">
+            <img src="favicon.svg" alt="Bangalore Car Radar" class="footer-brand-icon" />
+            <span>Bangalore Car Radar</span>
+          </a>
+          <p class="footer-brand-desc">
+            Independent Bangalore pre-owned car aggregator &amp; deal discovery engine. Track honest market values, compare across 4 top platforms, and avoid overpaying.
+          </p>
+          <div class="footer-live-stats">
+            <span class="footer-stat-pill"><span class="pulse-dot"></span>1,700+ Verified Cars</span>
+            <span class="footer-stat-pill">⚡ Hourly Scan Sync</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Platforms Scanned</div>
+          <ul class="footer-links-list">
+            <li><a href="https://www.spinny.com/used-cars-in-bangalore/s/" target="_blank" rel="noopener noreferrer" class="footer-link"><span class="source-dot spinny-dot"></span>Spinny Bangalore</a></li>
+            <li><a href="https://www.cars24.com/buy-used-cars-bengaluru/" target="_blank" rel="noopener noreferrer" class="footer-link"><span class="source-dot cars24-dot"></span>Cars24 Bangalore</a></li>
+            <li><a href="https://truwo.in/" target="_blank" rel="noopener noreferrer" class="footer-link"><span class="source-dot truwo-dot"></span>Truwo Hub</a></li>
+            <li><a href="https://www.olx.in/bengaluru_g4058803/cars_c84" target="_blank" rel="noopener noreferrer" class="footer-link"><span class="source-dot olx-dot"></span>OLX Used Cars</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Govt Verification Tools</div>
+          <ul class="footer-links-list">
+            <li><a href="https://vahan.parivahan.gov.in/nrservices/faces/user/citizen/citizenlogin.xhtml" target="_blank" rel="noopener noreferrer" class="footer-link">Parivahan RC Portal <span class="footer-link-badge">Govt</span></a></li>
+            <li><a href="https://btp.gov.in/" target="_blank" rel="noopener noreferrer" class="footer-link">Bangalore Traffic Police Challan <span class="footer-link-badge">BTP</span></a></li>
+            <li><a href="https://iib.gov.in/" target="_blank" rel="noopener noreferrer" class="footer-link">IIB Vehicle Insurance History</a></li>
+            <li><a href="https://www.npci.org.in/what-we-do/netc-fastag/check-your-netc-fastag-status" target="_blank" rel="noopener noreferrer" class="footer-link">FASTag Active &amp; Blacklist Check</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Navigation &amp; Utilities</div>
+          <ul class="footer-links-list">
+            <li><a href="documentation.html" class="footer-link">Buyer Guide &amp; Scoring Docs</a></li>
+            <li><a href="javascript:void(0)" onclick="openCmdk()" class="footer-link">Quick Search <kbd style="font-size:10px; padding:1px 4px; background:var(--bg-card); border:1px solid var(--border-color); border-radius:3px;">⌘K</kbd></a></li>
+            <li><a href="javascript:void(0)" onclick="toggleAlertsModal()" class="footer-link">Price Drop Alerts</a></li>
+            <li><a href="javascript:void(0)" onclick="openPushModal()" class="footer-link">Push Notifications</a></li>
+            <li><a href="https://github.com/kiranpuli/bangalore-car-radar" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub Repository</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-disclaimer">
+          © 2026 Bangalore Car Radar. Open source, independent consumer research utility. Not affiliated with, endorsed by, or sponsored by Spinny, Cars24, Truwo, OLX, or MoRTH Parivahan. All trademarks and vehicle badges are property of their respective owners.
+        </div>
+        <div class="footer-credits">
+          <span>Bangalore, KA 🇮🇳</span>
+          <a href="https://github.com/kiranpuli/bangalore-car-radar" target="_blank" rel="noopener noreferrer">v2.4.0 Production</a>
+        </div>
+      </div>
+    </footer>
   </div>
 
   <!-- Deal Alerts Modal -->
@@ -4461,7 +4730,7 @@ html_content = """<!DOCTYPE html>
           <span>Navigate <kbd class="cmdk-kbd">↑</kbd> <kbd class="cmdk-kbd">↓</kbd></span>
           <span>Select <kbd class="cmdk-kbd">↵</kbd></span>
         </div>
-        <span>Bangalore Used Car Finder</span>
+        <span>Bangalore Car Radar</span>
       </div>
     </div>
   </div>
