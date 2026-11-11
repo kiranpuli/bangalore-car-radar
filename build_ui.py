@@ -386,21 +386,21 @@ def calculate_score_and_breakdown(car, orig_retail, discount_pct):
         "type": "pos" if yr_pts > 0 else "neg"
     })
 
-    # 3. Depreciation Arbitrage vs Original Retail
+    # 3. Price Discount vs Original Showroom Price
     if discount_pct >= 55:
         disc_pts = 18
         disc_desc = f"Steep {discount_pct}% discount vs ₹{orig_retail/100000:.1f}L new price"
     elif discount_pct >= 45:
         disc_pts = 14
-        disc_desc = f"High {discount_pct}% discount vs original retail"
+        disc_desc = f"High {discount_pct}% discount vs original showroom price"
     elif discount_pct >= 35:
         disc_pts = 9
-        disc_desc = f"Healthy {discount_pct}% savings from original MSRP"
+        disc_desc = f"Healthy {discount_pct}% savings from original showroom price"
     else:
         disc_pts = 4
-        disc_desc = f"{discount_pct}% under original retail value"
+        disc_desc = f"{discount_pct}% under original showroom price"
     factors.append({
-        "pillar": "Depreciation Arbitrage",
+        "pillar": "Price Discount vs New",
         "detail": disc_desc,
         "pts": f"+{disc_pts} pts",
         "type": "pos"
@@ -434,17 +434,17 @@ def calculate_score_and_breakdown(car, orig_retail, discount_pct):
         sweet_reasons.append("post-2018 under 40k km")
     if any(m in make for m in ["maruti", "hyundai", "honda", "toyota"]):
         extra_pts += 4
-        sweet_reasons.append("high-liquidity resale engine")
+        sweet_reasons.append("trusted brand with easy resale & parts")
     dealer_bench = car.get("dealer_benchmark_price")
     if dealer_bench and dealer_bench > price:
         dealer_save = dealer_bench - price
         if dealer_save >= 50000:
             extra_pts += 4
-            sweet_reasons.append(f"₹{dealer_save//1000}k below dealer benchmark")
+            sweet_reasons.append(f"₹{dealer_save//1000}k below local dealer price")
     if extra_pts > 0:
         factors.append({
-            "pillar": "Bangalore Resale Archetype",
-            "detail": f"Sweet spot combo: {', '.join(sweet_reasons)}",
+            "pillar": "Bangalore Popular Demand",
+            "detail": f"Great combination: {', '.join(sweet_reasons)}",
             "pts": f"+{extra_pts} pts",
             "type": "pos"
         })
@@ -559,20 +559,20 @@ html_content = """<!DOCTYPE html>
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://kiranpuli.github.io/bangalore-car-radar/">
-  <meta property="og:title" content="Bangalore Car Radar — Curated Pre-Owned Deals &amp; Mechanical Telemetry Screener">
-  <meta property="og:description" content="Live market intelligence indexing 1,790+ inspected cars across Spinny, Cars24, Truwo, and OLX with 200-point mechanical audits, depreciation tracking, and mobile push alerts.">
+  <meta property="og:title" content="Bangalore Car Radar — Curated Used Cars, Honest Prices &amp; Deal Finder">
+  <meta property="og:description" content="Find the best verified used cars in Bangalore across Spinny, Cars24, Truwo, and OLX with honest price checks, fair value scores, and instant deal alerts.">
   <meta property="og:image" content="https://kiranpuli.github.io/bangalore-car-radar/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Bangalore Car Radar — Real-Time Deal Screener Preview">
+  <meta property="og:image:alt" content="Bangalore Car Radar Preview">
   <meta property="og:site_name" content="Bangalore Car Radar">
   <meta property="og:locale" content="en_IN">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://kiranpuli.github.io/bangalore-car-radar/">
-  <meta name="twitter:title" content="Bangalore Car Radar — Curated Pre-Owned Deals &amp; Mechanical Telemetry Screener">
-  <meta name="twitter:description" content="Live market intelligence indexing 1,790+ inspected cars across Spinny, Cars24, Truwo, and OLX with 200-point mechanical audits, depreciation tracking, and mobile push alerts.">
+  <meta name="twitter:title" content="Bangalore Car Radar — Curated Used Cars, Honest Prices &amp; Deal Finder">
+  <meta name="twitter:description" content="Find the best verified used cars in Bangalore across Spinny, Cars24, Truwo, and OLX with honest price checks, fair value scores, and instant deal alerts.">
   <meta name="twitter:image" content="https://kiranpuli.github.io/bangalore-car-radar/og-image.png">
   <meta name="twitter:image:alt" content="Bangalore Car Radar Preview">
 
@@ -4310,7 +4310,7 @@ html_content = """<!DOCTYPE html>
         <button class="alerts-modal-close" onclick="toggleAlertsModal()" title="Close">✕</button>
       </div>
       <div style="padding:12px 16px; background:var(--bg-subsurface); border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
-        <span class="caption-5" style="color:var(--text-muted);">Dispatches automatically when deals under ₹4L are discovered.</span>
+        <span class="caption-5" style="color:var(--text-muted);">Sends alerts instantly when good deals under ₹4 Lakh appear.</span>
         <button class="nav-btn" id="btn-req-notify" onclick="requestBrowserNotifications()">Enable Desktop Alerts</button>
       </div>
       <div class="alerts-modal-body" id="alerts-modal-body">
@@ -4404,7 +4404,7 @@ html_content = """<!DOCTYPE html>
         <div id="push-test-result" style="display:none; font-size:12px; font-family:var(--font-mono); text-align:center;"></div>
       </div>
       <div class="score-modal-footer">
-        <span class="caption-5" style="color:var(--text-subtle);">Automated crawler dispatches push alerts on every qualifying top deal.</span>
+        <span class="caption-5" style="color:var(--text-subtle);">Sends alerts instantly when matching cars drop.</span>
         <button type="button" class="modal-dismiss-btn" onclick="closePushModal()">Done</button>
       </div>
     </div>
@@ -4422,7 +4422,7 @@ html_content = """<!DOCTYPE html>
       </div>
       <div class="score-modal-body" style="gap:12px;">
         <p class="caption-2" style="color:var(--text-muted); margin:0; line-height:1.5;">
-          Cars matching these models are hidden from your feed and scoring. Click the eye icon on any vehicle card to hide more models.
+          Cars matching these models are hidden from your feed and scoring. Click the eye icon or Hide Model button on any car to hide models you dislike.
         </p>
         <div id="excluded-models-list" style="display:flex; flex-direction:column; gap:8px;">
           <!-- Injected dynamically -->
@@ -4730,58 +4730,77 @@ html_content = """<!DOCTYPE html>
       container.innerHTML = html;
     }
 
+    function clearAllFilters() {
+      state.search = '';
+      state.viewMode = 'all';
+      state.min_price = 0;
+      state.max_price = 0;
+      state.min_year = 0;
+      state.max_km = 0;
+      state.min_discount = 0;
+      state.sort = 'score';
+
+      state.platforms.clear();
+      state.brands.clear();
+      state.transmissions.clear();
+      state.fuels.clear();
+      state.qualities.clear();
+
+      syncAllFilterUIsFromState();
+    }
+
     function executeCmdkAction(action) {
       closeCmdk();
       if (action === 'filter_under4l') {
         clearAllFilters();
         state.max_price = 400000;
-        const s = document.getElementById('ctrl-price-range');
-        if (s) s.value = 4.0;
-        const maxInput = document.getElementById('ctrl-max-price');
-        if (maxInput) maxInput.value = '4.0';
-        updatePriceReadout();
+        syncAllFilterUIsFromState();
         applyFilters();
         showToast('Filtered to cars under ₹4 Lakh');
       } else if (action === 'filter_auto') {
         clearAllFilters();
         state.transmissions.add('automatic');
-        updateAllMultiFilterUIs();
+        syncAllFilterUIsFromState();
         applyFilters();
         showToast('Filtered to Automatic gearbox cars');
       } else if (action === 'filter_lowkm') {
         clearAllFilters();
         state.max_km = 40000;
-        const k = document.getElementById('ctrl-km-range');
-        if (k) k.value = 40;
-        syncKmUI(40000);
+        syncAllFilterUIsFromState();
         applyFilters();
         showToast('Filtered to cars under 40,000 km');
       } else if (action === 'filter_german') {
         filterGermanUnder4L();
+        showToast('Filtered to German cars under ₹4 Lakh');
       } else if (action === 'brand_maruti') {
         clearAllFilters();
         state.brands.add('maruti');
-        updateAllMultiFilterUIs();
+        syncAllFilterUIsFromState();
         applyFilters();
         showToast('Showing Maruti Suzuki cars');
       } else if (action === 'brand_hyundai') {
         clearAllFilters();
         state.brands.add('hyundai');
-        updateAllMultiFilterUIs();
+        syncAllFilterUIsFromState();
         applyFilters();
         showToast('Showing Hyundai cars');
       } else if (action === 'brand_tata') {
         clearAllFilters();
         state.brands.add('tata');
-        updateAllMultiFilterUIs();
+        syncAllFilterUIsFromState();
         applyFilters();
         showToast('Showing Tata cars');
       } else if (action === 'brand_honda') {
         clearAllFilters();
         state.brands.add('honda');
-        updateAllMultiFilterUIs();
+        syncAllFilterUIsFromState();
         applyFilters();
         showToast('Showing Honda cars');
+      }
+
+      const grid = document.getElementById('cars-grid');
+      if (grid) {
+        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
 
