@@ -577,42 +577,39 @@
     /* Hero Section (Compact & Minimal) */
     .hero-section {
       text-align: center;
-      margin: 0 auto var(--sp-200) auto;
+      margin: 0 auto 16px auto;
       max-width: 680px;
     }
-    .hero-tagline-wrap {
+    .hero-badge-row {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       flex-wrap: wrap;
       justify-content: center;
     }
     .tagline-badge {
       display: inline-block;
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 10.5px;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       color: var(--accent-blue);
       background: var(--accent-blue-bg);
       border: 1px solid rgba(59, 130, 246, 0.3);
-      padding: 2px 8px;
+      padding: 3px 9px;
       border-radius: var(--radius-pill);
     }
-    .tagline-compact-text {
+    .hero-live-pill {
       font-family: var(--font-mono);
       font-size: 11px;
-      color: var(--text-subtle);
-    }
-    .tagline-word {
-      display: inline-block;
-      color: var(--text-subtle);
-      transition: color 500ms var(--ease-base);
-      margin-right: 0.22em;
-    }
-    .tagline-word.revealed {
-      color: var(--text-body);
+      font-weight: 500;
+      color: var(--accent-emerald);
+      background: var(--accent-emerald-bg);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
     }
     .hero-heading {
       font-size: clamp(26px, 4.5vw, 40px);
@@ -625,10 +622,10 @@
     }
     .hero-subhead {
       color: var(--text-muted);
-      font-size: 14.5px;
-      line-height: 22px;
+      font-size: 14px;
+      line-height: 20px;
       text-wrap: balance;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     /* Cohesive Filter Workbench & Mobile Architecture (elayadesign/ai-design-skills) */
@@ -639,7 +636,19 @@
       display: none;
     }
     .drawer-scrollable-body {
-      display: contents;
+      display: none;
+    }
+    .filter-deck.expanded .drawer-scrollable-body {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 14px;
+      animation: filterSlideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes filterSlideDown {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .filter-deck {
@@ -793,14 +802,65 @@
       background: var(--bg-surface);
       color: var(--text-primary);
     }
+    .btn-toggle-filters {
+      height: 38px;
+      padding: 0 14px;
+      border-radius: var(--radius-md);
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      box-sizing: border-box;
+      transition-property: background-color, border-color, color, transform, box-shadow;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: var(--ease-base);
+    }
+    .btn-toggle-filters:hover {
+      background: var(--bg-subsurface-hover);
+      border-color: var(--text-muted);
+    }
+    .btn-toggle-filters:active {
+      transform: scale(0.97);
+    }
+    .filter-deck.expanded .btn-toggle-filters {
+      background: var(--accent-amber);
+      border-color: var(--accent-amber);
+      color: #131209;
+      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
+    }
+    .desktop-filter-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 5px;
+      border-radius: 9px;
+      background: var(--accent-amber);
+      color: #131209;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .filter-deck.expanded .desktop-filter-badge {
+      background: #131209;
+      color: var(--accent-amber);
+    }
 
     /* Cohesive Symmetrical Filter Grids */
     .deck-metrics-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
-      border-top: 1px solid var(--border-subtle);
-      padding-top: 12px;
+      border-top: none;
+      padding-top: 0;
     }
     .deck-facets-grid {
       display: grid;
@@ -1780,33 +1840,35 @@
       color: var(--text-muted);
     }
     .cta-primary-btn {
-      flex: 1;
+      flex: 1.2;
       min-width: 0;
-      background: var(--bg-subsurface);
-      border: 1px solid var(--border-color);
-      color: var(--text-primary);
+      background: var(--accent-amber);
+      border: 1px solid var(--accent-amber);
+      color: #131209;
+      font-family: var(--font-sans);
       font-size: 12.5px;
-      font-weight: 600;
-      padding: 0 12px;
+      font-weight: 700;
+      padding: 0 10px;
       height: 36px;
       border-radius: var(--radius-md);
       cursor: pointer;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 5px;
       text-decoration: none;
       box-sizing: border-box;
-      transition-property: background-color, border-color, color, transform;
+      box-shadow: 0 2px 6px rgba(245, 158, 11, 0.2);
+      transition-property: background-color, border-color, color, transform, box-shadow;
       transition-duration: var(--dur-fast);
       transition-timing-function: var(--ease-base);
     }
     .cta-primary-btn:hover {
-      background: var(--text-primary);
-      border-color: var(--text-primary);
-      color: var(--bg-surface);
+      filter: brightness(1.08);
+      box-shadow: 0 3px 10px rgba(245, 158, 11, 0.35);
     }
     .cta-primary-btn:active {
-      transform: scale(0.98);
+      transform: scale(0.97);
     }
 
     /* Score Calculation Pop-up Modal (elayadesign/ai-design-skills) */
@@ -2247,27 +2309,34 @@
     }
 
     .card-audit-btn {
-      margin-left: auto;
-      background: transparent;
+      flex: 1;
+      min-width: 0;
+      background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
       color: var(--text-primary);
-      font-family: var(--font-mono);
-      font-size: 10px;
+      font-family: var(--font-sans);
+      font-size: 12px;
       font-weight: 600;
-      padding: 2px 7px;
-      border-radius: 4px;
+      padding: 0 8px;
+      height: 36px;
+      border-radius: var(--radius-md);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 3px;
+      justify-content: center;
+      gap: 4px;
+      box-sizing: border-box;
       transition-property: background-color, border-color, color, transform;
       transition-duration: var(--dur-fast);
       transition-timing-function: var(--ease-base);
     }
     .card-audit-btn:hover {
-      background: var(--text-primary);
-      color: #000000;
-      border-color: var(--text-primary);
+      background: var(--bg-subsurface-hover);
+      border-color: var(--text-muted);
+      color: var(--text-primary);
+    }
+    .card-audit-btn:active {
+      transform: scale(0.97);
     }
 
     /* PDI & Official Verification Guide */
@@ -2871,10 +2940,10 @@
       button, a, select, input {
         -webkit-tap-highlight-color: transparent;
       }
-      .facet-pill, .preset-chip-btn, .nav-btn, .cta-primary-btn, .card-hide-btn {
+      .facet-pill, .preset-chip-btn, .nav-btn, .cta-primary-btn, .card-audit-btn, .card-hide-btn {
         min-height: 40px;
       }
-      .cta-primary-btn {
+      .cta-primary-btn, .card-audit-btn {
         height: 40px;
       }
       .card-hide-btn {
@@ -2932,13 +3001,13 @@
   <div class="shell">
     <!-- Hero Section (Playful & Friendly) -->
     <header class="hero-section">
-      <div class="hero-tagline-wrap" id="tagline-reveal">
+      <div class="hero-badge-row">
         <span class="tagline-badge">🚗 Bangalore Car Radar</span>
-        <span class="tagline-compact-text" id="tagline-words"></span>
+        <span class="hero-live-pill">● 1,700+ verified cars live</span>
       </div>
       <h1 class="heading-1 hero-heading">Find your dream car in Bangalore — without the headache ✨</h1>
       <p class="body-3 hero-subhead">
-        We compare 1,700+ verified cars from Spinny, Cars24 & top sellers. Transparent price ratings, honest 2-year resale estimates, and zero salesman pressure.
+        Honest price ratings, clean service history, and zero sales pressure. Pick a car below or use the quick filters.
       </p>
     </header>
 
@@ -3106,6 +3175,16 @@
               <option value="km_asc">Lowest KM</option>
             </select>
           </div>
+          <button type="button" class="btn-toggle-filters" id="btn-toggle-desktop-filters" onclick="toggleDesktopFilters()" aria-expanded="false" title="Show or hide advanced filters">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line>
+              <line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line>
+              <line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line>
+            </svg>
+            <span>Filters</span>
+            <span class="desktop-filter-badge" id="desktop-filter-badge" style="display:none;">0</span>
+          </button>
         </div>
       </div>
 
@@ -4270,6 +4349,16 @@
       }
     }
 
+    function toggleDesktopFilters() {
+      const deck = document.getElementById('filter-workbench');
+      const btn = document.getElementById('btn-toggle-desktop-filters');
+      if (!deck) return;
+      const isExpanded = deck.classList.toggle('expanded');
+      if (btn) {
+        btn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+      }
+    }
+
     function scrollToFilters() {
       if (window.innerWidth <= 768) {
         openMobileFilters();
@@ -4436,6 +4525,11 @@
       }
       const dBadge = document.getElementById('drawer-active-count');
       if (dBadge) dBadge.textContent = count;
+      const dtBadge = document.getElementById('desktop-filter-badge');
+      if (dtBadge) {
+        dtBadge.textContent = count;
+        dtBadge.style.display = count > 0 ? 'inline-flex' : 'none';
+      }
     }
 
 
@@ -5698,6 +5792,11 @@
         }
 
         const verdictText = (c.verdict || (an.pros && an.pros[0]) || 'Inspected car with clean verified service record.');
+        const hubClean = (c.hub || 'Bangalore')
+          .replace(/^Spinny\s+(?:Car\s+Hub|Park)[,\s]*/i, '')
+          .replace(/,\s*(?:Bangalore|Bengaluru)$/i, '')
+          .replace(/^,\s*/, '')
+          .trim() || 'Bangalore';
 
         return `
           <article class="card" id="card-${c.id}">
@@ -5722,7 +5821,7 @@
               <h2 class="car-title">${title}</h2>
 
               <div class="car-meta-line">
-                <span>${km}</span> · <span>${(c.fuel_type || 'Petrol').toUpperCase()}</span> · <span>${(c.transmission || 'MT').toUpperCase()}</span> · <span class="meta-hub">${c.hub}</span>
+                <span>${km}</span> · <span>${(c.fuel_type || 'Petrol').toUpperCase()}</span> · <span>${(c.transmission || 'MT').toUpperCase()}</span> · <span class="meta-hub" title="${c.hub || ''}">📍 ${hubClean}</span>
               </div>
 
               <div class="card-pricing-bar">
@@ -5731,17 +5830,14 @@
                   ${topPrice ? `<span class="pricing-val-top">${topPrice}</span>` : ''}
                   ${discPct > 0 ? `<span class="discount-pill">Save ${discPct}%</span>` : ''}
                 </div>
-                <span class="pricing-source-badge ${platformClass}">${pricingTagText}</span>
               </div>
 
               <p class="card-verdict-line">${verdictText}</p>
 
-              <div class="card-intel-peek">
-                <span>💡 2-Yr Resale: ~${buyback}</span> · <span>🧰 Service: ~${an.maintenance_yr ? an.maintenance_yr.split('/')[0] : '₹6.5k'}</span>
-                <button type="button" class="card-audit-btn" onclick="openScoreModal('${c.id}', event)" title="View price and maintenance details">Price Details &rarr;</button>
-              </div>
-
               <div class="card-footer">
+                <button type="button" class="card-audit-btn" onclick="openScoreModal('${c.id}', event)" title="View price, resale, and maintenance details">
+                  <span>Price Details</span>
+                </button>
                 <a href="${c.url || '#'}" target="_blank" rel="noopener noreferrer" class="cta-primary-btn">
                   <span>View on ${platformName}</span>
                   <span>&rarr;</span>
