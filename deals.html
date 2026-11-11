@@ -854,17 +854,17 @@
       color: var(--accent-amber);
     }
 
-    /* Cohesive Symmetrical Filter Grids */
+    /* Simplified Clean Filter Grids */
     .deck-metrics-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: 1.4fr 1fr 1fr;
       gap: 12px;
       border-top: none;
       padding-top: 0;
     }
     .deck-facets-grid {
       display: grid;
-      grid-template-columns: 1fr 1.15fr 1.35fr;
+      grid-template-columns: 1fr 1fr 1.15fr;
       gap: 12px;
     }
     .filter-panel {
@@ -3056,35 +3056,17 @@
         </div>
       </div>
 
-      <!-- Horizontal Quick Filter Carousel -->
+      <!-- Simplified Quick Filter Strip -->
       <div class="mobile-quick-chips-strip" id="mobile-quick-strip" role="toolbar" aria-label="Quick Filters">
         <button type="button" class="quick-chip active" id="qchip-curated" onclick="toggleQuickFilter('curated')">
           <span>🔥 Top Deals</span>
           <span class="qchip-count" id="qcount-curated">0</span>
         </button>
         <button type="button" class="quick-chip" id="qchip-auto" onclick="toggleQuickFilter('transmission', 'automatic')">
-          <span>⚡ Easy Auto</span>
-        </button>
-        <button type="button" class="quick-chip" id="qchip-manual" onclick="toggleQuickFilter('transmission', 'manual')">
-          <span>🕹️ Manual</span>
+          <span>⚡ Automatic</span>
         </button>
         <button type="button" class="quick-chip" id="qchip-under4l" onclick="toggleQuickFilter('budget4l')">
           <span>💰 Under ₹4L</span>
-        </button>
-        <button type="button" class="quick-chip" id="qchip-lowkm" onclick="toggleQuickFilter('lowkm')">
-          <span>✨ &lt; 40k km</span>
-        </button>
-        <button type="button" class="quick-chip" id="qchip-petrol" onclick="toggleQuickFilter('fuel', 'petrol')">
-          <span>⛽ Petrol</span>
-        </button>
-        <button type="button" class="quick-chip" id="qchip-diesel" onclick="toggleQuickFilter('fuel', 'diesel')">
-          <span>🛢️ Diesel</span>
-        </button>
-        <button type="button" class="quick-chip" id="qchip-german" onclick="filterGermanUnder4L()">
-          <span>🛡️ German ≤4L</span>
-        </button>
-        <button type="button" class="quick-chip" id="qchip-bmw" onclick="filterBmwDeals()">
-          <span>🏎️ BMW</span>
         </button>
         <button type="button" class="quick-chip" id="qchip-all" onclick="setViewMode('all')">
           <span>All Cars</span>
@@ -3142,21 +3124,10 @@
             <span class="scope-count" id="badge-curated-count">0</span>
           </button>
           <button type="button" class="scope-segment" id="btn-quick-auto" onclick="toggleQuickFilter('transmission', 'automatic')" role="tab">
-            <span>⚡ Easy Auto</span>
+            <span>⚡ Automatic</span>
           </button>
           <button type="button" class="scope-segment" id="btn-quick-4l" onclick="toggleQuickFilter('budget4l')" role="tab">
-            <span>💰 ≤ ₹4L</span>
-          </button>
-          <button type="button" class="scope-segment" id="btn-quick-lowkm" onclick="toggleQuickFilter('lowkm')" role="tab">
-            <span>✨ &lt; 40k km</span>
-          </button>
-          <button type="button" class="scope-segment" id="btn-german-4l" onclick="filterGermanUnder4L()" role="tab">
-            <span>🛡️ German ≤ ₹4L</span>
-            <span class="scope-count" id="badge-german-count">0</span>
-          </button>
-          <button type="button" class="scope-segment" id="btn-mode-bmw" onclick="filterBmwDeals()" role="tab">
-            <span>🏎️ BMW</span>
-            <span class="scope-count" id="badge-bmw-count">0</span>
+            <span>💰 Under ₹4L</span>
           </button>
           <button type="button" class="scope-segment" id="btn-mode-all" onclick="setViewMode('all')" role="tab">
             <span>All Cars</span>
@@ -3263,7 +3234,7 @@
           </div>
         </div>
 
-        <!-- Metric 2: Model Year (Year Floor Pills & Slider) -->
+        <!-- Metric 2: Model Year (Year Floor Pills) -->
         <div class="filter-panel panel-year">
           <div class="panel-header">
             <div class="panel-title-wrap">
@@ -3279,67 +3250,9 @@
             <button type="button" class="ctrl-btn pill-item" data-val="2020" onclick="setYear(2020, this)">2020+</button>
             <button type="button" class="ctrl-btn pill-item" data-val="2022" onclick="setYear(2022, this)">2022+</button>
           </div>
-          <div class="slider-track-wrap">
-            <input 
-              type="range" 
-              id="ctrl-year-range" 
-              class="range-slider-accent" 
-              min="2012" 
-              max="2024" 
-              step="1" 
-              value="2012" 
-              oninput="onYearSlider(this.value)"
-              aria-label="Minimum Model Year Slider"
-            />
-            <div class="slider-ticks">
-              <span>Any</span>
-              <span>2016</span>
-              <span>2018</span>
-              <span>2020</span>
-              <span>2022</span>
-              <span>2024</span>
-            </div>
-          </div>
         </div>
 
-        <!-- Metric 3: Showroom Savings (Discount Pills & Slider) -->
-        <div class="filter-panel panel-discount">
-          <div class="panel-header">
-            <div class="panel-title-wrap">
-              <span class="panel-label">🏷️ Discount vs Showroom</span>
-              <span class="range-readout-badge" id="discount-readout">Any</span>
-            </div>
-            <button type="button" class="btn-panel-action" onclick="clearDiscount()" title="Clear discount filter">Reset</button>
-          </div>
-          <div class="btn-group-row-pills" id="discount-pills">
-            <button type="button" class="ctrl-btn pill-all active" data-val="0" onclick="onDiscountSlider(0)">Any</button>
-            <button type="button" class="ctrl-btn pill-item" data-val="20" onclick="onDiscountSlider(20)">20%+</button>
-            <button type="button" class="ctrl-btn pill-item" data-val="35" onclick="onDiscountSlider(35)">35%+</button>
-            <button type="button" class="ctrl-btn pill-item" data-val="50" onclick="onDiscountSlider(50)">50%+</button>
-          </div>
-          <div class="slider-track-wrap">
-            <input 
-              type="range" 
-              id="ctrl-discount-range" 
-              class="range-slider-accent" 
-              min="0" 
-              max="60" 
-              step="5" 
-              value="0" 
-              oninput="onDiscountSlider(this.value)"
-              aria-label="Minimum showroom savings percentage"
-            />
-            <div class="slider-ticks">
-              <span>Any</span>
-              <span>15%</span>
-              <span>30%</span>
-              <span>45%</span>
-              <span>60%+</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Metric 4: Maximum Mileage (KM Pills & Slider) -->
+        <!-- Metric 3: Maximum Mileage (KM Pills) -->
         <div class="filter-panel panel-mileage">
           <div class="panel-header">
             <div class="panel-title-wrap">
@@ -3354,27 +3267,6 @@
             <button type="button" class="ctrl-btn pill-item" data-val="60000" onclick="setMaxKm(60000, this)">≤ 60k</button>
             <button type="button" class="ctrl-btn pill-item active" data-val="80000" onclick="setMaxKm(80000, this)">≤ 80k</button>
             <button type="button" class="ctrl-btn pill-item" data-val="100000" onclick="setMaxKm(100000, this)">≤ 100k</button>
-          </div>
-          <div class="slider-track-wrap">
-            <input 
-              type="range" 
-              id="ctrl-km-range" 
-              class="range-slider-accent" 
-              min="20" 
-              max="120" 
-              step="10" 
-              value="80" 
-              oninput="onKmSlider(this.value)"
-              aria-label="Maximum Mileage Slider"
-            />
-            <div class="slider-ticks">
-              <span>20k</span>
-              <span>40k</span>
-              <span>60k</span>
-              <span>80k</span>
-              <span>100k</span>
-              <span>120k+</span>
-            </div>
           </div>
         </div>
       </div>
@@ -4427,43 +4319,26 @@
     }
 
     function updateQuickChips() {
+      // Mobile Quick Chips (Simplified)
       const qCurated = document.getElementById('qchip-curated');
       const qAuto = document.getElementById('qchip-auto');
-      const qManual = document.getElementById('qchip-manual');
-      const qPetrol = document.getElementById('qchip-petrol');
-      const qDiesel = document.getElementById('qchip-diesel');
       const qUnder4L = document.getElementById('qchip-under4l');
-      const qLowKm = document.getElementById('qchip-lowkm');
-      const qGerman = document.getElementById('qchip-german');
-      const qBmw = document.getElementById('qchip-bmw');
       const qAll = document.getElementById('qchip-all');
 
       if (qCurated) qCurated.classList.toggle('active', state.viewMode === 'curated');
       if (qAuto) qAuto.classList.toggle('active', state.transmissions.has('automatic'));
-      if (qManual) qManual.classList.toggle('active', state.transmissions.has('manual'));
-      if (qPetrol) qPetrol.classList.toggle('active', state.fuels.has('petrol'));
-      if (qDiesel) qDiesel.classList.toggle('active', state.fuels.has('diesel'));
       if (qUnder4L) qUnder4L.classList.toggle('active', state.max_price === 400000 && state.viewMode !== 'curated');
-      if (qLowKm) qLowKm.classList.toggle('active', state.max_km === 40000);
-      if (qGerman) qGerman.classList.toggle('active', state.brands.has('volkswagen') && state.brands.has('skoda'));
-      if (qBmw) qBmw.classList.toggle('active', state.brands.has('bmw') && state.brands.size === 1);
       if (qAll) qAll.classList.toggle('active', state.viewMode === 'all' && state.transmissions.size === 0 && state.fuels.size === 0 && state.brands.size === 0 && state.max_price === 0 && state.max_km === 0);
 
-      // Desktop Scope & Quick Buttons
+      // Desktop Scope & Quick Buttons (Simplified)
       const btnCurated = document.getElementById('btn-mode-curated');
       const btnAuto = document.getElementById('btn-quick-auto');
       const btn4L = document.getElementById('btn-quick-4l');
-      const btnLowKm = document.getElementById('btn-quick-lowkm');
-      const btnGerman = document.getElementById('btn-german-4l');
-      const btnBmw = document.getElementById('btn-mode-bmw');
       const btnAll = document.getElementById('btn-mode-all');
 
       if (btnCurated) btnCurated.classList.toggle('active', state.viewMode === 'curated');
       if (btnAuto) btnAuto.classList.toggle('active', state.transmissions.has('automatic'));
       if (btn4L) btn4L.classList.toggle('active', state.max_price === 400000 && state.viewMode !== 'curated');
-      if (btnLowKm) btnLowKm.classList.toggle('active', state.max_km === 40000);
-      if (btnGerman) btnGerman.classList.toggle('active', state.brands.has('volkswagen') && state.brands.has('skoda'));
-      if (btnBmw) btnBmw.classList.toggle('active', state.brands.has('bmw') && state.brands.size === 1);
       if (btnAll) btnAll.classList.toggle('active', state.viewMode === 'all' && state.transmissions.size === 0 && state.fuels.size === 0 && state.brands.size === 0 && state.max_price === 0 && state.max_km === 0);
     }
 
