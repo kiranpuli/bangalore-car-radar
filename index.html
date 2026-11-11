@@ -8,20 +8,21 @@
   <meta http-equiv="Expires" content="0" />
 
   <!-- Primary Meta Tags -->
-  <title>Bangalore Car Radar — Curated Pre-Owned Deals &amp; Mechanical Telemetry Screener</title>
-  <meta name="title" content="Bangalore Car Radar — Curated Pre-Owned Deals &amp; Mechanical Telemetry Screener">
-  <meta name="description" content="Continuous pre-owned car market intelligence indexing 1,790+ verified vehicles in Bangalore across Spinny, Cars24, Truwo, and OLX with 200-point telemetry audits, depreciation analysis, and instant push alerts.">
-  <meta name="keywords" content="Bangalore used cars, Spinny Bangalore, Cars24 Bangalore, Truwo Bangalore, OLX cars Bangalore, pre-owned cars, BMW Bangalore, German cars under 4 lakhs, used car deals, Bangalore car valuation">
-  <meta name="author" content="Bangalore Car Radar">
+  <title>Bangalore Used Car Finder — Honest Ratings &amp; Best Pre-Owned Deals</title>
+  <meta name="title" content="Bangalore Used Car Finder — Honest Ratings &amp; Best Pre-Owned Deals">
+  <meta name="description" content="Find verified used cars in Bangalore from Spinny, Cars24, Truwo, and OLX. Transparent prices, honest inspection checks, and live price deal ratings.">
+  <meta name="keywords" content="Bangalore used cars, Spinny Bangalore, Cars24 Bangalore, Truwo Bangalore, OLX cars Bangalore, pre-owned cars, BMW Bangalore, cars under 4 lakhs, used car deals, Bangalore car valuation">
+  <meta name="author" content="Bangalore Used Car Finder">
   <meta name="robots" content="index, follow">
 
   <!-- Mobile, PWA & Browser Theme -->
-  <meta name="theme-color" content="#131209">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#09090B" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Car Radar">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Car Finder">
   <meta name="application-name" content="Bangalore Car Radar">
   <meta name="format-detection" content="telephone=no">
 
@@ -128,6 +129,7 @@
       --card-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.03), 0 4px 16px -2px rgba(15, 23, 42, 0.04);
       --card-shadow-hover: 0 12px 28px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
       --modal-shadow: 0 25px 60px -12px rgba(15, 23, 42, 0.20), 0 12px 24px -6px rgba(15, 23, 42, 0.08);
+      --modal-backdrop: rgba(15, 23, 42, 0.55);
 
       /* Spacing scale - expanded for breathing room */
       --sp-25: 2px;
@@ -201,7 +203,8 @@
 
       --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.55);
       --card-shadow-hover: 0 14px 34px -4px rgba(0, 0, 0, 0.75);
-      --modal-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.9);
+      --modal-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.75), 0 12px 24px -6px rgba(0, 0, 0, 0.55);
+      --modal-backdrop: rgba(0, 0, 0, 0.78);
     }
 
     * {
@@ -2008,35 +2011,51 @@
       animation: modalSlideUp 200ms var(--ease-base);
     }
     @keyframes modalSlideUp {
-      from { transform: translateY(12px) scale(0.98); opacity: 0; }
+      from { transform: translateY(16px) scale(0.98); opacity: 0; }
       to { transform: translateY(0) scale(1); opacity: 1; }
     }
     .score-modal-header {
-      padding: 16px 22px;
+      padding: 18px 24px;
       border-bottom: 1px solid var(--border-color);
       display: flex;
       justify-content: space-between;
       align-items: center;
       background: var(--bg-surface);
+      gap: 12px;
+    }
+    .modal-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-amber);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: var(--font-mono);
+      margin-bottom: 3px;
     }
     .score-modal-header h3 {
-      font-size: 17px;
-      font-weight: 700;
+      font-size: 18px;
+      font-weight: 800;
       color: var(--text-primary);
       letter-spacing: -0.02em;
+      margin: 0;
+      line-height: 1.3;
     }
     .score-modal-close {
       background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
       color: var(--text-muted);
       font-size: 14px;
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
       transition-property: background-color, border-color, color, transform;
       transition-duration: var(--dur-fast);
       transition-timing-function: var(--ease-base);
@@ -2045,17 +2064,21 @@
       background: var(--bg-subsurface-hover);
       border-color: var(--border-focus);
       color: var(--text-primary);
+      transform: scale(1.05);
     }
     .score-modal-body {
-      padding: 20px 22px;
+      padding: 22px 24px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
       background: var(--bg-surface);
     }
+    .modal-sheet-handle {
+      display: none;
+    }
     .score-modal-footer {
-      padding: 16px 22px;
+      padding: 16px 24px;
       border-top: 1px solid var(--border-color);
       background: var(--bg-subsurface);
       display: flex;
@@ -2063,17 +2086,25 @@
       align-items: center;
       gap: 12px;
     }
+    .score-modal-footer-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
     .modal-dismiss-btn {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
       color: var(--text-body);
       font-family: var(--font-sans);
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 600;
-      padding: 9px 16px;
-      height: 40px;
+      padding: 0 20px;
+      height: 44px;
       border-radius: var(--radius-md);
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       box-shadow: 0 1px 2px rgba(0,0,0,0.02);
       transition-property: background-color, border-color, color;
       transition-duration: var(--dur-fast);
@@ -2086,12 +2117,13 @@
     }
     .modal-action-cta {
       width: auto !important;
-      padding: 0 20px !important;
-      height: 40px !important;
-      font-size: 13px;
+      padding: 0 24px !important;
+      height: 44px !important;
+      font-size: 13.5px;
+      font-weight: 700;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
 
     /* Modal Hero Snapshot */
@@ -2102,15 +2134,15 @@
       background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: 16px 18px;
+      padding: 18px 20px;
       flex-wrap: wrap;
       flex-shrink: 0;
     }
     .modal-car-thumb {
-      width: 84px;
-      height: 60px;
+      width: 96px;
+      height: 68px;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 10px;
       background: var(--bg-photo);
       border: 1px solid var(--border-color);
       flex-shrink: 0;
@@ -2123,48 +2155,76 @@
       color: var(--text-subtle);
     }
     .modal-hero-info {
-      flex: 1 1 200px;
+      flex: 1 1 240px;
       min-width: 0;
       display: flex;
       flex-direction: column;
       gap: 4px;
     }
     .modal-hero-title {
-      font-size: 16px;
-      font-weight: 700;
+      font-size: 16.5px;
+      font-weight: 800;
       color: var(--text-primary);
       line-height: 1.35;
     }
-    .modal-hero-meta {
+    .modal-hero-price-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 2px;
+    }
+    .modal-hero-price {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-variant-numeric: tabular-nums;
+    }
+    .modal-hero-saving-pill {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-emerald-text);
+      background: var(--accent-emerald-bg);
+      border: 1px solid var(--accent-emerald-border);
+      padding: 2px 8px;
+      border-radius: 9999px;
       font-family: var(--font-mono);
+    }
+    .modal-hero-meta {
+      font-family: var(--font-sans);
       font-size: 12.5px;
       color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 2px;
     }
     .modal-hero-meta strong {
       color: var(--text-primary);
-      font-size: 13.5px;
     }
     .modal-hero-source {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 6px;
-      font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 11.5px;
       color: var(--text-subtle);
+      margin-top: 2px;
     }
     .modal-score-ring {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 8px 14px;
-      border-radius: var(--radius-md);
+      padding: 10px 16px;
+      border-radius: var(--radius-lg);
       border: 1px solid var(--border-color);
       background: var(--bg-surface);
-      min-width: 95px;
+      min-width: 105px;
       flex-shrink: 0;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
     }
     .modal-score-ring.top {
       background: var(--accent-amber-bg);
@@ -2183,19 +2243,20 @@
       color: var(--accent-emerald-text);
     }
     .score-ring-val {
-      font-family: var(--font-mono);
-      font-size: 24px;
+      font-family: var(--font-sans);
+      font-size: 26px;
       font-weight: 800;
       line-height: 1;
+      font-variant-numeric: tabular-nums;
       color: var(--text-primary);
     }
     .score-ring-lbl {
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-top: 4px;
+      margin-top: 5px;
       color: var(--text-muted);
     }
 
@@ -2208,84 +2269,137 @@
     .telemetry-box {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 12px 14px;
+      border-radius: var(--radius-lg);
+      padding: 14px 16px;
       display: flex;
       flex-direction: column;
       gap: 4px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      transition-property: transform, border-color, box-shadow;
+      transition-duration: var(--dur-fast);
+      transition-timing-function: var(--ease-base);
+    }
+    .telemetry-box:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+    .telemetry-box.tel-resale {
+      background: var(--accent-emerald-bg);
+      border-color: var(--accent-emerald-border);
+    }
+    .telemetry-box.tel-savings {
+      background: var(--accent-amber-bg);
+      border-color: var(--accent-amber-border);
+    }
+    .telemetry-box.tel-dep {
+      background: var(--accent-blue-bg);
+      border-color: var(--accent-blue-border);
+    }
+    .telemetry-box.tel-maint {
+      background: var(--bg-subsurface);
+      border-color: var(--border-color);
+    }
+    .telemetry-top {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .telemetry-icon {
+      font-size: 14px;
+      line-height: 1;
     }
     .telemetry-lbl {
       font-family: var(--font-mono);
       font-size: 10.5px;
-      font-weight: 600;
-      color: var(--text-subtle);
+      font-weight: 700;
+      color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
     .telemetry-num {
-      font-family: var(--font-mono);
-      font-size: 16px;
-      font-weight: 700;
+      font-family: var(--font-sans);
+      font-size: 19px;
+      font-weight: 800;
       color: var(--text-primary);
+      font-variant-numeric: tabular-nums;
+      margin-top: 2px;
     }
     .telemetry-num.buyback { color: var(--accent-emerald-text); }
-    .telemetry-num.maint { color: var(--text-body); }
+    .telemetry-num.maint { color: var(--text-primary); }
     .telemetry-num.savings { color: var(--accent-amber-text); }
     .telemetry-num.dep { color: var(--accent-blue-text); }
     .telemetry-sub {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--text-subtle);
+      font-family: var(--font-sans);
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.35;
+      margin-top: 2px;
     }
 
     /* Rationale Callout */
     .modal-rationale-box {
       background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
-      border-left: 3px solid var(--accent-amber);
-      border-radius: var(--radius-md);
-      padding: 10px 14px;
+      border-radius: var(--radius-lg);
+      padding: 14px 18px;
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 8px;
+    }
+    .modal-rationale-box.top {
+      border-left: 3px solid var(--accent-amber);
     }
     .modal-rationale-box.value {
-      border-left-color: var(--accent-emerald);
+      border-left: 3px solid var(--accent-emerald);
     }
     .rationale-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
     }
     .rationale-badge {
-      font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--accent-amber);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .rationale-badge.top {
+      color: var(--accent-amber-text);
     }
     .rationale-badge.value {
-      color: var(--accent-emerald);
+      color: var(--accent-emerald-text);
+    }
+    .rationale-score-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      padding: 2px 8px;
+      border-radius: 9999px;
     }
     .modal-rationale-text {
-      font-size: 12.5px;
+      font-size: 13px;
       color: var(--text-body);
-      line-height: 1.45;
+      line-height: 1.55;
     }
 
     /* Point Audit Table */
     .modal-breakdown-wrap {
-      background: var(--bg-photo);
+      background: var(--bg-surface);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-lg);
       overflow: hidden;
     }
     .modal-breakdown-head {
       display: flex;
       justify-content: space-between;
-      padding: 8px 12px;
+      padding: 10px 16px;
       background: var(--bg-subsurface);
       border-bottom: 1px solid var(--border-color);
       font-family: var(--font-mono);
@@ -2293,7 +2407,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: var(--text-subtle);
+      color: var(--text-muted);
     }
     .score-audit-list {
       display: flex;
@@ -2303,9 +2417,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 12px;
+      padding: 10px 16px;
       border-bottom: 1px solid var(--border-subtle);
-      gap: 10px;
+      gap: 12px;
     }
     .score-audit-row:last-child {
       border-bottom: none;
@@ -2315,12 +2429,12 @@
       min-width: 0;
     }
     .score-audit-pillar {
-      font-size: 12.5px;
-      font-weight: 600;
+      font-size: 13px;
+      font-weight: 700;
       color: var(--text-primary);
     }
     .score-audit-desc {
-      font-size: 11px;
+      font-size: 11.5px;
       color: var(--text-muted);
       margin-top: 1px;
     }
@@ -2328,20 +2442,25 @@
       font-family: var(--font-mono);
       font-size: 11.5px;
       font-weight: 700;
-      padding: 2px 7px;
-      border-radius: var(--radius-sm);
+      padding: 3px 8px;
+      border-radius: 9999px;
       white-space: nowrap;
       flex-shrink: 0;
     }
     .score-audit-badge.pos {
-      background: rgba(16, 185, 129, 0.16);
-      color: var(--accent-emerald);
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      background: var(--accent-emerald-bg);
+      color: var(--accent-emerald-text);
+      border: 1px solid var(--accent-emerald-border);
     }
     .score-audit-badge.neg {
-      background: rgba(239, 68, 68, 0.16);
-      color: #EF4444;
-      border: 1px solid rgba(239, 68, 68, 0.3);
+      background: #FEE2E2;
+      color: #991B1B;
+      border: 1px solid #FECACA;
+    }
+    [data-theme="dark"] .score-audit-badge.neg {
+      background: rgba(239, 68, 68, 0.18);
+      color: #FCA5A5;
+      border: 1px solid rgba(239, 68, 68, 0.35);
     }
     .score-audit-badge.base {
       background: var(--bg-subsurface);
@@ -2352,11 +2471,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 12px;
+      padding: 12px 16px;
       background: var(--bg-subsurface);
       border-top: 1px solid var(--border-color);
-      font-family: var(--font-mono);
-      font-size: 13px;
+      font-family: var(--font-sans);
+      font-size: 13.5px;
       font-weight: 700;
       color: var(--text-primary);
     }
@@ -2365,52 +2484,52 @@
     .modal-mechanic-notes {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
+      gap: 12px;
     }
     .notes-col {
       background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 10px 12px;
+      border-radius: var(--radius-lg);
+      padding: 14px 16px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
     }
     .notes-head {
-      font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--text-subtle);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .pros-col .notes-head { color: var(--accent-emerald); }
-    .cons-col .notes-head { color: var(--accent-amber); }
+    .pros-col .notes-head { color: var(--accent-emerald-text); }
+    .cons-col .notes-head { color: var(--accent-amber-text); }
     .notes-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
       margin: 0;
       padding: 0;
     }
     .notes-list li {
-      font-size: 11.5px;
+      font-size: 12px;
       color: var(--text-body);
-      line-height: 1.4;
+      line-height: 1.45;
       display: flex;
       align-items: flex-start;
-      gap: 5px;
+      gap: 6px;
     }
     .pro-dot {
       color: var(--accent-emerald);
       font-weight: bold;
-      font-size: 11px;
+      font-size: 12px;
       flex-shrink: 0;
     }
     .con-dot {
       color: var(--accent-amber);
-      font-size: 10px;
+      font-size: 12px;
       flex-shrink: 0;
     }
 
@@ -2418,55 +2537,78 @@
     .modal-pdi-box {
       background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 12px 14px;
+      border-radius: var(--radius-lg);
+      padding: 16px 18px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
     .modal-pdi-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
+      flex-wrap: wrap;
     }
     .modal-pdi-title {
-      font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 12.5px;
       font-weight: 700;
       color: var(--text-primary);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
       display: flex;
       align-items: center;
       gap: 6px;
+    }
+    .pdi-official-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent-amber-text);
+      background: var(--accent-amber-bg);
+      border: 1px solid var(--accent-amber-border);
+      padding: 2px 7px;
+      border-radius: 9999px;
     }
     .modal-pdi-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
     }
     .pdi-portal-link {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 4px;
-      padding: 4px 8px;
-      border-radius: 4px;
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      color: #38BDF8;
-      font-family: var(--font-mono);
-      font-size: 10.5px;
+      justify-content: space-between;
+      padding: 10px 12px;
+      min-height: 42px;
+      border-radius: var(--radius-md);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 12px;
       font-weight: 600;
       text-decoration: none;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
       transition-property: background-color, border-color, color, transform;
       transition-duration: var(--dur-fast);
       transition-timing-function: var(--ease-base);
     }
     .pdi-portal-link:hover {
-      background: rgba(56, 189, 248, 0.18);
-      border-color: rgba(56, 189, 248, 0.45);
-      color: #7DD3FC;
+      background: var(--accent-blue-bg);
+      border-color: var(--accent-blue-border);
+      color: var(--accent-blue-text);
+      transform: translateY(-1px);
+    }
+    .pdi-portal-name {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .pdi-arrow {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-blue);
+      margin-left: 4px;
     }
     .pdi-checklist {
       list-style: none;
@@ -2477,46 +2619,23 @@
       gap: 6px;
     }
     .pdi-checklist li {
-      font-size: 11.5px;
-      line-height: 1.4;
+      font-size: 12px;
+      line-height: 1.45;
       color: var(--text-body);
       display: flex;
       align-items: flex-start;
-      gap: 7px;
+      gap: 8px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 8px 12px;
     }
     .pdi-check-icon {
       color: var(--accent-emerald);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: bold;
       margin-top: 1px;
       flex-shrink: 0;
-    }
-
-    @media (max-width: 560px) {
-      .score-modal-footer {
-        flex-wrap: wrap;
-        gap: 8px;
-        padding: 10px 14px;
-      }
-      .score-modal-footer > div {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        width: 100%;
-        justify-content: flex-end;
-      }
-      .modal-hide-btn {
-        padding: 6px 10px;
-        font-size: 11px;
-      }
-      .modal-dismiss-btn {
-        padding: 6px 10px;
-        font-size: 11px;
-      }
-      .modal-action-cta {
-        padding: 6px 12px !important;
-        font-size: 11.5px;
-      }
     }
 
 
@@ -3052,29 +3171,6 @@
       .pricing-val-main {
         font-size: 23px;
       }
-      .score-modal-backdrop {
-        padding: 12px;
-      }
-      .score-modal {
-        max-height: 94vh;
-        border-radius: var(--radius-xl);
-      }
-      .modal-car-hero {
-        padding: 14px;
-        gap: 12px;
-      }
-      .modal-score-ring {
-        width: 100%;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 8px 14px;
-      }
-      .score-ring-lbl {
-        margin-top: 0;
-      }
-      .modal-mechanic-notes {
-        grid-template-columns: 1fr;
-      }
       .results-bar {
         padding: 6px 2px 14px 2px;
         font-size: 12px;
@@ -3117,6 +3213,72 @@
         height: 44px;
         min-width: 44px;
         flex-shrink: 0;
+      }
+    }
+
+    /* Mobile Sheet / Price Details Modal (Phones <= 640px) */
+    @media (max-width: 640px) {
+      .score-modal-backdrop {
+        padding: 0;
+        align-items: flex-end;
+      }
+      .score-modal {
+        border-radius: 20px 20px 0 0;
+        max-height: 88vh;
+        width: 100%;
+        max-width: 100%;
+        border-bottom: none;
+      }
+      .modal-sheet-handle {
+        display: block;
+        width: 40px;
+        height: 4px;
+        border-radius: 9999px;
+        background: var(--border-color);
+        margin: 0 auto 12px auto;
+      }
+      .score-modal-header {
+        padding: 14px 18px;
+      }
+      .score-modal-body {
+        padding: 16px 18px 24px 18px;
+        gap: 14px;
+      }
+      .telemetry-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .modal-mechanic-notes {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .modal-pdi-links {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .score-modal-footer {
+        padding: 12px 16px;
+        flex-direction: column-reverse;
+        gap: 8px;
+      }
+      .score-modal-footer-actions {
+        width: 100%;
+        display: flex;
+        gap: 8px;
+      }
+      .score-modal-footer-actions .modal-dismiss-btn {
+        flex: 1;
+        height: 46px;
+      }
+      .score-modal-footer-actions .modal-action-cta {
+        flex: 2;
+        height: 46px !important;
+        justify-content: center;
+      }
+      .modal-hide-btn {
+        width: 100%;
+        height: 40px;
+        justify-content: center;
       }
     }
 
@@ -3640,8 +3802,8 @@
     <div class="score-modal" role="dialog" aria-modal="true" aria-labelledby="score-modal-title">
       <div class="score-modal-header">
         <div>
-          <span class="caption-5" style="color:var(--accent-amber); font-family:var(--font-mono); text-transform:uppercase; font-weight:700; letter-spacing:0.06em;">Algorithmic Valuation &amp; PDI Guide</span>
-          <h3 id="score-modal-title" style="margin-top:2px;">Score Calculation</h3>
+          <span class="modal-eyebrow">✨ Car &amp; Price Breakdown</span>
+          <h3 id="score-modal-title" style="margin-top:2px;">Price &amp; Buyer Details</h3>
         </div>
         <button type="button" class="score-modal-close" id="score-modal-close-btn" onclick="closeScoreModal()" title="Close dialog">✕</button>
       </div>
@@ -3649,14 +3811,14 @@
         <!-- Injected dynamically on click -->
       </div>
       <div class="score-modal-footer">
-        <button type="button" class="modal-hide-btn" id="modal-hide-btn" onclick="excludeModelFromModal()">
+        <button type="button" class="modal-hide-btn" id="modal-hide-btn" onclick="excludeModelFromModal()" title="Hide this car model from feed">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
             <line x1="1" y1="1" x2="23" y2="23"></line>
           </svg>
           <span>Hide Model</span>
         </button>
-        <div style="display:flex; gap:8px; align-items:center;">
+        <div class="score-modal-footer-actions">
           <button type="button" class="modal-dismiss-btn" id="btn-modal-done" onclick="closeScoreModal()">Done</button>
           <a href="#" target="_blank" rel="noopener noreferrer" class="cta-primary-btn modal-action-cta" id="modal-footer-cta">
             <span>Inspect Car</span>
@@ -3672,49 +3834,49 @@
     <div class="score-modal" role="dialog" aria-modal="true" aria-labelledby="push-modal-title">
       <div class="score-modal-header">
         <div>
-          <span class="caption-5" style="color:var(--accent-amber); font-family:var(--font-mono); text-transform:uppercase; font-weight:700; letter-spacing:0.06em;">Real-Time Alert Pipeline</span>
-          <h3 id="push-modal-title" style="margin-top:2px;">Instant Mobile Push Alerts</h3>
+          <span class="modal-eyebrow">📲 Instant Deal Alerts</span>
+          <h3 id="push-modal-title" style="margin-top:2px;">Get Notified on New Deals</h3>
         </div>
         <button type="button" class="score-modal-close" onclick="closePushModal()" title="Close dialog">✕</button>
       </div>
       <div class="score-modal-body" style="gap:14px;">
-        <div style="background:var(--bg-photo); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:14px; display:flex; flex-direction:column; gap:8px;">
+        <div style="background:var(--bg-photo); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:16px; display:flex; flex-direction:column; gap:8px;">
           <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-size:18px;">📲</span>
-            <strong style="color:var(--text-primary); font-size:14px;">Get Deals Pushed Directly to Your Phone</strong>
+            <span style="font-size:20px;">📲</span>
+            <strong style="color:var(--text-primary); font-size:15px;">Get Deals Pushed Directly to Your Phone</strong>
           </div>
           <p class="caption-2" style="color:var(--text-muted); margin:0; line-height:1.5;">
             Top Bangalore deals get booked in under 3 hours. Connect your phone via <strong>ntfy.sh</strong> (free, open source, zero signups) to receive instant push alerts with direct listing links whenever a qualifying car drops.
           </p>
         </div>
 
-        <div style="display:flex; flex-direction:column; align-items:center; gap:10px; background:var(--bg-subsurface); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:14px; text-align:center;">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&amp;margin=6&amp;data=https://ntfy.sh/kiran-car-radar" alt="Scan with Samsung S25 Ultra Camera" style="border-radius:10px; border:1px solid var(--border-color); width:130px; height:130px; background:#fff; padding:4px;" />
-          <div style="font-size:12px; color:var(--text-muted);">
-            Point your <strong>Samsung S25 Ultra camera</strong> at this QR code, or use the direct buttons below:
+        <div style="display:flex; flex-direction:column; align-items:center; gap:10px; background:var(--bg-subsurface); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:16px; text-align:center;">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&amp;margin=6&amp;data=https://ntfy.sh/kiran-car-radar" alt="Scan with Phone Camera" style="border-radius:10px; border:1px solid var(--border-color); width:130px; height:130px; background:#fff; padding:4px;" />
+          <div style="font-size:12.5px; color:var(--text-muted);">
+            Point your phone camera at this QR code, or use the direct buttons below:
           </div>
         </div>
 
-        <div style="display:flex; flex-direction:column; gap:8px;">
-          <a href="https://ntfy.sh/kiran-car-radar" target="_blank" rel="noopener noreferrer" class="cta-primary-btn" style="text-decoration:none; display:flex; justify-content:center; align-items:center; gap:8px; padding:12px; font-size:13.5px; font-weight:700;">
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <a href="https://ntfy.sh/kiran-car-radar" target="_blank" rel="noopener noreferrer" class="cta-primary-btn" style="text-decoration:none; display:flex; justify-content:center; align-items:center; gap:8px; padding:12px; font-size:13.5px; font-weight:700; height:44px;">
             <span>📱 1-Tap Browser Push (Open ntfy.sh/kiran-car-radar)</span>
             <span>&rarr;</span>
           </a>
-          <a href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank" rel="noopener noreferrer" class="nav-btn" style="text-decoration:none; display:flex; justify-content:center; align-items:center; gap:8px; padding:10px; font-size:12.5px; font-weight:600; background:rgba(59,130,246,0.1); border-color:rgba(59,130,246,0.3); color:#60A5FA;">
+          <a href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank" rel="noopener noreferrer" class="nav-btn" style="text-decoration:none; display:flex; justify-content:center; align-items:center; gap:8px; padding:12px; font-size:13px; font-weight:600; border-radius:var(--radius-md); background:var(--accent-blue-bg); border:1px solid var(--accent-blue-border); color:var(--accent-blue-text); height:44px;">
             <span>🤖 Google Play Store: Install Free ntfy App (Topic: kiran-car-radar)</span>
             <span>↗</span>
           </a>
         </div>
 
-        <div style="background:var(--bg-subsurface); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:12px 14px; display:flex; flex-direction:column; gap:6px;">
-          <span class="caption-5" style="color:var(--text-subtle); text-transform:uppercase; font-weight:700; font-family:var(--font-mono);">Samsung S25 Ultra Setup (Under 1 Minute)</span>
-          <ol style="margin:0; padding-left:18px; font-size:12px; color:var(--text-body); line-height:1.6;">
-            <li><strong>Browser push (Chrome / Samsung Internet):</strong> Tap the blue button above &rarr; Tap <strong>Subscribe</strong> &rarr; When Android asks, tap <strong>Allow</strong>.</li>
+        <div style="background:var(--bg-subsurface); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:14px 16px; display:flex; flex-direction:column; gap:6px;">
+          <span class="modal-eyebrow">Quick Setup (Under 1 Minute)</span>
+          <ol style="margin:0; padding-left:18px; font-size:12.5px; color:var(--text-body); line-height:1.6;">
+            <li><strong>Browser push (Chrome / Samsung Internet):</strong> Tap the gold button above &rarr; Tap <strong>Subscribe</strong> &rarr; When phone asks, tap <strong>Allow</strong>.</li>
             <li><strong>Or Android App (Play Store):</strong> Install <strong>ntfy</strong> &rarr; Tap <code>+</code> &rarr; Type <code>kiran-car-radar</code> &rarr; Tap <strong>Subscribe</strong>.</li>
           </ol>
         </div>
 
-        <button type="button" class="nav-btn" onclick="sendTestPushFromBrowser()" style="width:100%; justify-content:center; padding:10px; font-size:12.5px; font-weight:600;">
+        <button type="button" class="nav-btn" onclick="sendTestPushFromBrowser()" style="width:100%; justify-content:center; padding:12px; font-size:13px; font-weight:600; height:44px;">
           <span>⚡ Send Live Test Push Notification to Phone</span>
         </button>
         <div id="push-test-result" style="display:none; font-size:12px; font-family:var(--font-mono); text-align:center;"></div>
@@ -3731,21 +3893,21 @@
     <div class="score-modal" role="dialog" aria-modal="true" aria-labelledby="excluded-modal-title">
       <div class="score-modal-header">
         <div>
-          <span class="caption-5" style="color:#EF4444; font-family:var(--font-mono); text-transform:uppercase; font-weight:700; letter-spacing:0.06em;">Preference Filter</span>
-          <h3 id="excluded-modal-title" style="margin-top:2px;">Hidden Car Models</h3>
+          <span class="modal-eyebrow" style="color:#EF4444;">🛡️ Hidden Car Models</span>
+          <h3 id="excluded-modal-title" style="margin-top:2px;">Hidden From Feed</h3>
         </div>
         <button type="button" class="score-modal-close" onclick="closeExcludedModal()" title="Close dialog">✕</button>
       </div>
       <div class="score-modal-body" style="gap:12px;">
-        <p class="caption-2" style="color:var(--text-muted); margin:0;">
-          Cars matching these models are hidden from your feed and scoring. Click the hide icon on any vehicle card to hide more models.
+        <p class="caption-2" style="color:var(--text-muted); margin:0; line-height:1.5;">
+          Cars matching these models are hidden from your feed and scoring. Click the eye icon on any vehicle card to hide more models.
         </p>
-        <div id="excluded-models-list" style="display:flex; flex-direction:column; gap:6px;">
+        <div id="excluded-models-list" style="display:flex; flex-direction:column; gap:8px;">
           <!-- Injected dynamically -->
         </div>
       </div>
       <div class="score-modal-footer">
-        <button type="button" class="nav-btn" onclick="unhideAllModels()" style="color:#EF4444; border-color:rgba(239,68,68,0.3);">Restore All Models</button>
+        <button type="button" class="modal-hide-btn" onclick="unhideAllModels()" style="color:#EF4444; border-color:rgba(239,68,68,0.3); height:44px; padding:0 16px;">Restore All Models</button>
         <button type="button" class="modal-dismiss-btn" onclick="closeExcludedModal()">Done</button>
       </div>
     </div>
@@ -4419,7 +4581,7 @@
     syncAllFilterUIsFromState();
 
     // Word-by-word reveal for B11 tagline
-    const taglineContent = "Transparent pricing and verified mechanical telemetry. Every Bangalore car evaluated for true value and mechanical health.";
+    const taglineContent = "Honest prices and simple condition checks. Every car in Bangalore rated for fair value so you buy with confidence.";
     const taglineEl = document.getElementById('tagline-words');
     if (taglineEl) {
       taglineEl.innerHTML = taglineContent.split(' ').map((word, i) => `<span class="tagline-word" data-w="${i}">${word}</span>`).join(' ');
@@ -5387,13 +5549,24 @@
         gradeColor = 'var(--accent-emerald)';
       }
 
+      function friendlyPillar(p) {
+        if (!p) return 'Car Health Factor';
+        if (p.includes('Base Inventory')) return 'Clean Title & Registration Check';
+        if (p.includes('Odometer')) return 'Kilometers Driven & Usage';
+        if (p.includes('Depreciation')) return 'Showroom Price Savings';
+        if (p.includes('Vehicle Age')) return 'Car Age & Fitness';
+        if (p.includes('Warranty')) return 'Inspection & Seller Verification';
+        return p;
+      }
+
       const factors = car.score_breakdown || [];
       const factorsHtml = factors.map(f => {
         const typeClass = f.type || 'pos';
+        const pillarName = friendlyPillar(f.pillar);
         return `
           <div class="score-audit-row">
             <div class="score-audit-text">
-              <div class="score-audit-pillar">${f.pillar}</div>
+              <div class="score-audit-pillar">${pillarName}</div>
               <div class="score-audit-desc">${f.detail}</div>
             </div>
             <span class="score-audit-badge ${typeClass}">${f.pts}</span>
@@ -5410,18 +5583,23 @@
       const modalBody = document.getElementById('score-modal-body');
       if (modalBody) {
         modalBody.innerHTML = `
+          <!-- Pull Handle for Mobile Sheet -->
+          <div class="modal-sheet-handle" aria-hidden="true"></div>
+
           <!-- Vehicle Summary Hero Card -->
           <div class="modal-car-hero">
             ${car.img ? `<img src="${car.img}" alt="${title}" class="modal-car-thumb" loading="lazy" referrerpolicy="no-referrer" />` : '<div class="modal-car-thumb no-thumb">No Image</div>'}
             <div class="modal-hero-info">
               <div class="modal-hero-title">${title}</div>
+              <div class="modal-hero-price-row">
+                <span class="modal-hero-price">${price}</span>
+                ${discPct > 0 ? `<span class="modal-hero-saving-pill">Save ${discPct}% vs new</span>` : ''}
+              </div>
               <div class="modal-hero-meta">
-                <strong>${price}</strong> · <span>${km}</span> · <span>${(car.fuel_type || 'Petrol').toUpperCase()}</span> · <span>${(car.transmission || 'MT').toUpperCase()}</span>
+                <span>${km}</span> · <span>${(car.fuel_type || 'Petrol').toUpperCase()}</span> · <span>${(car.transmission || 'MT').toUpperCase()}</span> · <span class="source-tag source-${platformClass}">${platformName}</span>
               </div>
               <div class="modal-hero-source">
-                <span class="source-dot ${platformClass}-dot"></span>
-                <span>${platformName}</span>
-                <span class="meta-hub">(${car.hub || 'Bangalore'})</span>
+                <span>📍 ${car.hub || 'Bangalore'}</span>
               </div>
             </div>
             <div class="modal-score-ring ${gradeClass}">
@@ -5432,33 +5610,45 @@
 
           <!-- 4-Box Value & Resale Summary -->
           <div class="telemetry-grid">
-            <div class="telemetry-box">
-              <span class="telemetry-lbl">Estimated Resale in 2 Years</span>
+            <div class="telemetry-box tel-resale">
+              <div class="telemetry-top">
+                <span class="telemetry-icon">🔄</span>
+                <span class="telemetry-lbl">Estimated Resale in 2 Years</span>
+              </div>
               <span class="telemetry-num buyback">${buyback}</span>
-              <span class="telemetry-sub">~${retention} value back if you sell</span>
+              <span class="telemetry-sub">~${retention} estimated value back if you sell</span>
             </div>
-            <div class="telemetry-box">
-              <span class="telemetry-lbl">Yearly Service &amp; Repairs</span>
+            <div class="telemetry-box tel-maint">
+              <div class="telemetry-top">
+                <span class="telemetry-icon">🔧</span>
+                <span class="telemetry-lbl">Yearly Service &amp; Repairs</span>
+              </div>
               <span class="telemetry-num maint">${maint}</span>
-              <span class="telemetry-sub">Routine maintenance &amp; oil changes</span>
+              <span class="telemetry-sub">Routine maintenance, oil changes &amp; upkeep</span>
             </div>
-            <div class="telemetry-box">
-              <span class="telemetry-lbl">Saved vs Brand New</span>
+            <div class="telemetry-box tel-savings">
+              <div class="telemetry-top">
+                <span class="telemetry-icon">🏷️</span>
+                <span class="telemetry-lbl">Saved vs Brand New</span>
+              </div>
               <span class="telemetry-num savings">${discPct > 0 ? `Save ${discPct}%` : 'Fair Price'}</span>
               <span class="telemetry-sub">${topPrice ? `Original showroom: ${topPrice}` : 'vs buying brand new'}</span>
             </div>
-            <div class="telemetry-box">
-              <span class="telemetry-lbl">Estimated Value Loss</span>
+            <div class="telemetry-box tel-dep">
+              <div class="telemetry-top">
+                <span class="telemetry-icon">📉</span>
+                <span class="telemetry-lbl">Estimated Value Loss</span>
+              </div>
               <span class="telemetry-num dep">${monthly}</span>
-              <span class="telemetry-sub">Monthly drop in car value</span>
+              <span class="telemetry-sub">Normal monthly market value drop</span>
             </div>
           </div>
 
           <!-- Plain English Price Rating -->
           <div class="modal-rationale-box ${gradeClass}">
             <div class="rationale-head">
-              <span class="rationale-badge ${gradeClass}">Price Rating: ${gradeLabel}</span>
-              <span class="caption-5" style="color:var(--text-subtle);">Score: ${car.deal_score} / 100</span>
+              <span class="rationale-badge ${gradeClass}">💡 Deal Rating: ${gradeLabel}</span>
+              <span class="rationale-score-pill">Score ${car.deal_score} / 100</span>
             </div>
             <div class="modal-rationale-text">
               ${car.score_rationale || 'This score is based on mileage, year of manufacture, price savings compared to a new car, and warranty coverage.'}
@@ -5475,7 +5665,7 @@
               ${factorsHtml}
             </div>
             <div class="modal-breakdown-total">
-              <span>Final Rating Score</span>
+              <span>Overall Deal Rating</span>
               <strong style="color:${gradeColor}">${car.deal_score} / 100</strong>
             </div>
           </div>
@@ -5485,12 +5675,12 @@
           <div class="modal-mechanic-notes">
             ${prosList ? `
             <div class="notes-col pros-col">
-              <div class="notes-head">What's Good About This Car</div>
+              <div class="notes-head">👍 What's Good About This Car</div>
               <ul class="notes-list">${prosList}</ul>
             </div>` : ''}
             ${consList ? `
             <div class="notes-col cons-col">
-              <div class="notes-head">Things to Check When You Test Drive</div>
+              <div class="notes-head">⚠️ Things to Check When You Test Drive</div>
               <ul class="notes-list">${consList}</ul>
             </div>` : ''}
           </div>` : ''}
@@ -5502,20 +5692,20 @@
                 <span>🛡️</span>
                 <span>Safe Buying Checklist: 4 Things to Check Before You Pay</span>
               </span>
-              <span class="caption-5" style="color:var(--accent-amber); font-family:var(--font-mono); font-weight:700;">Government Portals</span>
+              <span class="pdi-official-badge">Official Government Portals</span>
             </div>
             <div class="modal-pdi-links">
               <a href="https://btp.karnataka.gov.in/" target="_blank" rel="noopener noreferrer" class="pdi-portal-link" title="Bangalore Traffic Police Official Fine Portal">
-                <span>🚨 Check Bangalore Police Fines (BTP)</span>
-                <span>↗</span>
+                <span class="pdi-portal-name">🚨 Check Bangalore Police Fines (BTP)</span>
+                <span class="pdi-arrow">↗</span>
               </a>
               <a href="https://echallan.parivahan.gov.in/" target="_blank" rel="noopener noreferrer" class="pdi-portal-link" title="MoRTH All-India Challan Portal">
-                <span>📋 All-India Fines (MoRTH)</span>
-                <span>↗</span>
+                <span class="pdi-portal-name">📋 All-India Fines (MoRTH)</span>
+                <span class="pdi-arrow">↗</span>
               </a>
               <a href="https://parivahan.gov.in/parivahan/en/content/know-your-vehicle-details" target="_blank" rel="noopener noreferrer" class="pdi-portal-link" title="Parivahan VAHAN Vehicle Record Status">
-                <span>🏛️ Check Registration &amp; Bank Loan (Parivahan)</span>
-                <span>↗</span>
+                <span class="pdi-portal-name">🏛️ Check Registration &amp; Bank Loan (Parivahan)</span>
+                <span class="pdi-arrow">↗</span>
               </a>
             </div>
             <ul class="pdi-checklist">
