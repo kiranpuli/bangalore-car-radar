@@ -578,42 +578,57 @@ html_content = """<!DOCTYPE html>
   <!-- Typography Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('app_theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = saved || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch(e) {}
+    })();
+  </script>
+
   <style>
     /*
-      Visual System based on https://github.com/elayadesign/ai-design-skills
-      - Primary Type: Geist
+      Visual System: Playful, Human-Centered, Dual-Theme (Light & Dark)
+      - Primary Type: Plus Jakarta Sans (friendly, rounded terminals) & Geist
       - Monospace: Geist Mono
-      - Dark Mode Surfaces: #131209 (Canvas), #1F1F1F (Cards/Panels), #272727 (Inputs/Controls), #313131 (Borders), #181818 (Photo Wells)
-      - Text: #FFFFFF (Headings), #EDEDED (Body), #9B9B9B (Muted), #737373 (Subtle)
-      - Accents: #10B981 (Emerald/Savings), #F59E0B (Amber/Top Deals), #3B82F6 (Cobalt/Actions)
-      - Motion Curve: cubic-bezier(0.22, 1, 0.36, 1)
-      - Zero background gradients, 4-sided borders, strict Tailwind type scale
+      - Accents: Emerald (#059669 / #10B981), Amber (#D97706 / #F59E0B), Blue (#2563EB / #3B82F6)
+      - Responsive: Desktop & Mobile Drawer (Vaul-style)
     */
-    :root {
-      --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    :root, [data-theme="light"] {
+      --font-sans: 'Plus Jakarta Sans', 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, monospace;
 
-      /* Warm Titanium Obsidian Theme (elayadesign/ai-design-skills) */
-      --bg-canvas: #131209;
-      --bg-surface: #1F1F1F;
-      --bg-subsurface: #272727;
-      --bg-photo: #181818;
-      --border-color: #313131;
-      --border-focus: #FFFFFF;
+      /* Playful Clean Porcelain Light Theme */
+      --bg-canvas: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-subsurface: #F1F5F9;
+      --bg-subsurface-hover: #E2E8F0;
+      --bg-header: rgba(255, 255, 255, 0.90);
+      --bg-photo: #F1F5F9;
+      --border-color: #E2E8F0;
+      --border-focus: #3B82F6;
+      --border-subtle: rgba(15, 23, 42, 0.06);
 
-      --text-primary: #FFFFFF;
-      --text-body: #EDEDED;
-      --text-muted: #9B9B9B;
-      --text-subtle: #737373;
+      --text-primary: #0F172A;
+      --text-body: #334155;
+      --text-muted: #64748B;
+      --text-subtle: #94A3B8;
 
-      --accent-emerald: #10B981;
-      --accent-emerald-bg: rgba(16, 185, 129, 0.16);
-      --accent-amber: #F59E0B;
-      --accent-amber-bg: rgba(245, 158, 11, 0.16);
-      --accent-blue: #3B82F6;
-      --accent-blue-bg: rgba(59, 130, 246, 0.16);
+      --accent-emerald: #059669;
+      --accent-emerald-bg: #ECFDF5;
+      --accent-amber: #D97706;
+      --accent-amber-bg: #FEF3C7;
+      --accent-blue: #2563EB;
+      --accent-blue-bg: #EFF6FF;
+
+      --card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+      --card-shadow-hover: 0 14px 34px -4px rgba(15, 23, 42, 0.12), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+      --modal-shadow: 0 25px 60px -12px rgba(15, 23, 42, 0.25);
 
       /* Spacing scale */
       --sp-25: 2px;
@@ -626,18 +641,47 @@ html_content = """<!DOCTYPE html>
       --sp-500: 40px;
       --sp-600: 48px;
 
-      /* Radius scale & nested formula */
-      --radius-sm: 4px;
-      --radius-md: 8px;
-      --radius-lg: 12px;
-      --radius-xl: 16px;
+      /* Radius scale & friendly rounded cards */
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-xl: 18px;
       --radius-pill: 9999px;
 
       /* Motion */
       --ease-base: cubic-bezier(0.22, 1, 0.36, 1);
-      --dur-fast: 200ms;
-      --dur-normal: 300ms;
-      --dur-slow: 500ms;
+      --dur-fast: 180ms;
+      --dur-normal: 260ms;
+      --dur-slow: 400ms;
+    }
+
+    [data-theme="dark"] {
+      /* Warm Titanium Obsidian Dark Theme */
+      --bg-canvas: #121214;
+      --bg-surface: #1C1C1F;
+      --bg-subsurface: #26262B;
+      --bg-subsurface-hover: #323238;
+      --bg-header: rgba(18, 18, 20, 0.90);
+      --bg-photo: #18181B;
+      --border-color: #2E2E33;
+      --border-focus: #FFFFFF;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+
+      --text-primary: #FFFFFF;
+      --text-body: #E4E4E7;
+      --text-muted: #A1A1AA;
+      --text-subtle: #71717A;
+
+      --accent-emerald: #10B981;
+      --accent-emerald-bg: rgba(16, 185, 129, 0.16);
+      --accent-amber: #F59E0B;
+      --accent-amber-bg: rgba(245, 158, 11, 0.16);
+      --accent-blue: #3B82F6;
+      --accent-blue-bg: rgba(59, 130, 246, 0.16);
+
+      --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+      --card-shadow-hover: 0 12px 32px -4px rgba(0, 0, 0, 0.7);
+      --modal-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.8);
     }
 
     * {
@@ -754,10 +798,11 @@ html_content = """<!DOCTYPE html>
       left: 0;
       right: 0;
       z-index: 100;
-      background: rgba(10, 10, 10, 0.85);
+      background: var(--bg-header);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-color);
+      transition: background var(--dur-normal) var(--ease-base), border-color var(--dur-normal) var(--ease-base);
     }
     .site-header-inner {
       max-width: 1400px;
@@ -810,6 +855,7 @@ html_content = """<!DOCTYPE html>
       color: var(--text-muted);
       line-height: 1;
       white-space: nowrap;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
     .nav-status-badge strong {
       color: var(--text-primary);
@@ -847,7 +893,7 @@ html_content = """<!DOCTYPE html>
       flex-shrink: 0;
     }
     .nav-btn {
-      background: transparent;
+      background: var(--bg-surface);
       border: 1px solid var(--border-color);
       color: var(--text-muted);
       font-family: var(--font-sans);
@@ -866,12 +912,34 @@ html_content = """<!DOCTYPE html>
       white-space: nowrap;
     }
     .nav-btn:hover {
-      background: var(--bg-surface);
-      border-color: #383838;
+      background: var(--bg-subsurface-hover);
+      border-color: var(--border-focus);
       color: var(--text-primary);
     }
     .nav-btn:active {
       transform: scale(0.97);
+    }
+    .theme-toggle-btn {
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .mobile-theme-btn {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: 16px;
+      cursor: pointer;
+      transition: all var(--dur-fast) ease;
+    }
+    .mobile-theme-btn:active {
+      transform: scale(0.92);
     }
 
     /* Top Bar Badges */
@@ -1039,28 +1107,26 @@ html_content = """<!DOCTYPE html>
     }
     .tagline-word {
       display: inline-block;
-      color: rgba(255, 255, 255, 0.35);
+      color: var(--text-subtle);
       transition: color 500ms var(--ease-base);
       margin-right: 0.22em;
     }
     .tagline-word.revealed {
-      color: #CBD5E1;
+      color: var(--text-body);
     }
     .hero-heading {
-      font-size: clamp(28px, 4.5vw, 42px);
-      line-height: 1.15;
-      font-weight: 600;
+      font-size: clamp(26px, 4.5vw, 40px);
+      line-height: 1.2;
+      font-weight: 700;
       letter-spacing: -0.025em;
       text-wrap: balance;
-      background: linear-gradient(90deg, #FFFFFF 0%, #9B9B9B 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--text-primary);
       margin-bottom: 8px;
     }
     .hero-subhead {
       color: var(--text-muted);
       font-size: 14.5px;
-      line-height: 21px;
+      line-height: 22px;
       text-wrap: balance;
       margin-bottom: 8px;
     }
@@ -1080,6 +1146,7 @@ html_content = """<!DOCTYPE html>
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-xl);
+      box-shadow: var(--card-shadow);
       padding: 16px;
       margin-bottom: 12px;
       display: flex;
@@ -1167,8 +1234,8 @@ html_content = """<!DOCTYPE html>
       color: var(--text-primary);
     }
     .scope-segment.active, .scope-segment.active.curated {
-      background: #FFFFFF;
-      color: #000000;
+      background: var(--text-primary);
+      color: var(--bg-surface);
       font-weight: 600;
     }
     .scope-count {
@@ -1203,8 +1270,8 @@ html_content = """<!DOCTYPE html>
       cursor: pointer;
     }
     .deck-select option {
-      background: #1F1F1F;
-      color: #FFFFFF;
+      background: var(--bg-surface);
+      color: var(--text-primary);
     }
 
     /* Cohesive Symmetrical Filter Grids */
@@ -1212,7 +1279,7 @@ html_content = """<!DOCTYPE html>
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid var(--border-subtle);
       padding-top: 12px;
     }
     .deck-facets-grid {
@@ -1245,12 +1312,11 @@ html_content = """<!DOCTYPE html>
       min-width: 0;
     }
     .panel-label {
-      font-family: var(--font-mono);
-      font-size: 10.5px;
-      font-weight: 600;
-      color: var(--text-subtle);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.01em;
       white-space: nowrap;
     }
     .range-readout-badge {
@@ -1259,8 +1325,8 @@ html_content = """<!DOCTYPE html>
       font-weight: 700;
       padding: 2px 7px;
       border-radius: var(--radius-sm);
-      background: #181818;
-      border: 1px solid var(--border-color);
+      background: var(--accent-amber-bg);
+      border: 1px solid var(--accent-amber);
       color: var(--accent-amber);
       white-space: nowrap;
     }
@@ -1297,7 +1363,7 @@ html_content = """<!DOCTYPE html>
     .num-input-inner {
       display: flex;
       align-items: center;
-      background: #181818;
+      background: var(--bg-surface);
       border: 1px solid var(--border-color);
       border-radius: 6px;
       padding: 0 8px;
@@ -1378,7 +1444,7 @@ html_content = """<!DOCTYPE html>
       width: 100%;
       height: 4px;
       border-radius: 2px;
-      background: #313131;
+      background: var(--border-color);
       outline: none;
       cursor: pointer;
     }
@@ -1388,10 +1454,10 @@ html_content = """<!DOCTYPE html>
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      background: #FFFFFF;
+      background: var(--bg-surface);
       border: 2px solid var(--accent-amber);
       cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
       transition: transform var(--dur-fast) var(--ease-base);
     }
     .range-slider-accent::-webkit-slider-thumb:hover {
@@ -1401,7 +1467,7 @@ html_content = """<!DOCTYPE html>
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      background: #FFFFFF;
+      background: var(--bg-surface);
       border: 2px solid var(--accent-amber);
       cursor: pointer;
     }
@@ -1422,7 +1488,7 @@ html_content = """<!DOCTYPE html>
       align-items: center;
     }
     .ctrl-btn {
-      background: #181818;
+      background: var(--bg-surface);
       border: 1px solid var(--border-color);
       color: var(--text-muted);
       font-family: var(--font-sans);
@@ -1441,20 +1507,20 @@ html_content = """<!DOCTYPE html>
     }
     .ctrl-btn:hover {
       color: var(--text-primary);
-      border-color: #4A4A4A;
+      border-color: var(--border-focus);
     }
     .ctrl-btn:active {
       transform: scale(0.97);
     }
     .ctrl-btn.active {
-      background: #FFFFFF;
-      color: #000000;
+      background: var(--text-primary);
+      color: var(--bg-surface);
       font-weight: 600;
-      border-color: #FFFFFF;
+      border-color: var(--text-primary);
     }
     .ctrl-btn.active .btn-count {
       opacity: 0.85;
-      color: #000000;
+      color: var(--bg-surface);
     }
     .btn-count {
       font-family: var(--font-mono);
@@ -1476,7 +1542,7 @@ html_content = """<!DOCTYPE html>
       gap: 6px;
     }
     .segmented-switch {
-      background: #181818;
+      background: var(--bg-surface);
       border: 1px solid var(--border-color);
       border-radius: 6px;
       padding: 2px;
@@ -1508,8 +1574,8 @@ html_content = """<!DOCTYPE html>
       color: var(--text-primary);
     }
     .switch-opt.active {
-      background: #FFFFFF;
-      color: #000000;
+      background: var(--text-primary);
+      color: var(--bg-surface);
       font-weight: 600;
     }
 
@@ -1524,7 +1590,7 @@ html_content = """<!DOCTYPE html>
       gap: 6px;
     }
     .brand-chips-wrap .chip-pill {
-      background: #181818;
+      background: var(--bg-surface);
       border: 1px solid var(--border-color);
       color: var(--text-muted);
       font-family: var(--font-sans);
@@ -1541,13 +1607,13 @@ html_content = """<!DOCTYPE html>
     }
     .brand-chips-wrap .chip-pill:hover {
       color: var(--text-primary);
-      border-color: #4A4A4A;
+      border-color: var(--border-focus);
     }
     .brand-chips-wrap .chip-pill.active {
-      background: #FFFFFF;
-      color: #000000;
+      background: var(--text-primary);
+      color: var(--bg-surface);
       font-weight: 600;
-      border-color: #FFFFFF;
+      border-color: var(--text-primary);
     }
 
     /* Source Dot Indicators */
@@ -1585,7 +1651,7 @@ html_content = """<!DOCTYPE html>
       flex-wrap: wrap;
     }
     .active-tag {
-      background: #1F1F1F;
+      background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
       color: var(--text-body);
       font-family: var(--font-mono);
@@ -1632,15 +1698,19 @@ html_content = """<!DOCTYPE html>
     .card {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--card-shadow);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: border-color var(--dur-fast) var(--ease-base), transform var(--dur-fast) var(--ease-base);
+      transition: border-color var(--dur-fast) var(--ease-base),
+                  transform var(--dur-fast) var(--ease-base),
+                  box-shadow var(--dur-fast) var(--ease-base);
     }
     .card:hover {
-      border-color: rgba(255, 255, 255, 0.25);
-      transform: translateY(-2px);
+      border-color: var(--accent-amber);
+      box-shadow: var(--card-shadow-hover);
+      transform: translateY(-4px);
     }
     .card-photo {
       position: relative;
@@ -1677,10 +1747,10 @@ html_content = """<!DOCTYPE html>
       font-weight: 700;
       padding: 3px 8px;
       border-radius: var(--radius-pill);
-      background: rgba(19, 18, 9, 0.9);
+      background: rgba(15, 23, 42, 0.88);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       color: #FFFFFF;
       cursor: pointer;
       display: inline-flex;
@@ -1708,10 +1778,10 @@ html_content = """<!DOCTYPE html>
       font-weight: 600;
       padding: 3px 8px;
       border-radius: var(--radius-pill);
-      background: rgba(19, 18, 9, 0.9);
+      background: rgba(15, 23, 42, 0.88);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       color: #EDEDED;
       display: inline-flex;
       align-items: center;
@@ -1757,7 +1827,7 @@ html_content = """<!DOCTYPE html>
       justify-content: space-between;
       gap: 8px;
       padding-top: 4px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid var(--border-subtle);
     }
     .pricing-main-wrap {
       display: inline-flex;
@@ -1768,7 +1838,7 @@ html_content = """<!DOCTYPE html>
       font-family: var(--font-mono);
       font-size: 22px;
       font-weight: 700;
-      color: #FFFFFF;
+      color: var(--text-primary);
       letter-spacing: -0.02em;
     }
     .pricing-val-top {
@@ -1783,9 +1853,9 @@ html_content = """<!DOCTYPE html>
       font-weight: 700;
       padding: 2px 5px;
       border-radius: var(--radius-sm);
-      background: rgba(16, 185, 129, 0.14);
-      color: #10B981;
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      background: var(--accent-emerald-bg);
+      color: var(--accent-emerald);
+      border: 1px solid var(--accent-emerald);
     }
     .pricing-source-badge {
       font-family: var(--font-mono);
@@ -1793,14 +1863,14 @@ html_content = """<!DOCTYPE html>
       color: var(--text-subtle);
     }
     .pricing-source-badge.truwo {
-      color: #10B981;
+      color: var(--accent-emerald);
     }
     .pricing-source-badge.olx {
-      color: #C084FC;
+      color: #A855F7;
     }
     .card-verdict-line {
-      font-size: 12px;
-      color: var(--text-muted);
+      font-size: 12.5px;
+      color: var(--text-body);
       line-height: 1.4;
       text-wrap: pretty;
       display: -webkit-box;
@@ -1901,12 +1971,12 @@ html_content = """<!DOCTYPE html>
       width: calc(100vw - 32px);
     }
     .sonner-toast {
-      background: #181818;
-      border: 1px solid #333333;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--modal-shadow);
       padding: 12px 14px;
-      color: #EDEDED;
+      color: var(--text-body);
       font-family: var(--font-sans);
       display: flex;
       align-items: center;
@@ -1950,18 +2020,18 @@ html_content = """<!DOCTYPE html>
     .sonner-title {
       font-size: 13px;
       font-weight: 600;
-      color: #FFFFFF;
+      color: var(--text-primary);
       line-height: 1.3;
       word-break: break-word;
     }
     .sonner-sub {
       font-size: 11.5px;
-      color: #9B9B9B;
+      color: var(--text-muted);
       line-height: 1.25;
     }
     .sonner-undo-btn {
-      background: #272727;
-      border: 1px solid #3A3A3A;
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
       color: var(--accent-amber);
       font-family: var(--font-mono);
       font-size: 11.5px;
@@ -1973,9 +2043,9 @@ html_content = """<!DOCTYPE html>
       transition: all var(--dur-fast) ease;
     }
     .sonner-undo-btn:hover {
-      background: rgba(245, 158, 11, 0.15);
+      background: var(--accent-amber-bg);
       border-color: var(--accent-amber);
-      color: #FFFFFF;
+      color: var(--accent-amber);
     }
     @media (max-width: 600px) {
       .sonner-container {
@@ -1990,7 +2060,7 @@ html_content = """<!DOCTYPE html>
     .cmdk-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(0, 0, 0, 0.70);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       z-index: 10000;
@@ -2004,12 +2074,12 @@ html_content = """<!DOCTYPE html>
       display: flex;
     }
     .cmdk-palette {
-      background: #181818;
-      border: 1px solid #333333;
-      border-radius: 14px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
       width: 100%;
       max-width: 580px;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      box-shadow: var(--modal-shadow);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -2024,7 +2094,7 @@ html_content = """<!DOCTYPE html>
       align-items: center;
       gap: 12px;
       padding: 14px 16px;
-      border-bottom: 1px solid #2B2B2B;
+      border-bottom: 1px solid var(--border-color);
     }
     .cmdk-icon {
       color: var(--accent-amber);
@@ -2035,13 +2105,13 @@ html_content = """<!DOCTYPE html>
       background: transparent;
       border: none;
       outline: none;
-      color: #FFFFFF;
+      color: var(--text-primary);
       font-family: var(--font-sans);
       font-size: 15px;
       font-weight: 500;
     }
     .cmdk-input::placeholder {
-      color: #737373;
+      color: var(--text-subtle);
     }
     .cmdk-kbd {
       font-family: var(--font-mono);
@@ -2049,9 +2119,9 @@ html_content = """<!DOCTYPE html>
       font-weight: 600;
       padding: 3px 6px;
       border-radius: 4px;
-      background: #272727;
-      border: 1px solid #3A3A3A;
-      color: #9B9B9B;
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
     }
     .cmdk-body {
       max-height: 380px;
@@ -2065,7 +2135,7 @@ html_content = """<!DOCTYPE html>
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: #737373;
+      color: var(--text-subtle);
       padding: 8px 10px 4px 10px;
     }
     .cmdk-item {
@@ -2076,13 +2146,13 @@ html_content = """<!DOCTYPE html>
       padding: 9px 12px;
       border-radius: 8px;
       cursor: pointer;
-      color: #EDEDED;
+      color: var(--text-body);
       font-size: 13.5px;
       transition: background 100ms ease;
     }
     .cmdk-item:hover, .cmdk-item.selected {
-      background: #272727;
-      color: #FFFFFF;
+      background: var(--bg-subsurface);
+      color: var(--text-primary);
     }
     .cmdk-item-left {
       display: flex;
@@ -2103,7 +2173,7 @@ html_content = """<!DOCTYPE html>
     }
     .cmdk-item-sub {
       font-size: 11px;
-      color: #888888;
+      color: var(--text-subtle);
       font-family: var(--font-mono);
       margin-left: 6px;
     }
@@ -2112,7 +2182,7 @@ html_content = """<!DOCTYPE html>
       font-size: 11px;
       font-weight: 600;
       color: var(--accent-amber);
-      background: rgba(245, 158, 11, 0.1);
+      background: var(--accent-amber-bg);
       padding: 2px 7px;
       border-radius: 4px;
       flex-shrink: 0;
@@ -2122,11 +2192,11 @@ html_content = """<!DOCTYPE html>
       align-items: center;
       justify-content: space-between;
       padding: 8px 16px;
-      border-top: 1px solid #2B2B2B;
-      background: #141414;
+      border-top: 1px solid var(--border-color);
+      background: var(--bg-photo);
       font-family: var(--font-mono);
       font-size: 11px;
-      color: #737373;
+      color: var(--text-subtle);
     }
     .cmdk-shortcuts {
       display: flex;
@@ -2137,9 +2207,9 @@ html_content = """<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #1F1F1F;
-      border: 1px solid #333333;
-      color: #9B9B9B;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
       font-family: var(--font-sans);
       font-size: 12px;
       padding: 5px 10px;
@@ -2148,18 +2218,18 @@ html_content = """<!DOCTYPE html>
       transition: all var(--dur-fast) ease;
     }
     .nav-search-trigger:hover {
-      background: #272727;
-      border-color: #4A4A4A;
-      color: #FFFFFF;
+      background: var(--bg-subsurface-hover);
+      border-color: var(--border-focus);
+      color: var(--text-primary);
     }
     .nav-search-trigger kbd {
       font-family: var(--font-mono);
       font-size: 10px;
       padding: 1.5px 5px;
-      background: #272727;
-      border: 1px solid #3A3A3A;
+      background: var(--bg-subsurface);
+      border: 1px solid var(--border-color);
       border-radius: 3px;
-      color: #AAAAAA;
+      color: var(--text-muted);
     }
     .cta-primary-btn {
       flex: 1;
@@ -2181,9 +2251,9 @@ html_content = """<!DOCTYPE html>
       transition: all var(--dur-fast) var(--ease-base);
     }
     .cta-primary-btn:hover {
-      background: #FFFFFF;
-      border-color: #FFFFFF;
-      color: #000000;
+      background: var(--text-primary);
+      border-color: var(--text-primary);
+      color: var(--bg-surface);
     }
     .cta-primary-btn:active {
       transform: scale(0.98);
@@ -2349,7 +2419,7 @@ html_content = """<!DOCTYPE html>
       color: var(--text-muted);
     }
     .modal-hero-meta strong {
-      color: #FFFFFF;
+      color: var(--text-primary);
       font-size: 13px;
     }
     .modal-hero-source {
@@ -2512,7 +2582,7 @@ html_content = """<!DOCTYPE html>
       justify-content: space-between;
       align-items: center;
       padding: 8px 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid var(--border-subtle);
       gap: 10px;
     }
     .score-audit-row:last-child {
@@ -2543,7 +2613,7 @@ html_content = """<!DOCTYPE html>
     }
     .score-audit-badge.pos {
       background: rgba(16, 185, 129, 0.16);
-      color: #10B981;
+      color: var(--accent-emerald);
       border: 1px solid rgba(16, 185, 129, 0.3);
     }
     .score-audit-badge.neg {
@@ -2552,7 +2622,7 @@ html_content = """<!DOCTYPE html>
       border: 1px solid rgba(239, 68, 68, 0.3);
     }
     .score-audit-badge.base {
-      background: #272727;
+      background: var(--bg-subsurface);
       color: var(--text-muted);
       border: 1px solid var(--border-color);
     }
@@ -2754,12 +2824,22 @@ html_content = """<!DOCTYPE html>
       padding: var(--sp-600) var(--sp-300);
       text-align: center;
       background: var(--bg-surface);
-      border: 1px dashed var(--border-color);
+      border: 2px dashed var(--border-color);
       border-radius: var(--radius-xl);
+      box-shadow: var(--card-shadow);
+    }
+    .empty-state-icon {
+      font-size: 42px;
+      margin-bottom: 12px;
+      animation: bounce 2s infinite ease-in-out;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
     }
     .empty-state h3 {
       font-size: 20px;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 8px;
       color: var(--text-primary);
     }
@@ -2767,6 +2847,9 @@ html_content = """<!DOCTYPE html>
       font-size: 14px;
       color: var(--text-muted);
       margin-bottom: 20px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* Focus visible rings */
@@ -2850,7 +2933,7 @@ html_content = """<!DOCTYPE html>
         position: sticky;
         top: 0;
         z-index: 80;
-        background: rgba(19, 18, 9, 0.94);
+        background: var(--bg-header);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         padding: 8px 6px 8px 6px;
@@ -3263,6 +3346,10 @@ html_content = """<!DOCTYPE html>
           <span>Find</span>
           <kbd>⌘K</kbd>
         </button>
+        <button type="button" class="nav-btn theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()" title="Switch Light/Dark Theme" aria-label="Switch Light/Dark Theme">
+          <span id="theme-icon" aria-hidden="true">🌙</span>
+          <span id="theme-label">Dark</span>
+        </button>
         <button type="button" class="nav-btn alert-bell-btn" onclick="toggleAlertsModal()" title="View Recent Deal Alerts">
           <svg class="btn-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
           <span>Price Drops</span>
@@ -3281,15 +3368,15 @@ html_content = """<!DOCTYPE html>
   </header>
 
   <div class="shell">
-    <!-- Hero Section (Simple & Clear) -->
+    <!-- Hero Section (Playful & Friendly) -->
     <header class="hero-section">
       <div class="hero-tagline-wrap" id="tagline-reveal">
-        <span class="tagline-badge">Bangalore Market Comparison</span>
+        <span class="tagline-badge">🚗 Bangalore Car Radar</span>
         <span class="tagline-compact-text" id="tagline-words"></span>
       </div>
-      <h1 class="heading-1 hero-heading">Find a Good Used Car in Bangalore</h1>
+      <h1 class="heading-1 hero-heading">Find your dream car in Bangalore — without the headache ✨</h1>
       <p class="body-3 hero-subhead">
-        We compare inspected used cars from Spinny, Cars24, and trusted Bangalore sellers. See real resale estimates, estimated service costs, and avoid bad deals.
+        We compare 1,700+ verified cars from Spinny, Cars24 & top sellers. Transparent price ratings, honest 2-year resale estimates, and zero salesman pressure.
       </p>
     </header>
 
@@ -3310,6 +3397,10 @@ html_content = """<!DOCTYPE html>
           />
           <button type="button" id="btn-clear-mobile-search" class="search-clear-btn" onclick="clearSearch()" title="Clear search">✕</button>
         </div>
+
+        <button type="button" class="mobile-theme-btn" id="mobile-theme-btn" onclick="toggleTheme()" title="Switch Light/Dark Theme" aria-label="Switch Light/Dark Theme">
+          <span id="mobile-theme-icon" aria-hidden="true">🌙</span>
+        </button>
 
         <button type="button" class="btn-mobile-filter-trigger" id="btn-open-filters" onclick="openMobileFilters()" aria-label="Open Filter Drawer">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
@@ -3341,13 +3432,16 @@ html_content = """<!DOCTYPE html>
           <span class="qchip-count" id="qcount-curated">0</span>
         </button>
         <button type="button" class="quick-chip" id="qchip-auto" onclick="toggleQuickFilter('transmission', 'automatic')">
-          <span>⚡ Auto</span>
+          <span>⚡ Easy Auto</span>
         </button>
         <button type="button" class="quick-chip" id="qchip-manual" onclick="toggleQuickFilter('transmission', 'manual')">
           <span>🕹️ Manual</span>
         </button>
         <button type="button" class="quick-chip" id="qchip-under4l" onclick="toggleQuickFilter('budget4l')">
-          <span>≤ ₹4L</span>
+          <span>💰 Under ₹4L</span>
+        </button>
+        <button type="button" class="quick-chip" id="qchip-lowkm" onclick="toggleQuickFilter('lowkm')">
+          <span>✨ &lt; 40k km</span>
         </button>
         <button type="button" class="quick-chip" id="qchip-petrol" onclick="toggleQuickFilter('fuel', 'petrol')">
           <span>⛽ Petrol</span>
@@ -3416,6 +3510,15 @@ html_content = """<!DOCTYPE html>
             <span>🔥 Top Deals</span>
             <span class="scope-count" id="badge-curated-count">0</span>
           </button>
+          <button type="button" class="scope-segment" id="btn-quick-auto" onclick="toggleQuickFilter('transmission', 'automatic')" role="tab">
+            <span>⚡ Easy Auto</span>
+          </button>
+          <button type="button" class="scope-segment" id="btn-quick-4l" onclick="toggleQuickFilter('budget4l')" role="tab">
+            <span>💰 ≤ ₹4L</span>
+          </button>
+          <button type="button" class="scope-segment" id="btn-quick-lowkm" onclick="toggleQuickFilter('lowkm')" role="tab">
+            <span>✨ &lt; 40k km</span>
+          </button>
           <button type="button" class="scope-segment" id="btn-german-4l" onclick="filterGermanUnder4L()" role="tab">
             <span>🛡️ German ≤ ₹4L</span>
             <span class="scope-count" id="badge-german-count">0</span>
@@ -3452,7 +3555,7 @@ html_content = """<!DOCTYPE html>
         <div class="filter-panel panel-budget">
           <div class="panel-header">
             <div class="panel-title-wrap">
-              <span class="panel-label">Budget</span>
+              <span class="panel-label">💰 Maximum Budget</span>
               <span class="range-readout-badge" id="price-readout">Up to ₹5.00L</span>
             </div>
             <button type="button" class="btn-panel-action" onclick="clearPrice()" title="Clear budget limits">Any Price</button>
@@ -3523,7 +3626,7 @@ html_content = """<!DOCTYPE html>
         <div class="filter-panel panel-year">
           <div class="panel-header">
             <div class="panel-title-wrap">
-              <span class="panel-label">Model Year</span>
+              <span class="panel-label">📅 Car Age</span>
               <span class="range-readout-badge" id="year-readout">Any Year</span>
             </div>
             <button type="button" class="btn-panel-action" onclick="clearYear()" title="Clear year filter">All Years</button>
@@ -3562,7 +3665,7 @@ html_content = """<!DOCTYPE html>
         <div class="filter-panel panel-discount">
           <div class="panel-header">
             <div class="panel-title-wrap">
-              <span class="panel-label">Showroom Savings</span>
+              <span class="panel-label">🏷️ Discount vs Showroom</span>
               <span class="range-readout-badge" id="discount-readout">Any</span>
             </div>
             <button type="button" class="btn-panel-action" onclick="clearDiscount()" title="Clear discount filter">Reset</button>
@@ -3599,7 +3702,7 @@ html_content = """<!DOCTYPE html>
         <div class="filter-panel panel-mileage">
           <div class="panel-header">
             <div class="panel-title-wrap">
-              <span class="panel-label">Max Mileage</span>
+              <span class="panel-label">🛣️ Kilometers Driven</span>
               <span class="range-readout-badge" id="km-readout">≤ 80k km</span>
             </div>
             <button type="button" class="btn-panel-action" onclick="clearKm()" title="Clear mileage ceiling">Any KM</button>
@@ -3641,7 +3744,7 @@ html_content = """<!DOCTYPE html>
         <div class="filter-panel panel-transmission">
           <div class="panel-header">
             <div class="panel-title-wrap">
-              <span class="panel-label">Transmission</span>
+              <span class="panel-label">🚦 Gearbox Choice</span>
               <span class="range-readout-badge" id="trans-readout">Any Gearbox</span>
             </div>
             <button type="button" class="btn-panel-action" onclick="clearMultiFilter('transmissions')" title="Reset transmission filter">All Gears</button>
@@ -3663,7 +3766,7 @@ html_content = """<!DOCTYPE html>
         <div class="filter-panel panel-fuel">
           <div class="panel-header">
             <div class="panel-title-wrap">
-              <span class="panel-label">Fuel Type</span>
+              <span class="panel-label">⛽ Fuel Choice</span>
               <span class="range-readout-badge" id="fuel-readout">Any Fuel</span>
             </div>
             <button type="button" class="btn-panel-action" onclick="clearMultiFilter('fuels')" title="Reset fuel filter">All Fuels</button>
@@ -3688,7 +3791,7 @@ html_content = """<!DOCTYPE html>
         <div class="filter-panel panel-sources">
           <div class="panel-header">
             <div class="panel-title-wrap">
-              <span class="panel-label">Source Platforms</span>
+              <span class="panel-label">🏢 Where It's Listed</span>
               <span class="range-readout-badge" id="sources-readout">All Platforms</span>
             </div>
             <button type="button" class="btn-panel-action" onclick="clearMultiFilter('platforms')">All Sources</button>
@@ -3717,8 +3820,8 @@ html_content = """<!DOCTYPE html>
       <div class="filter-panel panel-brands">
         <div class="panel-header">
           <div class="panel-title-wrap">
-            <span class="panel-label">Automakers</span>
-            <span class="caption-5" style="color:var(--text-subtle);">Click brand chips to toggle filter</span>
+            <span class="panel-label">🚘 Popular Brands</span>
+            <span class="caption-5" style="color:var(--text-subtle);">Tap to filter by favorite car brand</span>
           </div>
           <button type="button" class="btn-panel-action" onclick="clearMultiFilter('brands')" title="Reset brand selection">All Brands</button>
         </div>
@@ -4595,6 +4698,15 @@ html_content = """<!DOCTYPE html>
           syncPriceUI(state.min_price, 400000);
         }
         applyFilters();
+      } else if (type === 'lowkm') {
+        if (state.max_km === 40000) {
+          state.max_km = 0;
+          syncKmUI(0);
+        } else {
+          state.max_km = 40000;
+          syncKmUI(40000);
+        }
+        applyFilters();
       }
       updateQuickChips();
     }
@@ -4616,6 +4728,7 @@ html_content = """<!DOCTYPE html>
       const qPetrol = document.getElementById('qchip-petrol');
       const qDiesel = document.getElementById('qchip-diesel');
       const qUnder4L = document.getElementById('qchip-under4l');
+      const qLowKm = document.getElementById('qchip-lowkm');
       const qGerman = document.getElementById('qchip-german');
       const qBmw = document.getElementById('qchip-bmw');
       const qAll = document.getElementById('qchip-all');
@@ -4626,9 +4739,62 @@ html_content = """<!DOCTYPE html>
       if (qPetrol) qPetrol.classList.toggle('active', state.fuels.has('petrol'));
       if (qDiesel) qDiesel.classList.toggle('active', state.fuels.has('diesel'));
       if (qUnder4L) qUnder4L.classList.toggle('active', state.max_price === 400000 && state.viewMode !== 'curated');
+      if (qLowKm) qLowKm.classList.toggle('active', state.max_km === 40000);
       if (qGerman) qGerman.classList.toggle('active', state.brands.has('volkswagen') && state.brands.has('skoda'));
       if (qBmw) qBmw.classList.toggle('active', state.brands.has('bmw') && state.brands.size === 1);
-      if (qAll) qAll.classList.toggle('active', state.viewMode === 'all' && state.transmissions.size === 0 && state.fuels.size === 0 && state.brands.size === 0 && state.max_price === 0);
+      if (qAll) qAll.classList.toggle('active', state.viewMode === 'all' && state.transmissions.size === 0 && state.fuels.size === 0 && state.brands.size === 0 && state.max_price === 0 && state.max_km === 0);
+
+      // Desktop Scope & Quick Buttons
+      const btnCurated = document.getElementById('btn-mode-curated');
+      const btnAuto = document.getElementById('btn-quick-auto');
+      const btn4L = document.getElementById('btn-quick-4l');
+      const btnLowKm = document.getElementById('btn-quick-lowkm');
+      const btnGerman = document.getElementById('btn-german-4l');
+      const btnBmw = document.getElementById('btn-mode-bmw');
+      const btnAll = document.getElementById('btn-mode-all');
+
+      if (btnCurated) btnCurated.classList.toggle('active', state.viewMode === 'curated');
+      if (btnAuto) btnAuto.classList.toggle('active', state.transmissions.has('automatic'));
+      if (btn4L) btn4L.classList.toggle('active', state.max_price === 400000 && state.viewMode !== 'curated');
+      if (btnLowKm) btnLowKm.classList.toggle('active', state.max_km === 40000);
+      if (btnGerman) btnGerman.classList.toggle('active', state.brands.has('volkswagen') && state.brands.has('skoda'));
+      if (btnBmw) btnBmw.classList.toggle('active', state.brands.has('bmw') && state.brands.size === 1);
+      if (btnAll) btnAll.classList.toggle('active', state.viewMode === 'all' && state.transmissions.size === 0 && state.fuels.size === 0 && state.brands.size === 0 && state.max_price === 0 && state.max_km === 0);
+    }
+
+    /* Light / Dark Dual Theme Engine */
+    function initTheme() {
+      const saved = localStorage.getItem('app_theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = saved || (prefersDark ? 'dark' : 'light');
+      applyTheme(theme, false);
+    }
+
+    function applyTheme(theme, notify = true) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('app_theme', theme);
+      const isDark = theme === 'dark';
+      
+      const icon = document.getElementById('theme-icon');
+      const lbl = document.getElementById('theme-label');
+      const mobIcon = document.getElementById('mobile-theme-icon');
+      
+      if (icon) icon.textContent = isDark ? '☀️' : '🌙';
+      if (lbl) lbl.textContent = isDark ? 'Light' : 'Dark';
+      if (mobIcon) mobIcon.textContent = isDark ? '☀️' : '🌙';
+      
+      const metaTheme = document.querySelector('meta[name="theme-color"]');
+      if (metaTheme) metaTheme.setAttribute('content', isDark ? '#121214' : '#F8FAFC');
+
+      if (notify && typeof showToast === 'function') {
+        showToast(isDark ? 'Switched to Dark Mode 🌙' : 'Switched to Light Mode ☀️');
+      }
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme') || 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next, true);
     }
 
     function updateFilterBadge() {
@@ -5789,9 +5955,10 @@ html_content = """<!DOCTYPE html>
       if (!list.length) {
         grid.innerHTML = `
           <div class="empty-state">
-            <h3>No matching vehicles found</h3>
-            <p>Try loosening your price window or clearing active filters to browse all Bangalore inventory.</p>
-            <button class="facet-pill active" onclick="resetAll()">Reset All Filters</button>
+            <div class="empty-state-icon">🚗💨</div>
+            <h3>Oops! No cars match all those filters</h3>
+            <p>Try easing your price range or clearing a filter to see more Bangalore cars.</p>
+            <button class="facet-pill active" onclick="resetAll()">Reset All Filters 🔄</button>
           </div>
         `;
         return;
@@ -5868,7 +6035,7 @@ html_content = """<!DOCTYPE html>
               <p class="card-verdict-line">${verdictText}</p>
 
               <div class="card-intel-peek">
-                <span>Est. Resale (2 Yrs): ${buyback}</span> · <span>Yearly Service: ~${an.maintenance_yr ? an.maintenance_yr.split('/')[0] : '₹6.5k'}</span>
+                <span>💡 2-Yr Resale: ~${buyback}</span> · <span>🧰 Service: ~${an.maintenance_yr ? an.maintenance_yr.split('/')[0] : '₹6.5k'}</span>
                 <button type="button" class="card-audit-btn" onclick="openScoreModal('${c.id}', event)" title="View price and maintenance details">Price Details &rarr;</button>
               </div>
 
@@ -5891,6 +6058,7 @@ html_content = """<!DOCTYPE html>
     }
 
     // Initial render
+    initTheme();
     renderAlertsList();
     loadFilterState();
     syncAllFilterUIsFromState();
