@@ -520,125 +520,6 @@ def is_prestige_car(car):
     return any(rm in make for rm in reputable_makes)
 
 
-RTO_DIRECTORY = {
-    "KA01": "KA-01 (Koramangala, Bangalore Central)",
-    "KA02": "KA-02 (Rajajinagar, Bangalore West)",
-    "KA03": "KA-03 (Indiranagar, Bangalore East)",
-    "KA04": "KA-04 (Yeshwanthpur, Bangalore North)",
-    "KA05": "KA-05 (Jayanagar, Bangalore South)",
-    "KA41": "KA-41 (Jnanabharathi / Kengeri)",
-    "KA50": "KA-50 (Yelahanka, Bangalore North)",
-    "KA51": "KA-51 (Electronic City, Bangalore South)",
-    "KA53": "KA-53 (KR Puram, Bangalore East)",
-    "KA59": "KA-59 (Nelamangala / Bangalore Rural)",
-    "KA68": "KA-68 (Chandapura / Anekal, Bangalore)",
-}
-
-def generate_verification_dossier(car):
-    cid = str(car.get("id", "0"))
-    year = int(car.get("make_year") or 2018)
-    km = int(car.get("mileage") or 50000)
-    make = car.get("make") or "Vehicle"
-    model = car.get("model") or ""
-
-    # RTO jurisdiction
-    rto_code = car.get("rto") or car.get("cityRto")
-    if not rto_code or str(rto_code).upper() not in RTO_DIRECTORY:
-        rto_keys = list(RTO_DIRECTORY.keys())
-        rto_code = rto_keys[abs(hash(cid + "_rto")) % len(rto_keys)]
-    rto_code = str(rto_code).upper()
-    rto_name = RTO_DIRECTORY.get(rto_code, f"{rto_code} (Bangalore)")
-
-    # Masked Registration Number
-    masked_reg = car.get("maskedRegNum")
-    if not masked_reg:
-        digits = abs(hash(cid + "_dig")) % 9000 + 1000
-        letters = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-        l1 = letters[abs(hash(cid + "_l1")) % len(letters)]
-        l2 = letters[abs(hash(cid + "_l2")) % len(letters)]
-        masked_reg = f"{rto_code[:2]}-{rto_code[2:]}-{l1}{l2}-*-{digits}"
-    else:
-        masked_reg = str(masked_reg).replace("*", "-*-")
-        if "-" not in masked_reg[:5]:
-            masked_reg = masked_reg[:2] + "-" + masked_reg[2:]
-
-    # Ownership Serial
-    owners = car.get("ownership") or car.get("no_of_owners")
-    if not owners:
-        owners = 1 if year >= 2019 else (2 if abs(hash(cid + "_own")) % 3 == 0 else 1)
-    owner_str = f"{owners}st Owner" if owners == 1 else (f"{owners}nd Owner" if owners == 2 else f"{owners}rd Owner")
-
-    # Dates & Validity
-    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    reg_m = months[abs(hash(cid + "_rm")) % 12]
-    reg_date = f"{reg_m} {year}"
-    fitness_expiry = f"{reg_m} {year + 15}"
-    fitness_remaining = max(1, (year + 15) - 2026)
-
-    ins_m = months[abs(hash(cid + "_im")) % 12]
-    ins_yr = 2026 if (abs(hash(cid + "_iy")) % 2 == 0) else 2027
-    insurance_text = f"Comprehensive Active (Valid till {ins_m} {ins_yr})"
-
-    # Dealership Service Timeline
-    timeline = []
-    intervals = max(2, min(5, (2026 - year) + 1))
-    km_step = max(3000, km // intervals)
-    for i in range(intervals, 0, -1):
-        v_yr = year + (intervals - i)
-        if v_yr > 2026:
-            v_yr = 2026
-        v_km = km - (km_step * (i - 1))
-        v_m = months[(abs(hash(cid)) + i) % 12]
-        if i == intervals:
-            v_type = "Pre-Delivery Inspection & 1st Free Check"
-        elif i == 1:
-            v_type = f"Recent Periodic Service & 200-Pt Audit ({v_km:,} km)"
-        elif v_km > 50000:
-            v_type = "Brake System, Fluids & Suspension Check"
-        else:
-            v_type = "Scheduled Maintenance & Synthetic Oil Flush"
-
-        timeline.append({
-            "date": f"{v_m} {v_yr}",
-            "odometer": f"{v_km:,} km",
-            "type": v_type,
-            "center": f"{make} Authorized Service, Bangalore",
-            "result": "Passed · Clean"
-        })
-
-    return {
-        "rc": {
-            "masked_reg": masked_reg,
-            "rto_code": rto_code,
-            "rto_name": rto_name,
-            "owner_str": owner_str,
-            "reg_date": reg_date,
-            "fitness_expiry": fitness_expiry,
-            "fitness_remaining": f"{fitness_remaining} yrs remaining",
-            "insurance_status": insurance_text,
-            "hypothecation": "Clean · No Active Bank Lien (NOC Verified)",
-            "emission_norm": "BS-VI Compliant" if year >= 2020 else "BS-IV Compliant",
-            "blacklist_status": "Clean · NCRB Stolen & Police Impound Cleared"
-        },
-        "challans": {
-            "status": "Clean · Zero Pending BTP Challans",
-            "pending_amount": "₹0 Due",
-            "total_challans": 0,
-            "authority": "Bangalore Traffic Police (BTP) & MoRTH e-Challan",
-            "last_audit": "November 2026",
-            "summary": "Zero outstanding speeding, signal jump, or parking penalties on record."
-        },
-        "service_history": {
-            "odometer_integrity": "Tamper-Proof Verified (Cluster & ECU Match)",
-            "structural_integrity": "Non-Accidental Certified (Chassis, Apron & Pillars Pristine)",
-            "flood_clearance": "100% Flood-Free Certified (Engine, ECU & Seat Rails Inspected)",
-            "last_recorded_km": f"{km:,} km",
-            "last_service_date": f"{months[abs(hash(cid)) % 6]} 2025/2026",
-            "timeline": timeline
-        }
-    }
-
-
 def enrich_cars(cars):
     cleaned = []
     for c in cars:
@@ -726,7 +607,6 @@ def enrich_cars(cars):
             "deal_grade": deal_grade,
             "is_top_deal": final_score >= 68,
             "verdict": verdict,
-            "verification": generate_verification_dossier(c),
             "analysis": {
                 "pros": matched["pros"],
                 "cons": matched["cons"],
@@ -971,7 +851,6 @@ def enrich_cars24(cars):
             "deal_grade": deal_grade,
             "is_top_deal": final_score >= 68,
             "verdict": verdict,
-            "verification": generate_verification_dossier(c),
             "analysis": {
                 "pros": matched["pros"],
                 "cons": matched["cons"],
@@ -1205,7 +1084,6 @@ def enrich_truwo(cars):
             "deal_grade": deal_grade,
             "is_top_deal": final_score >= 68,
             "verdict": verdict,
-            "verification": generate_verification_dossier(c),
             "analysis": {
                 "pros": matched["pros"],
                 "cons": matched["cons"],
@@ -1440,7 +1318,6 @@ def enrich_olx(cars):
             "deal_grade": deal_grade,
             "is_top_deal": final_score >= 68,
             "verdict": verdict,
-            "verification": generate_verification_dossier(c),
             "analysis": {
                 "pros": matched["pros"],
                 "cons": matched["cons"],

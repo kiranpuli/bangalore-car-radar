@@ -464,125 +464,6 @@ def calculate_score_and_breakdown(car, orig_retail, discount_pct):
     return final_score, deal_grade, factors, rationale
 
 
-RTO_DIRECTORY = {
-    "KA01": "KA-01 (Koramangala, Bangalore Central)",
-    "KA02": "KA-02 (Rajajinagar, Bangalore West)",
-    "KA03": "KA-03 (Indiranagar, Bangalore East)",
-    "KA04": "KA-04 (Yeshwanthpur, Bangalore North)",
-    "KA05": "KA-05 (Jayanagar, Bangalore South)",
-    "KA41": "KA-41 (Jnanabharathi / Kengeri)",
-    "KA50": "KA-50 (Yelahanka, Bangalore North)",
-    "KA51": "KA-51 (Electronic City, Bangalore South)",
-    "KA53": "KA-53 (KR Puram, Bangalore East)",
-    "KA59": "KA-59 (Nelamangala / Bangalore Rural)",
-    "KA68": "KA-68 (Chandapura / Anekal, Bangalore)",
-}
-
-def generate_verification_dossier(car):
-    cid = str(car.get("id", "0"))
-    year = int(car.get("make_year") or 2018)
-    km = int(car.get("mileage") or 50000)
-    make = car.get("make") or "Vehicle"
-    model = car.get("model") or ""
-
-    # RTO jurisdiction
-    rto_code = car.get("rto") or car.get("cityRto")
-    if not rto_code or str(rto_code).upper() not in RTO_DIRECTORY:
-        rto_keys = list(RTO_DIRECTORY.keys())
-        rto_code = rto_keys[abs(hash(cid + "_rto")) % len(rto_keys)]
-    rto_code = str(rto_code).upper()
-    rto_name = RTO_DIRECTORY.get(rto_code, f"{rto_code} (Bangalore)")
-
-    # Masked Registration Number
-    masked_reg = car.get("maskedRegNum")
-    if not masked_reg:
-        digits = abs(hash(cid + "_dig")) % 9000 + 1000
-        letters = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-        l1 = letters[abs(hash(cid + "_l1")) % len(letters)]
-        l2 = letters[abs(hash(cid + "_l2")) % len(letters)]
-        masked_reg = f"{rto_code[:2]}-{rto_code[2:]}-{l1}{l2}-*-{digits}"
-    else:
-        masked_reg = str(masked_reg).replace("*", "-*-")
-        if "-" not in masked_reg[:5]:
-            masked_reg = masked_reg[:2] + "-" + masked_reg[2:]
-
-    # Ownership Serial
-    owners = car.get("ownership") or car.get("no_of_owners")
-    if not owners:
-        owners = 1 if year >= 2019 else (2 if abs(hash(cid + "_own")) % 3 == 0 else 1)
-    owner_str = f"{owners}st Owner" if owners == 1 else (f"{owners}nd Owner" if owners == 2 else f"{owners}rd Owner")
-
-    # Dates & Validity
-    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    reg_m = months[abs(hash(cid + "_rm")) % 12]
-    reg_date = f"{reg_m} {year}"
-    fitness_expiry = f"{reg_m} {year + 15}"
-    fitness_remaining = max(1, (year + 15) - 2026)
-
-    ins_m = months[abs(hash(cid + "_im")) % 12]
-    ins_yr = 2026 if (abs(hash(cid + "_iy")) % 2 == 0) else 2027
-    insurance_text = f"Comprehensive Active (Valid till {ins_m} {ins_yr})"
-
-    # Dealership Service Timeline
-    timeline = []
-    intervals = max(2, min(5, (2026 - year) + 1))
-    km_step = max(3000, km // intervals)
-    for i in range(intervals, 0, -1):
-        v_yr = year + (intervals - i)
-        if v_yr > 2026:
-            v_yr = 2026
-        v_km = km - (km_step * (i - 1))
-        v_m = months[(abs(hash(cid)) + i) % 12]
-        if i == intervals:
-            v_type = "Pre-Delivery Inspection & 1st Free Check"
-        elif i == 1:
-            v_type = f"Recent Periodic Service & 200-Pt Audit ({v_km:,} km)"
-        elif v_km > 50000:
-            v_type = "Brake System, Fluids & Suspension Check"
-        else:
-            v_type = "Scheduled Maintenance & Synthetic Oil Flush"
-
-        timeline.append({
-            "date": f"{v_m} {v_yr}",
-            "odometer": f"{v_km:,} km",
-            "type": v_type,
-            "center": f"{make} Authorized Service, Bangalore",
-            "result": "Passed · Clean"
-        })
-
-    return {
-        "rc": {
-            "masked_reg": masked_reg,
-            "rto_code": rto_code,
-            "rto_name": rto_name,
-            "owner_str": owner_str,
-            "reg_date": reg_date,
-            "fitness_expiry": fitness_expiry,
-            "fitness_remaining": f"{fitness_remaining} yrs remaining",
-            "insurance_status": insurance_text,
-            "hypothecation": "Clean · No Active Bank Lien (NOC Verified)",
-            "emission_norm": "BS-VI Compliant" if year >= 2020 else "BS-IV Compliant",
-            "blacklist_status": "Clean · NCRB Stolen & Police Impound Cleared"
-        },
-        "challans": {
-            "status": "Clean · Zero Pending BTP Challans",
-            "pending_amount": "₹0 Due",
-            "total_challans": 0,
-            "authority": "Bangalore Traffic Police (BTP) & MoRTH e-Challan",
-            "last_audit": "November 2026",
-            "summary": "Zero outstanding speeding, signal jump, or parking penalties on record."
-        },
-        "service_history": {
-            "odometer_integrity": "Tamper-Proof Verified (Cluster & ECU Match)",
-            "structural_integrity": "Non-Accidental Certified (Chassis, Apron & Pillars Pristine)",
-            "flood_clearance": "100% Flood-Free Certified (Engine, ECU & Seat Rails Inspected)",
-            "last_recorded_km": f"{km:,} km",
-            "last_service_date": f"{months[abs(hash(cid)) % 6]} 2025/2026",
-            "timeline": timeline
-        }
-    }
-
-
 # Ensure consistent deal scoring, pricing intelligence, score breakdowns & ownership reviews
 for c in cars:
     if not c.get("platform"):
@@ -620,8 +501,8 @@ for c in cars:
     # Ownership review
     c["ownership_review"] = get_ownership_review(c.get("make"), c.get("model"), c.get("fuel_type"), c.get("transmission"), year)
 
-    # In-app vehicle verification dossier (VAHAN RC, BTP Challans, Service History)
-    c["verification"] = generate_verification_dossier(c)
+    # Strip any assumed/synthetic verification data
+    c.pop("verification", None)
 
     # Fixed price - Spinny and Cars24 operate on no-negotiation fixed pricing
     c.pop("negotiable_price", None)
@@ -2533,387 +2414,83 @@ html_content = """<!DOCTYPE html>
       border-color: var(--text-primary);
     }
 
-    /* Card Verification Quick Pills */
-    .card-verify-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 5px;
-      margin: 6px 0 3px 0;
-    }
-    .vpill {
-      display: inline-flex;
-      align-items: center;
-      gap: 4.5px;
-      padding: 2.5px 7px;
-      border-radius: 4px;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 600;
-      cursor: pointer;
-      line-height: 1.25;
-      border: 1px solid transparent;
-      background: var(--bg-subsurface);
-      color: var(--text-muted);
-      transition: all var(--dur-fast) var(--ease-base);
-    }
-    .vpill:hover {
-      transform: translateY(-1px);
-    }
-    .vpill-rc {
-      background: rgba(56, 189, 248, 0.08);
-      color: #38BDF8;
-      border-color: rgba(56, 189, 248, 0.28);
-    }
-    .vpill-rc:hover {
-      background: rgba(56, 189, 248, 0.2);
-      border-color: rgba(56, 189, 248, 0.45);
-      color: #7DD3FC;
-    }
-    .vpill-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: currentColor;
-      display: inline-block;
-      flex-shrink: 0;
-    }
-    .vpill-challan {
-      background: rgba(16, 185, 129, 0.08);
-      color: #10B981;
-      border-color: rgba(16, 185, 129, 0.28);
-    }
-    .vpill-challan:hover {
-      background: rgba(16, 185, 129, 0.2);
-      border-color: rgba(16, 185, 129, 0.45);
-      color: #34D399;
-    }
-    .vpill-service {
-      background: rgba(245, 158, 11, 0.08);
-      color: #F59E0B;
-      border-color: rgba(245, 158, 11, 0.28);
-    }
-    .vpill-service:hover {
-      background: rgba(245, 158, 11, 0.2);
-      border-color: rgba(245, 158, 11, 0.45);
-      color: #FBBF24;
-    }
-    .vpill-icon {
-      font-size: 9.5px;
-      font-weight: 700;
-    }
-
-    /* Modal Navigation Tabs */
-    .modal-nav-tabs {
-      display: flex;
-      gap: 4px;
-      border-bottom: 1px solid var(--border-color);
-      background: var(--bg-subsurface);
-      padding: 4px 8px 0 8px;
-      border-radius: var(--radius-md) var(--radius-md) 0 0;
-      overflow-x: auto;
-      scrollbar-width: none;
-      flex-shrink: 0;
-      min-height: 38px;
-    }
-    .modal-nav-tabs::-webkit-scrollbar {
-      display: none;
-    }
-    .modal-tab {
-      background: transparent;
-      border: none;
-      border-bottom: 2px solid transparent;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 600;
-      padding: 8px 12px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-      flex-shrink: 0;
-      transition: all var(--dur-fast) var(--ease-base);
-    }
-    .modal-tab:hover {
-      color: var(--text-primary);
-    }
-    .modal-tab.active {
-      color: #FFFFFF;
-      border-bottom-color: var(--accent-amber);
-      font-weight: 700;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 4px 4px 0 0;
-    }
-    .modal-tab-pane {
-      display: none;
-      flex-direction: column;
-      gap: 12px;
-      animation: modalFadeIn 150ms var(--ease-base);
-    }
-    .modal-tab-pane.active {
-      display: flex;
-    }
-
-    /* Verification Status Banners */
-    .verify-banner-clean {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(16, 185, 129, 0.08);
-      border: 1px solid rgba(16, 185, 129, 0.28);
-      border-radius: var(--radius-md);
-      padding: 10px 14px;
-    }
-    .verify-banner-clean.banner-btp {
-      background: rgba(56, 189, 248, 0.08);
-      border-color: rgba(56, 189, 248, 0.28);
-    }
-    .verify-banner-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: #10B981;
-      color: #000000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 14px;
-      flex-shrink: 0;
-    }
-    .banner-btp .verify-banner-icon {
-      background: #38BDF8;
-    }
-    .verify-banner-text {
-      flex: 1;
-      min-width: 0;
-    }
-    .verify-banner-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-primary);
-      line-height: 1.3;
-    }
-    .verify-banner-sub {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-    .vpill-tag-vahan, .vpill-tag-btp {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .vpill-tag-vahan {
-      background: rgba(16, 185, 129, 0.2);
-      color: #10B981;
-      border: 1px solid rgba(16, 185, 129, 0.4);
-    }
-    .vpill-tag-btp {
-      background: rgba(56, 189, 248, 0.2);
-      color: #38BDF8;
-      border: 1px solid rgba(56, 189, 248, 0.4);
-    }
-
-    /* Dossier Key-Value Grid */
-    .dossier-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-    }
-    .dossier-cell {
-      background: var(--bg-subsurface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 9px 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .dossier-cell.full-width {
-      grid-column: 1 / -1;
-    }
-    .dossier-cell-lbl {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 600;
-      color: var(--text-subtle);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-    .dossier-cell-val {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-primary);
-      line-height: 1.35;
-      word-break: break-word;
-    }
-    .dossier-cell-sub {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--text-muted);
-      margin-top: 1px;
-    }
-
-    /* Trust Badges Trio */
-    .dossier-trust-badges {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-    }
-    .trust-badge-item {
-      background: var(--bg-subsurface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 10px 10px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
-    .trust-badge-icon {
-      font-size: 18px;
-      line-height: 1;
-    }
-    .trust-badge-title {
-      font-size: 11.5px;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-    .trust-badge-sub {
-      font-family: var(--font-mono);
-      font-size: 9.5px;
-      color: var(--text-muted);
-      line-height: 1.25;
-    }
-
-    /* Chronological Service Timeline */
-    .timeline-wrap {
+    /* PDI & Official Verification Guide */
+    .modal-pdi-box {
       background: var(--bg-subsurface);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       padding: 12px 14px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
-    .timeline-item {
-      display: flex;
-      gap: 12px;
-      position: relative;
-    }
-    .timeline-item:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      top: 14px;
-      left: 6px;
-      bottom: -14px;
-      width: 2px;
-      background: var(--border-color);
-    }
-    .timeline-dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: var(--accent-amber);
-      border: 3px solid var(--bg-surface);
-      margin-top: 2px;
-      flex-shrink: 0;
-      z-index: 1;
-    }
-    .timeline-item:first-child .timeline-dot {
-      background: var(--accent-emerald);
-      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
-    }
-    .timeline-content {
-      flex: 1;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .timeline-head {
+    .modal-pdi-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
     }
-    .timeline-date-km {
+    .modal-pdi-title {
       font-family: var(--font-mono);
       font-size: 11px;
       font-weight: 700;
       color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .timeline-badge-pass {
-      font-family: var(--font-mono);
-      font-size: 9.5px;
-      font-weight: 700;
-      padding: 1.5px 6px;
-      border-radius: 3px;
-      background: rgba(16, 185, 129, 0.15);
-      color: #10B981;
-      border: 1px solid rgba(16, 185, 129, 0.3);
+    .modal-pdi-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
     }
-    .timeline-title {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-body);
-    }
-    .timeline-center {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--text-subtle);
-    }
-
-    /* Modal Copy Report Button */
-    .modal-copy-btn {
-      background: var(--bg-subsurface);
-      border: 1px solid var(--border-color);
-      color: var(--text-body);
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      font-weight: 600;
-      padding: 8px 12px;
-      border-radius: var(--radius-md);
-      cursor: pointer;
+    .pdi-portal-link {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: #38BDF8;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 600;
+      text-decoration: none;
       transition: all var(--dur-fast) var(--ease-base);
     }
-    .modal-copy-btn:hover {
-      background: #FFFFFF;
-      color: #000000;
-      border-color: #FFFFFF;
+    .pdi-portal-link:hover {
+      background: rgba(56, 189, 248, 0.18);
+      border-color: rgba(56, 189, 248, 0.45);
+      color: #7DD3FC;
+    }
+    .pdi-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .pdi-checklist li {
+      font-size: 11.5px;
+      line-height: 1.4;
+      color: var(--text-body);
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+    }
+    .pdi-check-icon {
+      color: var(--accent-emerald);
+      font-size: 11px;
+      font-weight: bold;
+      margin-top: 1px;
+      flex-shrink: 0;
     }
 
     @media (max-width: 560px) {
-      .dossier-grid {
-        grid-template-columns: 1fr;
-      }
-      .dossier-trust-badges {
-        grid-template-columns: 1fr;
-      }
-      .modal-nav-tabs {
-        padding: 4px 6px 0 6px;
-        flex-shrink: 0;
-        min-height: 35px;
-      }
-      .modal-tab {
-        padding: 6px 10px;
-        font-size: 11px;
-        flex-shrink: 0;
-      }
       .score-modal-footer {
         flex-wrap: wrap;
         gap: 8px;
@@ -2930,7 +2507,7 @@ html_content = """<!DOCTYPE html>
         padding: 6px 10px;
         font-size: 11px;
       }
-      .modal-copy-btn, .modal-dismiss-btn {
+      .modal-dismiss-btn {
         padding: 6px 10px;
         font-size: 11px;
       }
@@ -3974,7 +3551,7 @@ html_content = """<!DOCTYPE html>
     <div class="score-modal" role="dialog" aria-modal="true" aria-labelledby="score-modal-title">
       <div class="score-modal-header">
         <div>
-          <span class="caption-5" style="color:var(--accent-amber); font-family:var(--font-mono); text-transform:uppercase; font-weight:700; letter-spacing:0.06em;">360° Vehicle Dossier &amp; Verification</span>
+          <span class="caption-5" style="color:var(--accent-amber); font-family:var(--font-mono); text-transform:uppercase; font-weight:700; letter-spacing:0.06em;">Algorithmic Valuation &amp; PDI Guide</span>
           <h3 id="score-modal-title" style="margin-top:2px;">Score Calculation</h3>
         </div>
         <button type="button" class="score-modal-close" onclick="closeScoreModal()" title="Close dialog">✕</button>
@@ -3991,9 +3568,6 @@ html_content = """<!DOCTYPE html>
           <span>Hide Model</span>
         </button>
         <div style="display:flex; gap:8px; align-items:center;">
-          <button type="button" class="modal-copy-btn" id="modal-copy-btn" title="Copy full vehicle verification dossier to clipboard">
-            <span>📋 Copy Report</span>
-          </button>
           <button type="button" class="modal-dismiss-btn" onclick="closeScoreModal()">Done</button>
           <a href="#" target="_blank" rel="noopener noreferrer" class="cta-primary-btn modal-action-cta" id="modal-footer-cta">
             <span>Inspect Car</span>
@@ -5197,83 +4771,7 @@ html_content = """<!DOCTYPE html>
       saveFilterState();
     }
 
-    function switchModalTab(tabId, el) {
-      document.querySelectorAll('.modal-tab').forEach(btn => {
-        btn.classList.remove('active');
-        btn.setAttribute('aria-selected', 'false');
-      });
-      document.querySelectorAll('.modal-tab-pane').forEach(p => p.classList.remove('active'));
-      if (el) {
-        el.classList.add('active');
-        el.setAttribute('aria-selected', 'true');
-      } else {
-        const btn = document.getElementById(`modal-tab-btn-${tabId}`);
-        if (btn) {
-          btn.classList.add('active');
-          btn.setAttribute('aria-selected', 'true');
-        }
-      }
-      const pane = document.getElementById(`modal-pane-${tabId}`);
-      if (pane) pane.classList.add('active');
-    }
-
-    function copyDossierReport(carId) {
-      const car = CARS.find(x => String(x.id) === String(carId));
-      if (!car) return;
-      const v = car.verification || {};
-      const rc = v.rc || {};
-      const ch = v.challans || {};
-      const s = v.service_history || {};
-      const title = `${car.make_year} ${car.make} ${car.model} ${car.variant || ''}`.trim();
-      const price = '₹' + (car.price / 100000).toFixed(2) + 'L';
-      const km = (car.mileage / 1000).toFixed(0) + 'k km';
-
-      const text = `========================================
-BANGALORE CAR RADAR - 360° VEHICLE DOSSIER
-========================================
-Vehicle: ${title}
-Price: ${price} | Odometer: ${km} | Fuel: ${car.fuel_type || 'Petrol'} | Trans: ${car.transmission || 'MT'}
-Platform: ${car.platform || 'Spinny'} (${car.hub || 'Bangalore'}) | Deal Score: ${car.deal_score}/100 (${car.deal_grade || 'VALUE PICK'})
-
-[1] VAHAN RC & TITLE AUDIT:
-• Masked Registration: ${rc.masked_reg || 'KA-XX-XX-*-XXXX'}
-• RTO Jurisdiction: ${rc.rto_name || 'Bangalore'}
-• Ownership Serial: ${rc.owner_str || '1st Owner'}
-• Registration Date: ${rc.reg_date || car.make_year}
-• Fitness Validity: ${rc.fitness_expiry || ''} (${rc.fitness_remaining || 'Valid'})
-• Insurance Policy: ${rc.insurance_status || 'Comprehensive Active'}
-• Hypothecation: ${rc.hypothecation || 'Clean · No Active Bank Lien (NOC Verified)'}
-• Emission Standard: ${rc.emission_norm || 'BS-VI Compliant'}
-• Blacklist Check: ${rc.blacklist_status || 'Clean · NCRB Stolen & Police Impound Cleared'}
-
-[2] BANGALORE TRAFFIC POLICE (BTP) AUDIT:
-• Clearance Status: ${ch.status || 'Clean · Zero Pending BTP Challans'}
-• Fines Due: ${ch.pending_amount || '₹0 Due'} (0 Citations)
-• Enforcement Authority: ${ch.authority || 'Bangalore Traffic Police (BTP) & MoRTH e-Challan'}
-• Last Audit: ${ch.last_audit || 'November 2026'}
-• Transfer Clearance: 100% Eligible for Form 29 & 30 Title Transfer
-
-[3] SERVICE & STRUCTURAL INTEGRITY:
-• Odometer Verification: ${s.odometer_integrity || 'Tamper-Proof Verified (Cluster & ECU Match)'}
-• Structural Integrity: ${s.structural_integrity || 'Non-Accidental Certified'}
-• Flood Clearance: ${s.flood_clearance || '100% Flood-Free Certified'}
-• Dealership Logs: ${(s.timeline || []).length} Recorded Service Milestones
-========================================
-Verified via Bangalore Car Radar: https://kiranpuli.github.io/bangalore-car-radar/`;
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(() => {
-          const btn = document.getElementById('modal-copy-btn');
-          if (btn) {
-            const orig = btn.innerHTML;
-            btn.innerHTML = '<span>✓ Copied!</span>';
-            setTimeout(() => { btn.innerHTML = orig; }, 2500);
-          }
-        });
-      }
-    }
-
-    function openScoreModal(carId, event, initialTab = 'telemetry') {
+    function openScoreModal(carId, event) {
       if (event) {
         event.stopPropagation();
         event.preventDefault();
@@ -5312,13 +4810,6 @@ Verified via Bangalore Car Radar: https://kiranpuli.github.io/bangalore-car-rada
         gradeColor = 'var(--accent-emerald)';
       }
 
-      // Verification Dossier Data
-      const v = car.verification || {};
-      const rc = v.rc || {};
-      const ch = v.challans || {};
-      const s = v.service_history || {};
-      const timeline = s.timeline || [];
-
       const factors = car.score_breakdown || [];
       const factorsHtml = factors.map(f => {
         const typeClass = f.type || 'pos';
@@ -5338,20 +4829,6 @@ Verified via Bangalore Car Radar: https://kiranpuli.github.io/bangalore-car-rada
 
       const modalTitle = document.getElementById('score-modal-title');
       if (modalTitle) modalTitle.textContent = `${title}`;
-
-      const timelineHtml = timeline.map(item => `
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-head">
-              <span class="timeline-date-km">${item.date} · ${item.odometer}</span>
-              <span class="timeline-badge-pass">${item.result}</span>
-            </div>
-            <div class="timeline-title">${item.type}</div>
-            <div class="timeline-center">${item.center}</div>
-          </div>
-        </div>
-      `).join('');
 
       const modalBody = document.getElementById('score-modal-body');
       if (modalBody) {
@@ -5376,227 +4853,112 @@ Verified via Bangalore Car Radar: https://kiranpuli.github.io/bangalore-car-rada
             </div>
           </div>
 
-          <!-- Tab Navigation Bar -->
-          <div class="modal-nav-tabs" role="tablist">
-            <button type="button" class="modal-tab ${initialTab === 'telemetry' ? 'active' : ''}" role="tab" id="modal-tab-btn-telemetry" aria-selected="${initialTab === 'telemetry'}" onclick="switchModalTab('telemetry', this)">
-              <span>📊 Deal Telemetry</span>
-            </button>
-            <button type="button" class="modal-tab ${initialTab === 'rc' ? 'active' : ''}" role="tab" id="modal-tab-btn-rc" aria-selected="${initialTab === 'rc'}" onclick="switchModalTab('rc', this)">
-              <span>📋 RC &amp; Title</span>
-            </button>
-            <button type="button" class="modal-tab ${initialTab === 'challans' ? 'active' : ''}" role="tab" id="modal-tab-btn-challans" aria-selected="${initialTab === 'challans'}" onclick="switchModalTab('challans', this)">
-              <span>🚨 Traffic Challans</span>
-            </button>
-            <button type="button" class="modal-tab ${initialTab === 'service' ? 'active' : ''}" role="tab" id="modal-tab-btn-service" aria-selected="${initialTab === 'service'}" onclick="switchModalTab('service', this)">
-              <span>🔧 Service &amp; Odometer</span>
-            </button>
+          <!-- 4-Box Value & Depreciation Telemetry -->
+          <div class="telemetry-grid">
+            <div class="telemetry-box">
+              <span class="telemetry-lbl">2-Yr Estimated Buyback</span>
+              <span class="telemetry-num buyback">${buyback}</span>
+              <span class="telemetry-sub">${retention} retention</span>
+            </div>
+            <div class="telemetry-box">
+              <span class="telemetry-lbl">Annual Maintenance</span>
+              <span class="telemetry-num maint">${maint}</span>
+              <span class="telemetry-sub">FNG / dealer avg</span>
+            </div>
+            <div class="telemetry-box">
+              <span class="telemetry-lbl">Showroom Savings</span>
+              <span class="telemetry-num savings">${discPct > 0 ? `-${discPct}%` : 'Fair'}</span>
+              <span class="telemetry-sub">${topPrice ? `Original MRP: ${topPrice}` : 'vs Bangalore new'}</span>
+            </div>
+            <div class="telemetry-box">
+              <span class="telemetry-lbl">Depreciation Pace</span>
+              <span class="telemetry-num dep">${monthly}</span>
+              <span class="telemetry-sub">Monthly true cost</span>
+            </div>
           </div>
 
-          <!-- TAB 1: DEAL TELEMETRY & SCORECARD -->
-          <div class="modal-tab-pane ${initialTab === 'telemetry' ? 'active' : ''}" id="modal-pane-telemetry">
-            <!-- 4-Box Value & Depreciation Telemetry -->
-            <div class="telemetry-grid">
-              <div class="telemetry-box">
-                <span class="telemetry-lbl">2-Yr Estimated Buyback</span>
-                <span class="telemetry-num buyback">${buyback}</span>
-                <span class="telemetry-sub">${retention} retention</span>
-              </div>
-              <div class="telemetry-box">
-                <span class="telemetry-lbl">Annual Maintenance</span>
-                <span class="telemetry-num maint">${maint}</span>
-                <span class="telemetry-sub">FNG / dealer avg</span>
-              </div>
-              <div class="telemetry-box">
-                <span class="telemetry-lbl">Showroom Savings</span>
-                <span class="telemetry-num savings">${discPct > 0 ? `-${discPct}%` : 'Fair'}</span>
-                <span class="telemetry-sub">${topPrice ? `Original MRP: ${topPrice}` : 'vs Bangalore new'}</span>
-              </div>
-              <div class="telemetry-box">
-                <span class="telemetry-lbl">Depreciation Pace</span>
-                <span class="telemetry-num dep">${monthly}</span>
-                <span class="telemetry-sub">Monthly true cost</span>
-              </div>
+          <!-- Algorithmic Score Rationale -->
+          <div class="modal-rationale-box ${gradeClass}">
+            <div class="rationale-head">
+              <span class="rationale-badge ${gradeClass}">Rating Analysis</span>
+              <span class="caption-5" style="color:var(--text-subtle);">Algorithmic Valuation</span>
             </div>
-
-            <!-- Algorithmic Score Rationale -->
-            <div class="modal-rationale-box ${gradeClass}">
-              <div class="rationale-head">
-                <span class="rationale-badge ${gradeClass}">Rating Analysis</span>
-                <span class="caption-5" style="color:var(--text-subtle);">200-Pt Telemetry</span>
-              </div>
-              <div class="modal-rationale-text">
-                ${car.score_rationale || 'Score computed from odometer health, age wear, retail discount arbitrage, and certified mechanical warranty coverage.'}
-              </div>
+            <div class="modal-rationale-text">
+              ${car.score_rationale || 'Score computed from odometer health, age wear, retail discount arbitrage, and certified mechanical warranty coverage.'}
             </div>
+          </div>
 
-            <!-- Score Breakdown Table -->
-            <div class="modal-breakdown-wrap">
-              <div class="modal-breakdown-head">
-                <span>Pillar & Telemetry Audit</span>
-                <span>Points Awarded</span>
-              </div>
-              <div class="score-audit-list">
-                ${factorsHtml}
-              </div>
-              <div class="modal-breakdown-total">
-                <span>Final Deal Score</span>
-                <strong style="color:${gradeColor}">${car.deal_score} / 100</strong>
-              </div>
+          <!-- Score Breakdown Table -->
+          <div class="modal-breakdown-wrap">
+            <div class="modal-breakdown-head">
+              <span>Pillar & Telemetry Audit</span>
+              <span>Points Awarded</span>
             </div>
+            <div class="score-audit-list">
+              ${factorsHtml}
+            </div>
+            <div class="modal-breakdown-total">
+              <span>Final Deal Score</span>
+              <strong style="color:${gradeColor}">${car.deal_score} / 100</strong>
+            </div>
+          </div>
 
-            <!-- Pros & Considerations -->
-            ${(prosList || consList) ? `
-            <div class="modal-mechanic-notes">
-              ${prosList ? `
-              <div class="notes-col pros-col">
-                <div class="notes-head">Key Advantages</div>
-                <ul class="notes-list">${prosList}</ul>
-              </div>` : ''}
-              ${consList ? `
-              <div class="notes-col cons-col">
-                <div class="notes-head">Things to Inspect</div>
-                <ul class="notes-list">${consList}</ul>
-              </div>` : ''}
+          <!-- Pros & Considerations -->
+          ${(prosList || consList) ? `
+          <div class="modal-mechanic-notes">
+            ${prosList ? `
+            <div class="notes-col pros-col">
+              <div class="notes-head">Key Advantages</div>
+              <ul class="notes-list">${prosList}</ul>
             </div>` : ''}
-          </div>
+            ${consList ? `
+            <div class="notes-col cons-col">
+              <div class="notes-head">Things to Inspect</div>
+              <ul class="notes-list">${consList}</ul>
+            </div>` : ''}
+          </div>` : ''}
 
-          <!-- TAB 2: VAHAN RC & TITLE AUDIT -->
-          <div class="modal-tab-pane ${initialTab === 'rc' ? 'active' : ''}" id="modal-pane-rc">
-            <div class="verify-banner-clean">
-              <div class="verify-banner-icon">✓</div>
-              <div class="verify-banner-text">
-                <div class="verify-banner-title">Parivahan VAHAN Registry Clean Record</div>
-                <div class="verify-banner-sub">Jurisdiction: ${rc.rto_name || 'Bangalore, KA'}</div>
-              </div>
-              <span class="vpill-tag-vahan">VAHAN Verified</span>
+          <!-- Official Verification & Buyer PDI Guide -->
+          <div class="modal-pdi-box">
+            <div class="modal-pdi-head">
+              <span class="modal-pdi-title">
+                <span>🛡️</span>
+                <span>Official Verification &amp; PDI Guide</span>
+              </span>
+              <span class="caption-5" style="color:var(--accent-amber); font-family:var(--font-mono); font-weight:700;">Government Portals</span>
             </div>
-
-            <div class="dossier-grid">
-              <div class="dossier-cell">
-                <span class="dossier-cell-lbl">Registration Number</span>
-                <span class="dossier-cell-val" style="font-family:var(--font-mono); font-size:14px; letter-spacing:0.04em; color:#38BDF8;">${rc.masked_reg || 'KA-XX-XX-*-XXXX'}</span>
-                <span class="dossier-cell-sub">Masked privacy title match</span>
-              </div>
-              <div class="dossier-cell">
-                <span class="dossier-cell-lbl">RTO Authority</span>
-                <span class="dossier-cell-val">${rc.rto_name || 'KA RTO Bangalore'}</span>
-                <span class="dossier-cell-sub">Bangalore Urban / Rural</span>
-              </div>
-              <div class="dossier-cell">
-                <span class="dossier-cell-lbl">Ownership Serial</span>
-                <span class="dossier-cell-val">${rc.owner_str || '1st Owner'}</span>
-                <span class="dossier-cell-sub">Original title pedigree</span>
-              </div>
-              <div class="dossier-cell">
-                <span class="dossier-cell-lbl">Registration Date</span>
-                <span class="dossier-cell-val">${rc.reg_date || car.make_year}</span>
-                <span class="dossier-cell-sub">Manufacturing: ${car.make_year}</span>
-              </div>
-              <div class="dossier-cell">
-                <span class="dossier-cell-lbl">Fitness Validity</span>
-                <span class="dossier-cell-val">${rc.fitness_expiry || ''}</span>
-                <span class="dossier-cell-sub" style="color:var(--accent-emerald); font-weight:600;">${rc.fitness_remaining || 'Valid'}</span>
-              </div>
-              <div class="dossier-cell">
-                <span class="dossier-cell-lbl">Insurance Coverage</span>
-                <span class="dossier-cell-val">${rc.insurance_status || 'Comprehensive Active'}</span>
-                <span class="dossier-cell-sub">Policy active &amp; transferable</span>
-              </div>
-              <div class="dossier-cell full-width">
-                <span class="dossier-cell-lbl">Hypothecation / Bank Lien</span>
-                <span class="dossier-cell-val" style="color:var(--accent-emerald);">${rc.hypothecation || 'Clean · No Active Bank Lien (NOC Verified)'}</span>
-                <span class="dossier-cell-sub">No outstanding loan encumbrance against this chassis</span>
-              </div>
-              <div class="dossier-cell">
-                <span class="dossier-cell-lbl">Emission Norm</span>
-                <span class="dossier-cell-val">${rc.emission_norm || 'BS-VI Compliant'}</span>
-                <span class="dossier-cell-sub">Green fuel efficiency standard</span>
-              </div>
-              <div class="dossier-cell">
-                <span class="dossier-cell-lbl">Crime / Blacklist Check</span>
-                <span class="dossier-cell-val" style="color:var(--accent-emerald);">${rc.blacklist_status || 'Clean · NCRB Stolen & Police Impound Cleared'}</span>
-                <span class="dossier-cell-sub">0 adverse law enforcement records</span>
-              </div>
+            <div class="modal-pdi-links">
+              <a href="https://btp.karnataka.gov.in/" target="_blank" rel="noopener noreferrer" class="pdi-portal-link" title="Bangalore Traffic Police Official Fine Portal">
+                <span>🚨 BTP e-Challan</span>
+                <span>↗</span>
+              </a>
+              <a href="https://echallan.parivahan.gov.in/" target="_blank" rel="noopener noreferrer" class="pdi-portal-link" title="MoRTH All-India Challan Portal">
+                <span>📋 MoRTH Challan</span>
+                <span>↗</span>
+              </a>
+              <a href="https://parivahan.gov.in/parivahan/en/content/know-your-vehicle-details" target="_blank" rel="noopener noreferrer" class="pdi-portal-link" title="Parivahan VAHAN Vehicle Record Status">
+                <span>🏛️ Parivahan VAHAN RC</span>
+                <span>↗</span>
+              </a>
             </div>
-          </div>
-
-          <!-- TAB 3: BTP & TRAFFIC CHALLANS -->
-          <div class="modal-tab-pane ${initialTab === 'challans' ? 'active' : ''}" id="modal-pane-challans">
-            <div class="verify-banner-clean banner-btp">
-              <div class="verify-banner-icon">✓</div>
-              <div class="verify-banner-text">
-                <div class="verify-banner-title">Zero Pending Traffic Challans (₹0 Due)</div>
-                <div class="verify-banner-sub">Authority: Bangalore Traffic Police (BTP) &amp; MoRTH e-Challan Portal</div>
-              </div>
-              <span class="vpill-tag-btp">100% Cleared</span>
-            </div>
-
-            <div class="dossier-grid">
-              <div class="dossier-cell">
-                <span class="dossier-cell-lbl">Fine Outstanding</span>
-                <span class="dossier-cell-val" style="font-size:18px; font-family:var(--font-mono); color:#10B981;">₹0.00 Due</span>
-                <span class="dossier-cell-sub">Clean citation ledger</span>
-              </div>
-              <div class="dossier-cell">
-                <span class="dossier-cell-lbl">Active Challan Count</span>
-                <span class="dossier-cell-val" style="font-size:18px; font-family:var(--font-mono); color:#10B981;">0 Citations</span>
-                <span class="dossier-cell-sub">No pending court summons</span>
-              </div>
-              <div class="dossier-cell">
-                <span class="dossier-cell-lbl">Enforcement Portals</span>
-                <span class="dossier-cell-val">BTP Automated Enforcement &amp; MoRTH</span>
-                <span class="dossier-cell-sub">Speed radar, signal cameras &amp; parking audits</span>
-              </div>
-              <div class="dossier-cell">
-                <span class="dossier-cell-lbl">Last Audit Sync</span>
-                <span class="dossier-cell-val">${ch.last_audit || 'November 2026'}</span>
-                <span class="dossier-cell-sub">Real-time certified audit</span>
-              </div>
-              <div class="dossier-cell full-width">
-                <span class="dossier-cell-lbl">Transfer of Ownership Clearance</span>
-                <span class="dossier-cell-val" style="color:var(--accent-emerald);">Guaranteed Eligible for RTO Form 29 &amp; Form 30 Transfer</span>
-                <span class="dossier-cell-sub">Zero liabilities or impound notices preventing smooth Bangalore RTO name transfer.</span>
-              </div>
-              <div class="dossier-cell full-width">
-                <span class="dossier-cell-lbl">Citation Audit Summary</span>
-                <span class="dossier-cell-val" style="font-size:12px; font-weight:normal; line-height:1.45; color:var(--text-body);">
-                  ${ch.summary || 'Zero outstanding speeding, signal jump, or parking penalties on record in Bangalore jurisdiction.'}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- TAB 4: SERVICE HISTORY & ODOMETER INTEGRITY -->
-          <div class="modal-tab-pane ${initialTab === 'service' ? 'active' : ''}" id="modal-pane-service">
-            <!-- 3 Trust Badges -->
-            <div class="dossier-trust-badges">
-              <div class="trust-badge-item">
-                <span class="trust-badge-icon">🛡️</span>
-                <span class="trust-badge-title">Odometer Match</span>
-                <span class="trust-badge-sub">ECU &amp; cluster synchronized (${km})</span>
-              </div>
-              <div class="trust-badge-item">
-                <span class="trust-badge-icon">🛡️</span>
-                <span class="trust-badge-title">Non-Accidental</span>
-                <span class="trust-badge-sub">Chassis, aprons &amp; pillars pristine</span>
-              </div>
-              <div class="trust-badge-item">
-                <span class="trust-badge-icon">🌊</span>
-                <span class="trust-badge-title">100% Flood-Free</span>
-                <span class="trust-badge-sub">Engine bay &amp; floor rails clear</span>
-              </div>
-            </div>
-
-            <!-- Service Timeline -->
-            <div class="timeline-wrap">
-              <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:8px;">
-                <span class="caption-5" style="font-family:var(--font-mono); font-weight:700; color:var(--text-primary); text-transform:uppercase;">
-                  Chronological Dealership Service Timeline
-                </span>
-                <span class="timeline-badge-pass" style="font-size:10px;">${timeline.length} Recorded Milestones</span>
-              </div>
-              ${timelineHtml || '<p style="color:var(--text-muted); font-size:12px;">Service logs verified through authorized dealership network.</p>'}
-            </div>
+            <ul class="pdi-checklist">
+              <li>
+                <span class="pdi-check-icon">✓</span>
+                <span><strong>Unmasked Plate:</strong> Request the unmasked vehicle registration number from ${platformName} hub prior to paying token/booking deposit.</span>
+              </li>
+              <li>
+                <span class="pdi-check-icon">✓</span>
+                <span><strong>Challans:</strong> Enter the registration number on the official BTP portal to confirm zero pending traffic citations or court impounds.</span>
+              </li>
+              <li>
+                <span class="pdi-check-icon">✓</span>
+                <span><strong>Title &amp; Hypothecation:</strong> Verify active Bank Hypothecation NOC and RC fitness on the Parivahan portal to guarantee Form 29/30 transfer eligibility.</span>
+              </li>
+              <li>
+                <span class="pdi-check-icon">✓</span>
+                <span><strong>Physical Inspection:</strong> Inspect engine bay apron sealant, under-seat rails for silt/rust, and verify authorized dealer service records against cluster odometer.</span>
+              </li>
+            </ul>
           </div>
         `;
       }
@@ -5606,12 +4968,6 @@ Verified via Bangalore Car Radar: https://kiranpuli.github.io/bangalore-car-rada
       if (footerCta) {
         footerCta.href = car.url || '#';
         footerCta.innerHTML = `<span>Inspect on ${platformName}</span> <span>&rarr;</span>`;
-      }
-      const copyBtn = document.getElementById('modal-copy-btn');
-      if (copyBtn) {
-        copyBtn.onclick = function() {
-          copyDossierReport(car.id);
-        };
       }
       const hideModalBtn = document.getElementById('modal-hide-btn');
       if (hideModalBtn) {
@@ -5934,12 +5290,6 @@ Verified via Bangalore Car Radar: https://kiranpuli.github.io/bangalore-car-rada
         }
 
         const verdictText = (c.verdict || (an.pros && an.pros[0]) || 'Certified inspected vehicle with verified service history.');
-        const v = c.verification || {};
-        const vRc = v.rc || {};
-        const vChallan = v.challans || {};
-        const vService = v.service_history || {};
-        const rtoTag = vRc.rto_code || 'KA';
-        const ownerTag = vRc.owner_str || '1st Owner';
 
         return `
           <article class="card" id="card-${c.id}">
@@ -5964,21 +5314,6 @@ Verified via Bangalore Car Radar: https://kiranpuli.github.io/bangalore-car-rada
 
               <div class="car-meta-line">
                 <span>${km}</span> · <span>${(c.fuel_type || 'Petrol').toUpperCase()}</span> · <span>${(c.transmission || 'MT').toUpperCase()}</span> · <span class="meta-hub">${c.hub}</span>
-              </div>
-
-              <div class="card-verify-row">
-                <button type="button" class="vpill vpill-rc" onclick="openScoreModal('${c.id}', event, 'rc')" title="View VAHAN Registration & Title Audit">
-                  <span class="vpill-dot"></span>
-                  <span>${rtoTag} · ${ownerTag}</span>
-                </button>
-                <button type="button" class="vpill vpill-challan" onclick="openScoreModal('${c.id}', event, 'challans')" title="View Bangalore Traffic Police (BTP) Challan Audit">
-                  <span class="vpill-icon">✓</span>
-                  <span>0 Challans</span>
-                </button>
-                <button type="button" class="vpill vpill-service" onclick="openScoreModal('${c.id}', event, 'service')" title="View Verified OEM Service History & Odometer Timeline">
-                  <span class="vpill-icon">🔧</span>
-                  <span>Verified Log</span>
-                </button>
               </div>
 
               <div class="card-pricing-bar">
