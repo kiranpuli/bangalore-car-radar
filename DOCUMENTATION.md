@@ -11,149 +11,131 @@ Autonomous multi-platform used vehicle radar tracking, scoring, and alert pipeli
 
 ## 🎬 Product Launch Video & Feature Tour
 
-Watch the 18-second product overview showcasing the multi-platform radar sweep, 200-point mechanical telemetry scoring, dedicated transmission facets, and instant mobile push alerts:
+Watch the 18-second product overview showcasing the multi-platform radar sweep, factual price breakdown, fast filters, and instant mobile push alerts:
 
 [![Bangalore Car Radar Launch Video](product-preview.gif)](product-launch.mp4)
 
-> Rendered using Hyperframes with synchronized music and interface audio cues. [Download high-definition 1080p MP4 (2.8 MB)](product-launch.mp4).
+> Rendered using Hyperframes with synchronized music and interface audio cues. [Download high-definition 1080p MP4 (3.3 MB)](product-launch.mp4).
 
 ---
 
 ## 1. Overview & Market Intelligence
 
-Bangalore Car Radar aggregates and evaluates pre-owned vehicle inventory across all major automotive platforms in Bangalore. It eliminates speculative dealership pricing by computing algorithmic fair-market valuations, running 200-point mechanical audits, and monitoring live listings hourly.
+Bangalore Car Radar aggregates and evaluates pre-owned vehicle inventory across all major automotive platforms in Bangalore. It eliminates speculative dealership markups by computing fair-value ratings, providing factual 2-year resale and maintenance estimates, and monitoring live listings hourly.
 
 | Metric | Live Count / Frequency | Description |
 | :--- | :--- | :--- |
-| **Tracked Bangalore Cars** | **1,746** | Live verified inventory across all Bengaluru hubs |
+| **Tracked Bangalore Cars** | **1,700+** | Live verified inventory across all Bengaluru hubs |
 | **Integrated Marketplaces** | **4** | Spinny, Cars24, Truwo, and OLX Bangalore |
 | **Sync & Scrape Cadence** | **Hourly (24/7)** | Autonomous background scraping & deal detection |
-| **Mechanical Audit Engine** | **200-Point** | Automated analysis of raw inspection sheets |
+| **Safe Buying Integration** | **3 Portals** | BTP Police Fines, MoRTH e-Challan, Parivahan VAHAN |
 
 ---
 
 ## 2. Supported Marketplace Sources
 
-The monitoring pipeline pulls verified inventory with mechanical inspection sheets and direct vehicle listing URLs:
+The monitoring pipeline pulls verified inventory with direct vehicle listing URLs and inspection guarantees:
 
 | Platform | Type | Inspection Guarantee | Hubs Covered |
 | :--- | :--- | :--- | :--- |
-| **Spinny (594 cars)** | Direct Hub Feeds & APIs | 200-Point Spinny Assured & Max | Whitefield, Yelahanka, Electronic City, Mysore Road |
-| **Cars24 (620 cars)** | Search API Endpoints | 140-Point Cars24 Assured Warranty | All Bangalore Mega Hubs & Centers |
-| **Truwo (106 cars)** | Curated Hub Inventory | Verified Inspection & Multi-Point Warranty | Bengaluru South & East Hubs |
-| **OLX (426 cars)** | Classifieds Scraping | Direct Seller & Verified Certified | Bengaluru Metropolitan Area |
+| **Spinny (740+ cars)** | Direct Hub Feeds & APIs | 200-Point Spinny Assured & Max | Whitefield, Yelahanka, Electronic City, Mantri Mall |
+| **Cars24 (620+ cars)** | Search API Endpoints | 140-Point Cars24 Assured Warranty | All Bangalore Mega Hubs & Centers |
+| **Truwo (210+ cars)** | Curated Hub Inventory | Verified Direct Hub Inspection | Bengaluru South & East Hubs |
+| **OLX (210+ cars)** | Direct Private Sellers | Verified Direct Seller Listings | Bengaluru Metropolitan Area |
 
 ---
 
-## 3. Deal Scoring Algorithm (0 to 100)
+## 3. Deal Scoring Engine (0 to 100)
 
-Every vehicle receives an objective 0 to 100 conviction score evaluating mechanical integrity, market depreciation, and price positioning:
+Every vehicle receives an objective 0 to 100 score evaluating depreciation, mechanical wear, and market demand:
 
 | Component | Weight | Calculation Basis |
 | :--- | :--- | :--- |
-| **Price Retention & Depreciation** | **40 Points** | Compares asking price against model-year depreciation curve for Bangalore used car market. |
-| **Mechanical Audit Score** | **30 Points** | Analyzes suspension health, tyre tread depth ($\ge$ 4.0 mm), engine bay leaks, coolant condition, battery health, and AC performance. |
-| **Mileage & Odometer Integrity** | **15 Points** | Points awarded for verified odometers under 60k km; deductions applied for high cumulative annual mileage (> 15,000 km/year). |
-| **Ownership & Bodywork** | **15 Points** | Deductions for structural repainting, panel replacements, minor scratch counts, and third-or-higher owner history. |
+| **Price Discount vs New** | **Up to 18 Points** | High discount percentage vs original new showroom price. |
+| **Odometer & Engine Wear** | **Up to 24 Points** | Low odometer readings (< 40k km) indicate low mechanical wear. |
+| **Vehicle Age & Generation** | **Up to 20 Points** | BS6 Phase 2 era (2020+) and modern safety chassis rewarded. |
+| **Warranty & Certification** | **Up to 14 Points** | Certified multi-point inspection warranty or direct seller pricing. |
+| **Bangalore Market Demand** | **Up to 9 Points** | Trusted high-liquidity brands (Maruti, Hyundai, Honda, Toyota). |
 
 ### Curated Top Deal Threshold
-Cars scoring **$\ge$ 80/100**, priced **$\le$ ₹5.00 Lakh**, and with **$\le$ 80,000 km** are automatically promoted to the **🔥 Top Deals** curated shortlist and dispatched as push notifications.
+Cars scoring **$\ge$ 80/100**, priced **$\le$ ₹4.00 Lakh**, and with **$\le$ 80,000 km** are automatically promoted to the **🔥 Top Deals** curated shortlist and dispatched as push notifications.
 
 ---
 
-## 4. Ex-Showroom Retail Benchmark & Discount Calculation
+## 4. Factual Price & Cost Breakdown
 
-Original showroom price (`orig_retail_price`) and savings discount (`retail_discount_pct`) are derived through a 4-tier normalized evaluation pipeline in `estimate_original_retail()`:
+Clicking **Price Details** on any car opens a transparent buyer breakdown:
 
-| Tier | Mechanism | Formula & Behavior |
-| :--- | :--- | :--- |
-| **1. Model Baseline Matrix** | 100+ vehicle lines matched by normalized longest-substring priority | Whitespace/hyphen stripped regex match prevents misclassification (e.g. *Grand i10* before *i10*; *BMW X5* before generic *BMW*). |
-| **2. Brand-Level Fallback** | Segment anchors for unlisted or sparse trims | Luxury brands anchored accurately (BMW ₹58L, Mercedes ₹65L, Audi ₹52L, Volvo ₹62L, Toyota ₹14.5L). |
-| **3. Year & Trim Adjustments** | Dynamic inflation and variant scaling | `base * (1 + (year - 2016) * 0.035) * (+10% top-spec) * (+8% AT)`. |
-| **4. Age Depreciation Floor** | Logical floor gate against source payload anomalies | If asking price exceeds model base, enforces `orig_retail = price * max(1.25, 1.0 + age * 0.07)`. Ignores marketplace pre-markdown listing strikes. |
+1. **Estimated 2-Year Resale Value:** Data-driven forecast of vehicle market value after 24 months of Bangalore driving (~70-80% retention for trusted brands).
+2. **Yearly Service & Upkeep Budget:** Realistic annual estimates for routine oil changes, filter replacements, and regular brake/tyre upkeep.
+3. **Showroom Price Savings:** Exact rupee difference and percentage saved compared to buying the same model brand new today.
+4. **Monthly Value Loss Rate:** Normal market depreciation rate.
+5. **Safe Buying Checklist & Government Portals:**
+   - 🚨 **Bangalore Traffic Police (BTP):** Real-time fine checks for signal jumping and speeding cameras.
+   - 📋 **MoRTH e-Challan:** All-India highway fine verification.
+   - 🏛️ **Parivahan VAHAN:** Verification of registered owner serial number, road tax status, and bank hypothecation / loan NOC.
 
 ---
 
-## 5. Ergonomic Filter Control Deck & Mobile Architecture
+## 5. Modern Filter Control Deck & Mobile Architecture
 
 The dashboard provides a responsive, dual-mode filter architecture designed for rapid refinement across both desktop and mobile viewports:
 
-### Mobile Viewport (< 768px): Zero-Overhead Bottom Sheet
-On mobile devices, vertical filter forms are eliminated to keep car cards in the first viewport:
-- **Sticky Command Bar (40px):** Search input with instant clear, quick sort selector, and dedicated `⚙️ Filters [count]` trigger button.
-- **Horizontal Quick-Chip Strip (32px):** Smooth-scrolling, 1-touch facet chips (`🔥 Top Deals`, `⚡ Auto`, `🕹️ Manual`, `≤ ₹4L`, `⛽ Petrol`, `🛢️ Diesel`, `🛡️ German ≤4L`, `🏎️ BMW`, `All Cars`) with real-time inventory counts.
-- **Slide-Up Bottom Sheet Drawer:** Tapping `⚙️ Filters` slides up a native-feeling bottom sheet (86vh max-height, backdrop blur, swipe-down handle) housing the full granular control suite, with a sticky bottom `View X Verified Cars →` action bar.
-- **Instant Result Visibility:** Cars appear immediately below the quick chip strip—zero screen space wasted.
+### Mobile Viewport (< 768px): Vaul-Style Bottom Sheet
+- **Sticky Search & Filter Bar:** Instant multi-word search, sort selector, and `⚙️ Filters [count]` trigger button.
+- **Horizontal Quick-Chip Strip:** 1-Touch facet chips (`🔥 Top Deals`, `⚡ Automatic`, `💰 Under ₹4L`, `All Cars`) with real-time inventory counts.
+- **Smooth Bottom Sheet Drawer:** Tapping `Filters` slides up a native-feeling drawer with pull handle, housing budget sliders, age, mileage, transmission, fuel, and brand chips.
+- **Light & Dark Theme Toggle:** Theme toggle available on both mobile header and desktop nav.
 
-### Desktop Viewport (≥ 768px): Symmetrical 4-Card Workbench
-- **Budget Slider & Number Fields:** Exact numerical input boxes for Minimum and Maximum price in Lakhs (₹ L), paired with a continuous scrub slider from ₹1.0L to ₹15.0L+.
-- **Model Year Floor:** Quick segmented pill buttons (`All`, `2016+`, `2018+`, `2020+`, `2022+`) and continuous year slider (2012 to 2024).
-- **Showroom Savings %:** Discrete discount percentage selector (`Any`, `20%+`, `35%+`, `50%+`) with 0% to 60%+ range slider.
-- **Maximum Mileage Ceiling:** Quick km pills (`Any`, `≤ 40k`, `≤ 60k`, `≤ 80k`, `≤ 100k`) and 20k to 120k km slider.
-- **Transmission Panel:** Dedicated gearbox facet panel with live count badges for `All (1,746)`, `⚡ Automatic (805)`, and `🕹️ Manual (941)`.
-- **Fuel Type Panel:** Dedicated fuel facet panel with live count badges for `All`, `⛽ Petrol (1,249)`, `🛢️ Diesel (449)`, and `🍃 CNG (12)`.
-- **Source Platforms:** Multi-select discrete buttons for Spinny, Cars24, Truwo, and OLX with live count badges.
-- **Automaker Chips:** One-click brand chips with live count badges for Maruti, Hyundai, Tata, Honda, Volkswagen, Toyota, Skoda, BMW, Mahindra, Renault, and MG.
-- **Model Exclusion (Hide Model):** Permanent model exclusion button on cards and scorecard modals, persisting hidden models in browser `localStorage`.
+### Desktop Viewport (≥ 768px): Symmetrical Filter Deck
+- **⌘K Command Menu:** Keyboard-accessible command palette with instant quick choices (*Under ₹4 Lakh*, *Automatic Cars*, *Low Mileage*, *Brand Shortcuts*).
+- **Budget Slider & Number Fields:** Exact numerical input boxes for Minimum and Maximum price in Lakhs (₹ L), paired with a continuous scrub slider.
+- **Transmission Panel:** Dedicated gearbox facet panel with live count badges for `All`, `⚡ Automatic`, and `🕹️ Manual`.
+- **Fuel Type Panel:** Discrete counts for `Petrol`, `Diesel`, and `CNG`.
+- **Source Platforms:** Multi-select buttons for Spinny, Cars24, Truwo, and OLX with live count badges.
+- **Automaker Chips:** One-click brand chips for Maruti, Hyundai, Tata, Honda, Volkswagen, Toyota, Skoda, BMW, Mahindra, Renault, and MG.
+- **Model Exclusion (Hide Model):** Permanent model exclusion button on cards and modals, persisting hidden models in browser `localStorage`.
 
 ---
 
-## 6. Mobile & Push Notification Architecture
+## 6. Real-Time Push Notification Pipeline
 
-Pre-owned car deals under ₹4L often receive reservations within 3 hours in Bangalore. The system provides two notification channels:
-
-### Channel A: Mobile Push (ntfy.sh / Samsung S25 Ultra)
-Zero signups, open-source notification pipeline via `ntfy.sh/kiran-car-radar`. High-priority push notifications include direct listing links and car photographs, dispatched instantly to Android and iOS devices:
+Delivers push alerts directly to Android and iOS devices via **ntfy.sh** with zero registration:
 
 ```bash
-curl -d "🔥 2018 Honda Jazz Petrol dropped to ₹4.20L at Spinny Whitefield!" \
-     -H "Title: Car Deal Radar Alert" \
+# Test sending a push notification right from your terminal:
+curl -d "🔥 2020 Maruti Swift dropped to ₹4.10L in Bangalore!" \
+     -H "Title: Bangalore Car Radar Alert" \
      -H "Click: https://kiranpuli.github.io/bangalore-car-radar/" \
      https://ntfy.sh/kiran-car-radar
 ```
 
-### Channel B: PWA (Progressive Web Application)
-Configured with web application manifests (`site.webmanifest`, `manifest.json`), high-resolution vector SVG favicon, 192px/512px maskable icons, and `#131209` dark status bar theme color.
-
 ---
 
-## 7. Automated Hourly Sync Architecture
+## 7. Developer CLI Commands
 
-The monitoring pipeline runs autonomously on two parallel schedules:
-
-1. **GitHub Actions Workflow:** `.github/workflows/deploy.yml` schedules an hourly runner that executes scrapers, runs mechanical scoring, regenerates `deals.html` and `index.html`, and commits updates to `main`.
-2. **Local Cron Daemon:** `hourly_update.sh` runs via macOS `launchd` / `cron` with rebase resilience:
-   ```bash
-   0 * * * * cd /Users/kiran/workplace/bangalore-car-radar && ./hourly_update.sh >> hourly_sync.log 2>&1
-   ```
-
----
-
-## 8. Local Development & CLI Commands
-
-Run these commands locally to test scrapers, rebuild static UI, or re-render launch media:
-
-### Recompile Dashboard UI
 ```bash
+# 1. Rebuild Web Dashboard (generates index.html and deals.html)
 python3 build_ui.py
-```
 
-### Run Live Marketplace Scrapers
-```bash
+# 2. Run Headless Scrapers
 python3 spinny_checker.py --headless
+
+# 3. Test Search & Quick Choices (Playwright)
+python3 scratch/test_cmdk_quick_choices.py
+
+# 4. Re-render 1080p Launch Video (Hyperframes)
+cd brag-output/composition && npx hyperframes render --quality high -o ../brag.mp4
 ```
 
-### Re-render Product Launch Video (Hyperframes)
-```bash
-cd brag-output/composition && npx hyperframes check && npx hyperframes render -o ../brag.mp4
-```
+---
 
-### Test Dispatch Push Alert
-```bash
-python3 -c "
-import urllib.request
-req = urllib.request.Request('https://ntfy.sh/kiran-car-radar', data=b'Test alert from Bangalore Car Radar', headers={'Title': 'Radar Test Alert'})
-urllib.request.urlopen(req)
-print('Alert dispatched successfully')
-"
-```
+<div align="center">
+
+### Ready to find your car?
+
+[**👉 Open Bangalore Car Radar (100% Free)**](https://kiranpuli.github.io/bangalore-car-radar/)
+
+<sub>Maintained by [Kiran Puli](https://github.com/kiranpuli) • Standalone documentation at [documentation.html](documentation.html) • Push Channel: [ntfy.sh/kiran-car-radar](https://ntfy.sh/kiran-car-radar)</sub>
+
+</div>

@@ -2,22 +2,22 @@
 
 # 🏎️ Bangalore Car Radar
 
-### **Stop Overpaying Dealerships ₹1,50,000 for Used Cars in Bangalore.**
+### **Find your dream car in Bangalore — without the headache ✨**
 
 [![Status: Live](https://img.shields.io/badge/Status-Live%20Radar%20Active-10B981?style=for-the-badge&logo=radar&logoColor=white)](https://kiranpuli.github.io/bangalore-car-radar/)
-[![Coverage](https://img.shields.io/badge/Coverage-1%2C746%20Bangalore%20Cars-3B82F6?style=for-the-badge)](https://kiranpuli.github.io/bangalore-car-radar/)
-[![Alerts](https://img.shields.io/badge/Alerts-Instant%20Mobile%20Push-F59E0B?style=for-the-badge&logo=google-cloud&logoColor=white)](https://ntfy.sh/kiran-car-radar)
-[![Audit](https://img.shields.io/badge/Audit-200--Point%20Telemetry-8B5CF6?style=for-the-badge)](DOCUMENTATION.md)
+[![Coverage](https://img.shields.io/badge/Coverage-1%2C700%2B%20Bangalore%20Cars-3B82F6?style=for-the-badge)](https://kiranpuli.github.io/bangalore-car-radar/)
+[![Alerts](https://img.shields.io/badge/Alerts-Instant%20Phone%20Push-F59E0B?style=for-the-badge&logo=google-cloud&logoColor=white)](https://ntfy.sh/kiran-car-radar)
+[![Theme](https://img.shields.io/badge/UI-Light%20%26%20Dark%20Modes-8B5CF6?style=for-the-badge)](https://kiranpuli.github.io/bangalore-car-radar/)
 
-*The autonomous multi-platform intelligence feed that analyzes 200-point inspection sheets, scores deals on an algorithmic conviction index, and pings your phone before dealers flip them.*
+*The free, fast, and friendly car finder that checks 1,700+ verified used cars across Spinny, Cars24, Truwo, and OLX every hour — with honest price scores, full cost breakdowns, and instant deal alerts.*
 
-[**🚀 Open Free Live Radar**](https://kiranpuli.github.io/bangalore-car-radar/) &nbsp;•&nbsp; [**📲 Get Mobile Push Alerts**](https://ntfy.sh/kiran-car-radar) &nbsp;•&nbsp; [**📖 Architecture & Docs (Markdown)**](DOCUMENTATION.md) &nbsp;•&nbsp; [**🎬 1080p Launch Video**](product-launch.mp4)
+[**🚀 Open Free Dashboard**](https://kiranpuli.github.io/bangalore-car-radar/) &nbsp;•&nbsp; [**📲 Get Phone Push Alerts**](https://ntfy.sh/kiran-car-radar) &nbsp;•&nbsp; [**🎬 1080p Launch Video**](product-launch.mp4) &nbsp;•&nbsp; [**📖 Buyer Guide & FAQs**](documentation.html)
 
 <br/>
 
-[![Bangalore Car Radar Product Launch Preview](product-preview.gif)](https://kiranpuli.github.io/bangalore-car-radar/)
+[![Bangalore Car Radar Product Launch Video](product-preview.gif)](https://kiranpuli.github.io/bangalore-car-radar/)
 
-<sub>🎬 18-second product overview showing real-time radar sweep, 200-point telemetry, transmission facets, and push alerts. <a href="product-launch.mp4">Download high-definition MP4 with audio</a>.</sub>
+<sub>🎬 18-second video overview showing real-time radar sweep, price breakdown, fast filters, and instant push alerts. <a href="product-launch.mp4">Download 1080p MP4 with sound</a>.</sub>
 
 </div>
 
@@ -25,83 +25,101 @@
 
 ## ⚡ Why Bangalore Car Radar?
 
-| Traditional Used Car Hunting | Bangalore Car Radar |
+Buying a used car in Bangalore usually means opening 4 different apps every day, dealing with aggressive salespeople, and worrying if the car has unpaid traffic fines or a hidden bank loan.
+
+Bangalore Car Radar solves that in one clean screen:
+
+| Traditional Car Shopping | Bangalore Car Radar |
 | :--- | :--- |
-| ❌ Manually browsing 4 different apps (Spinny, Cars24, Truwo, OLX) every day | ✅ **3,600+ live Bangalore vehicles unified into one high-speed dashboard** |
-| ❌ Dealing with dealership markups of ₹1,00,000 to ₹1,50,000 | ✅ **Fair-value depreciation curves spotlighting true bargains under ₹4 Lakhs** |
-| ❌ Hidden tyre wear, suspension issues, and engine leaks discovered after booking | ✅ **200-Point mechanical telemetry scored (0 to 100) before you travel to the hub** |
-| ❌ Sifting through unwanted car models repeatedly | ✅ **1-Click "⊘ Hide Model" button removes unwanted models permanently from your view** |
-| ❌ Missing under-priced deals because someone else saw them first | ✅ **Zero-setup push notifications straight to your Samsung S25 Ultra or iPhone** |
+| ❌ Jumping between Spinny, Cars24, Truwo & OLX tabs every day | ✅ **1,700+ verified Bangalore cars unified into one high-speed dashboard** |
+| ❌ Paying dealer markups of ₹1,00,000 to ₹1,50,000 | ✅ **Honest price ratings spotlighting true bargains under ₹4 Lakh** |
+| ❌ Hidden unpaid traffic fines or active bank loans discovered late | ✅ **Direct 1-tap links to official Bangalore Police (BTP) & Parivahan checks** |
+| ❌ Guessing future maintenance bills and resale value | ✅ **Transparent 2-year estimated resale value and yearly service budgets** |
+| ❌ Missing good cars because someone else saw them first | ✅ **Free instant push notifications straight to your phone (Android & iOS)** |
 
 ---
 
-## 🎯 5 Reasons Buyers Use Bangalore Car Radar
+## 🎯 6 Features You'll Love
 
-### 1. Four Major Marketplaces in One Radar
-Stop jumping between tabs. Every hour, our scrapers sync live pre-owned inventories across all Bangalore hubs:
-- **Spinny (594 cars):** Whitefield, Yelahanka, Electronic City, and Mysore Road hubs.
-- **Cars24 (620 cars):** All Bangalore Assured inspection centers.
-- **Truwo (106 cars):** Verified direct hub inventory across Bengaluru South & East.
-- **OLX (426 cars):** Curated and verified direct seller listings.
+### 1. 🔍 Four Major Marketplaces in One Radar
+No more tab juggling. Every hour, our scrapers sync live pre-owned cars across all Bangalore hubs:
+- **Spinny (740+ cars):** Whitefield, Yelahanka, Electronic City, and Mantri Mall hubs.
+- **Cars24 (620+ cars):** Assured inspection centers across the city.
+- **Truwo (210+ cars):** Verified direct inventory across Bengaluru South & East.
+- **OLX (210+ cars):** Hand-picked direct private sellers with zero dealer markup.
 
-### 2. 200-Point Mechanical Telemetry Audit
-We extract raw inspection data so you never waste time visiting a showroom for a defective vehicle:
-- **Tyre Health:** Exact tread depth measurements (≥ 4.0 mm required for green badge).
-- **Suspension & Struts:** Leak detection and damping efficiency ratings.
-- **Engine & ECU:** Scan results, smoke analysis, gasket inspection, and fluid checks.
-- **Electrical & AC:** Battery health voltage, starter motor test, and cabin cooling speed.
+### 2. 💰 Hand-Picked Deals Under ₹4 Lakh
+Looking for an affordable first car? Tap **🔥 Top Deals** or **💰 Under ₹4L** to instantly see vetted cars with high savings vs new showroom price, low odometer readings, and healthy mechanical life.
 
-### 3. Algorithmic Deal Conviction Scoring (0 to 100)
-Our valuation algorithm scores every car based on Bangalore market retention curves:
-- **40 Points — Depreciation Curve:** Price vs. original showroom cost and year-over-year retention.
-- **30 Points — Mechanical Sheet:** Direct rating from tyre, suspension, and engine checklists.
-- **15 Points — Mileage Verification:** Target ≤ 80,000 km with verified service history.
-- **15 Points — Ownership Profile:** Single-owner bonus and clean body panels.
+### 3. ✨ Transparent Price & Cost Breakdown
+Click any vehicle's **Price Details** to see what you'll actually spend:
+- **Estimated 2-Year Resale Value:** Know what you'll get back if you sell in 24 months.
+- **Yearly Service & Upkeep Budget:** Realistic annual estimates for routine oil changes and maintenance.
+- **Savings vs Brand New:** Real price difference compared to original showroom ex-showroom cost.
+- **Monthly Depreciation Rate:** Transparent market price drop expectations.
 
-> **Curated Threshold:** Cars scoring 80+ priced under ₹5.00 Lakhs are automatically badged with **🔥 Top Deal**.
+### 4. 🛡️ Safe Buying Checklist & Official Government Portals
+Never pay a booking deposit without checking the car's legal status:
+- 🚨 **Bangalore Traffic Police (BTP):** 1-Click link to enter the plate number and inspect unpaid speeding or signal fines.
+- 📋 **MoRTH e-Challan:** Check national highway violations.
+- 🏛️ **Parivahan VAHAN:** Confirm ownership count, fitness expiry, and bank loan clearance (NOC).
 
-### 4. Laser-Targeted Transmission, Fuel & Year Filters
-Filter 1,746 cars in under 100 milliseconds with dedicated facet decks:
-- **Dedicated Transmission Panel:** Real-time count badges for `All (1,746)`, `⚡ Automatic (805)`, and `🕹️ Manual (941)`.
-- **Fuel Type Selector:** `All`, `⛽ Petrol (1,249)`, `🛢️ Diesel (449)`, and `🍃 CNG (12)`.
-- **Model Year Pills:** 1-Click jumps for `All`, `2016+`, `2018+`, `2020+`, and `2022+` plus continuous slider.
-- **Custom Model Exclusion:** Hit **⊘ Hide Model** on any car card to hide that model across all platforms instantly (saved to device `localStorage`).
+### 5. ⚡ ⌘K Command Search & Quick Choices
+Press `⌘K` (or tap `Find`) anytime for lightning-fast search:
+- **Instant Quick Choices:** 1-Click buttons for *Under ₹4 Lakh*, *Automatic Cars*, *Low Mileage (< 40,000 km)*, and *German Cars*.
+- **Trusted Brands:** Jump straight to *Maruti Suzuki*, *Hyundai*, *Tata Motors*, or *Honda*.
+- **Multi-Word Instant Search:** Search "Swift Automatic" or "Honda City Petrol" in real time.
 
-### 5. Instant Zero-Setup Phone Push Notifications
-Get alerted the exact minute a price drop or new high-conviction deal appears. Built for Samsung S25 Ultra, Android, and iOS:
+### 6. 📲 1-Tap Mobile Push Notifications
+Top Bangalore deals get booked in under 3 hours. Connect your phone via **ntfy.sh** (free, open source, zero signups) to get pinged the second a matching deal drops:
 
 ```bash
-# Test sending a push notification right from your terminal:
-curl -d "🔥 2018 Honda Jazz Petrol dropped to ₹4.20L at Spinny Whitefield!" \
-     -H "Title: Car Deal Radar Alert" \
+# Test a push alert from your terminal:
+curl -d "🔥 2020 Maruti Swift dropped to ₹4.10L in Bangalore!" \
+     -H "Title: Bangalore Car Radar Alert" \
      -H "Click: https://kiranpuli.github.io/bangalore-car-radar/" \
      https://ntfy.sh/kiran-car-radar
 ```
 
 ---
 
-## ⚙️ Hourly Sync Architecture
-The system operates autonomously 24 hours a day, 7 days a week:
-1. **Hourly GitHub Action:** Automated cron executes scrapers headless, pulls fresh listings, recalculates conviction scores, updates the database, and commits changes.
-2. **Local Background Sync:** `hourly_update.sh` runs alongside with git rebase resilience and error logging.
-3. **Instant Static UI Build:** `build_ui.py` renders the complete interactive dashboard directly into standalone `index.html` with zero external runtime dependencies.
+## 🎨 Clean Light & Dark Themes
+
+Built for real humans, not just developers. Switch seamlessly between dark and light themes using the top-bar toggle. Clean contrast, generous touch targets for mobile phones, and simple English with zero confusing technical jargon.
 
 ---
 
-## 💻 Developer CLI Commands
+## ⚙️ How It Works Behind the Scenes
+
+```mermaid
+flowchart LR
+    A[Scrape Hourly<br/>Spinny, Cars24, Truwo, OLX] --> B[Score Deals 0-100<br/>Depreciation, KM, Age, Brand]
+    B --> C[Push Deal Alerts<br/>ntfy.sh Notification Service]
+    B --> D[Generate Static UI<br/>Light/Dark HTML Dashboard]
+    D --> E[Live on GitHub Pages<br/>0 Server Overhead]
+```
+
+1. **Hourly Sweep:** Scrapers run every hour to pull new listings and remove sold inventory.
+2. **Deal Scoring:** Calculates fair value based on Bangalore market resale demand, age, and mileage.
+3. **Instant Alerts:** Qualifying deals trigger instant mobile notifications.
+4. **Zero-Lag UI:** `build_ui.py` compiles everything into a fast, single-file dashboard hosted on GitHub Pages.
+
+---
+
+## 💻 Quick Developer Commands
 
 ```bash
-# 1. Rebuild Static Dashboard
+# 1. Rebuild Web Dashboard (generates index.html and deals.html)
 python3 build_ui.py
 
 # 2. Run Headless Scrapers
 python3 spinny_checker.py --headless
 
-# 3. Start Local Development Server
-python3 server.py 8000
+# 3. Test Search & Quick Choices (Playwright test suite)
+python3 scratch/test_cmdk_quick_choices.py
 
-# 4. Re-render Product Launch Video (Hyperframes)
-cd brag-output/composition && npx hyperframes check && npx hyperframes render -o ../brag.mp4
+# 4. Re-render 1080p Launch Video (Hyperframes)
+cd brag-output/composition && npx hyperframes render --quality high -o ../brag.mp4
 ```
 
 ---
@@ -110,8 +128,8 @@ cd brag-output/composition && npx hyperframes check && npx hyperframes render -o
 
 ### Ready to find your car?
 
-[**👉 Launch Bangalore Car Radar (Free)**](https://kiranpuli.github.io/bangalore-car-radar/)
+[**👉 Open Bangalore Car Radar (100% Free)**](https://kiranpuli.github.io/bangalore-car-radar/)
 
-<sub>Maintained by [Kiran Puli](https://github.com/kiranpuli) • Standalone documentation at [documentation.html](documentation.html) • Push Channel: [ntfy.sh/kiran-car-radar](https://ntfy.sh/kiran-car-radar)</sub>
+<sub>Built by [Kiran Puli](https://github.com/kiranpuli) • Real-Time Deal Alerts: [ntfy.sh/kiran-car-radar](https://ntfy.sh/kiran-car-radar)</sub>
 
 </div>

@@ -233,44 +233,39 @@
       flex: 1.2;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 20px;
     }
     .telemetry-title {
-      font-size: 44px;
+      font-size: 42px;
       font-weight: 800;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       letter-spacing: -0.02em;
     }
     .telemetry-sub {
-      font-size: 30px;
+      font-size: 26px;
       color: var(--text-muted);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
+    .telemetry-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .tele-box {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 18px 22px;
+    }
+    .tele-box-icon { font-size: 28px; margin-bottom: 4px; }
+    .tele-box-lbl { font-size: 20px; color: var(--text-muted); font-weight: 600; }
+    .tele-box-val { font-size: 32px; font-weight: 800; font-family: 'JetBrains Mono', monospace; margin: 4px 0; }
+    .tele-box-sub { font-size: 18px; color: var(--text-dim); }
     .telemetry-item {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 18px;
-      padding: 22px 30px;
-    }
-    .telemetry-header {
-      display: flex;
-      justify-content: space-between;
-      font-size: 30px;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-    .bar-bg {
-      width: 100%;
-      height: 14px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 9999px;
-      overflow: hidden;
-    }
-    .bar-fill {
-      height: 100%;
-      border-radius: 9999px;
-      background: linear-gradient(90deg, #10b981, #34d399);
-      width: 0%;
+      padding: 18px 24px;
     }
 
     /* Scene 4: Filters & Push */
@@ -441,106 +436,120 @@
     <!-- SCENE 1: The Problem (0.0s - 3.5s) -->
     <div id="scene-1" class="scene clip" data-start="0" data-duration="3.5" data-track-index="1">
       <div class="scene-content" id="s1-content" data-hold>
-        <div class="alert-pill">⚠️ Bangalore Used Car Market Alert</div>
-        <h1 class="headline">Dealers Markup Bangalore Cars by ₹1.5 Lakhs.<br><span style="color: #fda4af;">And Hide Critical Defects.</span></h1>
-        <p class="subhead" data-layout-ignore>Checking Spinny, Cars24, Truwo, and OLX manually takes 4 hours every day.</p>
+        <div class="alert-pill">⚠️ Bangalore Used Car Hunt</div>
+        <h1 class="headline">Dealers Markup Bangalore Cars by ₹1.5 Lakhs.<br><span style="color: #fda4af;">And Hide Critical Repair History.</span></h1>
+        <p class="subhead" data-layout-ignore>Jumping across Spinny, Cars24, Truwo &amp; OLX takes hours of painful searching.</p>
       </div>
     </div>
 
     <!-- SCENE 2: The Solution / Radar (3.5s - 7.5s) -->
     <div id="scene-2" class="scene clip" data-start="3.5" data-duration="4.0" data-track-index="2">
       <div class="scene-content" id="s2-content" data-hold>
-        <div class="brand-badge">⚡ Autonomous Used Car Radar</div>
-        <h1 class="radar-headline">1,746 Bangalore Cars Tracked Hourly</h1>
-        <p class="radar-sub">Real-time valuation algorithms scan 4 major platforms 24/7</p>
+        <div class="brand-badge">🚗 Bangalore Used Car Radar</div>
+        <h1 class="radar-headline">1,700+ Verified Bangalore Cars</h1>
+        <p class="radar-sub">Unified into one instant dashboard with honest prices &amp; zero sales pressure</p>
         
         <div class="platform-cards" data-layout-ignore>
           <div class="platform-card" id="card-spinny">
             <div class="platform-logo" style="color: #f97316;">Spinny</div>
             <div class="platform-count">740+ Cars</div>
-            <div class="platform-label">200-Pt Audits</div>
+            <div class="platform-label">Bangalore Hubs</div>
           </div>
           <div class="platform-card" id="card-cars24">
             <div class="platform-logo" style="color: #3b82f6;">Cars24</div>
             <div class="platform-count">620+ Cars</div>
-            <div class="platform-label">140-Pt Audits</div>
+            <div class="platform-label">Assured Centers</div>
           </div>
           <div class="platform-card" id="card-truwo">
             <div class="platform-logo" style="color: #10b981;">Truwo</div>
             <div class="platform-count">210+ Cars</div>
-            <div class="platform-label">Bangalore Hubs</div>
+            <div class="platform-label">Direct Hubs</div>
           </div>
           <div class="platform-card" id="card-olx">
             <div class="platform-logo" style="color: #a855f7;">OLX</div>
             <div class="platform-count">210+ Cars</div>
-            <div class="platform-label">Direct Verified</div>
+            <div class="platform-label">Direct Sellers</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SCENE 3: Mechanical Audit & Scoring (7.5s - 11.5s) -->
+    <!-- SCENE 3: Price & Cost Breakdown (7.5s - 11.5s) -->
     <div id="scene-3" class="scene clip" data-start="7.5" data-duration="4.0" data-track-index="3">
       <div class="scene-content" id="s3-content" data-hold>
         <div class="scorecard-grid" data-layout-ignore>
           <div class="car-hero-card" id="car-card">
             <div class="deal-badge">🔥 TOP DEAL SCORE: 94 / 100</div>
-            <div class="car-title">2018 Honda Jazz 1.2 V</div>
-            <div class="car-meta">48,200 km · 1st Owner · Spinny Whitefield</div>
+            <div class="car-title">2020 Maruti Suzuki Swift VXi</div>
+            <div class="car-meta">38,200 km · 1st Owner · Bangalore East</div>
             <div class="car-price-row">
-              <div class="car-price">₹4,25,000</div>
-              <div class="car-discount">Save 48% vs New</div>
+              <div class="car-price">₹4,10,000</div>
+              <div class="car-discount">Save 44% vs New</div>
             </div>
           </div>
           <div class="telemetry-col" id="telemetry-box">
-            <div class="telemetry-title">200-Point Mechanical Telemetry</div>
-            <div class="telemetry-sub">Scored before you waste time traveling to the hub:</div>
-            <div class="telemetry-item">
-              <div class="telemetry-header">
-                <span>🛞 Tyre Tread Depth (5.2 mm avg)</span>
-                <span style="color: #10b981;">94%</span>
+            <div class="telemetry-title">✨ Factual Price &amp; Cost Breakdown</div>
+            <div class="telemetry-sub">Everything first-time buyers need to know before paying:</div>
+            
+            <div class="telemetry-grid">
+              <div class="tele-box">
+                <div class="tele-box-icon">🔄</div>
+                <div class="tele-box-lbl">Resale in 2 Years</div>
+                <div class="tele-box-val" style="color:#10b981;">₹3.15L</div>
+                <div class="tele-box-sub">~77% value back</div>
               </div>
-              <div class="bar-bg"><div class="bar-fill" id="bar-tyre" style="width: 94%;"></div></div>
+              <div class="tele-box">
+                <div class="tele-box-icon">🔧</div>
+                <div class="tele-box-lbl">Yearly Service</div>
+                <div class="tele-box-val" style="color:#f59e0b;">₹8,500</div>
+                <div class="tele-box-sub">Oil changes &amp; upkeep</div>
+              </div>
+              <div class="tele-box">
+                <div class="tele-box-icon">🏷️</div>
+                <div class="tele-box-lbl">Saved vs Showroom</div>
+                <div class="tele-box-val" style="color:#38bdf8;">Save 44%</div>
+                <div class="tele-box-sub">₹3.2L under new car</div>
+              </div>
+              <div class="tele-box">
+                <div class="tele-box-icon">📉</div>
+                <div class="tele-box-lbl">Monthly Value Loss</div>
+                <div class="tele-box-val" style="color:#a855f7;">₹3,950</div>
+                <div class="tele-box-sub">Predictable rate</div>
+              </div>
             </div>
-            <div class="telemetry-item">
-              <div class="telemetry-header">
-                <span>⚙️ Suspension &amp; Struts</span>
-                <span style="color: #10b981;">98%</span>
+
+            <div class="telemetry-item" style="display:flex; align-items:center; gap:16px;">
+              <span style="font-size:32px;">🛡️</span>
+              <div>
+                <div style="font-size:24px; font-weight:700;">Safe Buying Checklist &amp; Govt Portals</div>
+                <div style="font-size:18px; color:var(--text-muted);">Direct checks for BTP traffic fines &amp; Parivahan loan clearance</div>
               </div>
-              <div class="bar-bg"><div class="bar-fill" id="bar-susp" style="width: 98%;"></div></div>
-            </div>
-            <div class="telemetry-item">
-              <div class="telemetry-header">
-                <span>🔋 Engine, Battery &amp; AC Health</span>
-                <span style="color: #10b981;">95%</span>
-              </div>
-              <div class="bar-bg"><div class="bar-fill" id="bar-eng" style="width: 95%;"></div></div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SCENE 4: Laser Filters & Mobile Push (11.5s - 15.0s) -->
+    <!-- SCENE 4: Quick Choices & Mobile Push (11.5s - 15.0s) -->
     <div id="scene-4" class="scene clip" data-start="11.5" data-duration="3.5" data-track-index="4">
       <div class="scene-content" id="s4-content" data-hold>
         <div class="s4-wrapper">
           <div class="filter-showcase" data-layout-ignore>
             <div>
-              <div class="filter-group-title">TRANSMISSION SELECTOR</div>
+              <div class="filter-group-title">⚡ ⌘K COMMAND SEARCH &amp; QUICK CHOICES</div>
               <div class="filter-pills">
-                <div class="f-pill active">All 1,746</div>
-                <div class="f-pill active" style="background:#3b82f6; border-color:#3b82f6; color:#fff;">⚡ Automatic 805</div>
-                <div class="f-pill">🕹️ Manual 941</div>
+                <div class="f-pill active" style="background:#f59e0b; border-color:#f59e0b; color:#000;">💰 Under ₹4 Lakh</div>
+                <div class="f-pill active" style="background:#3b82f6; border-color:#3b82f6; color:#fff;">⚡ Automatic Cars</div>
+                <div class="f-pill active" style="background:#10b981; border-color:#10b981; color:#022c22;">✨ Low Mileage (&lt; 40k)</div>
               </div>
             </div>
             <div>
-              <div class="filter-group-title">FUEL &amp; EXCLUSION PREFERENCES</div>
+              <div class="filter-group-title">🚘 POPULAR BANGALORE BRANDS</div>
               <div class="filter-pills">
-                <div class="f-pill active" style="background:#10b981; border-color:#10b981; color:#022c22;">⛽ Petrol</div>
-                <div class="f-pill">🛢️ Diesel</div>
-                <div class="f-pill">🍃 CNG</div>
-                <div class="f-pill" style="background:rgba(244,63,94,0.15); border-color:#f43f5e; color:#fda4af;">⊘ Hide Model</div>
+                <div class="f-pill">🚗 Maruti Suzuki</div>
+                <div class="f-pill">🚗 Hyundai</div>
+                <div class="f-pill">🛡️ Tata Motors</div>
+                <div class="f-pill">🚗 Honda</div>
               </div>
             </div>
           </div>
@@ -555,7 +564,7 @@
               <div class="push-title">🚨 Price Drop on Curated Deal!</div>
               <div class="push-body" data-layout-ignore>
                 2018 Honda Jazz Petrol dropped to ₹4.20L at Spinny Whitefield.<br>
-                <strong style="color: #6ee7b7;">Conviction Score: 94/100 · 48k km</strong>
+                <strong style="color: #6ee7b7;">Deal Score: 94/100 · 48k km · 1st Owner</strong>
               </div>
             </div>
           </div>
@@ -566,14 +575,14 @@
     <!-- SCENE 5: Outro & Call To Action (15.0s - 18.0s) -->
     <div id="scene-5" class="scene clip" data-start="15.0" data-duration="3.0" data-track-index="5">
       <div class="scene-content" id="s5-content" data-hold>
-        <div class="final-badge">🏎️ Free Live Intelligence</div>
+        <div class="final-badge">🏎️ Free Live Deal Radar</div>
         <h1 class="final-title">Bangalore Car Radar</h1>
-        <p class="final-tag">Find Your Next Car Before Dealerships Snatch It Up.</p>
+        <p class="final-tag">Find your dream car in Bangalore — without the headache ✨</p>
         <div class="cta-button-box">kiranpuli.github.io/bangalore-car-radar</div>
         <div class="trust-badges">
           <div class="trust-item">✨ 100% Free</div>
-          <div class="trust-item">⚡ Hourly Auto-Updates</div>
-          <div class="trust-item">📲 Instant Push to Samsung S25 / iOS</div>
+          <div class="trust-item">⚡ Hourly Live Updates</div>
+          <div class="trust-item">📲 Instant Phone Push via ntfy</div>
         </div>
       </div>
     </div>
@@ -598,7 +607,7 @@
     tl.fromTo("#s3-content", { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power3.out" }, 7.5);
     tl.fromTo("#car-card", { x: -35, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 7.7);
     tl.fromTo("#telemetry-box", { x: 35, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 7.8);
-    tl.fromTo(".bar-fill", { width: "0%" }, { width: (i, el) => el.style.width, duration: 0.55, ease: "power2.out" }, 8.3);
+    tl.fromTo(".tele-box", { y: 25, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, stagger: 0.08, ease: "back.out(1.4)" }, 8.1);
     tl.to("#s3-content", { opacity: 0, scale: 0.96, duration: 0.3, ease: "power2.in" }, 11.1);
 
     // SCENE 4: 11.5s - 15.0s
