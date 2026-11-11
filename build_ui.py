@@ -1887,49 +1887,279 @@ html_content = """<!DOCTYPE html>
     .modal-hide-btn:active {
       transform: scale(0.96);
     }
-    .deck-toast {
+    /* Sonner-Inspired Stacked Micro-Toasts */
+    .sonner-container {
       position: fixed;
       bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%) translateY(20px);
-      background: #181818;
-      border: 1px solid #313131;
-      color: #FFFFFF;
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 500;
-      padding: 9px 16px;
-      border-radius: var(--radius-pill);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
-      z-index: 2000;
-      opacity: 0;
+      right: 24px;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 8px;
       pointer-events: none;
-      transition: all 200ms ease;
-      display: inline-flex;
+      max-width: 380px;
+      width: calc(100vw - 32px);
+    }
+    .sonner-toast {
+      background: #181818;
+      border: 1px solid #333333;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      padding: 12px 14px;
+      color: #EDEDED;
+      font-family: var(--font-sans);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      pointer-events: auto;
+      animation: sonnerEnter 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transition: all 180ms ease;
+    }
+    @keyframes sonnerEnter {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    .sonner-toast.sonner-exit {
+      opacity: 0;
+      transform: translateY(8px) scale(0.96);
+    }
+    .sonner-content {
+      display: flex;
       align-items: center;
       gap: 10px;
-      max-width: 90vw;
+      min-width: 0;
+      flex: 1;
     }
-    .deck-toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-      pointer-events: auto;
+    .sonner-icon {
+      font-size: 15px;
+      flex-shrink: 0;
     }
-    .deck-toast-undo {
-      background: none;
-      border: none;
+    .sonner-text-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .sonner-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #FFFFFF;
+      line-height: 1.3;
+      word-break: break-word;
+    }
+    .sonner-sub {
+      font-size: 11.5px;
+      color: #9B9B9B;
+      line-height: 1.25;
+    }
+    .sonner-undo-btn {
+      background: #272727;
+      border: 1px solid #3A3A3A;
       color: var(--accent-amber);
-      font-weight: 700;
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 6px;
       cursor: pointer;
-      padding: 2px 6px;
-      border-radius: 4px;
-      transition: background var(--dur-fast);
-      text-decoration: underline;
+      flex-shrink: 0;
+      transition: all var(--dur-fast) ease;
     }
-    .deck-toast-undo:hover {
+    .sonner-undo-btn:hover {
       background: rgba(245, 158, 11, 0.15);
+      border-color: var(--accent-amber);
+      color: #FFFFFF;
+    }
+    @media (max-width: 600px) {
+      .sonner-container {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        bottom: 20px;
+      }
+    }
+
+    /* cmdk Command Menu Palette */
+    .cmdk-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 10000;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 60px 16px 20px 16px;
+      animation: modalFadeIn 150ms ease-out;
+    }
+    .cmdk-backdrop.open {
+      display: flex;
+    }
+    .cmdk-palette {
+      background: #181818;
+      border: 1px solid #333333;
+      border-radius: 14px;
+      width: 100%;
+      max-width: 580px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      animation: cmdkScale 160ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes cmdkScale {
+      from { transform: scale(0.96) translateY(-8px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    .cmdk-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid #2B2B2B;
+    }
+    .cmdk-icon {
+      color: var(--accent-amber);
+      flex-shrink: 0;
+    }
+    .cmdk-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #FFFFFF;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 500;
+    }
+    .cmdk-input::placeholder {
+      color: #737373;
+    }
+    .cmdk-kbd {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 6px;
+      border-radius: 4px;
+      background: #272727;
+      border: 1px solid #3A3A3A;
+      color: #9B9B9B;
+    }
+    .cmdk-body {
+      max-height: 380px;
+      overflow-y: auto;
+      padding: 8px 6px;
+      scrollbar-width: thin;
+    }
+    .cmdk-group-title {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #737373;
+      padding: 8px 10px 4px 10px;
+    }
+    .cmdk-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: #EDEDED;
+      font-size: 13.5px;
+      transition: background 100ms ease;
+    }
+    .cmdk-item:hover, .cmdk-item.selected {
+      background: #272727;
+      color: #FFFFFF;
+    }
+    .cmdk-item-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      flex: 1;
+    }
+    .cmdk-item-icon {
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+    .cmdk-item-label {
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cmdk-item-sub {
+      font-size: 11px;
+      color: #888888;
+      font-family: var(--font-mono);
+      margin-left: 6px;
+    }
+    .cmdk-item-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent-amber);
+      background: rgba(245, 158, 11, 0.1);
+      padding: 2px 7px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .cmdk-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 16px;
+      border-top: 1px solid #2B2B2B;
+      background: #141414;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #737373;
+    }
+    .cmdk-shortcuts {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-search-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1F1F1F;
+      border: 1px solid #333333;
+      color: #9B9B9B;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all var(--dur-fast) ease;
+    }
+    .nav-search-trigger:hover {
+      background: #272727;
+      border-color: #4A4A4A;
+      color: #FFFFFF;
+    }
+    .nav-search-trigger kbd {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      padding: 1.5px 5px;
+      background: #272727;
+      border: 1px solid #3A3A3A;
+      border-radius: 3px;
+      color: #AAAAAA;
     }
     .cta-primary-btn {
       flex: 1;
@@ -2928,7 +3158,6 @@ html_content = """<!DOCTYPE html>
         grid-template-columns: 1fr;
         gap: 12px;
       }
-      }
       .card-photo {
         height: 180px;
       }
@@ -3017,45 +3246,50 @@ html_content = """<!DOCTYPE html>
   <header class="site-header" role="banner">
     <div class="site-header-inner">
       <div class="site-header-left">
-        <a href="#" class="nav-brand" title="Bangalore Car Radar">
-          <img src="favicon.svg" alt="Car Radar" class="nav-brand-icon" />
-          <span class="nav-brand-name">Bangalore Car Radar</span>
+        <a href="#" class="nav-brand" title="Bangalore Used Car Finder">
+          <img src="favicon.svg" alt="Car Finder" class="nav-brand-icon" />
+          <span class="nav-brand-name">Bangalore Used Car Finder</span>
         </a>
         <div class="nav-status-badge">
           <span class="pulse-dot" aria-hidden="true"></span>
-          <span>Top Deals: <strong id="tele-curated">0</strong></span>
+          <span>Best Value: <strong id="tele-curated">0</strong></span>
           <span class="status-sep">·</span>
-          <span><span id="tele-total">0</span> market</span>
+          <span><span id="tele-total">0</span> verified</span>
         </div>
       </div>
       <nav class="site-header-actions" aria-label="Main Navigation">
+        <button type="button" class="nav-search-trigger" onclick="openCmdk()" title="Quick search cars, brands or budget (⌘K)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span>Find</span>
+          <kbd>⌘K</kbd>
+        </button>
         <button type="button" class="nav-btn alert-bell-btn" onclick="toggleAlertsModal()" title="View Recent Deal Alerts">
           <svg class="btn-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-          <span>Alerts</span>
+          <span>Price Drops</span>
           <span id="badge-alerts-count" class="alert-count-pill">0</span>
         </button>
-        <button type="button" class="nav-btn push-alerts-btn" id="btn-open-push" onclick="openPushModal()" title="Instant Mobile Push Alerts">
+        <button type="button" class="nav-btn push-alerts-btn" id="btn-open-push" onclick="openPushModal()" title="Instant Mobile Phone Alerts">
           <svg class="btn-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-9.33-5"></path><path d="M22 12A10 10 0 0 0 8.5 2.18"></path><rect x="2" y="6" width="12" height="16" rx="2"></rect><line x1="8" y1="18" x2="8.01" y2="18"></line></svg>
-          <span>Push</span>
+          <span>Phone Alerts</span>
         </button>
-        <a href="documentation.html" class="nav-btn" title="Technical Documentation & Guide">
+        <a href="documentation.html" class="nav-btn" title="Beginner Buying Guide & FAQs">
           <svg class="btn-nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-          <span>Docs</span>
+          <span>Guide</span>
         </a>
       </nav>
     </div>
   </header>
 
   <div class="shell">
-    <!-- Hero Section (Compact & Minimal) -->
+    <!-- Hero Section (Simple & Clear) -->
     <header class="hero-section">
       <div class="hero-tagline-wrap" id="tagline-reveal">
-        <span class="tagline-badge">Verified Deal Intelligence</span>
+        <span class="tagline-badge">Bangalore Market Comparison</span>
         <span class="tagline-compact-text" id="tagline-words"></span>
       </div>
-      <h1 class="heading-1 hero-heading">Bangalore Top Used Car Deals</h1>
+      <h1 class="heading-1 hero-heading">Find a Good Used Car in Bangalore</h1>
       <p class="body-3 hero-subhead">
-        Curated shortlist of verified Bangalore cars with high resale retention, 200-point mechanical audits, and real-time deal alerts across Spinny, Cars24, Truwo, and OLX.
+        We compare inspected used cars from Spinny, Cars24, and trusted Bangalore sellers. See real resale estimates, estimated service costs, and avoid bad deals.
       </p>
     </header>
 
@@ -3662,7 +3896,39 @@ html_content = """<!DOCTYPE html>
     </div>
   </div>
 
-  <div id="deck-toast" class="deck-toast" role="status" aria-live="polite"></div>
+  <!-- cmdk Fast Command Menu / Search Palette -->
+  <div class="cmdk-backdrop" id="cmdk-backdrop" onclick="closeCmdkOnBackdrop(event)">
+    <div class="cmdk-palette" role="dialog" aria-modal="true" aria-label="Quick Search">
+      <div class="cmdk-header">
+        <svg class="cmdk-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="text" 
+          id="cmdk-input" 
+          class="cmdk-input" 
+          placeholder="Search car name, brand, budget (e.g. Swift, Automatic, 4 Lakh)..." 
+          autocomplete="off"
+          oninput="onCmdkInput(this.value)"
+        />
+        <kbd class="cmdk-kbd" onclick="closeCmdk()" style="cursor:pointer;">ESC</kbd>
+      </div>
+      <div class="cmdk-body" id="cmdk-results">
+        <!-- Rendered dynamically -->
+      </div>
+      <div class="cmdk-footer">
+        <div class="cmdk-shortcuts">
+          <span>Navigate <kbd class="cmdk-kbd">↑</kbd> <kbd class="cmdk-kbd">↓</kbd></span>
+          <span>Select <kbd class="cmdk-kbd">↵</kbd></span>
+        </div>
+        <span>Bangalore Used Car Finder</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sonner-Inspired Stacked Micro-Toasts Container -->
+  <div id="sonner-container" class="sonner-container" aria-live="polite"></div>
 
   <script>
     const CARS = """ + cars_json + """;
@@ -3686,31 +3952,295 @@ html_content = """<!DOCTYPE html>
       } catch (e) {}
     }
 
-    let toastTimeout = null;
+    // NumberFlow-Style Smooth Animated Counter
+    function animateNumber(elementId, targetValue, duration = 280) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      const startVal = parseInt(el.textContent.replace(/,/g, ''), 10) || 0;
+      if (startVal === targetValue) {
+        el.textContent = targetValue.toLocaleString('en-IN');
+        return;
+      }
+      const startTime = performance.now();
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(startVal + (targetValue - startVal) * ease);
+        el.textContent = current.toLocaleString('en-IN');
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          el.textContent = targetValue.toLocaleString('en-IN');
+        }
+      }
+      requestAnimationFrame(update);
+    }
+
+    // Sonner-Style Stacked Toast System
     function showToast(msg, undoFn) {
-      const toast = document.getElementById('deck-toast');
-      if (!toast) return;
-      if (toastTimeout) clearTimeout(toastTimeout);
-      toast.innerHTML = '';
-      const textSpan = document.createElement('span');
-      textSpan.textContent = msg;
-      toast.appendChild(textSpan);
+      const container = document.getElementById('sonner-container');
+      if (!container) return;
+      const toast = document.createElement('div');
+      toast.className = 'sonner-toast';
+      
+      const content = document.createElement('div');
+      content.className = 'sonner-content';
+      
+      const icon = document.createElement('span');
+      icon.className = 'sonner-icon';
+      icon.textContent = undoFn ? '⊘' : '✓';
+      content.appendChild(icon);
+      
+      const textWrap = document.createElement('div');
+      textWrap.className = 'sonner-text-wrap';
+      const title = document.createElement('span');
+      title.className = 'sonner-title';
+      title.textContent = msg;
+      textWrap.appendChild(title);
+      content.appendChild(textWrap);
+      toast.appendChild(content);
+
       if (undoFn) {
         const undoBtn = document.createElement('button');
         undoBtn.type = 'button';
-        undoBtn.className = 'deck-toast-undo';
+        undoBtn.className = 'sonner-undo-btn';
         undoBtn.textContent = 'Undo';
         undoBtn.onclick = () => {
           undoFn();
-          toast.classList.remove('show');
+          toast.classList.add('sonner-exit');
+          setTimeout(() => toast.remove(), 180);
         };
         toast.appendChild(undoBtn);
       }
-      toast.classList.add('show');
-      toastTimeout = setTimeout(() => {
-        toast.classList.remove('show');
+
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.classList.add('sonner-exit');
+        setTimeout(() => toast.remove(), 180);
       }, 3500);
     }
+
+    // cmdk Instant Command Palette
+    function openCmdk() {
+      const backdrop = document.getElementById('cmdk-backdrop');
+      if (backdrop) {
+        backdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        const input = document.getElementById('cmdk-input');
+        if (input) {
+          input.value = '';
+          input.focus();
+          renderCmdkSuggestions('');
+        }
+      }
+    }
+
+    function closeCmdk() {
+      const backdrop = document.getElementById('cmdk-backdrop');
+      if (backdrop) {
+        backdrop.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function closeCmdkOnBackdrop(e) {
+      if (e && e.target && e.target.id === 'cmdk-backdrop') {
+        closeCmdk();
+      }
+    }
+
+    function onCmdkInput(val) {
+      renderCmdkSuggestions(val.trim());
+    }
+
+    function renderCmdkSuggestions(query) {
+      const container = document.getElementById('cmdk-results');
+      if (!container) return;
+
+      if (!query) {
+        container.innerHTML = `
+          <div class="cmdk-group-title">Popular Quick Choices</div>
+          <div class="cmdk-item" onclick="executeCmdkAction('filter_under4l')">
+            <div class="cmdk-item-left">
+              <span class="cmdk-item-icon">💰</span>
+              <span class="cmdk-item-label">Under ₹4 Lakh</span>
+              <span class="cmdk-item-sub">Affordable starter cars</span>
+            </div>
+            <span class="cmdk-item-badge">Quick Filter</span>
+          </div>
+          <div class="cmdk-item" onclick="executeCmdkAction('filter_auto')">
+            <div class="cmdk-item-left">
+              <span class="cmdk-item-icon">🚦</span>
+              <span class="cmdk-item-label">Automatic Cars</span>
+              <span class="cmdk-item-sub">Easy to drive in Bangalore traffic</span>
+            </div>
+            <span class="cmdk-item-badge">Quick Filter</span>
+          </div>
+          <div class="cmdk-item" onclick="executeCmdkAction('filter_lowkm')">
+            <div class="cmdk-item-left">
+              <span class="cmdk-item-icon">✨</span>
+              <span class="cmdk-item-label">Low Mileage (&lt; 40,000 km)</span>
+              <span class="cmdk-item-sub">Less mechanical wear</span>
+            </div>
+            <span class="cmdk-item-badge">Quick Filter</span>
+          </div>
+          <div class="cmdk-item" onclick="executeCmdkAction('filter_german')">
+            <div class="cmdk-item-left">
+              <span class="cmdk-item-icon">🛡️</span>
+              <span class="cmdk-item-label">German Cars Under ₹4 Lakh</span>
+              <span class="cmdk-item-sub">Volkswagen Polo, Vento &amp; Skoda</span>
+            </div>
+            <span class="cmdk-item-badge">Quick Filter</span>
+          </div>
+
+          <div class="cmdk-group-title">Browse by Trusted Brands</div>
+          <div class="cmdk-item" onclick="executeCmdkAction('brand_maruti')">
+            <div class="cmdk-item-left">
+              <span class="cmdk-item-icon">🚗</span>
+              <span class="cmdk-item-label">Maruti Suzuki</span>
+              <span class="cmdk-item-sub">Lowest maintenance cost &amp; cheap spare parts</span>
+            </div>
+            <span class="cmdk-item-badge">Brand</span>
+          </div>
+          <div class="cmdk-item" onclick="executeCmdkAction('brand_hyundai')">
+            <div class="cmdk-item-left">
+              <span class="cmdk-item-icon">🚗</span>
+              <span class="cmdk-item-label">Hyundai</span>
+              <span class="cmdk-item-sub">Comfortable cabin, i10, i20, Venue</span>
+            </div>
+            <span class="cmdk-item-badge">Brand</span>
+          </div>
+          <div class="cmdk-item" onclick="executeCmdkAction('brand_tata')">
+            <div class="cmdk-item-left">
+              <span class="cmdk-item-icon">🛡️</span>
+              <span class="cmdk-item-label">Tata Motors</span>
+              <span class="cmdk-item-sub">Strong 5-star safety build (Tiago, Altroz, Nexon)</span>
+            </div>
+            <span class="cmdk-item-badge">Brand</span>
+          </div>
+          <div class="cmdk-item" onclick="executeCmdkAction('brand_honda')">
+            <div class="cmdk-item-left">
+              <span class="cmdk-item-icon">🚗</span>
+              <span class="cmdk-item-label">Honda</span>
+              <span class="cmdk-item-sub">Ultra-reliable i-VTEC engines (City, Amaze, Jazz)</span>
+            </div>
+            <span class="cmdk-item-badge">Brand</span>
+          </div>
+        `;
+        return;
+      }
+
+      const q = query.toLowerCase();
+      const matches = CARS.filter(c => {
+        const text = `${c.make_year} ${c.make} ${c.model} ${c.variant || ''} ${c.hub || ''} ${c.fuel_type || ''}`.toLowerCase();
+        return text.includes(q);
+      }).slice(0, 10);
+
+      if (!matches.length) {
+        container.innerHTML = `
+          <div style="padding:28px 16px; text-align:center; color:#888; font-size:13px; line-height:1.5;">
+            No cars found matching "<strong>${query}</strong>".<br/>
+            Try searching "Swift", "City", "Automatic", or "Petrol".
+          </div>
+        `;
+        return;
+      }
+
+      let html = `<div class="cmdk-group-title">Matching Cars (${matches.length})</div>`;
+      matches.forEach(c => {
+        const title = `${c.make_year} ${c.make} ${c.model} ${c.variant || ''}`.trim();
+        const price = '₹' + (c.price / 100000).toFixed(2) + 'L';
+        const km = (c.mileage / 1000).toFixed(0) + 'k km';
+        const trans = (c.transmission || 'MT').toUpperCase();
+        html += `
+          <div class="cmdk-item" onclick="selectCmdkCar('${c.id}')">
+            <div class="cmdk-item-left">
+              <span class="cmdk-item-icon">🚗</span>
+              <span class="cmdk-item-label">${title}</span>
+              <span class="cmdk-item-sub">${km} · ${trans} · ${c.hub || 'Bangalore'}</span>
+            </div>
+            <span class="cmdk-item-badge">${price}</span>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    function executeCmdkAction(action) {
+      closeCmdk();
+      if (action === 'filter_under4l') {
+        clearAllFilters();
+        state.max_price = 400000;
+        const s = document.getElementById('ctrl-price-range');
+        if (s) s.value = 4.0;
+        const maxInput = document.getElementById('ctrl-max-price');
+        if (maxInput) maxInput.value = '4.0';
+        updatePriceReadout();
+        applyFilters();
+        showToast('Filtered to cars under ₹4 Lakh');
+      } else if (action === 'filter_auto') {
+        clearAllFilters();
+        state.transmissions.add('automatic');
+        updateAllMultiFilterUIs();
+        applyFilters();
+        showToast('Filtered to Automatic gearbox cars');
+      } else if (action === 'filter_lowkm') {
+        clearAllFilters();
+        state.max_km = 40000;
+        const k = document.getElementById('ctrl-km-range');
+        if (k) k.value = 40;
+        syncKmUI(40000);
+        applyFilters();
+        showToast('Filtered to cars under 40,000 km');
+      } else if (action === 'filter_german') {
+        filterGermanUnder4L();
+      } else if (action === 'brand_maruti') {
+        clearAllFilters();
+        state.brands.add('maruti');
+        updateAllMultiFilterUIs();
+        applyFilters();
+        showToast('Showing Maruti Suzuki cars');
+      } else if (action === 'brand_hyundai') {
+        clearAllFilters();
+        state.brands.add('hyundai');
+        updateAllMultiFilterUIs();
+        applyFilters();
+        showToast('Showing Hyundai cars');
+      } else if (action === 'brand_tata') {
+        clearAllFilters();
+        state.brands.add('tata');
+        updateAllMultiFilterUIs();
+        applyFilters();
+        showToast('Showing Tata cars');
+      } else if (action === 'brand_honda') {
+        clearAllFilters();
+        state.brands.add('honda');
+        updateAllMultiFilterUIs();
+        applyFilters();
+        showToast('Showing Honda cars');
+      }
+    }
+
+    function selectCmdkCar(carId) {
+      closeCmdk();
+      openScoreModal(carId);
+    }
+
+    // Global keyboard listener for cmdk
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        const backdrop = document.getElementById('cmdk-backdrop');
+        if (backdrop && backdrop.classList.contains('open')) {
+          closeCmdk();
+        } else {
+          openCmdk();
+        }
+      } else if (e.key === 'Escape') {
+        closeCmdk();
+      }
+    });
 
     const state = {
       viewMode: 'curated',
@@ -4224,16 +4754,26 @@ html_content = """<!DOCTYPE html>
     }
 
     // Deal Alerts Drawer / Modal
+    function closeAlertsModal() {
+      const modal = document.getElementById('alerts-modal-backdrop');
+      if (modal) modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
     function toggleAlertsModal() {
       const modal = document.getElementById('alerts-modal-backdrop');
-      if (modal) {
-        modal.classList.toggle('open');
+      if (!modal) return;
+      if (modal.classList.contains('open')) {
+        closeAlertsModal();
+      } else {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
       }
     }
 
     function closeAlertsModalOnBackdrop(e) {
       if (e.target.id === 'alerts-modal-backdrop') {
-        toggleAlertsModal();
+        closeAlertsModal();
       }
     }
 
@@ -4761,9 +5301,9 @@ html_content = """<!DOCTYPE html>
       }
 
       const resCount = document.getElementById('res-count');
-      if (resCount) resCount.textContent = filtered.length.toLocaleString('en-IN');
+      if (resCount) animateNumber('res-count', filtered.length);
       const drawerCount = document.getElementById('drawer-cars-count');
-      if (drawerCount) drawerCount.textContent = filtered.length.toLocaleString('en-IN');
+      if (drawerCount) animateNumber('drawer-cars-count', filtered.length);
       updateFilterBadge();
       updateQuickChips();
       renderActiveTags();
@@ -4798,15 +5338,15 @@ html_content = """<!DOCTYPE html>
       const monthly = an.monthly_loss ? ('₹' + Math.round(an.monthly_loss).toLocaleString('en-IN') + '/mo') : ('₹' + Math.round((car.price * 0.35) / 24).toLocaleString('en-IN') + '/mo');
 
       let gradeClass = 'fair';
-      let gradeLabel = 'Fair Value';
+      let gradeLabel = 'Fair Price';
       let gradeColor = 'var(--text-body)';
       if (car.deal_score >= 80) {
         gradeClass = 'top';
-        gradeLabel = 'Top Deal';
+        gradeLabel = 'Great Price';
         gradeColor = 'var(--accent-amber)';
       } else if (car.deal_score >= 68) {
         gradeClass = 'value';
-        gradeLabel = 'Value Pick';
+        gradeLabel = 'Good Value';
         gradeColor = 'var(--accent-emerald)';
       }
 
@@ -4853,110 +5393,110 @@ html_content = """<!DOCTYPE html>
             </div>
           </div>
 
-          <!-- 4-Box Value & Depreciation Telemetry -->
+          <!-- 4-Box Value & Resale Summary -->
           <div class="telemetry-grid">
             <div class="telemetry-box">
-              <span class="telemetry-lbl">2-Yr Estimated Buyback</span>
+              <span class="telemetry-lbl">Estimated Resale in 2 Years</span>
               <span class="telemetry-num buyback">${buyback}</span>
-              <span class="telemetry-sub">${retention} retention</span>
+              <span class="telemetry-sub">~${retention} value back if you sell</span>
             </div>
             <div class="telemetry-box">
-              <span class="telemetry-lbl">Annual Maintenance</span>
+              <span class="telemetry-lbl">Yearly Service &amp; Repairs</span>
               <span class="telemetry-num maint">${maint}</span>
-              <span class="telemetry-sub">FNG / dealer avg</span>
+              <span class="telemetry-sub">Routine maintenance &amp; oil changes</span>
             </div>
             <div class="telemetry-box">
-              <span class="telemetry-lbl">Showroom Savings</span>
-              <span class="telemetry-num savings">${discPct > 0 ? `-${discPct}%` : 'Fair'}</span>
-              <span class="telemetry-sub">${topPrice ? `Original MRP: ${topPrice}` : 'vs Bangalore new'}</span>
+              <span class="telemetry-lbl">Saved vs Brand New</span>
+              <span class="telemetry-num savings">${discPct > 0 ? `Save ${discPct}%` : 'Fair Price'}</span>
+              <span class="telemetry-sub">${topPrice ? `Original showroom: ${topPrice}` : 'vs buying brand new'}</span>
             </div>
             <div class="telemetry-box">
-              <span class="telemetry-lbl">Depreciation Pace</span>
+              <span class="telemetry-lbl">Estimated Value Loss</span>
               <span class="telemetry-num dep">${monthly}</span>
-              <span class="telemetry-sub">Monthly true cost</span>
+              <span class="telemetry-sub">Monthly drop in car value</span>
             </div>
           </div>
 
-          <!-- Algorithmic Score Rationale -->
+          <!-- Plain English Price Rating -->
           <div class="modal-rationale-box ${gradeClass}">
             <div class="rationale-head">
-              <span class="rationale-badge ${gradeClass}">Rating Analysis</span>
-              <span class="caption-5" style="color:var(--text-subtle);">Algorithmic Valuation</span>
+              <span class="rationale-badge ${gradeClass}">Price Rating: ${gradeLabel}</span>
+              <span class="caption-5" style="color:var(--text-subtle);">Score: ${car.deal_score} / 100</span>
             </div>
             <div class="modal-rationale-text">
-              ${car.score_rationale || 'Score computed from odometer health, age wear, retail discount arbitrage, and certified mechanical warranty coverage.'}
+              ${car.score_rationale || 'This score is based on mileage, year of manufacture, price savings compared to a new car, and warranty coverage.'}
             </div>
           </div>
 
           <!-- Score Breakdown Table -->
           <div class="modal-breakdown-wrap">
             <div class="modal-breakdown-head">
-              <span>Pillar & Telemetry Audit</span>
-              <span>Points Awarded</span>
+              <span>Why this car got this score</span>
+              <span>Points</span>
             </div>
             <div class="score-audit-list">
               ${factorsHtml}
             </div>
             <div class="modal-breakdown-total">
-              <span>Final Deal Score</span>
+              <span>Final Rating Score</span>
               <strong style="color:${gradeColor}">${car.deal_score} / 100</strong>
             </div>
           </div>
 
-          <!-- Pros & Considerations -->
+          <!-- Buyer Pros & Cons -->
           ${(prosList || consList) ? `
           <div class="modal-mechanic-notes">
             ${prosList ? `
             <div class="notes-col pros-col">
-              <div class="notes-head">Key Advantages</div>
+              <div class="notes-head">What's Good About This Car</div>
               <ul class="notes-list">${prosList}</ul>
             </div>` : ''}
             ${consList ? `
             <div class="notes-col cons-col">
-              <div class="notes-head">Things to Inspect</div>
+              <div class="notes-head">Things to Check When You Test Drive</div>
               <ul class="notes-list">${consList}</ul>
             </div>` : ''}
           </div>` : ''}
 
-          <!-- Official Verification & Buyer PDI Guide -->
+          <!-- Safe Buying Checklist & Official Portals -->
           <div class="modal-pdi-box">
             <div class="modal-pdi-head">
               <span class="modal-pdi-title">
                 <span>🛡️</span>
-                <span>Official Verification &amp; PDI Guide</span>
+                <span>Safe Buying Checklist: 4 Things to Check Before You Pay</span>
               </span>
               <span class="caption-5" style="color:var(--accent-amber); font-family:var(--font-mono); font-weight:700;">Government Portals</span>
             </div>
             <div class="modal-pdi-links">
               <a href="https://btp.karnataka.gov.in/" target="_blank" rel="noopener noreferrer" class="pdi-portal-link" title="Bangalore Traffic Police Official Fine Portal">
-                <span>🚨 BTP e-Challan</span>
+                <span>🚨 Check Bangalore Police Fines (BTP)</span>
                 <span>↗</span>
               </a>
               <a href="https://echallan.parivahan.gov.in/" target="_blank" rel="noopener noreferrer" class="pdi-portal-link" title="MoRTH All-India Challan Portal">
-                <span>📋 MoRTH Challan</span>
+                <span>📋 All-India Fines (MoRTH)</span>
                 <span>↗</span>
               </a>
               <a href="https://parivahan.gov.in/parivahan/en/content/know-your-vehicle-details" target="_blank" rel="noopener noreferrer" class="pdi-portal-link" title="Parivahan VAHAN Vehicle Record Status">
-                <span>🏛️ Parivahan VAHAN RC</span>
+                <span>🏛️ Check Registration &amp; Bank Loan (Parivahan)</span>
                 <span>↗</span>
               </a>
             </div>
             <ul class="pdi-checklist">
               <li>
                 <span class="pdi-check-icon">✓</span>
-                <span><strong>Unmasked Plate:</strong> Request the unmasked vehicle registration number from ${platformName} hub prior to paying token/booking deposit.</span>
+                <span><strong>Ask for the plate number:</strong> Ask the seller or hub for the real registration plate number before paying any booking advance.</span>
               </li>
               <li>
                 <span class="pdi-check-icon">✓</span>
-                <span><strong>Challans:</strong> Enter the registration number on the official BTP portal to confirm zero pending traffic citations or court impounds.</span>
+                <span><strong>Check unpaid police fines:</strong> Open the BTP portal above and enter the plate number to make sure there are no pending speeding or signal fines.</span>
               </li>
               <li>
                 <span class="pdi-check-icon">✓</span>
-                <span><strong>Title &amp; Hypothecation:</strong> Verify active Bank Hypothecation NOC and RC fitness on the Parivahan portal to guarantee Form 29/30 transfer eligibility.</span>
+                <span><strong>Check loan clearance:</strong> Check the Parivahan portal to confirm the previous bank loan has an NOC and can be transferred to your name without trouble.</span>
               </li>
               <li>
                 <span class="pdi-check-icon">✓</span>
-                <span><strong>Physical Inspection:</strong> Inspect engine bay apron sealant, under-seat rails for silt/rust, and verify authorized dealer service records against cluster odometer.</span>
+                <span><strong>Check in person at test drive:</strong> Turn on the AC at full speed, check all power windows, look under the seats for any rust or water lines, and test the brakes.</span>
               </li>
             </ul>
           </div>
@@ -5280,21 +5820,21 @@ html_content = """<!DOCTYPE html>
         const buyback = '₹' + ((an.est_buyback_2yr || 0) / 100000).toFixed(2) + 'L';
 
         let gradeClass = 'fair';
-        let gradeLabel = `${c.deal_score} · Fair`;
+        let gradeLabel = `${c.deal_score} · Fair Price`;
         if (c.deal_score >= 80) {
           gradeClass = 'top';
-          gradeLabel = `${c.deal_score} · Top Deal`;
+          gradeLabel = `${c.deal_score} · Great Price`;
         } else if (c.deal_score >= 68) {
           gradeClass = 'value';
-          gradeLabel = `${c.deal_score} · Value`;
+          gradeLabel = `${c.deal_score} · Good Value`;
         }
 
-        const verdictText = (c.verdict || (an.pros && an.pros[0]) || 'Certified inspected vehicle with verified service history.');
+        const verdictText = (c.verdict || (an.pros && an.pros[0]) || 'Inspected car with clean verified service record.');
 
         return `
           <article class="card" id="card-${c.id}">
             <div class="card-photo">
-              <button type="button" class="badge-grade ${gradeClass}" onclick="openScoreModal('${c.id}', event)" title="Click to view score audit breakdown">
+              <button type="button" class="badge-grade ${gradeClass}" onclick="openScoreModal('${c.id}', event)" title="Click to view price and cost details">
                 <span>★ ${gradeLabel}</span>
               </button>
               
@@ -5320,7 +5860,7 @@ html_content = """<!DOCTYPE html>
                 <div class="pricing-main-wrap">
                   <span class="pricing-val-main">${price}</span>
                   ${topPrice ? `<span class="pricing-val-top">${topPrice}</span>` : ''}
-                  ${discPct > 0 ? `<span class="discount-pill">-${discPct}%</span>` : ''}
+                  ${discPct > 0 ? `<span class="discount-pill">Save ${discPct}%</span>` : ''}
                 </div>
                 <span class="pricing-source-badge ${platformClass}">${pricingTagText}</span>
               </div>
@@ -5328,16 +5868,16 @@ html_content = """<!DOCTYPE html>
               <p class="card-verdict-line">${verdictText}</p>
 
               <div class="card-intel-peek">
-                <span>24M Buyback: ${buyback}</span> · <span>Maint: ${an.maintenance_yr || '₹6.5k/yr'}</span>
-                <button type="button" class="card-audit-btn" onclick="openScoreModal('${c.id}', event)" title="View mechanical audit scorecard">Scorecard &rarr;</button>
+                <span>Est. Resale (2 Yrs): ${buyback}</span> · <span>Yearly Service: ~${an.maintenance_yr ? an.maintenance_yr.split('/')[0] : '₹6.5k'}</span>
+                <button type="button" class="card-audit-btn" onclick="openScoreModal('${c.id}', event)" title="View price and maintenance details">Price Details &rarr;</button>
               </div>
 
               <div class="card-footer">
                 <a href="${c.url || '#'}" target="_blank" rel="noopener noreferrer" class="cta-primary-btn">
-                  <span>Inspect on ${platformName}</span>
+                  <span>View on ${platformName}</span>
                   <span>&rarr;</span>
                 </a>
-                <button type="button" class="card-hide-btn" onclick="excludeModel('${(c.make || '').replace(/'/g, "\\'")}', '${(c.model || '').replace(/'/g, "\\'")}', event)" title="Hide all ${c.make} ${c.model} listings" aria-label="Hide all ${c.make} ${c.model} listings">
+                <button type="button" class="card-hide-btn" onclick="excludeModel('${(c.make || '').replace(/'/g, "\\'")}', '${(c.model || '').replace(/'/g, "\\'")}', event)" title="Hide all ${c.make} ${c.model} cars" aria-label="Hide all ${c.make} ${c.model} cars">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
                     <line x1="1" y1="1" x2="23" y2="23"></line>
