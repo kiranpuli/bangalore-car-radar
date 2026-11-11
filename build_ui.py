@@ -3031,25 +3031,60 @@ html_content = """<!DOCTYPE html>
         overflow-x: hidden;
       }
       .site-header {
-        height: 48px;
+        height: 50px;
       }
       .site-header-inner {
-        height: 48px;
+        height: 50px;
         padding: 0 12px;
         gap: 8px;
+        justify-content: space-between;
+      }
+      .site-header-left {
+        flex: 1 1 auto;
+        min-width: 0;
+        overflow: hidden;
+      }
+      .nav-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        max-width: 100%;
+        overflow: hidden;
+      }
+      .nav-brand-logo {
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+      .nav-brand-name {
+        font-size: 13.5px;
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .nav-status-badge {
         display: none;
       }
-      .nav-brand-name {
-        font-size: 13.5px;
-      }
       .site-header-actions {
+        display: flex;
+        align-items: center;
         gap: 6px;
+        flex-shrink: 0;
+      }
+      .site-header-actions .nav-search-trigger,
+      .site-header-actions .push-alerts-btn,
+      .site-header-actions a[href="documentation.html"] {
+        display: none !important;
+      }
+      .theme-toggle-btn #theme-label {
+        display: none !important;
+      }
+      .alert-bell-btn span:first-of-type {
+        display: none !important;
       }
       .nav-btn {
-        padding: 0 9px;
-        height: 32px;
+        padding: 0 8px;
+        height: 34px;
         font-size: 11px;
         gap: 4px;
         flex-shrink: 0;
@@ -3057,16 +3092,19 @@ html_content = """<!DOCTYPE html>
 
       /* Ultra-Compact Hero on Mobile */
       .hero-section {
-        margin: 0 auto 4px auto;
+        margin: 0 auto 6px auto;
         padding: 4px 4px 2px 4px;
         text-align: left;
+      }
+      .hero-badge-row {
+        display: none !important;
       }
       .hero-tagline-wrap {
         display: none !important;
       }
       .hero-heading {
-        font-size: 19px;
-        line-height: 24px;
+        font-size: 18px;
+        line-height: 23px;
         letter-spacing: -0.02em;
         margin-bottom: 2px;
       }
@@ -3074,7 +3112,7 @@ html_content = """<!DOCTYPE html>
         display: none !important;
       }
 
-      /* Mobile Command Bar (Sticky & Compact) */
+      /* Mobile Command Bar (Sticky & Spacious) */
       .mobile-command-bar {
         display: flex !important;
         flex-direction: column;
@@ -3085,7 +3123,7 @@ html_content = """<!DOCTYPE html>
         background: var(--bg-header);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
-        padding: 8px 6px 8px 6px;
+        padding: 8px 10px;
         border-bottom: 1px solid var(--border-color);
         margin: 0 -8px 8px -8px;
       }
@@ -3093,9 +3131,11 @@ html_content = """<!DOCTYPE html>
         display: flex;
         align-items: center;
         gap: 8px;
+        width: 100%;
       }
       .mobile-search-box {
         flex: 1 1 auto;
+        min-width: 0;
         position: relative;
         display: flex;
         align-items: center;
@@ -3107,14 +3147,14 @@ html_content = """<!DOCTYPE html>
       }
       .mobile-search-input {
         width: 100%;
-        height: 42px;
+        height: 40px;
         background: var(--bg-surface);
         border: 1px solid var(--border-color);
         border-radius: var(--radius-md);
         color: var(--text-primary);
         font-family: var(--font-sans);
         font-size: 13px;
-        padding: 0 36px 0 34px;
+        padding: 0 34px 0 32px;
         outline: none;
         transition-property: border-color, box-shadow;
         transition-duration: var(--dur-fast);
@@ -3127,9 +3167,9 @@ html_content = """<!DOCTYPE html>
         flex-shrink: 0;
         display: inline-flex;
         align-items: center;
-        gap: 6px;
-        height: 42px;
-        padding: 0 12px;
+        gap: 5px;
+        height: 40px;
+        padding: 0 10px;
         background: var(--bg-surface);
         border: 1px solid var(--border-color);
         border-radius: var(--radius-md);
@@ -3158,31 +3198,41 @@ html_content = """<!DOCTYPE html>
         color: #131209;
         font-variant-numeric: tabular-nums;
       }
-      .mobile-sort-wrap {
+      .mobile-theme-btn {
         flex-shrink: 0;
-      }
-      .mobile-sort-select {
-        height: 42px;
+        width: 40px;
+        height: 40px;
+        border-radius: var(--radius-md);
         background: var(--bg-surface);
         border: 1px solid var(--border-color);
-        border-radius: var(--radius-md);
-        color: var(--text-muted);
-        font-family: var(--font-sans);
-        font-size: 11.5px;
-        font-weight: 500;
-        padding: 0 8px;
-        outline: none;
+        color: var(--text-primary);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        cursor: pointer;
+        transition-property: background-color, border-color, transform;
+        transition-duration: var(--dur-fast);
       }
-
-      /* Horizontal Quick Filter Carousel */
+      .mobile-theme-btn:active {
+        transform: scale(0.94);
+      }
+      .mobile-subbar-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+      }
       .mobile-quick-chips-strip {
+        flex: 1 1 auto;
+        min-width: 0;
         display: flex;
         align-items: center;
         gap: 6px;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        padding: 2px 0 2px 0;
+        padding: 1px 0;
       }
       .mobile-quick-chips-strip::-webkit-scrollbar {
         display: none;
@@ -3191,15 +3241,15 @@ html_content = """<!DOCTYPE html>
         flex-shrink: 0;
         display: inline-flex;
         align-items: center;
-        gap: 5px;
-        height: 34px;
-        padding: 0 11px;
+        gap: 4px;
+        height: 32px;
+        padding: 0 10px;
         background: var(--bg-subsurface);
         border: 1px solid var(--border-color);
-        border-radius: 17px;
+        border-radius: 16px;
         color: var(--text-muted);
         font-family: var(--font-sans);
-        font-size: 11.5px;
+        font-size: 11px;
         font-weight: 500;
         cursor: pointer;
         white-space: nowrap;
@@ -3222,6 +3272,21 @@ html_content = """<!DOCTYPE html>
         background: rgba(255, 255, 255, 0.1);
         padding: 1px 4px;
         border-radius: 6px;
+      }
+      .mobile-sort-wrap {
+        flex-shrink: 0;
+      }
+      .mobile-sort-select {
+        height: 32px;
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        color: var(--text-muted);
+        font-family: var(--font-sans);
+        font-size: 11px;
+        font-weight: 500;
+        padding: 0 6px;
+        outline: none;
       }
 
       /* Filter Deck as Slide-up Bottom Sheet on Mobile */
@@ -3438,6 +3503,49 @@ html_content = """<!DOCTYPE html>
       .modal-mechanic-notes {
         grid-template-columns: 1fr;
       }
+      .results-bar {
+        padding: 4px 2px 8px 2px;
+        font-size: 11.5px;
+        gap: 6px;
+      }
+      .results-meta {
+        font-size: 11.5px;
+      }
+      .card-footer {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding-top: 8px;
+        margin-top: auto;
+      }
+      .card-audit-btn {
+        flex: 1 1 0;
+        min-width: 0;
+        height: 38px;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 0 4px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      .cta-primary-btn {
+        flex: 1.2 1 0;
+        min-width: 0;
+        height: 38px;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 0 4px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      .card-hide-btn {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+        flex-shrink: 0;
+      }
     }
 
     /* Small Phone Optimization (iPhone SE / 360px - 380px) */
@@ -3455,6 +3563,10 @@ html_content = """<!DOCTYPE html>
       .pricing-val-top {
         font-size: 12.5px;
       }
+      .card-audit-btn, .cta-primary-btn {
+        font-size: 10px;
+        padding: 0 2px;
+      }
     }
 
     /* Mobile Touch & Viewport Polish */
@@ -3463,15 +3575,15 @@ html_content = """<!DOCTYPE html>
         -webkit-tap-highlight-color: transparent;
       }
       .facet-pill, .preset-chip-btn, .nav-btn, .cta-primary-btn, .card-audit-btn, .card-hide-btn {
-        min-height: 40px;
+        min-height: 38px;
       }
       .cta-primary-btn, .card-audit-btn {
-        height: 40px;
+        height: 38px;
       }
       .card-hide-btn {
-        width: 40px;
-        height: 40px;
-        min-width: 40px;
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
       }
     }
   </style>
@@ -3535,6 +3647,7 @@ html_content = """<!DOCTYPE html>
 
     <!-- Mobile Command & Quick Facet Bar (Visible only on mobile <= 768px) -->
     <div class="mobile-command-bar" id="mobile-command-bar">
+      <!-- Line 1: Search + Filters Button + Theme Toggle -->
       <div class="mobile-search-row">
         <div class="mobile-search-box">
           <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -3551,10 +3664,6 @@ html_content = """<!DOCTYPE html>
           <button type="button" id="btn-clear-mobile-search" class="search-clear-btn" onclick="clearSearch()" title="Clear search">✕</button>
         </div>
 
-        <button type="button" class="mobile-theme-btn" id="mobile-theme-btn" onclick="toggleTheme()" title="Switch Light/Dark Theme" aria-label="Switch Light/Dark Theme">
-          <span id="mobile-theme-icon" aria-hidden="true">🌙</span>
-        </button>
-
         <button type="button" class="btn-mobile-filter-trigger" id="btn-open-filters" onclick="openMobileFilters()" aria-label="Open Filter Drawer">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
             <line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line>
@@ -3566,6 +3675,30 @@ html_content = """<!DOCTYPE html>
           <span class="mobile-filter-badge" id="mobile-filter-badge" style="display:none;">0</span>
         </button>
 
+        <button type="button" class="mobile-theme-btn" id="mobile-theme-btn" onclick="toggleTheme()" title="Switch Light/Dark Theme" aria-label="Switch Light/Dark Theme">
+          <span id="mobile-theme-icon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+
+      <!-- Line 2: 4 Clean Quick Chips + Sort Select -->
+      <div class="mobile-subbar-row">
+        <div class="mobile-quick-chips-strip" id="mobile-quick-strip" role="toolbar" aria-label="Quick Filters">
+          <button type="button" class="quick-chip active" id="qchip-curated" onclick="toggleQuickFilter('curated')">
+            <span>🔥 Top Deals</span>
+            <span class="qchip-count" id="qcount-curated">0</span>
+          </button>
+          <button type="button" class="quick-chip" id="qchip-auto" onclick="toggleQuickFilter('transmission', 'automatic')">
+            <span>⚡ Automatic</span>
+          </button>
+          <button type="button" class="quick-chip" id="qchip-under4l" onclick="toggleQuickFilter('budget4l')">
+            <span>💰 Under ₹4L</span>
+          </button>
+          <button type="button" class="quick-chip" id="qchip-all" onclick="setViewMode('all')">
+            <span>All Cars</span>
+            <span class="qchip-count" id="qcount-all">0</span>
+          </button>
+        </div>
+
         <div class="mobile-sort-wrap">
           <select id="ctrl-mobile-sort" class="mobile-sort-select" onchange="onSortChange(this.value)" aria-label="Sort cars">
             <option value="score">Best Value</option>
@@ -3576,24 +3709,6 @@ html_content = """<!DOCTYPE html>
             <option value="km_asc">Lowest KM</option>
           </select>
         </div>
-      </div>
-
-      <!-- Simplified Quick Filter Strip -->
-      <div class="mobile-quick-chips-strip" id="mobile-quick-strip" role="toolbar" aria-label="Quick Filters">
-        <button type="button" class="quick-chip active" id="qchip-curated" onclick="toggleQuickFilter('curated')">
-          <span>🔥 Top Deals</span>
-          <span class="qchip-count" id="qcount-curated">0</span>
-        </button>
-        <button type="button" class="quick-chip" id="qchip-auto" onclick="toggleQuickFilter('transmission', 'automatic')">
-          <span>⚡ Automatic</span>
-        </button>
-        <button type="button" class="quick-chip" id="qchip-under4l" onclick="toggleQuickFilter('budget4l')">
-          <span>💰 Under ₹4L</span>
-        </button>
-        <button type="button" class="quick-chip" id="qchip-all" onclick="setViewMode('all')">
-          <span>All Cars</span>
-          <span class="qchip-count" id="qcount-all">0</span>
-        </button>
       </div>
     </div>
 
@@ -3899,7 +4014,7 @@ html_content = """<!DOCTYPE html>
 
       <!-- Mobile Drawer Sticky Footer Action (Hidden on desktop) -->
       <div class="mobile-drawer-footer">
-        <button type="button" class="btn-drawer-apply" onclick="closeMobileFilters()">
+        <button type="button" id="btn-drawer-apply" class="btn-drawer-apply" onclick="closeMobileFilters()">
           <span>View</span>
           <span id="drawer-cars-count">0</span>
           <span>Verified Cars</span>
