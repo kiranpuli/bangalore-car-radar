@@ -1,7 +1,7 @@
 [
   {
     "id": "c24_10232612190",
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -17,7 +17,7 @@
   },
   {
     "id": 33149138,
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Spinny",
     "make": "Hyundai",
     "model": "Grand i10",
@@ -33,7 +33,7 @@
   },
   {
     "id": "c24_10660874127",
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -49,7 +49,7 @@
   },
   {
     "id": "c24_10252890199",
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Renault",
     "model": "Duster",
@@ -65,7 +65,7 @@
   },
   {
     "id": "c24_10299977127",
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Honda",
     "model": "Brio",
@@ -81,7 +81,7 @@
   },
   {
     "id": 28645789,
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Spinny",
     "make": "Tata",
     "model": "Zest",
@@ -96,24 +96,8 @@
     "img": "https://assets.spinny.com/sp-file-system/public/2026-05-20/23be813c4c7f468a8338967f51401e5c/raw/file.JPG"
   },
   {
-    "id": "c24_10247377180",
-    "timestamp": "2026-11-17 18:34",
-    "platform": "Cars24",
-    "make": "Hyundai",
-    "model": "Grand i10",
-    "variant": "MAGNA 1.2 KAPPA VTVT",
-    "make_year": 2015,
-    "price": 363354,
-    "retail_discount_pct": 47,
-    "deal_score": 84,
-    "mileage": 35469,
-    "hub": "Whitefield Main Road, Bhoruka Tech Park, Bengaluru",
-    "url": "https://www.cars24.com/buy-used-hyundai-grand-i10-2015-cars-bangalore-10247377180/",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/d2429c10-b1d5-11f1-bd5e-02ede2007fbe/b32c5f04-5614-433b-a652-f212958c3d4b/641a63cc-3aa9-4425-a510-6c15ce7fea51/f069bb69-22d8-4ceb-9e03-3b28c0166de7/slot/1.png"
-  },
-  {
     "id": "c24_10218575105",
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Fiat",
     "model": "Avventura",
@@ -128,24 +112,8 @@
     "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/bbb7f012-d6e2-11f1-af2d-02ede2007fbe/2b791394-cbb3-4a3f-954b-fe8530542106/6d7b18ee-183a-4134-b36f-1e9d1d49caa7/0b191485-efef-46aa-ac3c-79c39bd94fba/slot/1.png"
   },
   {
-    "id": "c24_10221017194",
-    "timestamp": "2026-11-17 18:34",
-    "platform": "Cars24",
-    "make": "Nissan",
-    "model": "Micra",
-    "variant": "XL CVT",
-    "make_year": 2016,
-    "price": 340185,
-    "retail_discount_pct": 51,
-    "deal_score": 84,
-    "mileage": 31594,
-    "hub": "Hosur Road, Chikku Lakshmaiah Layout, Koramangala, Bangalore",
-    "url": "https://www.cars24.com/buy-used-nissan-micra-2016-cars-bangalore-10221017194/",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/dc111028-daac-11f1-af2d-02ede2007fbe/2cdb13cb-d91a-4739-af94-3b9d0bd44d7f/064aeb03-732c-4619-9471-69401128ecd7/9a818c29-3bd4-4f9f-9bb4-638f11dc71ee/slot/1.png"
-  },
-  {
     "id": "c24_10214172189",
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra",
@@ -160,24 +128,40 @@
     "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/86368912-aec9-11f1-bd5e-02ede2007fbe/m/0a3dd725-a563-4cce-aa6c-32e5aa8363f0/2c983bcc-6fc7-4c97-aa03-a060ce310c5f/63ad3dda-8180-4158-b557-bc55fc47126c/slot/1.png"
   },
   {
-    "id": "c24_10296817178",
-    "timestamp": "2026-11-17 18:34",
+    "id": "c24_10247377180",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Hyundai",
     "model": "Grand i10",
     "variant": "MAGNA 1.2 KAPPA VTVT",
-    "make_year": 2017,
-    "price": 385852,
-    "retail_discount_pct": 49,
+    "make_year": 2015,
+    "price": 363354,
+    "retail_discount_pct": 47,
     "deal_score": 84,
-    "mileage": 57851,
-    "hub": "Bellahalli, Bengaluru",
-    "url": "https://www.cars24.com/buy-used-hyundai-grand-i10-2017-cars-bangalore-10296817178/",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/7cdc9b34-de5a-11f1-af2d-02ede2007fbe/c714c259-a360-4e21-9e51-60310a14b874/68953aa6-eb8e-46fd-8f68-1812e9e255e0/686283d4-e50b-4d83-8199-020c7bbf8745/slot/1.png"
+    "mileage": 35469,
+    "hub": "Whitefield Main Road, Bhoruka Tech Park, Bengaluru",
+    "url": "https://www.cars24.com/buy-used-hyundai-grand-i10-2015-cars-bangalore-10247377180/",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/d2429c10-b1d5-11f1-bd5e-02ede2007fbe/b32c5f04-5614-433b-a652-f212958c3d4b/641a63cc-3aa9-4425-a510-6c15ce7fea51/f069bb69-22d8-4ceb-9e03-3b28c0166de7/slot/1.png"
+  },
+  {
+    "id": "c24_10221017194",
+    "timestamp": "2026-11-18 01:20",
+    "platform": "Cars24",
+    "make": "Nissan",
+    "model": "Micra",
+    "variant": "XL CVT",
+    "make_year": 2016,
+    "price": 340185,
+    "retail_discount_pct": 51,
+    "deal_score": 84,
+    "mileage": 31594,
+    "hub": "Hosur Road, Chikku Lakshmaiah Layout, Koramangala, Bangalore",
+    "url": "https://www.cars24.com/buy-used-nissan-micra-2016-cars-bangalore-10221017194/",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/dc111028-daac-11f1-af2d-02ede2007fbe/2cdb13cb-d91a-4739-af94-3b9d0bd44d7f/064aeb03-732c-4619-9471-69401128ecd7/9a818c29-3bd4-4f9f-9bb4-638f11dc71ee/slot/1.png"
   },
   {
     "id": "c24_10290814179",
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra Active",
@@ -192,8 +176,24 @@
     "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/597a90b8-dcef-11f1-af2d-02ede2007fbe/m/8b8525ec-6ae7-4aae-9688-d1131b54ef48/e5f365c2-7a39-4ebe-bdb1-e2bff8d918f8/43735aa5-b746-45ff-9481-0259445127b3/slot/1.png"
   },
   {
+    "id": "c24_10296817178",
+    "timestamp": "2026-11-18 01:20",
+    "platform": "Cars24",
+    "make": "Hyundai",
+    "model": "Grand i10",
+    "variant": "MAGNA 1.2 KAPPA VTVT",
+    "make_year": 2017,
+    "price": 385852,
+    "retail_discount_pct": 49,
+    "deal_score": 84,
+    "mileage": 57851,
+    "hub": "Bellahalli, Bengaluru",
+    "url": "https://www.cars24.com/buy-used-hyundai-grand-i10-2017-cars-bangalore-10296817178/",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/7cdc9b34-de5a-11f1-af2d-02ede2007fbe/c714c259-a360-4e21-9e51-60310a14b874/68953aa6-eb8e-46fd-8f68-1812e9e255e0/686283d4-e50b-4d83-8199-020c7bbf8745/slot/1.png"
+  },
+  {
     "id": "c24_10263570182",
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Honda",
     "model": "Jazz",
@@ -209,7 +209,7 @@
   },
   {
     "id": "c24_10294777144",
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -225,7 +225,7 @@
   },
   {
     "id": "c24_10227715119",
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -241,7 +241,7 @@
   },
   {
     "id": "c24_10210674123",
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Chevrolet",
     "model": "Beat",
@@ -257,7 +257,7 @@
   },
   {
     "id": "c24_10230171103",
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra",
@@ -273,7 +273,7 @@
   },
   {
     "id": "c24_10248918191",
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra Active",
@@ -289,7 +289,7 @@
   },
   {
     "id": "c24_10265217195",
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Honda",
     "model": "Brio",
@@ -305,7 +305,7 @@
   },
   {
     "id": "c24_10276714176",
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Ford",
     "model": "Ecosport",
@@ -321,7 +321,7 @@
   },
   {
     "id": "c24_10243412150",
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Maruti",
     "model": "Swift Dzire",
@@ -337,7 +337,7 @@
   },
   {
     "id": "c24_10217512195",
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Hyundai",
     "model": "Grand i10",
@@ -353,7 +353,7 @@
   },
   {
     "id": "c24_10201979100",
-    "timestamp": "2026-11-17 18:34",
+    "timestamp": "2026-11-18 01:20",
     "platform": "Cars24",
     "make": "Honda",
     "model": "Amaze",
