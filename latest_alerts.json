@@ -1,7 +1,7 @@
 [
   {
     "id": 33733164,
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Spinny",
     "make": "Hyundai",
     "model": "Grand i10",
@@ -17,7 +17,7 @@
   },
   {
     "id": "c24_10232612190",
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -33,7 +33,7 @@
   },
   {
     "id": "c24_10237517192",
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Cars24",
     "make": "Honda",
     "model": "Brio",
@@ -49,7 +49,7 @@
   },
   {
     "id": 33149138,
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Spinny",
     "make": "Hyundai",
     "model": "Grand i10",
@@ -65,7 +65,7 @@
   },
   {
     "id": "c24_10660874127",
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -81,7 +81,7 @@
   },
   {
     "id": "c24_10252890199",
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Cars24",
     "make": "Renault",
     "model": "Duster",
@@ -97,7 +97,7 @@
   },
   {
     "id": "c24_10299977127",
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Cars24",
     "make": "Honda",
     "model": "Brio",
@@ -113,7 +113,7 @@
   },
   {
     "id": 34017280,
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Spinny",
     "make": "Hyundai",
     "model": "i10",
@@ -129,7 +129,7 @@
   },
   {
     "id": 28645789,
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Spinny",
     "make": "Tata",
     "model": "Zest",
@@ -144,24 +144,8 @@
     "img": "https://assets.spinny.com/sp-file-system/public/2026-05-20/23be813c4c7f468a8338967f51401e5c/raw/file.JPG"
   },
   {
-    "id": "c24_10218575105",
-    "timestamp": "2026-11-19 00:21",
-    "platform": "Cars24",
-    "make": "Fiat",
-    "model": "Avventura",
-    "variant": "EMOTION MULTIJET 1.3",
-    "make_year": 2015,
-    "price": 326257,
-    "retail_discount_pct": 61,
-    "deal_score": 84,
-    "mileage": 38523,
-    "hub": "Gandhi Nagar",
-    "url": "https://www.cars24.com/buy-used-fiat-avventura-2015-cars-bangalore-10218575105/",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/bbb7f012-d6e2-11f1-af2d-02ede2007fbe/2b791394-cbb3-4a3f-954b-fe8530542106/6d7b18ee-183a-4134-b36f-1e9d1d49caa7/0b191485-efef-46aa-ac3c-79c39bd94fba/slot/1.png"
-  },
-  {
     "id": "c24_10247377180",
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Cars24",
     "make": "Hyundai",
     "model": "Grand i10",
@@ -176,8 +160,40 @@
     "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/d2429c10-b1d5-11f1-bd5e-02ede2007fbe/b32c5f04-5614-433b-a652-f212958c3d4b/641a63cc-3aa9-4425-a510-6c15ce7fea51/f069bb69-22d8-4ceb-9e03-3b28c0166de7/slot/1.png"
   },
   {
+    "id": "c24_10218575105",
+    "timestamp": "2026-11-19 07:58",
+    "platform": "Cars24",
+    "make": "Fiat",
+    "model": "Avventura",
+    "variant": "EMOTION MULTIJET 1.3",
+    "make_year": 2015,
+    "price": 326257,
+    "retail_discount_pct": 61,
+    "deal_score": 84,
+    "mileage": 38523,
+    "hub": "Gandhi Nagar",
+    "url": "https://www.cars24.com/buy-used-fiat-avventura-2015-cars-bangalore-10218575105/",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/bbb7f012-d6e2-11f1-af2d-02ede2007fbe/2b791394-cbb3-4a3f-954b-fe8530542106/6d7b18ee-183a-4134-b36f-1e9d1d49caa7/0b191485-efef-46aa-ac3c-79c39bd94fba/slot/1.png"
+  },
+  {
+    "id": "c24_10263570182",
+    "timestamp": "2026-11-19 07:58",
+    "platform": "Cars24",
+    "make": "Honda",
+    "model": "Jazz",
+    "variant": "1.2L I-VTEC V",
+    "make_year": 2015,
+    "price": 377663,
+    "retail_discount_pct": 57,
+    "deal_score": 84,
+    "mileage": 28648,
+    "hub": "GT World Mall, Bengaluru",
+    "url": "https://www.cars24.com/buy-used-honda-jazz-2015-cars-bangalore-10263570182/",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/5a0af98e-d243-11f1-af2d-02ede2007fbe/814abe99-d3aa-40ab-a2e5-d5608f60ef4e/a1aca5e1-98e4-4da6-adcc-3d867f22258a/9fcc3feb-c4e9-4faf-95d0-f5434dc119dc/slot/1.png"
+  },
+  {
     "id": "c24_10221017194",
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra",
@@ -193,7 +209,7 @@
   },
   {
     "id": "c24_10214172189",
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra",
@@ -209,7 +225,7 @@
   },
   {
     "id": "c24_10290814179",
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra Active",
@@ -225,7 +241,7 @@
   },
   {
     "id": "c24_10296817178",
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Cars24",
     "make": "Hyundai",
     "model": "Grand i10",
@@ -240,24 +256,8 @@
     "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/7cdc9b34-de5a-11f1-af2d-02ede2007fbe/c714c259-a360-4e21-9e51-60310a14b874/68953aa6-eb8e-46fd-8f68-1812e9e255e0/686283d4-e50b-4d83-8199-020c7bbf8745/slot/1.png"
   },
   {
-    "id": "c24_10263570182",
-    "timestamp": "2026-11-19 00:21",
-    "platform": "Cars24",
-    "make": "Honda",
-    "model": "Jazz",
-    "variant": "1.2L I-VTEC V",
-    "make_year": 2015,
-    "price": 377663,
-    "retail_discount_pct": 57,
-    "deal_score": 84,
-    "mileage": 28648,
-    "hub": "GT World Mall, Bengaluru",
-    "url": "https://www.cars24.com/buy-used-honda-jazz-2015-cars-bangalore-10263570182/",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/5a0af98e-d243-11f1-af2d-02ede2007fbe/814abe99-d3aa-40ab-a2e5-d5608f60ef4e/a1aca5e1-98e4-4da6-adcc-3d867f22258a/9fcc3feb-c4e9-4faf-95d0-f5434dc119dc/slot/1.png"
-  },
-  {
     "id": "c24_10294777144",
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -273,7 +273,7 @@
   },
   {
     "id": "c24_10227715119",
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -289,7 +289,7 @@
   },
   {
     "id": "c24_10210674123",
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Cars24",
     "make": "Chevrolet",
     "model": "Beat",
@@ -305,7 +305,7 @@
   },
   {
     "id": "c24_10230171103",
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra",
@@ -321,7 +321,7 @@
   },
   {
     "id": "c24_10248918191",
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra Active",
@@ -337,7 +337,7 @@
   },
   {
     "id": "c24_10265217195",
-    "timestamp": "2026-11-19 00:21",
+    "timestamp": "2026-11-19 07:58",
     "platform": "Cars24",
     "make": "Honda",
     "model": "Brio",
@@ -350,6 +350,54 @@
     "hub": "Bellahalli, Bengaluru",
     "url": "https://www.cars24.com/buy-used-honda-brio-2015-cars-bangalore-10265217195/",
     "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/44c9da48-cee4-11f1-af2d-02ede2007fbe/7b1c005a-8378-4f57-b397-efac6f93ee90/c858f22d-4b39-4428-812e-7fdcc23d3304/324680ec-4fb1-45f3-abdd-da264ba03e14/slot/1.png"
+  },
+  {
+    "id": "c24_10276714176",
+    "timestamp": "2026-11-19 07:58",
+    "platform": "Cars24",
+    "make": "Ford",
+    "model": "Ecosport",
+    "variant": "TREND+ 1.0L ECOBOOST",
+    "make_year": 2016,
+    "price": 306000,
+    "retail_discount_pct": 75,
+    "deal_score": 75,
+    "mileage": 21576,
+    "hub": "Devarabisanahalli Aurbis Business Park Bengaluru",
+    "url": "https://www.cars24.com/buy-used-ford-ecosport-2016-cars-bangalore-10276714176/",
+    "img": "https://marketplace-cdn.cars24.com/visio/prod/10276714176/mainimage/FrontRightSide-Transparent/virtualBackground/1794052619221IGUGTE.png"
+  },
+  {
+    "id": "c24_10243412150",
+    "timestamp": "2026-11-19 07:58",
+    "platform": "Cars24",
+    "make": "Maruti",
+    "model": "Swift Dzire",
+    "variant": "VXI",
+    "make_year": 2015,
+    "price": 299864,
+    "retail_discount_pct": 63,
+    "deal_score": 75,
+    "mileage": 23734,
+    "hub": "Arekere Bengaluru Karnataka",
+    "url": "https://www.cars24.com/buy-used-maruti-swift-dzire-2015-cars-bangalore-10243412150/",
+    "img": "https://marketplace-cdn.cars24.com/visio/prod/10243412150/mainimage/FrontRightSide-Transparent/virtualBackground/1794726040956XZL5AZ.png"
+  },
+  {
+    "id": "c24_10201979100",
+    "timestamp": "2026-11-19 07:58",
+    "platform": "Cars24",
+    "make": "Honda",
+    "model": "Amaze",
+    "variant": "1.2L I-VTEC E OPT",
+    "make_year": 2017,
+    "price": 258000,
+    "retail_discount_pct": 73,
+    "deal_score": 75,
+    "mileage": 36688,
+    "hub": "Jogupalya Bengaluru Karnataka",
+    "url": "https://www.cars24.com/buy-used-honda-amaze-2017-cars-bangalore-10201979100/",
+    "img": "https://marketplace-cdn.cars24.com/visio/prod/10201979100/mainimage/FrontRightSide-Transparent/virtualBackground/1790676610243GOW3NE.png"
   },
   {
     "id": "olx_1862020973",
@@ -368,38 +416,6 @@
     "img": "https://apollo.olx.in:443/v1/files/by9q7ikxhkhz1-IN/image;s=780x0;q=80"
   },
   {
-    "id": "c24_10276714176",
-    "timestamp": "2026-11-19 00:21",
-    "platform": "Cars24",
-    "make": "Ford",
-    "model": "Ecosport",
-    "variant": "TREND+ 1.0L ECOBOOST",
-    "make_year": 2016,
-    "price": 306000,
-    "retail_discount_pct": 75,
-    "deal_score": 75,
-    "mileage": 21576,
-    "hub": "Devarabisanahalli Aurbis Business Park Bengaluru",
-    "url": "https://www.cars24.com/buy-used-ford-ecosport-2016-cars-bangalore-10276714176/",
-    "img": "https://marketplace-cdn.cars24.com/visio/prod/10276714176/mainimage/FrontRightSide-Transparent/virtualBackground/1794052619221IGUGTE.png"
-  },
-  {
-    "id": "c24_10243412150",
-    "timestamp": "2026-11-19 00:21",
-    "platform": "Cars24",
-    "make": "Maruti",
-    "model": "Swift Dzire",
-    "variant": "VXI",
-    "make_year": 2015,
-    "price": 299864,
-    "retail_discount_pct": 63,
-    "deal_score": 75,
-    "mileage": 23734,
-    "hub": "Arekere Bengaluru Karnataka",
-    "url": "https://www.cars24.com/buy-used-maruti-swift-dzire-2015-cars-bangalore-10243412150/",
-    "img": "https://marketplace-cdn.cars24.com/visio/prod/10243412150/mainimage/FrontRightSide-Transparent/virtualBackground/1794726040956XZL5AZ.png"
-  },
-  {
     "id": "c24_10217512195",
     "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
@@ -414,22 +430,6 @@
     "hub": "Soundarya Layout Bengaluru Karnataka",
     "url": "https://www.cars24.com/buy-used-hyundai-grand-i10-2015-cars-bangalore-10217512195/",
     "img": "https://c2c-marketplace.s3.ap-south-1.amazonaws.com/production/10217512195/exterior/2026-10-16/enUFuK4RASUizE-fw3NDOSutOVzbQUdL86XfNiNBQS8"
-  },
-  {
-    "id": "c24_10201979100",
-    "timestamp": "2026-11-19 00:21",
-    "platform": "Cars24",
-    "make": "Honda",
-    "model": "Amaze",
-    "variant": "1.2L I-VTEC E OPT",
-    "make_year": 2017,
-    "price": 258000,
-    "retail_discount_pct": 73,
-    "deal_score": 75,
-    "mileage": 36688,
-    "hub": "Jogupalya Bengaluru Karnataka",
-    "url": "https://www.cars24.com/buy-used-honda-amaze-2017-cars-bangalore-10201979100/",
-    "img": "https://marketplace-cdn.cars24.com/visio/prod/10201979100/mainimage/FrontRightSide-Transparent/virtualBackground/1790676610243GOW3NE.png"
   },
   {
     "id": "olx_1858106767",
