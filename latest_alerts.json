@@ -1,7 +1,7 @@
 [
   {
     "id": 33733164,
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Spinny",
     "make": "Hyundai",
     "model": "Grand i10",
@@ -17,7 +17,7 @@
   },
   {
     "id": "c24_10232612190",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -33,7 +33,7 @@
   },
   {
     "id": "c24_10237517192",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Honda",
     "model": "Brio",
@@ -49,7 +49,7 @@
   },
   {
     "id": 33149138,
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Spinny",
     "make": "Hyundai",
     "model": "Grand i10",
@@ -65,7 +65,7 @@
   },
   {
     "id": "c24_10660874127",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -81,7 +81,7 @@
   },
   {
     "id": "c24_10252890199",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Renault",
     "model": "Duster",
@@ -97,7 +97,7 @@
   },
   {
     "id": "c24_10299977127",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Honda",
     "model": "Brio",
@@ -113,7 +113,7 @@
   },
   {
     "id": 34017280,
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Spinny",
     "make": "Hyundai",
     "model": "i10",
@@ -129,7 +129,7 @@
   },
   {
     "id": 28645789,
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Spinny",
     "make": "Tata",
     "model": "Zest",
@@ -145,7 +145,7 @@
   },
   {
     "id": "c24_10218575105",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Fiat",
     "model": "Avventura",
@@ -160,24 +160,8 @@
     "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/bbb7f012-d6e2-11f1-af2d-02ede2007fbe/2b791394-cbb3-4a3f-954b-fe8530542106/6d7b18ee-183a-4134-b36f-1e9d1d49caa7/0b191485-efef-46aa-ac3c-79c39bd94fba/slot/1.png"
   },
   {
-    "id": "c24_10221017194",
-    "timestamp": "2026-11-18 18:01",
-    "platform": "Cars24",
-    "make": "Nissan",
-    "model": "Micra",
-    "variant": "XL CVT",
-    "make_year": 2016,
-    "price": 340185,
-    "retail_discount_pct": 51,
-    "deal_score": 84,
-    "mileage": 31594,
-    "hub": "Hosur Road, Chikku Lakshmaiah Layout, Koramangala, Bangalore",
-    "url": "https://www.cars24.com/buy-used-nissan-micra-2016-cars-bangalore-10221017194/",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/dc111028-daac-11f1-af2d-02ede2007fbe/2cdb13cb-d91a-4739-af94-3b9d0bd44d7f/064aeb03-732c-4619-9471-69401128ecd7/9a818c29-3bd4-4f9f-9bb4-638f11dc71ee/slot/1.png"
-  },
-  {
     "id": "c24_10247377180",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Hyundai",
     "model": "Grand i10",
@@ -192,8 +176,24 @@
     "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/d2429c10-b1d5-11f1-bd5e-02ede2007fbe/b32c5f04-5614-433b-a652-f212958c3d4b/641a63cc-3aa9-4425-a510-6c15ce7fea51/f069bb69-22d8-4ceb-9e03-3b28c0166de7/slot/1.png"
   },
   {
+    "id": "c24_10221017194",
+    "timestamp": "2026-11-19 00:21",
+    "platform": "Cars24",
+    "make": "Nissan",
+    "model": "Micra",
+    "variant": "XL CVT",
+    "make_year": 2016,
+    "price": 340185,
+    "retail_discount_pct": 51,
+    "deal_score": 84,
+    "mileage": 31594,
+    "hub": "Hosur Road, Chikku Lakshmaiah Layout, Koramangala, Bangalore",
+    "url": "https://www.cars24.com/buy-used-nissan-micra-2016-cars-bangalore-10221017194/",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/dc111028-daac-11f1-af2d-02ede2007fbe/2cdb13cb-d91a-4739-af94-3b9d0bd44d7f/064aeb03-732c-4619-9471-69401128ecd7/9a818c29-3bd4-4f9f-9bb4-638f11dc71ee/slot/1.png"
+  },
+  {
     "id": "c24_10214172189",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra",
@@ -209,7 +209,7 @@
   },
   {
     "id": "c24_10290814179",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra Active",
@@ -225,7 +225,7 @@
   },
   {
     "id": "c24_10296817178",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Hyundai",
     "model": "Grand i10",
@@ -241,7 +241,7 @@
   },
   {
     "id": "c24_10263570182",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Honda",
     "model": "Jazz",
@@ -257,7 +257,7 @@
   },
   {
     "id": "c24_10294777144",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -273,7 +273,7 @@
   },
   {
     "id": "c24_10227715119",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -289,7 +289,7 @@
   },
   {
     "id": "c24_10210674123",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Chevrolet",
     "model": "Beat",
@@ -305,7 +305,7 @@
   },
   {
     "id": "c24_10230171103",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra",
@@ -321,7 +321,7 @@
   },
   {
     "id": "c24_10248918191",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra Active",
@@ -337,7 +337,7 @@
   },
   {
     "id": "c24_10265217195",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Honda",
     "model": "Brio",
@@ -353,7 +353,7 @@
   },
   {
     "id": "olx_1862020973",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "OLX",
     "make": "Tata",
     "model": "Tigor EV",
@@ -369,7 +369,7 @@
   },
   {
     "id": "c24_10276714176",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Ford",
     "model": "Ecosport",
@@ -385,7 +385,7 @@
   },
   {
     "id": "c24_10243412150",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Maruti",
     "model": "Swift Dzire",
@@ -401,7 +401,7 @@
   },
   {
     "id": "c24_10217512195",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Hyundai",
     "model": "Grand i10",
@@ -417,7 +417,7 @@
   },
   {
     "id": "c24_10201979100",
-    "timestamp": "2026-11-18 18:01",
+    "timestamp": "2026-11-19 00:21",
     "platform": "Cars24",
     "make": "Honda",
     "model": "Amaze",
