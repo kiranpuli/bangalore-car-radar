@@ -1,7 +1,7 @@
 [
   {
     "id": "c24_10296875128",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Renault",
     "model": "Kiger",
@@ -17,7 +17,7 @@
   },
   {
     "id": "truwo_2020-ford-aspire-aspire-1-2-petrol-titanium-mt-e4c7a14c",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Truwo",
     "make": "Ford",
     "model": "Aspire",
@@ -33,7 +33,7 @@
   },
   {
     "id": "c24_10298112182",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Tata",
     "model": "ALTROZ",
@@ -49,7 +49,7 @@
   },
   {
     "id": "c24_10297514155",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Hyundai",
     "model": "GRAND I10 NIOS",
@@ -65,7 +65,7 @@
   },
   {
     "id": "c24_10232612190",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -81,7 +81,7 @@
   },
   {
     "id": "c24_10237517192",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Honda",
     "model": "Brio",
@@ -97,7 +97,7 @@
   },
   {
     "id": "c24_10292813195",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -113,7 +113,7 @@
   },
   {
     "id": "c24_10274714159",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -129,7 +129,7 @@
   },
   {
     "id": 32271810,
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Spinny",
     "make": "Maruti Suzuki",
     "model": "Ignis",
@@ -145,7 +145,7 @@
   },
   {
     "id": 32394312,
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Spinny",
     "make": "Nissan",
     "model": "Micra Active",
@@ -161,7 +161,7 @@
   },
   {
     "id": "c24_10660874127",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -177,7 +177,7 @@
   },
   {
     "id": "c24_10252890199",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Renault",
     "model": "Duster",
@@ -193,7 +193,7 @@
   },
   {
     "id": "c24_10051613179",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Hyundai",
     "model": "Grand i10",
@@ -209,7 +209,7 @@
   },
   {
     "id": 28645789,
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Spinny",
     "make": "Tata",
     "model": "Zest",
@@ -224,40 +224,8 @@
     "img": "https://assets.spinny.com/sp-file-system/public/2026-05-20/23be813c4c7f468a8338967f51401e5c/raw/file.JPG"
   },
   {
-    "id": "c24_10214172189",
-    "timestamp": "2026-11-27 22:42",
-    "platform": "Cars24",
-    "make": "Nissan",
-    "model": "Micra",
-    "variant": "XV CVT",
-    "make_year": 2018,
-    "price": 347000,
-    "retail_discount_pct": 53,
-    "deal_score": 84,
-    "mileage": 43777,
-    "hub": "Bellahalli, Bengaluru",
-    "url": "https://www.cars24.com/buy-used-nissan-micra-2018-cars-bangalore-10214172189/",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/86368912-aec9-11f1-bd5e-02ede2007fbe/m/0a3dd725-a563-4cce-aa6c-32e5aa8363f0/2c983bcc-6fc7-4c97-aa03-a060ce310c5f/63ad3dda-8180-4158-b557-bc55fc47126c/slot/1.png"
-  },
-  {
-    "id": "c24_10208811182",
-    "timestamp": "2026-11-27 22:42",
-    "platform": "Cars24",
-    "make": "Ford",
-    "model": "New Figo",
-    "variant": "TITANIUM 1.2 PETROL MT",
-    "make_year": 2018,
-    "price": 389380,
-    "retail_discount_pct": 51,
-    "deal_score": 84,
-    "mileage": 54546,
-    "hub": "Vaishnavi Sapphire Centre, Yeswanthpur",
-    "url": "https://www.cars24.com/buy-used-ford-new-figo-2018-cars-bangalore-10208811182/",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/1bcab3e0-e903-11f1-af2e-02ede2007fbe/37bdceb9-35bf-4baf-947d-001c6796f99d/32050d0f-d302-4e59-8b77-2654cd5acd77/153018de-4d71-49fd-a6c4-b8ab2ab8c078/slot/1.png"
-  },
-  {
     "id": "c24_10247377180",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Hyundai",
     "model": "Grand i10",
@@ -272,8 +240,24 @@
     "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/d2429c10-b1d5-11f1-bd5e-02ede2007fbe/b32c5f04-5614-433b-a652-f212958c3d4b/641a63cc-3aa9-4425-a510-6c15ce7fea51/f069bb69-22d8-4ceb-9e03-3b28c0166de7/slot/1.png"
   },
   {
+    "id": "c24_10214172189",
+    "timestamp": "2026-11-28 04:16",
+    "platform": "Cars24",
+    "make": "Nissan",
+    "model": "Micra",
+    "variant": "XV CVT",
+    "make_year": 2018,
+    "price": 347000,
+    "retail_discount_pct": 53,
+    "deal_score": 84,
+    "mileage": 43777,
+    "hub": "Bellahalli, Bengaluru",
+    "url": "https://www.cars24.com/buy-used-nissan-micra-2018-cars-bangalore-10214172189/",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/86368912-aec9-11f1-bd5e-02ede2007fbe/m/0a3dd725-a563-4cce-aa6c-32e5aa8363f0/2c983bcc-6fc7-4c97-aa03-a060ce310c5f/63ad3dda-8180-4158-b557-bc55fc47126c/slot/1.png"
+  },
+  {
     "id": "c24_10221017194",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra",
@@ -289,7 +273,7 @@
   },
   {
     "id": "c24_10290814179",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra Active",
@@ -304,8 +288,24 @@
     "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/597a90b8-dcef-11f1-af2d-02ede2007fbe/m/8b8525ec-6ae7-4aae-9688-d1131b54ef48/e5f365c2-7a39-4ebe-bdb1-e2bff8d918f8/43735aa5-b746-45ff-9481-0259445127b3/slot/1.png"
   },
   {
+    "id": "c24_10208811182",
+    "timestamp": "2026-11-28 04:16",
+    "platform": "Cars24",
+    "make": "Ford",
+    "model": "New Figo",
+    "variant": "TITANIUM 1.2 PETROL MT",
+    "make_year": 2018,
+    "price": 389380,
+    "retail_discount_pct": 51,
+    "deal_score": 84,
+    "mileage": 54546,
+    "hub": "Vaishnavi Sapphire Centre, Yeswanthpur",
+    "url": "https://www.cars24.com/buy-used-ford-new-figo-2018-cars-bangalore-10208811182/",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/1bcab3e0-e903-11f1-af2e-02ede2007fbe/37bdceb9-35bf-4baf-947d-001c6796f99d/32050d0f-d302-4e59-8b77-2654cd5acd77/153018de-4d71-49fd-a6c4-b8ab2ab8c078/slot/1.png"
+  },
+  {
     "id": "c24_10280174107",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Hyundai",
     "model": "Grand i10",
@@ -321,7 +321,7 @@
   },
   {
     "id": "c24_10263570182",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Honda",
     "model": "Jazz",
@@ -337,7 +337,7 @@
   },
   {
     "id": "c24_10227715119",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Tata",
     "model": "Tiago",
@@ -353,7 +353,7 @@
   },
   {
     "id": "c24_10210674123",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Chevrolet",
     "model": "Beat",
@@ -368,24 +368,8 @@
     "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/1d409704-c3e6-11f1-af2c-02ede2007fbe/7ec40c8b-5359-42ad-950a-3341b4ab1778/4f1cd7c1-5c66-4d3a-9158-dab8326a4a54/a0e098d6-8bf4-40e3-b744-336d5faf91e0/slot/1.png"
   },
   {
-    "id": "c24_10297615159",
-    "timestamp": "2026-11-27 22:42",
-    "platform": "Cars24",
-    "make": "Nissan",
-    "model": "Micra Active",
-    "variant": "XV",
-    "make_year": 2016,
-    "price": 327000,
-    "retail_discount_pct": 44,
-    "deal_score": 78,
-    "mileage": 54005,
-    "hub": "Hosur Road, Chikku Lakshmaiah Layout, Koramangala, Bangalore",
-    "url": "https://www.cars24.com/buy-used-nissan-micra-active-2016-cars-bangalore-10297615159/",
-    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/c0e728ae-e8fe-11f1-af2e-02ede2007fbe/ebed3cd8-389a-428a-953b-8b2705c2d554/78b89f3b-9d55-4fe9-8730-91196a16d3b4/15a01cec-38bb-4440-8bfb-ddb3310923fc/slot/1.png"
-  },
-  {
     "id": "c24_10230171103",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra",
@@ -401,7 +385,7 @@
   },
   {
     "id": "c24_10248918191",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Nissan",
     "model": "Micra Active",
@@ -416,8 +400,24 @@
     "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/f0da7336-d0b2-11f1-af2d-02ede2007fbe/15531b26-3606-418d-a036-094fe147338f/7346ac36-0f09-49a9-bece-b55771022308/ac9bdab1-4b10-4464-8523-5d30443b7a59/slot/1.png"
   },
   {
+    "id": "c24_10297615159",
+    "timestamp": "2026-11-28 04:16",
+    "platform": "Cars24",
+    "make": "Nissan",
+    "model": "Micra Active",
+    "variant": "XV",
+    "make_year": 2016,
+    "price": 327000,
+    "retail_discount_pct": 44,
+    "deal_score": 78,
+    "mileage": 54005,
+    "hub": "Hosur Road, Chikku Lakshmaiah Layout, Koramangala, Bangalore",
+    "url": "https://www.cars24.com/buy-used-nissan-micra-active-2016-cars-bangalore-10297615159/",
+    "img": "https://media.cars24.com/hello-ar/dev/transformed/uploads/no_bg/c0e728ae-e8fe-11f1-af2e-02ede2007fbe/ebed3cd8-389a-428a-953b-8b2705c2d554/78b89f3b-9d55-4fe9-8730-91196a16d3b4/15a01cec-38bb-4440-8bfb-ddb3310923fc/slot/1.png"
+  },
+  {
     "id": "c24_10276714176",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Ford",
     "model": "Ecosport",
@@ -433,7 +433,7 @@
   },
   {
     "id": "c24_10276314114",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Hyundai",
     "model": "Grand i10",
@@ -449,7 +449,7 @@
   },
   {
     "id": "c24_10243412150",
-    "timestamp": "2026-11-27 22:42",
+    "timestamp": "2026-11-28 04:16",
     "platform": "Cars24",
     "make": "Maruti",
     "model": "Swift Dzire",
